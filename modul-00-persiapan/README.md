@@ -18,9 +18,14 @@ Sebelum mengetik perintah apa pun, lihat tabel ini. Salah alat = perintah "tidak
 | 5 | [Android Studio](https://developer.android.com/studio) | SDK Android, emulator, driver USB |
 | 6 | Emulator Android **atau** HP Android | Melihat aplikasi |
 
-![Urutan buka alat: peramban, VS Code, terminal, emulator](images/urutan-buka-alat.png)
+```mermaid
+flowchart LR
+  A["1. Peramban DartPad"] --> B["2. VS Code"]
+  B --> C["3. Terminal VS Code"]
+  C --> D["4. Emulator atau HP"]
+```
 
-*Ilustrasi asli materi mobile2026. Bukan tangkapan layar produk bermerek.*
+Teks di diagram itu sengaja singkat. Perincian ada di tabel di atas, supaya tidak ada tulisan kecil yang pecah saat GitHub mengecilkan gambar.
 
 ### Pintasan yang akan sering dipakai
 
@@ -45,9 +50,9 @@ Aplikasi mobile berbeda dari situs web dalam tiga hal yang terasa di tangan:
 
 Di belakang layar, aplikasi Anda tetap seperti restoran:
 
-![Analogi HP sebagai tamu, JSON sebagai nota, server sebagai dapur](images/analogi-hp-dapur.png)
+![Analogi: HP, JSON, dan server](images/analogi-hp-dapur.png)
 
-*Ilustrasi asli materi mobile2026.*
+*Ilustrasi asli materi mobile2026. Baca tabel di bawah ini untuk arti setiap kotak.*
 
 | Di restoran | Di aplikasi |
 | --- | --- |
@@ -59,7 +64,7 @@ Detail JSON dan HTTP ada di Modul 07. Sekarang cukup ingat: **tampilan dan data 
 
 ![Tiga lapisan: tampilan, logika Dart, data](images/tiga-lapisan-app.png)
 
-*Ilustrasi asli materi mobile2026.*
+*Ilustrasi asli materi mobile2026. Penjelasan lengkap ada di daftar bernomor di atas.*
 
 ---
 
@@ -69,7 +74,9 @@ Satu basis kode Dart dapat menjadi aplikasi Android dan iOS. Materi ini memakai 
 
 **Penting untuk Windows:** dari Windows Anda dapat membangun dan menguji **Android**. Membangun iOS memerlukan Mac. Konsep iOS tetap dijelaskan. Praktik rilis (Modul 10) berfokus ke Google Play Store.
 
-Sumber: [docs.flutter.dev/install](https://docs.flutter.dev/install).
+Sumber instalasi: [docs.flutter.dev/install](https://docs.flutter.dev/install).
+
+Diagram lapisan resmi Flutter SDK (boleh dibuka, tidak wajib dihapal sekarang): [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview). Sumber: Flutter.dev / Google. Flutter and the related logo are trademarks of Google LLC.
 
 ---
 
@@ -92,11 +99,15 @@ void main() {
 }
 ```
 
-![Sketsa playground kode di peramban: editor, tombol Run, keluaran](images/uji-kode-peramban.png)
+Letak tombol di DartPad (tampilan sungguhan ada di situs resminya):
 
-*Ilustrasi asli materi mobile2026. Tampilan DartPad sungguhan bisa berbeda; yang penting ada editor, tombol Run, dan panel keluaran. Sumber alat: [dartpad.dev](https://dartpad.dev) (Dart team / Google).*
+```mermaid
+flowchart LR
+  A["Kiri: editor kode"] --> B["Tombol Run"]
+  B --> C["Kanan: Console / keluaran"]
+```
 
-Jika tombol Run tidak merespons, nonaktifkan pemblokir iklan untuk situs itu, atau ganti peramban.
+Sumber alat: [dartpad.dev](https://dartpad.dev) (Dart team / Google). Jika tombol Run tidak merespons, nonaktifkan pemblokir iklan untuk situs itu, atau ganti peramban.
 
 DartPad juga bisa menjalankan widget Flutter di web. Itu cukup untuk mencoba tampilan. **Emulator / HP tetap wajib** mulai proyek sungguhan, karena kamera, notifikasi, dan toko aplikasi tidak lengkap di DartPad.
 
@@ -493,10 +504,10 @@ Aplikasi **Halo, namaku …** berjalan di emulator atau HP, diubah dari templat 
 
 | Aset | Sumber |
 | --- | --- |
-| `images/urutan-buka-alat.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-hp-dapur.png` | Ilustrasi asli materi mobile2026 |
 | `images/tiga-lapisan-app.png` | Ilustrasi asli materi mobile2026 |
-| `images/uji-kode-peramban.png` | Ilustrasi asli materi mobile2026; alat acuan [dartpad.dev](https://dartpad.dev) |
+| Diagram alur alat dan instalasi | Mermaid di berkas ini (dirender GitHub) |
+| DartPad | [dartpad.dev](https://dartpad.dev) |
 | Langkah instalasi Flutter SDK | [docs.flutter.dev/install/with-vs-code](https://docs.flutter.dev/install/with-vs-code) |
 | Android toolchain | [docs.flutter.dev/platform-integration/android/setup](https://docs.flutter.dev/platform-integration/android/setup) |
 | Troubleshooting | [docs.flutter.dev/install/troubleshoot](https://docs.flutter.dev/install/troubleshoot) |

@@ -13,14 +13,13 @@ Logo resmi Flutter **tidak** dijadikan elemen paling menonjol di halaman (sesuai
 
 ## Ilustrasi asli
 
+Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus** pada 14 Agustus 2026: di GitHub tulisannya pecah dan terasa seperti error. Alur alat sekarang memakai diagram Mermaid. Ilustrasi hanya memakai label singkat; penjelasan ada di teks artikel.
+
 | Berkas | Dipakai di | Keterangan |
 | --- | --- | --- |
-| `modul-00-persiapan/images/urutan-buka-alat.png` | Modul 00, README | Urutan buka alat kerja |
-| `modul-00-persiapan/images/analogi-hp-dapur.png` | Modul 00 | Analogi tamu, nota JSON, dapur |
+| `modul-00-persiapan/images/analogi-hp-dapur.png` | Modul 00, README | Analogi HP, JSON, server |
 | `modul-00-persiapan/images/tiga-lapisan-app.png` | Modul 00, README | Tampilan, logika, data |
-| `modul-00-persiapan/images/uji-kode-peramban.png` | Modul 00, 01 | Sketsa playground kode (bukan UI resmi DartPad) |
-| `modul-01-dart/images/analogi-class-object.png` | Modul 01 | Cetakan vs hasil (class vs object) |
-| `modul-01-dart/images/uji-kode-peramban.png` | Modul 01 | Salinan sketsa playground |
+| `modul-01-dart/images/analogi-class-object.png` | Modul 01 | Class vs object |
 
 ## Alat dan dokumentasi yang diacu (bukan gambar yang disalin)
 

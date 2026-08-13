@@ -2,13 +2,13 @@
 
 Materi berbahasa Indonesia untuk merancang, membangun, dan menerbitkan aplikasi mobile yang punya **tampilan (frontend)** dan **layanan data (backend)**.
 
-Flutter and the related logo are trademarks of Google LLC. Materi ini tidak diendorsement dan tidak terafiliasi dengan Google LLC. Panduan merek: [docs.flutter.dev/brand](https://docs.flutter.dev/brand).
+Flutter and the related logo are trademarks of Google LLC. Materi ini tidak didukung secara resmi dan tidak terafiliasi dengan Google LLC. Panduan merek: [docs.flutter.dev/brand](https://docs.flutter.dev/brand).
 
 ---
 
 ## Buka alat ini terlebih dahulu
 
-Jangan langsung menyalin perintah. Setiap perintah di materi ini punya **alat yang harus dibuka dulu**. Ikuti kotak seperti ini:
+Jangan langsung menyalin perintah. Setiap perintah di materi ini punya **alat yang harus dibuka terlebih dahulu**. Ikuti kotak seperti ini:
 
 | Langkah | Yang dibuka |
 | --- | --- |
@@ -31,9 +31,9 @@ Aplikasi mobile modern biasanya punya tiga lapisan:
 2. **Logika** — aturan bisnis, ditulis dalam bahasa Dart
 3. **Data** — tersimpan di HP, di Firebase, atau di API HTTP
 
-![Tiga lapisan aplikasi: tampilan, logika Dart, dan data backend](modul-00-persiapan/images/tiga-lapisan-app.png)
+![Tiga lapisan aplikasi: tampilan, logika Dart, dan data](modul-00-persiapan/images/tiga-lapisan-app.png)
 
-*Ilustrasi asli materi mobile2026. Bukan logo atau aset merek Google.*
+*Ilustrasi asli materi mobile2026. Teks penjelasan ada di daftar di atas, bukan di dalam gambar, supaya tetap terbaca di GitHub.*
 
 ---
 

@@ -29,8 +29,8 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 2. Setiap perintah punya kotak: buka apa, ketik apa, apa tanda berhasil.
 3. Sintaks Dart diuji di [DartPad](https://dartpad.dev) dulu, kecuali topik itu memang membutuhkan emulator atau HP.
 4. Perintah `flutter` / `git` / `dart` lokal diketik di **Terminal VS Code** (`Ctrl + J`), bukan di DartPad, bukan di pencarian Windows.
-5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md).
-6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**.
+5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub.
+6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Alur langkah memakai diagram Mermaid, bukan infografis penuh kalimat.
 
 ---
 
@@ -43,6 +43,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Target Android API mengikuti dokumen Flutter (API 36 pada saat penulisan) | [Android setup](https://docs.flutter.dev/platform-integration/android/setup) |
 | 14 Agu 2026 | Visual Studio (C++) tidak wajib untuk jalur materi ini | Materi menargetkan Android, bukan desktop Windows |
 | 14 Agu 2026 | Setiap modul wajib tabel alat + sitasi gambar | Permintaan kejelasan alat uji dan sumber gambar |
+| 14 Agu 2026 | Sketsa UI palsu (DartPad/VS Code/emulator) dihapus; alur memakai Mermaid; ilustrasi hanya label singkat | Di GitHub, teks dalam PNG pecah dan terasa error |
 
 ---
 

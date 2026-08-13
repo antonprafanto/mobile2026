@@ -17,9 +17,14 @@ Hampir semua contoh di modul ini diuji di **DartPad**, supaya hasilnya terlihat 
 | 3 | Tombol **Run** | Menjalankan `main()` |
 | 4 | (Opsional) Terminal VS Code | `dart` lokal, setelah Modul 00 selesai |
 
-![Sketsa playground: editor, tombol Run, keluaran](images/uji-kode-peramban.png)
+```mermaid
+flowchart LR
+  A["1. Buka dartpad.dev"] --> B["2. Mode Dart"]
+  B --> C["3. Tempel kode + Run"]
+  C --> D["4. Baca Console"]
+```
 
-*Ilustrasi asli materi mobile2026. Tampilan DartPad sungguhan: [dartpad.dev](https://dartpad.dev).*
+Tampilan DartPad sungguhan: [dartpad.dev](https://dartpad.dev). Jangan memakai sketsa palsu sebagai acuan tombol; ikuti situs resmi.
 
 ### Pola uji (ulangi setiap contoh)
 
@@ -259,9 +264,9 @@ Jangan membiasakan `nama!` (tanda seru) kecuali Anda benar-benar yakin. Itu cara
 
 **Class** = cetakan. **Object** (instance) = hasil cetakan.
 
-![Cetakan kue sebagai class, cupcake sebagai object](images/analogi-class-object.png)
+![Cetakan kue sebagai class, hasil kue sebagai object](images/analogi-class-object.png)
 
-*Ilustrasi asli materi mobile2026.*
+*Ilustrasi asli materi mobile2026. Class = cetakan. Object = kue yang sudah jadi.*
 
 ```dart
 class Kue {
@@ -536,10 +541,9 @@ Kunci di akhir berkas. Jawab dulu.
 
 | Aset | Sumber |
 | --- | --- |
-| `images/uji-kode-peramban.png` | Ilustrasi asli materi mobile2026; alat acuan [dartpad.dev](https://dartpad.dev) |
 | `images/analogi-class-object.png` | Ilustrasi asli materi mobile2026 |
+| Alur uji DartPad | Mermaid di berkas ini; alat: [dartpad.dev](https://dartpad.dev) |
 | Bahasa Dart | [dart.dev/language](https://dart.dev/language) |
 | Null safety | [dart.dev/null-safety](https://dart.dev/null-safety) |
-| DartPad | [dartpad.dev](https://dartpad.dev) |
 
 Flutter and the related logo are trademarks of Google LLC. We are not endorsed by or affiliated with Google LLC.
