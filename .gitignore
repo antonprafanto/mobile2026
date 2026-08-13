@@ -1,0 +1,25 @@
+# Sistem
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Flutter / Dart (jika nanti ada proyek contoh)
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+
+# Rahasia — jangan pernah diunggah
+*.jks
+*.keystore
+key.properties
+.env
+google-services.json
+GoogleService-Info.plist
