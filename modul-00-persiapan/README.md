@@ -99,7 +99,7 @@ void main() {
 }
 ```
 
-Letak tombol di DartPad (tampilan sungguhan ada di situs resminya):
+Letak tombol di DartPad (tampilan sungguhan, bukan sketsa):
 
 ```mermaid
 flowchart LR
@@ -107,7 +107,11 @@ flowchart LR
   B --> C["Kanan: Console / keluaran"]
 ```
 
-Sumber alat: [dartpad.dev](https://dartpad.dev) (Dart team / Google). Jika tombol Run tidak merespons, nonaktifkan pemblokir iklan untuk situs itu, atau ganti peramban.
+<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad menjalankan program Halo Dunia" width="720">
+
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google. Dokumentasi situs itu dilisensikan [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Alat uji: [dartpad.dev](https://dartpad.dev).
+
+Jika tombol Run tidak merespons, nonaktifkan pemblokir iklan untuk situs itu, atau ganti peramban.
 
 DartPad juga bisa menjalankan widget Flutter di web. Itu cukup untuk mencoba tampilan. **Emulator / HP tetap wajib** mulai proyek sungguhan, karena kamera, notifikasi, dan toko aplikasi tidak lengkap di DartPad.
 
@@ -507,7 +511,7 @@ Aplikasi **Halo, namaku …** berjalan di emulator atau HP, diubah dari templat 
 | `images/analogi-hp-dapur.png` | Ilustrasi asli materi mobile2026 |
 | `images/tiga-lapisan-app.png` | Ilustrasi asli materi mobile2026 |
 | Diagram alur alat dan instalasi | Mermaid di berkas ini (dirender GitHub) |
-| DartPad | [dartpad.dev](https://dartpad.dev) |
+| Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Langkah instalasi Flutter SDK | [docs.flutter.dev/install/with-vs-code](https://docs.flutter.dev/install/with-vs-code) |
 | Android toolchain | [docs.flutter.dev/platform-integration/android/setup](https://docs.flutter.dev/platform-integration/android/setup) |
 | Troubleshooting | [docs.flutter.dev/install/troubleshoot](https://docs.flutter.dev/install/troubleshoot) |

@@ -20,21 +20,24 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-00-persiapan/images/analogi-hp-dapur.png` | Modul 00, README | Analogi HP, JSON, server |
 | `modul-00-persiapan/images/tiga-lapisan-app.png` | Modul 00, README | Tampilan, logika, data |
 | `modul-01-dart/images/analogi-class-object.png` | Modul 01 | Class vs object |
+| Tampilan DartPad resmi | Modul 00, 01 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
 ## Alat dan dokumentasi yang diacu (bukan gambar yang disalin)
 
-| Acuan | URL |
-| --- | --- |
-| DartPad | [https://dartpad.dev](https://dartpad.dev) |
-| Instalasi Flutter lewat VS Code | [https://docs.flutter.dev/install/with-vs-code](https://docs.flutter.dev/install/with-vs-code) |
-| Instalasi Flutter | [https://docs.flutter.dev/install](https://docs.flutter.dev/install) |
-| Penyiapan Android | [https://docs.flutter.dev/platform-integration/android/setup](https://docs.flutter.dev/platform-integration/android/setup) |
-| Troubleshooting instalasi | [https://docs.flutter.dev/install/troubleshoot](https://docs.flutter.dev/install/troubleshoot) |
-| Bahasa Dart | [https://dart.dev/language](https://dart.dev/language) |
-| Git for Windows | [https://git-scm.com/download/win](https://git-scm.com/download/win) |
-| Visual Studio Code | [https://code.visualstudio.com/](https://code.visualstudio.com/) |
-| Android Studio | [https://developer.android.com/studio](https://developer.android.com/studio) |
-| OEM USB driver | [https://developer.android.com/studio/run/oem-usb](https://developer.android.com/studio/run/oem-usb) |
-| Developer options | [https://developer.android.com/studio/debug/dev-options](https://developer.android.com/studio/debug/dev-options) |
+| Acuan | URL | Lisensi / catatan |
+| --- | --- | --- |
+| DartPad (alat) | [https://dartpad.dev](https://dartpad.dev) | Situs resmi Dart team |
+| Dokumentasi DartPad + gambar antarmuka | [https://dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Gambar `dartpad-hello.png` | [https://dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) | Sama, dari dart.dev |
+| Instalasi Flutter lewat VS Code | [https://docs.flutter.dev/install/with-vs-code](https://docs.flutter.dev/install/with-vs-code) | Dokumentasi resmi |
+| Instalasi Flutter | [https://docs.flutter.dev/install](https://docs.flutter.dev/install) | Dokumentasi resmi |
+| Penyiapan Android | [https://docs.flutter.dev/platform-integration/android/setup](https://docs.flutter.dev/platform-integration/android/setup) | Dokumentasi resmi |
+| Troubleshooting instalasi | [https://docs.flutter.dev/install/troubleshoot](https://docs.flutter.dev/install/troubleshoot) | Dokumentasi resmi |
+| Bahasa Dart | [https://dart.dev/language](https://dart.dev/language) | Dokumentasi resmi |
+| Git for Windows | [https://git-scm.com/download/win](https://git-scm.com/download/win) | Situs Git |
+| Visual Studio Code | [https://code.visualstudio.com/](https://code.visualstudio.com/) | Situs Microsoft |
+| Android Studio | [https://developer.android.com/studio](https://developer.android.com/studio) | Situs Android |
+| OEM USB driver | [https://developer.android.com/studio/run/oem-usb](https://developer.android.com/studio/run/oem-usb) | Dokumentasi Android |
+| Developer options | [https://developer.android.com/studio/debug/dev-options](https://developer.android.com/studio/debug/dev-options) | Dokumentasi Android |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.

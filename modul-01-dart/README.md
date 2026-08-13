@@ -24,7 +24,9 @@ flowchart LR
   C --> D["4. Baca Console"]
 ```
 
-Tampilan DartPad sungguhan: [dartpad.dev](https://dartpad.dev). Jangan memakai sketsa palsu sebagai acuan tombol; ikuti situs resmi.
+<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad menjalankan program Halo Dunia" width="720">
+
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Buka alatnya di [dartpad.dev](https://dartpad.dev), jangan meniru sketsa palsu.
 
 ### Pola uji (ulangi setiap contoh)
 
@@ -543,6 +545,7 @@ Kunci di akhir berkas. Jawab dulu.
 | --- | --- |
 | `images/analogi-class-object.png` | Ilustrasi asli materi mobile2026 |
 | Alur uji DartPad | Mermaid di berkas ini; alat: [dartpad.dev](https://dartpad.dev) |
+| Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Bahasa Dart | [dart.dev/language](https://dart.dev/language) |
 | Null safety | [dart.dev/null-safety](https://dart.dev/null-safety) |
 

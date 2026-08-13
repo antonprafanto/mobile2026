@@ -44,6 +44,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Visual Studio (C++) tidak wajib untuk jalur materi ini | Materi menargetkan Android, bukan desktop Windows |
 | 14 Agu 2026 | Setiap modul wajib tabel alat + sitasi gambar | Permintaan kejelasan alat uji dan sumber gambar |
 | 14 Agu 2026 | Sketsa UI palsu (DartPad/VS Code/emulator) dihapus; alur memakai Mermaid; ilustrasi hanya label singkat | Di GitHub, teks dalam PNG pecah dan terasa error |
+| 14 Agu 2026 | Ditambah gambar resmi DartPad dari dart.dev (CC BY 4.0) | Supaya tombol Run/editor tidak ditebak dari sketsa |
 
 ---
 
