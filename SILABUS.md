@@ -17,7 +17,8 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 02 Flutter UI | [modul-02-ui/README.md](modul-02-ui/README.md) | Selesai |
 | 03 Interaksi & form | [modul-03-interaksi/README.md](modul-03-interaksi/README.md) | Selesai |
 | 04 State (Provider) | [modul-04-state/README.md](modul-04-state/README.md) | Selesai |
-| 05–11 | — | Menyusul, urut silabus |
+| 05 Data lokal | [modul-05-data-lokal/README.md](modul-05-data-lokal/README.md) | Selesai |
+| 06–11 | — | Menyusul, urut silabus |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
 Diperbarui: 14 Agustus 2026.
@@ -59,6 +60,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Nada bahasa dilonggarkan; EYD dan sapaan **Anda** tetap | Terlalu kaku kalau dibaca seperti dokumen resmi |
 | 14 Agu 2026 | Modul 04: `provider` diuji di DartPad (jalur A); folder `ui/data/services` di jalur B | `provider` ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support); beda dengan `go_router` |
 | 14 Agu 2026 | Ilustrasi folder Modul 04 dipotong rapat (kartu mendatar, bukan pilar tinggi) | PNG tinggi 720×474 di GitHub gelap terasa seperti gambar rusak |
+| 14 Agu 2026 | Modul 05: plugin HP hanya jalur B; JSON `fromJson` di DartPad; mini proyek SharedPreferences + banner offline; SQLite lewat `sqflite` (cookbook resmi), Drift hanya pengenalan | Plugin tidak ada di DartPad; Drift butuh `build_runner` — terlalu berat untuk 2 sesi |
 
 ---
 
@@ -503,7 +505,10 @@ modul-03-interaksi/
 modul-04-state/
   README.md
   images/
-modul-05-data-lokal/ … modul-11-capstone/   ← menyusul
+modul-05-data-lokal/
+  README.md
+  images/
+modul-06-firebase/ … modul-11-capstone/   ← menyusul
 lampiran/                           ← menyusul
 docs/
   SUMBER-GAMBAR.md
@@ -546,4 +551,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Modul berikutnya yang ditulis: **Modul 05 — Data lokal & kondisi HP**.
+Modul berikutnya yang ditulis: **Modul 06 — Backend pertama: Firebase**.
