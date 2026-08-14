@@ -44,7 +44,8 @@ Aplikasi mobile modern biasanya punya tiga lapisan:
 | [SILABUS.md](SILABUS.md) | Peta 12 modul wajib + lampiran |
 | [modul-00-persiapan](modul-00-persiapan/README.md) | Instalasi, alat, Git, proyek pertama |
 | [modul-01-dart](modul-01-dart/README.md) | Bahasa Dart, diuji di DartPad |
-| modul-02 … modul-11 | Menyusul sesuai silabus |
+| [modul-02-ui](modul-02-ui/README.md) | Widget, layout, overflow, ListView.builder |
+| modul-03 … modul-11 | Menyusul sesuai silabus |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sitasi gambar dan merek |
 
 Status penulisan diperbarui di [SILABUS.md](SILABUS.md#status-penulisan).

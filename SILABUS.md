@@ -14,7 +14,8 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | --- | --- | --- |
 | 00 Persiapan | [modul-00-persiapan/README.md](modul-00-persiapan/README.md) | Selesai |
 | 01 Dart | [modul-01-dart/README.md](modul-01-dart/README.md) | Selesai |
-| 02–11 | — | Menyusul, urut silabus |
+| 02 Flutter UI | [modul-02-ui/README.md](modul-02-ui/README.md) | Selesai |
+| 03–11 | — | Menyusul, urut silabus |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
 Diperbarui: 14 Agustus 2026.
@@ -45,6 +46,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Setiap modul wajib tabel alat + sitasi gambar | Permintaan kejelasan alat uji dan sumber gambar |
 | 14 Agu 2026 | Sketsa UI palsu (DartPad/VS Code/emulator) dihapus; alur memakai Mermaid; ilustrasi hanya label singkat | Di GitHub, teks dalam PNG pecah dan terasa error |
 | 14 Agu 2026 | Ditambah gambar resmi DartPad dari dart.dev (CC BY 4.0) | Supaya tombol Run/editor tidak ditebak dari sketsa |
+| 14 Agu 2026 | Modul 02: dua jalur uji (DartPad Flutter vs VS Code) | Aset, Inspector, dan google_fonts tidak jalan di DartPad |
 
 ---
 
@@ -480,7 +482,10 @@ modul-00-persiapan/
 modul-01-dart/
   README.md
   images/
-modul-02-ui/ … modul-11-capstone/   ← menyusul
+modul-02-ui/
+  README.md
+  images/
+modul-03-interaksi/ … modul-11-capstone/   ← menyusul
 lampiran/                           ← menyusul
 docs/
   SUMBER-GAMBAR.md
@@ -523,4 +528,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia baku (EYD)
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak dapat membangun iOS)
 
-Modul berikutnya yang ditulis: **Modul 02 — Flutter UI**.
+Modul berikutnya yang ditulis: **Modul 03 — Interaksi, form, dan pindah halaman**.
