@@ -30,7 +30,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 2. Setiap perintah punya kotak: buka apa, ketik apa, apa tanda berhasil.
 3. Sintaks Dart diuji di [DartPad](https://dartpad.dev) dulu, kecuali topik itu memang membutuhkan emulator atau HP.
 4. Perintah `flutter` / `git` / `dart` lokal diketik di **Terminal VS Code** (`Ctrl + J`), bukan di DartPad, bukan di pencarian Windows.
-5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub. Label di dalam PNG harus cocok dengan keterangan di teks.
+5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub. Label di dalam PNG harus cocok dengan keterangan di teks. Kanvas PNG dipotong rapat (sedikit padding putih) supaya di GitHub gelap tidak terlihat seperti gambar rusak.
 6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Alur langkah memakai diagram Mermaid, bukan infografis penuh kalimat.
 7. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap** (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan** agar tidak di-Run sendirian.
 
@@ -49,6 +49,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Ditambah gambar resmi DartPad dari dart.dev (CC BY 4.0) | Supaya tombol Run/editor tidak ditebak dari sketsa |
 | 14 Agu 2026 | Modul 02: dua jalur uji (DartPad Flutter vs VS Code) | Aset, Inspector, dan google_fonts tidak jalan di DartPad |
 | 14 Agu 2026 | Audit GitHub Modul 02: label Text/Icon/Container pada ilustrasi; uji berupa berkas lengkap; sitasi layout resmi + Inspector + Lorem Picsum | Caption tidak cocok dengan gambar; cuplikan tanpa `main()` tidak bisa di-Run; perlu gambar resmi berlisensi |
+| 14 Agu 2026 | Ilustrasi widget Modul 02 dipotong rapat; overflow merujuk [Common Flutter errors](https://docs.flutter.dev/testing/common-errors) | Kanvas 960×640 penuh putih di GitHub terasa seperti gambar error |
 
 ---
 

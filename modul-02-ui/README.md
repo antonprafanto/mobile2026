@@ -65,7 +65,7 @@ flowchart TB
 
 Di Flutter SDK, tombol, teks, padding, bahkan seluruh aplikasi adalah **widget**: potongan UI yang bisa disusun.
 
-![Tiga balok widget berlabel Text, Icon, dan Container](images/analogi-widget-lego.png)
+<img src="images/analogi-widget-lego.png" alt="Tiga balok widget berlabel Text, Icon, dan Container" width="720">
 
 *Ilustrasi asli materi mobile2026. Tiga contoh widget yang sering dipakai: `Text`, `Icon`, dan `Container`. Penjelasan ada di teks, bukan di dalam gambar.*
 
@@ -285,7 +285,7 @@ Di DartPad web, efek notch kadang tidak terlihat. Uji **jalur B** di HP fisik un
 
 ## 5. Overflow kuning-hitam (keyboard dan list)
 
-Garis kuning-hitam = anak widget **lebih besar** daripada ruang widget induk. Bukan kerusakan instalasi. Penyebab yang sering:
+Garis kuning-hitam = anak widget **lebih besar** daripada ruang widget induk. Bukan kerusakan instalasi. Dokumentasi resmi menyebut pola itu *yellow and black striped pattern* ([Common Flutter errors](https://docs.flutter.dev/testing/common-errors)). Penyebab yang sering:
 
 1. `Column` penuh di dalam layar, lalu keyboard muncul.
 2. `Row` berisi teks panjang tanpa `Expanded` / `Flexible`.
@@ -855,6 +855,7 @@ Kunci di akhir berkas. Jawab terlebih dahulu.
 | Contoh halaman layout | [docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png](https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png) dari [Layouts in Flutter](https://docs.flutter.dev/ui/layout) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Flutter Inspector | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) dari [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Foto uji `Image.network` | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash), pola dari [cookbook jaringan](https://docs.flutter.dev/cookbook/images/network-image) |
+| Overflow kuning-hitam | [Common Flutter errors](https://docs.flutter.dev/testing/common-errors) |
 | Konsep widget | [docs.flutter.dev/ui/widgets](https://docs.flutter.dev/ui/widgets) |
 | Aset gambar | [docs.flutter.dev/ui/assets/assets-and-images](https://docs.flutter.dev/ui/assets/assets-and-images) |
 | google_fonts | [pub.dev/packages/google_fonts](https://pub.dev/packages/google_fonts) |
