@@ -16,7 +16,8 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 01 Dart | [modul-01-dart/README.md](modul-01-dart/README.md) | Selesai |
 | 02 Flutter UI | [modul-02-ui/README.md](modul-02-ui/README.md) | Selesai |
 | 03 Interaksi & form | [modul-03-interaksi/README.md](modul-03-interaksi/README.md) | Selesai |
-| 04–11 | — | Menyusul, urut silabus |
+| 04 State (Provider) | [modul-04-state/README.md](modul-04-state/README.md) | Selesai |
+| 05–11 | — | Menyusul, urut silabus |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
 Diperbarui: 14 Agustus 2026.
@@ -56,6 +57,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Uji PopScope Modul 03 dijadikan berkas lengkap DartPad | Cuplikan tanpa `main()` tidak bisa di-Run |
 | 14 Agu 2026 | Diagram Mermaid Modul 03 tidak boleh siklus (Daftar ↔ Form) | Di GitHub, siklus mermaid sering tampil sebagai spinner / gambar error |
 | 14 Agu 2026 | Nada bahasa dilonggarkan; EYD dan sapaan **Anda** tetap | Terlalu kaku kalau dibaca seperti dokumen resmi |
+| 14 Agu 2026 | Modul 04: `provider` diuji di DartPad (jalur A); folder `ui/data/services` di jalur B | `provider` ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support); beda dengan `go_router` |
 
 ---
 
@@ -497,7 +499,10 @@ modul-02-ui/
 modul-03-interaksi/
   README.md
   images/
-modul-04-state/ … modul-11-capstone/   ← menyusul
+modul-04-state/
+  README.md
+  images/
+modul-05-data-lokal/ … modul-11-capstone/   ← menyusul
 lampiran/                           ← menyusul
 docs/
   SUMBER-GAMBAR.md
@@ -540,4 +545,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Modul berikutnya yang ditulis: **Modul 04 — State management (Provider)**.
+Modul berikutnya yang ditulis: **Modul 05 — Data lokal & kondisi HP**.

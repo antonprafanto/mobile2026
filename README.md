@@ -46,7 +46,8 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [modul-01-dart](modul-01-dart/README.md) | Bahasa Dart, diuji di DartPad |
 | [modul-02-ui](modul-02-ui/README.md) | Widget, layout, overflow, ListView.builder |
 | [modul-03-interaksi](modul-03-interaksi/README.md) | Form, dialog, Navigator, go_router |
-| modul-04 … modul-11 | Menyusul sesuai silabus |
+| [modul-04-state](modul-04-state/README.md) | setState, Provider, FutureBuilder |
+| modul-05 … modul-11 | Menyusul sesuai silabus |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
 Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).
