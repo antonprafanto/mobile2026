@@ -38,7 +38,7 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-07-rest/images/analogi-empat-pesan.png` | Modul 07 | GET / POST / PUT / DELETE (pelayan) |
 | `modul-07-rest/images/analogi-kartu-tamu.png` | Modul 07 | Token sebagai kartu tamu vs pintu server |
 | `modul-07-rest/images/analogi-satu-kardus.png` | Modul 07 | Pagination: satu kardus vs gudang |
-| `modul-07-rest/images/analogi-tiga-alamat.png` | Modul 07 | PC / Emulator / HP: tiga alamat |
+| `modul-07-rest/images/analogi-pc-emulator-hp.png` | Modul 07 | PC localhost / Emulator 10.0.2.2 / HP URL publik |
 | Tampilan DartPad resmi | Modul 00–07 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |

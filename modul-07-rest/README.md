@@ -66,6 +66,7 @@ DartPad jalan di **browser**. API yang dipanggil harus HTTPS dan mengizinkan COR
 | **Buka** | VS Code di folder proyek Flutter, emulator atau HP sudah menyala |
 | **Terminal** | `Ctrl + J` |
 | **Ketik** | perintah di bawah, di folder proyek |
+| **Kalau berhasil** | mulai bagian 6: baris `dio:` ada di `pubspec.yaml` |
 
 > **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`. Perintah pertamanya ada di bagian 6.
 
@@ -101,7 +102,7 @@ Analogi restoran dari Modul 00 masih berlaku: HP memesan, JSON adalah nota, serv
 
 ## 2. Empat pesan yang sopan: GET, POST, PUT, DELETE
 
-HTTP punya kata kerja. Pegangan di modul ini: empat kata ini.
+HTTP punya kata kerja. Empat kata ini yang dipakai terus:
 
 | Kata kerja | Artinya untuk resource | Analogi restoran |
 | --- | --- | --- |
@@ -114,7 +115,7 @@ HTTP punya kata kerja. Pegangan di modul ini: empat kata ini.
 
 *Ilustrasi asli materi mobile2026. GET minta, POST buat, PUT ganti, DELETE hapus. Alur teknis ada di tabel di atas, bukan di dalam gambar.*
 
-Ada juga `PATCH` (ubah sebagian). Untuk CRUD lengkap, empat kata di tabel sudah cukup. Sumber konsep: [MDN — HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods).
+Ada juga `PATCH` (ubah sebagian). **CRUD** = buat, baca, ubah, hapus. Untuk CRUD lengkap, empat kata di tabel sudah cukup. Sumber konsep: [MDN — HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods).
 
 URL biasanya menunjuk **resource**, bukan tombol UI. Contoh: `/catatan` (daftar), `/catatan/3` (satu lembar). Jangan buat `/hapusCatatan` sebagai GET — hapus memakai DELETE.
 
@@ -157,7 +158,7 @@ Angka di depan body JSON memberitahu *jenis* hasil. UI yang baik membaca angka i
 ```mermaid
 flowchart TB
   Kode["Kode status"] --> Dua["2xx: oke"]
-  Kode --> Empat["4xx: salah klien"]
+  Kode --> Empat["4xx: salah minta"]
   Kode --> Lima["5xx: salah server"]
 ```
 
@@ -220,7 +221,7 @@ flowchart TB
 
 **Kalau berhasil:** halaman menampilkan JSON, bukan error jaringan.
 
-Latihan Thunder / Postman (jalur C, setelah `npm start` di bagian 15):
+Latihan Thunder / Postman (jalur C, setelah `npm start` di bagian 17):
 
 1. GET `http://localhost:3000/` → `{ ok: true }`
 2. GET `http://localhost:3000/catatan` → ada `data`
@@ -272,7 +273,7 @@ final res = await dio.get(
 
 Interceptor = kode yang menempel di **semua** request/response. Cocok untuk: tempel `Authorization`, log singkat, tangkap 401.
 
-Cuplikan (jalur B):
+Cuplikan (jalur B). Jangan tempel ke DartPad:
 
 ```dart
 dio.interceptors.add(
@@ -551,9 +552,9 @@ Untuk app yang akan diunggah orang: **HTTPS**. Cabut izin cleartext. Sumber risi
 
 **Localhost bukan satu mesin.** Tiga alat, tiga alamat. Jangan tertukar.
 
-<img src="images/analogi-tiga-alamat.png" alt="Tiga panel: PC, Emulator, dan HP" width="720">
+<img src="images/analogi-pc-emulator-hp.png" alt="Tiga panel: PC localhost, Emulator 10.0.2.2, HP URL publik" width="720">
 
-*Ilustrasi asli materi mobile2026. PC memakai localhost:3000. Emulator memakai 10.0.2.2:3000. HP fisik memakai URL publik (HTTPS).*
+*Ilustrasi asli materi mobile2026. PC memakai localhost:3000. Emulator memakai 10.0.2.2:3000. HP fisik memakai URL publik HTTPS (di gambar: https://api.contoh.com). Label bawah: PC, Emulator, HP.*
 
 | Siapa yang jalan | `localhost` itu siapa | URL yang dipakai |
 | --- | --- | --- |
@@ -746,7 +747,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | `images/analogi-empat-pesan.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-kartu-tamu.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-satu-kardus.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-tiga-alamat.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-pc-emulator-hp.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Paket DartPad | [github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) |
 | HTTP methods | [developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) |

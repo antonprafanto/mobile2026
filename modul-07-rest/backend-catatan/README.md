@@ -1,6 +1,6 @@
 # Backend mini: catatan
 
-Folder ini dipakai di [Modul 07](../README.md) bagian 15–16. Bukan proyek Flutter.
+Folder ini dipakai di [Modul 07](../README.md) bagian 17–18. Bukan proyek Flutter.
 
 ## Buka alat ini dulu
 
