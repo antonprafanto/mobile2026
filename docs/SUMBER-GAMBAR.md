@@ -21,6 +21,8 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-00-persiapan/images/tiga-lapisan-app.png` | Modul 00, README | Tampilan, logika, data |
 | `modul-01-dart/images/analogi-class-object.png` | Modul 01 | Class vs object |
 | `modul-02-ui/images/analogi-widget-lego.png` | Modul 02 | Tiga balok berlabel `Text`, `Icon`, `Container` |
+| `modul-02-ui/images/analogi-stack.png` | Modul 02 | Foto dan lencana (`Stack`) |
+| `modul-02-ui/images/analogi-layout-kartu.png` | Modul 02 | Foto, nama, tombol |
 | `modul-03-interaksi/images/analogi-daftar-form.png` | Modul 03 | Alur daftar → form |
 | `modul-04-state/images/analogi-ingatan.png` | Modul 04 | Katalog, ingatan bersama, keranjang |
 | `modul-04-state/images/analogi-folder.png` | Modul 04 | Folder `ui`, `data`, `services` |
@@ -29,7 +31,7 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-05-data-lokal/images/analogi-online-offline.png` | Modul 05 | Online / offline |
 | `modul-05-data-lokal/images/analogi-jeda-lanjut.png` | Modul 05 | Jeda / lanjut |
 | Tampilan DartPad resmi | Modul 00–05 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
-| Contoh layout resmi | Modul 02 | [layout-1.png](https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png) — [Layouts in Flutter](https://docs.flutter.dev/ui/layout), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
 
@@ -50,7 +52,8 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Android Studio | [https://developer.android.com/studio](https://developer.android.com/studio) | Situs Android |
 | OEM USB driver | [https://developer.android.com/studio/run/oem-usb](https://developer.android.com/studio/run/oem-usb) | Dokumentasi Android |
 | Widget Inspector | [https://docs.flutter.dev/tools/devtools/inspector](https://docs.flutter.dev/tools/devtools/inspector) | Dokumentasi resmi |
-| Layout Flutter + `layout-1.png` | [https://docs.flutter.dev/ui/layout](https://docs.flutter.dev/ui/layout) | Dokumentasi resmi, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Layout Flutter | [https://docs.flutter.dev/ui/layout](https://docs.flutter.dev/ui/layout) | Dokumentasi resmi, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Tutorial layout Flutter | [https://docs.flutter.dev/ui/layout/tutorial](https://docs.flutter.dev/ui/layout/tutorial) | Dokumentasi resmi; foto danau: Unsplash (Dino Reichmuth) |
 | Cookbook gambar jaringan | [https://docs.flutter.dev/cookbook/images/network-image](https://docs.flutter.dev/cookbook/images/network-image) | Dokumentasi resmi |
 | Lorem Picsum | [https://picsum.photos](https://picsum.photos) | Layanan foto uji; foto dari Unsplash |
 | Common Flutter errors (overflow) | [https://docs.flutter.dev/testing/common-errors](https://docs.flutter.dev/testing/common-errors) | Dokumentasi resmi |

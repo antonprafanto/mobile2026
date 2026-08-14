@@ -12,18 +12,19 @@ Ada **dua jalur uji**. Jangan sampai tertukar.
 
 | Jalur | Buka | Untuk apa |
 | --- | --- | --- |
-| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** (bukan Dart) | Cuplikan widget, layout, overflow, list |
+| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** (bukan Dart) | Berkas widget lengkap: layout, overflow, list |
 | B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | Aset gambar, `google_fonts`, Widget Inspector |
 
 ```mermaid
-flowchart LR
-  A["Berkas widget lengkap"] --> B["DartPad mode Flutter"]
-  C["Aset / Inspector"] --> D["VS Code + flutter run"]
+flowchart TB
+  Pilih["Pilih jalur uji"]
+  Pilih --> A["Jalur A: DartPad mode Flutter"]
+  Pilih --> B["Jalur B: VS Code + flutter run"]
 ```
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart** (keluaran teks di Console). Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan jadi **layar aplikasi**, bukan Console.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** dan **mode Dart** (keluaran teks di Console). Kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak. Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan jadi **layar aplikasi**, bukan Console.
 
 ```mermaid
 flowchart TB
@@ -194,6 +195,10 @@ State yang lebih rapi (Provider) ada di **Modul 04**. Di sini cukup `setState`.
 - `Expanded` = “ambil sisa ruang” di dalam Row/Column.
 - `Stack` = tumpuk bertumpuk (foto + lencana di sudut).
 
+<img src="images/analogi-stack.png" alt="Dua kotak: Foto dan Lencana" width="720">
+
+*Ilustrasi asli materi mobile2026. Stack: foto di bawah, lencana di atasnya. Penjelasan ada di teks.*
+
 ```mermaid
 flowchart TB
   Column --> Row
@@ -202,11 +207,13 @@ flowchart TB
   Row --> Nama["Nama plus Expanded"]
 ```
 
-Contoh halaman resmi yang dirakit dari pola itu (gambar, baris judul, tiga tombol, teks):
+Halaman kartu biasanya tiga bagian: foto, nama, tombol.
 
-<img src="https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png" alt="Contoh layout Flutter: foto, judul, baris ikon CALL ROUTE SHARE, dan teks deskripsi" width="320">
+<img src="images/analogi-layout-kartu.png" alt="Tiga kotak: Foto, Nama, dan Tombol" width="720">
 
-Sumber gambar: [Layouts in Flutter](https://docs.flutter.dev/ui/layout), Flutter team / Google. Konten halaman dokumentasi itu, kecuali dinyatakan lain, berlisensi [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Flutter and the related logo are trademarks of Google LLC.
+*Ilustrasi asli materi mobile2026. Tiga bagian halaman: foto, nama, tombol. Penjelasan ada di teks.*
+
+Contoh resmi Flutter (danau + baris CALL / ROUTE / SHARE) ada di [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial). Foto di tutorial itu: [Dino Reichmuth di Unsplash](https://unsplash.com/@dinoreichmuth) ([Unsplash License](https://unsplash.com/license)). Konsep layout: [Layouts in Flutter](https://docs.flutter.dev/ui/layout) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Flutter and the related logo are trademarks of Google LLC.
 
 ### Uji 3 — Row di dalam Column
 
@@ -266,7 +273,7 @@ Coba sendiri: hapus `Expanded` (biarkan `Text` langsung di dalam `Row`), **Run**
 
 Lekukan layar (notch) dan bilah status bisa menimpa teks. `SafeArea` menggeser isi ke area yang aman disentuh.
 
-`MediaQuery` membaca ukuran layar dan faktor huruf sistem.
+`MediaQuery` membaca ukuran layar dan faktor huruf sistem. Contoh: `MediaQuery.sizeOf(context).width` = lebar layar saat ini. Itu berguna nanti saat kartu harus rapat di HP kecil.
 
 Cuplikan (tempel di dalam `body` kerangka Uji 1, jangan di-Run sendirian):
 
@@ -292,9 +299,10 @@ Garis kuning-hitam = anak widget **lebih besar** daripada ruang widget induk. Bu
 3. `ListView` di dalam `Column` tanpa batas tinggi.
 
 ```mermaid
-flowchart LR
-  Rusak["Column 20 baris"] --> Kuning["Overflow kuning-hitam"]
-  Baik["ListView 20 baris"] --> Muat["Bisa digulir"]
+flowchart TB
+  Pilih2["Daftar 20 baris"]
+  Pilih2 --> Rusak["Column — overflow kuning-hitam"]
+  Pilih2 --> Baik["ListView — bisa digulir"]
 ```
 
 ### Uji 5 — perbaiki Column yang overflow
@@ -705,6 +713,13 @@ Sumber gambar: [Use the Flutter inspector](https://docs.flutter.dev/tools/devtoo
 
 Syarat (silabus): foto, nama, bio, 3 tombol; tidak pecah di HP kecil; tetap terbaca jika font sistem dibesarkan.
 
+Urutan kerja, jangan terbalik:
+
+1. Buka [dartpad.dev](https://dartpad.dev), pilih mode **Flutter** (bukan Dart).
+2. Tempel berkas lengkap di bawah, klik **Run**.
+3. Lihat panel kanan: foto, nama, bio, tiga tombol.
+4. (Opsional, jalur B) Ganti foto jaringan dengan `Image.asset` setelah aset didaftar.
+
 | | |
 | --- | --- |
 | **Buka** | DartPad mode Flutter (foto memakai `Image.network`) **atau** proyek lokal (jalur B, `Image.asset`) |
@@ -851,8 +866,10 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | Aset | Sumber |
 | --- | --- |
 | `images/analogi-widget-lego.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-stack.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-layout-kartu.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad (mode Dart) | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
-| Contoh halaman layout | [docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png](https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png) dari [Layouts in Flutter](https://docs.flutter.dev/ui/layout) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
+| Tutorial layout resmi | [docs.flutter.dev/ui/layout/tutorial](https://docs.flutter.dev/ui/layout/tutorial) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)); foto danau di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth) ([Unsplash License](https://unsplash.com/license)) |
 | Flutter Inspector | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) dari [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Foto uji `Image.network` | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash), pola dari [cookbook jaringan](https://docs.flutter.dev/cookbook/images/network-image) |
 | Overflow kuning-hitam | [Common Flutter errors](https://docs.flutter.dev/testing/common-errors) |
