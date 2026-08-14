@@ -20,8 +20,8 @@ Paket di modul ini hampir semua **plugin HP** (butuh Android sungguhan). Mereka 
 ```mermaid
 flowchart TB
   Pilih["Pilih jalur uji"]
-  Pilih --> A["Jalur A: DartPad — model JSON"]
-  Pilih --> B["Jalur B: VS Code + emulator"]
+  Pilih --> A["Jalur A: DartPad"]
+  Pilih --> B["Jalur B: VS Code"]
 ```
 
 Letak tombol di DartPad (bukan sketsa):
@@ -182,7 +182,7 @@ Hanya tipe sederhana: `int`, `double`, `bool`, `String`, `List<String>`. Bukan u
 | --- | --- |
 | **Buka** | VS Code, folder proyek Flutter |
 | **Terminal** | `Ctrl + J` |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
 
 ```powershell
 flutter pub add shared_preferences
@@ -269,7 +269,7 @@ API-nya mirip laci (`write` / `read`), tapi di Android memakai penyimpanan teren
 | | |
 | --- | --- |
 | **Buka** | Terminal VS Code |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
 
 ```powershell
 flutter pub add flutter_secure_storage
@@ -298,7 +298,7 @@ SharedPreferences = kunci-nilai. File = satu berkas di folder milik app. Sumber:
 | | |
 | --- | --- |
 | **Buka** | Terminal VS Code |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
 
 ```powershell
 flutter pub add path_provider
@@ -346,7 +346,7 @@ Dokumentasi Flutter memakai paket **`sqflite`** ([Persist data with SQLite](http
 | | |
 | --- | --- |
 | **Buka** | Terminal VS Code |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
 
 ```powershell
 flutter pub add sqflite path
@@ -407,7 +407,7 @@ Paket: `connectivity_plus` ([pub.dev/packages/connectivity_plus](https://pub.dev
 | | |
 | --- | --- |
 | **Buka** | Terminal VS Code |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
 
 ```powershell
 flutter pub add connectivity_plus
@@ -426,9 +426,9 @@ Cara uji sinyal hilang:
 
 ```mermaid
 flowchart TB
-  Emu["Emulator Android"] --> More["Tombol ... (More / Extended controls)"]
+  Emu["Emulator"] --> More["More"]
   More --> Cel["Cellular"]
-  Cel --> None["Signal strength: None"]
+  Cel --> None["Signal: None"]
 ```
 
 Sumber langkah emulator: [Extended controls, settings, and help](https://developer.android.com/studio/run/emulator-extended-controls) (Android Developers). Di HP fisik: mode pesawat, lalu lihat banner.

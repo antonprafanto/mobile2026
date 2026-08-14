@@ -69,6 +69,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Audit GitHub Modul 04 (putaran 2): diagram resmi Flutter diletakkan di kartu terang; mermaid pohon MateriApp/Katalog/Keranjang | PNG resmi transparan 78–90% di GitHub gelap terasa seperti lubang hitam kosong |
 | 14 Agu 2026 | Audit GitHub Modul 04 (putaran 3): PNG pohon widget resmi tidak di-embed; tautan ke halaman Flutter + mermaid lokal | Kartu 495×595 terasa pilar putih; kotak `MyApp` terpotong di tepi atas |
 | 14 Agu 2026 | Audit GitHub Modul 05 (putaran 2): mermaid JSON dipendekkan; analogi sinyal memakai label Indonesia; analogi Jeda/Lanjut dipotong rapat | Rantai mermaid 5 kotak tampil celah kosong di GitHub; PNG bertuliskan Online/Offline tidak cocok dengan teks |
+| 14 Agu 2026 | Audit GitHub Modul 05 (putaran 3): label mermaid dipendekkan; sel Ketik tidak dikosongkan | Di GitHub, teks panjang di kotak mermaid terpotong (`JSON` jadi `JS`); sel kosong terasa bolong |
 
 ---
 
