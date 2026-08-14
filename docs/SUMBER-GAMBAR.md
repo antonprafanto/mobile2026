@@ -32,7 +32,7 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Pohon widget toko resmi | Modul 04 | Halaman [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG tidak di-embed (kartu terlalu tinggi di GitHub gelap, pola sama dengan `layout-1.png` Modul 02). |
 | `modul-05-data-lokal/images/analogi-tiga-lemari.png` | Modul 05 | Laci, brankas, buku |
 | `modul-05-data-lokal/images/analogi-json-object.png` | Modul 05 | Teks JSON vs object Dart |
-| `modul-05-data-lokal/images/analogi-online-offline.png` | Modul 05 | Online / offline |
+| `modul-05-data-lokal/images/analogi-online-offline.png` | Modul 05 | Ada sinyal / tanpa sinyal |
 | `modul-05-data-lokal/images/analogi-jeda-lanjut.png` | Modul 05 | Jeda / lanjut |
 | Tampilan DartPad resmi | Modul 00–05 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |

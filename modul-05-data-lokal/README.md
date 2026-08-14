@@ -120,11 +120,10 @@ Analogi singkat: JSON = surat. Object Dart = orang yang disebut di surat. `fromJ
 
 ```mermaid
 flowchart TB
-  Surat["Teks JSON"] --> Baca["fromJson"]
-  Baca --> Orang["Object Dart"]
-  Orang --> Tulis["toJson"]
-  Tulis --> SuratLagi["Teks JSON lagi"]
+  Json["Teks JSON"] --> Obj["Object Dart"]
 ```
+
+`fromJson` = baca surat jadi object. `toJson` = tulis object jadi surat lagi.
 
 Sumber konsep: [JSON and serialization](https://docs.flutter.dev/data-and-backend/serialization/json). Flutter and the related logo are trademarks of Google LLC.
 
@@ -393,7 +392,7 @@ Drift (cuplikan ide, bukan uji): class tabel → `build_runner` menghasilkan kod
 
 Aplikasi yang sopan: kalau sinyal hilang, **bilang**. Jangan biarkan loading berputar tanpa ujung.
 
-<img src="images/analogi-online-offline.png" alt="Dua kotak: Online dan Offline" width="720">
+<img src="images/analogi-online-offline.png" alt="Dua kotak: Ada sinyal dan Tanpa sinyal" width="720">
 
 *Ilustrasi asli materi mobile2026. Dua kondisi: ada sinyal, tidak ada sinyal. Penjelasan ada di teks.*
 
