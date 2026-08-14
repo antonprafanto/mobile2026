@@ -85,9 +85,9 @@ Tidak ada garis ajaib. Tab bawah bisa tetap `setState`. Keranjang yang harus kel
 
 Flutter menggambar layar dari ingatan. Rumus resmi mereka: **UI = f(state)** — layar = hasil dari data saat ini. Data berubah, Flutter menggambar ulang. Bukan Anda yang menggeser angka di layar secara manual.
 
-<img src="images/ui-equals-function-of-state.png" alt="Rumus resmi Flutter: UI sama dengan fungsi dari state" width="720">
+<img src="images/ui-equals-function-of-state.png" alt="Rumus resmi Flutter: UI sama dengan fungsi dari state" width="542">
 
-Sumber gambar: [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Label di gambar bahasa Inggris; artinya sama dengan kalimat di atas. Berkas disalin ke repo ini supaya tidak bergantung pada hotlink docs.flutter.dev.
+Sumber gambar: [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Label di gambar bahasa Inggris; artinya sama dengan kalimat di atas. Berkas aslinya transparan; di sini diletakkan di kartu terang supaya tidak hilang di GitHub gelap.
 
 Sumber konsep: [State management](https://docs.flutter.dev/data-and-backend/state-mgmt/intro). Flutter and the related logo are trademarks of Google LLC.
 
@@ -396,9 +396,16 @@ Dokumentasi Flutter bilang: kalau tidak ada alasan kuat memilih yang lain, mulai
 
 Contoh resmi Flutter memakai toko: katalog dan keranjang. Dua halaman itu saudara, bukan induk-anak. Nanti kotak Provider ditaruh **di atas keduanya**, supaya isi keranjang sama.
 
-<img src="images/simple-widget-tree.png" alt="Pohon widget contoh toko resmi Flutter: MyApp di atas, MyCatalog dan MyCart di bawah" width="621">
+<img src="images/simple-widget-tree.png" alt="Pohon widget contoh toko resmi Flutter: MyApp di atas, MyCatalog dan MyCart di bawah" width="495">
 
-Sumber gambar: [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Nama di gambar bahasa Inggris (`MyApp`, `MyCatalog`, `MyCart`). Di latihan kita: `MateriApp`, `KatalogPage`, `KeranjangPage`. Berkas disalin ke repo ini.
+Sumber gambar: [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Nama di gambar bahasa Inggris (`MyApp`, `MyCatalog`, `MyCart`). Di latihan kita: `MateriApp`, `KatalogPage`, `KeranjangPage`. Berkas aslinya transparan; di sini diletakkan di kartu terang supaya tidak hilang di GitHub gelap.
+
+```mermaid
+flowchart TB
+  App["MateriApp"]
+  App --> Katalog
+  App --> Keranjang
+```
 
 Tiga nama yang perlu diingat:
 
