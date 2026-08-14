@@ -30,8 +30,9 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 2. Setiap perintah punya kotak: buka apa, ketik apa, apa tanda berhasil.
 3. Sintaks Dart diuji di [DartPad](https://dartpad.dev) dulu, kecuali topik itu memang membutuhkan emulator atau HP.
 4. Perintah `flutter` / `git` / `dart` lokal diketik di **Terminal VS Code** (`Ctrl + J`), bukan di DartPad, bukan di pencarian Windows.
-5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub.
+5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub. Label di dalam PNG harus cocok dengan keterangan di teks.
 6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Alur langkah memakai diagram Mermaid, bukan infografis penuh kalimat.
+7. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap** (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan** agar tidak di-Run sendirian.
 
 ---
 
@@ -47,6 +48,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Sketsa UI palsu (DartPad/VS Code/emulator) dihapus; alur memakai Mermaid; ilustrasi hanya label singkat | Di GitHub, teks dalam PNG pecah dan terasa error |
 | 14 Agu 2026 | Ditambah gambar resmi DartPad dari dart.dev (CC BY 4.0) | Supaya tombol Run/editor tidak ditebak dari sketsa |
 | 14 Agu 2026 | Modul 02: dua jalur uji (DartPad Flutter vs VS Code) | Aset, Inspector, dan google_fonts tidak jalan di DartPad |
+| 14 Agu 2026 | Audit GitHub Modul 02: label Text/Icon/Container pada ilustrasi; uji berupa berkas lengkap; sitasi layout resmi + Inspector + Lorem Picsum | Caption tidak cocok dengan gambar; cuplikan tanpa `main()` tidak bisa di-Run; perlu gambar resmi berlisensi |
 
 ---
 
@@ -173,7 +175,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 14. Aset: gambar, ikon, splash sederhana
 15. Widget Inspector: melihat "pohon" widget saat debug
 
-**Mini project:** kartu profil (foto, nama, bio, 3 tombol sosial) yang tidak pecah di HP kecil dan tetap kebaca saat font sistem dibesarkan.
+**Mini project:** kartu profil (foto, nama, bio, 3 tombol sosial) yang tidak pecah di HP kecil dan tetap terbaca saat font sistem dibesarkan.
 
 **Hasil:** Anda bisa merakit halaman statis yang rapi dan tidak takut error layout.
 

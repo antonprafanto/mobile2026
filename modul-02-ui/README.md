@@ -17,13 +17,26 @@ Modul ini memakai **dua jalur uji**. Jangan tertukar.
 
 ```mermaid
 flowchart LR
-  A["Cuplikan widget"] --> B["DartPad mode Flutter"]
+  A["Berkas widget lengkap"] --> B["DartPad mode Flutter"]
   C["Aset / Inspector"] --> D["VS Code + flutter run"]
 ```
 
-<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor kiri, keluaran kanan" width="720">
+<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar DartPad: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Untuk modul ini, pilih mode **Flutter** agar yang muncul di kanan adalah **layar aplikasi**, bukan Console teks.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas adalah **mode Dart** (keluaran berupa teks di Console). Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan menjadi **layar aplikasi**, bukan Console.
+
+```mermaid
+flowchart TB
+  D["Mode Dart"] --> C["Console: teks print"]
+  F["Mode Flutter"] --> L["Layar aplikasi di kanan"]
+```
+
+### Dua jenis kode di halaman ini
+
+| Jenis | Tanda | Yang dilakukan |
+| --- | --- | --- |
+| **Berkas lengkap** | Ada `import` dan `void main()` | Tempel utuh, lalu **Run** |
+| **Cuplikan** | Hanya potongan (`body: ...`, satu widget) | Jangan di-Run sendirian. Pahami dulu, atau salin ke dalam kerangka Uji 1 |
 
 ### Pola uji A — DartPad Flutter
 
@@ -31,7 +44,7 @@ Sumber gambar DartPad: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad),
 | --- | --- |
 | **Buka** | [dartpad.dev](https://dartpad.dev) |
 | **Pilih** | mode **Flutter** |
-| **Tempel** | seluruh berkas, termasuk `import` dan `void main()` |
+| **Tempel** | seluruh **berkas lengkap**, termasuk `import` dan `void main()` |
 | **Klik** | **Run** |
 | **Lihat** | panel kanan: pratinjau aplikasi |
 
@@ -44,7 +57,7 @@ Sumber gambar DartPad: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad),
 | **Ketik** | `flutter run` |
 | **Ubah kode** | simpan (`Ctrl + S`), lalu tekan `r` di terminal yang menjalankan app |
 
-> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak mengenal `flutter pub add`.
+> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`.
 
 ---
 
@@ -52,9 +65,9 @@ Sumber gambar DartPad: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad),
 
 Di Flutter SDK, tombol, teks, padding, bahkan seluruh aplikasi adalah **widget**: potongan UI yang bisa disusun.
 
-![Tiga balok widget: Text, Icon, Container](images/analogi-widget-lego.png)
+![Tiga balok widget berlabel Text, Icon, dan Container](images/analogi-widget-lego.png)
 
-*Ilustrasi asli materi mobile2026. Analogi: widget disusun seperti balok. Penjelasan ada di teks, bukan di dalam gambar.*
+*Ilustrasi asli materi mobile2026. Tiga contoh widget yang sering dipakai: `Text`, `Icon`, dan `Container`. Penjelasan ada di teks, bukan di dalam gambar.*
 
 ```mermaid
 flowchart TB
@@ -72,9 +85,9 @@ Sumber konsep: [docs.flutter.dev/ui/widgets](https://docs.flutter.dev/ui/widgets
 
 | | |
 | --- | --- |
-| **Buka** | DartPad, mode **Flutter** |
-| **Tempel** | kode berikut |
-| **Run** | |
+| **Buka** | [dartpad.dev](https://dartpad.dev), mode **Flutter** |
+| **Tempel** | berkas lengkap di bawah |
+| **Klik** | **Run** |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -124,7 +137,8 @@ Stateful butuh dua class: widget + `State`. Angka penghitung tinggal di `State`,
 | | |
 | --- | --- |
 | **Buka** | DartPad, mode Flutter |
-| **Run** | lalu ketuk tombol `+` |
+| **Tempel** | berkas lengkap |
+| **Klik** | **Run**, lalu ketuk tombol `+` di layar kanan |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -164,7 +178,9 @@ class _PenghitungPageState extends State<PenghitungPage> {
 }
 ```
 
-Tanpa `setState`, angka di memori berubah tetapi layar tidak menggambar ulang. `textScaler` tetap `1` di contoh ini supaya ukuran huruf tidak merusak uji; skalasi sistem dibahas di bagian 9.
+Tanpa `setState`, angka di memori berubah tetapi layar tidak menggambar ulang.
+
+Huruf sistem yang dibesarkan dibahas di bagian 9. Jangan menonaktifkan skalasi teks di aplikasi yang akan dipakai orang lain.
 
 State yang lebih rapi (Provider) ada di **Modul 04**. Di sini cukup `setState`.
 
@@ -181,14 +197,24 @@ State yang lebih rapi (Provider) ada di **Modul 04**. Di sini cukup `setState`.
 ```mermaid
 flowchart TB
   Column --> Row
-  Column --> TeksBio
+  Column --> Bio
   Row --> Foto
-  Row --> ExpandedNama
+  Row --> Nama["Nama plus Expanded"]
 ```
 
-Sumber: [Layouts in Flutter](https://docs.flutter.dev/ui/layout).
+Contoh halaman resmi yang dirakit dari pola itu (gambar, baris judul, tiga tombol, teks):
+
+<img src="https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png" alt="Contoh layout Flutter: foto, judul, baris ikon CALL ROUTE SHARE, dan teks deskripsi" width="320">
+
+Sumber gambar: [Layouts in Flutter](https://docs.flutter.dev/ui/layout), Flutter team / Google. Konten halaman dokumentasi itu, kecuali dinyatakan lain, berlisensi [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Flutter and the related logo are trademarks of Google LLC.
 
 ### Uji 3 — Row di dalam Column
+
+| | |
+| --- | --- |
+| **Buka** | DartPad, mode Flutter |
+| **Tempel** | berkas lengkap |
+| **Klik** | **Run** |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -232,13 +258,17 @@ class MateriApp extends StatelessWidget {
 
 **Kesalahan klasik:** `Row` berisi `Text` panjang **tanpa** `Expanded` → garis kuning-hitam di tepi kanan. Itu overflow.
 
+Coba sendiri: hapus `Expanded` (biarkan `Text` langsung di dalam `Row`), **Run** lagi, lalu kembalikan `Expanded`.
+
 ---
 
 ## 4. SafeArea dan MediaQuery
 
-Poni HP dan bilah status bisa menimpa teks. `SafeArea` menggeser isi ke area yang aman disentuh.
+Lekukan layar (notch) dan bilah status bisa menimpa teks. `SafeArea` menggeser isi ke area yang aman disentuh.
 
 `MediaQuery` membaca ukuran layar dan faktor huruf sistem.
+
+Cuplikan (tempel di dalam `body` kerangka Uji 1, jangan di-Run sendirian):
 
 ```dart
 SafeArea(
@@ -253,42 +283,80 @@ Di DartPad web, efek notch kadang tidak terlihat. Uji **jalur B** di HP fisik un
 
 ---
 
-## 5. Overflow kuning-hitam (keyboard & list)
+## 5. Overflow kuning-hitam (keyboard dan list)
 
-Garis kuning-hitam = anak widget **lebih besar** daripada ruang orang tua. Bukan virus. Penyebab sering:
+Garis kuning-hitam = anak widget **lebih besar** daripada ruang widget induk. Bukan kerusakan instalasi. Penyebab yang sering:
 
 1. `Column` penuh di dalam layar, lalu keyboard muncul.
 2. `Row` berisi teks panjang tanpa `Expanded` / `Flexible`.
 3. `ListView` di dalam `Column` tanpa batas tinggi.
+
+```mermaid
+flowchart LR
+  Rusak["Column 20 baris"] --> Kuning["Overflow kuning-hitam"]
+  Baik["ListView 20 baris"] --> Muat["Bisa digulir"]
+```
 
 ### Uji 5 — perbaiki Column yang overflow
 
 | | |
 | --- | --- |
 | **Buka** | DartPad, mode Flutter |
-| **Run** | kode “rusak”, lihat garis kuning |
-| **Ganti** | `Column` menjadi `ListView` atau bungkus `SingleChildScrollView` |
+| **Tempel** | berkas **Rusak**, klik **Run**, lihat garis kuning |
+| **Ganti** | isi `body` menjadi `ListView` seperti berkas **Perbaikan**, **Run** lagi |
 
-**Rusak (sengaja):**
+**Berkas lengkap — rusak (sengaja):**
 
 ```dart
-body: Column(
-  children: List.generate(
-    20,
-    (i) => ListTile(title: Text('Baris $i')),
-  ),
-),
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Overflow sengaja')),
+        body: Column(
+          children: List.generate(
+            20,
+            (i) => ListTile(title: Text('Baris $i')),
+          ),
+        ),
+      ),
+    );
+  }
+}
 ```
 
-**Perbaikan:**
+**Berkas lengkap — perbaikan:**
 
 ```dart
-body: ListView(
-  children: List.generate(
-    20,
-    (i) => ListTile(title: Text('Baris $i')),
-  ),
-),
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('ListView')),
+        body: ListView(
+          children: List.generate(
+            20,
+            (i) => ListTile(title: Text('Baris $i')),
+          ),
+        ),
+      ),
+    );
+  }
+}
 ```
 
 Untuk formulir + keyboard: bungkus dengan `SingleChildScrollView`, atau pakai `resizeToAvoidBottomInset: true` (bawaan Scaffold). Latihan form lengkap ada di **Modul 03**.
@@ -299,22 +367,47 @@ Untuk formulir + keyboard: bungkus dengan `SingleChildScrollView`, atau pakai `r
 
 `Scaffold` = kerangka halaman: AppBar, body, tombol mengambang, laci (`Drawer`).
 
+### Uji 6 — kerangka halaman
+
+| | |
+| --- | --- |
+| **Buka** | DartPad, mode Flutter |
+| **Tempel** | berkas lengkap |
+| **Klik** | **Run**, lalu ketuk ikon menu di kiri AppBar untuk membuka Drawer |
+
 ```dart
-Scaffold(
-  appBar: AppBar(title: const Text('Beranda')),
-  drawer: const Drawer(child: SafeArea(child: Text('Menu'))),
-  body: Card(
-    margin: const EdgeInsets.all(16),
-    child: ListTile(
-      leading: const Icon(Icons.school),
-      title: const Text('Kartu contoh'),
-      trailing: FilledButton(
-        onPressed: () {},
-        child: const Text('Buka'),
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Beranda')),
+        drawer: const Drawer(
+          child: SafeArea(
+            child: ListTile(title: Text('Menu')),
+          ),
+        ),
+        body: Card(
+          margin: const EdgeInsets.all(16),
+          child: ListTile(
+            leading: const Icon(Icons.school),
+            title: const Text('Kartu contoh'),
+            trailing: FilledButton(
+              onPressed: () {},
+              child: const Text('Buka'),
+            ),
+          ),
+        ),
       ),
-    ),
-  ),
-)
+    );
+  }
+}
 ```
 
 | Widget | Kegunaan |
@@ -333,22 +426,43 @@ Sumber: [Material widgets](https://docs.flutter.dev/ui/widgets/material).
 
 Satu `ThemeData` menjaga warna dan huruf tetap selaras.
 
+### Uji 7 — tema dari seed color
+
+| | |
+| --- | --- |
+| **Buka** | DartPad, mode Flutter |
+| **Tempel** | berkas lengkap |
+| **Klik** | **Run** |
+
 ```dart
-MaterialApp(
-  theme: ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-    useMaterial3: true,
-  ),
-  darkTheme: ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.teal,
-      brightness: Brightness.dark,
-    ),
-    useMaterial3: true,
-  ),
-  themeMode: ThemeMode.system,
-  home: const Scaffold(body: Center(child: Text('Ikuti tema HP'))),
-);
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.teal,
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
+      themeMode: ThemeMode.system,
+      home: const Scaffold(
+        body: Center(child: Text('Ikuti tema perangkat')),
+      ),
+    );
+  }
+}
 ```
 
 `ThemeMode.system` mengikuti sakelar gelap di pengaturan HP. Menyimpan pilihan pengguna (gelap selalu / terang selalu) memakai data lokal di **Modul 05**.
@@ -357,18 +471,21 @@ MaterialApp(
 
 ## 8. Font kustom — hanya jalur B
 
-[google_fonts](https://pub.dev/packages/google_fonts) **tidak** diuji di DartPad (paket pub terbatas).
+[google_fonts](https://pub.dev/packages/google_fonts) butuh paket pub. DartPad hanya menyediakan **sebagian** paket. Jika error, pindah ke jalur B.
 
 | | |
 | --- | --- |
-| **Buka** | Terminal VS Code, di folder proyek |
-| **Ketik** | |
+| **Buka** | VS Code, folder proyek Flutter |
+| **Terminal** | `Ctrl + J` |
+| **Ketik** | perintah di bawah, lalu Enter |
 
 ```powershell
 flutter pub add google_fonts
 ```
 
-Lalu:
+**Berhasil jika** terminal menulis bahwa `google_fonts` ditambahkan, dan `pubspec.yaml` memuat baris paket itu.
+
+Lalu di berkas Dart proyek (bukan DartPad):
 
 ```dart
 import 'package:google_fonts/google_fonts.dart';
@@ -388,10 +505,10 @@ Cukup **satu** keluarga huruf. Jangan memasang 20 font.
 Sebagian pengguna membesarkan huruf di pengaturan HP. Layout tidak boleh pecah.
 
 - Hindari tinggi tetap yang sempit untuk teks panjang.
-- Uji: **Pengaturan HP → Tampilan → Ukuran font** (nama menu berbeda per pabrik).
+- Uji jalur B: **Pengaturan HP → Tampilan → Ukuran font** (nama menu berbeda per pabrik).
 - `FittedBox` atau biarkan teks pindah baris (`softWrap: true`, bawaan).
 
-Jangan memaksa `textScaler: TextScaler.linear(1)` di aplikasi sungguhan kecuali untuk uji singkat. Itu mengabaikan kebutuhan aksesibilitas.
+Jangan memaksa `textScaler: TextScaler.linear(1)` di aplikasi yang dipakai orang lain, kecuali untuk uji singkat. Itu mengabaikan kebutuhan aksesibilitas.
 
 ---
 
@@ -406,16 +523,38 @@ Jangan memaksa `textScaler: TextScaler.linear(1)` di aplikasi sungguhan kecuali 
 
 ### Uji 10
 
+| | |
+| --- | --- |
+| **Buka** | DartPad, mode Flutter |
+| **Tempel** | berkas lengkap |
+| **Klik** | **Run**, gulir daftar di panel kanan |
+
 ```dart
-ListView.builder(
-  itemCount: 100,
-  itemBuilder: (context, index) {
-    return ListTile(
-      key: ValueKey('item-$index'),
-      title: Text('Item $index'),
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('100 item')),
+        body: ListView.builder(
+          itemCount: 100,
+          itemBuilder: (context, index) {
+            return ListTile(
+              key: ValueKey('item-$index'),
+              title: Text('Item $index'),
+            );
+          },
+        ),
+      ),
     );
-  },
-)
+  }
+}
 ```
 
 `Key` pada item: Flutter tidak tertukar baris saat urutan data berubah (hapus, sisip). Pakai `ValueKey` yang stabil (id catatan), bukan indeks jika daftar bisa dihapus.
@@ -426,24 +565,102 @@ ListView.builder(
 
 Satu contoh cukup: `AnimatedContainer`. Tanpa `AnimationController`.
 
-```dart
-AnimatedContainer(
-  duration: const Duration(milliseconds: 250),
-  width: lebar ? 200 : 80,
-  height: 80,
-  color: lebar ? Colors.teal : Colors.orange,
-)
-```
+### Uji 11
 
-Ubah `lebar` lewat `setState`. Kotak beranimasi sendiri.
+| | |
+| --- | --- |
+| **Buka** | DartPad, mode Flutter |
+| **Tempel** | berkas lengkap |
+| **Klik** | **Run**, lalu ketuk tombol untuk mengubah ukuran kotak |
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(home: AnimasiPage());
+  }
+}
+
+class AnimasiPage extends StatefulWidget {
+  const AnimasiPage({super.key});
+
+  @override
+  State<AnimasiPage> createState() => _AnimasiPageState();
+}
+
+class _AnimasiPageState extends State<AnimasiPage> {
+  bool lebar = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('AnimatedContainer')),
+      body: Center(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          width: lebar ? 200 : 80,
+          height: 80,
+          color: lebar ? Colors.teal : Colors.orange,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => setState(() => lebar = !lebar),
+        child: const Icon(Icons.play_arrow),
+      ),
+    );
+  }
+}
+```
 
 ---
 
-## 12. Aset gambar — hanya jalur B
+## 12. Aset gambar — jalur A dulu, lalu jalur B
 
-Di DartPad pakai `Image.network('https://...')` untuk uji cepat.
+### Uji 12A — gambar dari internet (DartPad)
 
-Di proyek lokal:
+Di DartPad tidak ada folder `assets/`. Pakai `Image.network`.
+
+| | |
+| --- | --- |
+| **Buka** | DartPad, mode Flutter |
+| **Tempel** | berkas lengkap |
+| **Klik** | **Run** |
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Gambar jaringan')),
+        body: Center(
+          child: Image.network(
+            'https://picsum.photos/id/9/250/250',
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+Foto uji: [picsum.photos/id/9/250/250](https://picsum.photos/id/9/250/250) (Lorem Picsum, foto dari [Unsplash](https://unsplash.com); layanan [picsum.photos](https://picsum.photos)). Pola yang sama dipakai di [Display images from the internet](https://docs.flutter.dev/cookbook/images/network-image).
+
+**Berhasil jika** panel kanan menampilkan foto. Jika gagal, periksa koneksi internet; DartPad perlu mengunduh gambar.
+
+### Jalur B — gambar di dalam proyek
 
 1. Simpan berkas di `assets/images/foto.png`.
 2. Daftarkan di `pubspec.yaml`:
@@ -454,15 +671,15 @@ flutter:
     - assets/images/
 ```
 
-3. Tampilkan:
+3. Di Terminal VS Code ketik `flutter pub get`, lalu tampilkan:
 
 ```dart
 Image.asset('assets/images/foto.png')
 ```
 
-Sumber: [Adding assets and images](https://docs.flutter.dev/ui/assets/assets-and-images).
+Sumber langkah: [Adding assets and images](https://docs.flutter.dev/ui/assets/assets-and-images).
 
-Splash layar (gambar pembuka toko) diatur di Android nanti (Modul 10). Jangan bingung dengan widget `Splash` di Dart.
+Layar pembuka toko (splash Android) diatur nanti di Modul 10. Itu berbeda dari widget bernama `Splash` di Dart.
 
 ---
 
@@ -473,27 +690,41 @@ Inspector menampilkan **pohon widget** aplikasi yang sedang berjalan.
 | | |
 | --- | --- |
 | **Buka** | VS Code, app sudah `flutter run` |
-| **Lalu** | palet perintah `Ctrl + Shift + P` → **Flutter: Open DevTools** |
+| **Lalu** | palet perintah `Ctrl + Shift + P` → ketik **Flutter: Open DevTools** |
 | **Atau** | ikon Flutter DevTools di bilah samping VS Code |
 
 Pilih widget di HP, pohon di DevTools ikut bergulir. Berguna saat overflow: lihat widget mana yang terlalu lebar.
 
-Sumber langkah dan tangkapan layar resmi: [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector). Flutter and the related logo are trademarks of Google LLC.
+<img src="https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png" alt="Tangkapan layar resmi Flutter Inspector: pohon widget di kiri, properti di kanan" width="720">
+
+Sumber gambar: [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google. Konten halaman dokumentasi itu, kecuali dinyatakan lain, berlisensi [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Flutter and the related logo are trademarks of Google LLC.
 
 ---
 
 ## Mini proyek: kartu profil
 
-Syarat (silabus): foto, nama, bio, 3 tombol; tidak pecah di HP kecil; tetap kebaca jika font sistem dibesarkan.
+Syarat (silabus): foto, nama, bio, 3 tombol; tidak pecah di HP kecil; tetap terbaca jika font sistem dibesarkan.
 
 | | |
 | --- | --- |
-| **Buka** | DartPad mode Flutter **atau** proyek lokal |
-| **Bangun** | satu `StatelessWidget` `KartuProfil` |
-
-Kerangka:
+| **Buka** | DartPad mode Flutter (foto memakai `Image.network`) **atau** proyek lokal (jalur B, `Image.asset`) |
+| **Tempel** | berkas lengkap di bawah |
+| **Klik** | **Run** |
 
 ```dart
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MateriApp());
+
+class MateriApp extends StatelessWidget {
+  const MateriApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(home: KartuProfil());
+  }
+}
+
 class KartuProfil extends StatelessWidget {
   const KartuProfil({super.key});
 
@@ -506,9 +737,17 @@ class KartuProfil extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              const CircleAvatar(radius: 48, child: Icon(Icons.person, size: 48)),
+              const CircleAvatar(
+                radius: 48,
+                backgroundImage: NetworkImage(
+                  'https://picsum.photos/id/64/200/200',
+                ),
+              ),
               const SizedBox(height: 12),
-              Text('Nama Anda', style: Theme.of(context).textTheme.headlineSmall),
+              Text(
+                'Nama Anda',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
               const SizedBox(height: 8),
               const Text(
                 'Bio dua atau tiga kalimat yang boleh pindah baris.',
@@ -517,11 +756,26 @@ class KartuProfil extends StatelessWidget {
               const SizedBox(height: 24),
               Row(
                 children: [
-                  Expanded(child: OutlinedButton(onPressed: () {}, child: const Text('Surel'))),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: const Text('Surel'),
+                    ),
+                  ),
                   const SizedBox(width: 8),
-                  Expanded(child: OutlinedButton(onPressed: () {}, child: const Text('GitHub'))),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: const Text('GitHub'),
+                    ),
+                  ),
                   const SizedBox(width: 8),
-                  Expanded(child: FilledButton(onPressed: () {}, child: const Text('Telepon'))),
+                  Expanded(
+                    child: FilledButton(
+                      onPressed: () {},
+                      child: const Text('Telepon'),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -533,6 +787,8 @@ class KartuProfil extends StatelessWidget {
 }
 ```
 
+Foto avatar: [picsum.photos/id/64/200/200](https://picsum.photos/id/64/200/200) (Lorem Picsum / Unsplash). Ganti URL atau, di jalur B, ganti `CircleAvatar` dengan `backgroundImage: AssetImage('assets/images/foto.png')` setelah aset didaftar.
+
 `Expanded` pada ketiga tombol: di HP sempit, tombol berbagi lebar, tidak overflow.
 
 ---
@@ -542,9 +798,10 @@ class KartuProfil extends StatelessWidget {
 | Gejala | Penyebab lazim | Perbaikan |
 | --- | --- | --- |
 | DartPad hanya `print`, tidak ada layar | Mode **Dart**, bukan Flutter | Ganti mode Flutter |
+| Error merah setelah **Run** | Yang ditempel hanya cuplikan, tanpa `main()` | Tempel **berkas lengkap** |
 | Kuning-hitam di tepi | Overflow Row/Column | `Expanded`, `ListView`, atau `SingleChildScrollView` |
 | `setState` dipanggil tetapi UI diam | Dipanggil di luar `State` | Pindahkan logika ke class `State` |
-| `Image.asset` gagal | Belum didaftar di `pubspec.yaml` | Tambah `assets:`, lalu `flutter pub get` |
+| `Image.asset` gagal | Belum didaftar di `pubspec.yaml` | Tambah `assets:`, lalu `flutter pub get` di Terminal VS Code |
 | `google_fonts` error di DartPad | Paket tidak tersedia di DartPad | Jalur B (proyek lokal) |
 | Inspector kosong | App tidak sedang `flutter run` | Jalankan dulu, baru buka DevTools |
 
@@ -552,7 +809,7 @@ class KartuProfil extends StatelessWidget {
 
 ## Latihan
 
-1. Ganti `Center` + `Text` menjadi `Column` berisi ikon, judul, dan `FilledButton`.
+1. Ganti `Center` + `Text` menjadi `Column` berisi ikon, judul, dan `FilledButton`. Uji di DartPad mode Flutter.
 2. Buat `Row` tiga `Icon`. Tambahkan `MainAxisAlignment.spaceEvenly`.
 3. Picu overflow sengaja (teks panjang di `Row` tanpa `Expanded`), lalu perbaiki.
 4. `ListView.builder` 30 item, tiap baris punya `ValueKey`.
@@ -583,7 +840,7 @@ Kunci di akhir berkas. Jawab terlebih dahulu.
 ## Kunci kuis
 
 1. Jika jumlah item bisa banyak atau tidak tetap; `builder` hanya membangun yang terlihat.
-2. Anak lebih besar daripada ruang orang tua (overflow).
+2. Anak lebih besar daripada ruang widget induk (overflow).
 3. Terminal VS Code di folder proyek, bukan DartPad.
 4. Agar tiga tombol berbagi lebar layar dan tidak mendorong Row sampai overflow.
 
@@ -594,11 +851,12 @@ Kunci di akhir berkas. Jawab terlebih dahulu.
 | Aset | Sumber |
 | --- | --- |
 | `images/analogi-widget-lego.png` | Ilustrasi asli materi mobile2026 |
-| Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
+| Tampilan DartPad (mode Dart) | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
+| Contoh halaman layout | [docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png](https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png) dari [Layouts in Flutter](https://docs.flutter.dev/ui/layout) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
+| Flutter Inspector | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) dari [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
+| Foto uji `Image.network` | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash), pola dari [cookbook jaringan](https://docs.flutter.dev/cookbook/images/network-image) |
 | Konsep widget | [docs.flutter.dev/ui/widgets](https://docs.flutter.dev/ui/widgets) |
-| Layout Row/Column | [docs.flutter.dev/ui/layout](https://docs.flutter.dev/ui/layout) |
 | Aset gambar | [docs.flutter.dev/ui/assets/assets-and-images](https://docs.flutter.dev/ui/assets/assets-and-images) |
-| Widget Inspector | [docs.flutter.dev/tools/devtools/inspector](https://docs.flutter.dev/tools/devtools/inspector) |
 | google_fonts | [pub.dev/packages/google_fonts](https://pub.dev/packages/google_fonts) |
 
 Flutter and the related logo are trademarks of Google LLC. We are not endorsed by or affiliated with Google LLC.
