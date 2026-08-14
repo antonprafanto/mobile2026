@@ -31,7 +31,7 @@ Aplikasi mobile biasanya punya tiga lapisan:
 2. **Logika** — aturan aplikasi, ditulis dalam bahasa Dart
 3. **Data** — tersimpan di HP, di Firebase, atau di API HTTP
 
-![Tiga lapisan aplikasi: tampilan, logika Dart, dan data](modul-00-persiapan/images/tiga-lapisan-app.png)
+<img src="modul-00-persiapan/images/analogi-tiga-lapisan.png" alt="Tiga panel: Tampilan, Logika, dan Data" width="720">
 
 *Ilustrasi asli materi mobile2026. Penjelasannya di daftar di atas, bukan di dalam gambar, supaya tetap kebaca di GitHub.*
 

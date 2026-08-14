@@ -50,9 +50,9 @@ Aplikasi mobile berbeda dari situs web dalam tiga hal yang terasa di tangan:
 
 Di belakang layar, aplikasi Anda tetap seperti restoran:
 
-![Analogi: HP, JSON, dan server](images/analogi-hp-json-server.png)
+<img src="images/analogi-restoran.png" alt="Tiga panel: HP, JSON, dan Server" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga peran: HP, JSON, server. Penjelasan ada di tabel.*
+*Ilustrasi asli materi mobile2026. HP seperti tamu, JSON seperti nota pesanan, server seperti dapur. Penjelasan ada di tabel.*
 
 ```mermaid
 flowchart TB
@@ -76,9 +76,9 @@ Tiga lapisan di dalam app:
 | **Logika** | aturan, ditulis dalam Dart |
 | **Data** | di HP, di Firebase, atau di API |
 
-![Tiga lapisan: tampilan, logika, data](images/tiga-lapisan-app.png)
+<img src="images/analogi-tiga-lapisan.png" alt="Tiga panel: Tampilan, Logika, dan Data" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga lapisan: tampilan, logika, data. Penjelasan ada di tabel.*
+*Ilustrasi asli materi mobile2026. Tampilan di layar, logika di aturan Dart, data di penyimpanan. Penjelasan ada di tabel.*
 
 ---
 
@@ -527,8 +527,8 @@ Urutan kerja, jangan terbalik:
 
 | Aset | Sumber |
 | --- | --- |
-| `images/analogi-hp-json-server.png` | Ilustrasi asli materi mobile2026 |
-| `images/tiga-lapisan-app.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-restoran.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-tiga-lapisan.png` | Ilustrasi asli materi mobile2026 |
 | Diagram alur alat dan instalasi | Mermaid di berkas ini (dirender GitHub) |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Langkah instalasi Flutter SDK | [docs.flutter.dev/install/with-vs-code](https://docs.flutter.dev/install/with-vs-code) |
