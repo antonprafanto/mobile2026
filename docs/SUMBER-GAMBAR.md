@@ -39,7 +39,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-07-rest/images/analogi-kartu-tamu.png` | Modul 07 | Token sebagai kartu tamu vs pintu server |
 | `modul-07-rest/images/analogi-satu-kardus.png` | Modul 07 | Pagination: satu kardus vs gudang |
 | `modul-07-rest/images/analogi-pc-emulator-hp.png` | Modul 07 | PC localhost / Emulator 10.0.2.2 / HP URL publik |
-| Tampilan DartPad resmi | Modul 00–07 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `modul-08-fitur/images/analogi-email-google.png` | Modul 08 | Pintu masuk Email vs Google |
+| `modul-08-fitur/images/analogi-amplop-centang.png` | Modul 08 | Verifikasi email: Belum vs Terverifikasi |
+| `modul-08-fitur/images/analogi-ketuk-kamera.png` | Modul 08 | Izin HP: Ketuk dulu, baru kamera |
+| `modul-08-fitur/images/analogi-jam-kurir.png` | Modul 08 | Notifikasi lokal vs push FCM |
+| Tampilan DartPad resmi | Modul 00–08 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -111,5 +115,16 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Emulator networking | [https://developer.android.com/studio/run/emulator-networking](https://developer.android.com/studio/run/emulator-networking) | `10.0.2.2` |
 | Deploy Node di Render | [https://render.com/docs/deploy-node-express-app](https://render.com/docs/deploy-node-express-app) | Dokumentasi Render |
 | Railway | [https://docs.railway.app](https://docs.railway.app/) | Alternatif deploy |
+| Firebase Auth | [https://firebase.google.com/docs/auth](https://firebase.google.com/docs/auth) | Dokumentasi Firebase |
+| Google Sign-In (Flutter) | [https://firebase.google.com/docs/auth/flutter/federated-providers#google](https://firebase.google.com/docs/auth/flutter/federated-providers#google) | Dokumentasi Firebase |
+| SHA-1 klien Android | [https://developers.google.com/android/guides/client-auth](https://developers.google.com/android/guides/client-auth) | Dokumentasi Android / Google |
+| Manage users | [https://firebase.google.com/docs/auth/flutter/manage-users](https://firebase.google.com/docs/auth/flutter/manage-users) | Verifikasi + reset sandi |
+| `permission_handler` | [https://pub.dev/packages/permission_handler](https://pub.dev/packages/permission_handler) | Paket komunitas |
+| `image_picker` | [https://pub.dev/packages/image_picker](https://pub.dev/packages/image_picker) | Paket resmi Flutter team |
+| `cached_network_image` | [https://pub.dev/packages/cached_network_image](https://pub.dev/packages/cached_network_image) | Paket komunitas |
+| `flutter_local_notifications` | [https://pub.dev/packages/flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) | Paket komunitas |
+| `firebase_messaging` | [https://pub.dev/packages/firebase_messaging](https://pub.dev/packages/firebase_messaging) | FlutterFire |
+| Notification channel | [https://developer.android.com/develop/ui/views/notifications/channels](https://developer.android.com/develop/ui/views/notifications/channels) | Dokumentasi Android |
+| Android App Links | [https://developer.android.com/training/app-links](https://developer.android.com/training/app-links) | Dokumentasi Android |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
