@@ -1,39 +1,39 @@
 # Fullstack Mobile Developer dengan Flutter™ SDK
 
-Materi berbahasa Indonesia untuk merancang, membangun, dan menerbitkan aplikasi mobile yang punya **tampilan (frontend)** dan **layanan data (backend)**.
+Materi berbahasa Indonesia. Nanti Anda bisa merancang, membangun, dan menerbitkan aplikasi mobile yang punya **tampilan (frontend)** dan **layanan data (backend)**.
 
-Flutter and the related logo are trademarks of Google LLC. Materi ini tidak didukung secara resmi dan tidak terafiliasi dengan Google LLC. Panduan merek: [docs.flutter.dev/brand](https://docs.flutter.dev/brand).
+Flutter and the related logo are trademarks of Google LLC. Materi ini tidak didukung Google secara resmi, dan tidak terafiliasi dengan Google LLC. Panduan merek: [docs.flutter.dev/brand](https://docs.flutter.dev/brand).
 
 ---
 
-## Buka alat ini terlebih dahulu
+## Buka alat ini dulu
 
-Jangan langsung menyalin perintah. Setiap perintah di materi ini punya **alat yang harus dibuka terlebih dahulu**. Ikuti kotak seperti ini:
+Jangan langsung tempel perintah. Tiap perintah punya **alat yang harus dibuka dulu**. Ikuti tabel ini:
 
 | Langkah | Yang dibuka |
 | --- | --- |
-| 1 | **Peramban (browser)** — [DartPad](https://dartpad.dev) untuk menguji sintaks tanpa instalasi |
-| 2 | **Visual Studio Code** — menulis kode, terminal, dan unduh Flutter SDK |
+| 1 | **Browser** — [DartPad](https://dartpad.dev) untuk coba sintaks, tanpa instalasi |
+| 2 | **Visual Studio Code** — menulis kode, buka terminal, unduh Flutter SDK |
 | 3 | **Terminal di VS Code** (`Ctrl + J`) — menjalankan `flutter`, `dart`, `git` |
 | 4 | **Emulator Android** atau **HP Android** — melihat aplikasi sungguhan |
 
-> **Aturan emas:** jika materi menulis perintah `flutter ...`, buka **Terminal VS Code**, bukan kolom pencarian Windows, dan bukan DartPad.
+> **Aturan emas:** kalau materi menulis perintah `flutter ...`, buka **Terminal VS Code**, bukan kolom pencarian Windows, dan bukan DartPad.
 
-Peta lengkap ada di [Modul 00 — Persiapan](modul-00-persiapan/README.md).
+Alur lengkapnya ada di [Modul 00 — Persiapan](modul-00-persiapan/README.md).
 
 ---
 
 ## Apa yang Anda bangun
 
-Aplikasi mobile modern biasanya punya tiga lapisan:
+Aplikasi mobile biasanya punya tiga lapisan:
 
-1. **Tampilan** — tombol, daftar, formulir, yang disentuh pengguna
-2. **Logika** — aturan bisnis, ditulis dalam bahasa Dart
+1. **Tampilan** — tombol, daftar, formulir; yang disentuh orang
+2. **Logika** — aturan aplikasi, ditulis dalam bahasa Dart
 3. **Data** — tersimpan di HP, di Firebase, atau di API HTTP
 
 ![Tiga lapisan aplikasi: tampilan, logika Dart, dan data](modul-00-persiapan/images/tiga-lapisan-app.png)
 
-*Ilustrasi asli materi mobile2026. Teks penjelasan ada di daftar di atas, bukan di dalam gambar, supaya tetap terbaca di GitHub.*
+*Ilustrasi asli materi mobile2026. Penjelasannya di daftar di atas, bukan di dalam gambar, supaya tetap kebaca di GitHub.*
 
 ---
 
@@ -47,27 +47,27 @@ Aplikasi mobile modern biasanya punya tiga lapisan:
 | [modul-02-ui](modul-02-ui/README.md) | Widget, layout, overflow, ListView.builder |
 | [modul-03-interaksi](modul-03-interaksi/README.md) | Form, dialog, Navigator, go_router |
 | modul-04 … modul-11 | Menyusul sesuai silabus |
-| [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sitasi gambar dan merek |
+| [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
-Status penulisan diperbarui di [SILABUS.md](SILABUS.md#status-penulisan).
+Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).
 
 ---
 
 ## Cara belajar
 
-1. Baca silabus sekali, jangan hapal.
-2. Kerjakan modul **berurutan**. Modul 00 wajib selesai sebelum yang lain.
-3. Setiap modul: analogi → langkah → kode → kesalahan umum → latihan → kuis.
-4. Uji kode di alat yang disebutkan. Jangan menebak hasilnya.
-5. Jika error merah muncul, baca pesannya dari atas. Salin teks error, bukan tangkapan layar saja, saat mencari bantuan.
+1. Baca silabus sekali, jangan dihapal.
+2. Kerjakan modul **berurutan**. Selesaikan Modul 00 dulu, baru yang lain.
+3. Tiap modul: analogi → langkah → kode → kesalahan yang sering terjadi → latihan → kuis.
+4. Coba kode di alat yang disebutkan. Jangan tebak hasilnya.
+5. Kalau muncul error merah, baca dari atas. Salin teks error-nya, jangan cuma tangkapan layar, saat minta bantuan.
 
-Estimasi jalur wajib: **14–18 minggu**, sekitar 8–10 jam per minggu. Lebih lambat tidak apa-apa. Yang penting urut.
+Jalur wajib kira-kira **14–18 minggu**, sekitar 8–10 jam per minggu. Lebih lambat tidak apa-apa. Yang penting urut.
 
 ---
 
-## Prasyarat perangkat
+## Perangkat yang dibutuhkan
 
-Materi ini ditulis untuk **Windows**. Dari Windows Anda dapat membangun aplikasi **Android**. Membangun aplikasi iOS memerlukan Mac; konsep iOS tetap dijelaskan, praktik rilis berfokus ke Google Play Store.
+Materi ini ditulis untuk **Windows**. Dari Windows, Anda bisa membangun aplikasi **Android**. Untuk iOS perlu Mac. Konsep iOS tetap dijelaskan, tapi praktik rilisnya ke Google Play Store.
 
 Yang perlu disiapkan:
 
@@ -91,4 +91,4 @@ Yang perlu disiapkan:
 
 ## Lisensi materi
 
-Teks materi di repo ini bebas dipakai untuk belajar. Nama dan logo Flutter adalah merek dagang Google LLC. Ilustrasi di folder `images/` adalah karya asli repo ini, kecuali dinyatakan lain di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md).
+Teks di repo ini bebas dipakai untuk belajar. Nama dan logo Flutter adalah merek dagang Google LLC. Gambar di folder `images/` karya asli repo ini, kecuali disebut lain di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md).

@@ -1,8 +1,8 @@
 # Silabus Fullstack Mobile Developer dengan Flutter™ SDK
 
-Setiap bab menjelaskan *mengapa* terlebih dahulu, baru *bagaimana*, lalu ditutup dengan latihan kecil. Istilah teknis tetap ditulis dalam bahasa aslinya, lalu dijelaskan.
+Tiap bab mulai dari *mengapa* dulu, baru *bagaimana*, lalu latihan kecil. Istilah teknis tetap ditulis dalam bahasa aslinya, lalu dijelaskan.
 
-Target akhir: Anda dapat merancang, membangun, dan menerbitkan aplikasi mobile yang punya **tampilan (frontend)** dan **server/data (backend)**.
+Targetnya: nanti Anda bisa merancang, membangun, dan menerbitkan aplikasi mobile yang punya **tampilan (frontend)** dan **server/data (backend)**.
 
 Flutter and the related logo are trademarks of Google LLC. We are not endorsed by or affiliated with Google LLC.
 
@@ -23,16 +23,16 @@ Diperbarui: 14 Agustus 2026.
 
 ---
 
-## Pola wajib di setiap modul (temuan saat menulis)
+## Pola yang selalu ada di tiap modul
 
-Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
+Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 
-1. **Tabel "Buka alat ini terlebih dahulu"** di bagian atas.
+1. **Tabel "Buka alat ini dulu"** di bagian atas.
 2. Setiap perintah punya kotak: buka apa, ketik apa, apa tanda berhasil.
 3. Sintaks Dart diuji di [DartPad](https://dartpad.dev) dulu, kecuali topik itu memang membutuhkan emulator atau HP.
 4. Perintah `flutter` / `git` / `dart` lokal diketik di **Terminal VS Code** (`Ctrl + J`), bukan di DartPad, bukan di pencarian Windows.
 5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub. Label di dalam PNG harus cocok dengan keterangan di teks. Kanvas PNG dipotong rapat (sedikit padding putih) supaya di GitHub gelap tidak terlihat seperti gambar rusak. Diagram Mermaid **jangan bersiklus** (A→B dan B→A); GitHub sering menampilkan spinner.
-6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Alur langkah memakai diagram Mermaid, bukan infografis penuh kalimat.
+6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Nada percakapan, bukan dokumen resmi. Alur langkah memakai diagram Mermaid, bukan infografis penuh kalimat.
 7. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap** (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan** agar tidak di-Run sendirian.
 
 ---
@@ -55,6 +55,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Modul 03: tahan kembali form memakai `PopScope` di `Navigator`, `onExit` di `GoRoute` | Dokumentasi Flutter: `PopScope` tidak menahan rute *page-backed* |
 | 14 Agu 2026 | Uji PopScope Modul 03 dijadikan berkas lengkap DartPad | Cuplikan tanpa `main()` tidak bisa di-Run |
 | 14 Agu 2026 | Diagram Mermaid Modul 03 tidak boleh siklus (Daftar ↔ Form) | Di GitHub, siklus mermaid sering tampil sebagai spinner / gambar error |
+| 14 Agu 2026 | Nada bahasa dilonggarkan; EYD dan sapaan **Anda** tetap | Terlalu kaku kalau dibaca seperti dokumen resmi |
 
 ---
 
@@ -79,7 +80,7 @@ Audit kedua (setelah revisi pertama) masih menemukan lubang **wajib**. Lubang it
 
 | Istilah | Artinya |
 | --- | --- |
-| **Frontend** | Tampilan aplikasi yang disentuh pengguna: tombol, halaman, animasi |
+| **Frontend** | Tampilan aplikasi yang disentuh orang: tombol, halaman, animasi |
 | **Backend** | "Dapur" aplikasi: data, login, penyimpanan, aturan bisnis |
 | **Fullstack mobile** | Anda mengerjakan keduanya: UI Flutter + layanan data di belakangnya |
 | **Mini project** | Latihan singkat di akhir modul |
@@ -128,7 +129,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 9. `pubspec.yaml`: nama paket, aset, dan cara menambah package (`flutter pub add`)
 10. Git dasar: `clone`, `status`, `add`, `commit`, `push` (karena materi ini memang akan masuk GitHub)
 11. Git cukup sampai di situ dulu: kerja di `main`. Branch dibahas 1 halaman, tidak dipaksa
-12. Cara baca dokumentasi resmi Flutter/Dart (jangan hapal, belajar mencari)
+12. Cara baca dokumentasi Flutter/Dart (jangan hapal, belajar mencari)
 13. Analogi internet 2 menit: HP = tamu, server = dapur, JSON = nota pesanan (detail di Modul 7)
 
 **Mini project:** aplikasi "Halo, namaku ..." lalu di-commit dan di-push ke repo latihan.
@@ -189,7 +190,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 
 ## Modul 3 — Interaksi, form, dan pindah halaman
 
-**Tujuan:** app merespons sentuhan pengguna.
+**Tujuan:** app bereaksi saat disentuh.
 
 1. Gesture: tap, long press, swipe. `InkWell` vs `GestureDetector`
 2. Form: `TextField`, validasi, keyboard type, scroll saat keyboard muncul
@@ -510,15 +511,15 @@ Setiap `README.md` modul berisi: tabel alat, tujuan, analogi, langkah, kode, kes
 
 ## Prinsip penulisan materi
 
-1. Bahasa Indonesia baku (EYD), kalimat tetap hangat: *silakan*, *Anda*, imbuhan *di-* dirangkai, preposisi *di* dipisah
-2. Jangan menempel label kemampuan pada pembaca; langsung ke substansi
-3. Analogi terlebih dahulu, kode kemudian
+1. Bahasa Indonesia yang enak dibaca, tetap EYD: *silakan*, *Anda*, imbuhan *di-* dirangkai, preposisi *di* dipisah. Bukan nada dokumen resmi.
+2. Jangan menempel label kemampuan pada pembaca; langsung ke isinya
+3. Analogi dulu, kode kemudian
 4. Satu konsep = satu contoh = satu latihan
-5. Setiap modul dapat diselesaikan dalam 1–2 sesi (modul 7–8 boleh 3 sesi)
-6. Kode selalu dapat disalin dan dijalankan di alat yang disebutkan
+5. Tiap modul bisa selesai dalam 1–2 sesi (modul 7–8 boleh 3 sesi)
+6. Kode selalu bisa disalin dan dijalankan di alat yang disebutkan
 7. Bagian "Kesalahan yang sering terjadi" wajib ada
 8. Setiap modul menyebut apa yang *belum* dibahas, supaya cakupan jelas
-9. Setiap perintah menyebut alat yang harus dibuka terlebih dahulu
+9. Setiap perintah menyebut alat yang harus dibuka dulu
 
 ---
 
@@ -536,7 +537,7 @@ Penulisan materi memakai empat keputusan ini:
 
 1. **Backend utama:** Firebase (Modul 06), REST API + backend mini CRUD + satu kali deploy (Modul 07)
 2. **State management:** `provider` sebagai standar; Riverpod/Bloc hanya pengenalan; GetX tidak dipakai sebagai standar
-3. **Bahasa:** seluruh materi Bahasa Indonesia baku (EYD)
-4. **Target praktik rilis:** Android / Play Store (dari Windows tidak dapat membangun iOS)
+3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
+4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Modul berikutnya yang ditulis: **Modul 03 — Interaksi, form, dan pindah halaman**.
+Modul berikutnya yang ditulis: **Modul 04 — State management (Provider)**.

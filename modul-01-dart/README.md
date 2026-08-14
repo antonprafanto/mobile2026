@@ -2,17 +2,17 @@
 
 **Waktu:** 2 sesi  
 **Prasyarat:** Modul 00 (minimal DartPad sudah dicoba). Flutter SDK lokal disarankan, belum wajib untuk sesi ini.  
-**Hasil:** Anda dapat membaca cuplikan Dart, menulis fungsi, dan menangani kesalahan sederhana.
+**Hasil:** Nanti Anda bisa baca cuplikan Dart, tulis fungsi, dan tangani error sederhana.
 
 ---
 
-## Buka alat ini terlebih dahulu
+## Buka alat ini dulu
 
-Hampir semua contoh di modul ini diuji di **DartPad**, supaya hasilnya terlihat tanpa menunggu emulator.
+Hampir semua contoh di sini dicoba di **DartPad**, supaya hasilnya kelihatan tanpa menunggu emulator.
 
 | Urutan | Buka | Untuk apa |
 | --- | --- | --- |
-| 1 | Peramban → [https://dartpad.dev](https://dartpad.dev) | Uji setiap cuplikan |
+| 1 | Browser → [https://dartpad.dev](https://dartpad.dev) | Uji setiap cuplikan |
 | 2 | Sakelar mode **Dart** (bukan Flutter) | `print` muncul di panel konsol |
 | 3 | Tombol **Run** | Menjalankan `main()` |
 | 4 | (Opsional) Terminal VS Code | `dart` lokal, setelah Modul 00 selesai |
@@ -37,7 +37,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Klik** | **Run** |
 | **Lihat** | panel **Console** di kanan |
 
-Tanpa `main()`, DartPad tidak punya pintu masuk. Jangan hanya menempelkan satu baris `var nama = ...`.
+Tanpa `main()`, DartPad tidak tahu harus mulai dari mana. Jangan cuma tempel satu baris `var nama = ...`.
 
 ---
 
@@ -131,7 +131,7 @@ void main() {
 | --- | --- |
 | **Buka** | DartPad |
 | **Ubah** | `total` menjadi `50000`, lalu Run lagi |
-| **Berhasil jika** | teks cabang `else` yang muncul |
+| **Kalau berhasil** | teks cabang `else` yang muncul |
 
 `ke-$i` adalah interpolasi string: nilai variabel disisipkan ke teks.
 
@@ -196,7 +196,7 @@ Indeks List mulai dari **0**. `keranjang[3]` pada list berisi 3 item akan melemp
 
 `List<String>` artinya "daftar yang isinya teks". `Future<User>` artinya "janji yang kelak menghasilkan User".
 
-Tanpa ini, dokumentasi resmi terasa seperti sandi.
+Tanpa ini, dokumentasi Flutter terasa seperti sandi.
 
 ```dart
 void main() {
@@ -359,7 +359,7 @@ void main() {
 | --- | --- |
 | **Buka** | DartPad |
 | **Run** | |
-| **Berhasil jika** | yang tercetak cabang `FormatException`, **bukan** layar merah tanpa pesan Anda |
+| **Kalau berhasil** | yang tercetak cabang `FormatException`, **bukan** layar merah tanpa pesan Anda |
 
 Aplikasi yang baik menerjemahkan error ini menjadi teks untuk manusia, bukan menumpuk jejak teknis di wajah pengguna. Itu dilatih lagi di Modul 09.
 
@@ -412,7 +412,7 @@ void main() {
 }
 ```
 
-Aturan praktis yang akan dipakai lagi di Modul 07 dan 09:
+Pola ini akan dipakai lagi di Modul 07 dan 09:
 
 - **Simpan** di server dalam UTC jika Anda mengendalikan API.
 - **Tampilkan** ke pengguna dalam zona lokal, lewat paket `intl` (Modul 09).
@@ -490,7 +490,7 @@ Kalau `dart` tidak dikenali, Flutter SDK belum masuk PATH — kembali ke Modul 0
 
 ## Kesalahan yang sering terjadi
 
-| Gejala | Penyebab lazim | Perbaikan |
+| Gejala | Penyebab yang sering | Perbaikan |
 | --- | --- | --- |
 | DartPad diam saja | Mode Flutter, atau tidak ada `main` | Mode **Dart** + `void main()` |
 | Error `Null check operator used on a null value` | Pemakaian `!` pada nilai null | Pakai `?` / `??`, jangan `!` |
@@ -517,7 +517,7 @@ Kalau `dart` tidak dikenali, Flutter SDK belum masuk PATH — kembali ke Modul 0
 3. `Future<String>` artinya apa, dalam satu kalimat?
 4. Kapan memakai enum, bukan `String` status?
 
-Kunci di akhir berkas. Jawab dulu.
+Kunci jawaban di bawah. Coba jawab dulu.
 
 ---
 

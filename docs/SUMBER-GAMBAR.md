@@ -1,6 +1,6 @@
 # Sumber gambar dan merek
 
-Semua gambar di repo ini wajib punya sumber. Jika ilustrasi dibuat khusus untuk materi, tulis **Ilustrasi asli materi mobile2026**.
+Semua gambar di repo ini wajib punya sumber. Kalau ilustrasinya dibuat khusus untuk materi, tulis **Ilustrasi asli materi mobile2026**.
 
 ## Merek Flutter™
 

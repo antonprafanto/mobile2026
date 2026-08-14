@@ -2,17 +2,17 @@
 
 **Waktu:** 2 sesi  
 **Prasyarat:** Modul 00 (Flutter SDK + emulator atau HP) dan Modul 01 (Dart).  
-**Hasil:** Anda dapat merakit halaman dengan widget, menghindari overflow kuning-hitam, dan memakai `ListView.builder` untuk daftar.
+**Hasil:** Nanti Anda bisa merakit halaman dengan widget, menghindari overflow kuning-hitam, dan pakai `ListView.builder` untuk daftar.
 
 ---
 
-## Buka alat ini terlebih dahulu
+## Buka alat ini dulu
 
-Modul ini memakai **dua jalur uji**. Jangan tertukar.
+Ada **dua jalur uji**. Jangan sampai tertukar.
 
 | Jalur | Buka | Untuk apa |
 | --- | --- | --- |
-| A | Peramban → [dartpad.dev](https://dartpad.dev) → mode **Flutter** (bukan Dart) | Cuplikan widget, layout, overflow, list |
+| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** (bukan Dart) | Cuplikan widget, layout, overflow, list |
 | B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | Aset gambar, `google_fonts`, Widget Inspector |
 
 ```mermaid
@@ -23,7 +23,7 @@ flowchart LR
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas adalah **mode Dart** (keluaran berupa teks di Console). Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan menjadi **layar aplikasi**, bukan Console.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart** (keluaran teks di Console). Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan jadi **layar aplikasi**, bukan Console.
 
 ```mermaid
 flowchart TB
@@ -33,7 +33,7 @@ flowchart TB
 
 ### Dua jenis kode di halaman ini
 
-| Jenis | Tanda | Yang dilakukan |
+| Jenis | Tanda | Caranya |
 | --- | --- | --- |
 | **Berkas lengkap** | Ada `import` dan `void main()` | Tempel utuh, lalu **Run** |
 | **Cuplikan** | Hanya potongan (`body: ...`, satu widget) | Jangan di-Run sendirian. Pahami dulu, atau salin ke dalam kerangka Uji 1 |
@@ -117,7 +117,7 @@ class MateriApp extends StatelessWidget {
 }
 ```
 
-**Berhasil jika** panel kanan menampilkan ikon dan teks, bukan error merah.
+**Kalau berhasil:** panel kanan menampilkan ikon dan teks, bukan error merah.
 
 `const` di depan widget yang isinya tetap: kebiasaan hemat rebuild. Pakai sejak awal.
 
@@ -285,7 +285,7 @@ Di DartPad web, efek notch kadang tidak terlihat. Uji **jalur B** di HP fisik un
 
 ## 5. Overflow kuning-hitam (keyboard dan list)
 
-Garis kuning-hitam = anak widget **lebih besar** daripada ruang widget induk. Bukan kerusakan instalasi. Dokumentasi resmi menyebut pola itu *yellow and black striped pattern* ([Common Flutter errors](https://docs.flutter.dev/testing/common-errors)). Penyebab yang sering:
+Garis kuning-hitam = anak widget **lebih besar** daripada ruang widget induk. Bukan instalasi yang rusak. Dokumentasi Flutter menyebutnya *yellow and black striped pattern* ([Common Flutter errors](https://docs.flutter.dev/testing/common-errors)). Penyebab yang sering:
 
 1. `Column` penuh di dalam layar, lalu keyboard muncul.
 2. `Row` berisi teks panjang tanpa `Expanded` / `Flexible`.
@@ -483,7 +483,7 @@ class MateriApp extends StatelessWidget {
 flutter pub add google_fonts
 ```
 
-**Berhasil jika** terminal menulis bahwa `google_fonts` ditambahkan, dan `pubspec.yaml` memuat baris paket itu.
+**Kalau berhasil:** terminal menulis bahwa `google_fonts` ditambahkan, dan `pubspec.yaml` memuat baris paket itu.
 
 Lalu di berkas Dart proyek (bukan DartPad):
 
@@ -658,7 +658,7 @@ class MateriApp extends StatelessWidget {
 
 Foto uji: [picsum.photos/id/9/250/250](https://picsum.photos/id/9/250/250) (Lorem Picsum, foto dari [Unsplash](https://unsplash.com); layanan [picsum.photos](https://picsum.photos)). Pola yang sama dipakai di [Display images from the internet](https://docs.flutter.dev/cookbook/images/network-image).
 
-**Berhasil jika** panel kanan menampilkan foto. Jika gagal, periksa koneksi internet; DartPad perlu mengunduh gambar.
+**Kalau berhasil:** panel kanan menampilkan foto. Kalau gagal, cek koneksi internet; DartPad perlu mengunduh gambar.
 
 ### Jalur B — gambar di dalam proyek
 
@@ -795,7 +795,7 @@ Foto avatar: [picsum.photos/id/64/200/200](https://picsum.photos/id/64/200/200) 
 
 ## Kesalahan yang sering terjadi
 
-| Gejala | Penyebab lazim | Perbaikan |
+| Gejala | Penyebab yang sering | Perbaikan |
 | --- | --- | --- |
 | DartPad hanya `print`, tidak ada layar | Mode **Dart**, bukan Flutter | Ganti mode Flutter |
 | Error merah setelah **Run** | Yang ditempel hanya cuplikan, tanpa `main()` | Tempel **berkas lengkap** |
@@ -824,7 +824,7 @@ Foto avatar: [picsum.photos/id/64/200/200](https://picsum.photos/id/64/200/200) 
 3. Perintah `flutter pub add google_fonts` diketik di mana?
 4. Kenapa tombol di kartu profil dibungkus `Expanded`?
 
-Kunci di akhir berkas. Jawab terlebih dahulu.
+Kunci jawaban di bawah. Coba jawab dulu.
 
 ---
 

@@ -2,17 +2,17 @@
 
 **Waktu:** 2 sesi  
 **Prasyarat:** Modul 00–02.  
-**Hasil:** Anda dapat merakit formulir, menampilkan dialog, dan memindahkan pengguna antar halaman dengan `go_router`.
+**Hasil:** Nanti Anda bisa merakit formulir, tampilkan dialog, dan pindah halaman dengan `go_router`.
 
 ---
 
-## Buka alat ini terlebih dahulu
+## Buka alat ini dulu
 
-Modul ini memakai **dua jalur uji**. Jangan tertukar.
+Ada **dua jalur uji**. Jangan sampai tertukar.
 
 | Jalur | Buka | Untuk apa |
 | --- | --- | --- |
-| A | Peramban → [dartpad.dev](https://dartpad.dev) → mode **Flutter** | Gesture, form, dialog, `Navigator.push` |
+| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** | Gesture, form, dialog, `Navigator.push` |
 | B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | `go_router`, `PopScope` di rute paket, mini proyek |
 
 ```mermaid
@@ -23,13 +23,13 @@ flowchart LR
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas adalah **mode Dart**. Untuk modul ini pilih mode **Flutter**.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart**. Untuk modul ini pilih mode **Flutter**.
 
-Paket `go_router` **tidak** ada di daftar paket DartPad ([Package and plugin support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support)). Jangan menempel `import 'package:go_router/go_router.dart'` di DartPad.
+Paket `go_router` **tidak** ada di daftar paket DartPad ([Package and plugin support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support)). Jangan tempel `import 'package:go_router/go_router.dart'` di DartPad.
 
 ### Dua jenis kode di halaman ini
 
-| Jenis | Tanda | Yang dilakukan |
+| Jenis | Tanda | Caranya |
 | --- | --- | --- |
 | **Berkas lengkap** | Ada `import` dan `void main()` | Tempel utuh, lalu **Run** |
 | **Cuplikan** | Hanya potongan | Jangan di-Run sendirian |
@@ -76,7 +76,7 @@ Di Flutter SDK, satu “kertas” disebut **route**. `Navigator` menjaga tumpuka
 
 Sumber konsep: [Navigation and routing](https://docs.flutter.dev/ui/navigation). Flutter and the related logo are trademarks of Google LLC.
 
-Dokumentasi resmi **tidak** menganjurkan `Navigator.pushNamed` + `MaterialApp.routes` untuk aplikasi baru. Sisa materi ini memakai **`go_router`**.
+Dokumentasi Flutter sendiri bilang: untuk app baru, jangan pakai `Navigator.pushNamed` + `MaterialApp.routes`. Mulai sini kita pakai **`go_router`**.
 
 ---
 
@@ -141,7 +141,7 @@ class GesturePage extends StatelessWidget {
 }
 ```
 
-**Berhasil jika** muncul SnackBar berbeda untuk ketuk dan tahan lama.
+**Kalau berhasil:** muncul SnackBar berbeda untuk ketuk dan tahan lama.
 
 Geser untuk menghapus memakai `Dismissible` di bagian 7. Jangan menulis deteksi geser sendiri jika pola daftar sudah cukup.
 
@@ -336,7 +336,7 @@ class _KontrolFormPageState extends State<KontrolFormPage> {
 }
 ```
 
-`showDatePicker` / `showTimePicker` mengembalikan `null` jika pengguna membatalkan. Periksa `null` sebelum `setState`.
+`showDatePicker` / `showTimePicker` mengembalikan `null` kalau dibatalkan. Periksa `null` sebelum `setState`.
 
 ---
 
@@ -620,7 +620,7 @@ Kirim data: `Navigator.pop(context, 'isi yang dikembalikan')` lalu `final hasil 
 
 ## 9. go_router — hanya jalur B
 
-Sisa materi (Modul 04–11) memakai `go_router`: URL jelas, tombol kembali Android, tautan dalam (deep link) nanti.
+Dari sini sampai Modul 11, kita pakai `go_router`: URL-nya jelas, tombol kembali Android jalan, deep link menyusul.
 
 | | |
 | --- | --- |
@@ -631,7 +631,7 @@ Sisa materi (Modul 04–11) memakai `go_router`: URL jelas, tombol kembali Andro
 flutter pub add go_router
 ```
 
-**Berhasil jika** `pubspec.yaml` memuat `go_router`.
+**Kalau berhasil:** `pubspec.yaml` memuat `go_router`.
 
 Lalu ganti `MaterialApp(...)` menjadi `MaterialApp.router(routerConfig: ...)`.
 
@@ -826,7 +826,7 @@ class HalamanForm extends StatelessWidget {
 }
 ```
 
-**Berhasil jika** dialog muncul saat Anda menekan kembali, dan halaman form tertutup hanya setelah **Buang**.
+**Kalau berhasil:** dialog muncul saat Anda menekan kembali, dan halaman form tertutup hanya setelah **Buang**.
 
 Dengan **`go_router`** (jalur B), rute `GoRoute` adalah *page-backed*. Dokumentasi Flutter: `PopScope` **tidak** menahan navigasi jenis itu. Pakai `onExit` pada `GoRoute` (cuplikan, tempel ke konfigurasi router, jangan di-Run di DartPad):
 
@@ -858,7 +858,7 @@ Uji tombol kembali **di HP Android** (jalur B). Di DartPad web tidak ada tombol 
 
 ## 11. Bottom navigation yang tetap kelihatan
 
-`NavigationBar` di `Scaffold` biasa hilang saat `push`. Agar bilah bawah tetap ada, `go_router` memakai `StatefulShellRoute.indexedStack`.
+`NavigationBar` di `Scaffold` biasa hilang saat `push`. Supaya menu bawah tetap ada, `go_router` memakai `StatefulShellRoute.indexedStack`.
 
 Cuplikan kerangka (jalur B, gabungkan ke `GoRouter`; jangan di-Run di DartPad):
 
@@ -908,7 +908,7 @@ Mini proyek di bawah **belum** wajib memakai shell. Cukup dua halaman dulu.
 
 ## 12. Splash singkat dan onboarding
 
-Pola produk, bukan animasi rumit.
+Ini pola aplikasi sungguhan, bukan animasi yang rumit.
 
 1. `initialLocation: '/'` menampilkan splash 1–2 detik.
 2. Lalu `context.go('/onboarding')` atau langsung `/catatan`.
@@ -1117,13 +1117,13 @@ class _TambahPageState extends State<TambahPage> {
 
 `gudang` di tingkat berkas hanya untuk latihan ini. Penyimpanan rapi (Provider) ada di **Modul 04**. Data hilang saat app ditutup; itu wajar sampai Modul 05.
 
-**Berhasil jika** Anda dapat menambah catatan berjudul dan bertanggal, melihatnya di daftar, dan menghapusnya dengan geser.
+**Kalau berhasil:** Anda bisa menambah catatan berjudul dan bertanggal, melihatnya di daftar, dan menghapusnya dengan geser.
 
 ---
 
 ## Kesalahan yang sering terjadi
 
-| Gejala | Penyebab lazim | Perbaikan |
+| Gejala | Penyebab yang sering | Perbaikan |
 | --- | --- | --- |
 | `go_router` error di DartPad | Paket tidak ada di DartPad | Jalur B, `flutter pub add go_router` |
 | Overflow saat keyboard | `Column` tanpa gulir | `SingleChildScrollView` |
@@ -1152,7 +1152,7 @@ class _TambahPageState extends State<TambahPage> {
 3. Kenapa `PopScope` sering tidak menahan tombol kembali pada halaman `GoRoute`?
 4. Kapan `TextInputFormatter` dipakai, bukan hanya `validator`?
 
-Kunci di akhir berkas. Jawab terlebih dahulu.
+Kunci jawaban di bawah. Coba jawab dulu.
 
 ---
 

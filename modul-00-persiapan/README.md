@@ -5,14 +5,14 @@
 
 ---
 
-## Buka alat ini terlebih dahulu
+## Buka alat ini dulu
 
-Sebelum mengetik perintah apa pun, lihat tabel ini. Salah alat = perintah "tidak dikenali", padahal Flutter SDK-nya sudah terpasang.
+Sebelum ketik perintah apa pun, lihat tabel ini. Salah alat = perintah "tidak dikenali", padahal Flutter SDK-nya sudah terpasang.
 
 | Urutan | Buka | Untuk apa |
 | --- | --- | --- |
-| 1 | Peramban → [dartpad.dev](https://dartpad.dev) | Menguji cuplikan kode tanpa instalasi |
-| 2 | [Git for Windows](https://git-scm.com/download/win) | Diperlukan Flutter SDK dan unggah ke GitHub |
+| 1 | Browser → [dartpad.dev](https://dartpad.dev) | Coba kode tanpa instalasi |
+| 2 | [Git for Windows](https://git-scm.com/download/win) | Perlu untuk Flutter SDK dan unggah ke GitHub |
 | 3 | [Visual Studio Code](https://code.visualstudio.com/) | Menulis kode + mengunduh Flutter SDK |
 | 4 | Terminal di VS Code (`Ctrl + J`) | Menjalankan `git`, `flutter`, `dart` |
 | 5 | [Android Studio](https://developer.android.com/studio) | SDK Android, emulator, driver USB |
@@ -20,12 +20,12 @@ Sebelum mengetik perintah apa pun, lihat tabel ini. Salah alat = perintah "tidak
 
 ```mermaid
 flowchart LR
-  A["1. Peramban DartPad"] --> B["2. VS Code"]
+  A["1. Browser: DartPad"] --> B["2. VS Code"]
   B --> C["3. Terminal VS Code"]
   C --> D["4. Emulator atau HP"]
 ```
 
-Teks di diagram itu sengaja singkat. Perincian ada di tabel di atas, supaya tidak ada tulisan kecil yang pecah saat GitHub mengecilkan gambar.
+Teks di diagram sengaja singkat. Detailnya ada di tabel di atas, supaya tidak ada tulisan kecil yang pecah saat GitHub mengecilkan gambar.
 
 ### Pintasan yang akan sering dipakai
 
@@ -33,7 +33,7 @@ Teks di diagram itu sengaja singkat. Perincian ada di tabel di atas, supaya tida
 | --- | --- |
 | `Ctrl + J` | Buka / tutup **Terminal** di VS Code |
 | `Ctrl + Shift + P` | Palet perintah VS Code |
-| `Ctrl + S` | Simpan berkas |
+| `Ctrl + S` | Simpan file |
 | `Ctrl + `` ` | Terminal (alternatif, tombol backtick) |
 
 > Terminal yang dimaksud materi ini adalah **panel Terminal di VS Code**, bukan kotak "Ketik di sini untuk mencari" di bilah tugas Windows.
@@ -44,7 +44,7 @@ Teks di diagram itu sengaja singkat. Perincian ada di tabel di atas, supaya tida
 
 Aplikasi mobile berbeda dari situs web dalam tiga hal yang terasa di tangan:
 
-1. **Sentuhan** — target jari, bukan kursor tetikus.
+1. **Sentuhan** — targetnya jari, bukan kursor mouse.
 2. **Siklus hidup** — aplikasi bisa diperkecil, kehabisan memori, atau kehilangan sinyal.
 3. **Toko aplikasi** — Google Play punya aturan privasi, versi, dan kunci tanda tangan.
 
@@ -70,13 +70,13 @@ Detail JSON dan HTTP ada di Modul 07. Sekarang cukup ingat: **tampilan dan data 
 
 ## 2. Kenapa Flutter SDK
 
-Satu basis kode Dart dapat menjadi aplikasi Android dan iOS. Materi ini memakai Flutter SDK sebagai alat utama.
+Satu kode Dart bisa jadi aplikasi Android dan iOS. Materi ini pakai Flutter SDK sebagai alat utama.
 
-**Penting untuk Windows:** dari Windows Anda dapat membangun dan menguji **Android**. Membangun iOS memerlukan Mac. Konsep iOS tetap dijelaskan. Praktik rilis (Modul 10) berfokus ke Google Play Store.
+**Penting untuk Windows:** dari Windows Anda bisa membangun dan menguji **Android**. Untuk iOS perlu Mac. Konsep iOS tetap dijelaskan. Praktik rilis (Modul 10) ke Google Play Store.
 
 Sumber instalasi: [docs.flutter.dev/install](https://docs.flutter.dev/install).
 
-Diagram lapisan resmi Flutter SDK (boleh dibuka, tidak wajib dihapal sekarang): [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview). Sumber: Flutter.dev / Google. Flutter and the related logo are trademarks of Google LLC.
+Diagram arsitektur Flutter (boleh dibuka, tidak perlu dihapal sekarang): [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview). Sumber: Flutter.dev / Google. Flutter and the related logo are trademarks of Google LLC.
 
 ---
 
@@ -84,14 +84,14 @@ Diagram lapisan resmi Flutter SDK (boleh dibuka, tidak wajib dihapal sekarang): 
 
 Jangan menunggu unduhan 5 GB selesai baru merasa "sudah mulai". Buka DartPad sekarang.
 
-### Uji 3A — Halo di peramban
+### Uji 3A — Halo di browser
 
 | | |
 | --- | --- |
-| **Buka** | Peramban (Chrome, Edge, atau Firefox) → [https://dartpad.dev](https://dartpad.dev) |
+| **Buka** | Browser (Chrome, Edge, atau Firefox) → [https://dartpad.dev](https://dartpad.dev) |
 | **Pilih** | Mode **Dart** (bukan Flutter), jika ada sakelar di kiri atas |
 | **Hapus** kode bawaan, **tempel** kode di bawah, lalu klik **Run** |
-| **Berhasil jika** | Panel kanan menampilkan `Halo dari DartPad` |
+| **Kalau berhasil** | Panel kanan menampilkan `Halo dari DartPad` |
 
 ```dart
 void main() {
@@ -109,9 +109,9 @@ flowchart LR
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad menjalankan program Halo Dunia" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google. Dokumentasi situs itu dilisensikan [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Alat uji: [dartpad.dev](https://dartpad.dev).
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google. Lisensi dokumentasi situs itu: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Alat uji: [dartpad.dev](https://dartpad.dev).
 
-Jika tombol Run tidak merespons, nonaktifkan pemblokir iklan untuk situs itu, atau ganti peramban.
+Kalau tombol Run tidak bereaksi, matikan pemblokir iklan untuk situs itu, atau ganti browser.
 
 DartPad juga bisa menjalankan widget Flutter di web. Itu cukup untuk mencoba tampilan. **Emulator / HP tetap wajib** mulai proyek sungguhan, karena kamera, notifikasi, dan toko aplikasi tidak lengkap di DartPad.
 
@@ -119,7 +119,7 @@ DartPad juga bisa menjalankan widget Flutter di web. Itu cukup untuk mencoba tam
 
 ## 4. Urutan instalasi di Windows
 
-Ikuti **urut**. Melompat ke Flutter SDK sebelum Git terpasang akan gagal.
+Ikuti **urutannya**. Melompat ke Flutter SDK sebelum Git terpasang akan gagal.
 
 ```mermaid
 flowchart LR
@@ -139,7 +139,7 @@ Sumber alur instalasi yang disarankan: [Install Flutter using VS Code](https://d
 
 | | |
 | --- | --- |
-| **Buka** | Peramban → [https://git-scm.com/download/win](https://git-scm.com/download/win) |
+| **Buka** | Browser → [https://git-scm.com/download/win](https://git-scm.com/download/win) |
 | **Unduh** | pemasang 64-bit |
 | **Saat wizard** | biarkan pilihan bawaan (termasuk "Git from the command line") |
 | **Uji di** | Terminal VS Code — jika VS Code belum ada, buka **PowerShell** dulu |
@@ -148,7 +148,7 @@ Sumber alur instalasi yang disarankan: [Install Flutter using VS Code](https://d
 git --version
 ```
 
-**Berhasil jika** muncul baris seperti `git version 2.x.x`.
+**Kalau berhasil:** muncul baris seperti `git version 2.x.x`.
 
 Tutup semua jendela terminal yang sudah terbuka sebelum langkah berikutnya, supaya PATH yang baru terbaca.
 
@@ -158,7 +158,7 @@ Tutup semua jendela terminal yang sudah terbuka sebelum langkah berikutnya, supa
 
 | | |
 | --- | --- |
-| **Buka** | Peramban → [https://code.visualstudio.com/](https://code.visualstudio.com/) |
+| **Buka** | Browser → [https://code.visualstudio.com/](https://code.visualstudio.com/) |
 | **Unduh** | User Installer 64-bit |
 | **Centang** | "Add to PATH" jika muncul |
 
@@ -175,7 +175,7 @@ Sumber: [docs.flutter.dev/tools/vs-code](https://docs.flutter.dev/tools/vs-code)
 
 ## 7. Unduh Flutter SDK lewat VS Code
 
-Ini cara yang disarankan dokumentasi resmi saat ini.
+Ini cara yang sekarang disarankan dokumentasi Flutter.
 
 | | |
 | --- | --- |
@@ -187,7 +187,7 @@ Ini cara yang disarankan dokumentasi resmi saat ini.
 
 Setelah SDK selesai:
 
-1. Jika diminta **Add SDK to PATH**, setujui.
+1. Kalau diminta **Add SDK to PATH**, setujui.
 2. **Tutup VS Code sepenuhnya**, lalu buka lagi.
 3. Buka Terminal (`Ctrl + J`).
 
@@ -195,9 +195,9 @@ Setelah SDK selesai:
 flutter --version
 ```
 
-**Berhasil jika** muncul nomor versi Flutter dan Dart, bukan pesan `flutter : The term 'flutter' is not recognized`.
+**Kalau berhasil:** muncul nomor versi Flutter dan Dart, bukan pesan `flutter : The term 'flutter' is not recognized`.
 
-Jika tidak dikenali:
+Kalau masih tidak dikenali:
 
 1. Tutup VS Code, buka lagi (PATH sering baru terbaca setelah restart).
 2. Jangan taruh SDK di `C:\Program Files\` — butuh hak Administrator. Dokumentasi menyarankan folder seperti `C:\src\flutter`. Sumber: [Troubleshooting installation](https://docs.flutter.dev/install/troubleshoot).
@@ -212,7 +212,7 @@ VS Code untuk menulis kode. Android Studio untuk **SDK Android, emulator, dan li
 
 | | |
 | --- | --- |
-| **Buka** | Peramban → [https://developer.android.com/studio](https://developer.android.com/studio) |
+| **Buka** | Browser → [https://developer.android.com/studio](https://developer.android.com/studio) |
 | **Pasang** | biarkan komponen bawaan |
 
 Lalu di **Android Studio**:
@@ -284,7 +284,7 @@ Baris **Windows Version / Visual Studio (C++)** boleh diabaikan jika Anda **tida
 flutter doctor --android-licenses
 ```
 
-Tekan `y` untuk setiap lisensi yang Anda setujui. Baca ringkasannya. Keluaran yang diharapkan:
+Tekan `y` untuk setiap lisensi yang Anda setujui. Baca ringkasannya. Kalau berhasil, kira-kira muncul:
 
 ```text
 All SDK package licenses accepted.
@@ -313,9 +313,9 @@ Uji dari VS Code:
 flutter devices
 ```
 
-**Berhasil jika** ada baris `android` (emulator atau HP).
+**Kalau berhasil:** ada baris `android` (emulator atau HP).
 
-Jika emulator lambat: tutup peramban berat, pastikan virtualisasi (VT-x / SVM) aktif di BIOS, dan RAM tersisa cukup. Sumber perangkat virtual: [Create and manage virtual devices](https://developer.android.com/studio/run/managing-avds).
+Kalau emulator lambat: tutup browser yang berat, pastikan virtualisasi (VT-x / SVM) aktif di BIOS, dan RAM tersisa cukup. Sumber perangkat virtual: [Create and manage virtual devices](https://developer.android.com/studio/run/managing-avds).
 
 ---
 
@@ -368,7 +368,7 @@ Buka `lib/main.dart` di VS Code. Cari teks `You have pushed the button this many
 | tekan `R` | **Hot restart** — mulai ulang app, lebih bersih |
 | tekan `q` | Keluar dari `flutter run` |
 
-Jika hot reload tidak terasa, pastikan berkas tersimpan dan terminal `flutter run` masih aktif (jangan ditutup).
+Kalau hot reload tidak terasa, pastikan file sudah disimpan dan terminal `flutter run` masih aktif (jangan ditutup).
 
 ---
 
@@ -384,7 +384,7 @@ halo_nama/
   README.md
 ```
 
-Aturan praktis:
+Yang perlu diingat:
 
 - Tulis fitur di `lib/`.
 - Tambah paket lewat terminal, jangan mengedit `pubspec.yaml` secara membabi buta:
@@ -413,7 +413,7 @@ git add .
 git commit -m "Aplikasi halo pertama"
 ```
 
-**Berhasil jika** `git status` kemudian bilang working tree clean, atau setidaknya commit pertama tercatat.
+**Kalau berhasil:** `git status` kemudian bilang working tree clean, atau setidaknya commit pertama tercatat.
 
 Untuk mengunggah ke GitHub:
 
@@ -424,7 +424,7 @@ Untuk mengunggah ke GitHub:
 git push -u origin main
 ```
 
-Jika cabang lokal bernama `master`:
+Kalau cabang lokal bernama `master`:
 
 ```powershell
 git branch -M main
@@ -435,20 +435,20 @@ Materi ini cukup sampai `add`, `commit`, `push`. Cabang fitur dibahas singkat di
 
 ---
 
-## 15. Cara membaca dokumentasi resmi
+## 15. Cara baca dokumentasi Flutter
 
-Jangan menghapal API. Latih kebiasaan ini:
+Jangan hapal API. Biasakan ini:
 
 1. Buka [docs.flutter.dev](https://docs.flutter.dev).
 2. Pakai kotak pencari di situs itu, bukan hasil acak di media sosial.
 3. Perhatikan versi (stable) dan potongan kode yang bisa dijalankan.
-4. Jika contoh memakai paket, cek [pub.dev](https://pub.dev).
+4. Kalau contoh memakai paket, cek [pub.dev](https://pub.dev).
 
 ---
 
 ## Kesalahan yang sering terjadi
 
-| Gejala | Penyebab lazim | Perbaikan |
+| Gejala | Penyebab yang sering | Perbaikan |
 | --- | --- | --- |
 | `flutter` tidak dikenali | Terminal dibuka **sebelum** PATH diubah, atau SDK di `Program Files` | Tutup VS Code, buka lagi; pindahkan SDK ke `C:\src\flutter` |
 | `cmdline-tools component is missing` | Android SDK Command-line Tools belum dicentang | SDK Manager → SDK Tools |
@@ -463,7 +463,7 @@ Jangan menghapal API. Latih kebiasaan ini:
 ## Latihan
 
 1. Jalankan `flutter doctor -v`. Simpan keluaran ke berkas teks. Tandai baris `[!]` dan `[X]` plus tindakan Anda.
-2. Ubah aplikasi `halo_nama` agar AppBar menampilkan nama Anda, dan tubuh halaman menampilkan kota Anda.
+2. Ubah aplikasi `halo_nama` agar AppBar menampilkan nama Anda, dan isi halaman menampilkan kota Anda.
 3. Lakukan hot reload (`r`) dan hot restart (`R`). Catat bedanya dalam satu kalimat.
 4. `git add`, `commit`, dan (jika sudah punya remote) `push`.
 
@@ -473,7 +473,7 @@ Jangan menghapal API. Latih kebiasaan ini:
 
 1. Perintah `flutter doctor` diketik di mana: DartPad, pencarian Windows, atau Terminal VS Code?
 2. Apa beda hot reload dan hot restart?
-3. Folder mana yang paling sering Anda sunting: `lib/` atau `android/`?
+3. Folder mana yang paling sering Anda ubah: `lib/` atau `android/`?
 4. Dari Windows, target rilis utama materi ini apa: App Store atau Play Store? Mengapa?
 
 Kunci ada di akhir berkas ini. Coba jawab dulu.
@@ -482,7 +482,7 @@ Kunci ada di akhir berkas ini. Coba jawab dulu.
 
 ## Apa yang belum dibahas
 
-- Bahasa Dart secara sistematis → **Modul 01** (alat uji: DartPad)
+- Bahasa Dart dari dasar → **Modul 01** (alat uji: DartPad)
 - Widget, tema, daftar → Modul 02
 - iOS, TestFlight, sertifikat Apple → konsep saja sampai ada Mac
 - `pubspec.yaml` mendalam dan aset gambar → mulai Modul 02
