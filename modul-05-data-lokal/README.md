@@ -24,9 +24,17 @@ flowchart TB
   Pilih --> B["Jalur B: VS Code + emulator"]
 ```
 
+Letak tombol di DartPad (bukan sketsa):
+
+```mermaid
+flowchart TB
+  Kiri["Kiri: editor"] --> Run["Tombol Run"]
+  Run --> Kanan["Kanan: Console"]
+```
+
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart** (keluaran teks di Console). Untuk uji JSON, mode **Dart** sudah cukup. Untuk uji plugin HP, jangan pakai DartPad.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** (mode **Dart**, keluaran teks di Console) — kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak. Untuk uji JSON, mode **Dart** sudah cukup. Untuk uji plugin HP, jangan pakai DartPad.
 
 ### Dua jenis kode di halaman ini
 
@@ -102,14 +110,31 @@ Aturan praktis: mulai dari laci. Kalau datanya sudah seperti tabel, pindah ke bu
 
 ## 3. Model data: `fromJson` / `toJson` (jalur A)
 
-HP dan server saling kirim **Map** / JSON, bukan class Dart. Anda yang menerjemahkan.
+HP dan server saling kirim **teks JSON**, bukan class Dart. Anda yang menerjemahkan.
+
+Analogi singkat: JSON = surat. Object Dart = orang yang disebut di surat. `fromJson` membaca surat jadi object. `toJson` menulis object jadi surat lagi.
+
+<img src="images/analogi-json-object.png" alt="Dua kotak: Teks JSON dan Object Dart" width="720">
+
+*Ilustrasi asli materi mobile2026. Dua wujud data: teks JSON dan object Dart. Penjelasan ada di teks.*
+
+```mermaid
+flowchart TB
+  Surat["Teks JSON"] --> Baca["fromJson"]
+  Baca --> Orang["Object Dart"]
+  Orang --> Tulis["toJson"]
+  Tulis --> SuratLagi["Teks JSON lagi"]
+```
+
+Sumber konsep: [JSON and serialization](https://docs.flutter.dev/data-and-backend/serialization/json). Flutter and the related logo are trademarks of Google LLC.
 
 | | |
 | --- | --- |
-| **Buka** | DartPad, mode **Dart** |
-| **Tempel** | berkas lengkap |
+| **Buka** | Browser → [dartpad.dev](https://dartpad.dev) |
+| **Pilih** | mode **Dart** |
+| **Tempel** | berkas lengkap di bawah |
 | **Klik** | **Run** |
-| **Lihat** | panel **Console** |
+| **Lihat** | panel **Console** di kanan |
 
 ```dart
 import 'dart:convert';
@@ -152,7 +177,7 @@ void main() {
 
 ## 4. SharedPreferences — laci kecil (jalur B)
 
-Hanya tipe sederhana: `int`, `double`, `bool`, `String`, `List<String>`. Bukan untuk token. Dokumentasi resmi juga mengingatkan: tidak ada jaminan 100% setiap tulis langsung “nempel” ke disk, jadi jangan untuk data kritis. Sumber: [Store key-value data on disk](https://docs.flutter.dev/cookbook/persistence/key-value).
+Hanya tipe sederhana: `int`, `double`, `bool`, `String`, `List<String>`. Bukan untuk token. Dokumentasi resmi juga mengingatkan: tidak ada jaminan 100% setiap tulis langsung tertulis ke disk, jadi jangan untuk data kritis. Sumber: [Store key-value data on disk](https://docs.flutter.dev/cookbook/persistence/key-value).
 
 | | |
 | --- | --- |
@@ -307,6 +332,8 @@ Future<List<dynamic>> bacaTugas() async {
 
 `getApplicationDocumentsDirectory()` = folder yang **tidak** ikut terhapus saat app diperkecil. Cache boleh hilang; dokumen app jangan.
 
+Foto unduhan atau gambar profil juga masuk folder itu (berkas `.jpg` / `.png`), **bukan** SharedPreferences. Menampilkan file itu memakai `Image.file` — cukup tahu tempatnya dulu; unggah ke internet ada di Modul 06.
+
 `dart:io` + `File` **tidak** jalan di DartPad web. Itu sebabnya file hanya jalur B.
 
 ---
@@ -356,7 +383,7 @@ Future<Database> bukaDb() async {
 
 `version: 2` + `onUpgrade`: kalau tabel berubah, data lama **jangan** dihapus begitu saja. Naikkan nomor versi, tulis langkah migrasi. Jangan interpolasi `'id = $id'` di SQL — pakai `where: 'id = ?'` dan `whereArgs` supaya aman.
 
-Sisip, baca, ubah, hapus: pola lengkap ada di cookbook di atas. Mini proyek di bawah memakai SharedPreferences + JSON dulu, supaya selesai dalam sesi ini. SQLite siap dipakai saat daftar sudah terasa sesak.
+Sisip, baca, ubah, hapus: pola lengkap ada di cookbook di atas. **Mini proyek hari ini tidak wajib mengetik SQL.** Itu memakai SharedPreferences + JSON supaya selesai dalam sesi ini. SQLite siap dipakai saat daftar sudah terasa sesak.
 
 Drift (cuplikan ide, bukan uji): class tabel → `build_runner` menghasilkan kode. Dokumentasi: [drift.simonbinder.eu](https://drift.simonbinder.eu).
 
@@ -364,19 +391,19 @@ Drift (cuplikan ide, bukan uji): class tabel → `build_runner` menghasilkan kod
 
 ## 8. Online / offline (jalur B)
 
-App yang sopan: kalau sinyal hilang, **bilang**. Jangan muter loading tanpa ujung.
+Aplikasi yang sopan: kalau sinyal hilang, **bilang**. Jangan biarkan loading berputar tanpa ujung.
 
 <img src="images/analogi-online-offline.png" alt="Dua kotak: Online dan Offline" width="720">
 
 *Ilustrasi asli materi mobile2026. Dua kondisi: ada sinyal, tidak ada sinyal. Penjelasan ada di teks.*
 
 ```mermaid
-flowchart LR
-  Cek["Cek koneksi"] --> Online
-  Cek --> Offline
+flowchart TB
+  Cek["Cek koneksi"] --> AdaSinyal["Ada sinyal"]
+  Cek --> TidakSinyal["Tidak ada sinyal"]
 ```
 
-Paket: `connectivity_plus` ([pub.dev/packages/connectivity_plus](https://pub.dev/packages/connectivity_plus)). Ini mendeteksi **jenis jaringan**, bukan “internet benar-benar jalan”. Wi-Fi tanpa kuota masih bisa terlihat online. Untuk cek sungguhan, nanti tembak API (Modul 07) dan tangkap error.
+Paket: `connectivity_plus` ([pub.dev/packages/connectivity_plus](https://pub.dev/packages/connectivity_plus)). Ini mendeteksi **jenis jaringan**, bukan “internet benar-benar jalan”. Wi-Fi tanpa kuota masih bisa terlihat online. Untuk cek sungguhan, nanti panggil API (Modul 07) dan tangkap error.
 
 | | |
 | --- | --- |
@@ -396,17 +423,42 @@ final offline = hasil.contains(ConnectivityResult.none);
 
 Versi lama paket ini mengembalikan **satu** `ConnectivityResult`, bukan `List`. Kalau error merah soal tipe, baca pesan di terminal — sesuaikan: `hasil == ConnectivityResult.none` atau `hasil.contains(...)`.
 
-Di emulator Android: **Extended controls → Cellular → Signal strength / Network type**, atau airplane mode di HP fisik, lalu lihat banner.
+Cara uji sinyal hilang:
+
+```mermaid
+flowchart TB
+  Emu["Emulator Android"] --> More["Tombol ... (More / Extended controls)"]
+  More --> Cel["Cellular"]
+  Cel --> None["Signal strength: None"]
+```
+
+Sumber langkah emulator: [Extended controls, settings, and help](https://developer.android.com/studio/run/emulator-extended-controls) (Android Developers). Di HP fisik: mode pesawat, lalu lihat banner.
 
 ---
 
 ## 9. Siklus hidup singkat: jeda dan lanjut
 
-Orang menekan Home. App tidak mati, tapi **pause**. Musik, GPS, atau cek jaringan sering perlu dihentikan, lalu dilanjut saat kembali.
+Orang menekan tombol Home. Aplikasi tidak mati, tapi **jeda**. Musik, GPS, atau cek jaringan sering perlu dihentikan, lalu dilanjut saat layar kembali kelihatan.
 
-Flutter menyediakan `AppLifecycleListener`. Pola lama: `WidgetsBindingObserver`. Keduanya sah. Contoh pause / resume:
+<img src="images/analogi-jeda-lanjut.png" alt="Dua kotak: Jeda dan Lanjut" width="720">
 
-Cuplikan (jalur B, di dalam `State`):
+*Ilustrasi asli materi mobile2026. Dua momen: aplikasi ke belakang, aplikasi kembali. Penjelasan ada di teks.*
+
+```mermaid
+flowchart TB
+  Home["Tombol Home"] --> Jeda["Jeda — onPause"]
+  Jeda --> Balik["Buka app lagi"]
+  Balik --> Lanjut["Lanjut — onResume"]
+```
+
+Flutter menyediakan `AppLifecycleListener`. Pola lama: `WidgetsBindingObserver`. Keduanya sah.
+
+Ini **cuplikan** (jalur B). Jangan di-Run sendirian di DartPad; tempel di dalam `State` proyek lokal.
+
+| | |
+| --- | --- |
+| **Buka** | VS Code, `lib/main.dart` proyek jalur B |
+| **Tempel** | di dalam class `State`, bukan sebagai berkas utuh |
 
 ```dart
 late final AppLifecycleListener pendengar;
@@ -439,9 +491,18 @@ Sumber konsep siklus hidup: [Flutter for Android developers](https://docs.flutte
 
 Syarat silabus: to-do tetap ada setelah app ditutup, plus banner jika offline.
 
+Urutan kerja, jangan terbalik:
+
+1. Buka **VS Code** di folder proyek Flutter (bukan DartPad).
+2. Nyalakan emulator atau HP USB.
+3. Buka Terminal (`Ctrl + J`), ketik perintah `flutter pub add` di bawah.
+4. Ganti isi `lib/main.dart` dengan berkas lengkap.
+5. Ketik `flutter run`.
+6. Uji: tutup app, buka lagi — daftar masih ada. Matikan sinyal — banner muncul.
+
 | | |
 | --- | --- |
-| **Buka** | VS Code, folder proyek baru atau latihan |
+| **Buka** | VS Code, folder proyek Flutter |
 | **Terminal** | `Ctrl + J` |
 | **Ketik** | perintah di bawah, emulator/HP menyala, lalu tempel berkas ke `lib/main.dart` |
 
@@ -685,15 +746,19 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | Aset | Sumber |
 | --- | --- |
 | `images/analogi-tiga-lemari.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-json-object.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-online-offline.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-jeda-lanjut.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | SharedPreferences | [docs.flutter.dev/cookbook/persistence/key-value](https://docs.flutter.dev/cookbook/persistence/key-value) |
+| JSON `fromJson` / `toJson` | [docs.flutter.dev/data-and-backend/serialization/json](https://docs.flutter.dev/data-and-backend/serialization/json) |
 | File lokal | [docs.flutter.dev/cookbook/persistence/reading-writing-files](https://docs.flutter.dev/cookbook/persistence/reading-writing-files) |
 | SQLite / `sqflite` | [docs.flutter.dev/cookbook/persistence/sqlite](https://docs.flutter.dev/cookbook/persistence/sqlite) |
 | `flutter_secure_storage` | [pub.dev/packages/flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage) |
 | `path_provider` | [pub.dev/packages/path_provider](https://pub.dev/packages/path_provider) |
 | `connectivity_plus` | [pub.dev/packages/connectivity_plus](https://pub.dev/packages/connectivity_plus) |
 | Siklus hidup | [docs.flutter.dev/flutter-for/android-devs](https://docs.flutter.dev/flutter-for/android-devs) |
+| Uji sinyal di emulator | [developer.android.com/studio/run/emulator-extended-controls](https://developer.android.com/studio/run/emulator-extended-controls) |
 | Drift | [drift.simonbinder.eu](https://drift.simonbinder.eu) |
 | Paket DartPad | [dart-lang/dart-pad wiki](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) |
 

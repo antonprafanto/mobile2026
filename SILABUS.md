@@ -61,6 +61,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Modul 04: `provider` diuji di DartPad (jalur A); folder `ui/data/services` di jalur B | `provider` ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support); beda dengan `go_router` |
 | 14 Agu 2026 | Ilustrasi folder Modul 04 dipotong rapat (kartu mendatar, bukan pilar tinggi) | PNG tinggi 720×474 di GitHub gelap terasa seperti gambar rusak |
 | 14 Agu 2026 | Modul 05: plugin HP hanya jalur B; JSON `fromJson` di DartPad; mini proyek SharedPreferences + banner offline; SQLite lewat `sqflite` (cookbook resmi), Drift hanya pengenalan | Plugin tidak ada di DartPad; Drift butuh `build_runner` — terlalu berat untuk 2 sesi |
+| 14 Agu 2026 | Audit GitHub Modul 05: mermaid online/offline tanpa id `Online`/`Offline`; caption DartPad tema gelap; analogi JSON + jeda; langkah mini proyek; sitasi JSON Flutter + emulator Android | Diagram LR sempat spinner di GitHub; foto DartPad gelap terasa seperti gambar rusak; file foto di silabus belum disebut |
 
 ---
 

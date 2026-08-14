@@ -25,7 +25,9 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-04-state/images/analogi-ingatan.png` | Modul 04 | Katalog, ingatan bersama, keranjang |
 | `modul-04-state/images/analogi-folder.png` | Modul 04 | Folder `ui`, `data`, `services` |
 | `modul-05-data-lokal/images/analogi-tiga-lemari.png` | Modul 05 | Laci, brankas, buku |
+| `modul-05-data-lokal/images/analogi-json-object.png` | Modul 05 | Teks JSON vs object Dart |
 | `modul-05-data-lokal/images/analogi-online-offline.png` | Modul 05 | Online / offline |
+| `modul-05-data-lokal/images/analogi-jeda-lanjut.png` | Modul 05 | Jeda / lanjut |
 | Tampilan DartPad resmi | Modul 00–05 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | [layout-1.png](https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png) — [Layouts in Flutter](https://docs.flutter.dev/ui/layout), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
@@ -63,12 +65,14 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Simple app state (Provider) | [https://docs.flutter.dev/data-and-backend/state-mgmt/simple](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) | Dokumentasi resmi |
 | Paket `provider` | [https://pub.dev/packages/provider](https://pub.dev/packages/provider) | Paket komunitas, dipakai dokumentasi Flutter |
 | Cookbook unduh data / FutureBuilder | [https://docs.flutter.dev/cookbook/networking/fetch-data](https://docs.flutter.dev/cookbook/networking/fetch-data) | Cookbook resmi |
+| JSON and serialization | [https://docs.flutter.dev/data-and-backend/serialization/json](https://docs.flutter.dev/data-and-backend/serialization/json) | Dokumentasi resmi |
 | SharedPreferences | [https://docs.flutter.dev/cookbook/persistence/key-value](https://docs.flutter.dev/cookbook/persistence/key-value) | Cookbook resmi |
 | File lokal / `path_provider` | [https://docs.flutter.dev/cookbook/persistence/reading-writing-files](https://docs.flutter.dev/cookbook/persistence/reading-writing-files) | Cookbook resmi |
 | SQLite / `sqflite` | [https://docs.flutter.dev/cookbook/persistence/sqlite](https://docs.flutter.dev/cookbook/persistence/sqlite) | Cookbook resmi |
 | `flutter_secure_storage` | [https://pub.dev/packages/flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage) | Paket komunitas; Keystore / Keychain |
 | `connectivity_plus` | [https://pub.dev/packages/connectivity_plus](https://pub.dev/packages/connectivity_plus) | Paket komunitas |
 | Siklus hidup app | [https://docs.flutter.dev/flutter-for/android-devs](https://docs.flutter.dev/flutter-for/android-devs) | Dokumentasi resmi |
+| Extended controls emulator Android | [https://developer.android.com/studio/run/emulator-extended-controls](https://developer.android.com/studio/run/emulator-extended-controls) | Dokumentasi Android Developers |
 | Drift | [https://drift.simonbinder.eu](https://drift.simonbinder.eu) | Dokumentasi paket Drift |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
