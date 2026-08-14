@@ -19,9 +19,9 @@ Sebelum ketik perintah apa pun, lihat tabel ini. Salah alat = perintah "tidak di
 | 6 | Emulator Android **atau** HP Android | Melihat aplikasi |
 
 ```mermaid
-flowchart LR
-  A["1. Browser: DartPad"] --> B["2. VS Code"]
-  B --> C["3. Terminal VS Code"]
+flowchart TB
+  A["1. DartPad"] --> B["2. VS Code"]
+  B --> C["3. Terminal"]
   C --> D["4. Emulator atau HP"]
 ```
 
@@ -52,7 +52,13 @@ Di belakang layar, aplikasi Anda tetap seperti restoran:
 
 ![Analogi: HP, JSON, dan server](images/analogi-hp-dapur.png)
 
-*Ilustrasi asli materi mobile2026. Baca tabel di bawah ini untuk arti setiap kotak.*
+*Ilustrasi asli materi mobile2026. Tiga peran: HP, JSON, server. Penjelasan ada di tabel.*
+
+```mermaid
+flowchart TB
+  HP --> JSON
+  JSON --> Server
+```
 
 | Di restoran | Di aplikasi |
 | --- | --- |
@@ -62,9 +68,17 @@ Di belakang layar, aplikasi Anda tetap seperti restoran:
 
 Detail JSON dan HTTP ada di Modul 07. Sekarang cukup ingat: **tampilan dan data tidak tinggal di tempat yang sama**.
 
-![Tiga lapisan: tampilan, logika Dart, data](images/tiga-lapisan-app.png)
+Tiga lapisan di dalam app:
 
-*Ilustrasi asli materi mobile2026. Penjelasan lengkap ada di daftar bernomor di atas.*
+| Lapisan | Artinya |
+| --- | --- |
+| **Tampilan** | tombol, daftar, formulir |
+| **Logika** | aturan, ditulis dalam Dart |
+| **Data** | di HP, di Firebase, atau di API |
+
+![Tiga lapisan: tampilan, logika, data](images/tiga-lapisan-app.png)
+
+*Ilustrasi asli materi mobile2026. Tiga lapisan: tampilan, logika, data. Penjelasan ada di tabel.*
 
 ---
 
@@ -102,14 +116,14 @@ void main() {
 Letak tombol di DartPad (tampilan sungguhan, bukan sketsa):
 
 ```mermaid
-flowchart LR
-  A["Kiri: editor kode"] --> B["Tombol Run"]
-  B --> C["Kanan: Console / keluaran"]
+flowchart TB
+  A["Kiri: editor"] --> B["Tombol Run"]
+  B --> C["Kanan: Console"]
 ```
 
-<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad menjalankan program Halo Dunia" width="720">
+<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google. Lisensi dokumentasi situs itu: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Alat uji: [dartpad.dev](https://dartpad.dev).
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** dan **mode Dart**. Kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak.
 
 Kalau tombol Run tidak bereaksi, matikan pemblokir iklan untuk situs itu, atau ganti browser.
 
@@ -122,13 +136,11 @@ DartPad juga bisa menjalankan widget Flutter di web. Itu cukup untuk mencoba tam
 Ikuti **urutannya**. Melompat ke Flutter SDK sebelum Git terpasang akan gagal.
 
 ```mermaid
-flowchart LR
-  A[Git for Windows] --> B[VS Code]
-  B --> C[Ekstensi Flutter]
-  C --> D[Unduh Flutter SDK lewat VS Code]
-  D --> E[Android Studio + SDK]
-  E --> F["flutter doctor"]
-  F --> G[Emulator atau HP]
+flowchart TB
+  Git --> VSCode["VS Code"]
+  VSCode --> SDK["Flutter SDK"]
+  SDK --> Android["Android Studio"]
+  Android --> Doctor["flutter doctor"]
 ```
 
 Sumber alur instalasi yang disarankan: [Install Flutter using VS Code](https://docs.flutter.dev/install/with-vs-code).
@@ -278,7 +290,7 @@ Baris **Windows Version / Visual Studio (C++)** boleh diabaikan jika Anda **tida
 | | |
 | --- | --- |
 | **Buka** | Terminal VS Code yang sama |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
 
 ```powershell
 flutter doctor --android-licenses
@@ -492,6 +504,13 @@ Kunci ada di akhir berkas ini. Coba jawab dulu.
 ## Mini proyek modul ini
 
 Aplikasi **Halo, namaku …** berjalan di emulator atau HP, diubah dari templat `flutter create`, lalu di-commit Git.
+
+Urutan kerja, jangan terbalik:
+
+1. Buka **VS Code**, Terminal (`Ctrl + J`), emulator atau HP sudah menyala.
+2. Ketik `flutter create halo_nama` lalu `cd halo_nama` lalu `flutter run` (bukan di DartPad).
+3. Ubah teks di `lib/main.dart`, simpan, tekan `r` di terminal.
+4. `git add`, `git commit`. Kalau repo GitHub sudah ada: `git push`.
 
 ---
 
