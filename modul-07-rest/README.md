@@ -2,9 +2,9 @@
 
 **Waktu:** 2–3 sesi  
 **Prasyarat:** Modul 00–06 (proyek Flutter lokal sudah pernah `flutter run`).  
-**Hasil:** Nanti Anda bisa menyambungkan Flutter ke API HTTP mana pun, menguji endpoint tanpa app, menyimpan token di tempat yang aman, dan menjalankan satu dapur mini (CRUD catatan) yang hidup di internet — bukan hanya di `localhost`.
+**Hasil:** Nanti Anda bisa menyuruh app mengambil data dari internet, menguji server tanpa membuka Flutter, menyimpan tanda pengenal dengan aman, dan menyalakan dapur kecil yang bisa dibuka dari HP — bukan hanya dari komputer ini.
 
-Modul 06: dapur **sewaan** (Firebase). Modul ini: **bahasa** yang dipakai dapur mana pun. Firebase tidak dibuang. REST adalah cara bicara ke server yang Anda tulis sendiri, ke API publik, atau ke layanan kantor.
+Modul 06: dapur **sewaan** (Firebase). Modul ini: **cara bicara** ke dapur mana pun. Firebase tidak dibuang. Kantor punya server sendiri, atau Anda memakai API publik: bahasanya biasanya HTTP + JSON. Itu yang disebut REST.
 
 ---
 
@@ -22,18 +22,18 @@ Paket `dio` **tidak** ada di [daftar paket DartPad](https://github.com/dart-lang
 
 ```mermaid
 flowchart TB
-  Pilih["Pilih jalur uji"]
-  Pilih --> A["Jalur A: DartPad"]
-  Pilih --> B["Jalur B: VS Code"]
-  Pilih --> C["Jalur C: Node"]
+  Pilih["Pilih jalur"]
+  Pilih --> A["A: DartPad"]
+  Pilih --> B["B: VS Code"]
+  Pilih --> C["C: Node"]
 ```
 
 Letak tombol di DartPad (bukan sketsa):
 
 ```mermaid
 flowchart TB
-  Kiri["Kiri: editor"] --> Run["Tombol Run"]
-  Run --> Kanan["Kanan: Console"]
+  Kiri["Editor"] --> Run["Run"]
+  Run --> Kanan["Console"]
 ```
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
@@ -55,6 +55,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Pilih** | mode **Dart** |
 | **Tempel** | **berkas lengkap** |
 | **Klik** | **Run** |
+| **Kalau berhasil** | Console di kanan menulis teks, bukan error merah |
 
 DartPad jalan di **browser**. API yang dipanggil harus HTTPS dan mengizinkan CORS. Mini uji di bawah memakai [JSONPlaceholder](https://jsonplaceholder.typicode.com/) dan [DummyJSON](https://dummyjson.com/docs/products) — keduanya publik, tanpa kunci.
 
@@ -66,7 +67,7 @@ DartPad jalan di **browser**. API yang dipanggil harus HTTPS dan mengizinkan COR
 | **Terminal** | `Ctrl + J` |
 | **Ketik** | perintah di bawah, di folder proyek |
 
-> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`.
+> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`. Perintah pertamanya ada di bagian 6.
 
 ### Pola uji C — backend mini
 
@@ -84,38 +85,36 @@ node -v
 
 ---
 
-## 1. Dapur sewaan vs bahasa universal
+## 1. Dapur sewaan vs cara bicara
 
-Firebase = satu dapur dengan aturan dan SDK-nya sendiri. REST = kesepakatan HTTP: HP mengirim pesan, server menjawab. Dapur di belakangnya boleh Node, Laravel, .NET, atau Firebase Cloud Functions — **suratnya** tetap HTTP + JSON.
+**HTTP** = aturan kirim-pesan lewat internet: HP bertanya, server menjawab.
 
-Analogi restoran dari Modul 00 masih berlaku: HP memesan, JSON adalah nota, server adalah dapur. Modul ini mengisi isi notasnya: kata kerja HTTP, kode status, tanda pengenal, dan cara menguji dapur **sebelum** menyalahkan Flutter.
+**REST** = kesepakatan sopan di atas HTTP. URL menunjuk data (contoh: `/catatan`). Kata kerja menunjuk tindakan (GET minta, POST buat).
+
+**Resource** = satu jenis data di server, bukan nama tombol di UI. Contoh resource: catatan.
+
+Firebase = satu dapur dengan aturan dan SDK-nya sendiri. Dapur REST boleh Node, Laravel, .NET, atau Cloud Functions — **suratnya** tetap HTTP + JSON.
+
+Analogi restoran dari Modul 00 masih berlaku: HP memesan, JSON adalah nota, server adalah dapur. Modul ini mengisi **notanya**: kata kerja, kode status, kartu tamu, dan kebiasaan menguji dapur **sebelum** menyalahkan Flutter.
 
 ---
 
 ## 2. Empat pesan yang sopan: GET, POST, PUT, DELETE
 
-HTTP punya kata kerja. Yang wajib dipegang di modul ini empat ini:
+HTTP punya kata kerja. Pegangan di modul ini: empat kata ini.
 
 | Kata kerja | Artinya untuk resource | Analogi restoran |
 | --- | --- | --- |
-| **GET** | minta data, jangan mengubah | pelayan mencatat permintaan |
+| **GET** | minta data, jangan mengubah | pelayan melihat menu |
 | **POST** | buat data baru | pelayan mengantar piring baru |
 | **PUT** | ganti data yang sudah ada | pelayan menukar piring |
 | **DELETE** | hapus | pelayan membawa piring pergi |
 
-<img src="images/analogi-empat-pesan.png" alt="Empat panel: GET pelayan mencatat, POST piring baru, PUT tukar piring, DELETE piring dibawa pergi" width="720">
+<img src="images/analogi-empat-pesan.png" alt="Empat panel: GET pelayan melihat menu, POST piring baru, PUT tukar piring, DELETE piring dibawa pergi" width="720">
 
 *Ilustrasi asli materi mobile2026. GET minta, POST buat, PUT ganti, DELETE hapus. Alur teknis ada di tabel di atas, bukan di dalam gambar.*
 
 Ada juga `PATCH` (ubah sebagian). Untuk CRUD lengkap, empat kata di tabel sudah cukup. Sumber konsep: [MDN — HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods).
-
-```mermaid
-flowchart TB
-  HP["HP"] --> GET["GET: minta"]
-  HP --> POST["POST: buat"]
-  HP --> PUT["PUT: ganti"]
-  HP --> DEL["DELETE: hapus"]
-```
 
 URL biasanya menunjuk **resource**, bukan tombol UI. Contoh: `/catatan` (daftar), `/catatan/3` (satu lembar). Jangan buat `/hapusCatatan` sebagai GET — hapus memakai DELETE.
 
@@ -150,7 +149,7 @@ Angka di depan body JSON memberitahu *jenis* hasil. UI yang baik membaca angka i
 | **200** | oke (GET/PUT) | tampilkan data |
 | **201** | oke, baru dibuat (POST) | tampilkan item baru |
 | **400** | permintaan tidak valid | perbaiki isian |
-| **401** | tidak ada / token salah | masuk lagi, atau refresh token |
+| **401** | token ditolak atau hilang | masuk lagi, atau minta token baru |
 | **404** | resource tidak ketemu | “Tidak ada”, bukan crash |
 | **429** | terlalu sering | “Coba sebentar lagi” |
 | **500** | dapur rusak | “Server bermasalah”, jangan menyalahkan form |
@@ -172,7 +171,7 @@ Sumber: [MDN — HTTP response status codes](https://developer.mozilla.org/en-US
 | **Pilih** | mode **Dart** |
 | **Tempel** | berkas lengkap di bawah |
 | **Klik** | **Run** |
-| **Ketik** | (tidak ada perintah terminal) |
+| **Ketik** | tidak perlu — ini uji DartPad |
 
 ```dart
 import 'dart:convert';
@@ -208,9 +207,9 @@ Alat: ekstensi [Thunder Client](https://marketplace.visualstudio.com/items?itemN
 
 ```mermaid
 flowchart TB
-  Browser["Browser atau Thunder"] --> Server["Server"]
-  Server --> JSON["JSON + kode"]
-  JSON --> Flutter["Baru Flutter"]
+  Tes["Tes dulu"] --> Srv["Server"]
+  Srv --> Body["Body"]
+  Body --> App["Flutter"]
 ```
 
 | | |
@@ -248,7 +247,7 @@ flutter pub add dio
 
 **Kalau berhasil:** `pubspec.yaml` punya baris `dio:`. Terminal tidak merona.
 
-Cuplikan (jalur B, jangan di-Run di DartPad):
+Cuplikan (jalur B). Jangan tempel ke DartPad, dan jangan di-Run sendirian:
 
 ```dart
 final dio = Dio(
@@ -298,7 +297,7 @@ Jangan `print` isi token ke console di app yang akan diunggah orang lain. Dokume
 
 ## 8. Token: kartu tamu, bukan tulisan di URL
 
-JWT (JSON Web Token) bentuknya tiga bagian dipisah titik: header, isi, tanda tangan. Materi ini **tidak** membuat sistem auth bank. Yang wajib: menaruh tanda pengenal di header `Authorization: Bearer ...`, dan menyimpannya di [`flutter_secure_storage`](https://pub.dev/packages/flutter_secure_storage) — bukan SharedPreferences, bukan query URL `?token=`.
+JWT (JSON Web Token) bentuknya tiga bagian dipisah titik: header, isi, tanda tangan. Kata **Bearer** di header artinya: “bawa kartu ini.” Materi ini **tidak** membuat sistem login bank. Yang wajib: menaruh tanda pengenal di header `Authorization: Bearer ...`, dan menyimpannya di [`flutter_secure_storage`](https://pub.dev/packages/flutter_secure_storage) — bukan SharedPreferences, bukan di URL `?token=`.
 
 <img src="images/analogi-kartu-tamu.png" alt="Dua panel: kartu tamu di tali leher, dan pintu dengan pembaca kartu" width="720">
 
@@ -306,9 +305,9 @@ JWT (JSON Web Token) bentuknya tiga bagian dipisah titik: header, isi, tanda tan
 
 ```mermaid
 flowchart TB
-  Token["Token JWT"] --> H["Header"]
-  Token --> I["Isi"]
-  Token --> T["Tanda"]
+  JWT["Satu token"] --> H["Header"]
+  JWT --> I["Isi"]
+  JWT --> T["Tanda"]
 ```
 
 | | |
@@ -369,7 +368,7 @@ Backend mini **tidak** wajib punya `/refresh`. Cukup Anda paham urutannya. Auth 
 
 ## 10. Repository: ruang tamu tidak teriak ke jalan
 
-Modul 04 sudah membagi `ui` / `data` / `services`. Widget **jangan** memanggil `dio.get` langsung. UI minta ke repository; repository yang bicara ke internet.
+Modul 04 sudah membagi folder: `ui` (ruang tamu), `data` (catatan), `services` (kurir). Widget **jangan** memanggil `dio.get` langsung. UI minta ke repository; repository yang bicara ke internet.
 
 ```mermaid
 flowchart TB
@@ -521,7 +520,14 @@ const apiUrl = String.fromEnvironment(
 );
 ```
 
-Untuk Node, pakai variabel lingkungan (`PORT`, `TOKEN_LATIHAN`). File `.env` **sudah** ada di `.gitignore` repo ini. Jangan commit kunci. Mini proyek di bawah memakai [TVmaze](https://www.tvmaze.com/api) yang **tidak butuh kunci**, supaya latihan tidak macet di formulir daftar API.
+Untuk Node, pakai variabel lingkungan (`PORT`, `TOKEN_LATIHAN`). File `.env` **sudah** ada di `.gitignore` repo ini. Jangan commit kunci. Cuplikan (bukan Dart, jangan di DartPad):
+
+```text
+PORT=3000
+TOKEN_LATIHAN=token-latihan-modul-07
+```
+
+Mini proyek di bawah memakai [TVmaze](https://www.tvmaze.com/api) yang **tidak butuh kunci**, supaya latihan tidak macet di formulir daftar API.
 
 Sumber: [Dart environment declarations](https://dart.dev/guides/environment-declarations).
 
@@ -543,7 +549,11 @@ android:usesCleartextTraffic="true"
 
 Untuk app yang akan diunggah orang: **HTTPS**. Cabut izin cleartext. Sumber risiko: [Cleartext communications](https://developer.android.com/privacy-and-security/risks/cleartext-communications) (Android Developers).
 
-**Localhost bukan satu mesin.**
+**Localhost bukan satu mesin.** Tiga alat, tiga alamat. Jangan tertukar.
+
+<img src="images/analogi-tiga-alamat.png" alt="Tiga panel: PC, Emulator, dan HP" width="720">
+
+*Ilustrasi asli materi mobile2026. PC memakai localhost:3000. Emulator memakai 10.0.2.2:3000. HP fisik memakai URL publik (HTTPS).*
 
 | Siapa yang jalan | `localhost` itu siapa | URL yang dipakai |
 | --- | --- | --- |
@@ -552,13 +562,6 @@ Untuk app yang akan diunggah orang: **HTTPS**. Cabut izin cleartext. Sumber risi
 | HP fisik | **HP itu sendiri** | URL deploy, atau IP LAN PC (satu Wi-Fi) |
 
 `10.0.2.2` adalah alias emulator ke PC host. Sumber: [Set up Android Emulator networking](https://developer.android.com/studio/run/emulator-networking).
-
-```mermaid
-flowchart TB
-  Lokal["localhost di PC"] --> Emulator["10.0.2.2"]
-  Lokal --> Deploy["URL publik"]
-  Deploy --> HP["HP fisik"]
-```
 
 Token hanya lewat HTTPS di internet. HTTP polos boleh untuk latihan di komputer sendiri, bukan untuk data orang.
 
@@ -613,7 +616,7 @@ Emulator Android memakai `http://10.0.2.2:3000` plus izin cleartext debug. HP fi
 
 ## 18. Deploy satu kali: supaya HP fisik bisa masuk
 
-`localhost` di HP = HP itu, bukan PC Anda. Agar HP di rumah (atau kuota seluler) menembus dapur, unggah backend mini **sekali** ke layanan yang kasih URL HTTPS.
+`localhost` di HP = HP itu, bukan PC Anda. Agar HP di rumah (atau kuota seluler) menembus dapur, unggah backend mini **sekali** ke layanan yang memberi URL HTTPS.
 
 Dua pilihan yang sering dipakai latihan: [Render](https://render.com/docs/deploy-node-express-app) atau [Railway](https://docs.railway.app/). Materi ini merinci **Render**. Railway: layanan Web, *start command* `npm start`, variabel `PORT` biasanya diisi platform.
 
@@ -645,13 +648,26 @@ Urutan kerja, jangan terbalik:
 
 1. **Browser:** buka [https://api.tvmaze.com/shows?page=0](https://api.tvmaze.com/shows?page=0). Pastikan JSON array muncul (`id`, `name`, `image`).
 2. Buka **VS Code**, Terminal (`Ctrl + J`), emulator atau HP sudah menyala.
-3. `flutter create daftar_acara` lalu `cd daftar_acara`.
-4. `flutter pub add dio provider`.
-5. `lib/data/acara.dart`: class `Acara` dengan `fromJson` — paling tidak `id`, `name`, URL gambar (`image['medium']`, boleh null).
-6. `lib/data/acara_repository.dart`: `Dio` `baseUrl` dari `String.fromEnvironment('API_URL', defaultValue: 'https://api.tvmaze.com')`. Method `ambilHalaman(int page)` → `GET /shows` query `page`.
-7. `lib/ui/daftar_page.dart`: `FutureBuilder` atau `provider`. `ListView.builder`. `ListTile` judul + `Image.network` jika URL ada (pola Modul 02). Tombol **Berikutnya** menambah `page`. Kalau hasil kosong, matikan tombol dan SnackBar “Sudah di ujung”.
-8. Error: timeout / koneksi / status bukan 200 → SnackBar, bukan layar merah.
-9. Terminal:
+3. Terminal VS Code:
+
+| | |
+| --- | --- |
+| **Buka** | Terminal VS Code |
+| **Ketik** | perintah di bawah, **satu per satu** |
+
+```text
+flutter create daftar_acara
+cd daftar_acara
+flutter pub add dio provider
+```
+
+**Kalau berhasil:** folder `daftar_acara` ada, `pubspec.yaml` memuat `dio` dan `provider`.
+
+4. `lib/data/acara.dart`: class `Acara` dengan `fromJson` — paling tidak `id`, `name`, URL gambar (`image['medium']`, boleh null).
+5. `lib/data/acara_repository.dart`: `Dio` `baseUrl` dari `String.fromEnvironment('API_URL', defaultValue: 'https://api.tvmaze.com')`. Method `ambilHalaman(int page)` → `GET /shows` query `page`.
+6. `lib/ui/daftar_page.dart`: `FutureBuilder` atau `provider`. `ListView.builder`. `ListTile` judul + `Image.network` jika URL ada (pola Modul 02). Tombol **Berikutnya** menambah `page`. Kalau hasil kosong, matikan tombol dan SnackBar “Sudah di ujung”.
+7. Error: timeout / koneksi / status bukan 200 → SnackBar, bukan layar merah.
+8. Terminal:
 
 ```text
 flutter run --dart-define=API_URL=https://api.tvmaze.com
@@ -730,6 +746,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | `images/analogi-empat-pesan.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-kartu-tamu.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-satu-kardus.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-tiga-alamat.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Paket DartPad | [github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) |
 | HTTP methods | [developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) |
