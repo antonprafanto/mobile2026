@@ -58,6 +58,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Diagram Mermaid Modul 03 tidak boleh siklus (Daftar ↔ Form) | Di GitHub, siklus mermaid sering tampil sebagai spinner / gambar error |
 | 14 Agu 2026 | Nada bahasa dilonggarkan; EYD dan sapaan **Anda** tetap | Terlalu kaku kalau dibaca seperti dokumen resmi |
 | 14 Agu 2026 | Modul 04: `provider` diuji di DartPad (jalur A); folder `ui/data/services` di jalur B | `provider` ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support); beda dengan `go_router` |
+| 14 Agu 2026 | Ilustrasi folder Modul 04 dipotong rapat (kartu mendatar, bukan pilar tinggi) | PNG tinggi 720×474 di GitHub gelap terasa seperti gambar rusak |
 
 ---
 

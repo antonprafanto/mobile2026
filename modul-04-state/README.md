@@ -12,18 +12,19 @@ Ada **dua jalur uji**. Jangan sampai tertukar.
 
 | Jalur | Buka | Untuk apa |
 | --- | --- | --- |
-| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** | `setState`, lift state, FutureBuilder, StreamBuilder, **Provider** |
+| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** | `setState`, data naik ke induk, FutureBuilder, StreamBuilder, **Provider** |
 | B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | `flutter pub add provider`, folder `ui / data / services` |
 
 ```mermaid
-flowchart LR
-  A["setState / Provider"] --> B["DartPad mode Flutter"]
-  C["Folder ui/data/services"] --> D["VS Code + flutter pub add"]
+flowchart TB
+  Pilih["Pilih jalur uji"]
+  Pilih --> A["Jalur A: DartPad Flutter"]
+  Pilih --> B["Jalur B: VS Code Terminal"]
 ```
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart**. Untuk modul ini pilih mode **Flutter**.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart** (keluaran teks di Console). Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan jadi **layar aplikasi**.
 
 Paket `provider` **ada** di daftar paket DartPad ([Package and plugin support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support)). Jadi `import 'package:provider/provider.dart'` boleh di DartPad. Beda dengan `go_router` di Modul 03.
 
@@ -158,7 +159,7 @@ class _PenghitungPageState extends State<PenghitungPage> {
 
 ---
 
-## 3. Lift state up: data naik ke induk
+## 3. Data naik ke induk (*lift state up*)
 
 Kalau dua anak widget butuh angka yang sama, angka itu **tidak** disimpan di anak. Naikkan ke widget induk, lalu turunkan sebagai argumen. Dokumentasi Flutter menyebutnya *lifting state up* ([Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple)).
 
@@ -250,7 +251,7 @@ class TombolTambah extends StatelessWidget {
 
 **Kalau berhasil:** tombol dan teks tidak saling “berbisik”. Induk yang memegang angka.
 
-Pola ini jujur, tapi cepat berantakan: callback diturunkan lewat banyak lapisan (*prop drilling*). Provider menggantikan antrean callback itu.
+Pola ini jujur, tapi cepat berantakan: callback diturunkan lewat banyak lapisan. Provider menggantikan antrean itu.
 
 ---
 
@@ -466,7 +467,7 @@ class TokoPage extends StatelessWidget {
 
 **Kalau berhasil:** angka naik, tanpa `setState` di halaman.
 
-`ChangeNotifierProvider` sebaiknya tidak lebih tinggi dari yang perlu. Untuk app kecil, membungkus `MaterialApp` (atau `MaterialApp.router`) sudah cukup.
+Jangan taruh `ChangeNotifierProvider` lebih tinggi dari yang perlu. Untuk app kecil, bungkus `MaterialApp` (atau `MaterialApp.router`) sudah cukup.
 
 Beberapa model sekaligus: `MultiProvider` (cuplikan, jangan di-Run sendirian):
 
