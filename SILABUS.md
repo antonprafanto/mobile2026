@@ -18,7 +18,8 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 03 Interaksi & form | [modul-03-interaksi/README.md](modul-03-interaksi/README.md) | Selesai |
 | 04 State (Provider) | [modul-04-state/README.md](modul-04-state/README.md) | Selesai |
 | 05 Data lokal | [modul-05-data-lokal/README.md](modul-05-data-lokal/README.md) | Selesai |
-| 06–11 | — | Menyusul, urut silabus |
+| 06 Firebase | [modul-06-firebase/README.md](modul-06-firebase/README.md) | Selesai |
+| 07–11 | — | Menyusul, urut silabus |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
 Diperbarui: 14 Agustus 2026.
@@ -526,4 +527,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Modul berikutnya yang ditulis: **Modul 06 — Backend pertama: Firebase**.
+Modul berikutnya yang ditulis: **Modul 07 — REST API**.

@@ -32,7 +32,10 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Pohon widget toko resmi | Modul 04 | Halaman [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG tidak di-embed (kartu terlalu tinggi di GitHub gelap, pola sama dengan `layout-1.png` Modul 02). |
 | `modul-05-data-lokal/images/analogi-laci-brankas-buku.png` | Modul 05 | Laci, brankas, buku |
 | `modul-05-data-lokal/images/analogi-surat-json.png` | Modul 05 | Surat JSON vs object Dart |
-| Tampilan DartPad resmi | Modul 00–05 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `modul-06-firebase/images/analogi-excel-lemari.png` | Modul 06 | SQL (Excel) vs NoSQL (lemari) |
+| `modul-06-firebase/images/analogi-lemari-map-kertas.png` | Modul 06 | Koleksi dan dokumen Firestore |
+| `modul-06-firebase/images/analogi-lomba-kasir.png` | Modul 06 | Lomba stok vs transaksi kasir |
+| Tampilan DartPad resmi | Modul 00–06 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -79,5 +82,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Siklus hidup app | [https://docs.flutter.dev/flutter-for/android-devs](https://docs.flutter.dev/flutter-for/android-devs) | Dokumentasi resmi |
 | Extended controls emulator Android | [https://developer.android.com/studio/run/emulator-extended-controls](https://developer.android.com/studio/run/emulator-extended-controls) | Dokumentasi Android Developers |
 | Drift | [https://drift.simonbinder.eu](https://drift.simonbinder.eu) | Dokumentasi paket Drift |
+| Tambah Firebase ke Flutter | [https://firebase.google.com/docs/flutter/setup](https://firebase.google.com/docs/flutter/setup) | Dokumentasi Firebase / FlutterFire |
+| Cloud Firestore | [https://firebase.google.com/docs/firestore](https://firebase.google.com/docs/firestore) | Dokumentasi Firebase |
+| Firestore Security Rules | [https://firebase.google.com/docs/firestore/security/get-started](https://firebase.google.com/docs/firestore/security/get-started) | Dokumentasi Firebase |
+| Cloud Storage | [https://firebase.google.com/docs/storage](https://firebase.google.com/docs/storage) | Dokumentasi Firebase |
+| Cloud Functions | [https://firebase.google.com/docs/functions](https://firebase.google.com/docs/functions) | Dokumentasi Firebase |
+| Harga Firebase | [https://firebase.google.com/pricing](https://firebase.google.com/pricing) | Halaman harga resmi |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
