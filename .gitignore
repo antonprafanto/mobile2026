@@ -16,6 +16,9 @@ build/
 .flutter-plugins-dependencies
 *.iml
 
+# Node (backend mini Modul 07)
+node_modules/
+
 # Rahasia — jangan pernah diunggah
 *.jks
 *.keystore

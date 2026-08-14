@@ -49,7 +49,8 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [modul-04-state](modul-04-state/README.md) | setState, Provider, FutureBuilder |
 | [modul-05-data-lokal](modul-05-data-lokal/README.md) | SharedPreferences, file, SQLite, offline |
 | [modul-06-firebase](modul-06-firebase/README.md) | Firestore, rules, Storage, listener realtime |
-| modul-07 … modul-11 | Menyusul sesuai silabus |
+| [modul-07-rest](modul-07-rest/README.md) | HTTP, JSON, `dio`, token, backend mini + deploy |
+| modul-08 … modul-11 | Menyusul sesuai silabus |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
 Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).

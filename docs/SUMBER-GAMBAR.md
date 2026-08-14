@@ -35,7 +35,10 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-06-firebase/images/analogi-excel-lemari.png` | Modul 06 | SQL (Excel) vs NoSQL (lemari) |
 | `modul-06-firebase/images/analogi-lemari-map-kertas.png` | Modul 06 | Koleksi dan dokumen Firestore |
 | `modul-06-firebase/images/analogi-stok-kasir.png` | Modul 06 | Lomba stok vs transaksi kasir |
-| Tampilan DartPad resmi | Modul 00–06 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `modul-07-rest/images/analogi-empat-pesan.png` | Modul 07 | GET / POST / PUT / DELETE (pelayan) |
+| `modul-07-rest/images/analogi-kartu-tamu.png` | Modul 07 | Token sebagai kartu tamu vs pintu server |
+| `modul-07-rest/images/analogi-satu-kardus.png` | Modul 07 | Pagination: satu kardus vs gudang |
+| Tampilan DartPad resmi | Modul 00–07 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -88,5 +91,24 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Cloud Storage | [https://firebase.google.com/docs/storage](https://firebase.google.com/docs/storage) | Dokumentasi Firebase |
 | Cloud Functions | [https://firebase.google.com/docs/functions](https://firebase.google.com/docs/functions) | Dokumentasi Firebase |
 | Harga Firebase | [https://firebase.google.com/pricing](https://firebase.google.com/pricing) | Halaman harga resmi |
+| HTTP methods (MDN) | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) | Dokumentasi MDN |
+| HTTP status (MDN) | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) | Dokumentasi MDN |
+| CORS (MDN) | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) | Dokumentasi MDN |
+| Fetch data | [https://docs.flutter.dev/cookbook/networking/fetch-data](https://docs.flutter.dev/cookbook/networking/fetch-data) | Cookbook resmi |
+| Authenticated requests | [https://docs.flutter.dev/cookbook/networking/authenticated-requests](https://docs.flutter.dev/cookbook/networking/authenticated-requests) | Cookbook resmi |
+| `dio` | [https://pub.dev/packages/dio](https://pub.dev/packages/dio) | Paket komunitas; standar silabus |
+| `http` | [https://pub.dev/packages/http](https://pub.dev/packages/http) | Paket Dart team; ada di DartPad |
+| Environment declarations | [https://dart.dev/guides/environment-declarations](https://dart.dev/guides/environment-declarations) | `--dart-define` / `fromEnvironment` |
+| JSONPlaceholder | [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) | API uji publik |
+| DummyJSON | [https://dummyjson.com/docs/products](https://dummyjson.com/docs/products) | API uji publik + pagination |
+| TVmaze API | [https://www.tvmaze.com/api](https://www.tvmaze.com/api) | API publik tanpa kunci; mini proyek |
+| Thunder Client | [https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) | Ekstensi VS Code |
+| Postman | [https://www.postman.com/](https://www.postman.com/) | Alat tes HTTP |
+| Node.js | [https://nodejs.org](https://nodejs.org) | Runtime backend mini |
+| Express | [https://expressjs.com/](https://expressjs.com/) | Framework HTTP Node |
+| Cleartext HTTP | [https://developer.android.com/privacy-and-security/risks/cleartext-communications](https://developer.android.com/privacy-and-security/risks/cleartext-communications) | Dokumentasi Android |
+| Emulator networking | [https://developer.android.com/studio/run/emulator-networking](https://developer.android.com/studio/run/emulator-networking) | `10.0.2.2` |
+| Deploy Node di Render | [https://render.com/docs/deploy-node-express-app](https://render.com/docs/deploy-node-express-app) | Dokumentasi Render |
+| Railway | [https://docs.railway.app](https://docs.railway.app/) | Alternatif deploy |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
