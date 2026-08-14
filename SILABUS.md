@@ -63,6 +63,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Modul 05: plugin HP hanya jalur B; JSON `fromJson` di DartPad; mini proyek SharedPreferences + banner offline; SQLite lewat `sqflite` (cookbook resmi), Drift hanya pengenalan | Plugin tidak ada di DartPad; Drift butuh `build_runner` — terlalu berat untuk 2 sesi |
 | 14 Agu 2026 | Audit GitHub Modul 05: mermaid online/offline tanpa id `Online`/`Offline`; caption DartPad tema gelap; analogi JSON + jeda; langkah mini proyek; sitasi JSON Flutter + emulator Android | Diagram LR sempat spinner di GitHub; foto DartPad gelap terasa seperti gambar rusak; file foto di silabus belum disebut |
 | 14 Agu 2026 | Audit GitHub Modul 02: PNG `layout-1.png` docs.flutter.dev diganti analogi Foto/Nama/Tombol + tautan tutorial; mermaid TB; caption DartPad tema gelap | Hotlink layout resmi tampil kotak merah di GitHub |
+| 14 Agu 2026 | Analogi Stack Modul 02: Foto dan Lencana menumpuk, bukan berjajar | Di GitHub, dua kotak berjajar terasa seperti Row, padahal teksnya Stack |
 
 ---
 

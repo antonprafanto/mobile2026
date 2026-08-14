@@ -197,14 +197,14 @@ State yang lebih rapi (Provider) ada di **Modul 04**. Di sini cukup `setState`.
 
 <img src="images/analogi-stack.png" alt="Dua kotak: Foto dan Lencana" width="720">
 
-*Ilustrasi asli materi mobile2026. Stack: foto di bawah, lencana di atasnya. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Stack: foto di belakang, lencana menumpuk di sudut. Bukan Row — Row berjajar, Stack menumpuk. Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
   Column --> Row
   Column --> Bio
   Row --> Foto
-  Row --> Nama["Nama plus Expanded"]
+  Row --> Nama["Nama (Expanded)"]
 ```
 
 Halaman kartu biasanya tiga bagian: foto, nama, tombol.
