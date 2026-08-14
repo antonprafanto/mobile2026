@@ -42,7 +42,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 
 | Jenis | Tanda | Caranya |
 | --- | --- | --- |
-| **Berkas lengkap** | Ada `import` dan `void main()` | Tempel utuh, lalu **Run** (alat yang disebut di kotak uji) |
+| **Berkas lengkap** | Ada `void main()` (plus `import` kalau pakai paket) | Tempel utuh, lalu **Run** (alat yang disebut di kotak uji) |
 | **Cuplikan** | Hanya potongan | Jangan di-Run sendirian |
 
 ### Pola uji A — DartPad
@@ -219,12 +219,12 @@ Kalau Gradle merona soal `minSdk`: baca pesan di terminal, naikkan sesuai angka 
 | Analogi | Firestore |
 | --- | --- |
 | **Lemari** | database |
-| **Map** | koleksi (`tamu`, `produk`) |
-| **Kertas** | dokumen (satu ID, isi `Map`) |
+| **Map** | koleksi (`tamu`, `produk`) — *map* di sini = **folder kertas**, bukan tipe `Map` di Dart |
+| **Kertas** | dokumen (satu ID; isinya `Map` Dart) |
 
 <img src="images/analogi-lemari-map-kertas.png" alt="Tiga panel: Lemari, Map, dan Kertas" width="720">
 
-*Ilustrasi asli materi mobile2026. Lemari → map → kertas. Di Firestore: database → koleksi → dokumen. Penjelasan ada di tabel.*
+*Ilustrasi asli materi mobile2026. Lemari → map (folder) → kertas. Di Firestore: database → koleksi → dokumen. Kata **map** di analogi = folder, jangan tertukar dengan `Map` Dart.*
 
 ```mermaid
 flowchart TB
@@ -234,7 +234,7 @@ flowchart TB
 
 ID dokumen bisa dibuat otomatis (`.add`) atau Anda pilih (`.doc('u1')`). Field di kertas tidak wajib sama antar dokumen — itu sifat lemari, bukan Excel.
 
-Sumber konsep: [Cloud Firestore](https://firebase.google.com/docs/firestore).
+Sumber konsep: [Cloud Firestore](https://firebase.google.com/docs/firestore). Model data (koleksi & dokumen) ada di [Cloud Firestore Data model](https://firebase.google.com/docs/firestore/data-model).
 
 ---
 
@@ -250,6 +250,8 @@ CRUD = Create, Read, Update, Delete. Paket: `cloud_firestore`.
 ```powershell
 flutter pub add cloud_firestore
 ```
+
+| **Kalau berhasil** | `pubspec.yaml` memuat `cloud_firestore`. |
 
 Cuplikan (jalur B). Jangan di-Run di DartPad.
 
@@ -282,7 +284,11 @@ UI **jangan** mengetik `FirebaseFirestore.instance` di tengah tombol tanpa lapis
 
 ## 6. Query: `where`, `orderBy`, `limit`
 
-Jangan unduh seluruh lemari “supaya aman”. Minta yang perlu.
+Jangan unduh seluruh lemari “supaya aman”. Minta yang perlu. Ini **cuplikan jalur B**, jangan di-Run di DartPad.
+
+| | |
+| --- | --- |
+| **Buka** | VS Code, file layanan Firestore di proyek jalur B |
 
 ```dart
 final hasil = await FirebaseFirestore.instance
@@ -307,9 +313,9 @@ flowchart TB
 
 Dua orang menekan **Beli** pada stok 1. Kalau masing-masing baca “sisa 1” lalu tulis “sisa 0”, angka bisa rusak. Itu **lomba**. Kasir yang benar: satu per satu, baca-lalu-tulis dalam **transaksi**.
 
-<img src="images/analogi-lomba-kasir.png" alt="Dua panel: Lomba dan Kasir" width="720">
+<img src="images/analogi-stok-kasir.png" alt="Dua panel: Lomba merebut stok dan Kasir berantre" width="720">
 
-*Ilustrasi asli materi mobile2026. Lomba = dua tangan merebut sisa terakhir. Kasir = satu antrean, angka tidak rusak. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Lomba = dua pembeli merebut kotak terakhir. Kasir = satu antrean, angka tidak rusak. Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
@@ -377,6 +383,8 @@ Login email/Google yang lengkap ada di **Modul 08**. Di modul ini cukup **Anonym
 flutter pub add firebase_auth
 ```
 
+| **Kalau berhasil** | `pubspec.yaml` memuat `firebase_auth`. |
+
 Cuplikan (jalur B):
 
 ```dart
@@ -401,6 +409,8 @@ Firestore menyimpan angka dan teks. Foto besar masuk **Storage**.
 ```powershell
 flutter pub add firebase_storage
 ```
+
+| **Kalau berhasil** | `pubspec.yaml` memuat `firebase_storage`. |
 
 Cuplikan ide (jalur B). File sungguhan di HP memakai `path_provider` + `image_picker` (Modul 08 lebih dalam). Di sini yang penting: path di dapur, bukan di galeri HP.
 
@@ -599,10 +609,11 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | --- | --- |
 | `images/analogi-excel-lemari.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-lemari-map-kertas.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-lomba-kasir.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-stok-kasir.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Tambah Firebase ke Flutter | [firebase.google.com/docs/flutter/setup](https://firebase.google.com/docs/flutter/setup) |
 | Cloud Firestore | [firebase.google.com/docs/firestore](https://firebase.google.com/docs/firestore) |
+| Model data Firestore | [firebase.google.com/docs/firestore/data-model](https://firebase.google.com/docs/firestore/data-model) |
 | Security Rules | [firebase.google.com/docs/firestore/security/get-started](https://firebase.google.com/docs/firestore/security/get-started) |
 | Cloud Storage | [firebase.google.com/docs/storage](https://firebase.google.com/docs/storage) |
 | Cloud Functions | [firebase.google.com/docs/functions](https://firebase.google.com/docs/functions) |
