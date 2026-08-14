@@ -65,6 +65,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Audit GitHub Modul 02: PNG `layout-1.png` docs.flutter.dev diganti analogi Foto/Nama/Tombol + tautan tutorial; mermaid TB; caption DartPad tema gelap | Hotlink layout resmi tampil kotak merah di GitHub |
 | 14 Agu 2026 | Analogi Stack Modul 02: Foto dan Lencana menumpuk, bukan berjajar | Di GitHub, dua kotak berjajar terasa seperti Row, padahal teksnya Stack |
 | 14 Agu 2026 | Audit GitHub Modul 03: analogi Daftar/Form jadi tumpukan rapat; mermaid satu arah (bukan dua kotak tanpa panah); analogi Ketuk/Tahan; langkah mini proyek | PNG 720×373 pilar tinggi di GitHub gelap terasa rusak; diagram tanpa panah terasa error |
+| 14 Agu 2026 | Audit GitHub Modul 04: mermaid FutureBuilder TB; analogi Ingatan dipotong rapat; analogi Menunggu/Selesai/Gagal; langkah mini proyek; rumus UI=f(state) dan pohon widget toko disalin ke repo | Diagram LR sempat ruang kosong di GitHub; PNG Ingatan 720×311 terasa seperti pilar; hotlink docs.flutter.dev pernah kotak merah di modul lain |
 
 ---
 

@@ -24,7 +24,7 @@ flowchart TB
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart** (keluaran teks di Console). Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan jadi **layar aplikasi**.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** dan **mode Dart**. Kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak. Untuk modul ini, di pojok DartPad pilih mode **Flutter** supaya panel kanan jadi **layar aplikasi**.
 
 Paket `provider` **ada** di daftar paket DartPad ([Package and plugin support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support)). Jadi `import 'package:provider/provider.dart'` boleh di DartPad. Beda dengan `go_router` di Modul 03.
 
@@ -82,6 +82,12 @@ Dokumentasi Flutter membedakan dua jenis ([Ephemeral vs app state](https://docs.
 | **Bersama** (*app state*) | dipakai banyak halaman | isi keranjang, status login | Provider (materi ini) |
 
 Tidak ada garis ajaib. Tab bawah bisa tetap `setState`. Keranjang yang harus kelihatan di AppBar **dan** di halaman lain: itu state bersama.
+
+Flutter menggambar layar dari ingatan. Rumus resmi mereka: **UI = f(state)** — layar = hasil dari data saat ini. Data berubah, Flutter menggambar ulang. Bukan Anda yang menggeser angka di layar secara manual.
+
+<img src="images/ui-equals-function-of-state.png" alt="Rumus resmi Flutter: UI sama dengan fungsi dari state" width="720">
+
+Sumber gambar: [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Label di gambar bahasa Inggris; artinya sama dengan kalimat di atas. Berkas disalin ke repo ini supaya tidak bergantung pada hotlink docs.flutter.dev.
 
 Sumber konsep: [State management](https://docs.flutter.dev/data-and-backend/state-mgmt/intro). Flutter and the related logo are trademarks of Google LLC.
 
@@ -259,8 +265,14 @@ Pola ini jujur, tapi cepat berantakan: callback diturunkan lewat banyak lapisan.
 
 Kadang datanya **belum ada**. Unduhan, jeda palsu, detak waktu. Jangan membekukan layar. Tampilkan loading dulu.
 
+<img src="images/analogi-loading.png" alt="Tiga kotak: Menunggu, Selesai, dan Gagal" width="720">
+
+*Ilustrasi asli materi mobile2026. Tiga kondisi data yang belum ada: menunggu, selesai, gagal. Penjelasan ada di teks.*
+
+Artinya, layar punya tiga cabang: **Menunggu** (spinner), **Selesai** (data muncul), **Gagal** (pesan error). Jangan biarkan tombol “mati” tanpa keterangan.
+
 ```mermaid
-flowchart LR
+flowchart TB
   Mulai --> Menunggu
   Menunggu --> Selesai
   Menunggu --> Gagal
@@ -324,7 +336,7 @@ class UnduhPage extends StatelessWidget {
 
 **Kalau berhasil:** spinner dulu, lalu teks `Halo, Siti`.
 
-Jangan membuat `Future` baru di dalam `build()` untuk data sungguhan — `build` bisa dipanggil berkali-kali, unduhan ikut diulang. Di uji ini `ambilNama()` dipanggil dari `future:` supaya kelihatan; pola rapi: simpan `Future` di `State.initState`, atau (lebih baik untuk app) di ChangeNotifier. Cookbook: [Fetch data from the internet](https://docs.flutter.dev/cookbook/networking/fetch-data).
+Di uji ini `ambilNama()` ditulis langsung di `future:` supaya kelihatan. Di app sungguhan, jangan buat `Future` baru setiap `build` — layar bisa menggambar ulang berkali-kali, unduhan ikut diulang. Simpan Future di `State`, atau di ChangeNotifier. Cookbook: [Fetch data from the internet](https://docs.flutter.dev/cookbook/networking/fetch-data).
 
 ### Uji 4 — StreamBuilder (detik)
 
@@ -381,6 +393,12 @@ class DetikPage extends StatelessWidget {
 ## 5. Provider — pilihan utama materi ini
 
 Dokumentasi Flutter bilang: kalau tidak ada alasan kuat memilih yang lain, mulai dari paket `provider`. API-nya pendek, dan konsepnya (model → beri tahu pendengar → gambar ulang) dipakai pendekatan lain juga. Sumber: [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple).
+
+Contoh resmi Flutter memakai toko: katalog dan keranjang. Dua halaman itu saudara, bukan induk-anak. Nanti kotak Provider ditaruh **di atas keduanya**, supaya isi keranjang sama.
+
+<img src="images/simple-widget-tree.png" alt="Pohon widget contoh toko resmi Flutter: MyApp di atas, MyCatalog dan MyCart di bawah" width="621">
+
+Sumber gambar: [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Nama di gambar bahasa Inggris (`MyApp`, `MyCatalog`, `MyCart`). Di latihan kita: `MateriApp`, `KatalogPage`, `KeranjangPage`. Berkas disalin ke repo ini.
 
 Tiga nama yang perlu diingat:
 
@@ -487,6 +505,12 @@ MultiProvider(
 
 Sama-sama mengambil `Keranjang`. Bedanya: **siapa yang ikut rebuild**.
 
+Cara mengingatnya, santai saja:
+
+- `read` — ambil kotak **saat tombol diketuk**. Layar tidak otomatis ikut.
+- `watch` / `Consumer` — terus dengar. Data berubah, widget itu digambar ulang.
+- `Selector` / `select` — dengar **satu angka saja**, misalnya total. Yang lain tidak perlu ikut.
+
 | Cara | Kapan | Rebuild? |
 | --- | --- | --- |
 | `context.read<Keranjang>()` | di `onPressed`, panggil metode | tidak |
@@ -496,7 +520,7 @@ Sama-sama mengambil `Keranjang`. Bedanya: **siapa yang ikut rebuild**.
 
 `read` di dalam `build` (bukan di tombol) biasanya salah: layar tidak ikut update.
 
-### Uji 6 — hanya total yang di-watch
+### Uji 6 — hanya total yang dipantau
 
 | | |
 | --- | --- |
@@ -528,9 +552,8 @@ class MateriApp extends StatelessWidget {
 
 class Keranjang extends ChangeNotifier {
   int nasi = 0;
-  int teh = 0;
 
-  int get totalItem => nasi + teh;
+  int get totalItem => nasi;
 
   void tambahNasi() {
     nasi++;
@@ -682,6 +705,14 @@ class KatalogPalsu {
 ## Mini proyek: keranjang belanja (jalur A)
 
 Syarat silabus: tambah, kurang, total selalu benar, plus status loading palsu.
+
+Urutan kerja, jangan terbalik:
+
+1. Buka [dartpad.dev](https://dartpad.dev), pilih mode **Flutter** (bukan Dart).
+2. Tempel berkas lengkap di bawah, klik **Run**.
+3. Ketuk **Tambah** di katalog — badge keranjang naik, spinner singkat muncul.
+4. Buka ikon keranjang, tekan kurang, cek **Total** masih cocok dengan harga × jumlah.
+5. (Opsional, jalur B) Pecah ke folder `lib/ui/` dan `lib/data/` setelah `flutter pub add provider` di Terminal VS Code (`Ctrl + J`).
 
 | | |
 | --- | --- |
@@ -870,7 +901,7 @@ Di jalur B, pecah berkas itu ke `lib/data/keranjang.dart` dan `lib/ui/`. `Change
 | `provider` error di DartPad | mode **Dart**, bukan Flutter | Ganti mode Flutter |
 | `Could not find the correct Provider` | `read`/`watch` di luar `ChangeNotifierProvider` | Bungkus app di `main()` |
 | Tombol menambah, layar diam | `read` di `build`, atau lupa `notifyListeners()` | `watch` / `Consumer`; panggil `notifyListeners` |
-| Loading muter terus | `Future` baru di setiap `build` | Simpan Future di `State` atau di notifier |
+| Loading berputar terus | `Future` baru di setiap `build` | Simpan Future di `State` atau di notifier |
 | Total keranjang beda di dua halaman | dua object `Keranjang` | Satu `create:`, jangan `Keranjang()` di tiap halaman |
 | `flutter pub add` di DartPad | salah alat | Terminal VS Code, atau langsung import di DartPad |
 | Seluruh halaman rebuild berat | `watch` di puncak `Scaffold` | `Selector` / `Consumer` di widget yang berubah |
@@ -921,7 +952,10 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | Aset | Sumber |
 | --- | --- |
 | `images/analogi-ingatan.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-loading.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-folder.png` | Ilustrasi asli materi mobile2026 |
+| `images/ui-equals-function-of-state.png` | Disalin dari [docs.flutter.dev/.../ui-equals-function-of-state.png](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/ui-equals-function-of-state.png) — [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
+| `images/simple-widget-tree.png` | Disalin dari [docs.flutter.dev/.../simple-widget-tree.png](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/simple-widget-tree.png) — [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Pengantar state | [docs.flutter.dev/data-and-backend/state-mgmt/intro](https://docs.flutter.dev/data-and-backend/state-mgmt/intro) |
 | Ephemeral vs app state | [docs.flutter.dev/data-and-backend/state-mgmt/ephemeral-vs-app](https://docs.flutter.dev/data-and-backend/state-mgmt/ephemeral-vs-app) |
