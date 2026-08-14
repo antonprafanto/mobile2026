@@ -64,10 +64,12 @@ Analogi: tumpukan kertas. Halaman baru diletakkan **di atas**. Tombol kembali me
 
 *Ilustrasi asli materi mobile2026. Alur mini proyek: daftar catatan → form tambah. Penjelasan ada di teks.*
 
+Ilustrasi di atas: **push** (Daftar ke Form). Tombol kembali = **pop** (Form diangkat, Daftar kelihatan lagi).
+
 ```mermaid
-flowchart LR
-  Daftar --> Form
-  Form --> Daftar
+flowchart TB
+  Form["Form — kertas atas"]
+  Daftar["Daftar — kertas bawah"]
 ```
 
 Di Flutter SDK, satu “kertas” disebut **route**. `Navigator` menjaga tumpukannya. `go_router` mengatur tumpukan itu lewat URL (`/`, `/tambah`).

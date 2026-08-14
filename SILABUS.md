@@ -31,7 +31,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 2. Setiap perintah punya kotak: buka apa, ketik apa, apa tanda berhasil.
 3. Sintaks Dart diuji di [DartPad](https://dartpad.dev) dulu, kecuali topik itu memang membutuhkan emulator atau HP.
 4. Perintah `flutter` / `git` / `dart` lokal diketik di **Terminal VS Code** (`Ctrl + J`), bukan di DartPad, bukan di pencarian Windows.
-5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub. Label di dalam PNG harus cocok dengan keterangan di teks. Kanvas PNG dipotong rapat (sedikit padding putih) supaya di GitHub gelap tidak terlihat seperti gambar rusak.
+5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub. Label di dalam PNG harus cocok dengan keterangan di teks. Kanvas PNG dipotong rapat (sedikit padding putih) supaya di GitHub gelap tidak terlihat seperti gambar rusak. Diagram Mermaid **jangan bersiklus** (A→B dan B→A); GitHub sering menampilkan spinner.
 6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Alur langkah memakai diagram Mermaid, bukan infografis penuh kalimat.
 7. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap** (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan** agar tidak di-Run sendirian.
 
@@ -54,6 +54,7 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Modul 03: `go_router` hanya jalur B (VS Code) | `go_router` tidak ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) |
 | 14 Agu 2026 | Modul 03: tahan kembali form memakai `PopScope` di `Navigator`, `onExit` di `GoRoute` | Dokumentasi Flutter: `PopScope` tidak menahan rute *page-backed* |
 | 14 Agu 2026 | Uji PopScope Modul 03 dijadikan berkas lengkap DartPad | Cuplikan tanpa `main()` tidak bisa di-Run |
+| 14 Agu 2026 | Diagram Mermaid Modul 03 tidak boleh siklus (Daftar ↔ Form) | Di GitHub, siklus mermaid sering tampil sebagai spinner / gambar error |
 
 ---
 
