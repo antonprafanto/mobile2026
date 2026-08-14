@@ -33,9 +33,10 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 2. Setiap perintah punya kotak: buka apa, ketik apa, apa tanda berhasil.
 3. Sintaks Dart diuji di [DartPad](https://dartpad.dev) dulu, kecuali topik itu memang membutuhkan emulator atau HP.
 4. Perintah `flutter` / `git` / `dart` lokal diketik di **Terminal VS Code** (`Ctrl + J`), bukan di DartPad, bukan di pencarian Windows.
-5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Ilustrasi **tidak** meniru UI produk (DartPad, VS Code) karena teksnya pecah di GitHub. Label di dalam PNG harus cocok dengan keterangan di teks. Kanvas PNG dipotong rapat (sedikit padding putih) supaya di GitHub gelap tidak terlihat seperti gambar rusak. Diagram Mermaid **jangan bersiklus** (A→B dan B→A); GitHub sering menampilkan spinner.
-6. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Nada percakapan, bukan dokumen resmi. Alur langkah memakai diagram Mermaid, bukan infografis penuh kalimat.
-7. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap** (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan** agar tidak di-Run sendirian.
+5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Analogi memakai **ilustrasi benda** (kue, restoran, laci) dengan label singkat yang cocok dengan teks — bukan badge teks, bukan sketsa UI palsu (DartPad/VS Code). Hapus PNG yang hanya mengulang mermaid. Kanvas PNG dipotong rapat (~720 lebar) supaya di GitHub gelap tidak terlihat seperti pilar putih atau gambar rusak. Ganti nama berkas jika Preview GitHub masih menampilkan PNG lama (cache camo).
+6. Alur langkah memakai Mermaid `flowchart TB` (bukan `LR`), **jangan bersiklus**, label pendek. GitHub sering menampilkan spinner, celah kosong, atau teks terpotong (`JSON` jadi `JS`) jika aturan itu dilanggar.
+7. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Nada percakapan, bukan dokumen resmi. Di materi jangan memakai kata *pemula* atau *awam*.
+8. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap** (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan** agar tidak di-Run sendirian. Sel **Ketik** pada tabel alat jangan dikosongkan.
 
 ---
 
@@ -75,6 +76,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Audit GitHub Modul 00 (putaran 3): analogi restoran dan tiga lapisan memakai ikon, bukan badge teks | Badge HP/JSON/Server dan Tampilan/Logika/Data terasa datar |
 | 14 Agu 2026 | Audit GitHub Modul 05 (putaran 4): analogi laci/brankas/buku dan surat JSON memakai ikon; badge sinyal dan jeda dihapus | Badge teks mengulang mermaid; analogi benda tidak kelihatan |
 | 14 Agu 2026 | Audit GitHub Modul 01–04: analogi kue dipotong rapat; badge widget/Stack/kartu/navigasi/gestur/toko/loading/folder diganti ilustrasi | Badge teks datar; analogi folder tidak cocok dengan ruang tamu/catatan/kurir; kue 960×640 pilar putih |
+| 14 Agu 2026 | Pola modul dan aturan Cursor (`.cursor/rules/`) memuat koreksi GitHub: analogi ilustrasi, mermaid TB, sitasi, alat uji | Chat baru tidak otomatis ingat audit; baris “ilustrasi hanya label singkat” sudah usang |
 
 ---
 

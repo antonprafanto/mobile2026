@@ -1,0 +1,15 @@
+---
+description: Analogi, Mermaid, dan sitasi gambar agar tampil benar di GitHub
+alwaysApply: true
+---
+
+# Gambar dan diagram GitHub
+
+- Analogi = ilustrasi benda yang cocok dengan teks (kue, restoran, laci). **Bukan** badge teks berwarna. Label di PNG harus sama dengan caption.
+- Hapus PNG yang isinya sama dengan mermaid (dua kotak “Ada sinyal / Jeda” tidak perlu).
+- Jangan sketsa UI palsu (DartPad, VS Code, emulator). Foto resmi DartPad boleh; caption wajib: **tema gelap**, mode **Dart** vs **Flutter**.
+- PNG dipotong rapat, lebar ~720. Jangan kanvas 960×640 penuh putih, jangan PNG transparan di GitHub gelap (lubang hitam). Jangan hotlink aset docs.flutter.dev yang pernah 500 (`layout-1.png`).
+- Ganti **nama berkas** jika Preview GitHub masih menampilkan PNG lama (cache camo).
+- Mermaid: `flowchart TB` (bukan `LR`), **jangan siklus**, label pendek (`JSON` jangan terpotong jadi `JS`). Semua panah harus ada.
+- Sitasi di akhir modul + `docs/SUMBER-GAMBAR.md`. Logo Flutter tidak jadi elemen paling menonjol.
+- Contoh: Stack = foto + lencana menumpuk, bukan dua kotak berjajar (itu terasa seperti Row).

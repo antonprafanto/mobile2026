@@ -13,7 +13,7 @@ Logo resmi Flutter **tidak** dijadikan elemen paling menonjol di halaman (sesuai
 
 ## Ilustrasi asli
 
-Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus** pada 14 Agustus 2026: di GitHub tulisannya pecah dan terasa seperti error. Alur alat sekarang memakai diagram Mermaid. Ilustrasi hanya memakai label singkat; penjelasan ada di teks artikel.
+Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus** pada 14 Agustus 2026: di GitHub tulisannya pecah dan terasa seperti error. Alur alat memakai diagram Mermaid. Analogi memakai ilustrasi benda dengan label singkat yang cocok dengan teks — bukan badge berwarna yang mengulang mermaid. Penjelasan tetap di artikel, bukan di dalam PNG.
 
 | Berkas | Dipakai di | Keterangan |
 | --- | --- | --- |

@@ -1,0 +1,15 @@
+---
+description: Bahasa, alat uji, dan pola tiap modul materi mobile2026
+alwaysApply: true
+---
+
+# Penulisan modul
+
+- Sapaan **Anda**. EYD: **silakan** (bukan *silahkan*), imbuhan `di-` dirangkai, preposisi `di` dipisah. Nada percakapan, bukan dokumen resmi.
+- Di materi **jangan** tulis *pemula* atau *awam*. Ramah di penyampaian, bukan di label pembaca.
+- Tiap modul: tabel **Buka alat ini dulu**. Tiap perintah: buka apa, ketik apa, **Kalau berhasil**. Sel **Ketik** jangan kosong — isi “perintah di bawah” jika perintahnya di blok berikutnya.
+- Sintaks Dart: [dartpad.dev](https://dartpad.dev). Perintah `flutter` / `git` / `dart`: **Terminal VS Code** (`Ctrl+J`), bukan DartPad, bukan pencarian Windows.
+- Uji DartPad = berkas lengkap (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan**.
+- Dua jalur jika perlu: **A = DartPad**, **B = VS Code + emulator/HP**. Plugin, `go_router`, aset, Inspector = jalur B. `provider` boleh jalur A.
+- Mini proyek: langkah bernomor, urutan kerja jangan terbalik.
+- Disclaimer Flutter™ (merek Google LLC) di hub dan silabus. Windows → Android / Play Store; iOS butuh Mac.
