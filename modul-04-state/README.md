@@ -63,9 +63,9 @@ State bukan file di HP. Itu **Modul 05**. State di modul ini: angka, daftar, sta
 
 Analogi: toko. Halaman **Katalog** dan halaman **Keranjang** harus baca ingatan yang **sama**. Kalau masing-masing ingat sendiri, total belanja bisa beda.
 
-<img src="images/analogi-ingatan.png" alt="Tiga kotak: Katalog, Ingatan, Keranjang" width="720">
+<img src="images/analogi-toko.png" alt="Tiga peran toko: Katalog, Ingatan, Keranjang" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga peran: halaman katalog, ingatan bersama, halaman keranjang. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Katalog dan keranjang membaca ingatan yang sama. Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
@@ -265,9 +265,9 @@ Pola ini jujur, tapi cepat berantakan: callback diturunkan lewat banyak lapisan.
 
 Kadang datanya **belum ada**. Unduhan, jeda palsu, detak waktu. Jangan membekukan layar. Tampilkan loading dulu.
 
-<img src="images/analogi-loading.png" alt="Tiga kotak: Menunggu, Selesai, dan Gagal" width="720">
+<img src="images/analogi-tiga-cabang.png" alt="Tiga layar: Menunggu, Selesai, dan Gagal" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga kondisi data yang belum ada: menunggu, selesai, gagal. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Tiga cabang: menunggu (spinner), selesai (data muncul), gagal (pesan error). Penjelasan ada di teks.*
 
 Artinya, layar punya tiga cabang: **Menunggu** (spinner), **Selesai** (data muncul), **Gagal** (pesan error). Jangan biarkan tombol “mati” tanpa keterangan.
 
@@ -645,9 +645,9 @@ Kalau tempat kerja mewajibkan GetX, fondasi di sini tetap kepakai: state bersama
 
 Halaman jangan mengetik `http.get` di tengah tombol. Pisahkan tiga peran. Analogi: ruang tamu, buku catatan, dan kurir.
 
-<img src="images/analogi-folder.png" alt="Tiga kotak folder: ui, data, services" width="720">
+<img src="images/analogi-ruang-kurir.png" alt="Tiga analogi folder: ruang tamu, catatan, kurir" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga folder: tampilan, data, layanan. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Ruang tamu (`ui`), buku catatan (`data`), kurir (`services`). Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
@@ -958,9 +958,9 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 | Aset | Sumber |
 | --- | --- |
-| `images/analogi-ingatan.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-loading.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-folder.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-toko.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-tiga-cabang.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-ruang-kurir.png` | Ilustrasi asli materi mobile2026 |
 | `images/ui-equals-function-of-state.png` | Disalin dari [docs.flutter.dev/.../ui-equals-function-of-state.png](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/ui-equals-function-of-state.png) — [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Pohon widget toko resmi | Halaman [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) — Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). PNG tidak ditempel di artikel (kartu terlalu tinggi di GitHub gelap). |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |

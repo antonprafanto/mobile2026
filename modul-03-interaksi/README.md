@@ -61,7 +61,7 @@ Paket `go_router` **tidak** ada di daftar paket DartPad ([Package and plugin sup
 
 Analogi: tumpukan kertas. Halaman baru diletakkan **di atas**. Tombol kembali mengangkat kertas paling atas.
 
-<img src="images/analogi-daftar-form.png" alt="Form menumpuk di atas halaman Daftar" width="720">
+<img src="images/analogi-tumpukan-kertas.png" alt="Form menumpuk di atas halaman Daftar" width="720">
 
 *Ilustrasi asli materi mobile2026. Form menumpuk di atas Daftar (push). Tombol kembali mengangkat Form (pop). Penjelasan ada di teks.*
 
@@ -85,9 +85,9 @@ Dokumentasi Flutter sendiri bilang: untuk app baru, jangan pakai `Navigator.push
 | `InkWell` | ketuk dengan riak tinta; butuh widget `Material` di atasnya |
 | `GestureDetector` | ketuk, tahan lama, geser; tanpa riak |
 
-<img src="images/analogi-ketuk-tahan.png" alt="Dua kotak: Ketuk dan Tahan" width="720">
+<img src="images/analogi-gestur.png" alt="Dua gestur: Ketuk dan Tahan" width="720">
 
-*Ilustrasi asli materi mobile2026. Dua gestur: ketuk sebentar, tahan lama. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Ketuk sebentar (`onTap`) vs tahan lama (`onLongPress`). Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
@@ -1195,8 +1195,8 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 | Aset | Sumber |
 | --- | --- |
-| `images/analogi-daftar-form.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-ketuk-tahan.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-tumpukan-kertas.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-gestur.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Navigasi | [docs.flutter.dev/ui/navigation](https://docs.flutter.dev/ui/navigation) |
 | Validasi form | [docs.flutter.dev/cookbook/forms/validation](https://docs.flutter.dev/cookbook/forms/validation) |

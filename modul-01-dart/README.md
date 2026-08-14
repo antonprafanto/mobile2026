@@ -18,15 +18,15 @@ Hampir semua contoh di sini dicoba di **DartPad**, supaya hasilnya kelihatan tan
 | 4 | (Opsional) Terminal VS Code | `dart` lokal, setelah Modul 00 selesai |
 
 ```mermaid
-flowchart LR
-  A["1. Buka dartpad.dev"] --> B["2. Mode Dart"]
-  B --> C["3. Tempel kode + Run"]
-  C --> D["4. Baca Console"]
+flowchart TB
+  A["1. DartPad"] --> B["2. Mode Dart"]
+  B --> C["3. Run"]
+  C --> D["4. Console"]
 ```
 
-<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad menjalankan program Halo Dunia" width="720">
+<img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Buka alatnya di [dartpad.dev](https://dartpad.dev), jangan meniru sketsa palsu.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** dan **mode Dart**. Kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak.
 
 ### Pola uji (ulangi setiap contoh)
 
@@ -266,9 +266,9 @@ Jangan membiasakan `nama!` (tanda seru) kecuali Anda benar-benar yakin. Itu cara
 
 **Class** = cetakan. **Object** (instance) = hasil cetakan.
 
-![Cetakan kue sebagai class, hasil kue sebagai object](images/analogi-class-object.png)
+<img src="images/analogi-cetakan-kue.png" alt="Cetakan kue sebagai class, hasil kue sebagai object" width="720">
 
-*Ilustrasi asli materi mobile2026. Class = cetakan. Object = kue yang sudah jadi.*
+*Ilustrasi asli materi mobile2026. Class = cetakan. Object = kue yang sudah jadi. Satu cetakan, banyak rasa.*
 
 ```dart
 class Kue {
@@ -543,7 +543,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 | Aset | Sumber |
 | --- | --- |
-| `images/analogi-class-object.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-cetakan-kue.png` | Ilustrasi asli materi mobile2026 |
 | Alur uji DartPad | Mermaid di berkas ini; alat: [dartpad.dev](https://dartpad.dev) |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Bahasa Dart | [dart.dev/language](https://dart.dev/language) |

@@ -66,9 +66,9 @@ flowchart TB
 
 Di Flutter SDK, tombol, teks, padding, bahkan seluruh aplikasi adalah **widget**: potongan UI yang bisa disusun.
 
-<img src="images/analogi-widget-lego.png" alt="Tiga balok widget berlabel Text, Icon, dan Container" width="720">
+<img src="images/analogi-tiga-widget.png" alt="Tiga balok widget: Text, Icon, dan Container" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga contoh widget yang sering dipakai: `Text`, `Icon`, dan `Container`. Penjelasan ada di teks, bukan di dalam gambar.*
+*Ilustrasi asli materi mobile2026. Tiga contoh widget: `Text`, `Icon`, dan `Container`. Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
@@ -195,7 +195,7 @@ State yang lebih rapi (Provider) ada di **Modul 04**. Di sini cukup `setState`.
 - `Expanded` = “ambil sisa ruang” di dalam Row/Column.
 - `Stack` = tumpuk bertumpuk (foto + lencana di sudut).
 
-<img src="images/analogi-stack.png" alt="Dua kotak: Foto dan Lencana" width="720">
+<img src="images/analogi-foto-lencana.png" alt="Foto dengan lencana menumpuk di sudut" width="720">
 
 *Ilustrasi asli materi mobile2026. Stack: foto di belakang, lencana menumpuk di sudut. Bukan Row — Row berjajar, Stack menumpuk. Penjelasan ada di teks.*
 
@@ -209,9 +209,9 @@ flowchart TB
 
 Halaman kartu biasanya tiga bagian: foto, nama, tombol.
 
-<img src="images/analogi-layout-kartu.png" alt="Tiga kotak: Foto, Nama, dan Tombol" width="720">
+<img src="images/analogi-kartu-profil.png" alt="Kartu: foto, nama, dan tombol tersusun vertikal" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga bagian halaman: foto, nama, tombol. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Tiga bagian kartu: foto, nama, tombol (tersusun dari atas ke bawah, seperti Column). Penjelasan ada di teks.*
 
 Contoh resmi Flutter (danau + baris CALL / ROUTE / SHARE) ada di [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial). Foto di tutorial itu: [Dino Reichmuth di Unsplash](https://unsplash.com/@dinoreichmuth) ([Unsplash License](https://unsplash.com/license)). Konsep layout: [Layouts in Flutter](https://docs.flutter.dev/ui/layout) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Flutter and the related logo are trademarks of Google LLC.
 
@@ -865,9 +865,9 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 | Aset | Sumber |
 | --- | --- |
-| `images/analogi-widget-lego.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-stack.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-layout-kartu.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-tiga-widget.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-foto-lencana.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-kartu-profil.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad (mode Dart) | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Tutorial layout resmi | [docs.flutter.dev/ui/layout/tutorial](https://docs.flutter.dev/ui/layout/tutorial) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)); foto danau di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth) ([Unsplash License](https://unsplash.com/license)) |
 | Flutter Inspector | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) dari [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |

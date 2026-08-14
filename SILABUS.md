@@ -74,6 +74,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Audit GitHub Modul 00 (putaran 2): analogi HP/JSON/Server diganti nama berkas | Pratinjau GitHub masih menampilkan PNG lama 960×640 (cache camo) |
 | 14 Agu 2026 | Audit GitHub Modul 00 (putaran 3): analogi restoran dan tiga lapisan memakai ikon, bukan badge teks | Badge HP/JSON/Server dan Tampilan/Logika/Data terasa datar |
 | 14 Agu 2026 | Audit GitHub Modul 05 (putaran 4): analogi laci/brankas/buku dan surat JSON memakai ikon; badge sinyal dan jeda dihapus | Badge teks mengulang mermaid; analogi benda tidak kelihatan |
+| 14 Agu 2026 | Audit GitHub Modul 01–04: analogi kue dipotong rapat; badge widget/Stack/kartu/navigasi/gestur/toko/loading/folder diganti ilustrasi | Badge teks datar; analogi folder tidak cocok dengan ruang tamu/catatan/kurir; kue 960×640 pilar putih |
 
 ---
 

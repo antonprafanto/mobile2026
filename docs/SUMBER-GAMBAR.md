@@ -19,15 +19,15 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | --- | --- | --- |
 | `modul-00-persiapan/images/analogi-restoran.png` | Modul 00, README | Analogi restoran: HP, JSON, server |
 | `modul-00-persiapan/images/analogi-tiga-lapisan.png` | Modul 00, README | Tampilan, logika, data |
-| `modul-01-dart/images/analogi-class-object.png` | Modul 01 | Class vs object |
-| `modul-02-ui/images/analogi-widget-lego.png` | Modul 02 | Tiga balok berlabel `Text`, `Icon`, `Container` |
-| `modul-02-ui/images/analogi-stack.png` | Modul 02 | Foto dan lencana (`Stack`) |
-| `modul-02-ui/images/analogi-layout-kartu.png` | Modul 02 | Foto, nama, tombol |
-| `modul-03-interaksi/images/analogi-daftar-form.png` | Modul 03 | Form menumpuk di atas Daftar |
-| `modul-03-interaksi/images/analogi-ketuk-tahan.png` | Modul 03 | Ketuk / tahan |
-| `modul-04-state/images/analogi-ingatan.png` | Modul 04 | Katalog, ingatan bersama, keranjang |
-| `modul-04-state/images/analogi-loading.png` | Modul 04 | Menunggu / selesai / gagal |
-| `modul-04-state/images/analogi-folder.png` | Modul 04 | Folder `ui`, `data`, `services` |
+| `modul-01-dart/images/analogi-cetakan-kue.png` | Modul 01 | Class vs object (cetakan vs kue) |
+| `modul-02-ui/images/analogi-tiga-widget.png` | Modul 02 | Tiga balok widget: `Text`, `Icon`, `Container` |
+| `modul-02-ui/images/analogi-foto-lencana.png` | Modul 02 | Foto dan lencana (`Stack`) |
+| `modul-02-ui/images/analogi-kartu-profil.png` | Modul 02 | Foto, nama, tombol |
+| `modul-03-interaksi/images/analogi-tumpukan-kertas.png` | Modul 03 | Form menumpuk di atas Daftar |
+| `modul-03-interaksi/images/analogi-gestur.png` | Modul 03 | Ketuk / tahan |
+| `modul-04-state/images/analogi-toko.png` | Modul 04 | Katalog, ingatan bersama, keranjang |
+| `modul-04-state/images/analogi-tiga-cabang.png` | Modul 04 | Menunggu / selesai / gagal |
+| `modul-04-state/images/analogi-ruang-kurir.png` | Modul 04 | Ruang tamu, catatan, kurir (`ui` / `data` / `services`) |
 | `modul-04-state/images/ui-equals-function-of-state.png` | Modul 04 | Rumus UI = f(state), disalin dari [docs.flutter.dev](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/ui-equals-function-of-state.png) — [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Pohon widget toko resmi | Modul 04 | Halaman [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG tidak di-embed (kartu terlalu tinggi di GitHub gelap, pola sama dengan `layout-1.png` Modul 02). |
 | `modul-05-data-lokal/images/analogi-laci-brankas-buku.png` | Modul 05 | Laci, brankas, buku |
