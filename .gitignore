@@ -23,3 +23,6 @@ key.properties
 .env
 google-services.json
 GoogleService-Info.plist
+
+# Catatan kerja penulis — bukan bahan kursus
+.cursor/TODO.md

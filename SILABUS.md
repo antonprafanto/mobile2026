@@ -33,50 +33,9 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 2. Setiap perintah punya kotak: buka apa, ketik apa, apa tanda berhasil.
 3. Sintaks Dart diuji di [DartPad](https://dartpad.dev) dulu, kecuali topik itu memang membutuhkan emulator atau HP.
 4. Perintah `flutter` / `git` / `dart` lokal diketik di **Terminal VS Code** (`Ctrl + J`), bukan di DartPad, bukan di pencarian Windows.
-5. Gambar punya sitasi di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md). Analogi memakai **ilustrasi benda** (kue, restoran, laci) dengan label singkat yang cocok dengan teks — bukan badge teks, bukan sketsa UI palsu (DartPad/VS Code). Hapus PNG yang hanya mengulang mermaid. Kanvas PNG dipotong rapat (~720 lebar) supaya di GitHub gelap tidak terlihat seperti pilar putih atau gambar rusak. Ganti nama berkas jika Preview GitHub masih menampilkan PNG lama (cache camo).
-6. Alur langkah memakai Mermaid `flowchart TB` (bukan `LR`), **jangan bersiklus**, label pendek. GitHub sering menampilkan spinner, celah kosong, atau teks terpotong (`JSON` jadi `JS`) jika aturan itu dilanggar.
-7. EYD: *silakan* (bukan *silahkan*), imbuhan *di-* dirangkai, preposisi *di* dipisah, sapaan **Anda**. Nada percakapan, bukan dokumen resmi. Di materi jangan memakai kata *pemula* atau *awam*.
-8. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap** (`import` + `void main()`). Potongan tanpa `main()` ditandai **cuplikan** agar tidak di-Run sendirian. Sel **Ketik** pada tabel alat jangan dikosongkan.
-
----
-
-## Pembaruan silabus saat materi ditulis
-
-| Tanggal | Perubahan | Alasan |
-| --- | --- | --- |
-| 14 Agu 2026 | Instalasi Flutter SDK di Windows memakai alur **VS Code → Download SDK** sebagai cara utama | Sesuai [dokumentasi resmi](https://docs.flutter.dev/install/with-vs-code) |
-| 14 Agu 2026 | DartPad menjadi alat uji sintaks pertama (Modul 00 bagian 3, seluruh Modul 01) | Pembaca bisa menjalankan kode sebelum emulator siap |
-| 14 Agu 2026 | Target Android API mengikuti dokumen Flutter (API 36 pada saat penulisan) | [Android setup](https://docs.flutter.dev/platform-integration/android/setup) |
-| 14 Agu 2026 | Visual Studio (C++) tidak wajib untuk jalur materi ini | Materi menargetkan Android, bukan desktop Windows |
-| 14 Agu 2026 | Setiap modul wajib tabel alat + sitasi gambar | Permintaan kejelasan alat uji dan sumber gambar |
-| 14 Agu 2026 | Sketsa UI palsu (DartPad/VS Code/emulator) dihapus; alur memakai Mermaid; ilustrasi hanya label singkat | Di GitHub, teks dalam PNG pecah dan terasa error |
-| 14 Agu 2026 | Ditambah gambar resmi DartPad dari dart.dev (CC BY 4.0) | Supaya tombol Run/editor tidak ditebak dari sketsa |
-| 14 Agu 2026 | Modul 02: dua jalur uji (DartPad Flutter vs VS Code) | Aset, Inspector, dan google_fonts tidak jalan di DartPad |
-| 14 Agu 2026 | Audit GitHub Modul 02: label Text/Icon/Container pada ilustrasi; uji berupa berkas lengkap; sitasi layout resmi + Inspector + Lorem Picsum | Caption tidak cocok dengan gambar; cuplikan tanpa `main()` tidak bisa di-Run; perlu gambar resmi berlisensi |
-| 14 Agu 2026 | Ilustrasi widget Modul 02 dipotong rapat; overflow merujuk [Common Flutter errors](https://docs.flutter.dev/testing/common-errors) | Kanvas 960×640 penuh putih di GitHub terasa seperti gambar error |
-| 14 Agu 2026 | Modul 03: `go_router` hanya jalur B (VS Code) | `go_router` tidak ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) |
-| 14 Agu 2026 | Modul 03: tahan kembali form memakai `PopScope` di `Navigator`, `onExit` di `GoRoute` | Dokumentasi Flutter: `PopScope` tidak menahan rute *page-backed* |
-| 14 Agu 2026 | Uji PopScope Modul 03 dijadikan berkas lengkap DartPad | Cuplikan tanpa `main()` tidak bisa di-Run |
-| 14 Agu 2026 | Diagram Mermaid Modul 03 tidak boleh siklus (Daftar ↔ Form) | Di GitHub, siklus mermaid sering tampil sebagai spinner / gambar error |
-| 14 Agu 2026 | Nada bahasa dilonggarkan; EYD dan sapaan **Anda** tetap | Terlalu kaku kalau dibaca seperti dokumen resmi |
-| 14 Agu 2026 | Modul 04: `provider` diuji di DartPad (jalur A); folder `ui/data/services` di jalur B | `provider` ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support); beda dengan `go_router` |
-| 14 Agu 2026 | Ilustrasi folder Modul 04 dipotong rapat (kartu mendatar, bukan pilar tinggi) | PNG tinggi 720×474 di GitHub gelap terasa seperti gambar rusak |
-| 14 Agu 2026 | Modul 05: plugin HP hanya jalur B; JSON `fromJson` di DartPad; mini proyek SharedPreferences + banner offline; SQLite lewat `sqflite` (cookbook resmi), Drift hanya pengenalan | Plugin tidak ada di DartPad; Drift butuh `build_runner` — terlalu berat untuk 2 sesi |
-| 14 Agu 2026 | Audit GitHub Modul 05: mermaid online/offline tanpa id `Online`/`Offline`; caption DartPad tema gelap; analogi JSON + jeda; langkah mini proyek; sitasi JSON Flutter + emulator Android | Diagram LR sempat spinner di GitHub; foto DartPad gelap terasa seperti gambar rusak; file foto di silabus belum disebut |
-| 14 Agu 2026 | Audit GitHub Modul 02: PNG `layout-1.png` docs.flutter.dev diganti analogi Foto/Nama/Tombol + tautan tutorial; mermaid TB; caption DartPad tema gelap | Hotlink layout resmi tampil kotak merah di GitHub |
-| 14 Agu 2026 | Analogi Stack Modul 02: Foto dan Lencana menumpuk, bukan berjajar | Di GitHub, dua kotak berjajar terasa seperti Row, padahal teksnya Stack |
-| 14 Agu 2026 | Audit GitHub Modul 03: analogi Daftar/Form jadi tumpukan rapat; mermaid satu arah (bukan dua kotak tanpa panah); analogi Ketuk/Tahan; langkah mini proyek | PNG 720×373 pilar tinggi di GitHub gelap terasa rusak; diagram tanpa panah terasa error |
-| 14 Agu 2026 | Audit GitHub Modul 04: mermaid FutureBuilder TB; analogi Ingatan dipotong rapat; analogi Menunggu/Selesai/Gagal; langkah mini proyek; rumus UI=f(state) dan pohon widget toko disalin ke repo | Diagram LR sempat ruang kosong di GitHub; PNG Ingatan 720×311 terasa seperti pilar; hotlink docs.flutter.dev pernah kotak merah di modul lain |
-| 14 Agu 2026 | Audit GitHub Modul 04 (putaran 2): diagram resmi Flutter diletakkan di kartu terang; mermaid pohon MateriApp/Katalog/Keranjang | PNG resmi transparan 78–90% di GitHub gelap terasa seperti lubang hitam kosong |
-| 14 Agu 2026 | Audit GitHub Modul 04 (putaran 3): PNG pohon widget resmi tidak di-embed; tautan ke halaman Flutter + mermaid lokal | Kartu 495×595 terasa pilar putih; kotak `MyApp` terpotong di tepi atas |
-| 14 Agu 2026 | Audit GitHub Modul 05 (putaran 2): mermaid JSON dipendekkan; analogi sinyal memakai label Indonesia; analogi Jeda/Lanjut dipotong rapat | Rantai mermaid 5 kotak tampil celah kosong di GitHub; PNG bertuliskan Online/Offline tidak cocok dengan teks |
-| 14 Agu 2026 | Audit GitHub Modul 05 (putaran 3): label mermaid dipendekkan; sel Ketik tidak dikosongkan | Di GitHub, teks panjang di kotak mermaid terpotong (`JSON` jadi `JS`); sel kosong terasa bolong |
-| 14 Agu 2026 | Audit GitHub Modul 00: analogi HP/JSON/Server dan tiga lapisan dipotong rapat; mermaid TB; caption DartPad tema gelap; langkah mini proyek | PNG 960×640 pilar putih di GitHub gelap; diagram LR rawan celah kosong |
-| 14 Agu 2026 | Audit GitHub Modul 00 (putaran 2): analogi HP/JSON/Server diganti nama berkas | Pratinjau GitHub masih menampilkan PNG lama 960×640 (cache camo) |
-| 14 Agu 2026 | Audit GitHub Modul 00 (putaran 3): analogi restoran dan tiga lapisan memakai ikon, bukan badge teks | Badge HP/JSON/Server dan Tampilan/Logika/Data terasa datar |
-| 14 Agu 2026 | Audit GitHub Modul 05 (putaran 4): analogi laci/brankas/buku dan surat JSON memakai ikon; badge sinyal dan jeda dihapus | Badge teks mengulang mermaid; analogi benda tidak kelihatan |
-| 14 Agu 2026 | Audit GitHub Modul 01–04: analogi kue dipotong rapat; badge widget/Stack/kartu/navigasi/gestur/toko/loading/folder diganti ilustrasi | Badge teks datar; analogi folder tidak cocok dengan ruang tamu/catatan/kurir; kue 960×640 pilar putih |
-| 14 Agu 2026 | Pola modul dan aturan Cursor (`.cursor/rules/`) memuat koreksi GitHub: analogi ilustrasi, mermaid TB, sitasi, alat uji | Chat baru tidak otomatis ingat audit; baris “ilustrasi hanya label singkat” sudah usang |
+5. Sumber gambar dicantumkan di akhir modul dan di [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md).
+6. Nada percakapan, sapaan **Anda**, ejaan *silakan*.
+7. Kode yang diuji di DartPad ditulis sebagai **berkas lengkap**. Potongan tanpa `main()` ditandai **cuplikan**.
 
 ---
 
