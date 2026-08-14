@@ -21,7 +21,8 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-00-persiapan/images/tiga-lapisan-app.png` | Modul 00, README | Tampilan, logika, data |
 | `modul-01-dart/images/analogi-class-object.png` | Modul 01 | Class vs object |
 | `modul-02-ui/images/analogi-widget-lego.png` | Modul 02 | Tiga balok berlabel `Text`, `Icon`, `Container` |
-| Tampilan DartPad resmi | Modul 00, 01, 02 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `modul-03-interaksi/images/analogi-daftar-form.png` | Modul 03 | Alur daftar → form |
+| Tampilan DartPad resmi | Modul 00, 01, 02, 03 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | [layout-1.png](https://docs.flutter.dev/assets/images/docs/ui/layout/layout-1.png) — [Layouts in Flutter](https://docs.flutter.dev/ui/layout), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -47,5 +48,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Cookbook gambar jaringan | [https://docs.flutter.dev/cookbook/images/network-image](https://docs.flutter.dev/cookbook/images/network-image) | Dokumentasi resmi |
 | Lorem Picsum | [https://picsum.photos](https://picsum.photos) | Layanan foto uji; foto dari Unsplash |
 | Common Flutter errors (overflow) | [https://docs.flutter.dev/testing/common-errors](https://docs.flutter.dev/testing/common-errors) | Dokumentasi resmi |
+| Navigasi Flutter | [https://docs.flutter.dev/ui/navigation](https://docs.flutter.dev/ui/navigation) | Dokumentasi resmi |
+| Validasi form | [https://docs.flutter.dev/cookbook/forms/validation](https://docs.flutter.dev/cookbook/forms/validation) | Cookbook resmi |
+| Navigator dasar | [https://docs.flutter.dev/cookbook/navigation/navigation-basics](https://docs.flutter.dev/cookbook/navigation/navigation-basics) | Cookbook resmi |
+| go_router | [https://pub.dev/packages/go_router](https://pub.dev/packages/go_router) | Paket resmi Flutter team |
+| Paket yang didukung DartPad | [https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) | Wiki DartPad |
+| PopScope / predictive back | [https://docs.flutter.dev/release/breaking-changes/android-predictive-back](https://docs.flutter.dev/release/breaking-changes/android-predictive-back) | Dokumentasi resmi |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.

@@ -15,7 +15,8 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 00 Persiapan | [modul-00-persiapan/README.md](modul-00-persiapan/README.md) | Selesai |
 | 01 Dart | [modul-01-dart/README.md](modul-01-dart/README.md) | Selesai |
 | 02 Flutter UI | [modul-02-ui/README.md](modul-02-ui/README.md) | Selesai |
-| 03–11 | — | Menyusul, urut silabus |
+| 03 Interaksi & form | [modul-03-interaksi/README.md](modul-03-interaksi/README.md) | Selesai |
+| 04–11 | — | Menyusul, urut silabus |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
 Diperbarui: 14 Agustus 2026.
@@ -50,6 +51,9 @@ Supaya pembaca tidak menebak alat, setiap modul memakai pola yang sama:
 | 14 Agu 2026 | Modul 02: dua jalur uji (DartPad Flutter vs VS Code) | Aset, Inspector, dan google_fonts tidak jalan di DartPad |
 | 14 Agu 2026 | Audit GitHub Modul 02: label Text/Icon/Container pada ilustrasi; uji berupa berkas lengkap; sitasi layout resmi + Inspector + Lorem Picsum | Caption tidak cocok dengan gambar; cuplikan tanpa `main()` tidak bisa di-Run; perlu gambar resmi berlisensi |
 | 14 Agu 2026 | Ilustrasi widget Modul 02 dipotong rapat; overflow merujuk [Common Flutter errors](https://docs.flutter.dev/testing/common-errors) | Kanvas 960×640 penuh putih di GitHub terasa seperti gambar error |
+| 14 Agu 2026 | Modul 03: `go_router` hanya jalur B (VS Code) | `go_router` tidak ada di [daftar paket DartPad](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) |
+| 14 Agu 2026 | Modul 03: tahan kembali form memakai `PopScope` di `Navigator`, `onExit` di `GoRoute` | Dokumentasi Flutter: `PopScope` tidak menahan rute *page-backed* |
+| 14 Agu 2026 | Uji PopScope Modul 03 dijadikan berkas lengkap DartPad | Cuplikan tanpa `main()` tidak bisa di-Run |
 
 ---
 
@@ -488,7 +492,10 @@ modul-01-dart/
 modul-02-ui/
   README.md
   images/
-modul-03-interaksi/ … modul-11-capstone/   ← menyusul
+modul-03-interaksi/
+  README.md
+  images/
+modul-04-state/ … modul-11-capstone/   ← menyusul
 lampiran/                           ← menyusul
 docs/
   SUMBER-GAMBAR.md
