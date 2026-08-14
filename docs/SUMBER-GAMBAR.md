@@ -17,7 +17,7 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 
 | Berkas | Dipakai di | Keterangan |
 | --- | --- | --- |
-| `modul-00-persiapan/images/analogi-hp-dapur.png` | Modul 00, README | Analogi HP, JSON, server |
+| `modul-00-persiapan/images/analogi-hp-json-server.png` | Modul 00, README | Analogi HP, JSON, server |
 | `modul-00-persiapan/images/tiga-lapisan-app.png` | Modul 00, README | Tampilan, logika, data |
 | `modul-01-dart/images/analogi-class-object.png` | Modul 01 | Class vs object |
 | `modul-02-ui/images/analogi-widget-lego.png` | Modul 02 | Tiga balok berlabel `Text`, `Icon`, `Container` |

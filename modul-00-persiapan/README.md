@@ -50,7 +50,7 @@ Aplikasi mobile berbeda dari situs web dalam tiga hal yang terasa di tangan:
 
 Di belakang layar, aplikasi Anda tetap seperti restoran:
 
-![Analogi: HP, JSON, dan server](images/analogi-hp-dapur.png)
+![Analogi: HP, JSON, dan server](images/analogi-hp-json-server.png)
 
 *Ilustrasi asli materi mobile2026. Tiga peran: HP, JSON, server. Penjelasan ada di tabel.*
 
@@ -527,7 +527,7 @@ Urutan kerja, jangan terbalik:
 
 | Aset | Sumber |
 | --- | --- |
-| `images/analogi-hp-dapur.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-hp-json-server.png` | Ilustrasi asli materi mobile2026 |
 | `images/tiga-lapisan-app.png` | Ilustrasi asli materi mobile2026 |
 | Diagram alur alat dan instalasi | Mermaid di berkas ini (dirender GitHub) |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
