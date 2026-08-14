@@ -76,9 +76,9 @@ Analogi rumah:
 | **Brankas** | rahasia: token login | `flutter_secure_storage` |
 | **Buku** | banyak baris yang bisa dicari: daftar tugas, riwayat | SQLite / Drift |
 
-<img src="images/analogi-tiga-lemari.png" alt="Tiga kotak: Laci, Brankas, Buku" width="720">
+<img src="images/analogi-laci-brankas-buku.png" alt="Tiga panel: Laci, Brankas, dan Buku" width="720">
 
-*Ilustrasi asli materi mobile2026. Tiga tempat simpan: laci kecil, brankas, buku. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. Laci untuk pengaturan kecil, brankas untuk rahasia, buku untuk banyak baris. Penjelasan ada di tabel.*
 
 ```mermaid
 flowchart TB
@@ -114,9 +114,9 @@ HP dan server saling kirim **teks JSON**, bukan class Dart. Anda yang menerjemah
 
 Analogi singkat: JSON = surat. Object Dart = orang yang disebut di surat. `fromJson` membaca surat jadi object. `toJson` menulis object jadi surat lagi.
 
-<img src="images/analogi-json-object.png" alt="Dua kotak: Teks JSON dan Object Dart" width="720">
+<img src="images/analogi-surat-json.png" alt="Dua panel: Teks JSON dan Object Dart" width="720">
 
-*Ilustrasi asli materi mobile2026. Dua wujud data: teks JSON dan object Dart. Penjelasan ada di teks.*
+*Ilustrasi asli materi mobile2026. JSON seperti surat, object Dart seperti orang yang disebut di surat. Alur teknis ada di diagram di bawah.*
 
 ```mermaid
 flowchart TB
@@ -392,10 +392,6 @@ Drift (cuplikan ide, bukan uji): class tabel → `build_runner` menghasilkan kod
 
 Aplikasi yang sopan: kalau sinyal hilang, **bilang**. Jangan biarkan loading berputar tanpa ujung.
 
-<img src="images/analogi-online-offline.png" alt="Dua kotak: Ada sinyal dan Tanpa sinyal" width="720">
-
-*Ilustrasi asli materi mobile2026. Dua kondisi: ada sinyal, tidak ada sinyal. Penjelasan ada di teks.*
-
 ```mermaid
 flowchart TB
   Cek["Cek koneksi"] --> AdaSinyal["Ada sinyal"]
@@ -438,10 +434,6 @@ Sumber langkah emulator: [Extended controls, settings, and help](https://develop
 ## 9. Siklus hidup singkat: jeda dan lanjut
 
 Orang menekan tombol Home. Aplikasi tidak mati, tapi **jeda**. Musik, GPS, atau cek jaringan sering perlu dihentikan, lalu dilanjut saat layar kembali kelihatan.
-
-<img src="images/analogi-jeda-lanjut.png" alt="Dua kotak: Jeda dan Lanjut" width="720">
-
-*Ilustrasi asli materi mobile2026. Dua momen: aplikasi ke belakang, aplikasi kembali. Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
@@ -744,10 +736,8 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 | Aset | Sumber |
 | --- | --- |
-| `images/analogi-tiga-lemari.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-json-object.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-online-offline.png` | Ilustrasi asli materi mobile2026 |
-| `images/analogi-jeda-lanjut.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-laci-brankas-buku.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-surat-json.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | SharedPreferences | [docs.flutter.dev/cookbook/persistence/key-value](https://docs.flutter.dev/cookbook/persistence/key-value) |
 | JSON `fromJson` / `toJson` | [docs.flutter.dev/data-and-backend/serialization/json](https://docs.flutter.dev/data-and-backend/serialization/json) |

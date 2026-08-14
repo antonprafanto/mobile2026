@@ -73,6 +73,7 @@ Supaya tidak perlu menebak alat, tiap modul memakai pola yang sama:
 | 14 Agu 2026 | Audit GitHub Modul 00: analogi HP/JSON/Server dan tiga lapisan dipotong rapat; mermaid TB; caption DartPad tema gelap; langkah mini proyek | PNG 960×640 pilar putih di GitHub gelap; diagram LR rawan celah kosong |
 | 14 Agu 2026 | Audit GitHub Modul 00 (putaran 2): analogi HP/JSON/Server diganti nama berkas | Pratinjau GitHub masih menampilkan PNG lama 960×640 (cache camo) |
 | 14 Agu 2026 | Audit GitHub Modul 00 (putaran 3): analogi restoran dan tiga lapisan memakai ikon, bukan badge teks | Badge HP/JSON/Server dan Tampilan/Logika/Data terasa datar |
+| 14 Agu 2026 | Audit GitHub Modul 05 (putaran 4): analogi laci/brankas/buku dan surat JSON memakai ikon; badge sinyal dan jeda dihapus | Badge teks mengulang mermaid; analogi benda tidak kelihatan |
 
 ---
 
