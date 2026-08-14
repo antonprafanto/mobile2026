@@ -16,14 +16,15 @@ Ada **dua jalur uji**. Jangan sampai tertukar.
 | B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | `go_router`, `PopScope` di rute paket, mini proyek |
 
 ```mermaid
-flowchart LR
-  A["Form / Navigator"] --> B["DartPad mode Flutter"]
-  C["go_router"] --> D["VS Code + flutter pub add"]
+flowchart TB
+  Pilih["Pilih jalur uji"]
+  Pilih --> A["Jalur A: DartPad mode Flutter"]
+  Pilih --> B["Jalur B: VS Code + go_router"]
 ```
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto di atas **mode Dart**. Untuk modul ini pilih mode **Flutter**.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** dan **mode Dart**. Kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak. Untuk modul ini pilih mode **Flutter** supaya panel kanan jadi **layar aplikasi**.
 
 Paket `go_router` **tidak** ada di daftar paket DartPad ([Package and plugin support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support)). Jangan tempel `import 'package:go_router/go_router.dart'` di DartPad.
 
@@ -60,16 +61,13 @@ Paket `go_router` **tidak** ada di daftar paket DartPad ([Package and plugin sup
 
 Analogi: tumpukan kertas. Halaman baru diletakkan **di atas**. Tombol kembali mengangkat kertas paling atas.
 
-<img src="images/analogi-daftar-form.png" alt="Alur dari halaman Daftar ke halaman Form" width="720">
+<img src="images/analogi-daftar-form.png" alt="Form menumpuk di atas halaman Daftar" width="720">
 
-*Ilustrasi asli materi mobile2026. Alur mini proyek: daftar catatan → form tambah. Penjelasan ada di teks.*
-
-Ilustrasi di atas: **push** (Daftar ke Form). Tombol kembali = **pop** (Form diangkat, Daftar kelihatan lagi).
+*Ilustrasi asli materi mobile2026. Form menumpuk di atas Daftar (push). Tombol kembali mengangkat Form (pop). Penjelasan ada di teks.*
 
 ```mermaid
 flowchart TB
-  Form["Form — kertas atas"]
-  Daftar["Daftar — kertas bawah"]
+  Daftar["Daftar — kertas bawah"] --> Form["Form — kertas atas"]
 ```
 
 Di Flutter SDK, satu “kertas” disebut **route**. `Navigator` menjaga tumpukannya. `go_router` mengatur tumpukan itu lewat URL (`/`, `/tambah`).
@@ -86,6 +84,16 @@ Dokumentasi Flutter sendiri bilang: untuk app baru, jangan pakai `Navigator.push
 | --- | --- |
 | `InkWell` | ketuk dengan riak tinta; butuh widget `Material` di atasnya |
 | `GestureDetector` | ketuk, tahan lama, geser; tanpa riak |
+
+<img src="images/analogi-ketuk-tahan.png" alt="Dua kotak: Ketuk dan Tahan" width="720">
+
+*Ilustrasi asli materi mobile2026. Dua gestur: ketuk sebentar, tahan lama. Penjelasan ada di teks.*
+
+```mermaid
+flowchart TB
+  Sentuh["Sentuh layar"] --> Ketuk["Ketuk — onTap"]
+  Sentuh --> Tahan["Tahan lama — onLongPress"]
+```
 
 ### Uji 2 — ketuk dan tahan
 
@@ -951,11 +959,21 @@ Menyimpan “sudah pernah onboarding” ke HP ada di **Modul 05**. Di sini cukup
 
 Syarat silabus: daftar + form tambah + tanggal + geser-untuk-hapus, memakai `go_router`.
 
+Urutan kerja, jangan terbalik:
+
+1. Buka **VS Code** di folder proyek Flutter (bukan DartPad).
+2. Nyalakan emulator atau HP USB.
+3. Terminal (`Ctrl + J`): `flutter pub add go_router`.
+4. Ganti isi `lib/main.dart` dengan berkas lengkap di bawah.
+5. Ketik `flutter run`.
+6. Uji: tambah catatan, lihat daftar, geser untuk hapus, tombol kembali Android.
+
 | | |
 | --- | --- |
 | **Buka** | VS Code, proyek Flutter |
-| **Terminal** | `flutter pub add go_router` lalu `flutter run` |
-| **Tempel** | berkas lengkap ke `lib/main.dart` (ganti isi bawaan) |
+| **Terminal** | `Ctrl + J` |
+| **Ketik** | `flutter pub add go_router` lalu `flutter run` |
+| **Tempel** | berkas lengkap ke `lib/main.dart` |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -1178,6 +1196,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | Aset | Sumber |
 | --- | --- |
 | `images/analogi-daftar-form.png` | Ilustrasi asli materi mobile2026 |
+| `images/analogi-ketuk-tahan.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Navigasi | [docs.flutter.dev/ui/navigation](https://docs.flutter.dev/ui/navigation) |
 | Validasi form | [docs.flutter.dev/cookbook/forms/validation](https://docs.flutter.dev/cookbook/forms/validation) |

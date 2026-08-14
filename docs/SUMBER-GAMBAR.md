@@ -23,7 +23,8 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-02-ui/images/analogi-widget-lego.png` | Modul 02 | Tiga balok berlabel `Text`, `Icon`, `Container` |
 | `modul-02-ui/images/analogi-stack.png` | Modul 02 | Foto dan lencana (`Stack`) |
 | `modul-02-ui/images/analogi-layout-kartu.png` | Modul 02 | Foto, nama, tombol |
-| `modul-03-interaksi/images/analogi-daftar-form.png` | Modul 03 | Alur daftar → form |
+| `modul-03-interaksi/images/analogi-daftar-form.png` | Modul 03 | Form menumpuk di atas Daftar |
+| `modul-03-interaksi/images/analogi-ketuk-tahan.png` | Modul 03 | Ketuk / tahan |
 | `modul-04-state/images/analogi-ingatan.png` | Modul 04 | Katalog, ingatan bersama, keranjang |
 | `modul-04-state/images/analogi-folder.png` | Modul 04 | Folder `ui`, `data`, `services` |
 | `modul-05-data-lokal/images/analogi-tiga-lemari.png` | Modul 05 | Laci, brankas, buku |
