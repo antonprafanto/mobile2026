@@ -29,7 +29,7 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-04-state/images/analogi-loading.png` | Modul 04 | Menunggu / selesai / gagal |
 | `modul-04-state/images/analogi-folder.png` | Modul 04 | Folder `ui`, `data`, `services` |
 | `modul-04-state/images/ui-equals-function-of-state.png` | Modul 04 | Rumus UI = f(state), disalin dari [docs.flutter.dev](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/ui-equals-function-of-state.png) — [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| `modul-04-state/images/simple-widget-tree.png` | Modul 04 | Pohon widget toko, disalin dari [docs.flutter.dev](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/simple-widget-tree.png) — [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Pohon widget toko resmi | Modul 04 | Halaman [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG tidak di-embed (kartu terlalu tinggi di GitHub gelap, pola sama dengan `layout-1.png` Modul 02). |
 | `modul-05-data-lokal/images/analogi-tiga-lemari.png` | Modul 05 | Laci, brankas, buku |
 | `modul-05-data-lokal/images/analogi-json-object.png` | Modul 05 | Teks JSON vs object Dart |
 | `modul-05-data-lokal/images/analogi-online-offline.png` | Modul 05 | Online / offline |

@@ -396,9 +396,7 @@ Dokumentasi Flutter bilang: kalau tidak ada alasan kuat memilih yang lain, mulai
 
 Contoh resmi Flutter memakai toko: katalog dan keranjang. Dua halaman itu saudara, bukan induk-anak. Nanti kotak Provider ditaruh **di atas keduanya**, supaya isi keranjang sama.
 
-<img src="images/simple-widget-tree.png" alt="Pohon widget contoh toko resmi Flutter: MyApp di atas, MyCatalog dan MyCart di bawah" width="495">
-
-Sumber gambar: [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Nama di gambar bahasa Inggris (`MyApp`, `MyCatalog`, `MyCart`). Di latihan kita: `MateriApp`, `KatalogPage`, `KeranjangPage`. Berkas aslinya transparan; di sini diletakkan di kartu terang supaya tidak hilang di GitHub gelap.
+Pohon widget resmi (bahasa Inggris: `MyApp`, `MyCatalog`, `MyCart`) ada di halaman [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). PNG itu tidak ditempel di artikel: di GitHub gelap kartunya terlalu tinggi dan mudah terasa seperti gambar rusak. Di latihan kita bentuknya seperti ini:
 
 ```mermaid
 flowchart TB
@@ -406,6 +404,8 @@ flowchart TB
   App --> Katalog
   App --> Keranjang
 ```
+
+`MateriApp` di kode = kotak paling atas. `KatalogPage` dan `KeranjangPage` = dua halaman di bawahnya.
 
 Tiga nama yang perlu diingat:
 
@@ -962,7 +962,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | `images/analogi-loading.png` | Ilustrasi asli materi mobile2026 |
 | `images/analogi-folder.png` | Ilustrasi asli materi mobile2026 |
 | `images/ui-equals-function-of-state.png` | Disalin dari [docs.flutter.dev/.../ui-equals-function-of-state.png](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/ui-equals-function-of-state.png) — [Start thinking declaratively](https://docs.flutter.dev/data-and-backend/state-mgmt/declarative), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
-| `images/simple-widget-tree.png` | Disalin dari [docs.flutter.dev/.../simple-widget-tree.png](https://docs.flutter.dev/assets/images/docs/development/data-and-backend/state-mgmt/simple-widget-tree.png) — [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple), Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
+| Pohon widget toko resmi | Halaman [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) — Flutter team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). PNG tidak ditempel di artikel (kartu terlalu tinggi di GitHub gelap). |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Pengantar state | [docs.flutter.dev/data-and-backend/state-mgmt/intro](https://docs.flutter.dev/data-and-backend/state-mgmt/intro) |
 | Ephemeral vs app state | [docs.flutter.dev/data-and-backend/state-mgmt/ephemeral-vs-app](https://docs.flutter.dev/data-and-backend/state-mgmt/ephemeral-vs-app) |
