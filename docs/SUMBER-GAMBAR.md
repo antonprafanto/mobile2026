@@ -47,7 +47,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-09-kualitas/images/analogi-rupiah-jam.png` | Modul 09 | Format `intl`: Rupiah vs jam lokal |
 | `modul-09-kualitas/images/analogi-tes-rilis.png` | Modul 09 | Tes di dapur vs rilis ke tamu |
 | `modul-09-kualitas/images/analogi-kode-brankas.png` | Modul 09 | Rahasia di kode vs brankas |
-| Tampilan DartPad resmi | Modul 00–09 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `modul-10-rilis/images/analogi-nama-ikon.png` | Modul 10 | Nama di papan vs ikon di dinding |
+| `modul-10-rilis/images/analogi-unggah-toko.png` | Modul 10 | Cap unggah vs brankas kunci toko |
+| `modul-10-rilis/images/analogi-bundel-apk.png` | Modul 10 | Kardus bundel vs satu paket APK |
+| `modul-10-rilis/images/analogi-privasi-hapus.png` | Modul 10 | Buku privasi vs penghancur kertas |
+| Tampilan DartPad resmi | Modul 00–10 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -139,5 +143,17 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Effective Dart | [https://dart.dev/effective-dart/style](https://dart.dev/effective-dart/style) | Gaya nama berkas dan identifier |
 | UU 27/2022 PDP | [https://jdih.kemenkeu.go.id/dok/uu-27-tahun-2022](https://jdih.kemenkeu.go.id/dok/uu-27-tahun-2022) | Undang-undang; bukan nasihat hukum |
 | UU 27/2022 (Komdigi) | [https://jdih.komdigi.go.id/index.php/produk_hukum/view/id/832/t/undangundang+nomor+27+tahun+2022](https://jdih.komdigi.go.id/index.php/produk_hukum/view/id/832/t/undangundang+nomor+27+tahun+2022) | JDIH Komdigi |
+| Rilis Android Flutter | [https://docs.flutter.dev/deployment/android](https://docs.flutter.dev/deployment/android) | Keystore, `applicationId`, App Bundle, R8 |
+| Ofuskasi Dart | [https://docs.flutter.dev/deployment/obfuscate](https://docs.flutter.dev/deployment/obfuscate) | `--obfuscate` + `--split-debug-info` |
+| Play App Signing | [https://support.google.com/googleplay/android-developer/answer/9842756](https://support.google.com/googleplay/android-developer/answer/9842756) | Kunci unggah vs kunci penandatangan |
+| App Bundles | [https://developer.android.com/guide/app-bundle](https://developer.android.com/guide/app-bundle) | Format `.aab` |
+| Listing Play | [https://support.google.com/googleplay/android-developer/answer/9859154](https://support.google.com/googleplay/android-developer/answer/9859154) | Set up your app |
+| User data / Data safety | [https://support.google.com/googleplay/android-developer/answer/10144311](https://support.google.com/googleplay/android-developer/answer/10144311) | Formulir Data safety |
+| Hapus akun | [https://support.google.com/googleplay/android-developer/answer/13327111](https://support.google.com/googleplay/android-developer/answer/13327111) | In-app + URL web |
+| 16 KB page size | [https://developer.android.com/guide/practices/page-sizes](https://developer.android.com/guide/practices/page-sizes) | Wajib Play untuk Android 15+ sejak 1 Nov 2025 |
+| Internal testing | [https://support.google.com/googleplay/android-developer/answer/9845334](https://support.google.com/googleplay/android-developer/answer/9845334) | Jalur uji sebelum produksi |
+| `flutter_launcher_icons` | [https://pub.dev/packages/flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) | Ikon peluncur |
+| Play Console | [https://play.google.com/console](https://play.google.com/console) | Toko Android |
+| Apple Developer | [https://developer.apple.com](https://developer.apple.com) | Overview iOS; praktik butuh Mac |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.

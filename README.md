@@ -52,7 +52,8 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [modul-07-rest](modul-07-rest/README.md) | HTTP, JSON, `dio`, token, backend mini + deploy |
 | [modul-08-fitur](modul-08-fitur/README.md) | Login, verifikasi, izin HP, foto, notifikasi |
 | [modul-09-kualitas](modul-09-kualitas/README.md) | UX, Rupiah/`intl`, tes, UU PDP |
-| modul-10 … modul-11 | Menyusul sesuai silabus |
+| [modul-10-rilis](modul-10-rilis/README.md) | Ikon, keystore, App Bundle, Play Console |
+| modul-11 | Menyusul sesuai silabus |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
 Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).

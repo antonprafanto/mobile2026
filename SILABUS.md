@@ -22,10 +22,11 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 07 REST API | [modul-07-rest/README.md](modul-07-rest/README.md) | Selesai |
 | 08 Fitur app | [modul-08-fitur/README.md](modul-08-fitur/README.md) | Selesai |
 | 09 Kualitas | [modul-09-kualitas/README.md](modul-09-kualitas/README.md) | Selesai |
-| 10–11 | — | Menyusul, urut silabus |
+| 10 Rilis | [modul-10-rilis/README.md](modul-10-rilis/README.md) | Selesai |
+| 11 Capstone | — | Menyusul, urut silabus |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
-Diperbarui: 15 Agustus 2026.
+Diperbarui: 16 Agustus 2026.
 
 ---
 
@@ -487,11 +488,11 @@ modul-04-state/
 modul-05-data-lokal/
   README.md
   images/
-modul-06-firebase/ … modul-11-capstone/   ← menyusul
+modul-06-firebase/ … modul-10-rilis/
+modul-11-capstone/                  ← menyusul
 lampiran/                           ← menyusul
 docs/
   SUMBER-GAMBAR.md
-  privacy-policy.md                 ← menyusul, Modul 10
 proyek-contoh/                      ← menyusul, seiring mini proyek
 ```
 
@@ -530,4 +531,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Modul berikutnya yang ditulis: **Modul 09 — Kualitas**.
+Modul berikutnya yang ditulis: **Modul 11 — Capstone**.
