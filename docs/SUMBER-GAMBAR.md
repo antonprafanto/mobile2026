@@ -43,7 +43,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-08-fitur/images/analogi-amplop-centang.png` | Modul 08 | Verifikasi email: Belum vs Terverifikasi |
 | `modul-08-fitur/images/analogi-ketuk-kamera.png` | Modul 08 | Izin HP: Ketuk dulu, baru kamera |
 | `modul-08-fitur/images/analogi-jam-kurir.png` | Modul 08 | Notifikasi lokal vs push FCM |
-| Tampilan DartPad resmi | Modul 00–08 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `modul-09-kualitas/images/analogi-kosong-ada.png` | Modul 09 | Empty state: piring Kosong vs Ada |
+| `modul-09-kualitas/images/analogi-rupiah-jam.png` | Modul 09 | Format `intl`: Rupiah vs jam lokal |
+| `modul-09-kualitas/images/analogi-tes-rilis.png` | Modul 09 | Tes di dapur vs rilis ke tamu |
+| `modul-09-kualitas/images/analogi-kode-brankas.png` | Modul 09 | Rahasia di kode vs brankas |
+| Tampilan DartPad resmi | Modul 00–09 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -126,5 +130,14 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `firebase_messaging` | [https://pub.dev/packages/firebase_messaging](https://pub.dev/packages/firebase_messaging) | FlutterFire |
 | Notification channel | [https://developer.android.com/develop/ui/views/notifications/channels](https://developer.android.com/develop/ui/views/notifications/channels) | Dokumentasi Android |
 | Android App Links | [https://developer.android.com/training/app-links](https://developer.android.com/training/app-links) | Dokumentasi Android |
+| `intl` | [https://pub.dev/packages/intl](https://pub.dev/packages/intl) | Ada di DartPad; format Rupiah dan tanggal |
+| NumberFormat.currency | [https://pub.dev/documentation/intl/latest/intl/NumberFormat/NumberFormat.currency.html](https://pub.dev/documentation/intl/latest/intl/NumberFormat/NumberFormat.currency.html) | API paket `intl` |
+| Widget test | [https://docs.flutter.dev/cookbook/testing/widget/introduction](https://docs.flutter.dev/cookbook/testing/widget/introduction) | Cookbook resmi |
+| Unit test | [https://docs.flutter.dev/cookbook/testing/unit/introduction](https://docs.flutter.dev/cookbook/testing/unit/introduction) | Cookbook resmi |
+| Integration tests | [https://docs.flutter.dev/testing/integration-tests](https://docs.flutter.dev/testing/integration-tests) | Dokumentasi resmi |
+| Build modes | [https://docs.flutter.dev/testing/build-modes](https://docs.flutter.dev/testing/build-modes) | Debug / profile / rilis |
+| Effective Dart | [https://dart.dev/effective-dart/style](https://dart.dev/effective-dart/style) | Gaya nama berkas dan identifier |
+| UU 27/2022 PDP | [https://jdih.kemenkeu.go.id/dok/uu-27-tahun-2022](https://jdih.kemenkeu.go.id/dok/uu-27-tahun-2022) | Undang-undang; bukan nasihat hukum |
+| UU 27/2022 (Komdigi) | [https://jdih.komdigi.go.id/index.php/produk_hukum/view/id/832/t/undangundang+nomor+27+tahun+2022](https://jdih.komdigi.go.id/index.php/produk_hukum/view/id/832/t/undangundang+nomor+27+tahun+2022) | JDIH Komdigi |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.

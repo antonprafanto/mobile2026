@@ -21,7 +21,8 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 06 Firebase | [modul-06-firebase/README.md](modul-06-firebase/README.md) | Selesai |
 | 07 REST API | [modul-07-rest/README.md](modul-07-rest/README.md) | Selesai |
 | 08 Fitur app | [modul-08-fitur/README.md](modul-08-fitur/README.md) | Selesai |
-| 09–11 | — | Menyusul, urut silabus |
+| 09 Kualitas | [modul-09-kualitas/README.md](modul-09-kualitas/README.md) | Selesai |
+| 10–11 | — | Menyusul, urut silabus |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
 Diperbarui: 15 Agustus 2026.
