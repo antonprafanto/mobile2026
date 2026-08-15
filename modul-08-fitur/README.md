@@ -2,9 +2,9 @@
 
 **Waktu:** 2–3 sesi  
 **Prasyarat:** Modul 00–07 (Firebase pernah `flutter run`, REST sudah pernah dipanggil).  
-**Hasil:** Nanti Anda bisa merangkai login yang lengkap (bukan hanya Anonymous), meminta izin kamera/galeri/lonceng, mengunggah foto yang sudah dikompres, menampilkan gambar dari jaringan tanpa mengunduh ulang setiap kali, dan membedakan pengingat di HP dengan surat dari server (FCM).
+**Hasil:** Nanti Anda bisa membuat orang masuk dengan email atau Google, mengecek surat verifikasi, meminta izin kamera, mengunggah foto yang sudah diperkecil, menampilkan gambar dari internet tanpa unduh ulang setiap scroll, dan membedakan jam weker di HP dengan surat dari server.
 
-Modul 06: dapur sewaan + Anonymous. Modul 07: bahasa HTTP. Modul ini: **orang sungguhan** masuk ke app — nama, foto, izin, lonceng.
+Modul 06: dapur sewaan, masuk tanpa nama (Anonymous). Modul 07: bahasa HTTP. Modul ini: **orang sungguhan** masuk ke app — nama, foto, izin, lonceng.
 
 ---
 
@@ -62,12 +62,12 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Buka** | VS Code di folder proyek Flutter, emulator atau HP sudah menyala |
 | **Browser** | [console.firebase.google.com](https://console.firebase.google.com) (akun Google) |
 | **Terminal** | `Ctrl + J` |
-| **Ketik** | perintah di bawah, di folder proyek |
-| **Kalau berhasil** | mulai bagian 2: Email/password dan Google nyala di Console |
+| **Ketik** | perintah di bagian 2 (paket) atau di mini proyek, di folder proyek |
+| **Kalau berhasil** | baris paket ada di `pubspec.yaml`; Email/Password dan Google berstatus Enabled di Console |
 
-> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`, tidak membuka kamera, dan tidak menerima FCM.
+> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`, tidak membuka kamera, dan tidak menerima FCM. Perintah `flutter` pertamanya ada di bagian 2. Console dinyalakan juga di bagian 2, sebelum paket.
 
-Praktik rilis materi ini: **Windows → Android**. Info.plist (iOS) dijelaskan sebagai konsep. Membangun iOS butuh Mac.
+Praktik di materi ini: **Windows → Android**. Info.plist (iOS) dijelaskan sebagai konsep. Membangun iOS butuh Mac.
 
 ---
 
@@ -83,9 +83,9 @@ App sungguhan butuh:
 - orang **keluar** dengan rapi
 - orang **ganti sandi** kalau lupa
 
-Itu autentikasi. Token hasil login tetap di [`flutter_secure_storage`](https://pub.dev/packages/flutter_secure_storage) (Modul 05 dan 07), bukan SharedPreferences.
+Itulah yang disebut autentikasi: memastikan orang itu memang dirinya. Token hasil login tetap di [`flutter_secure_storage`](https://pub.dev/packages/flutter_secure_storage) (Modul 05 dan 07), bukan SharedPreferences.
 
-Firebase Auth tetap dapur sewaan. Pola yang sama bisa dipakai ke REST + JWT (Modul 07), tanpa menyalin sistem bank.
+Firebase Auth tetap dapur sewaan. Pola yang sama bisa dipakai ke REST + JWT (Modul 07). Jangan meniru sistem bank.
 
 Sumber: [Firebase Authentication](https://firebase.google.com/docs/auth).
 
@@ -103,12 +103,6 @@ Dua cara masuk yang wajib di modul ini:
 <img src="images/analogi-email-google.png" alt="Dua panel: Email surat dan kunci, Google tombol di HP" width="720">
 
 *Ilustrasi asli materi mobile2026. Email = surat + kunci. Google = masuk lewat akun yang sudah ada. Gambar ini bukan logo resmi Google.*
-
-```mermaid
-flowchart TB
-  Masuk["Masuk"] --> Email["Email"]
-  Masuk --> Ggl["Google"]
-```
 
 ### Nyalakan di Console
 
@@ -141,20 +135,21 @@ Tanpa sidik **SHA-1** debug, tombol Google di emulator sering gagal diam-diam.
 
 | | |
 | --- | --- |
-| **Buka** | Terminal VS Code di folder `android` proyek |
-| **Ketik** | perintah di bawah |
+| **Buka** | Terminal VS Code di folder proyek Flutter (bukan di DartPad) |
+| **Ketik** | perintah di bawah, **satu per satu** |
 
 ```text
+cd android
 .\gradlew.bat signingReport
 ```
 
-**Kalau berhasil:** terminal menulis `SHA1:` diikuti deretan angka-huruf. Salin **SHA-1** variant `debug`.
+**Kalau berhasil:** terminal menulis `SHA1:` diikuti deretan angka-huruf. Salin **SHA-1** variant `debug`. Kalau `gradlew.bat` tidak ketemu, Anda belum masuk folder `android`.
 
 Tempel ke Firebase Console → Project settings → Your apps → Android app → Add fingerprint. Unduh `google-services.json` baru kalau Console memintanya. Berkas itu **jangan** di-commit (sudah di `.gitignore`).
 
 Sumber: [Authenticating Your Client](https://developers.google.com/android/guides/client-auth) (Android), [Google Sign-In](https://firebase.google.com/docs/auth/flutter/federated-providers#google) (Firebase).
 
-Cuplikan daftar email (jalur B, jangan di DartPad):
+Cuplikan daftar akun lewat email (jalur B, jangan di DartPad):
 
 ```dart
 final cred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -189,7 +184,7 @@ Daftar saja belum cukup. Siapa pun bisa mengetik email orang lain. **Verifikasi*
 
 <img src="images/analogi-amplop-centang.png" alt="Dua panel: amplop belum dicek, dan amplop terverifikasi" width="720">
 
-*Ilustrasi asli materi mobile2026. Kiri belum dicek. Kanan sudah terverifikasi (cap OK di surat).*
+*Ilustrasi asli materi mobile2026. Kiri belum dicek. Kanan sudah terverifikasi (cap centang hijau di surat).*
 
 ```mermaid
 flowchart TB
@@ -217,7 +212,7 @@ if (user?.emailVerified != true) {
 
 Sumber: [Manage Users](https://firebase.google.com/docs/auth/flutter/manage-users).
 
-Gmail latihan kadang menaruh surat di **Spam**. Tunggu satu-dua menit sebelum menyalahkan kode.
+Gmail latihan kadang menaruh surat di **Spam**. Tunggu satu atau dua menit sebelum menyalahkan kode.
 
 ---
 
@@ -225,7 +220,7 @@ Gmail latihan kadang menaruh surat di **Spam**. Tunggu satu-dua menit sebelum me
 
 `FirebaseAuth.instance.currentUser` = orang yang sedang di HP ini. `null` = belum masuk.
 
-`authStateChanges()` = aliran: masuk, keluar, token diperbarui. Pasang di `main` / gerbang rute (`go_router` redirect, Modul 03).
+`authStateChanges()` = aliran berita dari Firebase: orang baru masuk, orang keluar, atau token diperbarui. Pasang di gerbang rute (`go_router` redirect, Modul 03), supaya halaman isi tidak kebuka sebelum login.
 
 Cuplikan gerbang (jalur B):
 
@@ -249,14 +244,14 @@ Kapan memaksa keluar: orang menekan Keluar; atau server menolak 401 terus (Modul
 
 ## 5. Role: tombol Admin bukan satpam
 
-Menyembunyikan tombol di UI **tidak** melindungi data. Orang bisa memanggil API tanpa tombol itu.
+Menyembunyikan tombol Hapus di layar **tidak** melindungi data. Orang yang tahu alamat server tetap bisa menghapus, meski tombolnya tidak kelihatan.
 
-Yang dipercaya:
+Satpam yang dipercaya:
 
 - **Firestore rules** / custom claim (Modul 06)
 - atau **server REST** (Modul 07) yang membaca role di token
 
-Di HP, `isAdmin` hanya untuk menata layar.
+Di HP, `isAdmin` hanya untuk menata layar — supaya tombol tidak mengganggu. Bukan untuk keamanan.
 
 ### Uji 1 — gerbang sesi di DartPad
 
@@ -434,7 +429,7 @@ final kecil = await FlutterImageCompress.compressWithFile(
 
 Tanpa kompres, foto 4–8 MB cepat menghabiskan Storage dan kuota orang. `quality: 70` dan lebar sekitar 1080 biasanya cukup untuk posting.
 
-Tampilkan hasil jaringan dengan [`cached_network_image`](https://pub.dev/packages/cached_network_image) supaya daftar tidak mengunduh ulang setiap scroll:
+Tampilkan hasil jaringan dengan [`cached_network_image`](https://pub.dev/packages/cached_network_image) supaya daftar tidak mengunduh ulang setiap scroll. Cuplikan (jalur B):
 
 ```dart
 CachedNetworkImage(
@@ -474,7 +469,7 @@ flutter pub add flutter_local_notifications firebase_messaging
 
 **Kalau berhasil:** kedua paket ada di `pubspec.yaml`.
 
-Cuplikan pengingat lokal (jalur B) — jadwal 5 detik ke depan untuk uji:
+Cuplikan pengingat lokal (jalur B) — tampilkan sekarang, supaya uji tidak menunggu:
 
 ```dart
 final plugin = FlutterLocalNotificationsPlugin();
@@ -510,13 +505,6 @@ await plugin.show(
 | **Terbuka** | `onMessage` — banner di dalam app, bukan selalu laci sistem |
 | **Di belakang** | laci notifikasi sistem |
 | **Ditutup** | laci; orang mengetuk → app buka (bisa bawa `data`) |
-
-```mermaid
-flowchart TB
-  Surat["Surat FCM"] --> Buka["App terbuka"]
-  Surat --> Belakang["Di belakang"]
-  Surat --> Tutup["Ditutup"]
-```
 
 Uji tanpa Cloud Functions: Firebase Console → Messaging → New campaign → Notification. Kirim ke token HP uji. Token didapat dari `FirebaseMessaging.instance.getToken()`.
 
@@ -561,7 +549,7 @@ Sumber konsep: [Add Android App Links](https://developer.android.com/training/ap
 
 Di Indonesia, masuk dengan nomor HP + SMS sering dipakai. Firebase punya Phone Auth. Syaratnya: SHA, kuota SMS, kadang paket Blaze, dan nomor uji.
 
-Untuk gelombang ini: **tahu bahwa pintunya ada**. Jangan dipaksa di mini proyek. Email + Google sudah menutup silabus wajib. OTP bisa dilanjut di lampiran atau proyek kantor.
+Untuk modul wajib ini: **tahu bahwa pintunya ada**. Jangan dipaksa di mini proyek. Email + Google sudah cukup. OTP bisa dilanjut nanti, kalau proyek kantor membutuhkannya.
 
 ---
 
@@ -571,7 +559,7 @@ Aplikasi **Komunitas mini**: daftar, verifikasi, login, posting teks + foto, sat
 
 Urutan kerja, jangan terbalik:
 
-1. **Browser:** Console Firebase. Nyalakan Email/Password + Google. Firestore + Storage (Modul 06). Tempel rules: tulis/baca `posting` hanya jika `request.auth != null`; `uid` di dokumen harus `== request.auth.uid`. Publish.
+1. **Browser:** buka [Firebase Console](https://console.firebase.google.com). Nyalakan Email/Password dan Google (seperti bagian 2). Firestore dan Storage sudah dari Modul 06. Rules koleksi `posting`: baca/tulis hanya jika `request.auth != null`, dan `uid` di dokumen harus sama dengan `request.auth.uid`. **Publish**.
 2. SHA-1 debug (bagian 2) → fingerprint Android → `google-services.json` baru bila diminta.
 3. Buka **VS Code**, Terminal (`Ctrl + J`), emulator atau HP sudah menyala.
 4. Terminal:
@@ -589,14 +577,35 @@ flutter pub add firebase_core firebase_auth google_sign_in cloud_firestore fireb
 
 **Kalau berhasil:** folder `komunitas_mini` ada; `pubspec.yaml` memuat paket di atas.
 
-5. `flutterfire configure` (Android). Inisialisasi Firebase di `main()` seperti Modul 06.
-6. Halaman daftar/masuk: email+sandi. Setelah `createUser`, `sendEmailVerification()`. Google Sign-In sebagai tombol kedua.
+5. Sambungkan Firebase (Android), seperti Modul 06:
+
+| | |
+| --- | --- |
+| **Buka** | Terminal VS Code di folder `komunitas_mini` |
+| **Ketik** | perintah di bawah |
+
+```text
+flutterfire configure
+```
+
+**Kalau berhasil:** berkas `lib/firebase_options.dart` ada. Lalu inisialisasi Firebase di `main()` seperti Modul 06.
+
+6. Halaman daftar/masuk: email + sandi. Setelah `createUser`, `sendEmailVerification()`. Google Sign-In sebagai tombol kedua.
 7. Gerbang: `authStateChanges` → belum masuk / belum verifikasi / beranda. Tombol “Kirim ulang surat”.
 8. Beranda: form teks + tombol kamera/galeri (izin dulu) → kompres → unggah Storage → `add` ke koleksi `posting` (`uid`, `teks`, `urlFoto`, `waktu`).
 9. Daftar posting: `StreamBuilder` + `CachedNetworkImage`. `ListView.builder`.
 10. Tombol **Pengingat**: `flutter_local_notifications` `show` (channel `umum`). Izin notifikasi Android 13+.
 11. Tombol **Keluar**: `signOut` Auth + Google + hapus secure storage.
-12. `flutter run`.
+12. Jalankan di emulator atau HP:
+
+| | |
+| --- | --- |
+| **Buka** | Terminal VS Code di folder `komunitas_mini`; emulator atau HP sudah menyala |
+| **Ketik** | perintah di bawah |
+
+```text
+flutter run
+```
 
 **Kalau berhasil:** tanpa verifikasi, beranda tidak terbuka. Setelah tautan di email diklik dan app di-reload, posting teks+foto muncul. Pengingat tampil di laci. Keluar kembali ke halaman masuk.
 
