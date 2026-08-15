@@ -16,7 +16,7 @@ Paket [`intl`](https://pub.dev/packages/intl) **ada** di [daftar paket DartPad](
 
 | Jalur | Buka | Untuk apa |
 | --- | --- | --- |
-| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** | Empty / loading / error, harga Rupiah, `LayoutBuilder` |
+| A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** | Tunggu / kosong / ada / gagal, harga Rupiah, lebar layar |
 | B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | `dart format`, `flutter analyze`, `flutter test`, mode rilis |
 
 ```mermaid
@@ -94,9 +94,7 @@ flowchart TB
   Tunggu --> Gagal["Gagal"]
 ```
 
-Sentuhan: jari orang dewasa kira-kira **48** piksel logis. Di Material, itu `kMinInteractiveDimension`. Tombol kecil di pojok mudah kelewat. Padding di sekitar ikon lebih penting daripada ikon itu sendiri.
-
-Sumber sentuhan: [Hit test](https://api.flutter.dev/flutter/rendering/RenderBox/hitTest.html) dan konstanta [`kMinInteractiveDimension`](https://api.flutter.dev/flutter/material/kMinInteractiveDimension-constant.html) (48.0).
+Sentuhan: jari orang dewasa kira-kira **48** piksel logis. Di Material itu konstanta [`kMinInteractiveDimension`](https://api.flutter.dev/flutter/material/kMinInteractiveDimension-constant.html). Tombol kecil di pojok mudah kelewat. Ruang kosong di sekitar ikon lebih penting daripada ikon itu sendiri.
 
 ---
 
@@ -171,7 +169,7 @@ Orang Indonesia membaca **Rp15.000**, bukan `15000.0`. Jam di HP biasanya **loka
 
 Paket: [`intl`](https://pub.dev/packages/intl). Ada di DartPad.
 
-Cuplikan format uang:
+Cuplikan format uang (jalur A atau B):
 
 ```dart
 String formatRupiah(num nilai) {
@@ -185,7 +183,7 @@ String formatRupiah(num nilai) {
 
 `decimalDigits: 0` = tanpa koma sen, cocok untuk harga warung. Kalau butuh sen, ganti jadi `2`.
 
-Jam: simpan di server biasanya UTC. Tampilkan dengan `toLocal()`.
+Jam: simpan di server biasanya UTC. Tampilkan dengan `toLocal()`. Cuplikan (jalur A atau B):
 
 ```dart
 final utc = DateTime.parse('2026-08-15T14:00:00Z');
@@ -374,10 +372,10 @@ Tiga lapis, dari cepat ke mahal:
 | Jenis | Yang diuji | Alat |
 | --- | --- | --- |
 | **Unit** | fungsi murni: format Rupiah, hitung total | `test()` di `test/` |
-| **Widget** | satu layar: tombol, teks, empty state | `testWidgets()` |
+| **Widget** | satu layar: tombol, teks, daftar kosong | `testWidgets()` |
 | **Integrasi** | alur: buka app → tambah item | `integration_test` |
 
-Jangan kejar 100% coverage. Tes yang menyelamatkan: format uang, gerbang login palsu, “daftar kosong menampilkan kalimat.”
+Jangan kejar tes di setiap baris kode. Yang menyelamatkan: format uang, gerbang login palsu, “daftar kosong menampilkan kalimat.”
 
 `flutter_test` datang bersama SDK. **Tidak** ada di DartPad.
 
@@ -626,7 +624,7 @@ Jangan commit `.env` atau `google-services.json`.
 | `No issues found` tapi kode berantakan | lupa `dart format` | `dart format .` |
 | Tes hijau, app kosong di HP | tes memakai data palsu, UI belum cabang kosong | uji 1 di DartPad; sambungkan `KatalogPalsu` ke UI |
 | `print` token di logcat rilis | log tidak dibungkus `kDebugMode` | `debugPrint` di dalam `if (kDebugMode)` |
-| Coverage 3% terasa gagal | target 100% tidak di silabus | tes yang penting dulu |
+| Tes 3% baris terasa gagal | target 100% tidak di silabus | tes yang penting dulu |
 
 ---
 
