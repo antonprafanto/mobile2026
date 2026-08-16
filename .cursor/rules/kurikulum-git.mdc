@@ -6,7 +6,7 @@ alwaysApply: true
 # Kurikulum dan Git
 
 - 12 modul wajib (00–11) **beku**. Topik baru = lampiran atau gelombang 2, kecuali syarat Play/Flutter berubah.
-- Sudah tertulis: Modul 00–10. Berikutnya **Modul 11 — Capstone**, hanya jika diminta. Jangan lompat.
+- Sudah tertulis: Modul 00–11 (jalur wajib selesai). Berikutnya **lampiran L1–L9**, hanya jika diminta. Jangan sisipkan topik baru ke jalur wajib.
 - Log audit, TODO, dan catatan render GitHub: tulis di `.cursor/TODO.md` (gitignored). **Jangan** taruh di `SILABUS.md` — itu yang dibaca peserta.
 - Stack: `go_router`, `provider` (bukan GetX), `dio`, Firebase dulu lalu REST, `flutter_secure_storage`, Drift/SQLite, Play Store.
 - Audit live di GitHub Preview (bukan hanya file lokal) sebelum menganggap gambar/mermaid selesai.

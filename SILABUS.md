@@ -23,7 +23,7 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 08 Fitur app | [modul-08-fitur/README.md](modul-08-fitur/README.md) | Selesai |
 | 09 Kualitas | [modul-09-kualitas/README.md](modul-09-kualitas/README.md) | Selesai |
 | 10 Rilis | [modul-10-rilis/README.md](modul-10-rilis/README.md) | Selesai |
-| 11 Capstone | — | Menyusul, urut silabus |
+| 11 Capstone | [modul-11-capstone/README.md](modul-11-capstone/README.md) | Selesai |
 | Lampiran L1–L9 | — | Setelah jalur wajib |
 
 Diperbarui: 16 Agustus 2026.
@@ -488,8 +488,7 @@ modul-04-state/
 modul-05-data-lokal/
   README.md
   images/
-modul-06-firebase/ … modul-10-rilis/
-modul-11-capstone/                  ← menyusul
+modul-06-firebase/ … modul-11-capstone/
 lampiran/                           ← menyusul
 docs/
   SUMBER-GAMBAR.md
@@ -531,4 +530,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Modul berikutnya yang ditulis: **Modul 11 — Capstone**.
+Jalur wajib 12 modul **sudah tertulis**. Berikutnya lampiran L1–L9, hanya jika diminta.
