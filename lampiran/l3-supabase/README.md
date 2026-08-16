@@ -2,9 +2,9 @@
 
 **Waktu:** 1–2 sesi  
 **Prasyarat:** Modul 06 (pernah pakai Firestore + aturan) dan Modul 07 (dapur REST).  
-**Hasil:** Nanti Anda paham Supabase sebagai **dapur alternatif**: data di **tabel** (Postgres), login, dan **gembok per baris** — tanpa menaruh kunci dapur di `lib/`.
+**Hasil:** Nanti Anda paham Supabase sebagai **dapur alternatif**: data di **tabel**, login, dan **gembok per baris** — tanpa menaruh kunci dapur di `lib/`.
 
-Ini **lampiran**, bukan syarat lulus jalur wajib (Modul 00–11). Jalur wajib tetap Firebase dulu. Buka kalau proyek Anda butuh tabel SQL, atau dapur selain Firebase.
+Ini **lampiran**, bukan syarat lulus jalur wajib (Modul 00–11). Jalur wajib tetap Firebase dulu. Buka kalau proyek Anda butuh tabel rapi, atau dapur selain Firebase.
 
 ---
 
@@ -68,7 +68,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 
 Praktik: **Windows → Android**. iOS: konsep sama, membangun iOS butuh Mac.
 
-Ini **bukan** nasihat keuangan. Kuota dan harga dasbor berubah; cek halaman resmi sebelum produksi.
+Ini **bukan** nasihat keuangan. Kuota dan harga dasbor berubah; cek halaman resmi sebelum toko buka.
 
 ---
 
@@ -93,11 +93,11 @@ Mini proyek hari ini: **satu** tabel catatan di Supabase. Jangan menyalin data y
 
 ## 2. Tabel rapi, bukan lemari map
 
-Modul 06: Firestore = lemari map (dokumen longgar). Supabase menyimpan data di **Postgres**: tabel, kolom, baris — seperti lembar rapi.
+Modul 06: Firestore = lemari map (dokumen longgar). Supabase menyimpan data di **tabel**: kolom tetap, tiap catatan satu baris — seperti lembar rapi (mesin di belakangnya Postgres).
 
 <img src="images/analogi-tabel-lemari.png" alt="Dua panel: kertas tabel bergaris, dan laci map gantung" width="720">
 
-*Ilustrasi asli materi mobile2026. Tabel = baris dengan kolom yang sama (Postgres). Lemari = map longgar (Firestore). Bukan “lebih pintar”; beda bentuk.*
+*Ilustrasi asli materi mobile2026. Tabel = baris dengan kolom yang sama. Lemari = map longgar (Firestore). Bukan “lebih pintar”; beda bentuk.*
 
 Sumber: [panduan Flutter Supabase](https://supabase.com/docs/guides/getting-started/quickstarts/flutter).
 
@@ -143,9 +143,9 @@ Dasbor memberi dua jenis kunci. Jangan tertukar.
 
 <img src="images/analogi-tamu-dapur.png" alt="Dua panel: kunci tamu di meja, dan brankas di dapur" width="720">
 
-*Ilustrasi asli materi mobile2026. Tamu = kunci yang boleh di app (anon / publishable). Dapur = kunci yang menembus gembok (service_role / secret). Kunci dapur **tidak** di `lib/`.*
+*Ilustrasi asli materi mobile2026. Tamu = kunci yang boleh di app. Dapur = kunci yang menembus gembok. Kunci dapur **tidak** di `lib/`.*
 
-Sumber: [kunci API Supabase](https://supabase.com/docs/guides/getting-started/api-keys). Nama di dasbor bisa *anon* atau *publishable* untuk tamu, *service_role* atau *secret* untuk dapur — artinya sama: tamu vs dapur.
+Sumber: [kunci dasbor Supabase](https://supabase.com/docs/guides/getting-started/api-keys). Nama di dasbor bisa *anon* atau *publishable* untuk tamu, *service_role* atau *secret* untuk dapur — artinya sama: tamu vs dapur.
 
 Cuplikan (jalur B):
 
@@ -167,7 +167,7 @@ Tanpa gembok, kunci tamu cukup untuk menyentuh seluruh tabel. Itu seperti lemari
 
 <img src="images/analogi-gembok-terbuka.png" alt="Dua panel: peti terkunci gembok, dan peti terbuka berisi kertas" width="720">
 
-*Ilustrasi asli materi mobile2026. Gembok = aturan baris (RLS) menyala. Terbuka = tabel tanpa aturan. Mini proyek: gembok menyala sebelum data sungguhan.*
+*Ilustrasi asli materi mobile2026. Gembok = aturan baris menyala. Terbuka = tabel tanpa aturan. Mini proyek: gembok menyala sebelum data sungguhan.*
 
 ```mermaid
 flowchart TB
@@ -175,9 +175,9 @@ flowchart TB
   Gembok --> App["App"]
 ```
 
-Sumber: [aturan baris Postgres](https://supabase.com/docs/guides/database/postgres/row-level-security). Di dasbor: nyalakan RLS, lalu kebijakan “orang hanya lihat/ubah baris miliknya” (`auth.uid()` = kolom `user_id`). Ikuti wizard resmi; jangan kebijakan yang mengizinkan semua orang.
+Sumber: [aturan baris tabel](https://supabase.com/docs/guides/database/postgres/row-level-security). Di dasbor: nyalakan gembok, lalu kebijakan “orang hanya lihat/ubah baris miliknya” (`auth.uid()` = kolom `user_id`). Ikuti wizard resmi; jangan kebijakan yang mengizinkan semua orang.
 
-Cuplikan SQL (jalur C, editor SQL dasbor) — **bukan** DartPad:
+Cuplikan di editor dasbor (jalur C) — **bukan** DartPad:
 
 ```sql
 -- Cuplikan. Nama tabel sesuai yang Anda buat.
@@ -192,7 +192,7 @@ Kebijakan lengkapnya ada di dokumen resmi. Jangan meniru contoh internet yang me
 
 Sama semangat Modul 06/08: identitas orang di dapur, bukan hanya di HP.
 
-Auth Supabase: email + sandi (konsep Google Sign-In ada di dokumen resmi, bukan mini proyek ini). Setelah masuk, `auth.uid()` mengisi `user_id` di tiap baris.
+Login Supabase: email + sandi (konsep Google Sign-In ada di dokumen resmi, bukan mini proyek ini). Setelah masuk, `auth.uid()` mengisi `user_id` di tiap baris.
 
 Cuplikan (jalur B):
 
@@ -204,7 +204,7 @@ await Supabase.instance.client.auth.signInWithPassword(
 );
 ```
 
-Token sesi ditangani paket. Jangan salin sandi ke log. `flutter_secure_storage` untuk rahasia app lain; sandi orang tidak disimpan di HP.
+Sesi login ditangani paket. Jangan salin sandi ke log. `flutter_secure_storage` untuk rahasia app lain; sandi orang tidak disimpan di HP.
 
 Play **Data safety** (Modul 10): centang login / data catatan hanya jika kode memang memakainya.
 
@@ -246,7 +246,7 @@ flutter run
 
 **Kalau berhasil:** setelah masuk, daftar hanya catatan Anda. Akun kedua tidak melihat catatan akun pertama. Kunci dapur **tidak** ada di GitHub.
 
-Bonus: realtime (baris baru muncul sendiri) — konsep di dokumen resmi, bukan syarat mini proyek.
+Bonus: baris baru muncul sendiri saat orang lain menulis — konsep di dokumen resmi, bukan syarat mini proyek.
 
 ---
 
@@ -254,9 +254,9 @@ Bonus: realtime (baris baru muncul sendiri) — konsep di dokumen resmi, bukan s
 
 | Gejala | Penyebab yang sering | Perbaikan |
 | --- | --- | --- |
-| Semua orang lihat semua baris | gembok mati, atau kebijakan terlalu longgar | nyalakan RLS; kebijakan milik sendiri |
+| Semua orang lihat semua baris | gembok mati, atau kebijakan terlalu longgar | nyalakan gembok; kebijakan milik sendiri |
 | Error izin di Console | gembok nyala tanpa kebijakan | tambah kebijakan pilih/sisip/ubah |
-| Kunci di GitHub | `service_role` / secret di `lib/` | anggap bocor; ganti kunci; hanya kunci tamu di app |
+| Kunci di GitHub | kunci dapur di `lib/` | anggap bocor; ganti kunci; hanya kunci tamu di app |
 | Login berhasil, daftar kosong | `user_id` tidak diisi saat sisip | sisipkan `auth.uid()` |
 | DartPad `import supabase_flutter` | paket tidak ada di DartPad | jalur B |
 | Data dobel aneh | Firestore + Supabase untuk hal yang sama | pilih satu dapur |
@@ -287,7 +287,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 ## Apa yang belum dibahas
 
-- Storage file, Edge Functions, vector / AI
+- Penyimpanan file, fungsi di server, pencarian pintar
 - Migrasi penuh dari Firestore
 - Login Google / Apple di Supabase
 - Lampiran L4 Crashlytics, L5 Actions, L8 biometrik
@@ -314,9 +314,9 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | `images/analogi-gembok-terbuka.png` | Ilustrasi asli materi mobile2026 |
 | Tampilan DartPad | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) dari [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) |
 | Quickstart Flutter | [supabase.com/docs/guides/getting-started/quickstarts/flutter](https://supabase.com/docs/guides/getting-started/quickstarts/flutter) |
-| Kunci API | [supabase.com/docs/guides/getting-started/api-keys](https://supabase.com/docs/guides/getting-started/api-keys) |
+| Kunci dasbor | [supabase.com/docs/guides/getting-started/api-keys](https://supabase.com/docs/guides/getting-started/api-keys) |
 | Aturan baris | [supabase.com/docs/guides/database/postgres/row-level-security](https://supabase.com/docs/guides/database/postgres/row-level-security) |
-| Auth | [supabase.com/docs/guides/auth](https://supabase.com/docs/guides/auth) |
+| Login | [supabase.com/docs/guides/auth](https://supabase.com/docs/guides/auth) |
 | `supabase_flutter` | [pub.dev/packages/supabase_flutter](https://pub.dev/packages/supabase_flutter) |
 | Dasbor | [supabase.com/dashboard](https://supabase.com/dashboard) |
 | Paket DartPad | [github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support](https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support) |
