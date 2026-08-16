@@ -23,7 +23,7 @@ flowchart TB
   Pilih["Pilih jalur"]
   Pilih --> A["A: DartPad"]
   Pilih --> B["B: VS Code"]
-  Pilih --> C["C: Console"]
+  Pilih --> C["C: Play"]
 ```
 
 Letak tombol di DartPad (bukan sketsa):
@@ -72,7 +72,7 @@ Akun [Google Play Console](https://play.google.com/console) berbayar (sekali, no
 
 ---
 
-## 1. Nama, ikon, package, versi
+## 1. Nama, ikon, ID aplikasi, versi
 
 Toko melihat tiga hal sebelum kode:
 
@@ -105,6 +105,7 @@ version: 1.0.0+1
 | **Pilih** | mode **Dart** |
 | **Tempel** | berkas lengkap di bawah |
 | **Klik** | **Run** |
+| **Kalau berhasil** | Console menulis `Nama versi: 1.0.0` dan `Kode unggah: 1` |
 
 ```dart
 void main() {
@@ -119,7 +120,7 @@ void main() {
 
 **Kalau berhasil:** Console menulis `Nama versi: 1.0.0` dan `Kode unggah: 1`.
 
-Ikon: ikuti [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) atau folder `mipmap` resmi. Jangan sketsa ikon di chat ini — siapkan PNG persegi (disarankan 1024×1024) sendiri.
+Ikon: ikuti [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) atau folder `mipmap` resmi. Siapkan PNG persegi sendiri (disarankan 1024×1024); materi ini tidak menyertakan berkas ikon.
 
 ---
 
@@ -191,7 +192,7 @@ Gejala klasik “key tidak cocok”: Anda mengunggah bundel yang ditandatangani 
 
 ## 4. App Bundle, bukan APK untuk toko
 
-Play lebih suka **App Bundle** (`.aab`). Toko merakit APK pas untuk HP orang (ABI, bahasa, densitas). APK utuh masih berguna untuk uji di luar toko.
+Play lebih suka **App Bundle** (`.aab`). Toko merakit APK pas untuk HP orang (jenis prosesor, bahasa, kerapatan layar). APK utuh masih berguna untuk uji di luar toko.
 
 <img src="images/analogi-bundel-apk.png" alt="Dua panel: kardus berisi beberapa paket, dan satu paket tersegel" width="720">
 
