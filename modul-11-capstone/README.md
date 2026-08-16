@@ -90,7 +90,7 @@ flowchart TB
 
 | Opsi | Cocok kalau | Inti yang wajib |
 | --- | --- | --- |
-| **A — Catatan kuliah cloud** | Anda paling nyaman di Firebase (Modul 06 + 08) | Auth email, CRUD catatan, foto, gelap, hapus akun |
+| **A — Catatan kuliah cloud** | Anda paling nyaman di Firebase (Modul 06 + 08) | Auth email, tambah/ubah/hapus catatan, foto, gelap, hapus akun |
 | **B — Kasir UMKM offline-first** | Anda ingin stok yang tidak rusak saat sinyal putus | Produk Rupiah, transaksi, stok, laporan, data lokal + cadangan |
 | **C — Komunitas / forum mini** | Anda sudah punya feed Modul 08 | Auth + reset sandi, feed + halaman, komentar, 1 push, admin, hapus akun |
 
@@ -110,7 +110,7 @@ Dari [SILABUS.md](../SILABUS.md):
 
 1. Ada alur **daftar → login → fitur inti → logout**
 2. Data tersimpan (**lokal dan/atau cloud**)
-3. **Error, loading, empty, dan offline** ditangani
+3. **Tunggu, kosong, gagal, dan offline** ditangani
 4. Token/rahasia **tidak** ada di SharedPreferences atau di dalam kode
 5. **README** berisi cara menjalankan
 6. **Screenshot + 1 menit** rekaman demo
@@ -127,7 +127,7 @@ Kalau salah satu kosong, capstone belum lulus. Mode gelap, FCM, atau Play intern
 | **Klik** | **Run** |
 | **Kalau berhasil** | Console menulis `Masih kurang:` lalu dua baris, bukan `LULUS` |
 
-Ganti `true`/`false` sesuai app **Anda**. Cuplikan ini contoh orang yang belum punya README dan demo.
+Ganti `true`/`false` sesuai app **Anda**. Berkas lengkap ini contoh orang yang belum punya README dan demo.
 
 ```dart
 void main() {
@@ -342,7 +342,7 @@ flutter run
 
 ### Hari 3–4 — fitur inti
 
-6. **A:** CRUD catatan (judul, isi, mata kuliah, tanggal) + 1 foto (izin + kompres, Modul 08) + mode gelap.
+6. **A:** tambah/ubah/hapus catatan (judul, isi, mata kuliah, tanggal) + 1 foto (izin + kompres, Modul 08) + mode gelap.
 7. **B:** daftar produk (Rp), transaksi, stok tidak minus saat double-tap, laporan harian, banner offline.
 8. **C:** feed + pagination, komentar, reset sandi, 1 notifikasi push, admin hapus (dicek rules).
 
@@ -381,7 +381,7 @@ flutter analyze
 | Anonymous sebagai login | hemat waktu | daftar email (Modul 08) |
 | Logout tidak keluar | hanya ganti rute | `signOut` + hapus token |
 | Stok minus | double-tap | nonaktifkan tombol; transaksi |
-| Layar putih saat daftar kosong | lupa empty | Modul 09 |
+| Layar putih saat daftar kosong | lupa layar kosong | Modul 09 |
 | Token di SharedPreferences | kebiasaan Modul 05 key-value | pindah ke secure storage |
 | README cuma judul | dikira “nanti” | syarat 5 — tanpa ini tidak lulus |
 | Demo 8 menit / tanpa logout | rekaman ikut ngoding | 1 menit: masuk → aksi → keluar |
