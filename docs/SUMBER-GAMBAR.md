@@ -63,7 +63,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `lampiran/l2-pembayaran/images/analogi-jendela-kertas.png` | L2 | Jendela bayar vs kertas form kartu |
 | `lampiran/l2-pembayaran/images/analogi-struk-janji.png` | L2 | Struk notifikasi vs janji di HP |
 | `lampiran/l2-pembayaran/images/analogi-pasir-toko.png` | L2 | Sandbox pasir vs toko produksi |
-| Tampilan DartPad resmi | Modul 00–11, L1–L2 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `lampiran/l3-supabase/images/analogi-satu-dua.png` | L3 | Satu dapur vs dua dapur sekaligus |
+| `lampiran/l3-supabase/images/analogi-tabel-lemari.png` | L3 | Tabel Postgres vs lemari Firestore |
+| `lampiran/l3-supabase/images/analogi-tamu-dapur.png` | L3 | Kunci tamu vs kunci dapur |
+| `lampiran/l3-supabase/images/analogi-gembok-terbuka.png` | L3 | Gembok baris vs tabel terbuka |
+| Tampilan DartPad resmi | Modul 00–11, L1–L3 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -177,5 +181,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | API keys Xendit | [https://docs.xendit.co/docs/api-keys](https://docs.xendit.co/docs/api-keys) | Secret hanya di server |
 | Kebijakan bayar Play | [https://support.google.com/googleplay/android-developer/answer/10281818](https://support.google.com/googleplay/android-developer/answer/10281818) | Digital → sistem bayar Play; barang fisik → gerbang lain |
 | `url_launcher` | [https://pub.dev/packages/url_launcher](https://pub.dev/packages/url_launcher) | Membuka jendela bayar di jalur B |
+| Quickstart Flutter Supabase | [https://supabase.com/docs/guides/getting-started/quickstarts/flutter](https://supabase.com/docs/guides/getting-started/quickstarts/flutter) | Inisialisasi klien |
+| Kunci API Supabase | [https://supabase.com/docs/guides/getting-started/api-keys](https://supabase.com/docs/guides/getting-started/api-keys) | Kunci tamu vs kunci dapur |
+| Aturan baris Postgres | [https://supabase.com/docs/guides/database/postgres/row-level-security](https://supabase.com/docs/guides/database/postgres/row-level-security) | Gembok per baris |
+| Auth Supabase | [https://supabase.com/docs/guides/auth](https://supabase.com/docs/guides/auth) | Login email |
+| `supabase_flutter` | [https://pub.dev/packages/supabase_flutter](https://pub.dev/packages/supabase_flutter) | Plugin HP; tidak ada di DartPad |
+| Dasbor Supabase | [https://supabase.com/dashboard](https://supabase.com/dashboard) | Proyek, tabel, kunci |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
