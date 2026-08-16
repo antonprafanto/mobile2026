@@ -256,7 +256,7 @@ Bonus: simpan titik terakhir di `flutter_secure_storage` hanya jika perlu — ko
 
 | Gejala | Penyebab yang sering | Perbaikan |
 | --- | --- | --- |
-| Peta abu-abu / logo Google saja | kunci salah, SDK belum Enable, restriction ketat | Console + SHA-1 + `applicationId` |
+| Peta abu-abu / logo Google saja | kunci salah, SDK belum diaktifkan, batasan paket terlalu ketat | Console + SHA-1 + `applicationId` |
 | `GoogleMap` crash overflow | tidak ada tinggi | `Expanded` / `SizedBox` |
 | Dialog izin tidak muncul | lupa Manifest, atau diminta dua plugin | satu jalur izin; Manifest + runtime |
 | Angka `0, 0` di laut | GPS belum siap / emulator tanpa titik | set lokasi emulator; tunggu |
