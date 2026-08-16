@@ -55,7 +55,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `modul-11-capstone/images/analogi-masuk-keluar.png` | Modul 11 | Pintu masuk vs mantel dibawa keluar |
 | `modul-11-capstone/images/analogi-lokal-awan.png` | Modul 11 | Laci lokal vs kotak surat awan |
 | `modul-11-capstone/images/analogi-syarat-demo.png` | Modul 11 | Papan syarat vs HP merekam demo |
-| Tampilan DartPad resmi | Modul 00–11 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `lampiran/l1-lokasi-peta/images/analogi-izin-gps.png` | L1 | Ketuk izin vs kompas GPS |
+| `lampiran/l1-lokasi-peta/images/analogi-peta-titik.png` | L1 | Kertas peta vs satu paku titik |
+| `lampiran/l1-lokasi-peta/images/analogi-simulasi-jalan.png` | L1 | Kota mainan emulator vs jalan sungguhan |
+| `lampiran/l1-lokasi-peta/images/analogi-kunci-brankas.png` | L1 | Kunci Maps di meja vs brankas |
+| Tampilan DartPad resmi | Modul 00–11, L1 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -159,5 +163,8 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `flutter_launcher_icons` | [https://pub.dev/packages/flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) | Ikon peluncur |
 | Play Console | [https://play.google.com/console](https://play.google.com/console) | Toko Android |
 | Apple Developer | [https://developer.apple.com](https://developer.apple.com) | Overview iOS; praktik butuh Mac |
+| `geolocator` | [https://pub.dev/packages/geolocator](https://pub.dev/packages/geolocator) | GPS + izin lokasi |
+| `google_maps_flutter` | [https://pub.dev/packages/google_maps_flutter](https://pub.dev/packages/google_maps_flutter) | Widget peta Android/iOS |
+| Google Maps Platform | [https://cloud.google.com/maps-platform/](https://cloud.google.com/maps-platform/) | Kunci Maps SDK |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
