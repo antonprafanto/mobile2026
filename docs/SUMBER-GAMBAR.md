@@ -67,7 +67,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `lampiran/l3-supabase/images/analogi-tabel-lemari.png` | L3 | Tabel Postgres vs lemari Firestore |
 | `lampiran/l3-supabase/images/analogi-tamu-dapur.png` | L3 | Kunci tamu vs kunci dapur |
 | `lampiran/l3-supabase/images/analogi-gembok-terbuka.png` | L3 | Gembok baris vs tabel terbuka |
-| Tampilan DartPad resmi | Modul 00–11, L1–L3 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `lampiran/l4-crashlytics/images/analogi-bengkel-laci.png` | L4 | Meja servis vs HP rusak di laci |
+| `lampiran/l4-crashlytics/images/analogi-kertas-buku.png` | L4 | Kertas print vs buku bengkel |
+| `lampiran/l4-crashlytics/images/analogi-jejak-ktp.png` | L4 | Jejak layar vs KTP |
+| `lampiran/l4-crashlytics/images/analogi-tombol-toko.png` | L4 | Tombol uji vs etalase toko |
+| Tampilan DartPad resmi | Modul 00–11, L1–L4 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -187,5 +191,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Auth Supabase | [https://supabase.com/docs/guides/auth](https://supabase.com/docs/guides/auth) | Login email |
 | `supabase_flutter` | [https://pub.dev/packages/supabase_flutter](https://pub.dev/packages/supabase_flutter) | Plugin HP; tidak ada di DartPad |
 | Dasbor Supabase | [https://supabase.com/dashboard](https://supabase.com/dashboard) | Proyek, tabel, kunci |
+| Crashlytics Flutter | [https://firebase.google.com/docs/crashlytics/flutter/get-started](https://firebase.google.com/docs/crashlytics/flutter/get-started) | Bengkel laporan rusak |
+| Jejak error terbaca | [https://firebase.google.com/docs/crashlytics/flutter/get-deobfuscated-reports](https://firebase.google.com/docs/crashlytics/flutter/get-deobfuscated-reports) | Peta nama ofuskasi |
+| Analytics Flutter | [https://firebase.google.com/docs/analytics/flutter/get-started](https://firebase.google.com/docs/analytics/flutter/get-started) | Jejak layar opsional |
+| Peristiwa Analytics | [https://firebase.google.com/docs/analytics/flutter/events](https://firebase.google.com/docs/analytics/flutter/events) | `logEvent` tanpa KTP |
+| `firebase_crashlytics` | [https://pub.dev/packages/firebase_crashlytics](https://pub.dev/packages/firebase_crashlytics) | Plugin HP; tidak ada di DartPad |
+| `firebase_analytics` | [https://pub.dev/packages/firebase_analytics](https://pub.dev/packages/firebase_analytics) | Plugin HP; tidak ada di DartPad |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
