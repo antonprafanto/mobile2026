@@ -16,7 +16,7 @@ Plugin gerbang bayar **tidak** ada di [daftar paket DartPad](https://github.com/
 | --- | --- | --- |
 | A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Dart** | Status pesanan dan jumlah sebagai angka |
 | B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | `dio` ke dapur, buka jendela bayar |
-| C | Browser → dasbor **sandbox** Midtrans atau Xendit | Kunci uji, bukan uang sungguhan |
+| C | Browser → dasbor **pasir** Midtrans atau Xendit | Kunci uji, bukan uang sungguhan |
 
 ```mermaid
 flowchart TB
@@ -36,7 +36,7 @@ flowchart TB
 
 <img src="https://dart.dev/assets/img/dartpad-hello.png" alt="Tampilan DartPad: editor di kiri, keluaran di kanan" width="720">
 
-Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** dan **mode Dart**. Kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak. Mode **Dart** pas untuk uji 1. Jendela Snap / Invoice **tidak** diuji di sini.
+Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Foto resmi itu **tema gelap** dan **mode Dart**. Kalau kelihatan seperti kotak hitam, gulir sampai editor kiri dan tombol **Run** terlihat; itu bukan gambar rusak. Mode **Dart** pas untuk uji 1. Jendela Snap / tautan bayar **tidak** diuji di sini.
 
 ### Dua jenis kode di halaman ini
 
@@ -94,7 +94,7 @@ Orang membayar di **jendela** milik gerbang (halaman Snap Midtrans, tautan bayar
 
 <img src="images/analogi-jendela-kertas.png" alt="Dua panel: jendela loket, dan kertas formulir kosong" width="720">
 
-*Ilustrasi asli materi mobile2026. Jendela = halaman bayar gerbang. Kertas = form kartu di app. Mini proyek hari ini: buka jendela, jangan sediakan kertas.*
+*Ilustrasi asli materi mobile2026. Jendela = halaman bayar gerbang. Kertas = isian kartu di app. Mini proyek hari ini: buka jendela, jangan sediakan kertas.*
 
 Alur singkat (bukan siklus):
 
@@ -105,12 +105,12 @@ flowchart TB
   Gerbang --> Jendela["Jendela"]
 ```
 
-1. App minta dapur (backend Modul 07) buatkan transaksi.
+1. App minta dapur (Modul 07) buatkan transaksi.
 2. Dapur memakai **kunci server**, dapat token / URL.
-3. App membuka URL itu (`url_launcher`, atau WebView di jalur B).
-4. Orang memilih VA, e-wallet, atau kartu **di halaman gerbang**.
+3. App membuka URL itu (`url_launcher`, atau halaman web di dalam app — jalur B).
+4. Orang memilih VA bank, dompet digital, atau kartu **di halaman gerbang**.
 
-Sumber pola Snap: [panduan Snap Midtrans](https://docs.midtrans.com/docs/snap-snap-integration-guide). Pola Xendit yang setara: dapur membuat tautan bayar, app membuka URL — [payment link Xendit](https://docs.xendit.co/payment-link/integration-and-testing/payment-links-integration). Pilih **satu** gerbang di mini proyek, jangan dua SDK bertumpuk.
+Sumber pola Snap: [panduan Snap Midtrans](https://docs.midtrans.com/docs/snap-snap-integration-guide). Pola Xendit yang setara: dapur membuat tautan bayar, app membuka URL — [tautan bayar Xendit](https://docs.xendit.co/payment-link/integration-and-testing/payment-links-integration). Pilih **satu** gerbang di mini proyek, jangan dua gerbang sekaligus.
 
 Cuplikan (jalur B) — **jangan** di-Run di DartPad:
 
@@ -128,7 +128,7 @@ Sumber: [`url_launcher`](https://pub.dev/packages/url_launcher). Lampiran L6 mem
 
 ## 3. Percaya struk, bukan janji
 
-HP yang kembali ke app bukan bukti uang masuk. Yang dihitung: **struk** dari gerbang ke dapur (notifikasi HTTP / webhook).
+HP yang kembali ke app bukan bukti uang masuk. Yang dihitung: **struk** dari gerbang ke dapur (notifikasi HTTP).
 
 <img src="images/analogi-struk-janji.png" alt="Dua panel: struk kertas toko, dan orang berjanji di meja" width="720">
 
@@ -149,13 +149,13 @@ Dapur memeriksa tanda tangan notifikasi **sesuai dokumen resmi gerbang**, lalu m
 
 ## 4. Pasir dulu, toko kemudian
 
-Sandbox = meja pasir. Produksi = toko buka. Kunci, dasbor, dan uangnya **berbeda**.
+Pasir = meja uji. Toko = toko buka. Kunci, dasbor, dan uangnya **berbeda**.
 
 <img src="images/analogi-pasir-toko.png" alt="Dua panel: toko mainan di nampan pasir, dan etalase toko sungguhan" width="720">
 
-*Ilustrasi asli materi mobile2026. Pasir = sandbox (uji). Toko = produksi (uang sungguhan). Sesi ini cukup di pasir.*
+*Ilustrasi asli materi mobile2026. Pasir = meja uji. Toko = toko buka (uang sungguhan). Sesi ini cukup di pasir.*
 
-Jalur C: [dasbor sandbox Midtrans](https://dashboard.sandbox.midtrans.com) atau dasbor uji Xendit. Kartu / VA uji ada **di dasbor itu** — jangan tempel nomor kartu uji ke README atau GitHub.
+Jalur C: [dasbor pasir Midtrans](https://dashboard.sandbox.midtrans.com) atau dasbor uji Xendit. Kartu / VA uji ada **di dasbor itu** — jangan tempel nomor kartu uji ke README atau GitHub.
 
 Kunci pasir tidak membuka toko. Kunci toko jangan dipakai di sesi latihan.
 
@@ -177,9 +177,9 @@ flowchart TB
 | Konten digital di dalam app (koin game, langganan materi, fitur dibuka) | **Sistem bayar Play** — belum dilatih di sini |
 | Barang atau jasa fisik (makanan diantar, tiket acara langsung, toko kelontong) | Gerbang seperti Midtrans / Xendit |
 
-Sumber: [kebijakan pembayaran Play](https://support.google.com/googleplay/android-developer/answer/10281818). Bukan nasihat hukum. Kalau ragu, baca halaman itu, jangan menebak dari chat.
+Sumber: [kebijakan pembayaran Play](https://support.google.com/googleplay/android-developer/answer/10281818). Bukan nasihat hukum. Kalau ragu, baca halaman itu, jangan menebak.
 
-Monetisasi IAP / iklan **sengaja ditunda** (silabus). Lampiran ini untuk gerbang barang/jasa, bukan untuk mengganti sistem bayar Play.
+Pembelian dalam app / iklan **sengaja ditunda** (silabus). Lampiran ini untuk gerbang barang/jasa, bukan untuk mengganti sistem bayar Play.
 
 ---
 
@@ -187,7 +187,7 @@ Monetisasi IAP / iklan **sengaja ditunda** (silabus). Lampiran ini untuk gerbang
 
 | Kunci | Tinggal di mana |
 | --- | --- |
-| **Kunci server** / secret | Hanya dapur. Lingkungan server, bukan `lib/` |
+| **Kunci server** / rahasia | Hanya dapur. Lingkungan server, bukan `lib/` |
 | **Kunci klien** | Boleh untuk membuka jendela; tetap jangan asal commit ke repo publik |
 
 Sumber Midtrans: [access keys](https://docs.midtrans.com/docs/access-keys), [FAQ teknis](https://docs.midtrans.com/docs/technical-faq) (jangan panggil API kunci server dari HP). Sumber Xendit: [API keys](https://docs.xendit.co/docs/api-keys).
@@ -262,7 +262,7 @@ flutter pub add dio url_launcher provider
 3. Dapur (Modul 07): satu rute “buat transaksi” memakai kunci server. Ikuti dokumen Snap atau tautan bayar Xendit — **bukan** menempel kunci di `main.dart`.
 4. Layar: teks harga dengan `intl` **sebelum** tombol Bayar. Tidak ada `TextField` kartu.
 5. `dio` ke dapur Anda → dapat URL → `launchUrl`.
-6. Polling atau tarik ulang status dari dapur. Jangan tombol “sudah bayar” yang langsung `lunas`.
+6. Tarik ulang status dari dapur. Jangan tombol “sudah bayar” yang langsung `lunas`.
 7. Wajah: tunggu / gagal / lunas. `SafeArea` (Modul 02).
 
 | | |
@@ -289,7 +289,7 @@ Bonus: simpan `order_id` di `flutter_secure_storage` supaya orang tidak kehilang
 | Play menolak app | konten digital lewat Midtrans/Xendit | sistem bayar Play; atau jual barang fisik |
 | Status lunas palsu | tombol “sudah bayar” / URL kembali | tunggu struk di dapur |
 | Jendela tidak terbuka | URL kosong, kunci pasir vs toko tertukar | cek dasbor pasir; URL dari dapur |
-| Form kartu di app | meniru checkout web | hapus field; buka jendela gerbang |
+| Isian kartu di app | meniru kasir di halaman sendiri | hapus field; buka jendela gerbang |
 | `url_launcher` gagal | belum `pub add`, atau URL bukan `https` | paket + URL dari dapur |
 | DartPad `import dio` | plugin tidak ada di DartPad | jalur B |
 
@@ -319,9 +319,9 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 ## Apa yang belum dibahas
 
-- Sistem bayar Play / IAP / iklan (ditunda setelah L2)
-- Cicilan, recurring, payout ke rekening
-- Core API yang menerima kartu di server Anda sendiri
+- Sistem bayar Play / pembelian dalam app / iklan (ditunda setelah L2)
+- Cicilan, tagihan berulang, kirim uang ke rekening
+- API gerbang yang menerima kartu di server Anda sendiri
 - QR kasir (lampiran L9)
 - Lampiran L3 Supabase, L8 biometrik
 
