@@ -61,7 +61,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | --- | --- |
 | **Buka** | VS Code di folder proyek Flutter, emulator atau HP sudah menyala |
 | **Terminal** | `Ctrl + J` |
-| **Ketik** | perintah di bagian 2 (paket) atau mini proyek, di folder proyek |
+| **Ketik** | perintah di mini proyek, di folder proyek |
 | **Kalau berhasil** | dialog izin muncul; angka koordinat kelihatan; peta menampilkan satu pin |
 
 > **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak membaca GPS sungguhan. Jangan commit kunci Maps ke GitHub.
@@ -94,7 +94,7 @@ Sumber izin runtime: [geolocator](https://pub.dev/packages/geolocator), [permiss
 
 ## 2. Titik = dua angka, bukan gambar peta
 
-Peta di layar adalah hiasan. Yang app simpan: **lintang** dan **bujur** (dua `double`).
+Peta di layar adalah hiasan. Yang app simpan: **lintang** dan **bujur** (dua angka pecahan).
 
 <img src="images/analogi-peta-titik.png" alt="Dua panel: kertas peta, dan paku penanda satu titik" width="720">
 
@@ -140,7 +140,7 @@ Kalau GPS dimatikan: tampilkan wajah **gagal** + tombol buka pengaturan, bukan l
 
 [`google_maps_flutter`](https://pub.dev/packages/google_maps_flutter) menggambar peta asli di Android/iOS. **Tidak** jalan di DartPad.
 
-Widget peta harus di dalam kotak yang **punya tinggi** (`SizedBox`, `Expanded` di `Column`). Kalau ditaruh di `Column` tanpa batas, Flutter melempar error overflow / unbounded height.
+Widget peta harus di dalam kotak yang **punya tinggi** (`SizedBox`, `Expanded` di `Column`). Kalau ditaruh di `Column` tanpa batas, Flutter melempar error overflow (tinggi tidak terbatas).
 
 Cuplikan (jalur B):
 
@@ -171,13 +171,13 @@ Jangan menjiplak contoh resmi yang memakai danau di California kalau titik Anda 
 
 <img src="images/analogi-kunci-brankas.png" alt="Dua panel: kunci tergeletak, dan brankas tertutup" width="720">
 
-*Ilustrasi asli materi mobile2026. Kunci = API key yang kelihatan di kode. Brankas = nilai di mesin Anda / Console, tidak di GitHub.*
+*Ilustrasi asli materi mobile2026. Kunci = kunci API yang kelihatan di kode. Brankas = nilai di mesin Anda / Console, tidak di GitHub.*
 
 Peta Google butuh kunci dari [Google Maps Platform](https://cloud.google.com/maps-platform/). Aktifkan **Maps SDK for Android**. Ada kuota dan tagihan — cek harga resmi, jangan kira “selamanya gratis.”
 
 Di Android, kunci biasanya masuk `AndroidManifest.xml` sebagai `com.google.android.geo.API_KEY`. Pola resmi: [google_maps_flutter](https://pub.dev/packages/google_maps_flutter) dan README Android-nya.
 
-Jangan tempel kunci di `main.dart`. Jangan commit `AndroidManifest` yang berisi kunci sungguhan ke repo **publik**. Flutter sudah mengabaikan `android/local.properties`; banyak orang menaruh rujukan kunci di situ. Kalau ragu, pakai aplikasi terbatas (restriction) di Cloud Console: hanya paket `applicationId` Anda.
+Jangan tempel kunci di `main.dart`. Jangan commit `AndroidManifest` yang berisi kunci sungguhan ke repo **publik**. Flutter sudah mengabaikan `android/local.properties`; banyak orang menaruh rujukan kunci di situ. Kalau ragu, batasi kunci di Cloud Console: hanya paket `applicationId` Anda.
 
 Ini **bukan** nasihat keuangan. Kunci bocor = tagihan orang lain.
 
@@ -189,7 +189,7 @@ Ini **bukan** nasihat keuangan. Kunci bocor = tagihan orang lain.
 
 *Ilustrasi asli materi mobile2026. Simulasi = kota mainan di meja (emulator). Jalan = HP di luar ruangan. Angka GPS emulator bisa Anda atur; di jalan, orang berjalan.*
 
-Di emulator Android, lokasi diatur lewat **Extended controls** (bukan sketsa di materi ini). Sumber: [Emulator extended controls](https://developer.android.com/studio/run/emulator-extended-controls).
+Di emulator Android, lokasi diatur lewat **Extended controls** (panel tambahan emulator — bukan sketsa di materi ini). Sumber: [Emulator extended controls](https://developer.android.com/studio/run/emulator-extended-controls).
 
 ```mermaid
 flowchart TB
@@ -230,7 +230,7 @@ flutter pub add geolocator google_maps_flutter
 **Kalau berhasil:** kedua nama ada di `pubspec.yaml`.
 
 2. `AndroidManifest.xml`: `ACCESS_FINE_LOCATION` (dan kasar kalau perlu). **Bukan** lokasi latar belakang.
-3. Cloud Console: kunci Maps SDK for Android. Masukkan ke Manifest / `local.properties` — **bukan** `lib/`. Restriction paket.
+3. Cloud Console: kunci Maps SDK for Android. Masukkan ke Manifest / `local.properties` — **bukan** `lib/`. Batasi ke `applicationId` Anda.
 4. Layar: teks penjelasan **sebelum** dialog izin (Modul 08).
 5. `Geolocator.isLocationServiceEnabled` + `checkPermission` / `requestPermission` + `getCurrentPosition`.
 6. `GoogleMap` + satu `Marker`. `SafeArea` (Modul 02).
@@ -302,7 +302,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 1. Plugin peta tidak ada di DartPad; butuh HP/emulator + kunci.
 2. Tidak. Android minta runtime. Manifest + dialog.
-3. Tidak. Brankas / Manifest lokal / restriction Console.
+3. Tidak. Brankas / Manifest lokal / batasan paket di Console.
 4. Tidak. Cukup saat app dipakai.
 5. Tidak. Sering kunci, billing, atau SDK belum Enable.
 
