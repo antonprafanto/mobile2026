@@ -25,7 +25,8 @@ Flutter and the related logo are trademarks of Google LLC. We are not endorsed b
 | 10 Rilis | [modul-10-rilis/README.md](modul-10-rilis/README.md) | Selesai |
 | 11 Capstone | [modul-11-capstone/README.md](modul-11-capstone/README.md) | Selesai |
 | L1 Lokasi & peta | [lampiran/l1-lokasi-peta/README.md](lampiran/l1-lokasi-peta/README.md) | Selesai |
-| L2–L9 | — | Menyusul, urut silabus |
+| L2 Pembayaran | [lampiran/l2-pembayaran/README.md](lampiran/l2-pembayaran/README.md) | Selesai |
+| L3–L9 | — | Menyusul, urut silabus |
 
 Diperbarui: 16 Agustus 2026.
 
@@ -491,7 +492,8 @@ modul-05-data-lokal/
   images/
 modul-06-firebase/ … modul-11-capstone/
 lampiran/
-  l1-lokasi-peta/                   ← L2–L9 menyusul
+  l1-lokasi-peta/
+  l2-pembayaran/                    ← L3–L9 menyusul
 docs/
   SUMBER-GAMBAR.md
 proyek-contoh/                      ← menyusul, seiring mini proyek
@@ -532,4 +534,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Jalur wajib 12 modul **sudah tertulis**. Lampiran: **L1 selesai**. Berikutnya L2–L9, hanya jika diminta.
+Jalur wajib 12 modul **sudah tertulis**. Lampiran: **L1 dan L2 selesai**. Berikutnya L3–L9, hanya jika diminta.

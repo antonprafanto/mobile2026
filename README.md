@@ -55,7 +55,8 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [modul-10-rilis](modul-10-rilis/README.md) | Ikon, keystore, App Bundle, Play Console |
 | [modul-11-capstone](modul-11-capstone/README.md) | Satu produk utuh: auth, data, demo |
 | [lampiran/l1-lokasi-peta](lampiran/l1-lokasi-peta/README.md) | GPS, izin lokasi, satu titik di peta |
-| lampiran L2–L9 | Menyusul sesuai silabus |
+| [lampiran/l2-pembayaran](lampiran/l2-pembayaran/README.md) | Gerbang bayar, jangan simpan nomor kartu |
+| lampiran L3–L9 | Menyusul sesuai silabus |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
 Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).

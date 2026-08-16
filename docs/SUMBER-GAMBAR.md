@@ -59,7 +59,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `lampiran/l1-lokasi-peta/images/analogi-peta-titik.png` | L1 | Kertas peta vs satu paku titik |
 | `lampiran/l1-lokasi-peta/images/analogi-simulasi-jalan.png` | L1 | Kota mainan emulator vs jalan sungguhan |
 | `lampiran/l1-lokasi-peta/images/analogi-kunci-brankas.png` | L1 | Kunci Maps di meja vs brankas |
-| Tampilan DartPad resmi | Modul 00–11, L1 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `lampiran/l2-pembayaran/images/analogi-kasir-buku.png` | L2 | Kasir gerbang vs buku nomor kartu |
+| `lampiran/l2-pembayaran/images/analogi-jendela-kertas.png` | L2 | Jendela bayar vs kertas form kartu |
+| `lampiran/l2-pembayaran/images/analogi-struk-janji.png` | L2 | Struk notifikasi vs janji di HP |
+| `lampiran/l2-pembayaran/images/analogi-pasir-toko.png` | L2 | Sandbox pasir vs toko produksi |
+| Tampilan DartPad resmi | Modul 00–11, L1–L2 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -166,5 +170,12 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `geolocator` | [https://pub.dev/packages/geolocator](https://pub.dev/packages/geolocator) | GPS + izin lokasi |
 | `google_maps_flutter` | [https://pub.dev/packages/google_maps_flutter](https://pub.dev/packages/google_maps_flutter) | Widget peta Android/iOS |
 | Google Maps Platform | [https://cloud.google.com/maps-platform/](https://cloud.google.com/maps-platform/) | Kunci Maps SDK |
+| Snap Midtrans | [https://docs.midtrans.com/docs/snap-snap-integration-guide](https://docs.midtrans.com/docs/snap-snap-integration-guide) | Token di dapur, jendela di klien |
+| Access keys Midtrans | [https://docs.midtrans.com/docs/access-keys](https://docs.midtrans.com/docs/access-keys) | Kunci server vs kunci klien |
+| FAQ teknis Midtrans | [https://docs.midtrans.com/docs/technical-faq](https://docs.midtrans.com/docs/technical-faq) | Jangan panggil kunci server dari HP |
+| Tautan bayar Xendit | [https://docs.xendit.co/payment-link/integration-and-testing/payment-links-integration](https://docs.xendit.co/payment-link/integration-and-testing/payment-links-integration) | URL jendela dari dapur |
+| API keys Xendit | [https://docs.xendit.co/docs/api-keys](https://docs.xendit.co/docs/api-keys) | Secret hanya di server |
+| Kebijakan bayar Play | [https://support.google.com/googleplay/android-developer/answer/10281818](https://support.google.com/googleplay/android-developer/answer/10281818) | Digital → sistem bayar Play; barang fisik → gerbang lain |
+| `url_launcher` | [https://pub.dev/packages/url_launcher](https://pub.dev/packages/url_launcher) | Membuka jendela bayar di jalur B |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
