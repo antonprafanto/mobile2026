@@ -79,7 +79,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `lampiran/l6-share/images/analogi-pintu-kertas.png` | L6 | Pintu terbuka vs kertas alamat |
 | `lampiran/l6-share/images/analogi-obrolan-nomor.png` | L6 | Obrolan di meja vs nomor di kertas tempel |
 | `lampiran/l6-share/images/analogi-hp-meja.png` | L6 | HP vs buku catatan di meja |
-| Tampilan DartPad resmi | Modul 00–11, L1–L6 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `lampiran/l7-update/images/analogi-palang-jalan.png` | L7 | Palang parkir vs jalan terbuka |
+| `lampiran/l7-update/images/analogi-papan-tertulis.png` | L7 | Papan tulis vs kertas sudah tercetak |
+| `lampiran/l7-update/images/analogi-kartu-tebakan.png` | L7 | Kartu nama vs dadu tebakan |
+| `lampiran/l7-update/images/analogi-toko-tembok.png` | L7 | Etalase toko vs tembok tanpa pintu |
+| Tampilan DartPad resmi | Modul 00–11, L1–L7 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -211,5 +215,7 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `share_plus` | [https://pub.dev/packages/share_plus](https://pub.dev/packages/share_plus) | Lembar kirim; tidak ada di DartPad |
 | `url_launcher` | [https://pub.dev/packages/url_launcher](https://pub.dev/packages/url_launcher) | Pintu tautan; L2 jendela bayar + L6 |
 | Klik untuk chat WhatsApp | [https://faq.whatsapp.com/591339215614875](https://faq.whatsapp.com/591339215614875) | Bentuk tautan `wa.me` |
+| `package_info_plus` | [https://pub.dev/packages/package_info_plus](https://pub.dev/packages/package_info_plus) | Kartu nama app; kode unggah di HP |
+| Tautan ke Play | [https://developer.android.com/distribute/marketing-tools/linking-to-google-play](https://developer.android.com/distribute/marketing-tools/linking-to-google-play) | Etalase `details?id=` |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
