@@ -267,7 +267,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 ## Apa yang belum dibahas
 
-- Unggah peta nama otomatis di GitHub Actions (lampiran L5)
+- Unggah peta nama otomatis di GitHub Actions (bukan syarat mini L5)
 - App macet tanpa jatuh, gudang data besar, filter jalur Play
 - Laporan yang orang harus setuju dulu
 - Lampiran L7 update paksa, L8 biometrik

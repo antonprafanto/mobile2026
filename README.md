@@ -58,7 +58,8 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [lampiran/l2-pembayaran](lampiran/l2-pembayaran/README.md) | Gerbang bayar, jangan simpan nomor kartu |
 | [lampiran/l3-supabase](lampiran/l3-supabase/README.md) | Alternatif Firebase: tabel Postgres, login, gembok baris |
 | [lampiran/l4-crashlytics](lampiran/l4-crashlytics/README.md) | Tahu app rusak di HP orang, tanpa kirim nama/email |
-| lampiran L5–L9 | Menyusul sesuai silabus |
+| [lampiran/l5-actions](lampiran/l5-actions/README.md) | `flutter analyze` otomatis saat push, tanpa unggah Play |
+| lampiran L6–L9 | Menyusul sesuai silabus |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
 Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).

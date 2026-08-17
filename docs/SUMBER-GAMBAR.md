@@ -71,7 +71,11 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `lampiran/l4-crashlytics/images/analogi-kertas-buku.png` | L4 | Kertas print vs buku bengkel |
 | `lampiran/l4-crashlytics/images/analogi-jejak-ktp.png` | L4 | Jejak layar vs KTP |
 | `lampiran/l4-crashlytics/images/analogi-tombol-toko.png` | L4 | Tombol uji vs etalase toko |
-| Tampilan DartPad resmi | Modul 00–11, L1–L4 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
+| `lampiran/l5-actions/images/analogi-satpam-sendiri.png` | L5 | Satpam di pintu vs cek sendiri di meja |
+| `lampiran/l5-actions/images/analogi-daftar-karangan.png` | L5 | Daftar langkah pendek vs karangan panjang |
+| `lampiran/l5-actions/images/analogi-hijau-merah.png` | L5 | Stempel hijau vs stempel merah |
+| `lampiran/l5-actions/images/analogi-laptop-awan.png` | L5 | Laptop di meja vs langit berawan |
+| Tampilan DartPad resmi | Modul 00–11, L1–L5 | [dart.dev/assets/img/dartpad-hello.png](https://dart.dev/assets/img/dartpad-hello.png) — [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Foto itu mode **Dart** (Console), bukan pratinjau Flutter. |
 | Contoh layout resmi | Modul 02 | Halaman [Build a Flutter layout](https://docs.flutter.dev/ui/layout/tutorial) — Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). PNG `layout-1.png` di docs.flutter.dev rusak di GitHub (kotak merah), jadi tidak di-hotlink. Foto di tutorial itu: [Dino Reichmuth / Unsplash](https://unsplash.com/@dinoreichmuth), [Unsplash License](https://unsplash.com/license) |
 | Flutter Inspector resmi | Modul 02 | [inspector_screenshot.png](https://docs.flutter.dev/assets/images/docs/tools/devtools/inspector_screenshot.png) — [Use the Flutter inspector](https://docs.flutter.dev/tools/devtools/inspector), Flutter team / Google, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Foto uji `Image.network` | Modul 02 | [picsum.photos](https://picsum.photos) (Lorem Picsum; foto Unsplash). Pola dari [cookbook jaringan Flutter](https://docs.flutter.dev/cookbook/images/network-image) |
@@ -197,5 +201,8 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Peristiwa Analytics | [https://firebase.google.com/docs/analytics/flutter/events](https://firebase.google.com/docs/analytics/flutter/events) | `logEvent` tanpa KTP |
 | `firebase_crashlytics` | [https://pub.dev/packages/firebase_crashlytics](https://pub.dev/packages/firebase_crashlytics) | Plugin HP; tidak ada di DartPad |
 | `firebase_analytics` | [https://pub.dev/packages/firebase_analytics](https://pub.dev/packages/firebase_analytics) | Plugin HP; tidak ada di DartPad |
+| GitHub Actions | [https://docs.github.com/en/actions](https://docs.github.com/en/actions) | Satpam otomatis saat push |
+| `subosito/flutter-action` | [https://github.com/subosito/flutter-action](https://github.com/subosito/flutter-action) | Pasang Flutter di komputer GitHub |
+| `flutter analyze` | [https://docs.flutter.dev/tools/cli](https://docs.flutter.dev/tools/cli#analyze) | Cek lints; Modul 09 + L5 |
 
 Jika modul berikutnya menyertakan tangkapan layar dari situs pihak ketiga, cantumkan URL halaman sumber di tabel ini pada hari yang sama.
