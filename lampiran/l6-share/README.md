@@ -1,7 +1,7 @@
 # Lampiran L6 — Share, URL, WhatsApp
 
 **Waktu:** 1–2 sesi  
-**Prasyarat:** Modul 03 (tombol, buka tautan di kepala) dan jalur B VS Code + emulator/HP.  
+**Prasyarat:** Modul 03 (tombol) dan jalur B VS Code + emulator/HP.  
 **Hasil:** Nanti Anda bisa **mengirim lembar**, **membuka tautan**, dan **merangkai `wa.me`** — tanpa menaruh nomor orang sungguhan di materi.
 
 Ini **lampiran**, bukan syarat lulus jalur wajib (Modul 00–11). Buka kapan saja setelah Modul 03, kalau app Anda perlu “kirim ke teman” atau “buka percakapan.”
@@ -64,11 +64,11 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Ketik** | perintah di mini proyek, di folder proyek |
 | **Kalau berhasil** | tombol kirim membuka lembar; tombol tautan membuka browser; tombol obrolan membuka WhatsApp (jalur C) |
 
-> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak membuka WhatsApp. Jangan taruh nomor HP orang sungguhan, token, atau sandi di teks yang dikirim.
+> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak membuka WhatsApp. Jangan taruh nomor HP orang sungguhan, kunci, atau sandi di teks yang dikirim.
 
 Praktik: **Windows → Android**. iOS: konsep sama; membangun iOS butuh Mac.
 
-Nama resmi paket: `share_plus` (lembar kirim), `url_launcher` (pintu tautan). Tautan obrolan WhatsApp: `wa.me`. Bukan API bisnis WhatsApp — itu **belum** dibahas.
+Nama resmi paket: `share_plus` (lembar kirim), `url_launcher` (pintu tautan). Tautan obrolan WhatsApp: `wa.me`. Bukan dapur pesan massal WhatsApp — itu **belum** dibahas.
 
 ---
 
@@ -85,7 +85,7 @@ Nama paket: `share_plus`. Artinya sama: surat.
 Cuplikan (jalur B) — **jangan** di-Run di DartPad:
 
 ```dart
-// Cuplikan. Teks pendek, tanpa token.
+// Cuplikan. Teks pendek, tanpa kunci.
 await Share.share('Lihat menu: https://contoh.id/menu');
 ```
 
@@ -216,7 +216,7 @@ flutter pub add share_plus url_launcher
 **Kalau berhasil:** kedua nama paket ada di `pubspec.yaml`.
 
 2. Ikuti langkah Android di halaman `url_launcher` (daftar tautan yang boleh dibuka). Tanpa itu, tombol pintu sering diam.
-3. Satu tombol **Kirim** memakai cuplikan `Share.share` (bagian 1). Teks pendek, tanpa token.
+3. Satu tombol **Kirim** memakai cuplikan `Share.share` (bagian 1). Teks pendek, tanpa kunci.
 4. Satu tombol **Buka menu** memakai cuplikan `launchUrl` `https://contoh.id/menu` (bagian 2).
 5. Satu tombol **Obrolan** memakai cuplikan `wa.me` (bagian 3). Nomor di kode = nomor **Anda**, atau nomor uji yang Anda punya. Jangan nomor orang tanpa izin.
 6. Jalankan:
@@ -231,7 +231,7 @@ flutter pub add share_plus url_launcher
 flutter run
 ```
 
-**Kalau berhasil:** Kirim → lembar pilihan app. Buka menu → browser. Obrolan (jalur C) → WhatsApp dengan teks siap kirim. Tidak ada token di lembar.
+**Kalau berhasil:** Kirim → lembar pilihan app. Buka menu → browser. Obrolan (jalur C) → WhatsApp dengan teks siap kirim. Tidak ada kunci di lembar.
 
 7. Jangan kirim sandi, kunci Firebase, atau isi profil. UU PDP (Modul 09) tetap berlaku di teks yang dibagikan.
 
@@ -248,9 +248,9 @@ Bonus (bukan syarat): `canLaunchUrl` sebelum `launchUrl`, lalu tampilkan wajah g
 | WhatsApp tidak terbuka | emulator tanpa WhatsApp, atau nomor `0812…` | HP USB; nomor mulai `62` |
 | Tautan obrolan aneh | spasi mentah di `?text=` | `Uri.https` seperti cuplikan |
 | Nomor orang di kode | disalin dari kontak tanpa izin | nomor Anda, atau hapus sebelum unggah |
-| Token ikut terkirim | `Share.share` memakai isi profil | teks menu / tautan publik saja |
+| Kunci ikut terkirim | `Share.share` memakai isi profil | teks menu / tautan publik saja |
 | `http://` tidak dibuka | Android menolak http biasa | `https://` |
-| Mengira L6 = API bisnis WhatsApp | silabus hanya `wa.me` | tautan obrolan, bukan dapur WhatsApp |
+| Mengira L6 = dapur WhatsApp | silabus hanya `wa.me` | tautan obrolan, bukan pesan massal |
 
 ---
 
@@ -260,7 +260,7 @@ Bonus (bukan syarat): `canLaunchUrl` sebelum `launchUrl`, lalu tampilkan wajah g
 2. (Jalur B) `Share.share` satu kalimat + tautan `https` milik contoh, bukan kunci.
 3. (Jalur B) Tombol pintu ke `https://flutter.dev` — bukan `http`.
 4. (Jalur C) Satu tautan `wa.me` ke nomor Anda; teks tanpa nama orang lain.
-5. (Jalur B) `git grep` `Share.share` / `wa.me` — jangan token, jangan `0812` di tautan.
+5. (Jalur B) `git grep` `Share.share` / `wa.me` — jangan kunci, jangan `0812` di tautan.
 
 ---
 
@@ -268,9 +268,9 @@ Bonus (bukan syarat): `canLaunchUrl` sebelum `launchUrl`, lalu tampilkan wajah g
 
 1. Kenapa `share_plus` tidak diuji di DartPad?
 2. Apakah `081212345678` boleh langsung di belakang `wa.me/`?
-3. Bolehkah `Share.share` mengirim token masuk “supaya teman bisa coba app”?
+3. Bolehkah `Share.share` mengirim kunci masuk “supaya teman bisa coba app”?
 4. Tombol buka tautan diam di Android — langkah pertama yang masuk akal?
-5. Apakah lampiran ini memakai API bisnis WhatsApp?
+5. Apakah lampiran ini memakai dapur pesan massal WhatsApp?
 
 Kunci jawaban di bawah. Coba jawab dulu.
 
@@ -279,8 +279,8 @@ Kunci jawaban di bawah. Coba jawab dulu.
 ## Apa yang belum dibahas
 
 - Kirim berkas / foto lewat lembar, bagikan ke banyak app sekaligus
-- API bisnis WhatsApp, bot, atau unggah ke status
-- App Link / tautan yang membuka layar tertentu di app Anda (Modul 08 menyebut konsep; bukan mini ini)
+- Dapur pesan massal WhatsApp, bot, atau unggah ke status
+- Tautan yang membuka layar tertentu di app Anda (Modul 08 menyebut konsep; bukan mini ini)
 - Lampiran L7 update paksa, L8 biometrik, L9 QR
 
 ---
