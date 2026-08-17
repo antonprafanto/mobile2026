@@ -171,7 +171,7 @@ Dokumen resmi minta **satu rusak sengaja** supaya dasbor terisi. Itu tombol di m
 
 *Ilustrasi asli materi mobile2026. Tombol = uji sengaja di emulator. Toko = rusak sungguhan di HP orang. Cabut tombol sebelum unggah.*
 
-Cuplikan (jalur B), hanya saat debug:
+Cuplikan (jalur B), hanya saat uji di emulator:
 
 ```dart
 // Cuplikan. Bungkus dengan kDebugMode. Cabut sebelum bundel toko.
@@ -190,7 +190,7 @@ Peta nama ofuskasi (Modul 10, folder `symbols`) **jangan** di-commit. Kalau Anda
 
 ## Mini proyek lampiran ini
 
-Satu layar debug: tombol uji rusak. Urutan jangan terbalik. Pakai proyek yang **sudah** Firebase (Modul 06).
+Satu layar uji: tombol rusak sengaja. Urutan jangan terbalik. Pakai proyek yang **sudah** Firebase (Modul 06).
 
 1. Paket, di folder proyek:
 
@@ -205,7 +205,7 @@ flutter pub add firebase_crashlytics
 
 **Kalau berhasil:** nama paket ada di `pubspec.yaml`.
 
-2. `flutterfire configure` lagi (Modul 06) supaya Gradle Android mendapat plugin bengkel.
+2. `flutterfire configure` lagi (Modul 06) supaya proyek Android mendapat plugin bengkel.
 3. Di `main`, setelah `Firebase.initializeApp`: pasang `FlutterError.onError` (cuplikan bagian 2).
 4. Satu tombol **Uji rusak** di dalam `if (kDebugMode)` (cuplikan bagian 4).
 5. Jalankan:
@@ -246,8 +246,8 @@ Bonus (bukan syarat): `flutter pub add firebase_analytics` + satu `logEvent(name
 ## Latihan
 
 1. (DartPad) Di uji 1, tambah baris ketiga: layar kota Anda, **tanpa** email.
-2. (Jalur B) `git grep` `setUserId` / `email` di sekitar Crashlytics / Analytics — jangan KTP.
-3. (Jalur B) Tombol uji hanya kelihatan di `flutter run` debug, hilang di pikiran bundel toko (`kDebugMode`).
+2. (Jalur B) `git grep` `setUserId` / `email` di sekitar bengkel / jejak — jangan KTP.
+3. (Jalur B) Tombol uji hanya kelihatan di `flutter run`; tidak ikut bundel toko (`kDebugMode`).
 4. (Jalur B) Tolak jaringan, ketuk uji — wajah gagal tetap ada (Modul 09); bengkel boleh antri.
 5. (Bonus) Satu `logEvent` saat buka daftar — tanpa nama orang.
 
@@ -280,7 +280,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 2. Tidak. `print` rilis biasanya hilang. Perlu buku bengkel.
 3. Tidak. Kirim layar / jenis rusak, bukan KTP. UU PDP (Modul 09).
 4. Tidak. Tombol hanya di meja kerja. Cabut sebelum toko.
-5. Tidak. Jejak layar opsional. Bengkel tetap jalan tanpa Analytics; jejak langkah ke crash lebih lengkap kalau Analytics nyala — itu pilihan, bukan syarat mini proyek.
+5. Tidak. Jejak layar opsional. Bengkel tetap jalan tanpa jejak layar; langkah sebelum rusak lebih lengkap kalau jejak nyala — itu pilihan, bukan syarat mini proyek.
 
 ---
 
