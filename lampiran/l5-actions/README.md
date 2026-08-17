@@ -124,7 +124,7 @@ jobs:
       - run: flutter analyze
 ```
 
-`ubuntu-latest` = komputer Linux di GitHub, bukan laptop Windows Anda. `subosito/flutter-action@v2` = cara resmi komunitas memasang Flutter di komputer itu. Versi `checkout` di dokumen mereka bisa lebih baru; cuplikan di atas cukup untuk mini proyek.
+`ubuntu-latest` = komputer Linux di GitHub, bukan laptop Windows Anda. `subosito/flutter-action@v2` = cara komunitas memasang Flutter di komputer itu. Nomor `@v4` di dokumen mereka bisa lebih baru; cuplikan di atas cukup untuk mini proyek.
 
 Sumber: [subosito/flutter-action](https://github.com/subosito/flutter-action), [GitHub Actions](https://docs.github.com/en/actions), [flutter analyze](https://docs.flutter.dev/tools/cli#analyze).
 
@@ -134,7 +134,7 @@ Jangan taruh kunci Maps, Firebase, atau sandi di berkas ini. Satpam mini hari in
 
 ## 3. Hijau, jangan diam di merah
 
-Hijau = analyze bersih, satpam setuju. Merah = ada peringatan atau error; perbaiki di laptop dulu, baru push lagi.
+Hijau = analyze bersih, satpam setuju. Merah = ada peringatan atau kesalahan; perbaiki di laptop dulu, baru push lagi.
 
 <img src="images/analogi-hijau-merah.png" alt="Dua panel: stempel hijau di kertas, dan stempel merah di kertas" width="720">
 
@@ -177,7 +177,7 @@ Perintahnya sama: `flutter analyze`. Laptop = Anda ketik di Terminal. Awan = mes
 
 *Ilustrasi asli materi mobile2026. Laptop = analyze di Terminal. Awan = mesin GitHub mengulang perintah yang sama.*
 
-Kalau laptop masih merah, jangan harap awan jadi hijau. Kalau laptop hijau tapi awan merah: versi Flutter di komputer Linux GitHub bisa beda dengan yang di Windows Anda — samakan saluran `stable`, atau catat versi di `pubspec.yaml` menurut dokumen `flutter-action`.
+Kalau laptop masih merah, jangan harap awan jadi hijau. Kalau laptop hijau tapi awan merah: versi Flutter di komputer Linux GitHub bisa beda dengan yang di Windows Anda — samakan saluran `stable`, atau catat versi di `pubspec.yaml` menurut tautan pemasang Flutter di sumber gambar.
 
 Satpam **tidak** mengganti cek di laptop. Modul 09 tetap: rapikan dulu, baru naikkan kode.
 
@@ -215,15 +215,15 @@ git commit -m "Add analyze check on push"
 git push
 ```
 
-**Kalau berhasil:** `git push` selesai tanpa error. Ganti perintah `git push` Anda yang biasa kalau remote-nya sudah disetel.
+**Kalau berhasil:** `git push` selesai tanpa gagal. Ganti perintah `git push` Anda yang biasa kalau remote-nya sudah disetel.
 
-5. Di browser: buka repositori proyek → tab **Actions**. Pilih jalan yang baru. Tunggu sampai selesai.
+5. Di browser: buka repositori proyek → tab **Actions**. Pilih cek yang baru. Tunggu sampai selesai.
 
 **Kalau berhasil:** tanda hijau; log memuat `flutter analyze` dan `No issues found!` (atau setara). Nama/kunci **tidak** ada di log.
 
 6. Jangan tambah `flutter build appbundle`, unggah Play, atau kunci toko ke berkas ini. Itu bukan mini proyek hari ini.
 
-Bonus (bukan syarat): jalankan satpam juga saat **pull request**, dengan menambah `pull_request:` di bawah `on:`. Tetap hanya `flutter analyze`.
+Bonus (bukan syarat): jalankan satpam juga saat orang minta gabung, dengan menambah `pull_request:` di bawah `on:`. Tetap hanya `flutter analyze`.
 
 ---
 
@@ -233,7 +233,7 @@ Bonus (bukan syarat): jalankan satpam juga saat **pull request**, dengan menamba
 | --- | --- | --- |
 | Awan merah, laptop hijau | versi Flutter beda | saluran `stable` di cuplikan; cek log Actions |
 | Awan hijau, Anda tidak cek laptop | satpam dianggap pengganti Modul 09 | tetap `flutter analyze` di Terminal dulu |
-| DartPad error merah setelah tempel YAML | YAML bukan Dart | jalur C; uji 1 hanya `Map` |
+| DartPad merah setelah tempel YAML | YAML bukan Dart | jalur C; uji 1 hanya `Map` |
 | Satpam tidak jalan | berkas bukan di `.github/workflows/` | akar proyek Flutter, nama `.yml` |
 | Log memuat token / kunci | kunci ditulis di YAML | hapus; satpam mini tidak butuh kunci |
 | `pubspec.yaml` tidak ketemu | YAML di repo materi, atau folder salah | proyek Flutter Anda, bukan `mobile2026` |
