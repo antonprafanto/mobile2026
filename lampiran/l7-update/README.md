@@ -114,7 +114,7 @@ final snap =
 final min = snap.data()?['minKodeUnggah'] as int? ?? 0;
 ```
 
-Aturan baca: dokumen itu harus **bisa dibaca** orang yang belum login — kalau tidak, palang tidak pernah kebaca. Jangan buka seluruh koleksi; hanya `config/app`. Tulis tetap di Console, bukan dari app. Pola rules ada di Modul 06.
+Aturan baca: dokumen itu harus **bisa dibaca** orang yang belum login — kalau tidak, papan tidak pernah terbaca, jadi palang tidak muncul. Jangan buka seluruh koleksi; hanya `config/app`. Tulis tetap di Console, bukan dari app. Pola rules ada di Modul 06.
 
 Kalau papan **gagal** terbaca (offline, rules ketat): **jangan** otomatis palang. Anda bisa mengunci orang yang versinya masih cukup. Mini: wajah gagal + tombol coba lagi, app tetap boleh dipakai. Palang hanya jika angka min **sudah** ada, dan kode HP lebih kecil.
 
@@ -222,7 +222,7 @@ flutter pub add package_info_plus url_launcher
 
 **Kalau berhasil:** kedua nama paket ada di `pubspec.yaml`. `cloud_firestore` sudah dari Modul 06.
 
-2. Console Firebase (jalur C): koleksi `config`, dokumen `app`, field angka `minKodeUnggah` = `999`. Rules: dokumen itu boleh dibaca; tulis hanya dari Console. Jangan buka seluruh basis.
+2. Console Firebase (jalur C): koleksi `config`, dokumen `app`, field angka `minKodeUnggah` = `999`. Rules: dokumen itu boleh dibaca; tulis hanya dari Console. Jangan buka seluruh koleksi.
 
 3. Ikuti langkah Android di halaman `url_launcher` (daftar tautan yang boleh dibuka). Tanpa itu, tombol toko sering diam.
 
@@ -246,7 +246,7 @@ flutter run
 
 **Kalau berhasil:** `minKodeUnggah` 999 → palang + toko terbuka (Play boleh “tidak ditemukan” jika belum diunggah). Ubah papan jadi `1` di Console, buka app lagi → jalan. Tidak ada unggah bundel di antara dua uji itu.
 
-8. Kembalikan `minKodeUnggah` ke angka yang masuk akal sebelum unggah Play (jangan 999 tertinggal di dapur produksi).
+8. Kembalikan `minKodeUnggah` ke angka yang masuk akal sebelum unggah Play (jangan 999 tertinggal di papan).
 
 Bonus (bukan syarat): himbauan terpisah, angka min kedua yang lebih kecil dari palang.
 
@@ -263,7 +263,7 @@ Bonus (bukan syarat): himbauan terpisah, angka min kedua yang lebih kecil dari p
 | `"1.10"` kalah dari `"1.9"` | nama versi dibanding sebagai teks | kode unggah (`buildNumber`) |
 | Mau ubah palang harus unggah bundel | angka min tertulis di Dart | pindah ke dokumen `config/app` |
 | Orang tertahan tanpa unduhan | palang tanpa tautan, atau bisa ditutup kembali | tombol toko; `PopScope` |
-| 999 tertinggal di produksi | lupa dikembalikan setelah uji | tetapkan angka min yang Anda maksud |
+| 999 tertinggal di papan | lupa dikembalikan setelah uji | tetapkan angka min yang Anda maksud |
 
 ---
 
@@ -327,4 +327,4 @@ Kunci jawaban di bawah. Coba jawab dulu.
 | Lampiran L6 pintu tautan | [l6-share/README.md](../l6-share/README.md) |
 | Modul 09 wajah gagal | [modul-09-kualitas/README.md](../../modul-09-kualitas/README.md) |
 
-Flutter and the related logo are trademarks of Google LLC. Google Play and the Google Play logo are trademarks of Google LLC. We are not endorsed by or affiliated with Google LLC.
+Flutter and the related logo are trademarks of Google LLC. Google Play and the Google Play logo are trademarks of Google LLC. Materi ini tidak didukung Google secara resmi, dan tidak terafiliasi dengan Google LLC.
