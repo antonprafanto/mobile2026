@@ -61,7 +61,8 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [lampiran/l5-actions](lampiran/l5-actions/README.md) | `flutter analyze` otomatis saat push, tanpa unggah Play |
 | [lampiran/l6-share](lampiran/l6-share/README.md) | Kirim lembar, buka tautan, `wa.me` tanpa nomor orang sungguhan |
 | [lampiran/l7-update](lampiran/l7-update/README.md) | Palang versi lama, angka min di papan, buka etalase Play |
-| lampiran L8–L9 | Menyusul sesuai silabus |
+| [lampiran/l8-biometrik](lampiran/l8-biometrik/README.md) | Gerbang sidik di HP ini, bukan ganti akun, jangan kirim ke dapur |
+| lampiran L9 | Menyusul sesuai silabus |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
 Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).

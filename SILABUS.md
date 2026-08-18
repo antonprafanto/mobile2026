@@ -31,7 +31,8 @@ Flutter and the related logo are trademarks of Google LLC. Materi ini tidak didu
 | L5 GitHub Actions mini | [lampiran/l5-actions/README.md](lampiran/l5-actions/README.md) | Selesai |
 | L6 Share, URL, WhatsApp | [lampiran/l6-share/README.md](lampiran/l6-share/README.md) | Selesai |
 | L7 Update paksa | [lampiran/l7-update/README.md](lampiran/l7-update/README.md) | Selesai |
-| L8–L9 | — | Menyusul, urut silabus |
+| L8 Biometrik | [lampiran/l8-biometrik/README.md](lampiran/l8-biometrik/README.md) | Selesai |
+| L9 | — | Menyusul, urut silabus |
 
 Diperbarui: 18 Agustus 2026.
 
@@ -503,7 +504,8 @@ lampiran/
   l4-crashlytics/
   l5-actions/
   l6-share/
-  l7-update/                        ← L8–L9 menyusul
+  l7-update/
+  l8-biometrik/                      ← L9 menyusul
 docs/
   SUMBER-GAMBAR.md
 proyek-contoh/                      ← menyusul, seiring mini proyek
@@ -544,4 +546,4 @@ Penulisan materi memakai empat keputusan ini:
 3. **Bahasa:** seluruh materi Bahasa Indonesia (EYD), nada percakapan
 4. **Target praktik rilis:** Android / Play Store (dari Windows tidak bisa membangun iOS)
 
-Jalur wajib 12 modul **sudah tertulis**. Lampiran: **L1–L7 selesai**. Berikutnya L8–L9, hanya jika diminta.
+Jalur wajib 12 modul **sudah tertulis**. Lampiran: **L1–L8 selesai**. Berikutnya L9, hanya jika diminta.
