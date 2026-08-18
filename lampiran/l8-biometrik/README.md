@@ -218,7 +218,7 @@ import io.flutter.embedding.android.FlutterFragmentActivity
 class MainActivity : FlutterFragmentActivity()
 ```
 
-3. Settings (jalur C), di emulator atau HP: daftar **satu** sidik. Emulator: setelah sidik terdaftar, pakai panel Fingerprint di extended controls, lalu **Touch the sensor** — itu menu emulator, bukan tombol di app Anda. Jangan uji gerbang sebelum ada sidik di Settings.
+3. Settings (jalur C), di emulator atau HP: daftar **satu** sidik. Emulator: setelah sidik terdaftar, buka jendela tambahan emulator, panel **Fingerprint**, lalu **Touch the sensor** — itu menu emulator, bukan tombol di app Anda. Jangan uji gerbang sebelum ada sidik di Settings.
 
 4. Setelah `Firebase.initializeApp` dan cek `currentUser` (Modul 08): kalau belum masuk → layar akun. Kalau sudah masuk → layar gerbang (cuplikan bagian 2–3).
 
@@ -253,7 +253,7 @@ Bonus (bukan syarat): `persistAcrossBackgrounding: true` supaya telepon masuk ti
 | DartPad merah setelah `import local_auth` | paket tidak ada di DartPad | jalur B; uji 1 hanya angka 0/1 |
 | Gerbang pecah saat tombol | `MainActivity` masih `FlutterActivity` | `FlutterFragmentActivity`, halaman Android paket |
 | Jendela sidik tidak muncul | belum daftar sidik di Settings | jalur C dulu, baru `flutter run` |
-| Emulator: tombol app diam | sidik belum “disentuh” di panel Fingerprint | extended controls, bukan tekan layar app |
+| Emulator: tombol app diam | sidik belum “disentuh” di panel Fingerprint | jendela tambahan emulator, bukan tekan layar app |
 | Orang terkunci total | `biometricOnly: true`, tidak ada Masuk ulang | biarkan PIN HP; tombol masuk ulang |
 | Sidik “tersimpan” di Firestore | salah kirim ke dapur | app hanya terima ya/tidak |
 | Lewat gerbang pakai kembali | bukan gerbang | `PopScope` di Modul 03 |
