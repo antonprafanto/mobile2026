@@ -2,7 +2,7 @@
 
 **Waktu:** 4–6 sesi  
 **Prasyarat:** Modul 00–10 (pernah login, pernah simpan data, pernah layar kosong/gagal, pernah `flutter build appbundle` atau setidaknya `flutter run`).  
-**Hasil:** Nanti Anda punya **satu** app yang bisa didaftar, dipakai fitur intinya, logout, menyimpan data, menampilkan tunggu/kosong/gagal/offline, tanpa rahasia di kode, plus README dan rekaman demo 1 menit.
+**Hasil:** Nanti Anda punya **satu** app yang orang bisa daftar di dalamnya, memakai fitur inti, logout, menyimpan data, menampilkan tunggu/kosong/gagal/offline, tanpa rahasia di kode, plus README dan rekaman demo 1 menit.
 
 Modul 10: orang lain *bisa* mengunduh. Modul ini: app itu **layak disebut produk**, bukan tumpukan latihan.
 
@@ -91,8 +91,8 @@ flowchart TB
 | Opsi | Cocok kalau | Inti yang wajib |
 | --- | --- | --- |
 | **A — Catatan kuliah cloud** | Anda paling nyaman di Firebase (Modul 06 + 08) | Auth email, tambah/ubah/hapus catatan, foto, gelap, hapus akun |
-| **B — Kasir UMKM offline-first** | Anda ingin stok yang tidak rusak saat sinyal putus | Produk Rupiah, transaksi, stok, laporan, data lokal + cadangan |
-| **C — Komunitas / forum mini** | Anda sudah punya feed Modul 08 | Auth + reset sandi, feed + halaman, komentar, 1 push, admin, hapus akun |
+| **B — Kasir UMKM offline-first** | Anda ingin stok yang tidak rusak saat sinyal putus | Daftar/login/logout, produk Rupiah, transaksi, stok, laporan, data lokal + cadangan |
+| **C — Komunitas / forum mini** | Anda sudah punya feed Modul 08 | Auth + reset sandi, feed + halaman berikutnya, komentar, 1 push, admin, hapus akun |
 
 **Disarankan sebagai proyek pertama: Opsi A.** B dan C lebih mudah tersesat di stok atau di rules.
 

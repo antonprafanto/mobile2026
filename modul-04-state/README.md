@@ -400,12 +400,12 @@ Pohon widget resmi (bahasa Inggris: `MyApp`, `MyCatalog`, `MyCart`) ada di halam
 
 ```mermaid
 flowchart TB
-  App["MateriApp"]
-  App --> Katalog
-  App --> Keranjang
+  Prov["Provider"]
+  Prov --> Katalog
+  Prov --> Keranjang
 ```
 
-`MateriApp` di kode = kotak paling atas. `KatalogPage` dan `KeranjangPage` = dua halaman di bawahnya.
+`ChangeNotifierProvider` di kode = kotak paling atas. `KatalogPage` dan `KeranjangPage` = dua halaman di bawahnya.
 
 Tiga nama yang perlu diingat:
 
@@ -510,7 +510,7 @@ MultiProvider(
 
 ## 6. `read`, `watch`, `Consumer`, `Selector`
 
-Sama-sama mengambil `Keranjang`. Bedanya: **siapa yang ikut rebuild**.
+Sama-sama mengambil `Keranjang`. Bedanya: **siapa yang ikut digambar ulang**.
 
 Cara mengingatnya, santai saja:
 
@@ -637,7 +637,7 @@ Di video berbahasa Indonesia, GetX sering jadi paket “semua urusan”. Paket i
 2. Modul 03 sudah memakai `go_router`. GetX punya cara rute sendiri; mencampur dua gaya bikin peta halaman kacau.
 3. Provider dekat dengan cara Flutter bekerja (`ChangeNotifier`, pohon widget). Pindah ke Riverpod nanti tidak mulai dari nol.
 
-Kalau tempat kerja mewajibkan GetX, fondasi di sini tetap kepakai: state bersama, loading, dan “UI jangan panggil internet langsung”.
+Kalau tempat kerja mewajibkan GetX, fondasi di sini tetap terpakai: state bersama, loading, dan “UI jangan panggil internet langsung”.
 
 ---
 
@@ -672,7 +672,7 @@ flowchart TB
 | --- | --- |
 | **Buka** | VS Code, folder proyek Flutter |
 | **Terminal** | `Ctrl + J` |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
 
 ```powershell
 flutter pub add provider
@@ -909,9 +909,9 @@ Di jalur B, pecah berkas itu ke `lib/data/keranjang.dart` dan `lib/ui/`. `Change
 | `Could not find the correct Provider` | `read`/`watch` di luar `ChangeNotifierProvider` | Bungkus app di `main()` |
 | Tombol menambah, layar diam | `read` di `build`, atau lupa `notifyListeners()` | `watch` / `Consumer`; panggil `notifyListeners` |
 | Loading berputar terus | `Future` baru di setiap `build` | Simpan Future di `State` atau di notifier |
-| Total keranjang beda di dua halaman | dua object `Keranjang` | Satu `create:`, jangan `Keranjang()` di tiap halaman |
+| Total keranjang beda di dua halaman | dua objek `Keranjang` | Satu `create:`, jangan `Keranjang()` di tiap halaman |
 | `flutter pub add` di DartPad | salah alat | Terminal VS Code, atau langsung import di DartPad |
-| Seluruh halaman rebuild berat | `watch` di puncak `Scaffold` | `Selector` / `Consumer` di widget yang berubah |
+| Seluruh halaman digambar ulang berat | `watch` di puncak `Scaffold` | `Selector` / `Consumer` di widget yang berubah |
 
 ---
 

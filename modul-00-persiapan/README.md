@@ -104,7 +104,7 @@ Jangan menunggu unduhan 5 GB selesai baru merasa "sudah mulai". Buka DartPad sek
 | --- | --- |
 | **Buka** | Browser (Chrome, Edge, atau Firefox) → [https://dartpad.dev](https://dartpad.dev) |
 | **Pilih** | Mode **Dart** (bukan Flutter), jika ada sakelar di kiri atas |
-| **Hapus** kode bawaan, **tempel** kode di bawah, lalu klik **Run** |
+| **Tempel** | Hapus kode bawaan, tempel kode di bawah, lalu klik **Run** |
 | **Kalau berhasil** | Panel kanan menampilkan `Halo dari DartPad` |
 
 ```dart
@@ -154,15 +154,14 @@ Sumber alur instalasi yang disarankan: [Install Flutter using VS Code](https://d
 | **Buka** | Browser → [https://git-scm.com/download/win](https://git-scm.com/download/win) |
 | **Unduh** | pemasang 64-bit |
 | **Saat wizard** | biarkan pilihan bawaan (termasuk "Git from the command line") |
-| **Uji di** | Terminal VS Code — jika VS Code belum ada, buka **PowerShell** dulu |
+| **Ketik** | perintah di bawah (Terminal VS Code; jika VS Code belum ada, PowerShell) |
+| **Kalau berhasil** | muncul baris seperti `git version 2.x.x` |
 
 ```powershell
 git --version
 ```
 
-**Kalau berhasil:** muncul baris seperti `git version 2.x.x`.
-
-Tutup semua jendela terminal yang sudah terbuka sebelum langkah berikutnya, supaya PATH yang baru terbaca.
+Tutup semua jendela terminal yang sudah terbuka sebelum langkah berikutnya, supaya PATH yang baru terbaca. **PATH** = daftar folder Windows tempat perintah dicari.
 
 ---
 
@@ -173,6 +172,7 @@ Tutup semua jendela terminal yang sudah terbuka sebelum langkah berikutnya, supa
 | **Buka** | Browser → [https://code.visualstudio.com/](https://code.visualstudio.com/) |
 | **Unduh** | User Installer 64-bit |
 | **Centang** | "Add to PATH" jika muncul |
+| **Kalau berhasil** | VS Code terbuka; ekstensi **Flutter** (penerbit Dart Code) terpasang |
 
 Setelah terpasang:
 
@@ -196,6 +196,7 @@ Ini cara yang sekarang disarankan dokumentasi Flutter.
 | **Ketik** | `Flutter: New Project` |
 | **Pilih** | **Download SDK** jika SDK belum ada |
 | **Folder** | pilih lokasi tanpa spasi dan tanpa `Program Files`, contoh `C:\src` |
+| **Kalau berhasil** | setelah restart VS Code, `flutter --version` menulis nomor versi Flutter dan Dart |
 
 Setelah SDK selesai:
 
@@ -226,6 +227,7 @@ VS Code untuk menulis kode. Android Studio untuk **SDK Android, emulator, dan li
 | --- | --- |
 | **Buka** | Browser → [https://developer.android.com/studio](https://developer.android.com/studio) |
 | **Pasang** | biarkan komponen bawaan |
+| **Kalau berhasil** | Android Studio terbuka; SDK Manager menampilkan platform dan tools |
 
 Lalu di **Android Studio**:
 
@@ -243,13 +245,14 @@ Klik **Apply**, tunggu unduhan selesai.
 
 ## 9. Perintah dokter: `flutter doctor`
 
-Ini perintah paling penting di modul ini. Ia **bukan** menyembuhkan otomatis. Ia memberi daftar pekerjaan rumah.
+Ini perintah paling penting di modul ini. Perintah ini **tidak** menyembuhkan sendiri — hanya memberi daftar pekerjaan rumah.
 
 | | |
 | --- | --- |
 | **Buka** | VS Code → Terminal (`Ctrl + J`) |
 | **Ketik** | perintah di bawah |
 | **Baca** | dari atas ke bawah, satu per satu |
+| **Kalau berhasil** | ringkasan Doctor muncul; simbol `[√]` / `[!]` / `[X]` terbaca |
 
 ```powershell
 flutter doctor
@@ -291,6 +294,7 @@ Baris **Windows Version / Visual Studio (C++)** boleh diabaikan jika Anda **tida
 | --- | --- |
 | **Buka** | Terminal VS Code yang sama |
 | **Ketik** | perintah di bawah |
+| **Kalau berhasil** | teks seperti `All SDK package licenses accepted` |
 
 ```powershell
 flutter doctor --android-licenses
@@ -314,20 +318,18 @@ Jalankan `flutter doctor` lagi sampai bagian **Android toolchain** dan **Android
 | --- | --- |
 | **Buka** | Android Studio → **Device Manager** |
 | **Buat** | Virtual Device, form factor **Phone**, pilih perangkat Pixel |
-| **System image** | unduh satu image resmi (API yang sama dengan SDK Anda) |
+| **System image** | unduh satu sistem Android resmi (API yang sama dengan SDK Anda) |
 | **Graphics** | pilih opsi yang menyebut **Hardware** jika tersedia |
+| **Ketik** | perintah di bawah (setelah emulator menyala) |
+| **Kalau berhasil** | `flutter devices` menulis baris `android` |
 
 Nyalakan emulator (ikon putar). Tunggu sampai layar awal Android selesai, bukan hanya jendela hitam.
-
-Uji dari VS Code:
 
 ```powershell
 flutter devices
 ```
 
-**Kalau berhasil:** ada baris `android` (emulator atau HP).
-
-Kalau emulator lambat: tutup browser yang berat, pastikan virtualisasi (VT-x / SVM) aktif di BIOS, dan RAM tersisa cukup. Sumber perangkat virtual: [Create and manage virtual devices](https://developer.android.com/studio/run/managing-avds).
+Kalau emulator lambat: tutup browser yang berat, pastikan virtualisasi (VT-x / SVM) aktif di BIOS/UEFI (pengaturan komputer sebelum Windows nyala; jika ragu, pakai HP fisik dulu), dan RAM tersisa cukup. Sumber perangkat virtual: [Create and manage virtual devices](https://developer.android.com/studio/run/managing-avds).
 
 ---
 
@@ -338,7 +340,13 @@ Emulator berat. HP sungguhan lebih jujur soal sentuhan dan kamera.
 1. Di HP: **Pengaturan → Tentang ponsel** → ketuk **Nomor build** tujuh kali sampai "Opsi pengembang" aktif.
 2. Buka **Opsi pengembang** → aktifkan **USB debugging**.
 3. Sambungkan kabel USB. Di HP, izinkan komputer ini.
-4. Di Windows, unduh [driver USB pabrikan](https://developer.android.com/studio/run/oem-usb) jika perangkat tidak muncul.
+4. Di Windows, unduh [driver USB pabrikan (OEM)](https://developer.android.com/studio/run/oem-usb) jika perangkat tidak muncul.
+
+| | |
+| --- | --- |
+| **Buka** | Terminal VS Code, HP sudah diizinkan |
+| **Ketik** | perintah di bawah |
+| **Kalau berhasil** | `flutter devices` menulis nama HP, bukan hanya `Windows` / `Chrome` |
 
 ```powershell
 flutter devices
@@ -356,6 +364,8 @@ Sumber opsi pengembang: [Configure on-device developer options](https://develope
 | **Pastikan** | emulator menyala **atau** HP tersambung |
 | **Terminal** | `Ctrl + J` |
 | **Pindah folder** | ke tempat Anda menyimpan latihan, contoh `C:\src` |
+| **Ketik** | perintah di bawah |
+| **Kalau berhasil** | app penghitung bawaan muncul di emulator atau HP |
 
 ```powershell
 cd C:\src
@@ -417,6 +427,8 @@ Git adalah buku catatan versi. GitHub adalah tempat salinannya di internet.
 | | |
 | --- | --- |
 | **Buka** | Terminal VS Code, sudah berada di folder `halo_nama` |
+| **Ketik** | perintah di bawah |
+| **Kalau berhasil** | `git status` bilang working tree clean, atau commit pertama tercatat |
 
 ```powershell
 git init
@@ -424,8 +436,6 @@ git status
 git add .
 git commit -m "Aplikasi halo pertama"
 ```
-
-**Kalau berhasil:** `git status` kemudian bilang working tree clean, atau setidaknya commit pertama tercatat.
 
 Untuk mengunggah ke GitHub:
 
@@ -467,7 +477,7 @@ Jangan hapal API. Biasakan ini:
 | Emulator hitam / sangat lambat | Virtualisasi mati, RAM kurang | Aktifkan VT-x; tutup aplikasi berat; uji di HP fisik |
 | HP tidak muncul di `flutter devices` | USB debugging mati, driver OEM, kabel "cas only" | Opsi pengembang; driver pabrikan; kabel data |
 | Hot reload tidak mengubah apa pun | Berkas belum disimpan, atau yang diubah bukan widget | `Ctrl + S`, tekan `r`; jika perlu `R` |
-| `Execute-Policy` / skrip PowerShell | Kebijakan eksekusi Windows | Ikuti [troubleshooting resmi](https://docs.flutter.dev/install/troubleshoot) |
+| `ExecutionPolicy` / skrip PowerShell | Kebijakan eksekusi Windows | Ikuti [troubleshooting resmi](https://docs.flutter.dev/install/troubleshoot) |
 | Ingin membangun iOS dari Windows | Tidak didukung | Pakai Mac / CI dengan runner macOS nanti |
 
 ---

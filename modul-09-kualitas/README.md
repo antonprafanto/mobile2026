@@ -102,7 +102,7 @@ Sentuhan: jari orang dewasa kira-kira **48** piksel logis. Di Material itu konst
 
 Jangan buat “desain 12 breakpoint”. Cukup tanya: lebar ini masih satu kolom, atau sudah muat dua?
 
-Cuplikan (jalur A atau B):
+Cuplikan (jangan di-Run sendirian di DartPad — `DaftarMenu` / `DetailMenu` harus sudah ada):
 
 ```dart
 LayoutBuilder(
@@ -131,7 +131,7 @@ Jangan menyalin seluruh layout web. Tablet = ruang lebih, bukan situs desktop ya
 
 **Kerangka (skeleton):** kotak abu-abu seukuran teks/gambar, sementara data belum datang. Lebih tenang daripada spinner di tengah yang tidak bilang “seberapa banyak yang akan muncul”.
 
-Cuplikan kerangka (jalur A atau B):
+Cuplikan kerangka (jangan di-Run sendirian):
 
 ```dart
 Container(
@@ -143,7 +143,7 @@ Container(
 
 **Tarik turun:** [`RefreshIndicator`](https://api.flutter.dev/flutter/material/RefreshIndicator-class.html) membungkus `ListView`. Orang menarik daftar → `onRefresh` dipanggil → `await` selesai → indikator hilang.
 
-Cuplikan (jalur B, atau DartPad kalau daftarnya pendek):
+Cuplikan (jalur B — butuh `provider` + daftar `menu`; **jangan** di-Run sendirian di DartPad):
 
 ```dart
 RefreshIndicator(
@@ -169,7 +169,7 @@ Orang Indonesia membaca **Rp15.000**, bukan `15000.0`. Jam di HP biasanya **loka
 
 Paket: [`intl`](https://pub.dev/packages/intl). Ada di DartPad.
 
-Cuplikan format uang (jalur A atau B):
+Cuplikan fungsi (bukan berkas lengkap — sisipkan ke berkas yang sudah `import` intl dan `main()`):
 
 ```dart
 String formatRupiah(num nilai) {
@@ -183,7 +183,7 @@ String formatRupiah(num nilai) {
 
 `decimalDigits: 0` = tanpa koma sen, cocok untuk harga warung. Kalau butuh sen, ganti jadi `2`.
 
-Jam: simpan di server biasanya UTC. Tampilkan dengan `toLocal()`. Cuplikan (jalur A atau B):
+Jam: simpan di dapur biasanya UTC. Tampilkan dengan `toLocal()`. Cuplikan (sisipkan ke berkas yang sudah `main()`):
 
 ```dart
 final utc = DateTime.parse('2026-08-15T14:00:00Z');
@@ -325,7 +325,7 @@ void catatGagal(Object e, StackTrace s) {
 
 `debugPrint` memotong baris yang kepanjangan di Android. `print` token, sandi, atau isi `google-services.json` = jangan, bahkan di debug.
 
-Di rilis, log debug biasanya dibuang. Jangan andalkan `print` untuk menyimpan jejak orang di produksi — itu Modul 10 / lampiran Crashlytics.
+Di rilis, log debug biasanya dibuang. Jangan andalkan `print` untuk menyimpan jejak orang di produksi — itu lampiran Crashlytics (L4).
 
 ---
 
@@ -379,7 +379,7 @@ Jangan kejar tes di setiap baris kode. Yang menyelamatkan: format uang, gerbang 
 
 `flutter_test` datang bersama SDK. **Tidak** ada di DartPad.
 
-Cuplikan unit (jalur B, berkas `test/format_rupiah_test.dart`) — sesuaikan `import` ke file Anda:
+Cuplikan berkas tes (jalur B, **bukan** DartPad; `main()` di sini untuk `flutter test`):
 
 ```dart
 import 'package:flutter_test/flutter_test.dart';
@@ -466,7 +466,7 @@ Widget test memalsukan banyak hal. Tes integrasi menjalankan app lebih utuh (mas
 
 Silabus cukup **satu** alur: misalnya tambah item, atau login palsu.
 
-Cuplikan konsep (jalur B, folder `integration_test/app_test.dart`):
+Cuplikan konsep (jalur B, folder `integration_test/app_test.dart`, **bukan** DartPad):
 
 ```dart
 import 'package:flutter_test/flutter_test.dart';
@@ -630,7 +630,7 @@ Jangan commit `.env` atau `google-services.json`.
 
 ## Latihan
 
-1. (DartPad) Di uji 1, ganti kerangka `CircularProgressIndicator` menjadi tiga kotak abu-abu (skeleton).
+1. (DartPad) Di uji 1, ganti `CircularProgressIndicator` pada wajah Tunggu menjadi tiga kotak abu-abu (kerangka).
 2. (Jalur B) `LayoutBuilder`: jika lebar ≥ 600, tampilkan harga di samping nama, bukan di `trailing` yang sempit.
 3. (Jalur B) Tes unit: `formatRupiah(0)` tetap diawali `Rp`.
 4. (Jalur B) `KatalogPalsu` yang melempar error → UI **Gagal**.
@@ -642,7 +642,7 @@ Jangan commit `.env` atau `google-services.json`.
 
 1. Perintah `flutter test` diketik di mana?
 2. Daftar tanpa data sebaiknya menampilkan apa?
-3. Kenapa `15000` diubah dengan `intl`, bukan digabung string `"Rp" + harga`?
+3. Kenapa `15000` diubah dengan `intl`, bukan digabung string `"Rp$harga"`?
 4. Menyembunyikan tombol Admin cukup sebagai keamanan?
 5. Data email pengguna boleh di-commit ke GitHub “supaya teman bisa tes”?
 

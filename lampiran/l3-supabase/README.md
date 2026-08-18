@@ -137,7 +137,7 @@ Kalau gagal: wajah **gagal** + tombol coba lagi, bukan layar putih (Modul 09).
 
 ---
 
-## 3. Kunci tamu di HP, kunci dapur di server
+## 3. Kunci tamu di HP, kunci dapur tetap di dapur
 
 Dasbor memberi dua jenis kunci. Jangan tertukar.
 
@@ -287,7 +287,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 ## Apa yang belum dibahas
 
-- Penyimpanan file, fungsi di server, pencarian pintar
+- Penyimpanan file, fungsi di dapur, pencarian pintar
 - Migrasi penuh dari Firestore
 - Login Google / Apple di Supabase
 - Lampiran L4 Crashlytics, L5 Actions, L8 biometrik
@@ -297,7 +297,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 ## Kunci kuis
 
 1. Paket itu plugin HP; tidak ada di DartPad. Butuh proyek dasbor + emulator/HP.
-2. Tidak. Kunci dapur hanya di server / brankas server. App memakai kunci tamu.
+2. Tidak. Kunci dapur hanya di dapur / brankas dapur. App memakai kunci tamu.
 3. Tidak. Kunci tamu + meja terbuka = data kelihatan. Nyalakan gembok.
 4. Tidak. Jalur wajib tetap Firebase. Ini alternatif.
 5. Tidak. Setelah masuk, gembok tetap membatasi baris milik orang itu.

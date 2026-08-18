@@ -43,7 +43,7 @@ Paket `go_router` **tidak** ada di daftar paket DartPad ([Package and plugin sup
 | **Pilih** | mode **Flutter** |
 | **Tempel** | **berkas lengkap** |
 | **Klik** | **Run** |
-| **Lihat** | panel kanan: pratinjau aplikasi |
+| **Kalau berhasil** | panel kanan menampilkan pratinjau aplikasi, bukan error merah |
 
 ### Pola uji B — proyek lokal
 
@@ -52,6 +52,7 @@ Paket `go_router` **tidak** ada di daftar paket DartPad ([Package and plugin sup
 | **Buka** | VS Code di folder proyek Flutter, emulator atau HP sudah menyala |
 | **Terminal** | `Ctrl + J` |
 | **Ketik** | `flutter pub add go_router` lalu `flutter run` |
+| **Kalau berhasil** | `pubspec.yaml` memuat `go_router`; app terbuka di emulator atau HP |
 
 > **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**.
 
@@ -102,6 +103,7 @@ flowchart TB
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, lalu ketuk kartu dan tahan lama |
+| **Kalau berhasil** | muncul SnackBar berbeda untuk ketuk dan tahan lama |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -168,6 +170,7 @@ Bungkus form dengan `SingleChildScrollView` supaya keyboard tidak memicu overflo
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, ketuk **Simpan** saat kolom kosong, lalu isi teks dan Simpan lagi |
+| **Kalau berhasil** | kolom kosong menolak Simpan; setelah diisi, Simpan berhasil |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -254,6 +257,7 @@ Widget ini sering terlewat, padahal hampir setiap aplikasi sungguhan memakainya.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, ubah setiap kontrol |
+| **Kalau berhasil** | dropdown, centang, sakelar, tanggal, dan jam berubah di layar |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -359,6 +363,7 @@ Tombol **Berikutnya** di keyboard memindahkan kursor, bukan menyimpan.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, isi kolom pertama, ketuk **Berikutnya** di keyboard |
+| **Kalau berhasil** | kursor pindah ke kolom berikutnya |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -426,7 +431,7 @@ Setiap `FocusNode` yang Anda buat sendiri wajib `dispose`. Kalau tidak, terjadi 
 
 ## 6. TextInputFormatter: saring ketikan
 
-Kolom harga tidak boleh menerima huruf.
+Kolom nomor HP tidak boleh menerima huruf.
 
 ### Uji 6
 
@@ -435,6 +440,7 @@ Kolom harga tidak boleh menerima huruf.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, coba ketik huruf di kolom |
+| **Kalau berhasil** | huruf tidak masuk; hanya angka |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -492,6 +498,7 @@ Cara aplikasi “berbicara” tanpa pindah halaman.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, geser sebuah baris ke kiri |
+| **Kalau berhasil** | baris hilang dari daftar |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -573,6 +580,7 @@ Sebelum `go_router`, rasakan `push` dan `pop` di DartPad.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, buka halaman kedua, lalu kembali |
+| **Kalau berhasil** | halaman kedua menumpuk; kembali mengangkatnya |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -628,12 +636,13 @@ Kirim data: `Navigator.pop(context, 'isi yang dikembalikan')` lalu `final hasil 
 
 ## 9. go_router — hanya jalur B
 
-Dari sini sampai Modul 11, kita pakai `go_router`: URL-nya jelas, tombol kembali Android jalan, deep link menyusul.
+Dari sini sampai Modul 11, kita pakai `go_router`: URL-nya jelas, tombol kembali Android jalan, tautan yang membuka layar tertentu (deep link) menyusul.
 
 | | |
 | --- | --- |
 | **Buka** | Terminal VS Code, folder proyek |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
+| **Kalau berhasil** | `pubspec.yaml` memuat `go_router` |
 
 ```powershell
 flutter pub add go_router
@@ -641,7 +650,7 @@ flutter pub add go_router
 
 **Kalau berhasil:** `pubspec.yaml` memuat `go_router`.
 
-Lalu ganti `MaterialApp(...)` menjadi `MaterialApp.router(routerConfig: ...)`.
+Berkas lengkap (jalur B — tempel ke `lib/main.dart`, **jangan** di-Run di DartPad):
 
 ```dart
 import 'package:flutter/material.dart';
@@ -758,6 +767,7 @@ Di DartPad (`Navigator.push`), `PopScope` bisa menahan keluar dari form. Ketuk p
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, buka form, lalu ketuk panah kembali di AppBar |
+| **Kalau berhasil** | dialog muncul; halaman tertutup hanya setelah **Buang** |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -974,6 +984,7 @@ Urutan kerja, jangan terbalik:
 | **Terminal** | `Ctrl + J` |
 | **Ketik** | `flutter pub add go_router` lalu `flutter run` |
 | **Tempel** | berkas lengkap ke `lib/main.dart` |
+| **Kalau berhasil** | Anda bisa menambah catatan, melihat daftar, dan menghapus dengan geser |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -1040,7 +1051,7 @@ class _DaftarPageState extends State<DaftarPage> {
               itemBuilder: (context, index) {
                 final item = gudang[index];
                 return Dismissible(
-                  key: ValueKey('${item.judul}-$index'),
+                  key: ValueKey('${item.judul}-${item.tanggal}'),
                   background: Container(color: Colors.red),
                   onDismissed: (_) => setState(() => gudang.removeAt(index)),
                   child: ListTile(

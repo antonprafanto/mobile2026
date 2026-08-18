@@ -64,7 +64,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Ketik** | perintah di mini proyek, di folder proyek |
 | **Kalau berhasil** | tombol uji merusak app; setelah dibuka lagi, laporan muncul di dasbor; nama/email tidak ikut |
 
-> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak bicara ke Console Firebase. Jangan kirim nama, email, atau token ke bengkel.
+> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak bicara ke Console Firebase. Jangan kirim nama, email, atau kunci masuk ke bengkel.
 
 Praktik: **Windows → Android**. iOS: konsep sama, membangun iOS butuh Mac.
 
@@ -109,7 +109,7 @@ FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
 Error yang tidak tertangkap kerangka Flutter (misalnya di `Future` tanpa `catch`) butuh baris tambahan `PlatformDispatcher.instance.onError` — ada di dokumen resmi. Mini proyek hari ini: baris `FlutterError.onError` dulu.
 
-Jangan `print` token, sandi, atau isi profil ke log — itu Modul 09 dan UU PDP, bukan “supaya mudah debug.”
+Jangan `print` kunci masuk, sandi, atau isi profil ke log — itu Modul 09 dan UU PDP, bukan “supaya mudah menelusuri rusak.”
 
 ---
 

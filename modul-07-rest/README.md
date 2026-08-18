@@ -17,7 +17,7 @@ Paket `dio` **tidak** ada di [daftar paket DartPad](https://github.com/dart-lang
 | Jalur | Buka | Untuk apa |
 | --- | --- | --- |
 | A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Dart** | JSON, `http.get`, status, pagination teks |
-| B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | `dio`, interceptor, token, app daftar |
+| B | VS Code + Terminal (`Ctrl + J`) + emulator/HP | `dio`, tempel tanda pengenal, app daftar |
 | C | Node.js + Thunder Client atau Postman | backend catatan, tes API tanpa Flutter |
 
 ```mermaid
@@ -65,7 +65,7 @@ DartPad jalan di **browser**. API yang dipanggil harus HTTPS dan mengizinkan COR
 | --- | --- |
 | **Buka** | VS Code di folder proyek Flutter, emulator atau HP sudah menyala |
 | **Terminal** | `Ctrl + J` |
-| **Ketik** | perintah di bawah, di folder proyek |
+| **Ketik** | perintah di bagian 6, di folder proyek |
 | **Kalau berhasil** | mulai bagian 6: baris `dio:` ada di `pubspec.yaml` |
 
 > **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`. Perintah pertamanya ada di bagian 6.
@@ -308,7 +308,7 @@ JWT (JSON Web Token) bentuknya tiga bagian dipisah titik: header, isi, tanda tan
 flowchart TB
   JWT["Satu token"] --> H["Header"]
   JWT --> I["Isi"]
-  JWT --> T["Tanda"]
+  JWT --> T["Ttd"]
 ```
 
 | | |

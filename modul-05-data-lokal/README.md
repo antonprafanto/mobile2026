@@ -2,7 +2,7 @@
 
 **Waktu:** 2 sesi  
 **Prasyarat:** Modul 00–04.  
-**Hasil:** Nanti Anda bisa menyimpan data di HP (bukan cuma di memori), menaruh token di tempat yang aman, dan menampilkan banner saat sinyal hilang.
+**Hasil:** Nanti Anda bisa menyimpan data di HP (bukan cuma di memori), menaruh tanda pengenal login (token) di tempat yang aman, dan menampilkan banner saat sinyal hilang.
 
 ---
 
@@ -112,7 +112,7 @@ Aturan praktis: mulai dari laci. Kalau datanya sudah seperti tabel, pindah ke bu
 
 HP dan server saling kirim **teks JSON**, bukan class Dart. Anda yang menerjemahkan.
 
-Analogi singkat: JSON = surat. Object Dart = orang yang disebut di surat. `fromJson` membaca surat jadi object. `toJson` menulis object jadi surat lagi.
+Analogi singkat: JSON = surat. Objek Dart = orang yang disebut di surat. `fromJson` membaca surat jadi objek. `toJson` menulis objek jadi surat lagi.
 
 <img src="images/analogi-surat-json.png" alt="Dua panel: Teks JSON dan Object Dart" width="720">
 
@@ -123,7 +123,7 @@ flowchart TB
   Json["Teks JSON"] --> Obj["Object Dart"]
 ```
 
-`fromJson` = baca surat jadi object. `toJson` = tulis object jadi surat lagi.
+`fromJson` = baca surat jadi objek. `toJson` = tulis objek jadi surat lagi.
 
 Sumber konsep: [JSON and serialization](https://docs.flutter.dev/data-and-backend/serialization/json). Flutter and the related logo are trademarks of Google LLC.
 
@@ -727,7 +727,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 1. Secure storage. SharedPreferences tidak dikunci; token mudah terbaca di cadangan/perangkat.
 2. Terminal VS Code di folder proyek, bukan DartPad.
-3. Mengubah `Map` / JSON menjadi object Dart.
+3. Mengubah `Map` / JSON menjadi objek Dart.
 4. Tidak. Itu status jaringan. Wi-Fi tanpa kuota masih bisa terlihat online.
 
 ---

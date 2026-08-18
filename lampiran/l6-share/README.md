@@ -146,7 +146,7 @@ Sumber: [klik untuk chat WhatsApp](https://faq.whatsapp.com/591339215614875).
 | **Pilih** | mode **Dart** |
 | **Tempel** | berkas lengkap di bawah |
 | **Klik** | **Run** |
-| **Kalau berhasil** | Console menulis `62…: boleh jadi tautan`, `0812…: jangan — pakai 62`, lalu `https: boleh dibuka` dan `http: jangan — bukan https` |
+| **Kalau berhasil** | Console menulis `6281200000000: boleh jadi tautan`, `081200000000: jangan — pakai 62, bukan 0`, lalu `https://contoh.id/menu: boleh dibuka` dan `http://contoh.id/menu: jangan — bukan https` |
 
 ```dart
 void main() {

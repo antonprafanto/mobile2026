@@ -2,7 +2,7 @@
 
 **Waktu:** 2 sesi  
 **Prasyarat:** Modul 00 (minimal DartPad sudah dicoba). Flutter SDK lokal disarankan, belum wajib untuk sesi ini.  
-**Hasil:** Nanti Anda bisa baca cuplikan Dart, tulis fungsi, dan tangani error sederhana.
+**Hasil:** Nanti Anda bisa baca kode Dart, tulis fungsi, dan tangani error sederhana.
 
 ---
 
@@ -12,7 +12,7 @@ Hampir semua contoh di sini dicoba di **DartPad**, supaya hasilnya kelihatan tan
 
 | Urutan | Buka | Untuk apa |
 | --- | --- | --- |
-| 1 | Browser → [https://dartpad.dev](https://dartpad.dev) | Uji setiap cuplikan |
+| 1 | Browser → [https://dartpad.dev](https://dartpad.dev) | Uji setiap berkas lengkap |
 | 2 | Sakelar mode **Dart** (bukan Flutter) | `print` muncul di panel konsol |
 | 3 | Tombol **Run** | Menjalankan `main()` |
 | 4 | (Opsional) Terminal VS Code | `dart` lokal, setelah Modul 00 selesai |
@@ -35,7 +35,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Buka** | [dartpad.dev](https://dartpad.dev) → mode **Dart** |
 | **Tempel** | seluruh berkas, termasuk `void main() { ... }` |
 | **Klik** | **Run** |
-| **Lihat** | panel **Console** di kanan |
+| **Kalau berhasil** | panel **Console** di kanan menulis keluaran, bukan error merah |
 
 Tanpa `main()`, DartPad tidak tahu harus mulai dari mana. Jangan cuma tempel satu baris `var nama = ...`.
 
@@ -61,7 +61,8 @@ Variabel adalah kotak berlabel. Tipe adalah aturan isi kotak itu.
 | --- | --- |
 | **Buka** | DartPad, mode Dart |
 | **Tempel** | kode berikut |
-| **Run** | |
+| **Run** | klik **Run** |
+| **Kalau berhasil** | Console menulis `Siti`, `21`, dan baris tipe lainnya |
 
 ```dart
 void main() {
@@ -194,7 +195,7 @@ Indeks List mulai dari **0**. `keranjang[3]` pada list berisi 3 item akan melemp
 
 ## 6. Generics: tulisan di dalam `<...>`
 
-`List<String>` artinya "daftar yang isinya teks". `Future<User>` artinya "janji yang kelak menghasilkan User".
+`List<String>` artinya "daftar yang isinya teks". `Future<User>` artinya "janji yang kelak menghasilkan User" (`User` = tipe buatan Anda, bukan bawaan Dart).
 
 Tanpa ini, dokumentasi Flutter terasa seperti sandi.
 
@@ -358,7 +359,7 @@ void main() {
 | | |
 | --- | --- |
 | **Buka** | DartPad |
-| **Run** | |
+| **Run** | klik **Run** |
 | **Kalau berhasil** | yang tercetak cabang `FormatException`, **bukan** layar merah tanpa pesan Anda |
 
 Aplikasi yang baik menerjemahkan error ini menjadi teks untuk manusia, bukan menumpuk jejak teknis di wajah pengguna. Itu dilatih lagi di Modul 09.
@@ -427,8 +428,9 @@ Jangan menghitung selisih hari dari `toString()`. Bandingkan `DateTime` sebagai 
 | --- | --- |
 | **Buka** | [dartpad.dev](https://dartpad.dev) mode **Dart** |
 | **Tempel** | kode di bawah |
-| **Run** | |
+| **Run** | klik **Run** |
 | **Ubah** | daftar `belanja`, Run lagi |
+| **Kalau berhasil** | Console menulis Total, Diskon, Bayar, dan melewati item rusak |
 
 ```dart
 void main() {
@@ -453,7 +455,7 @@ void main() {
 }
 ```
 
-**Tantangan:** ubah supaya diskon 10% jika total ≥ 50.000. Jangan keras-kode angka di tiga tempat; buat fungsi `int hitungDiskon(int total)`.
+**Tantangan:** ubah supaya diskon 10% jika total ≥ 50.000. Jangan menulis angka yang sama di tiga tempat; buat fungsi `int hitungDiskon(int total)`.
 
 ---
 
@@ -464,7 +466,8 @@ Jika Modul 00 sudah selesai:
 | | |
 | --- | --- |
 | **Buka** | VS Code → Terminal (`Ctrl + J`) |
-| **Ketik** | |
+| **Ketik** | perintah di bawah |
+| **Kalau berhasil** | muncul nomor versi Dart |
 
 ```powershell
 dart --version

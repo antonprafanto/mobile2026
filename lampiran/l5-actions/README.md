@@ -64,7 +64,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Ketik** | perintah di mini proyek, di folder proyek |
 | **Kalau berhasil** | Terminal menulis `No issues found!` atau daftar peringatan yang Anda perbaiki dulu |
 
-> **Aturan emas:** perintah `flutter ...` dan `git ...` hanya di **Terminal VS Code**. DartPad tidak bicara ke GitHub. Jangan taruh kunci, token, atau sandi di berkas langkah.
+> **Aturan emas:** perintah `flutter ...` dan `git ...` hanya di **Terminal VS Code**. DartPad tidak bicara ke GitHub. Jangan taruh kunci atau sandi di berkas langkah.
 
 Praktik: **Windows → Android**. iOS: konsep satpam sama; membangun iOS tetap butuh Mac (bukan topik hari ini).
 
@@ -235,7 +235,7 @@ Bonus (bukan syarat): jalankan satpam juga saat orang minta gabung, dengan menam
 | Awan hijau, Anda tidak cek laptop | satpam dianggap pengganti Modul 09 | tetap `flutter analyze` di Terminal dulu |
 | DartPad merah setelah tempel YAML | YAML bukan Dart | jalur C; uji 1 hanya `Map` |
 | Satpam tidak jalan | berkas bukan di `.github/workflows/` | akar proyek Flutter, nama `.yml` |
-| Log memuat token / kunci | kunci ditulis di YAML | hapus; satpam mini tidak butuh kunci |
+| Log memuat kunci | kunci ditulis di YAML | hapus; satpam mini tidak butuh kunci |
 | `pubspec.yaml` tidak ketemu | YAML di repo materi, atau folder salah | proyek Flutter Anda, bukan `mobile2026` |
 | Mengira L5 = bundel Play | unggah toko ditunda silabus | hari ini hanya analyze |
 | YAML rusak | tab campur spasi | salin cuplikan; spasi 2 |
@@ -248,7 +248,7 @@ Bonus (bukan syarat): jalankan satpam juga saat orang minta gabung, dengan menam
 2. (Jalur B) `flutter analyze` di proyek Flutter Anda sampai `No issues found!`
 3. (Jalur C) Satu berkas `analyze.yml`, push, hijau di tab **Actions**.
 4. (Jalur B + C) Sengaja biarkan satu peringatan, push, lihat merah; perbaiki, push lagi, hijau.
-5. (Jalur C) Cari di YAML: jangan ada token, sandi, atau kunci.
+5. (Jalur C) Cari di YAML: jangan ada kunci atau sandi.
 
 ---
 
@@ -270,7 +270,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 - Unggah `.aab` ke Play, kunci toko di rahasia GitHub
 - Unggah peta nama Crashlytics (L4) lewat Actions
 - Banyak versi Flutter sekaligus, komputer Mac untuk iOS
-- Lampiran L6 share, URL, WhatsApp
+- Lampiran L6 Share, URL, WhatsApp
 
 ---
 

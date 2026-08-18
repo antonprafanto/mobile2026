@@ -64,7 +64,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Ketik** | perintah di mini proyek, di folder proyek |
 | **Kalau berhasil** | angka min 999 → layar palang + tombol toko; angka min 1 → app biasa |
 
-> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak membaca kartu nama app, dan tidak membuka Play. Jangan kunci orang tanpa tautan toko.
+> **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak membaca kartu nama app, dan tidak membuka Play. Jangan mengunci orang di palang tanpa tautan toko.
 
 Praktik: **Windows → Android**. iOS: konsep sama; membangun iOS butuh Mac. Tautan etalase App Store **belum** dibahas.
 
@@ -128,7 +128,7 @@ Kartu = nama versi dan kode unggah yang terpasang di HP. Tebakan = menulis `1.0.
 
 *Ilustrasi asli materi mobile2026. Kartu = package_info_plus. Tebakan = mengira nama versi, atau membandingkannya sebagai teks.*
 
-Nama paket: `package_info_plus`. `version` = nama versi (`versionName`). `buildNumber` = kode unggah (`versionCode`) — masih **teks**, jadi di-parse ke angka.
+Nama paket: `package_info_plus`. `version` = nama versi (`versionName`). `buildNumber` = kode unggah (`versionCode`) — masih **teks**, lalu dijadikan angka.
 
 Sumber: [`package_info_plus`](https://pub.dev/packages/package_info_plus).
 
@@ -263,7 +263,7 @@ Bonus (bukan syarat): himbauan terpisah, angka min kedua yang lebih kecil dari p
 | `"1.10"` kalah dari `"1.9"` | nama versi dibanding sebagai teks | kode unggah (`buildNumber`) |
 | Mau ubah palang harus unggah bundel | angka min tertulis di Dart | pindah ke dokumen `config/app` |
 | Orang tertahan tanpa unduhan | palang tanpa tautan, atau bisa ditutup kembali | tombol toko; `PopScope` |
-| 999 tertinggal di produksi | lupa dikembalikan setelah uji | set angka min yang Anda maksud |
+| 999 tertinggal di produksi | lupa dikembalikan setelah uji | tetapkan angka min yang Anda maksud |
 
 ---
 

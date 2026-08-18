@@ -78,7 +78,7 @@ Toko melihat tiga hal sebelum kode:
 
 | Yang di toko | Dari mana | Jangan |
 | --- | --- | --- |
-| **Nama** yang dibaca orang | `android:label` / `CFBundleDisplayName` | nama latihan `com.example...` yang memalukan di etalase |
+| **Nama** yang dibaca orang | `android:label` / `CFBundleDisplayName` | nama latihan `My App` / `flutter_application_1` di etalase |
 | **Ikon** | `mipmap` / `flutter_launcher_icons` | ikon Flutter default di produksi |
 | **ID aplikasi** | `applicationId` (Android) | diubah **setelah** pernah diunggah ke Play |
 
@@ -236,7 +236,7 @@ flutter build appbundle --obfuscate --split-debug-info=build/app/outputs/symbols
 
 Sumber: [Obfuscate Dart code](https://docs.flutter.dev/deployment/obfuscate), [Shrink your code with R8](https://docs.flutter.dev/deployment/android#shrink-your-code-with-r8).
 
-Mini proyek hari ini **tidak** wajib `--obfuscate`. Wajib: bundel rilis yang tertandatangan.
+Mini proyek hari ini **tidak** wajib `--obfuscate`. Wajib: bundel rilis yang sudah ditandatangani.
 
 ---
 

@@ -61,7 +61,7 @@ Sumber gambar: [dart.dev/tools/dartpad](https://dart.dev/tools/dartpad), Dart te
 | **Buka** | VS Code di folder proyek Flutter, emulator atau HP sudah menyala |
 | **Browser** | [console.firebase.google.com](https://console.firebase.google.com) (akun Google) |
 | **Terminal** | `Ctrl + J` |
-| **Ketik** | perintah di bawah, di folder proyek |
+| **Ketik** | perintah di bagian 3B, di folder proyek |
 
 > **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`, dan tidak bisa bicara ke proyek Firebase Anda.
 
@@ -101,7 +101,7 @@ Sebelum menekan tombol Firestore, bedakan dua cara menyimpan.
 
 Firestore = **lemari**, bukan Excel. SQLite di Modul 05 lebih dekat ke Excel.
 
-### Uji 2 — bentuk “kertas” di DartPad (jalur A)
+### Uji 1 — bentuk “kertas” di DartPad (jalur A)
 
 Ini **bukan** Firebase. Hanya bentuk data: dokumen = `Map`, koleksi = daftar `Map`.
 
@@ -178,7 +178,7 @@ dart pub global activate flutterfire_cli
 flutterfire configure
 ```
 
-| **Kalau berhasil** | Ada `lib/firebase_options.dart`. `flutterfire configure` menanya proyek dan platform. Untuk materi ini centang **Android**. |
+**Kalau berhasil:** Ada `lib/firebase_options.dart`. `flutterfire configure` menanyakan proyek dan platform. Untuk materi ini centang **Android**.
 
 Kalau `flutterfire` tidak dikenali: berkas `dart pub global` belum masuk PATH. Tutup terminal, buka lagi, atau pakai `dart pub global run flutterfire_cli:flutterfire configure`.
 
@@ -251,7 +251,7 @@ CRUD = Create, Read, Update, Delete. Paket: `cloud_firestore`.
 flutter pub add cloud_firestore
 ```
 
-| **Kalau berhasil** | `pubspec.yaml` memuat `cloud_firestore`. |
+**Kalau berhasil:** `pubspec.yaml` memuat `cloud_firestore`.
 
 Cuplikan (jalur B). Jangan di-Run di DartPad.
 
@@ -383,7 +383,7 @@ Login email/Google yang lengkap ada di **Modul 08**. Di modul ini cukup **Anonym
 flutter pub add firebase_auth
 ```
 
-| **Kalau berhasil** | `pubspec.yaml` memuat `firebase_auth`. |
+**Kalau berhasil:** `pubspec.yaml` memuat `firebase_auth`.
 
 Cuplikan (jalur B):
 
@@ -410,7 +410,7 @@ Firestore menyimpan angka dan teks. Foto besar masuk **Storage**.
 flutter pub add firebase_storage
 ```
 
-| **Kalau berhasil** | `pubspec.yaml` memuat `firebase_storage`. |
+**Kalau berhasil:** `pubspec.yaml` memuat `firebase_storage`.
 
 Cuplikan ide (jalur B). File sungguhan di HP memakai `path_provider` + `image_picker` (Modul 08 lebih dalam). Di sini yang penting: path di dapur, bukan di galeri HP.
 
@@ -496,7 +496,7 @@ Dicek di HP: mudah ditipu. Dicek di Rules / Functions: dapur yang memutuskan.
 | --- | --- | --- |
 | Teks tombol “Hapus” disembunyikan | boleh, sopan | tetap butuh `allow delete` |
 | Stok tidak boleh negatif | tidak cukup | transaksi + rules / function |
-| Harga barang | boleh ditampil | sumber kebenaran di server |
+| Harga barang | boleh ditampilkan | sumber kebenaran di server |
 | Hak admin | jangan percaya `isAdmin` di SharedPreferences | custom claim / rules |
 
 **Cloud Functions** = kode yang jalan di dapur Google, bukan di HP. Pengenalan ini **satu fungsi halo**, bukan arsitektur besar.
@@ -564,7 +564,7 @@ Pecah ke `lib/ui/` dan `lib/data/` kalau sudah nyaman. Jangan commit `google-ser
 
 ## Latihan
 
-1. (DartPad) Tambah field `int umur` pada `Map` tamu di uji 2, `print` yang `umur >= 18`.
+1. (DartPad) Tambah field `int umur` pada `Map` tamu di uji 1, `print` yang `umur >= 18`.
 2. (Jalur B) Tambah field `kota` (string) saat `add`, tampilkan di `ListTile.subtitle`.
 3. (Jalur B) Ganti `limit(20)` jadi `limit(5)`. Pastikan hanya lima kertas terbaru.
 4. (Jalur B) Tombol hapus milik orang lain: pastikan SnackBar muncul, bukan crash.

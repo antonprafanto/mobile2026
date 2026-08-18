@@ -2,9 +2,9 @@
 
 Tiap bab mulai dari *mengapa* dulu, baru *bagaimana*, lalu latihan kecil. Istilah teknis tetap ditulis dalam bahasa aslinya, lalu dijelaskan.
 
-Targetnya: nanti Anda bisa merancang, membangun, dan menerbitkan aplikasi mobile yang punya **tampilan (frontend)** dan **server/data (backend)**.
+Targetnya: nanti Anda bisa merancang, membangun, dan menerbitkan aplikasi mobile yang punya **tampilan (frontend)** dan **layanan data (backend)**.
 
-Flutter and the related logo are trademarks of Google LLC. We are not endorsed by or affiliated with Google LLC.
+Flutter and the related logo are trademarks of Google LLC. Materi ini tidak didukung Google secara resmi, dan tidak terafiliasi dengan Google LLC.
 
 ---
 
@@ -75,7 +75,7 @@ Audit kedua (setelah revisi pertama) masih menemukan lubang **wajib**. Lubang it
 | **Frontend** | Tampilan aplikasi yang disentuh orang: tombol, halaman, animasi |
 | **Backend** | "Dapur" aplikasi: data, login, penyimpanan, aturan bisnis |
 | **Fullstack mobile** | Anda mengerjakan keduanya: UI Flutter + layanan data di belakangnya |
-| **Mini project** | Latihan singkat di akhir modul |
+| **Mini proyek** | Latihan singkat di akhir modul |
 | **Capstone** | Proyek akhir yang menggabungkan semua modul |
 | **Lampiran** | Boleh dilewati di gelombang pertama, tetap ada di repo |
 
@@ -100,7 +100,7 @@ Estimasi total: **14–18 minggu** jika belajar 8–10 jam per minggu. Boleh leb
 11. Proyek akhir
 ```
 
-Lampiran (tidak wajib urut): lokasi/peta, pembayaran, Supabase, Crashlytics, update paksa, biometrik, QR.
+Lampiran (tidak wajib urut): lokasi/peta, pembayaran, Supabase, Crashlytics, Actions, share/URL/WhatsApp, update paksa, biometrik, QR.
 
 Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 
@@ -124,7 +124,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 12. Cara baca dokumentasi Flutter/Dart (jangan hapal, belajar mencari)
 13. Analogi internet 2 menit: HP = tamu, server = dapur, JSON = nota pesanan (detail di Modul 7)
 
-**Mini project:** aplikasi "Halo, namaku ..." lalu di-commit dan di-push ke repo latihan.
+**Mini proyek:** aplikasi "Halo, namaku ..." lalu di-commit dan di-push ke repo latihan.
 
 **Hasil:** lingkungan kerja jalan, Git tidak asing, error instalasi bisa Anda telusuri sendiri.
 
@@ -148,7 +148,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 12. `async` / `await`: menunggu data tanpa membuat app macet
 13. **DateTime:** lokal vs UTC — sumber bug "jamnya geser 7 jam"
 
-**Mini project:** program kasir mini di terminal (hitung total belanja + diskon + error jika input bukan angka).
+**Mini proyek:** program kasir mini di terminal (hitung total belanja + diskon + error jika input bukan angka).
 
 **Hasil:** Anda bisa baca kode Dart, menulis fungsi, dan menangani kesalahan sederhana.
 
@@ -174,7 +174,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 14. Aset: gambar, ikon, splash sederhana
 15. Widget Inspector: melihat "pohon" widget saat debug
 
-**Mini project:** kartu profil (foto, nama, bio, 3 tombol sosial) yang tidak pecah di HP kecil dan tetap terbaca saat font sistem dibesarkan.
+**Mini proyek:** kartu profil (foto, nama, bio, 3 tombol sosial) yang tidak pecah di HP kecil dan tetap terbaca saat font sistem dibesarkan.
 
 **Hasil:** Anda bisa merakit halaman statis yang rapi dan tidak takut error layout.
 
@@ -198,7 +198,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 12. Bottom navigation & tab (pola app modern)
 13. Splash singkat + onboarding 2–3 layar (pola produk, bukan animasi rumit)
 
-**Mini project:** app catatan 2 halaman (daftar + form tambah + tanggal + geser-untuk-hapus) memakai go_router.
+**Mini proyek:** app catatan 2 halaman (daftar + form tambah + tanggal + geser-untuk-hapus) memakai go_router.
 
 **Hasil:** alur halaman terasa seperti aplikasi sungguhan.
 
@@ -219,7 +219,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 9. Folder architecture sederhana: `ui / data / services`
 10. Aturan: UI tidak memanggil internet / database secara langsung
 
-**Mini project:** keranjang belanja (tambah, kurang, total selalu benar) + status loading palsu.
+**Mini proyek:** keranjang belanja (tambah, kurang, total selalu benar) + status loading palsu.
 
 **Hasil:** Anda punya pola menyimpan data yang bisa dipakai di proyek besar.
 
@@ -241,7 +241,7 @@ Jangan loncat modul wajib. Flutter terasa mudah kalau fondasinya urut.
 10. **Koneksi internet:** deteksi online/offline, tampilan "tidak ada sinyal"
 11. Siklus hidup app singkat: pause / resume (contoh: jeda dulu, lanjut lagi)
 
-**Mini project:** to-do list yang tetap ada setelah app ditutup, plus banner jika offline.
+**Mini proyek:** to-do list yang tetap ada setelah app ditutup, plus banner jika offline.
 
 **Hasil:** app offline-first untuk fitur dasar, tanpa menyimpan rahasia di tempat yang salah.
 
@@ -268,7 +268,7 @@ Kenapa Firebase dulu? Jalan tercepat merasakan fullstack: login, database, file,
 13. **Aturan fullstack:** harga, stok, hak admin **tidak boleh hanya dicek di HP**. Pengenalan Cloud Functions (1 fungsi "halo", bukan arsitektur besar)
 14. Jangan ajarkan Dynamic Links (sudah deprecated)
 
-**Mini project:** buku tamu online (tulis, daftar realtime, aturan: hanya pemilik yang boleh hapus).
+**Mini proyek:** buku tamu online (tulis, daftar realtime, aturan: hanya pemilik yang boleh hapus).
 
 **Hasil:** app terhubung ke cloud, bukan hanya data di HP.
 
@@ -295,7 +295,7 @@ Kenapa Firebase dulu? Jalan tercepat merasakan fullstack: login, database, file,
 15. Backend sendiri, tetap terfokus: **satu resource CRUD lengkap** (bukan cuma 1 endpoint) — contoh: Node.js + Express + daftar catatan
 16. **Deploy 1 kali:** unggah backend mini ke layanan gratis/murah (Render / Railway) supaya HP fisik bisa mengakses, bukan hanya `localhost`
 
-**Mini project:** app daftar film/berita dari API publik + halaman berikutnya (pagination). Latihan bonus: CRUD catatan ke backend mini yang sudah di-deploy.
+**Mini proyek:** app daftar film/berita dari API publik + halaman berikutnya (pagination). Latihan bonus: CRUD catatan ke backend mini yang sudah di-deploy.
 
 **Hasil:** Anda bisa menyambungkan Flutter ke API apa saja, menguji API tanpa app, dan paham isi "dapur" sederhana yang hidup di internet.
 
@@ -318,7 +318,7 @@ Kenapa Firebase dulu? Jalan tercepat merasakan fullstack: login, database, file,
 11. Deep link singkat: buka halaman tertentu dari luar app (App Link konsep, bukan Dynamic Links)
 12. (Opsional Indonesia) OTP / nomor HP: dikenalkan, tidak wajib dikuasai
 
-**Mini project:** app komunitas mini (daftar, verifikasi, login, posting teks + foto, 1 pengingat lokal, logout).
+**Mini proyek:** app komunitas mini (daftar, verifikasi, login, posting teks + foto, 1 pengingat lokal, logout).
 
 **Hasil:** Anda menguasai alur yang dipakai hampir semua produk mobile.
 
@@ -341,7 +341,7 @@ Kenapa Firebase dulu? Jalan tercepat merasakan fullstack: login, database, file,
 11. Keamanan dasar: jangan simpan rahasia di kode, HTTPS, rules Firebase, `.gitignore`, token hanya di secure storage
 12. Privasi singkat: **UU PDP** — data pengguna bukan milik kita untuk disebar
 
-**Mini project:** rapikan 1 app lama: empty state + error + loading + harga dalam Rupiah.
+**Mini proyek:** rapikan 1 app lama: empty state + error + loading + harga dalam Rupiah.
 
 **Hasil:** Anda mulai berpikir seperti developer yang merilis produk, bukan hanya demo.
 
@@ -349,7 +349,7 @@ Kenapa Firebase dulu? Jalan tercepat merasakan fullstack: login, database, file,
 
 ## Modul 10 — Rilis: dari laptop ke Play Store
 
-**Tujuan:** orang lain bisa mengunduh app-mu, dan lolos kebijakan toko saat ini.
+**Tujuan:** orang lain bisa mengunduh app Anda, dan lolos kebijakan toko saat ini.
 
 1. App icon, nama, package name, versioning (`1.0.0+1`)
 2. Signing key (keystore) — simpan baik-baik
@@ -363,7 +363,7 @@ Kenapa Firebase dulu? Jalan tercepat merasakan fullstack: login, database, file,
 10. Internal testing → production
 11. (Opsional) App Store iOS: overview syarat Apple Developer — praktik penuh ditunda jika belum ada Mac
 
-**Mini project:** unggah 1 app ke internal testing (boleh app modul sebelumnya).
+**Mini proyek:** unggah 1 app ke internal testing (boleh app modul sebelumnya).
 
 **Hasil:** siklus "kode → build → rilis" Anda pahami end-to-end.
 

@@ -62,13 +62,13 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | `lampiran/l2-pembayaran/images/analogi-kasir-buku.png` | L2 | Kasir gerbang vs buku nomor kartu |
 | `lampiran/l2-pembayaran/images/analogi-jendela-kertas.png` | L2 | Jendela bayar vs kertas form kartu |
 | `lampiran/l2-pembayaran/images/analogi-struk-janji.png` | L2 | Struk notifikasi vs janji di HP |
-| `lampiran/l2-pembayaran/images/analogi-pasir-toko.png` | L2 | Sandbox pasir vs toko produksi |
+| `lampiran/l2-pembayaran/images/analogi-pasir-toko.png` | L2 | Pasir vs toko produksi |
 | `lampiran/l3-supabase/images/analogi-satu-dua.png` | L3 | Satu dapur vs dua dapur sekaligus |
 | `lampiran/l3-supabase/images/analogi-tabel-lemari.png` | L3 | Tabel Postgres vs lemari Firestore |
 | `lampiran/l3-supabase/images/analogi-tamu-dapur.png` | L3 | Kunci tamu vs kunci dapur |
 | `lampiran/l3-supabase/images/analogi-gembok-terbuka.png` | L3 | Gembok baris vs tabel terbuka |
 | `lampiran/l4-crashlytics/images/analogi-bengkel-laci.png` | L4 | Meja servis vs HP rusak di laci |
-| `lampiran/l4-crashlytics/images/analogi-kertas-buku.png` | L4 | Kertas print vs buku bengkel |
+| `lampiran/l4-crashlytics/images/analogi-kertas-buku.png` | L4 | Kertas cetak vs buku bengkel |
 | `lampiran/l4-crashlytics/images/analogi-jejak-ktp.png` | L4 | Jejak layar vs KTP |
 | `lampiran/l4-crashlytics/images/analogi-tombol-toko.png` | L4 | Tombol uji vs etalase toko |
 | `lampiran/l5-actions/images/analogi-satpam-sendiri.png` | L5 | Satpam di pintu vs cek sendiri di meja |
@@ -196,7 +196,6 @@ Gambar yang berisi banyak teks kecil (sketsa DartPad / VS Code palsu) **dihapus*
 | Tautan bayar Xendit | [https://docs.xendit.co/payment-link/integration-and-testing/payment-links-integration](https://docs.xendit.co/payment-link/integration-and-testing/payment-links-integration) | URL jendela dari dapur |
 | API keys Xendit | [https://docs.xendit.co/docs/api-keys](https://docs.xendit.co/docs/api-keys) | Secret hanya di server |
 | Kebijakan bayar Play | [https://support.google.com/googleplay/android-developer/answer/10281818](https://support.google.com/googleplay/android-developer/answer/10281818) | Digital → sistem bayar Play; barang fisik → gerbang lain |
-| `url_launcher` | [https://pub.dev/packages/url_launcher](https://pub.dev/packages/url_launcher) | Membuka jendela bayar di jalur B |
 | Quickstart Flutter Supabase | [https://supabase.com/docs/guides/getting-started/quickstarts/flutter](https://supabase.com/docs/guides/getting-started/quickstarts/flutter) | Inisialisasi klien |
 | Kunci API Supabase | [https://supabase.com/docs/guides/getting-started/api-keys](https://supabase.com/docs/guides/getting-started/api-keys) | Kunci tamu vs kunci dapur |
 | Aturan baris Postgres | [https://supabase.com/docs/guides/database/postgres/row-level-security](https://supabase.com/docs/guides/database/postgres/row-level-security) | Gembok per baris |

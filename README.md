@@ -49,7 +49,7 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [modul-04-state](modul-04-state/README.md) | setState, Provider, FutureBuilder |
 | [modul-05-data-lokal](modul-05-data-lokal/README.md) | SharedPreferences, file, SQLite, offline |
 | [modul-06-firebase](modul-06-firebase/README.md) | Firestore, rules, Storage, listener realtime |
-| [modul-07-rest](modul-07-rest/README.md) | HTTP, JSON, `dio`, token, backend mini + deploy |
+| [modul-07-rest](modul-07-rest/README.md) | HTTP, JSON, `dio`, tanda pengenal, dapur mini + deploy |
 | [modul-08-fitur](modul-08-fitur/README.md) | Login, verifikasi, izin HP, foto, notifikasi |
 | [modul-09-kualitas](modul-09-kualitas/README.md) | UX, Rupiah/`intl`, tes, UU PDP |
 | [modul-10-rilis](modul-10-rilis/README.md) | Ikon, keystore, App Bundle, Play Console |
@@ -70,7 +70,7 @@ Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).
 
 ## Cara belajar
 
-1. Baca silabus sekali, jangan dihapal.
+1. Baca silabus sekali, jangan dihafal.
 2. Kerjakan modul **berurutan**. Selesaikan Modul 00 dulu, baru yang lain.
 3. Tiap modul: analogi → langkah → kode → kesalahan yang sering terjadi → latihan → kuis.
 4. Coba kode di alat yang disebutkan. Jangan tebak hasilnya.

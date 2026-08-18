@@ -47,7 +47,7 @@ flowchart TB
 | **Pilih** | mode **Flutter** |
 | **Tempel** | seluruh **berkas lengkap**, termasuk `import` dan `void main()` |
 | **Klik** | **Run** |
-| **Lihat** | panel kanan: pratinjau aplikasi |
+| **Kalau berhasil** | panel kanan menampilkan pratinjau aplikasi, bukan error merah |
 
 ### Pola uji B — proyek lokal
 
@@ -56,6 +56,7 @@ flowchart TB
 | **Buka** | VS Code di folder proyek, emulator atau HP sudah menyala |
 | **Terminal** | `Ctrl + J` |
 | **Ketik** | `flutter run` |
+| **Kalau berhasil** | app terbuka di emulator atau HP |
 | **Ubah kode** | simpan (`Ctrl + S`), lalu tekan `r` di terminal yang menjalankan app |
 
 > **Aturan emas:** perintah `flutter ...` hanya di **Terminal VS Code**. DartPad tidak menjalankan `flutter pub add`.
@@ -89,6 +90,7 @@ Sumber konsep: [docs.flutter.dev/ui/widgets](https://docs.flutter.dev/ui/widgets
 | **Buka** | [dartpad.dev](https://dartpad.dev), mode **Flutter** |
 | **Tempel** | berkas lengkap di bawah |
 | **Klik** | **Run** |
+| **Kalau berhasil** | panel kanan menampilkan ikon dan teks `Halo, ini widget` |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -140,6 +142,7 @@ Stateful butuh dua class: widget + `State`. Angka penghitung tinggal di `State`,
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, lalu ketuk tombol `+` di layar kanan |
+| **Kalau berhasil** | angka di layar bertambah setiap ketuk |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -222,6 +225,7 @@ Contoh resmi Flutter (danau + baris CALL / ROUTE / SHARE) ada di [Build a Flutte
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run** |
+| **Kalau berhasil** | foto, nama, dan deretan tombol tersusun, bukan error merah |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -312,6 +316,7 @@ flowchart TB
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas **Rusak**, klik **Run**, lihat garis kuning |
 | **Ganti** | isi `body` menjadi `ListView` seperti berkas **Perbaikan**, **Run** lagi |
+| **Kalau berhasil** | garis kuning overflow hilang; daftar 20 baris bisa digulir |
 
 **Berkas lengkap — rusak (sengaja):**
 
@@ -382,6 +387,7 @@ Untuk formulir + keyboard: bungkus dengan `SingleChildScrollView`, atau pakai `r
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, lalu ketuk ikon menu di kiri AppBar untuk membuka Drawer |
+| **Kalau berhasil** | Drawer terbuka dari kiri |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -441,6 +447,7 @@ Satu `ThemeData` menjaga warna dan huruf tetap selaras.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run** |
+| **Kalau berhasil** | warna AppBar dan tombol selaras dari satu tema |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -495,6 +502,8 @@ flutter pub add google_fonts
 
 Lalu di berkas Dart proyek (bukan DartPad):
 
+Cuplikan (jalur B — **jangan** di-Run sendirian di DartPad):
+
 ```dart
 import 'package:google_fonts/google_fonts.dart';
 
@@ -536,6 +545,7 @@ Jangan memaksa `textScaler: TextScaler.linear(1)` di aplikasi yang dipakai orang
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, gulir daftar di panel kanan |
+| **Kalau berhasil** | daftar panjang bisa digulir tanpa overflow |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -580,6 +590,7 @@ Satu contoh cukup: `AnimatedContainer`. Tanpa `AnimationController`.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run**, lalu ketuk tombol untuk mengubah ukuran kotak |
+| **Kalau berhasil** | kotak berubah ukuran dengan animasi, bukan loncat kasar |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -639,6 +650,7 @@ Di DartPad tidak ada folder `assets/`. Pakai `Image.network`.
 | **Buka** | DartPad, mode Flutter |
 | **Tempel** | berkas lengkap |
 | **Klik** | **Run** |
+| **Kalau berhasil** | panel kanan menampilkan foto |
 
 ```dart
 import 'package:flutter/material.dart';
@@ -681,6 +693,8 @@ flutter:
 
 3. Di Terminal VS Code ketik `flutter pub get`, lalu tampilkan:
 
+Cuplikan (jalur B — **jangan** di-Run sendirian di DartPad):
+
 ```dart
 Image.asset('assets/images/foto.png')
 ```
@@ -700,6 +714,7 @@ Inspector menampilkan **pohon widget** aplikasi yang sedang berjalan.
 | **Buka** | VS Code, app sudah `flutter run` |
 | **Lalu** | palet perintah `Ctrl + Shift + P` → ketik **Flutter: Open DevTools** |
 | **Atau** | ikon Flutter DevTools di bilah samping VS Code |
+| **Kalau berhasil** | pohon widget terlihat; ketuk widget di HP, pohon ikut bergulir |
 
 Pilih widget di HP, pohon di DevTools ikut bergulir. Berguna saat overflow: lihat widget mana yang terlalu lebar.
 
@@ -725,6 +740,7 @@ Urutan kerja, jangan terbalik:
 | **Buka** | DartPad mode Flutter (foto memakai `Image.network`) **atau** proyek lokal (jalur B, `Image.asset`) |
 | **Tempel** | berkas lengkap di bawah |
 | **Klik** | **Run** |
+| **Kalau berhasil** | panel kanan menampilkan foto, nama, bio, dan tiga tombol |
 
 ```dart
 import 'package:flutter/material.dart';

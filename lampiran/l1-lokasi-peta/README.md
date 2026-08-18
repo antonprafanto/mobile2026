@@ -246,9 +246,9 @@ flutter pub add geolocator google_maps_flutter
 flutter run
 ```
 
-**Kalau berhasil:** setelah Izinkan, peta menampilkan pin di sekitar Anda (atau di titik emulator yang Anda set). Kunci Maps **tidak** ada di GitHub.
+**Kalau berhasil:** setelah Izinkan, peta menampilkan pin di sekitar Anda (atau di titik emulator yang Anda atur). Kunci Maps **tidak** ada di GitHub.
 
-Bonus: simpan titik terakhir di `flutter_secure_storage` hanya jika perlu — koordinat bukan token, tapi tetap data orang. SharedPreferences boleh untuk “terakhir dilihat,” asal tidak dicampur sandi.
+Bonus: simpan titik terakhir di `flutter_secure_storage` hanya jika perlu — koordinat bukan kunci masuk, tapi tetap data orang. SharedPreferences boleh untuk “terakhir dilihat,” asal tidak dicampur sandi.
 
 ---
 
@@ -259,7 +259,7 @@ Bonus: simpan titik terakhir di `flutter_secure_storage` hanya jika perlu — ko
 | Peta abu-abu / logo Google saja | kunci salah, SDK belum diaktifkan, batasan paket terlalu ketat | Console + SHA-1 + `applicationId` |
 | `GoogleMap` crash overflow | tidak ada tinggi | `Expanded` / `SizedBox` |
 | Dialog izin tidak muncul | lupa Manifest, atau diminta dua plugin | satu jalur izin; Manifest + runtime |
-| Angka `0, 0` di laut | GPS belum siap / emulator tanpa titik | set lokasi emulator; tunggu |
+| Angka `0, 0` di laut | GPS belum siap / emulator tanpa titik | atur lokasi emulator; tunggu |
 | Izin ditolak selamanya | orang tekan Jangan tanya lagi | `openAppSettings`, jangan paksa |
 | Kunci di GitHub | tempel di `main.dart` | brankas; anggap bocor; ganti kunci |
 | Play Data safety | centang lokasi padahal tidak dipakai | jujur, atau hapus kode GPS |
@@ -304,7 +304,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 2. Tidak. Android minta runtime. Manifest + dialog.
 3. Tidak. Brankas / Manifest lokal / batasan paket di Console.
 4. Tidak. Cukup saat app dipakai.
-5. Tidak. Sering kunci, billing, atau SDK belum Enable.
+5. Tidak. Sering kunci, tagihan, atau SDK belum diaktifkan.
 
 ---
 

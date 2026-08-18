@@ -17,7 +17,7 @@ Plugin HP (`firebase_auth`, `google_sign_in`, `permission_handler`, `image_picke
 | Jalur | Buka | Untuk apa |
 | --- | --- | --- |
 | A | Browser → [dartpad.dev](https://dartpad.dev) → mode **Flutter** | Sesi, gerbang verifikasi, “admin di UI bukan satpam” |
-| B | VS Code + Terminal (`Ctrl + J`) + emulator/HP + [Firebase Console](https://console.firebase.google.com) | Auth email/Google, izin, foto, lonceng, FCM |
+| B | VS Code + Terminal (`Ctrl + J`) + emulator/HP + [Firebase Console](https://console.firebase.google.com) | Auth email/Google, izin, foto, lonceng, FCM (pesan dari dapur) |
 
 ```mermaid
 flowchart TB
@@ -220,7 +220,7 @@ Gmail latihan kadang menaruh surat di **Spam**. Tunggu satu atau dua menit sebel
 
 `FirebaseAuth.instance.currentUser` = orang yang sedang di HP ini. `null` = belum masuk.
 
-`authStateChanges()` = aliran berita dari Firebase: orang baru masuk, orang keluar, atau token diperbarui. Pasang di gerbang rute (`go_router` redirect, Modul 03), supaya halaman isi tidak kebuka sebelum login.
+`authStateChanges()` = aliran berita dari Firebase: orang baru masuk, orang keluar, atau token diperbarui. Pasang di gerbang rute (`go_router` redirect, Modul 03), supaya halaman isi tidak terbuka sebelum login.
 
 Cuplikan gerbang (jalur B):
 
@@ -409,8 +409,8 @@ Alur yang hemat kuota:
 
 ```mermaid
 flowchart TB
-  Pilih["Kamera"] --> Izin["Izin"]
-  Izin --> Kompres["Kompres"]
+  Izin["Izin"] --> Kamera["Kamera"]
+  Kamera --> Kompres["Kompres"]
   Kompres --> Unggah["Storage"]
 ```
 
@@ -496,7 +496,7 @@ await plugin.show(
 
 ---
 
-## 9. FCM: app terbuka, di belakang, ditutup
+## 9. FCM (pesan dari dapur): app terbuka, di belakang, ditutup
 
 [`firebase_messaging`](https://pub.dev/packages/firebase_messaging) menerima surat saat:
 
@@ -531,7 +531,7 @@ Cuplikan Android `intent-filter` (konsep, di `AndroidManifest` activity utama):
 </intent-filter>
 ```
 
-Di Flutter, baca tautan dengan [`app_links`](https://pub.dev/packages/app_links) lalu `go_router` ke `/posting/3`. Verifikasi `assetlinks.json` di server = langkah rilis (Modul 10), bukan wajib hari ini.
+Di Flutter, baca tautan dengan [`app_links`](https://pub.dev/packages/app_links) lalu `go_router` ke `/posting/3`. Berkas `assetlinks.json` di dapur **belum** dibahas di Modul 10 — bukan wajib hari ini.
 
 iOS Universal Links butuh file `apple-app-site-association` dan Mac.
 

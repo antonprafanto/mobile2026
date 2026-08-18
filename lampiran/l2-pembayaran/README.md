@@ -82,7 +82,7 @@ Gerbang bayar = kasir toko. Orang menyerahkan uang di meja kasir. App Anda **buk
 
 Angka panjang di gambar **Buku** itu contoh palsu. Jangan disalin ke kode.
 
-Jangan simpan nomor kartu, tanggal kedaluwarsa, atau tiga digit belakang di `SharedPreferences`, `flutter_secure_storage`, Firestore, log, atau repo. Brankas Modul 05/09 untuk **token login**, bukan untuk kartu.
+Jangan simpan nomor kartu, tanggal kedaluwarsa, atau tiga digit belakang di `SharedPreferences`, `flutter_secure_storage`, Firestore, log, atau repo. Brankas Modul 05/09 untuk **kunci masuk**, bukan untuk kartu.
 
 Kalau Anda mengumpulkan kartu sendiri, itu urusan sertifikasi kartu yang berat. Untuk lampiran ini: **biarkan gerbang yang memegang kartu.**
 
@@ -106,7 +106,7 @@ flowchart TB
 ```
 
 1. App minta dapur (Modul 07) buatkan transaksi.
-2. Dapur memakai **kunci server**, dapat token / URL.
+2. Dapur memakai **kunci server**, dapat kunci sesi / URL.
 3. App membuka URL itu (`url_launcher`, atau halaman web di dalam app — jalur B).
 4. Orang memilih VA bank, dompet digital, atau kartu **di halaman gerbang**.
 
@@ -227,7 +227,7 @@ void main() {
 }
 ```
 
-Di HP, `jumlah` ditampilkan dengan `intl` (Modul 09). Status `lunas` **tidak** di-set dari uji ini — itu datang dari dapur setelah struk.
+Di HP, `jumlah` ditampilkan dengan `intl` (Modul 09). Status `lunas` **tidak** diubah dari uji ini — itu datang dari dapur setelah struk.
 
 Cuplikan (jalur B) — **jangan** di-Run di DartPad:
 
@@ -330,7 +330,7 @@ Kunci jawaban di bawah. Coba jawab dulu.
 ## Kunci kuis
 
 1. Tidak ada plugin gerbang di DartPad; butuh HP/emulator + dapur + dasbor.
-2. Tidak. Brankas itu untuk token login, bukan nomor kartu. Kartu dipegang gerbang.
+2. Tidak. Brankas itu untuk kunci masuk, bukan nomor kartu. Kartu dipegang gerbang.
 3. Tidak. Struk ke dapur dulu, baru status.
 4. Tidak. Kunci server hanya di dapur / brankas server.
 5. Tidak. Konten digital di Play memakai sistem bayar Play, kecuali kebijakan resmi mengatakan lain.
