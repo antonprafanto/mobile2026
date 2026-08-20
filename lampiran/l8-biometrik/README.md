@@ -289,7 +289,6 @@ Kunci jawaban di bawah. Coba jawab dulu.
 - Mencocokkan foto kamera sendiri, liveness, ML wajah
 - Sidik sebagai satu-satunya pintu, tanpa akun Modul 08
 - Windows Hello / macOS (bukan target Play)
-- Lampiran L9 QR
 
 ---
 

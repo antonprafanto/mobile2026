@@ -62,7 +62,7 @@ Aplikasi mobile biasanya punya tiga lapisan:
 | [lampiran/l6-share](lampiran/l6-share/README.md) | Kirim lembar, buka tautan, `wa.me` tanpa nomor orang sungguhan |
 | [lampiran/l7-update](lampiran/l7-update/README.md) | Palang versi lama, angka min di papan, buka etalase Play |
 | [lampiran/l8-biometrik](lampiran/l8-biometrik/README.md) | Gerbang sidik di HP ini, bukan ganti akun, jangan kirim ke dapur |
-| lampiran L9 | Menyusul sesuai silabus |
+| [lampiran/l9-qr](lampiran/l9-qr/README.md) | Stempel tiket di layar, kamera baca isi, jangan taruh sandi di kotak |
 | [docs/SUMBER-GAMBAR.md](docs/SUMBER-GAMBAR.md) | Sumber gambar dan merek |
 
 Status penulisan ada di [SILABUS.md](SILABUS.md#status-penulisan).
