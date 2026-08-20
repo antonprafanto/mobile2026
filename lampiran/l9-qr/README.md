@@ -110,7 +110,7 @@ Sumber: [qr_flutter](https://pub.dev/packages/qr_flutter). `data` itu **isi**. U
 
 ## 3. Tiket, jangan kunci
 
-Tiket = nomor yang boleh kelihatan: `tiket:demo-001`. Kunci = sandi, token, atau kunci server. Orang bisa memotret stempel; anggap isinya publik.
+Tiket = nomor yang boleh kelihatan: `tiket:demo-001`. Kunci = sandi, tanda pengenal, atau kunci dapur. Orang bisa memotret stempel; anggap isinya publik.
 
 <img src="images/analogi-tiket-kunci.png" alt="Dua panel: karcis kertas di meja, dan gembok plus kunci kuningan" width="720">
 
@@ -210,7 +210,7 @@ flutter pub add qr_flutter mobile_scanner
 
 **Kalau berhasil:** nama `qr_flutter` dan `mobile_scanner` ada di `pubspec.yaml`.
 
-2. Android (jalur B): izin `CAMERA` di `AndroidManifest.xml` — sama seperti Modul 08. Tanpa itu, kamera sering langsung ditolak. Ikuti juga halaman [`mobile_scanner`](https://pub.dev/packages/mobile_scanner) untuk min SDK yang diminta paket.
+2. Android (jalur B): izin `CAMERA` di `AndroidManifest.xml` — sama seperti Modul 08. Tanpa itu, kamera sering langsung ditolak. Ikuti juga halaman [`mobile_scanner`](https://pub.dev/packages/mobile_scanner) untuk versi Android terendah yang diminta paket.
 
 3. Dua rute `go_router`: `/tampil` dan `/baca`. Jangan satu layar yang sekaligus menggambar dan membuka kamera.
 
@@ -234,7 +234,7 @@ flutter run
 
 **Kalau berhasil:** Tampil menampilkan kotak. Baca + `tiket:demo-001` → teks tiket, kamera mati. `sandi:rahasia` (kalau Anda uji dengan stempel lain) → wajah gagal. Tidak ada foto kotak terkirim ke Storage.
 
-8. Jangan simpan `isiQr` ke SharedPreferences sebagai sandi. Tiket demo ini publik. Dapur sungguhan (belum di mini): cek nomor tiket ke server, jangan percaya HP saja.
+8. Jangan simpan teks isi ke SharedPreferences sebagai sandi. Tiket demo ini publik. Dapur sungguhan (belum di mini): cek nomor tiket ke dapur, jangan percaya HP saja.
 
 Bonus (bukan syarat): tombol **Bagikan** memakai `share_plus` (L6) untuk mengirim teks `tiket:demo-001`, bukan mengirim file gambar.
 
@@ -281,9 +281,9 @@ Kunci jawaban di bawah. Coba jawab dulu.
 
 - Barcode garis (EAN di minimarket), PDF417, potret dokumen
 - QRIS / jendela bayar (L2) dan gerbang Midtrans/Xendit
-- Membuka tautan dari kode (itu L6), App Link, Dynamic Link
+- Membuka tautan dari kode (itu L6), tautan yang membuka app sendiri
 - Dapur yang menandai tiket sudah dipakai (anti-ganda)
-- Membuat decoder sendiri dari `Image.memory` tanpa paket
+- Membuat pembaca kode sendiri dari foto, tanpa paket
 - iOS `Info.plist` kamera (praktik hari ini Android)
 
 ---
