@@ -52,23 +52,23 @@ Klik tautan modul di bawah untuk langsung membuka panduan materi:
 
 | No | Modul & Tautan | Topik Inti | Target Deliverable / Proyek Mini | Status |
 |:---:|---|---|---|:---:|
-| **00** | **[Modul 00: Persiapan Alat & Lingkungan](modul-00-persiapan/README.md)** | Flutter SDK, Android Studio, JDK 17/21, AVD, VS Code | `flutter doctor -v` All Passed + App Pertama | ✅ Siap |
-| **01** | **[Modul 01: Dart 3+, OOP, & Concurrency](modul-01-dart-dan-concurrency/README.md)** | Null Safety, Records, Pattern Matching, Sealed Class, Isolates | CLI Multithread JSON & Image Parser | 📝 Siap |
-| **02** | **[Modul 02: Flutter UI & Slivers System](modul-02-ui-dan-slivers/README.md)** | Impeller Engine, 3 Trees, CustomScrollView, Material 3 | Spotify/Netflix Collapsing Sliver Feed | 📝 Siap |
-| **03** | **[Modul 03: Routing (go_router) & Form System](modul-03-routing-dan-form/README.md)** | go_router, ShellRoute, Deep Linking, Custom Formatters | Multi-Step Checkout & Onboarding App | 📝 Siap |
-| **04** | **[Modul 04: State Management (Provider, Riverpod, BLoC)](modul-04-state-management/README.md)** | ChangeNotifier, Riverpod 2+, BLoC/Cubit, HydratedBloc | E-Commerce Cart & Multi-Filter Engine | 📝 Siap |
-| **05** | **[Modul 05: Networking, REST (Dio) & WebSockets](modul-05-networking-dan-api/README.md)** | Dio Interceptors, Silent Token Refresh, Freezed, WebSockets | Realtime Crypto Ticker & Live Chat App | 📝 Siap |
-| **06** | **[Modul 06: Data Lokal, Offline-First & Drift](modul-06-data-lokal-dan-offline/README.md)** | Secure Storage, Drift ORM (SQL), Hive, Sync Queue | Offline-First Task Manager with Sync Queue | 📝 Siap |
-| **07** | **[Modul 07: Backend (Dart Frog, Supabase, Firebase)](modul-07-backend-dan-baas/README.md)** | Backend API Dart Frog, Supabase Postgres RLS, Firebase | Fullstack Microservice & BaaS Dashboard | 📝 Siap |
-| **08** | **[Modul 08: Hardware, GPS Maps, & Background Tasks](modul-08-hardware-dan-sensor/README.md)** | Kamera, Geolocator, Google Maps, Biometrik, WorkManager | Attendance App (Geofencing & Selfie) | 📝 Siap |
-| **09** | **[Modul 09: Native Platform Channels & Dart FFI](modul-09-platform-channels-dan-ffi/README.md)** | MethodChannel (Kotlin/Swift), Pigeon Type-Safe, FFI | Native Hardware Inspector Plugin | 📝 Siap |
-| **10** | **[Modul 10: Clean Architecture & Monorepo Melos](modul-10-clean-architecture/README.md)** | SOLID, Clean Architecture 3-Layers, DI (get_it), Melos | Enterprise Fintech Architecture Skeleton | 📝 Siap |
-| **11** | **[Modul 11: i18n Multi-Bahasa & Aksesibilitas (a11y)](modul-11-i18n-dan-a11y/README.md)** | ARB files, Rupiah/Tanggal intl, Semantics Screen Reader | Multi-Lingual Booking App with a11y | 📝 Siap |
-| **12** | **[Modul 12: Animasi Lanjutan, Shaders, & CustomPainter](modul-12-animasi-dan-shaders/README.md)** | Explicit Animations, Hero, GLSL Shaders, Lottie, Rive | Interactive Analytics Dashboard & Charts | 📝 Siap |
-| **13** | **[Modul 13: Testing Komprehensif & DevTools Profiling](modul-13-testing-dan-profiling/README.md)** | Unit/Widget/Integration Testing, Golden Tests, Profiler | Test Suite (Coverage > 85%) & Benchmark | 📝 Siap |
-| **14** | **[Modul 14: Keamanan, UU PDP, & Crash Reporting](modul-14-keamanan-dan-monitoring/README.md)** | Obfuscation, SSL Pinning, UU PDP & GDPR, Sentry Logging | Hardened Secure Banking App Shell | 📝 Siap |
-| **15** | **[Modul 15: CI/CD, Fastlane, Shorebird OTA, & Rilis](modul-15-ci-cd-dan-rilis/README.md)** | GitHub Actions, Fastlane, Shorebird CodePush, Store Release | Automated Release Pipeline to Play Store | 📝 Siap |
-| **🏆** | **[Proyek Akhir: Capstone Project Fullstack](capstone-project/README.md)** | End-to-End Enterprise Fullstack Mobile Architecture | Quick-Commerce SuperApp / POS Kasir Utuh | 📝 Siap |
+| **00** | **[Modul 00: Persiapan Alat & Lingkungan](modul-00-persiapan/README.md)** | Flutter SDK, Android Studio, JDK 17/21, AVD, VS Code | `flutter doctor -v` All Passed + App Pertama | ✅ **Selesai** |
+| **01** | **[Modul 01: Dart 3+, OOP, & Concurrency](modul-01-dart-dan-concurrency/README.md)** | Null Safety, Records, Pattern Matching, Sealed Class, Isolates | CLI Multithread JSON & Image Parser | ✅ **Selesai** |
+| **02** | **[Modul 02: Flutter UI & Slivers System](modul-02-ui-dan-slivers/README.md)** | Impeller Engine, 3 Trees, CustomScrollView, Material 3 | Spotify/Netflix Collapsing Sliver Feed | ⏳ *Sedang Dikerjakan* |
+| **03** | **[Modul 03: Routing (go_router) & Form System](modul-03-routing-dan-form/README.md)** | go_router, ShellRoute, Deep Linking, Custom Formatters | Multi-Step Checkout & Onboarding App | ⏳ Antrean |
+| **04** | **[Modul 04: State Management (Provider, Riverpod, BLoC)](modul-04-state-management/README.md)** | ChangeNotifier, Riverpod 2+, BLoC/Cubit, HydratedBloc | E-Commerce Cart & Multi-Filter Engine | ⏳ Antrean |
+| **05** | **[Modul 05: Networking, REST (Dio) & WebSockets](modul-05-networking-dan-api/README.md)** | Dio Interceptors, Silent Token Refresh, Freezed, WebSockets | Realtime Crypto Ticker & Live Chat App | ⏳ Antrean |
+| **06** | **[Modul 06: Data Lokal, Offline-First & Drift](modul-06-data-lokal-dan-offline/README.md)** | Secure Storage, Drift ORM (SQL), Hive, Sync Queue | Offline-First Task Manager with Sync Queue | ⏳ Antrean |
+| **07** | **[Modul 07: Backend (Dart Frog, Supabase, Firebase)](modul-07-backend-dan-baas/README.md)** | Backend API Dart Frog, Supabase Postgres RLS, Firebase | Fullstack Microservice & BaaS Dashboard | ⏳ Antrean |
+| **08** | **[Modul 08: Hardware, GPS Maps, & Background Tasks](modul-08-hardware-dan-sensor/README.md)** | Kamera, Geolocator, Google Maps, Biometrik, WorkManager | Attendance App (Geofencing & Selfie) | ⏳ Antrean |
+| **09** | **[Modul 09: Native Platform Channels & Dart FFI](modul-09-platform-channels-dan-ffi/README.md)** | MethodChannel (Kotlin/Swift), Pigeon Type-Safe, FFI | Native Hardware Inspector Plugin | ⏳ Antrean |
+| **10** | **[Modul 10: Clean Architecture & Monorepo Melos](modul-10-clean-architecture/README.md)** | SOLID, Clean Architecture 3-Layers, DI (get_it), Melos | Enterprise Fintech Architecture Skeleton | ⏳ Antrean |
+| **11** | **[Modul 11: i18n Multi-Bahasa & Aksesibilitas (a11y)](modul-11-i18n-dan-a11y/README.md)** | ARB files, Rupiah/Tanggal intl, Semantics Screen Reader | Multi-Lingual Booking App with a11y | ⏳ Antrean |
+| **12** | **[Modul 12: Animasi Lanjutan, Shaders, & CustomPainter](modul-12-animasi-dan-shaders/README.md)** | Explicit Animations, Hero, GLSL Shaders, Lottie, Rive | Interactive Analytics Dashboard & Charts | ⏳ Antrean |
+| **13** | **[Modul 13: Testing Komprehensif & DevTools Profiling](modul-13-testing-dan-profiling/README.md)** | Unit/Widget/Integration Testing, Golden Tests, Profiler | Test Suite (Coverage > 85%) & Benchmark | ⏳ Antrean |
+| **14** | **[Modul 14: Keamanan, UU PDP, & Crash Reporting](modul-14-keamanan-dan-monitoring/README.md)** | Obfuscation, SSL Pinning, UU PDP & GDPR, Sentry Logging | Hardened Secure Banking App Shell | ⏳ Antrean |
+| **15** | **[Modul 15: CI/CD, Fastlane, Shorebird OTA, & Rilis](modul-15-ci-cd-dan-rilis/README.md)** | GitHub Actions, Fastlane, Shorebird CodePush, Store Release | Automated Release Pipeline to Play Store | ⏳ Antrean |
+| **🏆** | **[Proyek Akhir: Capstone Project Fullstack](capstone-project/README.md)** | End-to-End Enterprise Fullstack Mobile Architecture | Quick-Commerce SuperApp / POS Kasir Utuh | ⏳ Antrean |
 
 ---
 
