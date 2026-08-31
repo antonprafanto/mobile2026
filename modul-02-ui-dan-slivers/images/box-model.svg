@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="760" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Layer 1: MARGIN (Outer) -->
+  <g transform="translate(30, 20)">
+    <rect width="700" height="240" rx="12" fill="#F59E0B" fill-opacity="0.08" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6,6"/>
+    <text x="20" y="30" fill="#F59E0B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold">MARGIN (Jarak di Luar Border Widget)</text>
+
+    <!-- Layer 2: PADDING (Middle) -->
+    <g transform="translate(35, 45)">
+      <rect width="630" height="160" rx="10" fill="#0284C7" fill-opacity="0.15" stroke="#38BDF8" stroke-width="2" stroke-dasharray="5,5"/>
+      <text x="20" y="28" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold">PADDING (Jarak di Dalam Border ke Konten)</text>
+
+      <!-- Layer 3: KONTEN (Inner) -->
+      <g transform="translate(35, 40)">
+        <rect width="560" height="85" rx="8" fill="#10B981" fill-opacity="0.25" stroke="#10B981" stroke-width="2"/>
+        <text x="280" y="38" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">KONTEN / WIDGET ANAK</text>
+        <text x="280" y="60" fill="#A7F3D0" font-family="monospace" font-size="13" text-anchor="middle">(Text, Image, Icon, Container)</text>
+      </g>
+    </g>
+  </g>
+</svg>

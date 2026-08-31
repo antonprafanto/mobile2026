@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <pattern id="stripes" width="20" height="20" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="20" stroke="#FBBF24" stroke-width="10" />
+      <line x1="10" y1="0" x2="10" y2="20" stroke="#000000" stroke-width="10" />
+    </pattern>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="860" height="300" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- LEFT CARD: SALAH (Overflow) -->
+  <g transform="translate(30, 20)">
+    <rect width="380" height="260" rx="12" fill="#881337" fill-opacity="0.2" stroke="#F43F5E" stroke-width="2"/>
+    
+    <!-- Header -->
+    <rect width="380" height="38" rx="12" fill="#F43F5E" fill-opacity="0.3"/>
+    <text x="190" y="24" fill="#FDA4AF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">❌ SALAH (Menyebabkan Overflow)</text>
+
+    <!-- Code Preview -->
+    <text x="20" y="70" fill="#E2E8F0" font-family="monospace" font-size="13">Row(</text>
+    <text x="40" y="95" fill="#E2E8F0" font-family="monospace" font-size="13">children: [</text>
+    <text x="60" y="120" fill="#93C5FD" font-family="monospace" font-size="13">Icon(Icons.star),</text>
+    <text x="60" y="145" fill="#FCA5A5" font-family="monospace" font-size="13">Text('Judul Sangat Panjang...')</text>
+    <text x="40" y="170" fill="#E2E8F0" font-family="monospace" font-size="13">],</text>
+    <text x="20" y="195" fill="#E2E8F0" font-family="monospace" font-size="13">)</text>
+
+    <!-- Warning Stripe (Overflow Bar) -->
+    <rect x="20" y="215" width="340" height="24" rx="4" fill="url(#stripes)"/>
+    <text x="190" y="232" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle" filter="drop-shadow(0px 1px 2px black)">⚠️ OVERFLOW BY 45 PIXELS</text>
+  </g>
+
+  <!-- RIGHT CARD: BENAR (Solusi Responsif) -->
+  <g transform="translate(450, 20)">
+    <rect width="380" height="260" rx="12" fill="#064E3B" fill-opacity="0.2" stroke="#10B981" stroke-width="2"/>
+    
+    <!-- Header -->
+    <rect width="380" height="38" rx="12" fill="#10B981" fill-opacity="0.3"/>
+    <text x="190" y="24" fill="#A7F3D0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">✅ BENAR (Solusi Responsif)</text>
+
+    <!-- Code Preview -->
+    <text x="20" y="65" fill="#E2E8F0" font-family="monospace" font-size="13">Row(</text>
+    <text x="40" y="85" fill="#E2E8F0" font-family="monospace" font-size="13">children: [</text>
+    <text x="60" y="105" fill="#93C5FD" font-family="monospace" font-size="13">Icon(Icons.star),</text>
+    <text x="60" y="125" fill="#34D399" font-family="monospace" font-size="13">Expanded(</text>
+    <text x="80" y="145" fill="#E2E8F0" font-family="monospace" font-size="13">child: Text(</text>
+    <text x="100" y="165" fill="#FDE047" font-family="monospace" font-size="12">'Judul Sangat Panjang...',</text>
+    <text x="100" y="185" fill="#6EE7B7" font-family="monospace" font-size="12">overflow: TextOverflow.ellipsis,</text>
+    <text x="80" y="205" fill="#E2E8F0" font-family="monospace" font-size="13">),</text>
+    <text x="60" y="225" fill="#34D399" font-family="monospace" font-size="13">),</text>
+    <text x="40" y="245" fill="#E2E8F0" font-family="monospace" font-size="13">],</text>
+    <text x="20" y="260" fill="#E2E8F0" font-family="monospace" font-size="13">)</text>
+  </g>
+</svg>

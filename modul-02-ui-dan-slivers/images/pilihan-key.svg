@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="220" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Top Header Box -->
+  <g transform="translate(280, 20)">
+    <rect width="300" height="42" rx="8" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="150" y="26" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">PILIHAN JENIS KEY DI FLUTTER</text>
+  </g>
+
+  <!-- Branching Circuit Lines -->
+  <path d="M 430 62 L 430 85" stroke="#38BDF8" stroke-width="2"/>
+  <path d="M 150 85 L 710 85" stroke="#38BDF8" stroke-width="2"/>
+  <line x1="150" y1="85" x2="150" y2="105" stroke="#38BDF8" stroke-width="2"/>
+  <line x1="430" y1="85" x2="430" y2="105" stroke="#38BDF8" stroke-width="2"/>
+  <line x1="710" y1="85" x2="710" y2="105" stroke="#38BDF8" stroke-width="2"/>
+
+  <!-- Card 1: ValueKey -->
+  <g transform="translate(40, 105)">
+    <rect width="220" height="95" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="30" rx="10" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="110" y="20" fill="#38BDF8" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">ValueKey(item.id)</text>
+    <text x="110" y="55" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Berdasarkan String / ID</text>
+    <text x="110" y="75" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Unik dari data list</text>
+  </g>
+
+  <!-- Card 2: UniqueKey -->
+  <g transform="translate(320, 105)">
+    <rect width="220" height="95" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="30" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="110" y="20" fill="#818CF8" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">UniqueKey()</text>
+    <text x="110" y="55" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Menghasilkan Key acak</text>
+    <text x="110" y="75" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Memaksa reset state baru</text>
+  </g>
+
+  <!-- Card 3: GlobalKey -->
+  <g transform="translate(600, 105)">
+    <rect width="220" height="95" rx="10" fill="url(#cardGrad)" stroke="#34D399" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="30" rx="10" fill="#059669" fill-opacity="0.2"/>
+    <text x="110" y="20" fill="#34D399" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">GlobalKey&lt;FormState&gt;</text>
+    <text x="110" y="55" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Mengakses State Child</text>
+    <text x="110" y="75" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Untuk Form validation / Scaffold</text>
+  </g>
+</svg>

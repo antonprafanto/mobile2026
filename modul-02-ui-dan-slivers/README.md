@@ -32,13 +32,9 @@ Pada versi Flutter terdahulu yang menggunakan engine Skia, pengguna terkadang me
 
 ### 2.2 Alur Rendering Pipeline 5 Tahap
 
-```text
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌─────────────────┐     ┌───────────────┐
-│  1. BUILD   │ ➔   │  2. LAYOUT   │ ➔   │  3. PAINT   │ ➔   │ 4. COMPOSITING  │ ➔   │ 5. RASTERIZE  │
-│ (Widget ->  │     │ (Constraints │     │ (Canvas API │     │ (Menggabungkan  │     │ (GPU Mengubah │
-│  Element)   │     │  Down/Up)    │     │  Merekam)   │     │  Lapisan Layer) │     │  ke Pixel HP) │
-└─────────────┘     └──────────────┘     └─────────────┘     └─────────────────┘     └───────────────┘
-```
+<p align="center">
+  <img src="images/pipeline-rendering.svg" alt="Alur Rendering Pipeline Flutter Impeller Engine" width="750">
+</p>
 
 > [!TIP]
 > **Optimasi dengan `RepaintBoundary`**:  
@@ -57,39 +53,9 @@ Pada versi Flutter terdahulu yang menggunakan engine Skia, pengguna terkadang me
 
 ### 3.2 Diagram Alur Siklus Hidup `StatefulWidget`
 
-```text
-       ┌────────────────────────┐
-       │      createState()     │  ➔ Dipanggil saat widget pertama kali dibuat
-       └───────────┬────────────┘
-                   │
-       ┌───────────▼────────────┐
-       │       initState()      │  ➔ Inisialisasi controller, timer, & stream (1x saja)
-       └───────────┬────────────┘
-                   │
-       ┌───────────▼────────────┐
-       │ didChangeDependencies()│  ➔ Dipanggil saat Theme, Locale, atau InheritedWidget berubah
-       └───────────┬────────────┘
-                   │
-       ┌───────────▼────────────┐
- ┌───► │        build()         │  ➔ Merender pohon widget (Dipanggil berulang kali saat setState)
- │     └───────────┬────────────┘
- │                 │
- │     ┌───────────▼────────────┐
- ├──── │   didUpdateWidget()    │  ➔ Dipanggil saat widget induk mengirim data konfigurasi baru
- │     └───────────┬────────────┘
- │                 │
- │     ┌───────────▼────────────┐
- └──── │       setState()       │  ➔ Memberitahu framework untuk memanggil build() ulang
-       └───────────┬────────────┘
-                   │
-       ┌───────────▼────────────┐
-       │       deactivate()     │  ➔ Widget dilepas sementara dari pohon
-       └───────────┬────────────┘
-                   │
-       ┌───────────▼────────────┐
-       │        dispose()       │  ➔ Wajib menutup TextEditingController, Animation, & Stream!
-       └────────────────────────┘
-```
+<p align="center">
+  <img src="images/lifecycle-stateful.svg" alt="Diagram Alur Siklus Hidup StatefulWidget" width="700">
+</p>
 
 #### Contoh Implementasi Lengkap:
 ```dart
@@ -179,19 +145,9 @@ void dispose() {
 
 Flutter mencocokkan *Widget* dengan *Element* berdasarkan **Tipe Widget (`runtimeType`)** dan **`Key`**. Jika Anda memiliki daftar widget bertipe sama yang bisa diurutkan ulang (*reorder*), dihapus, atau digeser, Flutter membutuhkan `Key` agar state data tidak tertukar!
 
-```
-                    PILIHAN JENIS KEY DI FLUTTER
-                                 │
-     ┌───────────────────────────┼───────────────────────────┐
-     ▼                           ▼                           ▼
-┌─────────────┐             ┌─────────────┐             ┌─────────────┐
-│  ValueKey   │             │  UniqueKey  │             │  GlobalKey  │
-├─────────────┤             ├─────────────┤             ├─────────────┤
-│ Berdasarkan │             │ Menghasilkan│             │ Mengakses   │
-│ String / ID │             │ Key acak    │             │ State child │
-│ unik data   │             │ unik baru   │             │ / FormState │
-└─────────────┘             └─────────────┘             └─────────────┘
-```
+<p align="center">
+  <img src="images/pilihan-key.svg" alt="Pilihan Jenis Key di Flutter" width="700">
+</p>
 
 * **`ValueKey(item.id)`**: Paling sering digunakan untuk daftar item di `ListView` / `ReorderableListView`.
 * **`UniqueKey()`**: Memaksa widget selalu membuat state baru setiap kali di-render ulang.
@@ -244,18 +200,9 @@ Tiga aturan suci yang mengatur seluruh sistem tata letak Flutter:
 
 ### 6.1 Box Model & Komponen Tata Letak
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ MARGIN                                                      │
-│   ┌─────────────────────────────────────────────────────┐   │
-│   │ PADDING                                             │   │
-│   │   ┌─────────────────────────────────────────────┐   │   │
-│   │   │ KONTEN / WIDGET ANAK                        │   │   │
-│   │   │ (Text, Image, Icon, Container)              │   │   │
-│   │   └─────────────────────────────────────────────┘   │   │
-│   └─────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="images/box-model.svg" alt="Box Model Flutter: Margin, Padding, Konten" width="650">
+</p>
 
 * **`Container`**: Kotak serbaguna dengan margin, padding, dekorasi (warna, border, border radius, bayangan).
 * **`SizedBox`**: Memberikan jarak tetap atau memaksa anak memiliki lebar/tinggi spesifik (Gunakan `SizedBox` dibanding `Container` kosong untuk performa lebih cepat).
@@ -300,19 +247,9 @@ Row(
 
 Garis belang kuning-hitam muncul saat ukuran konten melebihi batas layar yang diberikan induknya.
 
-```
-       ❌ SALAH (Menyebabkan Overflow)            ✅ BENAR (Solusi Responsif)
-  ┌─────────────────────────────────┐        ┌─────────────────────────────────┐
-  │ Row(                            │        │ Row(                            │
-  │   children: [                   │        │   children: [                   │
-  │     Icon(...),                  │        │     Icon(...),                  │
-  │     Text('Teks Sangat Panjang') │        │     Expanded(                   │
-  │   ] ➔ [OVERFLOW BY 45 PIXELS]   │        │       child: Text('Teks...'),   │
-  │ )                               │        │     ),                          │
-  └─────────────────────────────────┘        │   ]                             │
-                                             │ )                               │
-                                             └─────────────────────────────────┘
-```
+<p align="center">
+  <img src="images/overflow-solusi.svg" alt="Solusi Mengatasi RenderFlex Overflow di Flutter" width="700">
+</p>
 
 ---
 
