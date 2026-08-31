@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="220" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="30" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">PIPELINE INPUT FORM: CONTROLLER ➔ FORMATTER ➔ VALIDASI ➔ FOCUS</text>
+
+  <!-- Stage 1: Controller -->
+  <g transform="translate(30, 50)">
+    <rect width="170" height="140" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="85" y="28" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1. Controller</text>
+    <text x="85" y="65" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Membaca &amp; Mengubah</text>
+    <text x="85" y="85" fill="#38BDF8" font-family="monospace" font-size="11" text-anchor="middle">_controller.text</text>
+    <text x="85" y="115" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Kelola state teks</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 205 120 L 230 120" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="230,115 240,120 230,125" fill="#38BDF8"/>
+
+  <!-- Stage 2: TextInputFormatter -->
+  <g transform="translate(245, 50)">
+    <rect width="170" height="140" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <text x="85" y="28" fill="#818CF8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">2. Formatters</text>
+    <text x="85" y="65" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Format Realtime</text>
+    <text x="85" y="85" fill="#FDE047" font-family="monospace" font-size="11" text-anchor="middle">"50000" ➔ Rp 50.000</text>
+    <text x="85" y="115" fill="#A5B4FC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Masking no HP / Rupiah</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 420 120 L 445 120" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="445,115 455,120 445,125" fill="#818CF8"/>
+
+  <!-- Stage 3: Validator -->
+  <g transform="translate(460, 50)">
+    <rect width="170" height="140" rx="10" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="85" y="28" fill="#FDE047" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">3. Validator</text>
+    <text x="85" y="65" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Pengecekan Aturan</text>
+    <text x="85" y="85" fill="#FDA4AF" font-family="monospace" font-size="11" text-anchor="middle">validator: (v) {...}</text>
+    <text x="85" y="115" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Format email &amp; panjang</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 635 120 L 660 120" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="660,115 670,120 660,125" fill="#10B981"/>
+
+  <!-- Stage 4: FocusNode -->
+  <g transform="translate(675, 50)">
+    <rect width="155" height="140" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="77" y="28" fill="#34D399" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">4. FocusNode</text>
+    <text x="77" y="65" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Pindah Fokus Otomatis</text>
+    <text x="77" y="85" fill="#34D399" font-family="monospace" font-size="11" text-anchor="middle">focusNode.nextFocus()</text>
+    <text x="77" y="115" fill="#6EE7B7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Tekan Next di Keyboard</text>
+  </g>
+</svg>
