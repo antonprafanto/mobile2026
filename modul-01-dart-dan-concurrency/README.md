@@ -12,7 +12,7 @@ Bayangkan Anda sedang memimpin sebuah restoran cepat saji berstandar internasion
 |---|---|---|
 | **Sound Null Safety** | **Pemeriksaan Stok Tanpa Gelas Kosong** | Mencegah aplikasi crash akibat memanggil data yang tidak ada (`null`) sebelum program dijalankan. |
 | **Dart 3 Records & Pattern Matching** | **Piring Kombo & Sortir Pesanan Otomatis** | Mengemas banyak data sekaligus tanpa repot membuat wadah baru, serta menyortir tipe data dalam 1 baris ekspresi. |
-| **Sealed Classes** | **Menu Tertutup Resmi** | Memastikan semua kemungkinan state (Loading, Success, Error) tertangani secara mutlak tanpa ada yang terlewat. |
+| **Sealed Classes & Enhanced Enums** | **Menu Standar Tertutup Resmi** | Memastikan semua kemungkinan status data tertangani secara mutlak tanpa ada yang terlewat oleh compiler. |
 | **Event Loop (Future & async/await)** | **Koki yang Menunggu Air Mendidih Sambil Memotong Sayur** | Menjalankan proses yang butuh waktu (misal: panggil API) tanpa menghentikan pelayanan pelanggan (UI). |
 | **Isolates (Multithreading)** | **Koki Khusus di Dapur Belakang untuk Menghitung Stok Ribuan Barang** | Thread terpisah di CPU untuk tugas komputasi super berat agar kasir depan (UI) tetap melayani dengan mulus 120 FPS. |
 
@@ -26,15 +26,15 @@ Dart adalah bahasa yang bertipe kuat (*strongly typed*) dengan fitur **Sound Nul
 
 ```dart
 void main() {
-  // Type Inference: Tipe data dideteksi otomatis saat inisialisasi
+  // 1. Type Inference: Tipe data dideteksi otomatis saat inisialisasi
   var nama = 'Anton'; // String
   var umur = 25;      // int
 
-  // Immutability: Sangat dianjurkan di Flutter
-  final waktuSekarang = DateTime.now(); // Nilai ditentukan saat runtime, tidak bisa diubah
+  // 2. Immutability: Sangat dianjurkan di Flutter untuk performa optimal
+  final waktuSekarang = DateTime.now(); // Ditentukan saat runtime, tidak bisa diubah
   const phi = 3.14159;                 // Nilai konstan mutlak saat compile-time
 
-  // Late Initialization: Diisi nanti sebelum digunakan
+  // 3. Late Initialization: Diisi nanti sebelum digunakan
   late String tokenRahasia;
   tokenRahasia = 'JWT_ABC_123';
   print('Token: $tokenRahasia');
@@ -53,7 +53,7 @@ void main() {
 | `?.` | **Null-Aware Access** | Memanggil method/properti hanya jika objeknya bukan `null`. | `int? panjang = namaPengguna?.length;` |
 | `??=` | **Null-Aware Assignment**| Mengisi nilai hanya jika variabel saat ini masih `null`. | `namaPengguna ??= 'Pengguna Baru';` |
 
-#### ⚠️ Contoh Kasus Penting pada List:
+#### ⚠️ Contoh Kasus Penting pada List & Generics:
 ```dart
 List<String> a = ['A', 'B'];        // List tidak boleh null, isinya tidak boleh null
 List<String?> b = ['A', null, 'B']; // List tidak boleh null, tapi isinya boleh null
@@ -71,13 +71,13 @@ Dart 3 memperkenalkan fitur revolusioner yang membuat kode lebih ringkas, aman, 
 Anda tidak perlu lagi membuat class model sementara hanya untuk mengembalikan 2 atau lebih nilai dari sebuah fungsi.
 
 ```dart
-// Mengembalikan Record dengan posisi dan nama
+// Mengembalikan Record dengan posisi dan nama (Positional & Named fields)
 (double lat, double lng, {String alamat}) getKoordinatToko() {
   return (-6.200000, 106.816666, alamat: 'Jakarta Pusat');
 }
 
 void main() {
-  // Destructuring Record langsung ke variabel
+  // Destructuring Record langsung ke variabel terpisah
   var (latitude, longitude, alamat: lokasi) = getKoordinatToko();
   print('Lokasi: $lokasi ($latitude, $longitude)');
 }
@@ -131,6 +131,49 @@ String renderUI(AuthState state) {
 
 ---
 
+### 3.4 Enhanced Enums (Enum dengan Properti & Method)
+Dart 3 memungkinkan enum memiliki variabel anggota, constructor, dan method kustom:
+
+```dart
+enum PaymentMethod {
+  qris('QRIS Instant', fee: 1000),
+  virtualAccount('BCA Virtual Account', fee: 4000),
+  creditCard('Kartu Kredit', fee: 5000);
+
+  final String label;
+  final int fee;
+  
+  const PaymentMethod(this.label, {required this.fee});
+
+  int hitungTotal(int harga) => harga + fee;
+}
+
+void main() {
+  final metode = PaymentMethod.qris;
+  print('${metode.label} -> Total Tagihan: Rp ${metode.hitungTotal(50000)}');
+}
+```
+
+---
+
+### 3.5 Extension Types (Dart 3.3+ Zero-Cost Abstraction)
+`extension type` memberikan keamanan tipe data saat *compile-time* tanpa membebani memori (*zero runtime overhead*):
+
+```dart
+// Membungkus tipe int murni menjadi UserId bertipe kuat
+extension type const UserId(int id) {
+  bool get isValid => id > 0;
+  void cetakInfo() => print('User ID: #$id');
+}
+
+void main() {
+  final user = UserId(101);
+  if (user.isValid) user.cetakInfo();
+}
+```
+
+---
+
 ## 📦 4. Koleksi & Functional Programming
 
 Dart memiliki koleksi data yang sangat fleksibel untuk memanipulasi data sebelum ditampilkan ke UI.
@@ -151,11 +194,11 @@ void main() {
   // 2. Functional Methods: map, where, fold
   final hargaDiskon = daftarHarga
       .where((harga) => harga >= 25000)      // Filter: harga >= 25000
-      .map((harga) => harga * 0.9)          // Transformasi: Diskon 10%
+      .map((harga) => (harga * 0.9).round()) // Transformasi: Diskon 10%
       .toList();
 
-  final totalBelanja = hargaDiskon.fold<double>(
-    0.0, 
+  final totalBelanja = hargaDiskon.fold<int>(
+    0, 
     (total, item) => total + item,
   );
 
@@ -209,24 +252,54 @@ class Pengguna {
 
 ---
 
-### 5.2 Mixins & Extension Methods
+### 5.2 Kesetaraan Objek (*Object Equality & HashCode*)
+Secara default, Dart membandingkan objek berdasarkan **referensi memori**, bukan isinya:
 
-* **Mixin (`with`)**: Berbagi kode antar class tanpa perlu inheritance bertingkat:
+```dart
+class Produk {
+  final String id;
+  final int harga;
+  const Produk(this.id, this.harga);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Produk &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          harga == other.harga;
+
+  @override
+  int get hashCode => id.hashCode ^ harga.hashCode;
+}
+
+void main() {
+  final p1 = Produk('P01', 50000);
+  final p2 = Produk('P01', 50000);
+  print('Apakah sama? ${p1 == p2}'); // Output: true (karena operator == di-override)
+}
+```
+
+---
+
+### 5.3 Mixins & Extension Methods
+
+* **Mixin (`with`)**: Berbagi fungsionalitas antar class tanpa inheritance bertingkat:
   ```dart
   mixin LoggerMixin {
     void logInfo(String pesan) {
-      print('[INFO - ${DateTime.now()}]: $pesan');
+      print('[INFO - ${DateTime.now().toIso8601String()}]: $pesan');
     }
   }
 
   class AuthService with LoggerMixin {
     void login() {
-      logInfo('User berhasil login');
+      logInfo('Pengguna berhasil login');
     }
   }
   ```
 
-* **Extension Methods**: Menambahkan fungsi baru ke tipe data bawaan yang sudah ada:
+* **Extension Methods**: Menambahkan method baru pada tipe data yang sudah ada:
   ```dart
   extension RupiahFormatter on int {
     String toRupiah() {
@@ -249,7 +322,7 @@ class Pengguna {
 
 ### 6.1 Event Loop di Dart
 Dart menjalankan program dalam model **Single-Threaded Event Loop**:
-1. **Microtask Queue**: Tugas internal prioritas tinggi (dieksekusi lebih dulu).
+1. **Microtask Queue**: Tugas internal prioritas sangat tinggi (dieksekusi langsung sebelum event berikutnya).
 2. **Event Queue**: Event eksternal (I/O, klik mouse, response HTTP, timer).
 
 ### 6.2 Future & async/await
@@ -277,7 +350,27 @@ void main() async {
 
 ---
 
-### 6.3 Stream: Aliran Data Realtime
+### 6.3 Completer: Mengubah Callback Menjadi Future
+`Completer<T>` berguna untuk menjembatani API callback lama atau event listener manual menjadi `Future`:
+
+```dart
+import 'dart:async';
+
+Future<String> downloadFileAsync() {
+  final completer = Completer<String>();
+
+  // Simulasi callback pihak ketiga
+  Timer(const Duration(seconds: 1), () {
+    completer.complete('Download File Selesai! 📂');
+  });
+
+  return completer.future;
+}
+```
+
+---
+
+### 6.4 Stream: Aliran Data Realtime (`async*` & `yield`)
 `Stream` digunakan saat data datang berkali-kali secara kontinu (misal: WebSocket, sensor GPS, detak jam):
 
 ```dart
@@ -301,7 +394,7 @@ void main() async {
 
 ## 🧵 7. Concurrency & Multithreading dengan Dart Isolates
 
-Ketika Anda harus memproses **komputasi super berat** (misal: enkripsi password ribuan kali, manipulasi matriks gambar resolusi tinggi, atau mem-parsing JSON ratusan megabyte), menjalankannya di `Future` biasa tetap bisa membuat UI aplikasi **macet/freeze**, karena `Future` tetap berbagi thread CPU utama (*Main Thread*).
+Ketika Anda harus memproses **komputasi super berat** (misal: enkripsi password ribuan kali, manipulasi matriks gambar resolusi tinggi, atau mem-parsing JSON ratusan megabyte), menjalankannya di `Future` biasa tetap bisa membuat UI aplikasi **macet/freeze (jank)**, karena `Future` tetap berbagi thread CPU utama (*Main Thread*).
 
 Solusinya adalah menggunakan **Isolates**!
 
@@ -313,23 +406,23 @@ Solusinya adalah menggunakan **Isolates**!
 
 ---
 
-### 7.1 Cara Mudah: Menggunakan `compute()`
-`compute()` secara otomatis membuat Isolate baru, mengeksekusi fungsi berat di latar belakang, lalu mengembalikan hasilnya ke thread utama:
+### 7.1 Cara Mudah: Menggunakan `compute()` atau `Isolate.run()`
+`Isolate.run()` dan `compute()` mengeksekusi fungsi berat di thread terpisah dan mengembalikan hasilnya ke main thread:
 
 ```dart
-import 'package:flutter/foundation.dart';
+import 'dart:isolate';
 
 // Fungsi berat HARUS berupa fungsi top-level atau static
-int hitungFibonacciBerat(int n) {
+int hitungFibonacci(int n) {
   if (n <= 1) return n;
-  return hitungFibonacciBerat(n - 1) + hitungFibonacciBerat(n - 2);
+  return hitungFibonacci(n - 1) + hitungFibonacci(n - 2);
 }
 
 void main() async {
   print('Mulai komputasi berat di background thread...');
   
   // Dijalankan di Isolate terpisah tanpa membuat UI freeze
-  final hasil = await compute(hitungFibonacciBerat, 40);
+  final hasil = await Isolate.run(() => hitungFibonacci(40));
   
   print('Hasil Fibonacci: $hasil');
 }
@@ -338,17 +431,15 @@ void main() async {
 ---
 
 ### 7.2 Tingkat Mahir: Komunikasi Port Dua Arah (`Isolate.spawn`)
-Untuk komunikasi kontinu antar thread, gunakan `ReceivePort` dan `SendPort`:
+Untuk komunikasi kontinu dua arah antar thread:
 
 ```dart
 import 'dart:isolate';
 
-// Fungsi worker yang berjalan di thread terpisah
 void backgroundWorker(SendPort mainSendPort) {
-  // Buat port untuk menerima pesan dari main thread
   final workerReceivePort = ReceivePort();
   
-  // Kirim balik SendPort milik worker ini ke main thread
+  // Kirim SendPort milik worker ini ke main thread
   mainSendPort.send(workerReceivePort.sendPort);
 
   // Dengarkan pesan yang masuk
@@ -356,7 +447,6 @@ void backgroundWorker(SendPort mainSendPort) {
     if (pesan is Map<String, dynamic>) {
       final angka = pesan['angka'] as int;
       final kuadrat = angka * angka;
-      // Kirim hasil kembali ke main thread
       mainSendPort.send({'status': 'SUCCESS', 'hasil': kuadrat});
     }
   });
@@ -364,33 +454,32 @@ void backgroundWorker(SendPort mainSendPort) {
 
 void main() async {
   final mainReceivePort = ReceivePort();
-  
-  // 1. Buat Isolate baru
   await Isolate.spawn(backgroundWorker, mainReceivePort.sendPort);
 
   SendPort? workerSendPort;
 
-  // 2. Dengarkan jawaban dari worker
   mainReceivePort.listen((pesan) {
     if (pesan is SendPort) {
       workerSendPort = pesan;
       print('✅ Terhubung ke Background Worker Isolate!');
-      
-      // Kirim data pekerjaan ke worker
       workerSendPort?.send({'angka': 125});
     } else if (pesan is Map<String, dynamic>) {
       print('🎉 Hasil Diterima dari Worker: ${pesan['hasil']}');
-      mainReceivePort.close(); // Tutup port setelah selesai
+      mainReceivePort.close();
     }
   });
 }
 ```
 
+> [!TIP]
+> **Penting untuk Flutter Plugin di Background Isolate**:  
+> Jika Anda menggunakan plugin Flutter (seperti SQLite atau SharedPreferences) di dalam Isolate manual, panggil `BackgroundIsolateBinaryMessenger.ensureInitialized(token)` menggunakan `RootIsolateToken.instance!` agar komunikasi platform channel tetap aktif.
+
 ---
 
 ## 💻 8. Hands-on Project: CLI High-Performance Data & Matrix Processor
 
-Mari buat proyek mini CLI Dart lengkap yang memproses perhitungan data besar menggunakan multithreading Isolates:
+Mari buat program CLI Dart lengkap yang memproses perhitungan data besar menggunakan multithreading Isolates:
 
 1. **Buat file baru** `cli_processor.dart` di folder Anda.
 2. **Salin kode lengkap berikut**:
@@ -435,7 +524,7 @@ void main() async {
   print('====================================================');
 
   final totalTasks = 4;
-  final taskSize = 2500; // Ukuran matriks 2500 x 2500 elemen
+  final taskSize = 2500; // Matriks 2500 x 2500 elemen
   final results = <Future<MatrixResult>>[];
 
   final totalTimer = Stopwatch()..start();
@@ -467,7 +556,7 @@ void main() async {
    ```bash
    dart run cli_processor.dart
    ```
-   *Anda akan melihat 4 tugas matriks jutaan operasi selesai diproses secara paralel memanfaatkan seluruh core CPU Anda tanpa hambatan!*
+   *Anda akan melihat 4 tugas komputasi jutaan operasi selesai diproses secara paralel memanfaatkan seluruh core CPU Anda tanpa hambatan!*
 
 ---
 
@@ -497,11 +586,12 @@ void main() async {
 ## 🎯 Rangkuman & Checklist Kompetensi
 
 - [x] Memahami Sound Null Safety (`?`, `!`, `??`, `?.`, `??=`).
-- [x] Menguasai fitur Dart 3: Records, Pattern Matching, Destructuring, dan Sealed Classes.
+- [x] Menguasai fitur Dart 3: Records, Pattern Matching, Destructuring, Sealed Classes, dan Enhanced Enums.
+- [x] Memahami Extension Types (Dart 3.3+ zero-cost wrapper).
 - [x] Mampu memanipulasi List/Map/Set dengan functional programming (`where`, `map`, `fold`).
-- [x] Menguasai OOP: Factory Constructors, Mixins, Generics, dan Extension Methods.
-- [x] Memahami arsitektur Event Loop, Future, dan Stream asynchronous.
-- [x] Mampu mengimplementasikan Multithreading Concurrency dengan `compute()` dan `Isolate.run()`.
+- [x] Menguasai OOP: Factory Constructors, Mixins, Generics, Extension Methods, dan Object Equality (`==`).
+- [x] Memahami arsitektur Event Loop, Future, Completer, dan Stream asynchronous.
+- [x] Mampu mengimplementasikan Multithreading Concurrency dengan `compute()`, `Isolate.run()`, dan `Isolate.spawn()`.
 - [x] Berhasil menguji coba proyek mini CLI Data Processor paralel.
 
 ---
