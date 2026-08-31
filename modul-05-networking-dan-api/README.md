@@ -1,6 +1,6 @@
 # Modul 05: Networking Lanjutan, REST (Dio), Interceptors, & WebSockets Realtime
 
-Selamat datang di **Modul 05**! Di modul ini, Anda akan menguasai arsitektur komunikasi jaringan tingkat lanjut berstandar industri menggunakan **`Dio`**, membangun sistem **Silent Token Refresh (JWT 401 Interceptors)** agar sesi pengguna tidak pernah terputus, memodelkan data secara *type-safe* menggunakan **`Freezed`**, melacak progress upload/download dengan **`CancelToken`**, hingga mengimplementasikan komunikasi dua arah secara *realtime* menggunakan **`WebSockets`**.
+Selamat datang di **Modul 05**! Di modul ini, Anda akan menguasai arsitektur komunikasi jaringan tingkat lanjut berstandar industri menggunakan **`Dio`**, membangun sistem **Silent Token Refresh (JWT 401 Interceptors)** agar sesi pengguna tidak pernah terputus, mengamankan komunikasi dengan **SSL / Certificate Pinning**, memodelkan data secara *type-safe* menggunakan **`Freezed`**, melacak progress upload/download dengan **`CancelToken`**, hingga mengimplementasikan komunikasi dua arah berketahanan tinggi menggunakan **`WebSockets`** dan **`GraphQL`**.
 
 ---
 
@@ -85,7 +85,6 @@ class AuthInterceptor extends QueuedInterceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode == 401) {
       try {
-        // Ambil refresh token dan minta access token baru ke server
         final String? refreshToken = await _getRefreshTokenFromSecureStorage();
         if (refreshToken == null) throw Exception('No refresh token');
 
@@ -105,7 +104,6 @@ class AuthInterceptor extends QueuedInterceptor {
         final retryResponse = await dio.fetch(retryOptions);
         return handler.resolve(retryResponse); // Berikan hasil sukses ke UI!
       } catch (e) {
-        // Jika refresh token juga kedaluwarsa -> Lempar user ke halaman Login
         _forceLogoutUser();
         return handler.reject(err);
       }
@@ -122,7 +120,64 @@ class AuthInterceptor extends QueuedInterceptor {
 
 ---
 
-## ❄️ 4. Data Modeling: Immutability & `Freezed`
+## 🛡️ 4. Keamanan Tingkat Tinggi: SSL / Certificate Pinning
+
+Untuk aplikasi finansial, perbankan, atau data medis, Anda wajib mencegah serangan **Man-In-The-Middle (MitM)** di mana peretas mencoba mengintip data lewat sertifikat palsu di jaringan WiFi publik:
+
+```dart
+import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
+
+void setupCertificatePinning(Dio dio) {
+  // Hanya berjalan pada target Native (Android/iOS/Desktop)
+  if (dio.httpClientAdapter is IOHttpClientAdapter) {
+    (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
+      final SecurityContext context = SecurityContext(withTrustedRoots: false);
+      
+      // Masukkan sertifikat resmi server .pem/.cer Anda
+      // context.setTrustedCertificates('assets/certificates/server_cert.pem');
+
+      final HttpClient client = HttpClient(context: context);
+      client.badCertificateCallback = (X509Certificate cert, String host, int port) {
+        // SHA-256 fingerprint fingerprint resmi server kita
+        const expectedFingerprint = 'A1:B2:C3:D4:E5:F6:...';
+        return cert.sha256.toString() == expectedFingerprint;
+      };
+      return client;
+    };
+  }
+}
+```
+
+---
+
+## 🔄 5. Automatic Retry dengan Exponential Backoff
+
+Ketika pengguna berada di area sinyal lemah (misal: masuk lift/terowongan), request sering kali gagal sesaat. Gunakan interceptor percobaan ulang otomatis (*Automatic Retry*):
+
+```dart
+import 'package:dio_smart_retry/dio_smart_retry.dart';
+
+void attachSmartRetry(Dio dio) {
+  dio.interceptors.add(
+    RetryInterceptor(
+      dio: dio,
+      logPrint: print,
+      retries: 3, // Coba ulang maksimal 3 kali
+      retryDelays: const [
+        Duration(seconds: 1), // Tunggu 1 detik pada percobaan ke-1
+        Duration(seconds: 2), // Tunggu 2 detik pada percobaan ke-2
+        Duration(seconds: 4), // Tunggu 4 detik pada percobaan ke-3 (Exponential)
+      ],
+    ),
+  );
+}
+```
+
+---
+
+## ❄️ 6. Data Modeling: Immutability & `Freezed`
 
 Mem-parsing JSON secara manual dengan `Map<String, dynamic>` sangat rentan terhadap kesalahan ketik (*typo*) saat runtime. Gunakan **`Freezed`** bersama **`json_serializable`**:
 
@@ -130,7 +185,7 @@ Mem-parsing JSON secara manual dengan `Map<String, dynamic>` sangat rentan terha
   <img src="images/freezed-model-flow.svg" alt="Data Modeling dengan Freezed" width="700">
 </p>
 
-### 4.1 Definisi Model Freezed
+### 6.1 Definisi Model Freezed
 
 Tambahkan dependensi di `pubspec.yaml`:
 ```yaml
@@ -165,16 +220,16 @@ class CryptoTicker with _$CryptoTicker {
 }
 ```
 
-Jalankan perintah generator di terminal:
+Jalankan generator via terminal:
 ```bash
 dart run build_runner build --delete-conflicting-outputs
 ```
 
 ---
 
-## 📤 5. Upload & Download File dengan Progress & `CancelToken`
+## 📤 7. Upload & Download File dengan Progress & `CancelToken`
 
-### 5.1 Upload Berkas (Multipart/FormData) dengan Progress Bar
+### 7.1 Upload Berkas (Multipart/FormData) dengan Progress Bar
 ```dart
 Future<void> uploadBuktiTransfer(String filePath) async {
   final formData = FormData.fromMap({
@@ -198,7 +253,7 @@ Future<void> uploadBuktiTransfer(String filePath) async {
 
 ---
 
-### 5.2 Membatalkan Request Instan dengan `CancelToken`
+### 7.2 Membatalkan Request Instan dengan `CancelToken`
 Saat pengguna berpindah halaman sebelum request selesai, batalkan koneksi agar tidak membuang bandwidth:
 
 ```dart
@@ -217,7 +272,6 @@ void fetchLargeData() async {
   }
 }
 
-// Saat widget ditutup:
 @override
 void dispose() {
   _cancelToken.cancel('Pengguna meninggalkan layar');
@@ -227,47 +281,120 @@ void dispose() {
 
 ---
 
-## 📡 6. WebSockets & Realtime Communication
+## 📡 8. WebSockets & Ketahanan Realtime (*Heartbeat / Auto-Reconnect*)
 
 <p align="center">
   <img src="images/rest-vs-websocket.svg" alt="REST API vs WebSockets" width="700">
 </p>
 
-### 6.1 Koneksi Realtime dengan `web_socket_channel`
+### 8.1 WebSocket Service dengan Mekanisme Auto-Reconnect
 
 ```dart
+import 'dart:async';
 import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-class CryptoWebSocketService {
-  late WebSocketChannel _channel;
+class ResilientWebSocketClient {
+  final String url;
+  WebSocketChannel? _channel;
+  Timer? _heartbeatTimer;
+  bool _isDisposed = false;
 
-  Stream<dynamic> connectToBinanceTicker(String symbol) {
-    // Menghubungkan ke WebSocket Binance Realtime Ticker
-    _channel = WebSocketChannel.connect(
-      Uri.parse('wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@ticker'),
-    );
+  final StreamController<Map<String, dynamic>> _dataController = StreamController.broadcast();
+  Stream<Map<String, dynamic>> get stream => _dataController.stream;
 
-    return _channel.stream.map((rawMessage) {
-      return jsonDecode(rawMessage as String);
+  ResilientWebSocketClient(this.url) {
+    _connect();
+  }
+
+  void _connect() {
+    if (_isDisposed) return;
+    try {
+      _channel = WebSocketChannel.connect(Uri.parse(url));
+
+      _channel!.stream.listen(
+        (message) {
+          final data = jsonDecode(message as String) as Map<String, dynamic>;
+          _dataController.add(data);
+        },
+        onError: (error) => _reconnect(),
+        onDone: () => _reconnect(),
+      );
+
+      _startHeartbeat();
+    } catch (e) {
+      _reconnect();
+    }
+  }
+
+  void _startHeartbeat() {
+    _heartbeatTimer?.cancel();
+    // Kirim pesan Ping tiap 30 detik agar koneksi tidak diputus firewall
+    _heartbeatTimer = Timer.periodic(const Duration(seconds: 30), (_) {
+      _channel?.sink.add(jsonEncode({'action': 'ping'}));
     });
   }
 
-  void kirimPesan(Map<String, dynamic> data) {
-    _channel.sink.add(jsonEncode(data));
+  void _reconnect() {
+    if (_isDisposed) return;
+    _heartbeatTimer?.cancel();
+    print('⚠️ WebSocket terputus, mencoba menyambung kembali dalam 3 detik...');
+    Future.delayed(const Duration(seconds: 3), () => _connect());
   }
 
-  void disconnect() {
-    _channel.sink.close();
+  void dispose() {
+    _isDisposed = true;
+    _heartbeatTimer?.cancel();
+    _channel?.sink.close();
+    _dataController.close();
   }
 }
 ```
 
 ---
 
-## 💻 7. Hands-on Super Project: Realtime Crypto Price Ticker & Network Monitor
+## 🧬 9. GraphQL Client di Flutter (`graphql_flutter`)
 
-Mari kita bangun aplikasi pemantau harga aset kripto secara *live* yang memadukan **REST API (Dio)** untuk statistik 24 jam dan **WebSockets** untuk update harga tiap milidetik:
+Ketika API server menggunakan GraphQL, Anda hanya meminta kolom data yang benar-benar dibutuhkan oleh layar HP:
+
+```dart
+import 'package:graphql_flutter/graphql_flutter.dart';
+
+const String getKatalogQuery = """
+  query AmbilProduk(\$kategori: String!) {
+    katalog(kategori: \$kategori) {
+      id
+      nama
+      harga
+    }
+  }
+""";
+
+Widget buildGraphQLView() {
+  return Query(
+    options: QueryOptions(
+      document: gql(getKatalogQuery),
+      variables: const {'kategori': 'Elektronik'},
+    ),
+    builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}) {
+      if (result.hasException) return Text('Error: ${result.exception}');
+      if (result.isLoading) return const CircularProgressIndicator();
+
+      final List items = result.data?['katalog'] ?? [];
+      return ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (ctx, i) => ListTile(title: Text(items[i]['nama'])),
+      );
+    },
+  );
+}
+```
+
+---
+
+## 💻 10. Hands-on Super Project: Realtime Crypto Price Ticker & Network Monitor
+
+Mari kita bangun aplikasi pemantau harga aset kripto secara *live* yang memadukan **REST API (Dio)** untuk statistik 24 jam dan **WebSockets** untuk update harga tiap detik:
 
 1. **Buat file baru** `lib/crypto_ticker_page.dart` di proyek Flutter Anda.
 2. **Salin kode lengkap berikut**:
@@ -502,7 +629,7 @@ class _CryptoTickerPageState extends State<CryptoTickerPage> {
 
 ---
 
-## ⚠️ 8. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
+## ⚠️ 11. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
 
 | Kesalahan Umum | Gejala Error | Solusi yang Benar |
 |---|---|---|
@@ -514,14 +641,14 @@ class _CryptoTickerPageState extends State<CryptoTickerPage> {
 
 ---
 
-## 📝 9. Kuis Pemahaman Modul 05
+## 📝 12. Kuis Pemahaman Modul 05
 
 1. **Mengapa `QueuedInterceptorsWrapper` lebih aman digunakan untuk refresh token dibandingkan interceptor biasa?**  
    *Jawaban:* `QueuedInterceptor` mengantrekan (*locking*) seluruh request lain yang masuk selama proses refresh token sedang berlangsung, sehingga server tidak dibombardir dengan ratusan request gagal sebelum token baru selesai disimpan.
-2. **Kapan kita harus memilih `WebSockets` dibandingkan teknik `Polling` pada REST API?**  
-   *Jawaban:* Ketika data harus diterima dengan latensi mendekati nol milidetik dan frekuensi perubahannya sangat tinggi (seperti live chat, tracking driver ojek online, dan orderbook bursa saham/kripto), karena WebSockets tidak membuang overhead header HTTP di setiap pesan.
-3. **Apa kegunaan utama `CancelToken` pada Dio?**  
-   *Jawaban:* Untuk membatalkan koneksi HTTP yang sedang berlangsung secara instan ketika pengguna membatalkan aksi atau berpindah layar, sehingga menghemat kuota internet dan mencegah memory leak.
+2. **Apa fungsi utama dari SSL / Certificate Pinning di aplikasi mobile?**  
+   *Jawaban:* Untuk memvalidasi bahwa sertifikat SSL server yang dituju memiliki *fingerprint* SHA-256 yang persis dengan sertifikat resmi perusahaan, sehingga menggagalkan serangan Man-in-the-Middle (MitM) melalui proxy atau jaringan publik yang disusupi.
+3. **Bagaimana cara kerja mekanisme Heartbeat (Ping/Pong) pada WebSockets?**  
+   *Jawaban:* Klien mengirimkan pesan "Ping" ringan secara berkala (misal tiap 30 detik) ke server untuk mencegah firewall atau router memutus koneksi socket yang sedang idle.
 
 ---
 
@@ -529,13 +656,15 @@ class _CryptoTickerPageState extends State<CryptoTickerPage> {
 
 - [x] Menguasai konfigurasi `Dio` client tingkat lanjut (BaseOptions, Timeout, Headers).
 - [x] Mampu mengimplementasikan `AuthInterceptor` untuk *Silent Token Refresh (JWT 401)*.
+- [x] Mengimplementasikan keamanan SSL / Certificate Pinning pada `IOHttpClientAdapter`.
+- [x] Menerapkan Automatic Retry dengan Exponential Backoff (`dio_smart_retry`).
 - [x] Memahami pembuatan data model *immutable* menggunakan `Freezed` dan `json_serializable`.
 - [x] Menguasai upload file multipart (`FormData`) dan download dengan pelacak progress.
 - [x] Mengimplementasikan pembatalan request instan menggunakan `CancelToken`.
-- [x] Memahami perbedaan REST API vs WebSockets.
-- [x] Menguasai komunikasi realtime dua arah menggunakan `web_socket_channel`.
+- [x] Menguasai komunikasi realtime dua arah berketahanan tinggi (`web_socket_channel` + auto reconnect).
+- [x] Memahami integrasi dasar query dan mutation GraphQL dengan `graphql_flutter`.
 - [x] Berhasil membangun proyek mini Realtime Crypto Price Ticker & Network Monitor App.
 
 ---
 
-👉 **Langkah Selanjutnya**: Koneksi jaringan dan sinkronisasi realtime aplikasi Anda sudah bertaraf enterprise! Mari melangkah ke **[Modul 06: Data Lokal, Offline-First Architecture, & Drift ORM](../modul-06-data-lokal-dan-offline/README.md)** untuk membuat aplikasi tetap berfungsi penuh meski tanpa koneksi internet.
+👉 **Langkah Selanjutnya**: Koneksi jaringan dan sinkronisasi realtime aplikasi Anda sudah bertaraf enterprise! Mari melangkah ke **[Modul 06: Data Lokal, Offline-First Architecture, & Drift ORM (SQL)](../modul-06-data-lokal-dan-offline/README.md)** untuk membuat aplikasi tetap berfungsi penuh meski tanpa koneksi internet.
