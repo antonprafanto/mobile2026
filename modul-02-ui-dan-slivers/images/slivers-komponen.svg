@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 490" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="sliverAppGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="860" height="490" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Top Title -->
+  <text x="430" y="34" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">KOMPONEN UTAMA SLIVERS (CUSTOMSCROLLVIEW)</text>
+
+  <!-- 1. SliverAppBar -->
+  <g transform="translate(30, 50)">
+    <rect width="800" height="75" rx="10" fill="url(#sliverAppGrad)" stroke="#A78BFA" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="24" y="32" fill="#FFFFFF" font-family="monospace" font-size="16" font-weight="bold">1. SliverAppBar (Collapsing Header + FlexibleSpace)</text>
+    <text x="24" y="58" fill="#DDD6FE" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">📸 Header gambar/album yang mengecil &amp; menempel mulus saat di-scroll ke atas</text>
+    <!-- Badge -->
+    <rect x="680" y="22" width="96" height="28" rx="6" fill="#4C1D95" stroke="#C4B5FD" stroke-width="1"/>
+    <text x="728" y="41" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">pinned: true</text>
+  </g>
+
+  <!-- 2. SliverPersistentHeader -->
+  <g transform="translate(30, 135)">
+    <rect width="800" height="70" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="24" y="30" fill="#38BDF8" font-family="monospace" font-size="15" font-weight="bold">2. SliverPersistentHeader (Sticky Category Tabs Delegate)</text>
+    <text x="24" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">📌 Tab Bar filter kategori yang menempel (*sticky*) di bawah AppBar</text>
+    <!-- Badge -->
+    <rect x="680" y="20" width="96" height="28" rx="6" fill="#0369A1" stroke="#38BDF8" stroke-width="1"/>
+    <text x="728" y="39" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Sticky Tab</text>
+  </g>
+
+  <!-- 3. SliverToBoxAdapter -->
+  <g transform="translate(30, 215)">
+    <rect width="800" height="70" rx="10" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="24" y="30" fill="#F59E0B" font-family="monospace" font-size="15" font-weight="bold">3. SliverToBoxAdapter (Adapter Jembatan Widget Biasa)</text>
+    <text x="24" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">🎠 Menyisipkan widget biasa non-sliver (misal: Banner Carousel Horizontal)</text>
+    <!-- Badge -->
+    <rect x="680" y="20" width="96" height="28" rx="6" fill="#B45309" stroke="#FDE047" stroke-width="1"/>
+    <text x="728" y="39" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Box Adapter</text>
+  </g>
+
+  <!-- 4. SliverGrid -->
+  <g transform="translate(30, 295)">
+    <rect width="800" height="70" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="24" y="30" fill="#10B981" font-family="monospace" font-size="15" font-weight="bold">4. SliverGrid (Grid Koleksi Produk / Kartu Media)</text>
+    <text x="24" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">▦ Menampilkan tata letak grid multi-kolom yang efisien (hanya render yang terlihat)</text>
+    <!-- Badge -->
+    <rect x="680" y="20" width="96" height="28" rx="6" fill="#047857" stroke="#6EE7B7" stroke-width="1"/>
+    <text x="728" y="39" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Grid 2 Kolom</text>
+  </g>
+
+  <!-- 5. SliverList -->
+  <g transform="translate(30, 375)">
+    <rect width="800" height="70" rx="10" fill="url(#cardGrad)" stroke="#60A5FA" stroke-width="1.5"/>
+    <text x="24" y="30" fill="#60A5FA" font-family="monospace" font-size="15" font-weight="bold">5. SliverList (Daftar Item Vertikal Dinamis)</text>
+    <text x="24" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">📋 Menampilkan baris item vertikal tak terbatas dengan builder efisien</text>
+    <!-- Badge -->
+    <rect x="680" y="20" width="96" height="28" rx="6" fill="#1D4ED8" stroke="#93C5FD" stroke-width="1"/>
+    <text x="728" y="39" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Sliver List</text>
+  </g>
+</svg>

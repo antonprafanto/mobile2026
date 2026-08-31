@@ -304,24 +304,9 @@ Saat Anda membuat aplikasi seperti **Spotify**, **Netflix**, atau **Tokopedia**,
 
 ### 8.1 Komponen Utama Slivers
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ 1. SliverAppBar (Collapsing Header dengan FlexibleSpace)    │
-│    [ Gambar / Header Album Mengecil Saat Di-scroll ]       │
-├─────────────────────────────────────────────────────────────┤
-│ 2. SliverPersistentHeader (Sticky Category Tabs Delegate)   │
-│    [ Tab Bar Menempel di Paling Atas Layar ]               │
-├─────────────────────────────────────────────────────────────┤
-│ 3. SliverToBoxAdapter (Untuk menyisipkan Carousel Biasa)   │
-│    [ Carousel Banner Horizontal ]                          │
-├─────────────────────────────────────────────────────────────┤
-│ 4. SliverGrid (Grid Produk / Album)                         │
-│    [ Grid 2 Kolom ]                                         │
-├─────────────────────────────────────────────────────────────┤
-│ 5. SliverList (Daftar Item Vertikal)                        │
-│    [ List Item 1, 2, 3, ... ]                               │
-└─────────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="images/slivers-komponen.svg" alt="Komponen Utama Slivers di CustomScrollView" width="700">
+</p>
 
 ---
 
@@ -437,18 +422,9 @@ class StatusColors extends ThemeExtension<StatusColors> {
 
 Untuk memastikan gambar tajam di semua kerapatan layar (*Retina Display*), Flutter menggunakan konvensi folder berbasis rasio densitas pixel:
 
-```text
-proyek_flutter/
-├── assets/
-│   ├── images/
-│   │   ├── logo.png       # Resolusi standar (1.0x)
-│   │   ├── 2.0x/
-│   │   │   └── logo.png   # Resolusi 2x pixel
-│   │   └── 3.0x/
-│   │       └── logo.png   # Resolusi 3x pixel
-│   └── fonts/
-│       └── PlusJakartaSans-Bold.ttf
-```
+<p align="center">
+  <img src="images/struktur-aset-resolusi.svg" alt="Struktur Folder Aset & Multi-Densitas Resolusi Layar Retina" width="700">
+</p>
 
 Daftarkan di `pubspec.yaml`:
 ```yaml

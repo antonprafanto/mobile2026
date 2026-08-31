@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="860" height="380" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="34" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">STRUKTUR FOLDER ASET &amp; MULTI-DENSITAS RESOLUSI (RETINA DPI)</text>
+
+  <!-- Left: Tree Structure Box -->
+  <g transform="translate(30, 55)">
+    <rect width="440" height="300" rx="12" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="440" height="32" rx="12" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="20" y="22" fill="#38BDF8" font-family="monospace" font-size="13" font-weight="bold">📁 proyek_flutter/</text>
+
+    <!-- Tree Lines & Content -->
+    <text x="40" y="60" fill="#F8FAFC" font-family="monospace" font-size="13" font-weight="bold">├── 📁 assets/</text>
+    <text x="70" y="90" fill="#93C5FD" font-family="monospace" font-size="13">├── 📁 images/</text>
+    
+    <text x="100" y="120" fill="#E2E8F0" font-family="monospace" font-size="13">├── 🖼️ logo.png</text>
+    <text x="100" y="150" fill="#FDE047" font-family="monospace" font-size="13">├── 📁 2.0x/</text>
+    <text x="130" y="175" fill="#E2E8F0" font-family="monospace" font-size="13">└── 🖼️ logo.png</text>
+    
+    <text x="100" y="205" fill="#F472B6" font-family="monospace" font-size="13">├── 📁 3.0x/</text>
+    <text x="130" y="230" fill="#E2E8F0" font-family="monospace" font-size="13">└── 🖼️ logo.png</text>
+    
+    <text x="70" y="260" fill="#34D399" font-family="monospace" font-size="13">└── 📁 fonts/</text>
+    <text x="100" y="285" fill="#E2E8F0" font-family="monospace" font-size="12">    └── 🔤 PlusJakartaSans-Bold.ttf</text>
+  </g>
+
+  <!-- Right: Explanation Cards -->
+  <!-- 1.0x Baseline -->
+  <g transform="translate(490, 55)">
+    <rect width="340" height="68" rx="10" fill="url(#cardGrad)" stroke="#64748B" stroke-width="1.5"/>
+    <text x="16" y="26" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold">1.0x (Baseline DPI)</text>
+    <text x="16" y="48" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Ukuran gambar standar (misal: 100x100 px)</text>
+  </g>
+
+  <!-- 2.0x Retina -->
+  <g transform="translate(490, 133)">
+    <rect width="340" height="68" rx="10" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="16" y="26" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold">2.0x (Retina Display)</text>
+    <text x="16" y="48" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Ukuran gambar 2x pixel (misal: 200x200 px)</text>
+  </g>
+
+  <!-- 3.0x Ultra HD -->
+  <g transform="translate(490, 211)">
+    <rect width="340" height="68" rx="10" fill="url(#cardGrad)" stroke="#F472B6" stroke-width="1.5"/>
+    <text x="16" y="26" fill="#F472B6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold">3.0x (Ultra-High DPI / Flagship)</text>
+    <text x="16" y="48" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Ukuran gambar 3x pixel (misal: 300x300 px)</text>
+  </g>
+
+  <!-- Automatic Pick Badge -->
+  <g transform="translate(490, 290)">
+    <rect width="340" height="65" rx="10" fill="#047857" fill-opacity="0.25" stroke="#10B981" stroke-width="1.5"/>
+    <text x="170" y="26" fill="#A7F3D0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">⚡ OTOMATIS OLEH FLUTTER</text>
+    <text x="170" y="48" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Flutter mendeteksi DPI layar HP &amp; memilih resolusi tepat</text>
+  </g>
+</svg>
