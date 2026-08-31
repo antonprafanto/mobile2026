@@ -130,22 +130,9 @@ Gradle (alat build Android) membutuhkan Java JDK versi modern (JDK 17 atau 21).
 
 ### Langkah 5: Setup Perangkat Debug (Emulator vs HP Fisik)
 
-```
-                       ┌──────────────────────────────────────────────┐
-                       │          PILIHAN PERANGKAT DEBUG             │
-                       └──────────────────────┬───────────────────────┘
-                                              │
-                     ┌────────────────────────┴────────────────────────┐
-                     │                                                 │
-                     ▼                                                 ▼
-         ┌───────────────────────┐                         ┌───────────────────────┐
-         │      EMULATOR AVD     │                         │     HP FISIK ANDROID  │
-         ├───────────────────────┤                         ├───────────────────────┤
-         │ • Tanpa kabel         │                         │ • Sangat hemat RAM    │
-         │ • Butuh RAM min 16 GB │                         │ • Real hardware test  │
-         │ • Multi-resolusi lay. │                         │ • Support Wireless ADB│
-         └───────────────────────┘                         └───────────────────────┘
-```
+<p align="center">
+  <img src="images/perangkat-debug.jpg" alt="Pilihan Perangkat Debug: Emulator AVD vs HP Fisik" width="650">
+</p>
 
 #### Opsi A: Setup Emulator Android (AVD)
 1. Di Android Studio, buka **Virtual Device Manager** (Device Manager).
