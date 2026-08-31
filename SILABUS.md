@@ -1,238 +1,447 @@
-# Silabus Fullstack Mobile Developer dengan Flutter™ SDK
+# Master Silabus Fullstack Mobile Developer dengan Flutter™ SDK (2026 Edition)
 
-Kurikulum pembelajaran terstruktur, komprehensif, dan siap industri untuk menjadi **Fullstack Mobile Developer** menggunakan **Flutter & Dart**. 
+Kurikulum standar industri terlengkap dan berorientasi produksi untuk mencetak **Fullstack Mobile Engineer** profesional menggunakan **Flutter & Dart**. 
 
-Silabus ini disusun mengacu pada standar global **[roadmap.sh/flutter](https://roadmap.sh/flutter)** dengan penekanan kuat pada integrasi arsitektur nyata: **Frontend (Flutter UI & State Management)**, **Backend Services & API (REST, BaaS, Realtime)**, **Penyimpanan Data (Lokal & Cloud)**, hingga **Testing & Rilis ke Store**.
+Silabus ini mengintegrasikan seluruh domain dari standar global **[roadmap.sh/flutter](https://roadmap.sh/flutter)** dengan penambahan sisi **Backend Services, Database, Native Interoperability, Keamanan, CI/CD Otomatis, hingga Pemantauan Produksi**.
 
 ---
 
-## 🗺️ Peta Alur Belajar (Learning Path)
+## 🗺️ Matriks Kurikulum & Alur Belajar
 
 ```
-[ 01. Fondasi Dart & Async ] ➔ [ 02. Flutter UI & Layout ] ➔ [ 03. Navigasi & Form ]
-                                                                       │
-                                                                       ▼
-[ 06. Data Lokal & Offline ] ◄── [ 05. REST API & Networking ] ◄── [ 04. State Management ]
-            │
-            ▼
-[ 07. BaaS (Firebase & Supabase) ] ➔ [ 08. Fitur Device & Hardware ] ➔ [ 09. Clean Architecture ]
-                                                                                   │
-                                                                                   ▼
-[ 12. Capstone Project Fullstack ] ◄── [ 11. CI/CD & Rilis Store ] ◄── [ 10. Testing & Optimasi ]
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│ FASE 1: DASAR & INTERFACE (Foundations & UI Engineering)                        │
+│ 01. Dart 3+ & Concurrency ➔ 02. Flutter UI & Slivers ➔ 03. Routing & Form System│
+└────────────────────────────────────────┬─────────────────────────────────────────┘
+                                         │
+┌────────────────────────────────────────▼─────────────────────────────────────────┐
+│ FASE 2: STATE, NETWORKING & DATA (Architecture & Communication)                  │
+│ 04. State Management (Bloc/Riverpod) ➔ 05. REST, WS, GraphQL ➔ 06. Data Lokal & SSOT│
+└────────────────────────────────────────┬─────────────────────────────────────────┘
+                                         │
+┌────────────────────────────────────────▼─────────────────────────────────────────┐
+│ FASE 3: FULLSTACK SERVICES & HARDWARE (Backend, Cloud & Device)                  │
+│ 07. Backend (Dart Frog/Supabase) ➔ 08. Hardware & Sensor ➔ 09. Platform Channels│
+└────────────────────────────────────────┬─────────────────────────────────────────┘
+                                         │
+┌────────────────────────────────────────▼─────────────────────────────────────────┐
+│ FASE 4: ENTERPRISE, POLISH & QUALITY (Scale & UX)                                │
+│ 10. Clean Architecture ➔ 11. i18n & a11y ➔ 12. Animasi & Shaders ➔ 13. Testing   │
+└────────────────────────────────────────┬─────────────────────────────────────────┘
+                                         │
+┌────────────────────────────────────────▼─────────────────────────────────────────┐
+│ FASE 5: DEVOPS, SECURITY & PRODUCTION (Delivery & Monitoring)                    │
+│ 14. Keamanan & Crashlytics ➔ 15. CI/CD, Fastlane & OTA ➔ 🏆 CAPSTONE FULLSTACK   │
+└──────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📚 Rincian Modul Pembelajaran
-
-### Modul 01: Fondasi Bahasa Dart & Asynchronous Programming
-Memahami bahasa Dart secara mendalam sebagai pilar logika utama Flutter.
-
-- **Sintaks Dasar & Sistem Tipe**: Variables (`var`, `final`, `const`, `late`), Primitive types, Null Safety (`?`, `!`, `??`, `?.`).
-- **Struktur Kontrol & Collections**: If/else, Switch-case (Pattern Matching), Loop, `List`, `Map`, `Set`, serta *collection methods* (`map`, `where`, `reduce`, `fold`).
-- **Object-Oriented Programming (OOP)**: Class, Constructor (Named, Factory), Inheritance, Abstract Class, Interface, Mixin, dan Extension Methods.
-- **Asynchronous Programming**:
-  - Event Loop, Microtask vs Event Queue.
-  - `Future`, `async`, `await`, error handling dengan `try-catch-finally`.
-  - `Stream`, `StreamController`, `async*`, dan `yield`.
+## 📚 Rincian Lengkap Modul Pembelajaran
 
 ---
 
-### Modul 02: Flutter Foundation & Desain UI Modern
-Memahami arsitektur internal Flutter dan membangun antarmuka pengguna yang adaptif dan responsif.
+### 🔹 FASE 1: DASAR & INTERFACE (Foundations & UI Engineering)
 
-- **Arsitektur Internal Flutter**: Widget Tree, Element Tree, dan RenderObject Tree.
-- **Stateless vs. Stateful Widget**: Siklus hidup (*Lifecycle*) widget (`initState`, `didUpdateWidget`, `dispose`).
-- **Layouting & Positioning**:
-  - `Container`, `Padding`, `Margin`, `Center`, `Align`, `SizedBox`.
-  - `Row`, `Column`, `Flex`, `Expanded`, `Flexible`, `Spacer`.
+#### 📘 Modul 01: Fondasi Dart 3+, OOP, & Concurrency (Isolates)
+Menguasai bahasa Dart modern secara mendalam untuk menangani logika aplikasi tanpa lag pada UI.
+
+* **Fitur Modern Dart 3+**:
+  - Null Safety fundamental (`?`, `!`, `late`, `??`, `?.`, `??=`).
+  - Records & Tuples: Pengembalian multiple value tanpa membuat class baru.
+  - Pattern Matching & Destructuring pada Switch Expression, If-case, dan Object Patterns.
+  - Class Modifiers: `sealed`, `abstract`, `base`, `interface`, `final`, dan `mixin class`.
+* **Object-Oriented Programming (OOP) Lanjutan**:
+  - Constructor types: Generative, Named, Factory, Const, dan Redirecting.
+  - Generics & Type constraints.
+  - Extension Methods & Extension Types.
+* **Asynchronous Programming**:
+  - Event Loop, Microtask Queue vs Event Queue.
+  - `Future`, `async`/`await`, `Future.wait`, `Future.any`, timeout handling.
+  - `Stream`, `StreamController`, `async*`, `yield`, transformator stream.
+* **Concurrency & Isolates**:
+  - Konsep Single-Threaded Event Loop di Dart.
+  - Heavy Computation di background thread dengan `compute()`.
+  - Komunikasi antar Isolate menggunakan `Isolate.spawn()`, `ReceivePort`, dan `SendPort`.
+* **Deliverable / Mini Project**:
+  - *CLI High-Performance JSON & Image Matrix Parser* berbasis Isolates multi-thread.
+
+---
+
+#### 📘 Modul 02: Flutter UI Mastery, Slivers, & Desain Adaptif Material 3
+Memahami mekanisme render internal Flutter dan membangun antarmuka kelas dunia.
+
+* **Arsitektur Internal & Rendering Pipeline**:
+  - Konsep 3 Pohon: **Widget Tree**, **Element Tree**, dan **RenderObject Tree**.
+  - Pipeline Render: Build, Layout, Paint, Compositing, Rasterize.
+  - Mengoptimalkan repaint dengan `RepaintBoundary`.
+* **Lifecycle & State Dasar**:
+  - `StatelessWidget` vs `StatefulWidget`.
+  - State Lifecycle: `initState`, `didChangeDependencies`, `didUpdateWidget`, `dispose`.
+  - App Lifecycle: `AppLifecycleListener` (Deteksi aplikasi paused, resumed, inactive).
+* **Advanced Layout & Slivers System**:
+  - Box Model: `Container`, `Padding`, `Align`, `SizedBox`, `FractionallySizedBox`.
+  - Flexbox Layout: `Row`, `Column`, `Flex`, `Expanded`, `Flexible`, `Spacer`.
   - `Stack`, `Positioned`, `IndexedStack`.
-- **Komponen Tampilan Berulang**: `ListView`, `ListView.builder`, `GridView.builder`, `SingleChildScrollView`.
-- **Desain Sistem & Adaptabilitas**: Material Design 3, Cupertino Widget (iOS style), `ThemeData`, Dark Mode / Light Mode, `MediaQuery`, dan `LayoutBuilder`.
+  - Slivers: `CustomScrollView`, `SliverAppBar` (collapsing/pinned/floating), `SliverPersistentHeader`, `SliverList`, `SliverGrid`, `SliverFillRemaining`.
+* **Design Systems & Adaptabilitas**:
+  - Material Design 3 (M3): ColorScheme, Dynamic Color, Typography, Material Symbols.
+  - Cupertino Widgets (iOS Native Style).
+  - Multi-theme: Dark Mode, Light Mode, System Theme, dan `ThemeExtension` kustom.
+  - Adaptive & Responsive UI: `LayoutBuilder`, `MediaQuery`, `OrientationBuilder`, breakpoint tablet dan layar lipat.
+* **Deliverable / Mini Project**:
+  - *Spotify / Netflix Home Screen Replica* dengan collapsing dynamic sliver header, carousel, dan adaptive layout.
 
 ---
 
-### Modul 03: Navigasi, Routing, dan Form Interaktif
-Menghubungkan antar layar aplikasi dan menangani input pengguna dengan aman.
+#### 📘 Modul 03: Navigasi Deklaratif (go_router), Deep Linking, & Form System
+Membangun alur navigasi yang tangguh serta penanganan data input pengguna yang aman.
 
-- **Navigasi Dasar**: `Navigator.push`, `Navigator.pop`, *Named Routes*.
-- **Deklaratif Routing Modern (`go_router`)**:
-  - Route configuration, Path Parameters, Query Parameters.
-  - Nested Navigation (*ShellRoute / Bottom Navigation Bar*).
-  - Route Guards & Authentication Redirection.
-  - Deep Linking (buka layar spesifik via tautan URL/Web).
-- **Penanganan Input & Formulir**:
-  - `TextFormField`, `TextEditingController`, `FocusNode`.
-  - Validasi Input (*Form Validation* & Regular Expressions).
-  - Interaksi Feedback: `SnackBar`, `AlertDialog`, `BottomSheet`, `DatePicker`.
-
----
-
-### Modul 04: Manajemen State (State Management)
-Mengelola data aplikasi yang dinamis dari tingkat lokal hingga global dengan standar industri.
-
-- **Konsep Dasar State**: Ephemeral (UI) State vs App (Shared) State.
-- **Pendekatan Dasar**: `setState`, `InheritedWidget`, `ValueNotifier`.
-- **Provider & ChangeNotifier**:
-  - `ChangeNotifierProvider`, `MultiProvider`, `Consumer`, `context.watch()` vs `context.read()`.
-- **Riverpod (Modern & Type-Safe)**:
-  - `ProviderScope`, `ConsumerWidget`, `StateProvider`, `NotifierProvider`, `AsyncNotifierProvider`.
-- **BLoC / Cubit (Enterprise Standard)**:
-  - Konsep Event-Driven & Streams.
-  - `BlocProvider`, `BlocBuilder`, `BlocListener`, `BlocConsumer`.
-  - Perbandingan kapan menggunakan Provider, Riverpod, atau BLoC.
+* **Routing Deklaratif Modern dengan `go_router`**:
+  - Konfigurasi Router, Path Parameters, Query Parameters, dan Extra Data.
+  - Nested Navigation dengan `ShellRoute` / `StatefulShellRoute` (Persistent Bottom Navigation Bar & Drawer).
+  - Redirection & Route Guards (Proteksi halaman autentikasi/role-based).
+  - Error Handling: Halaman 404 kustom dan fallback redirect.
+* **Deep Linking & Universal Links**:
+  - Pengenalan URI Scheme vs Android App Links (`assetlinks.json`) & iOS Universal Links (`apple-app-site-association`).
+  - Konfigurasi menangani klik tautan web langsung menuju halaman produk/layanan di aplikasi.
+* **Form & Input Validation System**:
+  - `Form`, `FormField`, `TextFormField`, `TextEditingController`, `FocusNode`.
+  - Validasi multi-rule (Regex email, password strength, match validation).
+  - Custom Input Formatters (Format otomatis nomor HP, NPWP/KTP, dan Rupiah).
+  - Feedback UI: `SnackBar`, `AlertDialog`, `ModalBottomSheet`, `DatePicker`, `TimePicker`.
+* **Deliverable / Mini Project**:
+  - *Multi-Step Onboarding & Checkout Flow* dengan Deep Linking dan Persistent Bottom Navigation.
 
 ---
 
-### Modul 05: Integrasi REST API & Networking
-Menghubungkan aplikasi mobile ke backend server, mengambil data JSON, dan autentikasi token.
+### 🔹 FASE 2: STATE, NETWORKING & DATA (Architecture & Communication)
 
-- **Komunikasi HTTP**:
-  - Metode HTTP: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
-  - Penggunaan paket `http` dan paket `dio`.
-- **Manajemen Request Lanjutan dengan Dio**:
-  - BaseOptions, Request/Response Interceptors, Logging, Token Header Injection.
-- **Serialisasi JSON**:
-  - Manual Parsing (`jsonDecode`, `Map<String, dynamic>`).
-  - Automated Generation: `json_serializable`, `build_runner`, dan `freezed` (Immutability).
-- **Autentikasi & Keamanan Jaringan**:
-  - Flow Login JWT (Access Token & Refresh Token Auto-Refresh).
-  - Penanganan Error: Timeout, No Internet, 401 Unauthorized, 500 Server Error.
+#### 📘 Modul 04: Manajemen State Kelas Industri (Provider, Riverpod, & BLoC)
+Mengelola status data aplikasi dari skala kecil hingga aplikasi enterprise bernilai jutaan transaksi.
 
----
-
-### Modul 06: Penyimpanan Data Lokal & Offline Support
-Menyimpan konfigurasi, sesi, cache, dan basis data relasional pada perangkat.
-
-- **Penyimpanan Nilai Sederhana**: `shared_preferences` (Settings & Flags).
-- **Penyimpanan Aman**: `flutter_secure_storage` (Menyimpan Token JWT / API Keys).
-- **Basis Data Lokal**:
-  - Relasional (SQL): `sqflite` / `drift` (Tabel, Relasi, Migrasi Skema).
-  - NoSQL (Key-Value/Document): `hive` / `isar` (Cepat, Type-safe).
-- **Strategi Offline-First & Caching**:
-  - Pola Cache-Then-Network / Single Source of Truth.
-  - Sinkronisasi antrean data offline ke server saat koneksi kembali online.
+* **Fondasi Teori State**:
+  - Ephemeral (UI) State vs App (Shared) State.
+  - Unidirectional Data Flow (UDF) & Immutability.
+* **Provider (Standar Resmi Flutter)**:
+  - `ChangeNotifierProvider`, `MultiProvider`, `Consumer`, `Selector`.
+  - Membedakan `context.watch()`, `context.read()`, dan `context.select()`.
+* **Riverpod 2+ (Modern, Compile-Safe, Zero-Context)**:
+  - Konsep `ProviderScope` dan `ConsumerWidget` / `ConsumerStatefulWidget`.
+  - Generator Syntax (`@riverpod` & `riverpod_generator`).
+  - `NotifierProvider`, `AsyncNotifierProvider` (Penanganan Loading, Data, Error otomatis).
+  - Provider Modifiers: `.autoDispose` dan `.family` (Parameterized providers).
+* **BLoC & Cubit (Standar Korporat & Enterprise)**:
+  - Event-Driven Architecture: Event -> BLoC -> State.
+  - Cubit untuk state sederhana berbasis function.
+  - `BlocProvider`, `BlocBuilder`, `BlocListener`, `BlocConsumer`, `BlocSelector`.
+  - `HydratedBloc` (Auto-persisting state ke storage lokal).
+  - Mengelola concurrency event dengan `bloc_concurrency` (`droppable`, `restartable`).
+* **Deliverable / Mini Project**:
+  - *E-Commerce Cart, Wishlist, & Filter State Engine* yang diimplementasikan dengan BLoC & Riverpod.
 
 ---
 
-### Modul 07: Backend-as-a-Service (Firebase & Supabase)
-Membangun backend tanpa mengelola server sendiri untuk mempercepat pengembangan.
+#### 📘 Modul 05: Networking, REST API, WebSockets, & GraphQL
+Menghubungkan aplikasi ke dunia luar dengan protokol komunikasi modern yang aman.
 
-- **Ekosistem Firebase**:
-  - Firebase Authentication (Email/Password, Google Sign-In).
-  - Cloud Firestore (NoSQL, Realtime Listener, Security Rules).
-  - Firebase Cloud Storage (Upload & Download file/gambar).
-  - Firebase Cloud Messaging (FCM) untuk Push Notification.
-- **Ekosistem Supabase (Alternatif Open-Source Postgres)**:
-  - Supabase Auth & Row Level Security (RLS).
-  - Database PostgreSQL & Supabase Storage.
-  - Realtime Subscriptions (Broadcast & Database Changes).
-
----
-
-### Modul 08: Integrasi Fitur Hardware & Perangkat
-Memanfaatkan sensor dan kemampuan native smartphone Android & iOS.
-
-- **Izin Aplikasi (*Permission Handling*)**: `permission_handler` (Runtime Permissions Android & iOS).
-- **Kamera & Galeri**: `image_picker`, kompresi gambar, dan cropping.
-- **Lokasi & Peta**: `geolocator` (GPS coordinates) & `google_maps_flutter` (Menampilkan peta, marker, polyline).
-- **Keamanan Biometrik**: `local_auth` (Fingerprint / Face Unlock di HP).
-- **Fitur Perangkat Lainnya**: URL Launcher, Share Sheet, QR Code Scanner (`mobile_scanner`).
-
----
-
-### Modul 09: Arsitektur Aplikasi & Clean Code
-Menata struktur kode agar mudah dirawat, diuji, dan dikembangkan dalam tim besar.
-
-- **Prinsip SOLID & Design Patterns**: Single Responsibility, Dependency Inversion, Singleton, Factory.
-- **Pola Arsitektur**:
-  - *Clean Architecture* (Presentation Layer, Domain Layer, Data Layer).
-  - *Feature-First vs Layer-First Organization*.
-  - *Repository Pattern* untuk abstraksi sumber data (Remote vs Local).
-- **Dependency Injection**:
-  - Service Locator menggunakan `get_it` & `injectable`.
+* **Komunikasi REST API dengan Dio**:
+  - Setup Client, `BaseOptions`, Timeout, Query Params, Form Data.
+  - Dio Interceptors:
+    - *Logging Interceptor* untuk debugging.
+    - *Auth Token Header Injection*.
+    - *Automatic Token Refresh Interceptor* (Menangani 401 Unauthorized secara silent dengan refresh token).
+    - *Retry Interceptor* dengan Exponential Backoff saat koneksi putus-nyambung.
+  - Pembatalan request menggunakan `CancelToken`.
+* **Serialisasi Data & Immutability**:
+  - `json_serializable` & `build_runner` (Pembuatan otomatis `fromJson` / `toJson`).
+  - `freezed` & `equatable`: Immutability, `copyWith`, Union/Sealed classes untuk State jaringan.
+* **Realtime Communication**:
+  - WebSockets (`web_socket_channel`): Koneksi bidirectional untuk chat dan live streaming data.
+  - Server-Sent Events (SSE) untuk push data satu arah dari server.
+* **GraphQL**:
+  - Client setup dengan `graphql_flutter`.
+  - Query, Mutation, dan Realtime Subscription.
+* **Deliverable / Mini Project**:
+  - *Realtime Crypto/Stock Ticker & Live Chat Client* dengan auto-refresh token dan WebSocket.
 
 ---
 
-### Modul 10: Animasi, Custom UI, & UX Polish
-Membuat aplikasi terasa responsif, interaktif, dan berstandar profesional.
+#### 📘 Modul 06: Data Lokal, Offline-First, & Database Relasional
+Membangun aplikasi yang tetap berjalan lancar meski tanpa koneksi internet (Offline-First).
 
-- **Implicit Animations**: `AnimatedContainer`, `AnimatedOpacity`, `AnimatedCrossFade`, `AnimatedAlign`.
-- **Explicit Animations**: `AnimationController`, `CurvedAnimation`, `Tween`, `AnimatedBuilder`.
-- **Transisi Antar Layar**: `Hero` animations dan Page Transitions kustom.
-- **Animasi Vektor & Lottie**: Integrasi file animasi JSON Lottie.
-- **Grafis Kustom**: `CustomPainter` dan `Canvas` (Menggambar grafik, diagram, atau bentuk khusus).
-
----
-
-### Modul 11: Testing, Debugging, & Optimasi Performa
-Memastikan aplikasi stabil, bebas bug, dan memiliki performa 60/120 FPS tanpa lag.
-
-- **Pengujian Otomatis (*Automated Testing*)**:
-  - **Unit Testing**: Menguji logika bisnis, model, dan usecase (`test`, `mocktail`).
-  - **Widget Testing**: Menguji komponen UI secara terisolasi (`flutter_test`).
-  - **Integration Testing**: Menguji alur aplikasi dari awal hingga akhir (`integration_test`).
-- **Debugging & Profiling**:
-  - Flutter DevTools (Memory Profiler, Network Tab, Widget Inspector).
-  - Mengatasi UI Jank (*Dropped Frames*) & Rebuild berlebihan dengan `const` constructor dan selector.
-  - Mengidentifikasi Memory Leaks.
+* **Penyimpanan Nilai Sederhana & Enkripsi**:
+  - `shared_preferences` untuk preferensi pengguna dan flags aplikasi.
+  - `flutter_secure_storage`: Menyimpan credential, private key, dan token JWT di Android Keystore / iOS Keychain.
+* **Basis Data Relasional (SQL)**:
+  - `sqflite` vs `drift` (ORM Type-Safe untuk Dart).
+  - Skema tabel, Foreign Keys, Indexing, Transaksi, dan Migrasi Skema Versi Database.
+  - Relasi One-to-Many dan Many-to-Many.
+* **Basis Data NoSQL Berkecepatan Tinggi**:
+  - `hive` / `isar`: Key-value & Document store embedded dengan performa tinggi.
+* **Arsitektur Offline-First & Pola Sinkronisasi**:
+  - Single Source of Truth (SSOT): UI selalu membaca dari Database Lokal, Database Lokal disinkronkan dari Remote API.
+  - Cache Invalidation Strategies (Time-To-Live / ETag).
+  - Offline Sync Queue: Menyimpan mutasi data (create, update, delete) saat offline dan mengeksekusinya otomatis saat online.
+* **Deliverable / Mini Project**:
+  - *Offline-First Note & Task Manager with Background Sync Queue*.
 
 ---
 
-### Modul 12: CI/CD, Keamanan, & Rilis Aplikasi (Play Store & App Store)
-Mempersiapkan aplikasi siap produksi dan otomatisasi alur publikasi.
+### 🔹 FASE 3: FULLSTACK SERVICES & HARDWARE (Backend, Cloud & Device)
 
-- **Keamanan Aplikasi**:
-  - Obfuscation kode (`--obfuscate --split-debug-info`).
-  - Penyembunyian Secrets & API Keys menggunakan Environment Variables (`.env`).
-  - Network Security Configuration (SSL Pinning / HTTPS).
-- **Persiapan Rilis Android**:
-  - Konfigurasi `build.gradle`, App Icon (`flutter_launcher_icons`), Splash Screen (`flutter_native_splash`).
-  - Pembuatan Android Keystore (Signing Key) & Android App Bundle (`.aab`).
-- **Persiapan Rilis iOS**:
-  - Pengenalan Apple Developer Account, Provisioning Profile, dan Sertifikat.
-- **Otomatisasi CI/CD**:
-  - GitHub Actions untuk automated lint (`flutter analyze`), testing, dan build artifact.
-- **Panduan Google Play Console**:
-  - Kebijakan Privasi, Data Safety Form, Target API level, dan rilis ke Internal Testing / Production.
+#### 📘 Modul 07: Sisi Backend untuk Mobile (Dart Frog, Supabase, & Firebase)
+Memenuhi peran "Fullstack" sejati dengan merancang, membangun, dan mengelola backend dan cloud service.
 
----
-
-### 🏆 Capstone Project: Membangun Aplikasi Fullstack End-to-End
-Proyek portofolio lengkap yang menggabungkan seluruh konsep dari Modul 01 hingga 12.
-
-**Contoh Studi Kasus Pilihan**:
-1. **E-Commerce / Food Delivery App**:
-   - Autentikasi (JWT / Firebase Auth).
-   - Katalog produk, pencarian realtime, filter kategori.
-   - Keranjang belanja lokal (Offline-First dengan SQLite/Hive).
-   - Integrasi REST API Backend + Upload bukti transaksi.
-   - Pelacakan lokasi kurir di Google Maps.
-   - Push Notification saat status pesanan berubah.
-2. **Task & Team Collaboration / POS Kasir App**:
-   - Multi-user authentication & Role Access.
-   - Sinkronisasi data realtime (Firestore / Supabase).
-   - Fitur offline mode & sync on reconnect.
-   - Export laporan PDF & Cetak Struk via Bluetooth.
+* **Membangun Backend Sendiri dengan Dart Frog / Node.js**:
+  - Pengenalan Dart Frog (Fullstack Dart dari Frontend ke Backend).
+  - Pembuatan RESTful Endpoints (`GET`, `POST`, `PUT`, `DELETE`).
+  - Middleware: CORS, Logging, JWT Verification.
+  - Koneksi Database PostgreSQL dari backend.
+* **Firebase Backend-as-a-Service (BaaS)**:
+  - Firebase Authentication: Email/Password, Google Sign-In, Apple Sign-In, Phone OTP.
+  - Cloud Firestore: NoSQL Data Modeling, Compound Queries, Subcollections, dan Realtime Snapshots.
+  - Firestore Security Rules: Autentikasi, validasi data, dan hak akses dokumen.
+  - Firebase Cloud Storage: Upload gambar/video dengan progress bar dan metadata.
+* **Supabase (Open-Source PostgreSQL BaaS)**:
+  - Supabase Auth, Table Editor, dan Relational Postgres.
+  - Row Level Security (RLS) Policies.
+  - Realtime Subscriptions pada perubahan tabel database.
+  - Supabase Edge Functions (Deno/TypeScript) untuk webhook pembayaran dan komputasi aman.
+* **Deliverable / Mini Project**:
+  - *Fullstack Micro-Service Backend & Admin Dashboard* terhubung langsung ke aplikasi mobile.
 
 ---
 
-## ⏱️ Estimasi Waktu Belajar
+#### 📘 Modul 08: Integrasi Fitur Hardware, Sensor, & Background Tasks
+Memanfaatkan seluruh sensor dan kapabilitas smartphone Android & iOS.
 
-| Tingkat | Modul | Estimasi Waktu (Jam Belajar) |
-| --- | --- | --- |
-| **Dasar (Beginner)** | Modul 01 – 03 | 30 – 40 Jam |
-| **Menengah (Intermediate)** | Modul 04 – 07 | 45 – 60 Jam |
-| **Lanjutan (Advanced)** | Modul 08 – 11 | 40 – 50 Jam |
-| **Produksi & Portofolio** | Modul 12 & Capstone | 35 – 50 Jam |
-| **Total Keseluruhan** | **12 Modul + Capstone** | **~150 – 200 Jam (~12-16 Minggu)** |
+* **Manajemen Izin (*Permission Handling*)**:
+  - `permission_handler`: Mengelola izin kamera, lokasi, mikrofon, penyimpanan di runtime Android 13+ & iOS.
+* **Kamera, Galeri, & Media Processing**:
+  - `image_picker` & `camera`: Pengambilan foto/video real-time.
+  - Kompresi gambar sebelum upload (`flutter_image_compress`), cropping foto profil.
+* **Geolokasi & Pemetaan (Maps)**:
+  - `geolocator`: Mendapatkan koordinat GPS (Foreground & Background), perhitungan jarak (Haversine formula).
+  - `google_maps_flutter`: Peta interaktif, Custom Markers, Polylines rute perjalanan, Geocoding (Alamat <-> Koordinat).
+* **Keamanan Biometrik**:
+  - `local_auth`: Otentikasi Sidik Jari (Fingerprint) dan Face ID dengan PIN fallback.
+* **Background Tasks & Local Notifications**:
+  - `flutter_local_notifications`: Notifikasi lokal terjadwal, reminder alarm, rich notifications dengan gambar.
+  - `workmanager`: Menjalankan background task terjadwal saat aplikasi ditutup/terminated.
+* **Fitur Tambahan**: URL Launcher, Share Sheet, QR Code Scanner (`mobile_scanner`).
+* **Deliverable / Mini Project**:
+  - *Smart Attendance & Field Tracking App* (Validasi Geofencing GPS, Foto Wajah/Kamera, Biometrik, & Background Sync).
+
+---
+
+#### 📘 Modul 09: Native Platform Channels, Pigeon, & Dart FFI
+Menembus batas framework Flutter untuk berkomunikasi langsung dengan OS native Kotlin/Swift/C++.
+
+* **Arsitektur Komunikasi Native Flutter**:
+  - `MethodChannel`: Komunikasi request-response asinkron ke Android/iOS.
+  - `EventChannel`: Streaming data native berkelanjutan (misal: sensor accelerometer/giroskop).
+  - `BasicMessageChannel`: Pertukaran pesan string/biner.
+* **Menulis Kode Native**:
+  - Android (Kotlin) implementation & iOS (Swift) implementation.
+  - Mengakses API OS yang belum tersedia di package pub.dev (misal: Battery Health, MDM Lock, System Settings).
+* **Type-Safe Platform Channels dengan Pigeon**:
+  - Menghilangkan resiko *runtime string error* dengan generator skema native type-safe.
+* **Dart FFI (Foreign Function Interface)**:
+  - Memanggil library C / C++ / Rust langsung dari Dart untuk komputasi performa ultra-tinggi atau modul kriptografi.
+* **Deliverable / Mini Project**:
+  - *Custom Native Device Hardware Inspector Plugin* menggunakan Kotlin, Swift, dan Pigeon.
+
+---
+
+### 🔹 FASE 4: ENTERPRISE, POLISH & QUALITY (Scale & UX)
+
+#### 📘 Modul 10: Arsitektur Skala Besar, Clean Architecture, & Modularization
+Menata kode agar terstruktur rapi, *testable*, dan siap dikerjakan oleh puluhan developer sekaligus.
+
+* **Prinsip Desain & OOP**:
+  - SOLID Principles dalam ekosistem Flutter & Dart.
+  - Design Patterns: Repository Pattern, Factory, Singleton, Observer, Decorator.
+* **Clean Architecture (Uncle Bob Pattern)**:
+  - **Domain Layer** (Independen, murni Dart): Entities, Value Objects, UseCases / Interactors, Repository Interfaces.
+  - **Data Layer**: Models (DTOs), Data Sources (Remote API, Local DB), Repository Implementations.
+  - **Presentation Layer**: State Management (BLoC/Riverpod), UI Widgets, Pages.
+* **Dependency Injection (DI) & Service Locator**:
+  - `get_it` & `injectable`: Injeksi dependensi otomatis dengan anotasi `@injectable`, `@lazySingleton`.
+* **Modularization & Multi-Package Architecture**:
+  - Memecah monolith app menjadi beberapa internal packages/modules (Core, Auth, Product, Cart, Common UI).
+  - Manajemen monorepo dengan **Melos**.
+* **Deliverable / Mini Project**:
+  - *Enterprise Banking / Fintech Multi-Module Architecture Skeleton*.
+
+---
+
+#### 📘 Modul 11: Internationalization (i18n), Aksesibilitas (a11y), & Desain Adaptif
+Menjadikan aplikasi ramah bagi pengguna global dan pengguna dengan kebutuhan khusus.
+
+* **Lokalisasi & Multi-Bahasa (i18n)**:
+  - `flutter_localizations` & `intl`.
+  - Format file ARB (`app_en.arb`, `app_id.arb`), auto-generating localization classes.
+  - Parameter dinamis, Pluralization (jamak/tunggal), dan Gender formatting.
+  - Format Angka, Mata Uang (Rupiah `IDR`, Dollar `USD`), dan Tanggal/Waktu lokal.
+* **Aksesibilitas (a11y / Accessibility)**:
+  - `Semantics` widget untuk mendukung Screen Reader (TalkBack di Android & VoiceOver di iOS).
+  - Penyesuaian Dynamic Text Scaling & Contrast ratio standar WCAG.
+  - Keyboard navigation & Focus traversal.
+* **Deliverable / Mini Project**:
+  - *Multi-Lingual Global Booking Portal* dengan full screen-reader accessibility & locale switcher.
+
+---
+
+#### 📘 Modul 12: Animasi Lanjutan, Custom Painter, Shaders, & UX Polish
+Menciptakan antarmuka yang memukau, interaktif, dan berkesan profesional.
+
+* **Implicit Animations**:
+  - `AnimatedContainer`, `AnimatedOpacity`, `AnimatedPadding`, `AnimatedPositioned`, `AnimatedCrossFade`, `TweenAnimationBuilder`.
+* **Explicit Animations**:
+  - `AnimationController`, `CurvedAnimation`, `Tween`, `TweenSequence`.
+  - `AnimatedBuilder` & `AnimatedWidget` untuk animasi performa tinggi tanpa rebuild widget induk.
+  - *Staggered Animations* (Animasi beruntun berurutan).
+* **Transisi Antar Halaman & Hero**:
+  - `Hero` animations (transisi gambar/elemen mulus antar layar).
+  - Custom Page Route Transitions (Slide, Fade, Scale, Shared Axis transition).
+* **Grafis Kustom & Shaders**:
+  - `CustomPainter` & `Canvas` API: Menggambar shape kustom, path, dan diagram interaktif.
+  - Pengenalan Fragment Shaders (GLSL) di Flutter untuk visual effect modern.
+* **Animasi Vektor Interaktif**:
+  - Integrasi **Lottie** (JSON animations) dan **Rive** (State machine animations).
+* **Deliverable / Mini Project**:
+  - *Interactive Financial Analytics Dashboard* dengan custom animated charts, particle effects, dan Rive interactive button.
+
+---
+
+#### 📘 Modul 13: Testing Komprehensif, Debugging, & Optimasi Performa
+Menjamin aplikasi bebas bug, stabil di berbagai perangkat, dan berjalan mulus 60/120 FPS.
+
+* **Piramida Pengujian Otomatis (*Automated Testing*)**:
+  - **Unit Testing**: Menguji logika bisnis murni, UseCases, Repository, dan Model (`test`, `mocktail`).
+  - **Widget Testing**: Menguji interaksi UI, input form, rendering komponen, dan pump frames (`flutter_test`).
+  - **Integration Testing**: Menguji skenario end-to-end langsung di emulator/perangkat sungguhan (`integration_test`).
+  - **Golden UI Tests**: Menguji kesesuaian pixel tampilan dengan *snapshot rendering*.
+* **Flutter DevTools & Profiling Mendalam**:
+  - Memory Profiler: Mendeteksi Memory Leaks dan retensi objek.
+  - CPU Profiler & Timeline: Mengidentifikasi bottleneck dan Frame Dropping (UI Jank).
+  - Network Inspector: Mengamati lalu lintas HTTP/WS.
+  - Widget Inspector: Mengecek layout constraints dan rebuild count.
+* **Teknik Optimasi Performa**:
+  - Mencegah rebuild liar: Penggunaan `const` constructor, pemisahan widget kecil, dan selector state.
+  - Image Caching (`cached_network_image`), kompresi asset, dan deferred component loading.
+* **Deliverable / Mini Project**:
+  - *Comprehensive Test Suite (Unit + Widget + Integration)* dengan code coverage > 85% dan Laporan Audit Profiling.
+
+---
+
+### 🔹 FASE 5: DEVOPS, SECURITY & PRODUCTION (Delivery & Monitoring)
+
+#### 📘 Modul 14: Keamanan Aplikasi, Kepatuhan (Compliance), & Crash Reporting
+Melindungi data pengguna, memitigasi serangan keamanan, dan memantau kesehatan aplikasi di produksi.
+
+* **Keamanan & Hardening Aplikasi**:
+  - Code Obfuscation & Symbol Stripping (`--obfuscate --split-debug-info`).
+  - Menyembunyikan Secrets / API Keys via Compile-Time Environment Variables (`--dart-define-from-file`).
+  - Network Security: SSL/TLS Certificate Pinning untuk mencegah serangan *Man-In-The-Middle (MITM)*.
+  - Root & Jailbreak Detection (`flutter_jailbreak_detection`).
+  - Anti-Screen Capture / Blur overlay saat aplikasi di app switcher (Privasi Fintech).
+* **Crash Reporting & Error Monitoring**:
+  - Integrasi **Firebase Crashlytics** & **Sentry**.
+  - Menangkap Uncaught Exceptions, Flutter Errors, dan Platform Errors.
+  - Menambahkan Custom Logs, Breadcrumbs, dan User Identity Tagging.
+* **Analytics & Telemetry**:
+  - Firebase Analytics & PostHog / Mixpanel: Event Tracking, User Funnel, dan Conversion Rate.
+* **Regulasi & Kepatuhan Privasi**:
+  - Kepatuhan **UU Perlindungan Data Pribadi (UU PDP Indonesia)** & **GDPR**.
+  - Alur Consent pengguna, Kebijakan Privasi, dan fitur wajib *Delete Account*.
+* **Deliverable / Mini Project**:
+  - *Hardened Secure Banking App Shell* dengan Sentry logging, SSL Pinning, dan Anti-Tampering.
+
+---
+
+#### 📘 Modul 15: CI/CD Otomatis, Fastlane, OTA CodePush, & Rilis Store
+Otomatisasi penuh dari kode di git hingga terbit di Google Play Store & Apple App Store.
+
+* **Persiapan Rilis Native**:
+  - Android: Pembuatan Java Keystore (JKS/PKCS12), signing config di `build.gradle`, konfigurasi Android App Bundle (`.aab`).
+  - iOS: Apple Developer Program, Certificates, App Identifiers, Provisioning Profiles, dan Export `.ipa`.
+  - App Icon otomatis (`flutter_launcher_icons`) & Splash Screen native (`flutter_native_splash`).
+* **Otomatisasi Deployment dengan Fastlane**:
+  - Setup Fastlane untuk Android & iOS.
+  - Match untuk sinkronisasi sertifikat iOS dalam tim.
+  - Distribusi Beta otomatis ke Firebase App Distribution & Apple TestFlight.
+* **Continuous Integration & Delivery (CI/CD)**:
+  - Setup **GitHub Actions Pipeline**:
+    - Step 1: Linting (`flutter analyze`) & Format check.
+    - Step 2: Running Automated Unit & Widget Tests.
+    - Step 3: Auto Build Release AAB / IPA.
+    - Step 4: Auto Deploy ke Google Play Internal Testing & TestFlight.
+* **Over-The-Air (OTA) Updates dengan Shorebird**:
+  - Konsep CodePush untuk Flutter: Memperbaiki bug kritis secara instan tanpa perlu menunggu review App Store / Play Store.
+* **Manajemen Google Play Console & App Store Connect**:
+  - Pengisian Data Safety Form, Financial Services Declaration, Content Rating, dan Store Listing (Screenshots, Deskripsi, Video Preview).
+* **Deliverable / Mini Project**:
+  - *End-to-End Automated CI/CD Pipeline* yang menerbitkan build baru ke Store pada saat git tag di-push.
+
+---
+
+## 🏆 Capstone Project: Enterprise-Grade Fullstack Mobile Application
+
+Siswa merancang, membangun, menguji, dan menerbitkan satu produk aplikasi nyata berskala produksi yang mengintegrasikan seluruh materi Modul 01 – 15.
+
+### Pilihan Studi Kasus Capstone:
+
+#### 🌟 Pilihan 1: Omnichannel Quick-Commerce & Food Delivery SuperApp
+* **Frontend Mobile (Flutter)**: Clean Architecture + BLoC/Riverpod, Slivers dynamic home, live tracking maps dengan custom polyline marker, offline cart caching, multi-language.
+* **Backend API & BaaS**: Dart Frog / Node.js API + PostgreSQL, Supabase/Firebase Realtime untuk update status order.
+* **Hardware & Sensor**: GPS tracking lokasi kurir secara berkala, kamera untuk foto bukti penerimaan barang, push notification FCM saat pesanan diproses.
+* **Pembayaran**: Integrasi Payment Gateway (Midtrans / Xendit / Stripe) dengan webhook verifikasi otomatis.
+* **DevOps & QA**: Unit & Integration testing coverage > 80%, GitHub Actions CI/CD pipeline, dan rilis APK/AAB siap pasang.
+
+#### 🌟 Pilihan 2: B2B Enterprise POS Kasir & Multi-Outlet Inventory Management
+* **Frontend Mobile/Tablet (Flutter)**: Adaptive UI (HP & Tablet), cetak struk Bluetooth thermal printer via Native Platform Channel, export laporan Excel & PDF.
+* **Fitur Offline-First**: Database lokal (Drift/SQLite) dengan sinkronisasi antrean otomatis saat kasir terhubung kembali ke internet.
+* **Keamanan & Compliance**: Autentikasi biometrik kasir, Role-Based Access Control (Admin, Supervisor, Kasir), audit log perubahan harga.
+* **DevOps**: Automated test suite, Sentry error monitoring, dan Fastlane release.
+
+---
+
+## 📑 Lampiran Spesialisasi Tambahan (Appendices)
+
+* **Lampiran A: Integrasi Payment Gateway (Midtrans, Xendit, Stripe)**  
+  Snap token, callback URL, webhook handling di backend, dan keamanan transaksi tanpa menyimpan kartu di aplikasi.
+* **Lampiran B: In-App Purchase & Subscription (RevenueCat & StoreKit/Play Billing)**  
+  Monetisasi aplikasi berbayar, paywall, pengelolaan tier langganan (Monthly/Annual), dan validasi server-to-server receipt.
+* **Lampiran C: Audio/Video Streaming & WebRTC**  
+  Video player kustom, audio background playback service, dan panggilan video 1-on-1 dengan WebRTC.
+* **Lampiran D: Bluetooth Low Energy (BLE) & Integrasi IoT / Thermal Printer**  
+  Scan device BLE, koneksi GATT server, dan pengiriman raw ESC/POS byte data ke printer thermal kasir.
+* **Lampiran E: On-Device AI & Gemini LLM Integration**  
+  Menjalankan model AI lokal ringan di HP dan integrasi Google Gemini API untuk fitur asisten cerdas di dalam Flutter.
+
+---
+
+## ⏱️ Estimasi Waktu & Timeline Belajar
+
+| Fase | Cakupan Modul | Estimasi Jam Belajar | Durasi Rekomendasi |
+|---|---|---|---|
+| **Fase 1: Foundations & UI** | Modul 01 – 03 | 35 – 45 Jam | Minggu 1 – 3 |
+| **Fase 2: State & Data** | Modul 04 – 06 | 45 – 55 Jam | Minggu 4 – 7 |
+| **Fase 3: Backend & Hardware**| Modul 07 – 09 | 40 – 50 Jam | Minggu 8 – 10 |
+| **Fase 4: Architecture & Polish** | Modul 10 – 13 | 45 – 55 Jam | Minggu 11 – 14 |
+| **Fase 5: DevOps & Capstone** | Modul 14 – 15 + Capstone | 50 – 70 Jam | Minggu 15 – 18 |
+| **TOTAL** | **15 Modul + Capstone + 5 Lampiran** | **~220 – 275 Jam** | **~16 – 18 Minggu** |
 
 ---
 
 ## 📖 Sumber Daya & Dokumentasi Resmi
 
 - **Flutter Official Documentation**: [docs.flutter.dev](https://docs.flutter.dev)
-- **Dart Language Tour**: [dart.dev/guides](https://dart.dev/guides)
-- **Pub.dev Package Repository**: [pub.dev](https://pub.dev)
+- **Dart Language Tour & Specifications**: [dart.dev/guides](https://dart.dev/guides)
 - **Roadmap.sh Flutter Path**: [roadmap.sh/flutter](https://roadmap.sh/flutter)
 - **Material 3 Design Guidelines**: [m3.material.io](https://m3.material.io)
+- **Pub.dev Official Package Repository**: [pub.dev](https://pub.dev)
+- **Shorebird CodePush**: [shorebird.dev](https://shorebird.dev)
+- **Fastlane Mobile Automation**: [docs.fastlane.tools](https://docs.fastlane.tools)
