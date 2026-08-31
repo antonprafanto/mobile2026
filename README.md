@@ -6,6 +6,12 @@ Kurikulum ini dirancang mengacu pada standar global **[roadmap.sh/flutter](https
 
 ---
 
+<p align="center">
+  <img src="docs/images/roadmap-infographic.jpg" alt="Fullstack Flutter Developer 2026 Roadmap" width="650">
+</p>
+
+---
+
 ## 📌 Silabus Lengkap
 
 Dokumen kurikulum terperinci, daftar subtopik, deliverables mini-project, hingga capstone dapat dibaca di:

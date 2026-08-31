@@ -8,37 +8,9 @@ Silabus ini mengintegrasikan seluruh domain dari standar global **[roadmap.sh/fl
 
 ## 🗺️ Matriks Kurikulum & Alur Belajar
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────┐
-│ FASE 0: TOOLING & ENVIRONMENT SETUP (Persiapan Alat & Lingkungan 2026)                  │
-│ 00. Setup Flutter SDK, Android Studio, VS Code, Java 17/21, JDK, ADB, & Git             │
-└────────────────────────────────────────┬────────────────────────────────────────────────┘
-                                         │
-┌────────────────────────────────────────▼────────────────────────────────────────────────┐
-│ FASE 1: DASAR & INTERFACE (Foundations & UI Engineering)                               │
-│ 01. Dart 3+ & Concurrency ➔ 02. Flutter UI, Impeller & Slivers ➔ 03. Routing & Forms   │
-└────────────────────────────────────────┬────────────────────────────────────────────────┘
-                                         │
-┌────────────────────────────────────────▼────────────────────────────────────────────────┐
-│ FASE 2: STATE, NETWORKING & DATA (Architecture & Communication)                         │
-│ 04. State Management (Bloc/Riverpod) ➔ 05. REST, WS, GraphQL ➔ 06. Data Lokal & SSOT   │
-└────────────────────────────────────────┬────────────────────────────────────────────────┘
-                                         │
-┌────────────────────────────────────────▼────────────────────────────────────────────────┐
-│ FASE 3: FULLSTACK SERVICES & HARDWARE (Backend, Cloud & Device)                         │
-│ 07. Backend (Dart Frog/Supabase) ➔ 08. Hardware & Sensor ➔ 09. Platform Channels       │
-└────────────────────────────────────────┬────────────────────────────────────────────────┘
-                                         │
-┌────────────────────────────────────────▼────────────────────────────────────────────────┐
-│ FASE 4: ENTERPRISE, POLISH & QUALITY (Scale & UX)                                       │
-│ 10. Clean Architecture ➔ 11. i18n & a11y ➔ 12. Animasi & Shaders ➔ 13. Testing & DevTools│
-└────────────────────────────────────────┬────────────────────────────────────────────────┘
-                                         │
-┌────────────────────────────────────────▼────────────────────────────────────────────────┐
-│ FASE 5: DEVOPS, SECURITY & PRODUCTION (Delivery & Monitoring)                           │
-│ 14. Keamanan & Crashlytics ➔ 15. CI/CD, Fastlane & OTA ➔ 🏆 CAPSTONE FULLSTACK          │
-└─────────────────────────────────────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="docs/images/roadmap-infographic.jpg" alt="Fullstack Flutter Developer 2026 Roadmap" width="650">
+</p>
 
 ---
 
