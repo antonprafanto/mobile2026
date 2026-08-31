@@ -1,38 +1,677 @@
 # Modul 02: Flutter UI Mastery, Impeller Engine, & Slivers
 
-Memahami internal render Flutter, Impeller Engine, 3 Pohon Flutter, Slivers architecture, dan Material 3 adaptif.
+Selamat datang di **Modul 02**! Di modul ini, Anda akan mempelajari bagaimana mesin Flutter merender grafis dengan mulus 60/120 FPS melalui **Impeller Rendering Engine**, menguasai konsep fundamental **Tiga Pohon Flutter (*The 3 Trees*)**, memahami siklus hidup widget (*Widget Lifecycle*), aturan emas tata letak (*Box Constraints*), hingga merancang antarmuka modern yang memukau menggunakan **Slivers Architecture** dan **Material Design 3**.
 
 ---
 
-## 🎯 Target Kompetensi & Sub-Topik
+## 🎭 1. Analogi: Panggung Pertunjukan Teater
 
-Setelah menyelesaikan modul ini, Anda akan menguasai:
+Untuk memahami cara kerja Flutter UI, bayangkan sebuah pertunjukan teater megah:
 
-- [ ] Arsitektur Internal: Impeller Engine, 3 Trees (Widget, Element, RenderObject)
-- [ ] Siklus Hidup Widget & AppLifecycleListener
-- [ ] Layout Box Model, Flexbox (Row/Column), Stack & Positioned
-- [ ] Advanced Scrolling: CustomScrollView, SliverAppBar, SliverPersistentHeader, SliverList/Grid
-- [ ] Material Design 3, Cupertino, Dark/Light Multi-theme, ThemeExtension
-- [ ] Desain Responsif & Adaptif (LayoutBuilder, MediaQuery, Breakpoints)
-
----
-
-## 🛠️ Pola Pembelajaran Modul
-
-1. **Analogi Dunia Nyata**: Menjelaskan konsep teknis menggunakan visualisasi sederhana.
-2. **Teori & Cara Kerja**: Bedah mendalam arsitektur dan mekanisme di balik layar.
-3. **Praktikum Langkah demi Langkah**: Tutorial coding terpandu dengan kode lengkap (*compilable*).
-4. **Jebakan Umum (*Common Pitfalls*)**: Kesalahan fatal yang sering dilakukan developer dan solusinya.
-5. **Kuis Pemahaman**: Menguji pemahaman konsep kunci.
-6. **Tantangan Mandiri & Mini Project**: Proyek praktis untuk mengasah skill secara nyata.
+| Komponen Flutter | Analogi Teater | Peran & Karakteristik |
+|---|---|---|
+| **Widget Tree** | **Naskah & Blueprint Cerita** | *Immutable* (tidak bisa diubah). Berisi deskripsi bagaimana tampilan harus terlihat (misal: "Buat kotak biru dengan teks di tengah"). Sangat ringan dibuat dan dihancurkan berulang kali. |
+| **Element Tree** | **Aktor & Manajer Panggung** | *Mutable* (hidup & dinamis). Mengelola siklus hidup, menyimpan state di memori, dan menghubungkan naskah (Widget) dengan pelaksana visual (RenderObject). |
+| **RenderObject Tree** | **Tukang Cat, Penata Lampu, & Tukang Ukur** | Mengukur ukuran persis (*Layout/Constraints*), menentukan posisi koordinat pixel (*Paint*), dan menggambar tampilan nyata ke layar HP. |
+| **Impeller Engine** | **Proyektor Laser Berkecepatan Ultra-Tinggi** | Mesin grafis modern pengganti Skia yang mengompilasi *shader* terlebih dahulu (Ahead-Of-Time) sehingga animasi tidak pernah mengalami patah-patah (*anti-jank*). |
 
 ---
 
-## 📦 Deliverable / Mini Project
+## ⚙️ 2. Arsitektur Internal & Rendering Engine (Impeller)
 
-> **Target Output Proyek:**  
-> Spotify / Netflix Home Screen Replica dengan collapsing dynamic sliver header dan adaptive layout.
+### 2.1 Mengapa Impeller Menggantikan Skia di Flutter Modern?
+
+Pada versi Flutter terdahulu yang menggunakan engine Skia, pengguna terkadang merasakan patah-patah sesaat (*jank*) ketika animasi pertama kali dijalankan. Ini disebut **Shader Compilation Jank** (GPU harus mengompilasi efek visual saat runtime).
+
+**Impeller menyelesaikan masalah ini secara tuntas dengan:**
+1. **Pre-compiled Shaders**: Semua efek grafis sudah dikompilasi sebelumnya saat build time (*Ahead-Of-Time*).
+2. **Native GPU Backend**: Memanfaatkan API grafis modern langsung ke hardware (Metal di iOS, Vulkan di Android).
+3. **Hasil**: Animasi scrolling, transisi halaman, dan efek bayangan berjalan konstan di 60 FPS / 120 FPS.
 
 ---
 
-*Status Modul: Siap Dikembangkan • Silabus Utama: [SILABUS.md](../SILABUS.md)*
+### 2.2 Alur Rendering Pipeline 5 Tahap
+
+```text
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌─────────────────┐     ┌───────────────┐
+│  1. BUILD   │ ➔   │  2. LAYOUT   │ ➔   │  3. PAINT   │ ➔   │ 4. COMPOSITING  │ ➔   │ 5. RASTERIZE  │
+│ (Widget ->  │     │ (Constraints │     │ (Canvas API │     │ (Menggabungkan  │     │ (GPU Mengubah │
+│  Element)   │     │  Down/Up)    │     │  Merekam)   │     │  Lapisan Layer) │     │  ke Pixel HP) │
+└─────────────┘     └──────────────┘     └─────────────┘     └─────────────────┘     └───────────────┘
+```
+
+> [!TIP]
+> **Optimasi dengan `RepaintBoundary`**:  
+> Jika Anda memiliki widget animasi (seperti jarum jam atau spinner) di tengah halaman yang statis, bungkus widget tersebut dengan `RepaintBoundary`. Ini mencegah Flutter me-repaint seluruh layar secara sia-sia!
+
+---
+
+## 🔄 3. Siklus Hidup Widget (*Widget Lifecycle*)
+
+### 3.1 `StatelessWidget` vs `StatefulWidget`
+
+* **`StatelessWidget`**: Digunakan untuk tampilan statis yang datanya tidak pernah berubah selama widget ditampilkan (misal: label judul, ikon, tombol statis).
+* **`StatefulWidget`**: Digunakan ketika tampilan perlu diperbarui secara dinamis saat ada interaksi pengguna, respon API, atau perubahan waktu.
+
+---
+
+### 3.2 Diagram Alur Siklus Hidup `StatefulWidget`
+
+```text
+       ┌────────────────────────┐
+       │      createState()     │  ➔ Dipanggil saat widget pertama kali dibuat
+       └───────────┬────────────┘
+                   │
+       ┌───────────▼────────────┐
+       │       initState()      │  ➔ Inisialisasi controller, timer, & stream (1x saja)
+       └───────────┬────────────┘
+                   │
+       ┌───────────▼────────────┐
+       │ didChangeDependencies()│  ➔ Dipanggil saat Theme, Locale, atau InheritedWidget berubah
+       └───────────┬────────────┘
+                   │
+       ┌───────────▼────────────┐
+ ┌───► │        build()         │  ➔ Merender pohon widget (Dipanggil berulang kali saat setState)
+ │     └───────────┬────────────┘
+ │                 │
+ │     ┌───────────▼────────────┐
+ ├──── │   didUpdateWidget()    │  ➔ Dipanggil saat widget induk mengirim data konfigurasi baru
+ │     └───────────┬────────────┘
+ │                 │
+ │     ┌───────────▼────────────┐
+ └──── │       setState()       │  ➔ Memberitahu framework untuk memanggil build() ulang
+       └───────────┬────────────┘
+                   │
+       ┌───────────▼────────────┐
+       │       deactivate()     │  ➔ Widget dilepas sementara dari pohon
+       └───────────┬────────────┘
+                   │
+       ┌───────────▼────────────┐
+       │        dispose()       │  ➔ Wajib menutup TextEditingController, Animation, & Stream!
+       └────────────────────────┘
+```
+
+#### Contoh Implementasi Lengkap:
+```dart
+import 'package:flutter/material.dart';
+
+class CounterWidget extends StatefulWidget {
+  final String judul;
+  const CounterWidget({super.key, required this.judul});
+
+  @override
+  State<CounterWidget> createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+  int _counter = 0;
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    // Inisialisasi resource satu kali saja
+    _controller = TextEditingController(text: '0');
+  }
+
+  @override
+  void didUpdateWidget(covariant CounterWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.judul != widget.judul) {
+      // Menangani perubahan properti dari parent
+      print('Judul berganti dari ${oldWidget.judul} ke ${widget.judul}');
+    }
+  }
+
+  @override
+  void dispose() {
+    // WAJIB: Bersihkan controller agar tidak terjadi memory leak!
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _tambah() {
+    setState(() {
+      _counter++;
+      _controller.text = '$_counter';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(widget.judul, style: Theme.of(context).textTheme.titleLarge),
+        Text('Jumlah: $_counter', style: const TextStyle(fontSize: 24)),
+        ElevatedButton(onPressed: _tambah, child: const Text('Tambah')),
+      ],
+    );
+  }
+}
+```
+
+---
+
+### 3.3 Mendeteksi Status Aplikasi dengan `AppLifecycleListener`
+Di Flutter modern, Anda bisa mendeteksi saat pengguna meminimalkan aplikasi atau kembali membuka aplikasi:
+
+```dart
+late final AppLifecycleListener _lifecycleListener;
+
+@override
+void initState() {
+  super.initState();
+  _lifecycleListener = AppLifecycleListener(
+    onResume: () => print('Aplikasi kembali aktif di layar depan 📱'),
+    onPause: () => print('Aplikasi diminimalkan ke background ⏸️'),
+    onDetach: () => print('Aplikasi ditutup sepenuhnya 🛑'),
+  );
+}
+
+@override
+void dispose() {
+  _lifecycleListener.dispose();
+  super.dispose();
+}
+```
+
+---
+
+## 📐 4. Aturan Emas Layouting & Box Constraints
+
+Tiga aturan suci yang mengatur seluruh sistem tata letak Flutter:
+
+> **1. Batasan turun (*Constraints go down*):** Widget induk memberi tahu anak berapa batas ukuran minimal dan maksimalnya.  
+> **2. Ukuran naik (*Sizes go up*):** Widget anak menentukan ukurannya sendiri di dalam batas tersebut dan melaporkannya ke induk.  
+> **3. Posisi ditentukan induk (*Parent sets position*):** Widget induk yang menentukan di koordinat pixel mana anak akan diletakkan.
+
+---
+
+### 4.1 Box Model & Komponen Tata Letak
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ MARGIN                                                      │
+│   ┌─────────────────────────────────────────────────────┐   │
+│   │ PADDING                                             │   │
+│   │   ┌─────────────────────────────────────────────┐   │   │
+│   │   │ KONTEN / WIDGET ANAK                        │   │   │
+│   │   │ (Text, Image, Icon, Container)              │   │   │
+│   │   └─────────────────────────────────────────────┘   │   │
+│   └─────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+* **`Container`**: Kotak serbaguna dengan margin, padding, dekorasi (warna, border, border radius, bayangan).
+* **`SizedBox`**: Memberikan jarak tetap atau memaksa anak memiliki lebar/tinggi spesifik (Gunakan `SizedBox` dibanding `Container` kosong untuk performa lebih cepat).
+* **`AspectRatio`**: Mengunci rasio aspek (misal: rasio 16:9 untuk video player atau 1:1 untuk avatar persegi).
+* **`Align` & `Center`**: Menempatkan widget anak pada posisi tertentu di dalam ruang induk (misal: `Alignment.bottomRight`).
+
+---
+
+### 4.2 Flexbox: `Row`, `Column`, `Expanded`, `Flexible`, & `Spacer`
+
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribusi horizontal
+  crossAxisAlignment: CrossAlignment.center,          // Perataan vertikal
+  children: [
+    const Icon(Icons.star, color: Colors.amber),
+    const SizedBox(width: 8),
+    
+    // Expanded: Memaksa anak mengisi seluruh sisa ruang yang tersedia
+    Expanded(
+      child: Text(
+        'Judul Berita yang Sangat Panjang Sekali Agar Tidak Terjadi Overflow',
+        overflow: TextOverflow.ellipsis, // Menambahkan titik-titik (...) jika teks terlalu panjang
+      ),
+    ),
+    
+    const Spacer(), // Memberikan jarak kosong fleksibel
+    ElevatedButton(onPressed: () {}, child: const Text('Beli')),
+  ],
+)
+```
+
+| Widget | Perilaku terhadap Ruang Kosong |
+|---|---|
+| **`Expanded`** | Memaksa anak mengambil **100% sisa ruang** yang tersedia (`fit: FlexFit.tight`). |
+| **`Flexible`** | Mengizinkan anak mengambil sisa ruang **sesuai kebutuhannya saja** (`fit: FlexFit.loose`). |
+| **`Spacer`** | Membuat ruang kosong fleksibel di antara dua widget. |
+
+---
+
+### 4.3 Menghindari Error Garis Kuning-Hitam (*RenderFlex Overflow*)
+
+Garis belang kuning-hitam muncul saat ukuran konten melebihi batas layar yang diberikan induknya.
+
+```
+       ❌ SALAH (Menyebabkan Overflow)            ✅ BENAR (Solusi Responsif)
+  ┌─────────────────────────────────┐        ┌─────────────────────────────────┐
+  │ Row(                            │        │ Row(                            │
+  │   children: [                   │        │   children: [                   │
+  │     Icon(...),                  │        │     Icon(...),                  │
+  │     Text('Teks Sangat Panjang') │        │     Expanded(                   │
+  │   ] ➔ [OVERFLOW BY 45 PIXELS]   │        │       child: Text('Teks...'),   │
+  │ )                               │        │     ),                          │
+  └─────────────────────────────────┘        │   ]                             │
+                                             │ )                               │
+                                             └─────────────────────────────────┘
+```
+
+---
+
+## 📜 5. Advanced Scrolling & Slivers Architecture
+
+Saat Anda membuat aplikasi seperti **Spotify**, **Netflix**, atau **Tokopedia**, Anda membutuhkan efek *collapsing header* yang mengecil saat di-scroll, tab bar yang menempel di atas (*sticky*), dan kombinasi daftar horizontal serta vertikal. Inilah fungsi dari **Slivers**!
+
+### 5.1 Apa itu Sliver?
+*Sliver* adalah potongan area scrollable yang menghitung penempatannya secara efisien hanya saat elemen tersebut berada di dalam layar (*Viewport*).
+
+---
+
+### 5.2 Komponen Utama Slivers
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 1. SliverAppBar (Collapsing Header dengan FlexibleSpace)    │
+│    [ Gambar / Header Album Mengecil Saat Di-scroll ]       │
+├─────────────────────────────────────────────────────────────┤
+│ 2. SliverPersistentHeader (Sticky Category Tabs)            │
+│    [ Tab Bar Menempel di Paling Atas Layar ]               │
+├─────────────────────────────────────────────────────────────┤
+│ 3. SliverToBoxAdapter (Untuk menyisipkan Carousel Biasa)   │
+│    [ Carousel Banner Horizontal ]                          │
+├─────────────────────────────────────────────────────────────┤
+│ 4. SliverGrid (Grid Produk / Album)                         │
+│    [ Grid 2 Kolom ]                                         │
+├─────────────────────────────────────────────────────────────┤
+│ 5. SliverList (Daftar Item Vertikal)                        │
+│    [ List Item 1, 2, 3, ... ]                               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 5.3 Contoh Kode Lengkap: `CustomScrollView` & Slivers
+
+```dart
+import 'package:flutter/material.dart';
+
+class SpotifyAlbumPage extends StatelessWidget {
+  const SpotifyAlbumPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          // 1. Collapsing Sliver App Bar
+          SliverAppBar(
+            expandedHeight: 280.0,
+            pinned: true,   // Tetap terlihat saat di-scroll ke bawah
+            floating: false,
+            stretch: true,  // Efek membal saat ditarik ke atas
+            backgroundColor: Colors.deepPurple,
+            flexibleSpace: FlexibleSpaceBar(
+              title: const Text('Top Hits Indonesia 2026', style: TextStyle(fontWeight: FontWeight.bold)),
+              background: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.deepPurple, Colors.black],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+                child: const Center(
+                  child: Icon(Icons.music_note, size: 80, color: Colors.white70),
+                ),
+              ),
+            ),
+          ),
+
+          // 2. Widget Biasa di dalam Sliver
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.play_arrow),
+                    label: const Text('Putar Acak'),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white),
+                  ),
+                  const Spacer(),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.download)),
+                ],
+              ),
+            ),
+          ),
+
+          // 3. SliverList Builder (Efisien untuk ratusan data)
+          SliverList.builder(
+            itemCount: 20,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: Text('${index + 1}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                title: Text('Judul Lagu Keren #${index + 1}'),
+                subtitle: const Text('Artis Populer • 3:45'),
+                trailing: const Icon(Icons.more_vert),
+                onTap: () {},
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+---
+
+## 🎨 6. Material Design 3, Cupertino, & ThemeExtension
+
+### 6.1 Konfigurasi Material 3 & Skema Warna Otomatis
+
+Material 3 (M3) dapat menghasilkan palet warna harmonis secara otomatis hanya dari satu warna acuan (*seed color*):
+
+```dart
+MaterialApp(
+  themeMode: ThemeMode.system, // Mengikuti setting Dark/Light mode di HP
+  theme: ThemeData(
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.indigo,
+      brightness: Brightness.light,
+    ),
+  ),
+  darkTheme: ThemeData(
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.indigo,
+      brightness: Brightness.dark,
+    ),
+  ),
+  home: const SpotifyAlbumPage(),
+);
+```
+
+---
+
+### 6.2 `ThemeExtension`: Membuat Token Warna Khusus
+
+Saat aplikasi Anda memiliki warna branding khusus (misal: warna badge status *Sukses*, *Pending*, *Gagal*) yang harus ikut beradaptasi saat Dark Mode:
+
+```dart
+// 1. Definisikan ThemeExtension kustom
+@immutable
+class StatusColors extends ThemeExtension<StatusColors> {
+  final Color? sukses;
+  final Color? pending;
+  final Color? gagal;
+
+  const StatusColors({required this.sukses, required this.pending, required this.gagal});
+
+  @override
+  StatusColors copyWith({Color? sukses, Color? pending, Color? gagal}) {
+    return StatusColors(
+      sukses: sukses ?? this.sukses,
+      pending: pending ?? this.pending,
+      gagal: gagal ?? this.gagal,
+    );
+  }
+
+  @override
+  StatusColors lerp(ThemeExtension<StatusColors>? other, double t) {
+    if (other is! StatusColors) return this;
+    return StatusColors(
+      sukses: Color.lerp(sukses, other.sukses, t),
+      pending: Color.lerp(pending, other.pending, t),
+      gagal: Color.lerp(gagal, other.gagal, t),
+    );
+  }
+}
+
+// 2. Daftarkan di ThemeData
+final lightTheme = ThemeData(
+  extensions: const [
+    StatusColors(
+      sukses: Colors.green,
+      pending: Colors.orange,
+      gagal: Colors.red,
+    ),
+  ],
+);
+
+// 3. Gunakan di Widget UI
+Widget buildBadge(BuildContext context) {
+  final customColors = Theme.of(context).extension<StatusColors>()!;
+  return Container(
+    color: customColors.sukses,
+    child: const Text('Transaksi Berhasil!'),
+  );
+}
+```
+
+---
+
+## 📱 7. Desain Responsif & Adaptif
+
+### 7.1 `MediaQuery` vs `LayoutBuilder`
+
+| Fitur | `MediaQuery` | `LayoutBuilder` |
+|---|---|---|
+| **Referensi Ukuran** | Mengukur **seluruh layar fisik ponsel**. | Mengukur **ruang yang diberikan oleh widget induk**. |
+| **Penggunaan Ideal** | Mengetahui orientasi HP (Portrait/Landscape), status bar, notch area. | Merancang komponen reusable (misal: Card yang berubah tata letak jika diperlebar). |
+
+```dart
+// Contoh Penggunaan LayoutBuilder untuk Card Responsif
+LayoutBuilder(
+  builder: (context, constraints) {
+    if (constraints.maxWidth > 600) {
+      // Tampilan Tablet / Layar Lebar (Horizontal)
+      return const Row(children: [Text('Gambar'), Text('Deskripsi')]);
+    } else {
+      // Tampilan Smartphone (Vertikal)
+      return const Column(children: [Text('Gambar'), Text('Deskripsi')]);
+    }
+  },
+);
+```
+
+---
+
+## 💻 8. Hands-on Project: Spotify & Netflix Media Feed Replica
+
+Mari kita satukan seluruh konsep modul ini menjadi satu halaman katalog media yang responsif dan elegan:
+
+1. **Buat file baru** `lib/media_feed_page.dart` di proyek Anda.
+2. **Salin kode lengkap berikut**:
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        colorSchemeSeed: Colors.deepPurple,
+      ),
+      home: const MediaFeedPage(),
+    );
+  }
+}
+
+class MediaFeedPage extends StatelessWidget {
+  const MediaFeedPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          // 1. Collapsing Hero App Bar
+          SliverAppBar(
+            expandedHeight: 260.0,
+            pinned: true,
+            stretch: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: const Text('Pilihan Editor 2026', style: TextStyle(fontWeight: FontWeight.bold)),
+              background: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.deepPurple, Colors.black],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+                child: const Center(
+                  child: Icon(Icons.movie_creation_outlined, size: 80, color: Colors.white54),
+                ),
+              ),
+            ),
+          ),
+
+          // 2. Horizontal Carousel Section
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text('Sedang Tren Sekarang 🔥', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(
+                  height: 160,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    itemCount: 8,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 120,
+                        margin: const EdgeInsets.symmetric(horizontal: 6.0),
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple.shade900,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Center(
+                          child: Text('Item #${index + 1}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // 3. Sticky Category Header
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(16, 24, 16, 12),
+              child: Text('Daftar Rekomendasi Terpopuler', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ),
+          ),
+
+          // 4. Adaptive Grid Item
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            sliver: SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 12.0,
+                mainAxisSpacing: 12.0,
+                childAspectRatio: 1.4,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Card(
+                    color: Colors.grey.shade900,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(Icons.play_circle_fill, color: Theme.of(context).colorScheme.primary),
+                          const Spacer(),
+                          Text('Koleksi #${index + 1}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                          Text('12.4K Penonton', style: TextStyle(fontSize: 12, color: Colors.grey.shade400)),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                childCount: 10,
+              ),
+            ),
+          ),
+          
+          const SliverToBoxAdapter(child: SizedBox(height: 32)),
+        ],
+      ),
+    );
+  }
+}
+```
+
+3. **Jalankan ke Perangkat**:
+   ```bash
+   flutter run
+   ```
+   *Rasakan mulusnya efek collapsing header dan perpaduan scrolling horizontal dan vertikal tanpa ada lag sedikit pun!*
+
+---
+
+## ⚠️ 9. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
+
+| Kesalahan Umum | Gejala Error | Solusi yang Benar |
+|---|---|---|
+| **1. Unbounded Height di ListView** | `Vertical viewport was given unbounded height` (Menaruh `ListView` di dalam `Column`). | Bungkus `ListView` dengan `Expanded` atau beri tinggi tetap dengan `SizedBox(height: ...)` / set `shrinkWrap: true`. |
+| **2. Lupa `dispose()` Controller** | Memory leak lambat laun membuat aplikasi berat dan crash. | Selalu panggil `controller.dispose()` di dalam method `dispose()`. |
+| **3. Rebuild Liar Tanpa `const`** | Tampilan UI terasa berat saat di-scroll cepat. | Gunakan constructor `const` pada widget statis agar Flutter tidak membuat ulang objeknya di memori. |
+| **4. Menaruh Widget Biasa di `CustomScrollView`** | `A RenderRepaintBoundary expected a child of type RenderSliver` | Seluruh anak di dalam `CustomScrollView` harus berupa Sliver. Bungkus widget biasa dengan `SliverToBoxAdapter`. |
+| **5. Salah Paham `Expanded` vs `Flexible`** | Tampilan memanjang tidak wajar atau meluap dari layar. | Gunakan `Expanded` jika ingin memaksa mengisi 100% sisa ruang, gunakan `Flexible` jika ukurannya dinamis sesuai isi konten. |
+
+---
+
+## 📝 10. Kuis Pemahaman Modul 02
+
+1. **Apa perbedaan antara Widget Tree dan RenderObject Tree?**  
+   *Jawaban:* Widget Tree adalah blueprint/naskah konfigurasi UI yang bersifat *immutable* dan sangat ringan. RenderObject Tree adalah objek nyata yang menghitung koordinat layout, batas ukuran (*constraints*), dan mengecat pixel visual ke layar HP.
+2. **Mengapa Impeller Engine mampu mengeliminasi shader compilation jank?**  
+   *Jawaban:* Karena Impeller mengompilasi seluruh *shader* grafis saat *build time* (Ahead-Of-Time/AOT) langsung ke API GPU native (Metal/Vulkan), sehingga GPU tidak perlu mengompilasi shader saat animasi sedang berjalan.
+3. **Kapan kita wajib menggunakan `SliverToBoxAdapter`?**  
+   *Jawaban:* Ketika kita ingin meletakkan widget biasa (seperti `Container`, `Column`, atau `ListView` horizontal) di dalam `CustomScrollView`.
+
+---
+
+## 🎯 Rangkuman & Checklist Kompetensi
+
+- [x] Memahami arsitektur internal Flutter: Impeller Engine & Tiga Pohon (*The 3 Trees*).
+- [x] Menguasai siklus hidup `StatefulWidget` (`initState`, `didUpdateWidget`, `dispose`) dan `AppLifecycleListener`.
+- [x] Memahami aturan emas layouting: *Constraints go down, sizes go up, parent sets position*.
+- [x] Mampu mengatasi error *RenderFlex Overflow* dengan `Expanded`, `Flexible`, dan `SingleChildScrollView`.
+- [x] Menguasai arsitektur Slivers: `CustomScrollView`, `SliverAppBar`, `SliverList`, `SliverGrid`, dan `SliverToBoxAdapter`.
+- [x] Mengimplementasikan Material Design 3, Dark/Light Mode, dan custom `ThemeExtension`.
+- [x] Mampu merancang UI responsif menggunakan `MediaQuery` dan `LayoutBuilder`.
+- [x] Berhasil membangun proyek mini Media Feed Replica dengan efek collapsing header modern.
+
+---
+
+👉 **Langkah Selanjutnya**: Kemampuan merancang UI Flutter Anda sudah berada di standar industri! Mari melangkah ke **[Modul 03: Navigasi Deklaratif (go_router), Deep Linking, & Form System](../modul-03-routing-dan-form/README.md)** untuk menghubungkan antar layar aplikasi dan menangani data form interaktif.

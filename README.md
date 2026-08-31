@@ -54,8 +54,8 @@ Klik tautan modul di bawah untuk langsung membuka panduan materi:
 |:---:|---|---|---|:---:|
 | **00** | **[Modul 00: Persiapan Alat & Lingkungan](modul-00-persiapan/README.md)** | Flutter SDK, Android Studio, JDK 17/21, AVD, VS Code | `flutter doctor -v` All Passed + App Pertama | ✅ **Selesai** |
 | **01** | **[Modul 01: Dart 3+, OOP, & Concurrency](modul-01-dart-dan-concurrency/README.md)** | Null Safety, Records, Pattern Matching, Sealed Class, Isolates | CLI Multithread JSON & Image Parser | ✅ **Selesai** |
-| **02** | **[Modul 02: Flutter UI & Slivers System](modul-02-ui-dan-slivers/README.md)** | Impeller Engine, 3 Trees, CustomScrollView, Material 3 | Spotify/Netflix Collapsing Sliver Feed | ⏳ *Sedang Dikerjakan* |
-| **03** | **[Modul 03: Routing (go_router) & Form System](modul-03-routing-dan-form/README.md)** | go_router, ShellRoute, Deep Linking, Custom Formatters | Multi-Step Checkout & Onboarding App | ⏳ Antrean |
+| **02** | **[Modul 02: Flutter UI & Slivers System](modul-02-ui-dan-slivers/README.md)** | Impeller Engine, 3 Trees, CustomScrollView, Material 3 | Spotify/Netflix Collapsing Sliver Feed | ✅ **Selesai** |
+| **03** | **[Modul 03: Routing (go_router) & Form System](modul-03-routing-dan-form/README.md)** | go_router, ShellRoute, Deep Linking, Custom Formatters | Multi-Step Checkout & Onboarding App | ⏳ *Sedang Dikerjakan* |
 | **04** | **[Modul 04: State Management (Provider, Riverpod, BLoC)](modul-04-state-management/README.md)** | ChangeNotifier, Riverpod 2+, BLoC/Cubit, HydratedBloc | E-Commerce Cart & Multi-Filter Engine | ⏳ Antrean |
 | **05** | **[Modul 05: Networking, REST (Dio) & WebSockets](modul-05-networking-dan-api/README.md)** | Dio Interceptors, Silent Token Refresh, Freezed, WebSockets | Realtime Crypto Ticker & Live Chat App | ⏳ Antrean |
 | **06** | **[Modul 06: Data Lokal, Offline-First & Drift](modul-06-data-lokal-dan-offline/README.md)** | Secure Storage, Drift ORM (SQL), Hive, Sync Queue | Offline-First Task Manager with Sync Queue | ⏳ Antrean |
