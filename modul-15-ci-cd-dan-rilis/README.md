@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 15**! Anda telah tiba di modul pamungkas dari silabus kurikulum inti. Membangun kode yang bersih dan teruji adalah pencapaian luar biasa, namun kemampuan untuk **mengotomatisasi proses pengujian (*Continuous Integration*), kompilasi, penandatanganan sertifikat, distribusi berkala (*Continuous Deployment*), serta melakukan perbaikan darurat (*Over-The-Air Hotfix*)** ke jutaan pengguna secara instan adalah keahlian yang membedakan seorang developer biasa dengan **Lead Mobile DevOps Engineer**.
 
-Di modul ini, Anda akan menguasai ekosistem rilis modern Flutter: mulai dari penyusunan pipeline otomatisasi (**`GitHub Actions Workflow`**), otomatisasi pengunggahan ke Google Play Console & TestFlight (**`Fastlane`**), teknik *hot-patching* instan tanpa menunggu peninjauan toko aplikasi (**`Shorebird CodePush OTA`**), hingga pemenuhan standar regulasi dan checklist rilis (**`Google Play Store & Apple App Store Guidelines`**).
+Di modul ini, Anda akan menguasai ekosistem rilis modern Flutter: mulai dari penyusunan pipeline otomatisasi (**`GitHub Actions Workflow`** untuk Android & iOS), otomatisasi pengunggahan ke Google Play Console & TestFlight (**`Fastlane`**), teknik *hot-patching* instan tanpa menunggu peninjauan toko aplikasi (**`Shorebird CodePush OTA`**), hingga pemenuhan standar regulasi dan checklist rilis (**`Google Play Store & Apple App Store Guidelines`**).
 
 ---
 
@@ -105,6 +105,34 @@ jobs:
         with:
           name: release-appbundle
           path: build/app/outputs/bundle/release/app-release.aab
+
+  # ==========================================
+  # JOB 3: BUILD & SIGN IOS IPA (MACOS RUNNER)
+  # ==========================================
+  build_ios:
+    name: Build Signed iOS IPA
+    needs: quality_gate
+    if: github.ref == 'refs/heads/main'
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.x'
+          channel: 'stable'
+
+      - name: Setup Fastlane & Bundler
+        run: |
+          cd ios && bundle install
+
+      - name: Build and Upload to TestFlight
+        env:
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_PRIVATE_KEY: ${{ secrets.MATCH_GIT_PRIVATE_KEY }}
+        run: |
+          cd ios && bundle exec fastlane beta
 ```
 
 ---
@@ -117,9 +145,14 @@ Fastlane mengotomatisasi pengunggahan *binary* dan metadata ke toko aplikasi sec
   <img src="images/fastlane-deployment-matrix.svg" alt="Matriks Distribusi Rilis Fastlane" width="700">
 </p>
 
-### 3.1 Berkas Konfigurasi `android/fastlane/Fastfile`
+### 3.1 Berkas Konfigurasi `android/fastlane/Fastfile` & `Appfile`
 
 ```ruby
+# android/fastlane/Appfile
+json_key_file("play-store-key.json")
+package_name("com.quantum.devops2026")
+
+# android/fastlane/Fastfile
 default_platform(:android)
 
 platform :android do
@@ -150,9 +183,15 @@ end
 
 ---
 
-### 3.2 Berkas Konfigurasi `ios/fastlane/Fastfile`
+### 3.2 Berkas Konfigurasi `ios/fastlane/Fastfile` & `Appfile`
 
 ```ruby
+# ios/fastlane/Appfile
+app_identifier("com.quantum.devops2026")
+apple_id("devops@quantum2026.com")
+team_id("A1B2C3D4E5")
+
+# ios/fastlane/Fastfile
 default_platform(:ios)
 
 platform :ios do
@@ -466,9 +505,9 @@ class _DevOpsReleaseDashboardState extends State<DevOpsReleaseDashboard> {
 
 ## 🎯 Rangkuman & Checklist Kompetensi
 
-- [x] Menguasai konfigurasi otomatisasi CI/CD dengan GitHub Actions (`quality_gate` & `build_android`).
+- [x] Menguasai konfigurasi otomatisasi CI/CD dengan GitHub Actions untuk Android & iOS (`quality_gate`, `build_android`, & `build_ios`).
 - [x] Memahami pengelolaan rahasia (*Secrets Management*) untuk sertifikat penandatanganan aplikasi.
-- [x] Menguasai Fastlane untuk otomatisasi rilis ke Google Play Internal Track & Apple TestFlight.
+- [x] Menguasai Fastlane (`Appfile` & `Fastfile`) untuk otomatisasi rilis ke Google Play Internal Track & Apple TestFlight.
 - [x] Memahami arsitektur Over-The-Air (OTA) CodePush dengan Shorebird untuk perbaikan bug darurat.
 - [x] Memahami standar Semantic Versioning (`major.minor.patch+buildNumber`).
 - [x] Memenuhi checklist kelaikan toko aplikasi (App Store & Google Play Guidelines).
