@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">ARSITEKTUR AKSESIBILITAS (A11Y): WIDGET TREE KE SCREEN READER</text>
+
+  <!-- Step 1: Widget Tree with Semantics -->
+  <g transform="translate(30, 55)">
+    <rect width="250" height="195" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="250" height="32" rx="10" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="125" y="21" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">1. FLUTTER WIDGET</text>
+
+    <!-- Code Block -->
+    <rect x="15" y="45" width="220" height="135" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="25" y="68" fill="#FDE047" font-family="monospace" font-size="10">Semantics(</text>
+    <text x="35" y="86" fill="#38BDF8" font-family="monospace" font-size="9">  label: 'Beli Tiket',</text>
+    <text x="35" y="104" fill="#38BDF8" font-family="monospace" font-size="9">  hint: 'Ketuk 2x bayar',</text>
+    <text x="35" y="122" fill="#34D399" font-family="monospace" font-size="9">  button: true,</text>
+    <text x="35" y="140" fill="#F8FAFC" font-family="monospace" font-size="9">  child: CustomButton(),</text>
+    <text x="25" y="160" fill="#FDE047" font-family="monospace" font-size="10">)</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 290 150 L 320 150" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="320,145 330,150 320,155" fill="#818CF8"/>
+
+  <!-- Step 2: Semantics Tree -->
+  <g transform="translate(330, 55)">
+    <rect width="220" height="195" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="220" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="110" y="21" fill="#A5B4FC" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">2. SEMANTICS TREE</text>
+
+    <text x="110" y="65" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Struktur Metadata OS:</text>
+
+    <rect x="15" y="80" width="190" height="95" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="25" y="102" fill="#34D399" font-family="monospace" font-size="9">• Role: Button</text>
+    <text x="25" y="122" fill="#FDE047" font-family="monospace" font-size="9">• Label: 'Beli Tiket'</text>
+    <text x="25" y="142" fill="#A7F3D0" font-family="monospace" font-size="9">• Focusable: True</text>
+    <text x="25" y="160" fill="#94A3B8" font-family="monospace" font-size="9">• Clickable: True</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 560 150 L 590 150" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="590,145 600,150 590,155" fill="#10B981"/>
+
+  <!-- Step 3: Screen Readers Output -->
+  <g transform="translate(600, 55)">
+    <rect width="230" height="195" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="2" filter="url(#glow)"/>
+    <rect width="230" height="32" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <text x="115" y="21" fill="#34D399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">3. SCREEN READERS</text>
+
+    <!-- TalkBack / VoiceOver Card -->
+    <rect x="15" y="45" width="200" height="50" rx="6" fill="#0F172A" stroke="#34D399" stroke-width="1"/>
+    <text x="115" y="65" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">🤖 Android TalkBack</text>
+    <text x="115" y="83" fill="#A7F3D0" font-family="monospace" font-size="9" text-anchor="middle">🔊 Audio Spoken Feedback</text>
+
+    <rect x="15" y="105" width="200" height="50" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="115" y="125" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">🍎 iOS VoiceOver</text>
+    <text x="115" y="143" fill="#BAE6FD" font-family="monospace" font-size="9" text-anchor="middle">🔊 Haptic &amp; Voice Guide</text>
+
+    <text x="115" y="180" fill="#FDE047" font-family="monospace" font-size="9" text-anchor="middle">WCAG 2.1 AA / AAA Compliant</text>
+  </g>
+</svg>
