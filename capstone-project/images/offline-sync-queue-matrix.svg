@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">ARSITEKTUR OFFLINE-FIRST SYNC QUEUE &amp; IDEMPOTENCY KEY POS</text>
+
+  <!-- Stage 1: Local Mutation Offline -->
+  <g transform="translate(30, 55)">
+    <rect width="180" height="195" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="180" height="32" rx="10" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="90" y="21" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">1. OFFLINE MUTATION</text>
+
+    <!-- Details -->
+    <rect x="10" y="45" width="160" height="135" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="90" y="70" fill="#FDA4AF" font-family="monospace" font-size="9" text-anchor="middle">🔴 Internet Terputus</text>
+    <text x="90" y="92" fill="#F8FAFC" font-family="monospace" font-size="9" text-anchor="middle">Kasir Cetak Struk POS</text>
+    <text x="90" y="115" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">Drift ORM Local Insert</text>
+    <text x="90" y="138" fill="#FDE047" font-family="monospace" font-size="8" text-anchor="middle">is_synced: false</text>
+    <text x="90" y="165" fill="#38BDF8" font-family="monospace" font-size="9" text-anchor="middle">✓ Transaksi Tetap Jalan</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 215 150 L 245 150" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="245,145 255,150 245,155" fill="#818CF8"/>
+
+  <!-- Stage 2: Outbox Sync Queue -->
+  <g transform="translate(250, 55)">
+    <rect width="185" height="195" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="185" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="92" y="21" fill="#A5B4FC" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">2. OUTBOX QUEUE</text>
+
+    <!-- Details -->
+    <rect x="10" y="45" width="165" height="135" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="92" y="70" fill="#A5B4FC" font-family="monospace" font-size="9" text-anchor="middle">Antrean Mutasi Lokal</text>
+    <text x="92" y="92" fill="#FDE047" font-family="monospace" font-size="9" text-anchor="middle">Idempotency UUID</text>
+    <text x="92" y="118" fill="#F8FAFC" font-family="monospace" font-size="8" text-anchor="middle">Mencegah dobel bayar</text>
+    <text x="92" y="136" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">saat retry koneksi</text>
+    <text x="92" y="165" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">✓ Zero Data Loss</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 440 150 L 470 150" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="470,145 480,150 470,155" fill="#10B981"/>
+
+  <!-- Stage 3: Auto Sync Worker -->
+  <g transform="translate(475, 55)">
+    <rect width="170" height="195" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect width="170" height="32" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <text x="85" y="21" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">3. AUTO SYNC WORKER</text>
+
+    <!-- Details -->
+    <rect x="10" y="45" width="150" height="135" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="85" y="70" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">🟢 Online Terdeteksi</text>
+    <text x="85" y="92" fill="#38BDF8" font-family="monospace" font-size="9" text-anchor="middle">connectivity_plus</text>
+    <text x="85" y="118" fill="#F8FAFC" font-family="monospace" font-size="8" text-anchor="middle">Drain Outbox Queue</text>
+    <text x="85" y="136" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">POST /api/v1/sync</text>
+    <text x="85" y="165" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">⚡ Exponential Retry</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 650 150 L 680 150" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="680,145 690,150 680,155" fill="#F59E0B"/>
+
+  <!-- Stage 4: Server Reconciliation -->
+  <g transform="translate(685, 55)">
+    <rect width="145" height="195" rx="10" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="2" filter="url(#glow)"/>
+    <rect width="145" height="32" rx="10" fill="#B45309" fill-opacity="0.25"/>
+    <text x="72" y="21" fill="#FDE047" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">4. SERVER RECONCILE</text>
+
+    <!-- Details -->
+    <rect x="8" y="45" width="129" height="135" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="72" y="70" fill="#FDE047" font-family="monospace" font-size="9" text-anchor="middle">PostgreSQL Commit</text>
+    <text x="72" y="92" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">is_synced: true ✅</text>
+    <text x="72" y="118" fill="#F8FAFC" font-family="monospace" font-size="8" text-anchor="middle">Stok Diperbarui</text>
+    <text x="72" y="138" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">Laporan Keuangan</text>
+    <text x="72" y="165" fill="#34D399" font-family="monospace" font-size="8" text-anchor="middle">✓ 100% Konsisten</text>
+  </g>
+</svg>

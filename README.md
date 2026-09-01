@@ -68,7 +68,7 @@ Klik tautan modul di bawah untuk langsung membuka panduan materi:
 | **13** | **[Modul 13: Testing Komprehensif & DevTools Profiling](modul-13-testing-dan-profiling/README.md)** | Unit/Widget/Integration Testing, Golden Tests, Profiler | Test Suite (Coverage > 85%) & Benchmark | ✅ **Selesai** |
 | **14** | **[Modul 14: Keamanan, UU PDP, & Crash Reporting](modul-14-keamanan-dan-monitoring/README.md)** | Obfuscation, SSL Pinning, UU PDP & GDPR, Sentry Logging | Hardened Secure Banking App Shell | ✅ **Selesai** |
 | **15** | **[Modul 15: CI/CD, Fastlane, Shorebird OTA, & Rilis](modul-15-ci-cd-dan-rilis/README.md)** | GitHub Actions, Fastlane, Shorebird CodePush, Store Release | Automated Release Pipeline to Play Store | ✅ **Selesai** |
-| **🏆** | **[Proyek Akhir: Capstone Project Fullstack](capstone-project/README.md)** | End-to-End Enterprise Fullstack Mobile Architecture | Quick-Commerce SuperApp / POS Kasir Utuh | ⏳ *Sedang Dikerjakan* |
+| **🏆** | **[Proyek Akhir: Capstone Project Fullstack](capstone-project/README.md)** | End-to-End Enterprise Fullstack Mobile Architecture | Quick-Commerce SuperApp / POS Kasir Utuh | ✅ **Selesai** |
 
 ---
 

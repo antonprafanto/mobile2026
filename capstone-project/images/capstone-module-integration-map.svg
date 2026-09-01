@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">PETA INTEGRASI 16 MODUL KURIKULUM KE DALAM CAPSTONE SUPERAPP</text>
+
+  <!-- Pillar 1: UI & Foundations (00-03) -->
+  <g transform="translate(25, 55)">
+    <rect width="150" height="195" rx="8" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="150" height="30" rx="8" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="75" y="20" fill="#38BDF8" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">UI &amp; FOUNDATIONS</text>
+
+    <!-- Details -->
+    <rect x="8" y="40" width="134" height="142" rx="4" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="14" y="60" fill="#F8FAFC" font-family="monospace" font-size="8">M00: Tooling 3.24</text>
+    <text x="14" y="78" fill="#38BDF8" font-family="monospace" font-size="8">M01: Dart 3 Modern</text>
+    <text x="14" y="96" fill="#34D399" font-family="monospace" font-size="8">M02: Slivers &amp; M3</text>
+    <text x="14" y="114" fill="#FDE047" font-family="monospace" font-size="8">M03: Responsive UI</text>
+    <text x="75" y="155" fill="#38BDF8" font-family="monospace" font-size="8" text-anchor="middle">✓ Adaptive UI Hub</text>
+  </g>
+
+  <!-- Pillar 2: State & Data (04-06) -->
+  <g transform="translate(190, 55)">
+    <rect width="150" height="195" rx="8" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="150" height="30" rx="8" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="75" y="20" fill="#A5B4FC" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">STATE &amp; STORAGE</text>
+
+    <!-- Details -->
+    <rect x="8" y="40" width="134" height="142" rx="4" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="14" y="60" fill="#F8FAFC" font-family="monospace" font-size="8">M04: BLoC / Cubit</text>
+    <text x="14" y="78" fill="#38BDF8" font-family="monospace" font-size="8">M05: Dio &amp; WebSocket</text>
+    <text x="14" y="96" fill="#34D399" font-family="monospace" font-size="8">M06: Drift Database</text>
+    <text x="14" y="114" fill="#FDE047" font-family="monospace" font-size="8">Offline-First Engine</text>
+    <text x="75" y="155" fill="#A5B4FC" font-family="monospace" font-size="8" text-anchor="middle">✓ SSOT Offline Sync</text>
+  </g>
+
+  <!-- Pillar 3: Fullstack & Native (07-09) -->
+  <g transform="translate(355, 55)">
+    <rect width="150" height="195" rx="8" fill="url(#cardGrad)" stroke="#10B981" stroke-width="2" filter="url(#glow)"/>
+    <rect width="150" height="30" rx="8" fill="#059669" fill-opacity="0.25"/>
+    <text x="75" y="20" fill="#34D399" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">FULLSTACK &amp; NATIVE</text>
+
+    <!-- Details -->
+    <rect x="8" y="40" width="134" height="142" rx="4" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="14" y="60" fill="#F8FAFC" font-family="monospace" font-size="8">M07: Dart Frog / BaaS</text>
+    <text x="14" y="78" fill="#38BDF8" font-family="monospace" font-size="8">M08: GPS Map &amp; Sens</text>
+    <text x="14" y="96" fill="#34D399" font-family="monospace" font-size="8">M09: Platform Channel</text>
+    <text x="14" y="114" fill="#FDE047" font-family="monospace" font-size="8">Thermal ESC/POS Print</text>
+    <text x="75" y="155" fill="#34D399" font-family="monospace" font-size="8" text-anchor="middle">✓ Live Hardware Hub</text>
+  </g>
+
+  <!-- Pillar 4: Architecture (10-13) -->
+  <g transform="translate(520, 55)">
+    <rect width="150" height="195" rx="8" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="150" height="30" rx="8" fill="#B45309" fill-opacity="0.25"/>
+    <text x="75" y="20" fill="#FDE047" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">ARCH &amp; TESTING</text>
+
+    <!-- Details -->
+    <rect x="8" y="40" width="134" height="142" rx="4" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="14" y="60" fill="#F8FAFC" font-family="monospace" font-size="8">M10: Clean Arch Melos</text>
+    <text x="14" y="78" fill="#38BDF8" font-family="monospace" font-size="8">M11: i18n &amp; a11y</text>
+    <text x="14" y="96" fill="#34D399" font-family="monospace" font-size="8">M12: Shaders / Anim</text>
+    <text x="14" y="114" fill="#FDE047" font-family="monospace" font-size="8">M13: Test Coverage &gt;85%</text>
+    <text x="75" y="155" fill="#FDE047" font-family="monospace" font-size="8" text-anchor="middle">✓ Stable &amp; Scalable</text>
+  </g>
+
+  <!-- Pillar 5: DevOps & Security (14-15) -->
+  <g transform="translate(685, 55)">
+    <rect width="150" height="195" rx="8" fill="url(#cardGrad)" stroke="#F43F5E" stroke-width="1.5"/>
+    <rect width="150" height="30" rx="8" fill="#9F1239" fill-opacity="0.3"/>
+    <text x="75" y="20" fill="#FDA4AF" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle">DEVOPS &amp; SECURITY</text>
+
+    <!-- Details -->
+    <rect x="8" y="40" width="134" height="142" rx="4" fill="#0F172A" stroke="#F43F5E" stroke-width="1"/>
+    <text x="14" y="60" fill="#F8FAFC" font-family="monospace" font-size="8">M14: Obfuscation</text>
+    <text x="14" y="78" fill="#FDA4AF" font-family="monospace" font-size="8">M14: SSL Pinning</text>
+    <text x="14" y="96" fill="#38BDF8" font-family="monospace" font-size="8">M14: Sentry APM</text>
+    <text x="14" y="114" fill="#34D399" font-family="monospace" font-size="8">M15: GitHub CI/CD</text>
+    <text x="14" y="132" fill="#FDE047" font-family="monospace" font-size="8">M15: Shorebird OTA</text>
+    <text x="75" y="165" fill="#FDA4AF" font-family="monospace" font-size="8" text-anchor="middle">✓ Enterprise Delivery</text>
+  </g>
+</svg>
