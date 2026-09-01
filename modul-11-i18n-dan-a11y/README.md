@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 11**! Sebuah aplikasi modern kelas dunia tidak hanya dibangun untuk satu negara atau satu kelompok pengguna saja. Aplikasi yang sukses harus mampu menjangkau pasar global dengan berbagai bahasa (**Internasionalisasi / i18n & Lokalisasi / l10n**), mendukung orientasi tulisan kanan-ke-kiri (**RTL / Arabic Support**), serta inklusif dan ramah bagi penyandang disabilitas (**Aksesibilitas / a11y & Screen Readers**).
 
-Di modul ini, Anda akan menguasai cara membangun aplikasi Flutter yang inklusif dan siap mendunia: mulai dari manajemen berkas translasi **ARB**, penanganan angka jamak (*Plurals*) dan mata uang lokal (**`intl`**), layout otomatis **RTL (Right-to-Left)**, penyematan metadata pembaca layar (**`Semantics` untuk TalkBack & VoiceOver**), hingga fitur **In-App Dynamic Language Switching** tanpa restart aplikasi.
+Di modul ini, Anda akan menguasai cara membangun aplikasi Flutter yang inklusif dan siap mendunia: mulai dari manajemen berkas translasi **ARB**, penanganan angka jamak (*Plurals*) dan mata uang lokal (**`intl`**), layout otomatis **RTL (Right-to-Left)**, penyematan metadata pembaca layar (**`Semantics`, `MergeSemantics`, & `ExcludeSemantics` untuk TalkBack & VoiceOver**), hingga fitur **In-App Dynamic Language Switching** tanpa restart aplikasi.
 
 ---
 
@@ -123,7 +123,6 @@ Bahasa seperti Arab, Persia, dan Ibrani dibaca dari **kanan ke kiri**. Flutter s
 > ✅ **GUNAKAN SELALU**: `EdgeInsetsDirectional.only(start: 16, end: 8)` atau `AlignmentDirectional.centerStart`
 
 ```dart
-// Contoh Card yang Otomatis Beradaptasi di LTR dan RTL:
 Widget buildAdaptiveCard(BuildContext context) {
   final isRtl = Directionality.of(context) == TextDirection.rtl;
 
@@ -149,28 +148,43 @@ Widget buildAdaptiveCard(BuildContext context) {
 
 ## ♿ 4. Aksesibilitas (a11y) & Pembaca Layar (*Screen Readers*)
 
-Pengguna tunanetra mengoperasikan aplikasi dengan mengandalkan **Android TalkBack** atau **iOS VoiceOver**. Mereka tidak dapat melihat ikon atau tombol tanpa label semantik.
+Pengguna tunanetra mengoperasikan aplikasi dengan mengandalkan **Android TalkBack** atau **iOS VoiceOver**.
 
 <p align="center">
   <img src="images/accessibility-semantics-tree.svg" alt="Arsitektur Aksesibilitas Semantics Tree" width="700">
 </p>
 
-### 4.1 Menyematkan Tag `Semantics` pada Tombol Kustom
+### 4.1 Tag `Semantics`, `MergeSemantics`, dan `ExcludeSemantics`
 
 ```dart
+// 1. Semantics Tag Tunggal
 Widget buildAccessibleButton() {
   return Semantics(
     label: 'Konfirmasi Pembelian Tiket Pesawat',
-    hint: 'Ketuk dua kali untuk menyelesaikan transaksi pembayaran sebesar 1.500.000 Rupiah',
+    hint: 'Ketuk dua kali untuk menyelesaikan transaksi',
     button: true,
     enabled: true,
-    child: InkWell(
-      onTap: () {},
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        child: const Text('Beli Sekarang'),
-      ),
+    child: ElevatedButton(onPressed: () {}, child: const Text('Beli Tiket')),
+  );
+}
+
+// 2. MergeSemantics: Menggabungkan beberapa teks menjadi 1 kalimat narasi utuh
+Widget buildMergedTicketCard() {
+  return MergeSemantics(
+    child: Column(
+      children: const [
+        Text('Garuda Indonesia'),
+        Text('Penerbangan GA-882'),
+        Text('Status: Tepat Waktu'),
+      ],
     ),
+  );
+}
+
+// 3. ExcludeSemantics: Menyembunyikan ornamen dekoratif agar tidak dibaca screen reader
+Widget buildDecorativeIcon() {
+  return ExcludeSemantics(
+    child: Icon(Icons.star, color: Colors.amber),
   );
 }
 ```
@@ -186,7 +200,6 @@ Mengubah bahasa aplikasi secara instan dari menu pengaturan tanpa harus merestar
 </p>
 
 ```dart
-// State Manager Sederhana untuk Locale
 class LocaleProvider extends ChangeNotifier {
   Locale _locale = const Locale('id');
   Locale get locale => _locale;
@@ -317,7 +330,6 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
           title: Text(strings['title']!, style: const TextStyle(fontWeight: FontWeight.bold)),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           actions: [
-            // In-App Language Dropdown
             PopupMenuButton<String>(
               icon: const Icon(Icons.language),
               tooltip: 'Pilih Bahasa / Change Language',
@@ -335,7 +347,6 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Accessibility Banner Info
               Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
@@ -358,14 +369,12 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
               ),
               const SizedBox(height: 20),
 
-              // Greeting
               Text(
                 strings['welcome']!,
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               const SizedBox(height: 16),
 
-              // Ticket Card (Adaptive RTL/LTR Directional)
               Card(
                 elevation: 4,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -387,7 +396,6 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
                       Text(strings['price']!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.greenAccent)),
                       const Divider(height: 24),
 
-                      // Quantity Selector
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -413,7 +421,6 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
               ),
               const SizedBox(height: 20),
 
-              // Total Payment Card
               Card(
                 color: Colors.grey.shade900,
                 child: Padding(
@@ -436,7 +443,6 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
               ),
               const SizedBox(height: 30),
 
-              // Accessible Action Button
               Semantics(
                 label: '${strings['btnBook']!}, ${strings['total']!}',
                 hint: strings['a11yHint']!,
@@ -501,8 +507,8 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
    *Jawaban:* `EdgeInsets.only(left: 16)` selalu memberi jarak di sisi kiri layar secara kaku terlepas dari bahasa yang digunakan. Sedangkan `EdgeInsetsDirectional.only(start: 16)` bersifat adaptif: berada di kiri pada bahasa LTR (Indonesia/Inggris) dan otomatis berpindah ke kanan pada bahasa RTL (Arab/Ibrani).
 2. **Mengapa aturan jamak (*Pluralization*) tidak bisa diselesaikan hanya dengan string concatenation biasa `'$count items'`?**  
    *Jawaban:* Karena setiap bahasa memiliki aturan jamak yang sangat berbeda. Bahasa Indonesia tidak membedakan jamak (1 tiket, 2 tiket), bahasa Inggris memiliki 2 bentuk (*1 ticket, 2 tickets*), sedangkan bahasa Arab memiliki 6 kategori tata bahasa jamak (*zero, one, two, few, many, other*).
-3. **Apa fungsi dari widget `Semantics` dan `ExcludeSemantics` dalam konteks aksesibilitas?**  
-   *Jawaban:* `Semantics` menyematkan metadata deskriptif (label, hint, role) agar dapat dibaca dengan jelas oleh pembaca layar tunanetra (TalkBack/VoiceOver). Sedangkan `ExcludeSemantics` digunakan untuk menyembunyikan elemen visual dekoratif yang tidak perlu dibaca agar tidak membingungkan pengguna.
+3. **Apa fungsi dari widget `Semantics`, `MergeSemantics`, dan `ExcludeSemantics` dalam konteks aksesibilitas?**  
+   *Jawaban:* `Semantics` menyematkan metadata deskriptif (label, hint, role) agar dapat dibaca dengan jelas oleh pembaca layar tunanetra (TalkBack/VoiceOver). `MergeSemantics` menggabungkan beberapa widget turunan menjadi satu kalimat pengucapan utuh. Sedangkan `ExcludeSemantics` digunakan untuk menyembunyikan elemen visual dekoratif yang tidak perlu dibaca agar tidak membingungkan pengguna.
 
 ---
 
@@ -512,7 +518,7 @@ class _GlobalBookingDashboardState extends State<GlobalBookingDashboard> {
 - [x] Mengelola berkas terjemahan ARB (`app_en.arb`, `app_id.arb`, `app_ar.arb`) dan `l10n.yaml`.
 - [x] Menerapkan format jamak (*Plurals*), placeholders, angka, dan mata uang lokal (`intl`).
 - [x] Menguasai perancangan tata letak adaptif Kanan-ke-Kiri (*RTL Support*) dengan `EdgeInsetsDirectional`.
-- [x] Menyematkan tag `Semantics` ramah pembaca layar (*Screen Readers TalkBack & VoiceOver*).
+- [x] Menyematkan tag `Semantics`, `MergeSemantics`, dan `ExcludeSemantics` ramah pembaca layar (*Screen Readers TalkBack & VoiceOver*).
 - [x] Mengimplementasikan fitur pergantian bahasa dinamis di dalam aplikasi (*In-App Language Switching*).
 - [x] Berhasil membangun proyek mini Multi-Lingual Hotel & Ticket Booking App with Full a11y & RTL.
 
