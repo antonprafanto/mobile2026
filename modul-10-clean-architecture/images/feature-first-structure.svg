@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">STRUKTUR DIREKTORI FEATURE-FIRST MODULAR PADA FLUTTER ENTERPRISE</text>
+
+  <!-- Column 1: Core Shared -->
+  <g transform="translate(30, 55)">
+    <rect width="240" height="195" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="240" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="120" y="21" fill="#A5B4FC" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">📁 lib/core (SHARED)</text>
+
+    <!-- Items -->
+    <rect x="15" y="45" width="210" height="30" rx="4" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="25" y="65" fill="#F8FAFC" font-family="monospace" font-size="10">↳ /network (Dio Client)</text>
+
+    <rect x="15" y="82" width="210" height="30" rx="4" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="25" y="102" fill="#F8FAFC" font-family="monospace" font-size="10">↳ /error (Failures)</text>
+
+    <rect x="15" y="119" width="210" height="30" rx="4" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="25" y="139" fill="#F8FAFC" font-family="monospace" font-size="10">↳ /di (GetIt Injections)</text>
+
+    <text x="120" y="180" fill="#A5B4FC" font-family="monospace" font-size="9" text-anchor="middle">Digunakan Lintas Fitur</text>
+  </g>
+
+  <!-- Column 2: Feature Transfer (Clean Architecture Inside) -->
+  <g transform="translate(290, 55)">
+    <rect width="280" height="195" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="2"/>
+    <rect width="280" height="32" rx="10" fill="#0284C7" fill-opacity="0.25"/>
+    <text x="140" y="21" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">📁 lib/features/transfer</text>
+
+    <!-- Layers -->
+    <rect x="15" y="45" width="250" height="34" rx="4" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="25" y="66" fill="#38BDF8" font-family="monospace" font-size="10">↳ /presentation (Bloc, Views)</text>
+
+    <rect x="15" y="86" width="250" height="34" rx="4" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="25" y="107" fill="#34D399" font-family="monospace" font-size="10">↳ /domain (Entities, UseCases)</text>
+
+    <rect x="15" y="127" width="250" height="34" rx="4" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="25" y="148" fill="#FDE047" font-family="monospace" font-size="10">↳ /data (Models, Repositories)</text>
+
+    <text x="140" y="185" fill="#38BDF8" font-family="monospace" font-size="9" text-anchor="middle">Clean Architecture Per-Fitur</text>
+  </g>
+
+  <!-- Column 3: Other Independent Features -->
+  <g transform="translate(590, 55)">
+    <rect width="240" height="195" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect width="240" height="32" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <text x="120" y="21" fill="#34D399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">📁 FITUR MANDIRI LAIN</text>
+
+    <rect x="15" y="45" width="210" height="40" rx="4" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="25" y="65" fill="#34D399" font-family="monospace" font-size="10">📁 lib/features/auth</text>
+    <text x="35" y="80" fill="#94A3B8" font-family="monospace" font-size="9">Login, OTP, Register</text>
+
+    <rect x="15" y="95" width="210" height="40" rx="4" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="25" y="115" fill="#34D399" font-family="monospace" font-size="10">📁 lib/features/wallet</text>
+    <text x="35" y="130" fill="#94A3B8" font-family="monospace" font-size="9">Saldo, Riwayat Mutasi</text>
+
+    <text x="120" y="180" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">Independen &amp; Mudah Ditest</text>
+  </g>
+</svg>
