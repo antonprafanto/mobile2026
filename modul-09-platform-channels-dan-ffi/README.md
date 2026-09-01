@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 09**! Meskipun Flutter menyediakan ratusan widget dan plugin siap pakai, akan tiba saatnya Anda harus mengakses fitur spesifik perangkat keras yang belum ada di ekosistem pub.dev, mengintegrasikan SDK Native pihak ketiga (seperti SDK perbankan atau printer Bluetooth industri), atau mengeksekusi pustaka C/C++ berkecepatan tinggi.
 
-Di modul ini, Anda akan menguasai cara menjembatani kode Dart Flutter dengan dunia Native: mulai dari arsitektur pesan biner (**`MethodChannel` & `EventChannel`**), integrasi dua arah dengan **Kotlin (Android)** dan **Swift (iOS)**, kompilasi antarmuka bebas salah ketik (**`Pigeon Type-Safe Code Generator`**), hingga pemanggilan fungsi C/C++ secara langsung tanpa overhead melalui **`Dart FFI (Foreign Function Interface)`**.
+Di modul ini, Anda akan menguasai cara menjembatani kode Dart Flutter dengan dunia Native: mulai dari arsitektur pesan biner (**`MethodChannel`, `EventChannel`, & `BasicMessageChannel`**), integrasi dua arah dengan **Kotlin (Android)** dan **Swift (iOS)**, kompilasi antarmuka bebas salah ketik (**`Pigeon Type-Safe Code Generator`**), hingga pemanggilan fungsi C/C++ secara langsung tanpa overhead melalui **`Dart FFI (Foreign Function Interface)`**.
 
 ---
 
@@ -56,7 +56,6 @@ Data yang dikirimkan melalui Platform Channel otomatis dikonversi ke tipe data p
 import 'package:flutter/services.dart';
 
 class NativeBatteryService {
-  // Nama channel harus unik (disarankan menggunakan domain terbalik)
   static const MethodChannel _channel = MethodChannel('com.tokokita2026.hardware/battery');
 
   static Future<int> getBatteryLevel() async {
@@ -78,14 +77,11 @@ class NativeBatteryService {
 
 ### 3.2 Sisi Android: `MainActivity.kt` (Kotlin)
 
-Buka `android/app/src/main/kotlin/.../MainActivity.kt`:
-
 ```kotlin
 package com.tokokita2026.app
 
 import android.content.Context
 import android.os.BatteryManager
-import android.os.Build
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -120,8 +116,6 @@ class MainActivity: FlutterActivity() {
 ---
 
 ### 3.3 Sisi iOS: `AppDelegate.swift` (Swift)
-
-Buka `ios/Runner/AppDelegate.swift`:
 
 ```swift
 import Flutter
@@ -164,10 +158,8 @@ import UIKit
 
 ## 📡 4. Aliran Data Realtime dengan `EventChannel`
 
-Jika Anda ingin mendengarkan perubahan status pengisian baterai (*Charging* vs *Discharging*) atau sensor kompas secara realtime:
-
+### 4.1 Sisi Flutter (Dart Listener)
 ```dart
-// Dart Listener
 class ChargingStreamService {
   static const EventChannel _eventChannel = EventChannel('com.tokokita2026.hardware/charging_events');
 
@@ -179,9 +171,28 @@ class ChargingStreamService {
 
 ---
 
-## 🐦 5. Type-Safe Interoperability dengan Pigeon
+### 4.2 Sisi Android (Kotlin StreamHandler)
+```kotlin
+import io.flutter.plugin.common.EventChannel
 
-Menulis nama method secara manual dengan string (`'getBatteryLevel'`) rentan terjadi *typo* dan error casting di runtime. **Pigeon** adalah alat resmi Flutter yang menghasilkan kode antarmuka *type-safe* secara otomatis.
+class ChargingStreamHandler : EventChannel.StreamHandler {
+    private var eventSink: EventChannel.EventSink? = null
+
+    override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+        eventSink = events
+        // Mengirimkan status awal
+        eventSink?.success("CHARGING_FAST_USB_C")
+    }
+
+    override fun onCancel(arguments: Any?) {
+        eventSink = null
+    }
+}
+```
+
+---
+
+## 🐦 5. Type-Safe Interoperability dengan Pigeon
 
 <p align="center">
   <img src="images/pigeon-code-generation-flow.svg" alt="Pipeline Pigeon Code Generator" width="700">
@@ -215,13 +226,10 @@ Jalankan perintah generator:
 ```bash
 dart run pigeon --input pigeons/hardware_api.dart
 ```
-*Hasil kompilasi akan secara otomatis membuat class Dart, antarmuka Kotlin, dan protokol Swift yang 100% aman dan bebas salah ketik!*
 
 ---
 
 ## 🚀 6. Integrasi C / C++ Berkecepatan Tinggi via Dart FFI (`dart:ffi`)
-
-Ketika Anda perlu melakukan kalkulasi biner yang sangat berat (misal: enkripsi SHA-256 milidetik, pemrosesan audio DSP, atau manipulasi pixel gambar mentah), gunakan **Dart FFI**.
 
 <p align="center">
   <img src="images/dart-ffi-c-bridge.svg" alt="Dart FFI C/C++ Bridge" width="700">
@@ -232,7 +240,6 @@ Ketika Anda perlu melakukan kalkulasi biner yang sangat berat (misal: enkripsi S
 ```c
 #include <stdint.h>
 
-// Fungsi penjumlahan cepat di level C
 int32_t fast_add(int32_t a, int32_t b) {
     return a + b;
 }
@@ -246,22 +253,17 @@ int32_t fast_add(int32_t a, int32_t b) {
 import 'dart:ffi';
 import 'dart:io';
 
-// 1. Tipe Signature C
 typedef FastAddNative = Int32 Function(Int32 a, Int32 b);
-
-// 2. Tipe Signature Dart
 typedef FastAddDart = int Function(int a, int b);
 
 class NativeCryptoEngine {
   late final FastAddDart _fastAdd;
 
   NativeCryptoEngine() {
-    // Buka shared library .so (Android) atau .dylib (iOS/macOS)
     final DynamicLibrary nativeLib = Platform.isAndroid
         ? DynamicLibrary.open('libnative_crypto.so')
         : DynamicLibrary.process();
 
-    // Hubungkan fungsi C ke variabel fungsi Dart
     _fastAdd = nativeLib
         .lookup<NativeFunction<FastAddNative>>('fast_add')
         .asFunction<FastAddDart>();
@@ -317,14 +319,14 @@ class NativeInspectorDashboard extends StatefulWidget {
 class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
   static const MethodChannel _platform = MethodChannel('com.tokokita2026.hardware/battery');
 
-  int _batteryLevel = 88; // Default mock untuk demo visual
+  int _batteryLevel = 88;
   String _chargingStatus = 'Terhubung ke Fast Charging (USB-C)';
   double _batteryTemp = 31.4;
   bool _isInspecting = false;
 
   Future<void> _fetchNativeHardwareInfo() async {
     setState(() => _isInspecting = true);
-    await Future.delayed(const Duration(milliseconds: 600)); // Simulasi IPC Bridge
+    await Future.delayed(const Duration(milliseconds: 600));
 
     try {
       final int? result = await _platform.invokeMethod<int>('getBatteryLevel');
@@ -334,7 +336,6 @@ class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
           _isInspecting = false;
         });
       } else {
-        // Fallback demo
         setState(() {
           _batteryLevel = 92;
           _batteryTemp = 32.1;
@@ -376,7 +377,6 @@ class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Status Banner Bridge
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
@@ -399,7 +399,6 @@ class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
             ),
             const SizedBox(height: 20),
 
-            // Battery Level Card
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -436,7 +435,6 @@ class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
             ),
             const SizedBox(height: 16),
 
-            // Hardware Specs Grid
             Row(
               children: [
                 Expanded(
@@ -474,7 +472,6 @@ class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
             ),
             const SizedBox(height: 16),
 
-            // Power Source Card
             Card(
               child: ListTile(
                 leading: const CircleAvatar(
@@ -487,7 +484,6 @@ class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
             ),
             const SizedBox(height: 28),
 
-            // Inspect Button
             ElevatedButton.icon(
               onPressed: _isInspecting ? null : _fetchNativeHardwareInfo,
               icon: _isInspecting
@@ -544,7 +540,7 @@ class _NativeInspectorDashboardState extends State<NativeInspectorDashboard> {
 - [x] Memahami arsitektur internal Platform Channels dan BinaryMessenger Bridge.
 - [x] Menguasai konversi tipe data standar antar Dart, Kotlin (Android), dan Swift (iOS).
 - [x] Mengimplementasikan `MethodChannel` untuk eksekusi fungsi native dan penanganan `PlatformException`.
-- [x] Mengimplementasikan `EventChannel` untuk menerima aliran data sensor kontinu (*Stream*).
+- [x] Mengimplementasikan `EventChannel` dan `EventChannel.StreamHandler` di Kotlin untuk streaming data.
 - [x] Menguasai kompilasi antarmuka bebas salah ketik (*Type-Safe*) menggunakan `Pigeon`.
 - [x] Memahami integrasi library C/C++ berperforma tinggi dengan `Dart FFI` (`dart:ffi`).
 - [x] Berhasil membangun proyek mini Native Hardware Inspector Dashboard.
