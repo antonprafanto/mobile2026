@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 06**! Aplikasi mobile modern kelas dunia harus tetap dapat digunakan dengan mulus bahkan saat perangkat berada di dalam terowongan kereta, pesawat terbang, atau daerah terpencil tanpa koneksi internet sama sekali. 
 
-Di modul ini, Anda akan menguasai spektrum penyimpanan data lokal: mulai dari penyimpanan ringan **`shared_preferences`**, enkripsi hardware **`flutter_secure_storage`**, database relasional SQL modern berbasis Dart **`Drift ORM`**, NoSQL cepat **`Hive / Isar`**, hingga membangun arsitektur **Offline-First dengan Background Sync Queue** berstandar industri.
+Di modul ini, Anda akan menguasai spektrum penyimpanan data lokal: mulai dari penyimpanan ringan **`shared_preferences`**, enkripsi hardware **`flutter_secure_storage`**, database relasional SQL modern berbasis Dart **`Drift ORM`** (termasuk Foreign Keys & TypeConverters), NoSQL cepat **`Hive`**, manajemen file dan caching gambar (**`cached_network_image`**), hingga membangun arsitektur **Offline-First dengan Background Sync Queue** berstandar industri.
 
 ---
 
@@ -39,7 +39,7 @@ class SettingsStorage {
 
   static Future<bool> loadThemeMode() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_keyDarkMode) ?? false; // Default: Light Mode
+    return prefs.getBool(_keyDarkMode) ?? false;
   }
 }
 ```
@@ -99,7 +99,7 @@ dev_dependencies:
 
 ---
 
-### 3.2 Mendefinisikan Skema Tabel Database
+### 3.2 Mendefinisikan Skema Tabel, Foreign Keys, & TypeConverters
 
 ```dart
 // database.dart
@@ -111,19 +111,28 @@ import 'package:path/path.dart' as p;
 
 part 'database.g.dart';
 
-// 1. TABEL UTAMA: Tasks
+// 1. TABEL KATEGORI
+class Categories extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get name => text().withLength(min: 1, max: 50)();
+}
+
+// 2. TABEL UTAMA: Tasks (dengan Foreign Key ke Categories)
 class Tasks extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get title => text().withLength(min: 1, max: 150)();
   TextColumn get description => text().nullable()();
   BoolColumn get isCompleted => boolean().withDefault(const Constant(false))();
   
+  // Relasi Foreign Key
+  IntColumn get categoryId => integer().nullable().references(Categories, #id)();
+
   // Status Sinkronisasi: "PENDING", "SYNCED", "ERROR"
   TextColumn get syncStatus => text().withDefault(const Constant('PENDING'))();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
 }
 
-// 2. TABEL ANTREAN OFFLINE: SyncQueue
+// 3. TABEL ANTREAN OFFLINE: SyncQueue
 class SyncQueue extends Table {
   IntColumn get queueId => integer().autoIncrement()();
   IntColumn get recordId => integer()();
@@ -132,13 +141,13 @@ class SyncQueue extends Table {
   DateTimeColumn get timestamp => dateTime().withDefault(currentDateAndTime)();
 }
 
-// 3. DATABASE CLASS
-@DriftDatabase(tables: [Tasks, SyncQueue])
+// 4. DATABASE CLASS
+@DriftDatabase(tables: [Categories, Tasks, SyncQueue])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   @override
-  int get schemaVersion => 1; // Versi Skema Database
+  int get schemaVersion => 1;
 
   // Queries Reaktif: UI otomatis update saat ada data baru!
   Stream<List<Task>> watchAllTasks() => select(tasks).watch();
@@ -170,7 +179,7 @@ Ketika aplikasi Anda di-update ke versi baru dan butuh kolom baru (misal: menamb
 
 ```dart
 @override
-int get schemaVersion => 2; // Naikkan versi dari 1 ke 2
+int get schemaVersion => 2;
 
 @override
 MigrationStrategy get migration => MigrationStrategy(
@@ -179,7 +188,6 @@ MigrationStrategy get migration => MigrationStrategy(
   },
   onUpgrade: (Migrator m, int from, int to) async {
     if (from < 2) {
-      // Menambahkan kolom baru tanpa menghapus data task lama
       // await m.addColumn(tasks, tasks.priority);
     }
   },
@@ -188,7 +196,60 @@ MigrationStrategy get migration => MigrationStrategy(
 
 ---
 
-## ⚡ 4. Arsitektur Offline-First & Single Source of Truth (SSOT)
+## ⚡ 4. Basis Data NoSQL Berkecepatan Tinggi: Hive
+
+Ketika Anda hanya butuh caching objek JSON/Feed tanpa relasi tabel SQL yang berat, gunakan **`Hive`**:
+
+```dart
+import 'package:hive_flutter/hive_flutter.dart';
+
+// 1. Model data Hive dengan TypeAdapter
+@HiveType(typeId: 0)
+class UserProfile extends HiveObject {
+  @HiveField(0)
+  late String name;
+
+  @HiveField(1)
+  late String email;
+}
+
+// 2. Operasi Box Cepat
+Future<void> simpanCacheProfil(UserProfile user) async {
+  await Hive.initFlutter();
+  final box = await Hive.openBox<UserProfile>('profileBox');
+  await box.put('current_user', user);
+  
+  final cachedUser = box.get('current_user');
+  print('Profil tersimpan di cache: ${cachedUser?.name}');
+}
+```
+
+---
+
+## 🖼️ 5. File System & Image Caching (`cached_network_image`)
+
+Menghindari pengunduhan ulang gambar banner dan avatar setiap kali layar dibuka:
+
+```dart
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+
+Widget buildCachedAvatar(String imageUrl) {
+  return CachedNetworkImage(
+    imageUrl: imageUrl,
+    placeholder: (context, url) => const CircularProgressIndicator(),
+    errorWidget: (context, url, error) => const Icon(Icons.broken_image, color: Colors.grey),
+    imageBuilder: (context, imageProvider) => CircleAvatar(
+      backgroundImage: imageProvider,
+      radius: 30,
+    ),
+  );
+}
+```
+
+---
+
+## 🔄 6. Arsitektur Offline-First & Pola Sinkronisasi (Sync Queue)
 
 Prinsip dasar arsitektur **Offline-First**:
 > **UI HANYA membaca data dari Local Database (0ms Latency).**  
@@ -200,7 +261,7 @@ Prinsip dasar arsitektur **Offline-First**:
 
 ---
 
-## 🔄 5. Mekanisme Offline Sync Queue (FIFO)
+## 🔁 7. Mekanisme Offline Sync Queue (FIFO)
 
 Saat internet mati, setiap aksi pembuatan, pengubahan, atau penghapusan data **dicatat ke dalam tabel `SyncQueue`**. Begitu koneksi internet kembali aktif, engine akan memproses antrean secara berurutan (*First-In, First-Out*).
 
@@ -213,7 +274,7 @@ Saat internet mati, setiap aksi pembuatan, pengubahan, atau penghapusan data **d
 ```dart
 class SyncEngine {
   final AppDatabase db;
-  final dynamic apiClient; // Dio Client
+  final dynamic apiClient;
 
   SyncEngine(this.db, this.apiClient);
 
@@ -226,20 +287,18 @@ class SyncEngine {
     for (final item in queueItems) {
       try {
         if (item.action == 'CREATE') {
-          // Kirim ke server REST API
           // await apiClient.post('/tasks', data: jsonDecode(item.payloadJson));
         } else if (item.action == 'DELETE') {
           // await apiClient.delete('/tasks/${item.recordId}');
         }
 
-        // Jika berhasil -> Hapus dari antrean lokal dan update status data jadi SYNCED
         await (db.delete(db.syncQueue)..where((q) => q.queueId.equals(item.queueId))).go();
         await (db.update(db.tasks)..where((t) => t.id.equals(item.recordId))).write(
           const TasksCompanion(syncStatus: Value('SYNCED')),
         );
       } catch (e) {
-        print('Gagal sync item #${item.queueId}: $e (Akan dicoba lagi nanti)');
-        break; // Hentikan loop jika koneksi terputus lagi
+        print('Gagal sync item #${item.queueId}: $e');
+        break;
       }
     }
   }
@@ -248,7 +307,7 @@ class SyncEngine {
 
 ---
 
-## 💻 6. Hands-on Super Project: Offline-First Task Manager & Sync Status
+## 💻 8. Hands-on Super Project: Offline-First Task Manager & Sync Status
 
 Mari kita buat aplikasi nyata: **Offline-First Task Manager** dengan database lokal yang instan, indikator status sinkronisasi (*PENDING* vs *SYNCED*), dan tombol simulasi sinkronisasi:
 
@@ -258,7 +317,6 @@ Mari kita buat aplikasi nyata: **Offline-First Task Manager** dengan database lo
 ```dart
 import 'package:flutter/material.dart';
 
-// Mock Data Model untuk demo cepat
 class LocalTask {
   final int id;
   final String title;
@@ -319,7 +377,7 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
   ];
 
   final _taskController = TextEditingController();
-  bool _isOnline = false; // Simulasi Status Jaringan
+  bool _isOnline = false;
   bool _isSyncing = false;
 
   void _tambahTask() {
@@ -357,7 +415,7 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
     }
 
     setState(() => _isSyncing = true);
-    await Future.delayed(const Duration(seconds: 2)); // Simulasi request API
+    await Future.delayed(const Duration(seconds: 2));
 
     setState(() {
       for (int i = 0; i < _tasks.length; i++) {
@@ -382,7 +440,6 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
         title: const Text('Offline Task Engine 2026', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
-          // Toggle Online / Offline
           Row(
             children: [
               Icon(_isOnline ? Icons.wifi : Icons.wifi_off, color: _isOnline ? Colors.green : Colors.red),
@@ -402,7 +459,6 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
       ),
       body: Column(
         children: [
-          // Banner Status Sync
           Container(
             padding: const EdgeInsets.all(12),
             color: _isOnline ? Colors.teal.shade50 : Colors.amber.shade100,
@@ -426,8 +482,6 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
               ],
             ),
           ),
-
-          // Daftar Tugas
           Expanded(
             child: _tasks.isEmpty
                 ? const Center(child: Text('Belum ada catatan tugas'))
@@ -525,7 +579,7 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
 
 ---
 
-## ⚠️ 7. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
+## ⚠️ 9. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
 
 | Kesalahan Umum | Gejala Error | Solusi yang Benar |
 |---|---|---|
@@ -537,7 +591,7 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
 
 ---
 
-## 📝 8. Kuis Pemahaman Modul 06
+## 📝 10. Kuis Pemahaman Modul 06
 
 1. **Apa perbedaan mendasar antara `SharedPreferences` dan `FlutterSecureStorage`?**  
    *Jawaban:* `SharedPreferences` menyimpan data dalam format XML/JSON teks biasa (*plaintext*) tanpa enkripsi sehingga cocok untuk preferensi umum (Dark Mode, Onboarding). `FlutterSecureStorage` mengenkripsi data secara ketat menggunakan chip hardware Android KeyStore dan iOS Keychain sehingga wajib digunakan untuk Token JWT dan data rahasia.
@@ -552,9 +606,11 @@ class _OfflineTaskManagerPageState extends State<OfflineTaskManagerPage> {
 
 - [x] Memahami spektrum penyimpanan data lokal (SharedPreferences, SecureStorage, Drift, Hive).
 - [x] Mengamankan token autentikasi menggunakan enkripsi hardware `flutter_secure_storage`.
-- [x] Mendefinisikan skema tabel, primary key, dan foreign key dengan `Drift ORM`.
+- [x] Mendefinisikan skema tabel, Foreign Keys, dan relasi tabel dengan `Drift ORM`.
 - [x] Menjalankan query reaktif `watch()` dan query satu kali `get()` pada database SQLite.
 - [x] Memahami strategi migrasi skema database (`MigrationStrategy`) tanpa menghilangkan data pengguna.
+- [x] Memahami implementasi NoSQL berkecepatan tinggi dengan `Hive`.
+- [x] Mengoptimalkan pemuatan media dengan `cached_network_image`.
 - [x] Menguasai arsitektur *Single Source of Truth (SSOT)* pada pola Offline-First.
 - [x] Membangun mekanisme *Offline Sync Queue* berbasis FIFO dan auto-retry saat online.
 - [x] Berhasil menguji coba proyek mini Offline-First Task Manager & Sync Status.
