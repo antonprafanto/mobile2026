@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 13**! Menulis kode yang berjalan adalah langkah awal, namun memastikan kode tersebut **bebas dari regresi, tahan banting, dan berperforma tinggi** di jutaan perangkat adalah ciri utama engineer kelas kakap (*Senior / Lead Mobile Engineer*). Tanpa pengujian otomatis (*Automated Testing*), setiap penambahan fitur baru berisiko merusak fitur yang sudah berjalan sebelumnya.
 
-Di modul ini, Anda akan menguasai strategi pengujian komprehensif di Flutter: mulai dari menguasai hierarki **Piramida Testing**, pengujian logika bisnis dan BLoC (**`bloc_test` & `mocktail`**), simulasi interaksi antarmuka pengguna (**`WidgetTester`**), pendeteksi regresi visual tingkat piksel (**`Golden Toolkit`**), hingga investigasi *jank* dan kebocoran memori menggunakan **`Flutter DevTools Performance Profiler`**.
+Di modul ini, Anda akan menguasai strategi pengujian komprehensif di Flutter: mulai dari menguasai hierarki **Piramida Testing**, pengujian logika bisnis dan BLoC (**`bloc_test` & `mocktail`**), simulasi interaksi antarmuka pengguna (**`WidgetTester`**), pengujian end-to-end (**`integration_test`**), pendeteksi regresi visual tingkat piksel (**`Golden Toolkit`**), hingga investigasi *jank* dan kebocoran memori menggunakan **`Flutter DevTools Performance Profiler`**.
 
 ---
 
@@ -41,14 +41,54 @@ Strategi pengujian standar industri menuntut alokasi pengujian yang seimbang unt
   <img src="images/bloc-test-stream-flow.svg" alt="Pipeline Unit Test BLoC dengan bloc_test" width="700">
 </p>
 
-### 3.1 Menguji BLoC State Emissions dengan `bloc_test`
+### 3.1 Unit Test Repository & Mocking Dio Client
+
+```dart
+import 'package:dio/dio.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockDio extends Mock implements Dio {}
+
+void main() {
+  late MockDio mockDio;
+  late BalanceRemoteDataSource dataSource;
+
+  setUp(() {
+    mockDio = MockDio();
+    dataSource = BalanceRemoteDataSourceImpl(dio: mockDio);
+  });
+
+  test('fetchBalance mengembalikan AccountBalanceModel saat status 200', () async {
+    // Arrange
+    when(() => mockDio.get(any())).thenAnswer(
+      (_) async => Response(
+        data: {'account_number': '123', 'balance_amount': 50000.0, 'currency_code': 'IDR'},
+        statusCode: 200,
+        requestOptions: RequestOptions(path: '/balance'),
+      ),
+    );
+
+    // Act
+    final result = await dataSource.fetchBalanceFromApi('123');
+
+    // Assert
+    expect(result.amount, 50000.0);
+    expect(result.currency, 'IDR');
+    verify(() => mockDio.get('/balance/123')).called(1);
+  });
+}
+```
+
+---
+
+### 3.2 Menguji BLoC State Emissions dengan `bloc_test`
 
 ```dart
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-// Mock Class
 class MockAuthRepository extends Mock implements AuthRepository {}
 
 void main() {
@@ -64,7 +104,6 @@ void main() {
     blocTest<AuthBloc, AuthState>(
       'Emits [AuthLoading, AuthSuccess] saat login berhasil',
       build: () {
-        // Arrange: Siapkan perilaku mock repository
         when(() => mockAuthRepository.login('user@fintech2026.com', 'password123'))
             .thenAnswer((_) async => Right(tUser));
         return AuthBloc(authRepository: mockAuthRepository);
@@ -75,7 +114,6 @@ void main() {
         AuthSuccessState(user: tUser),
       ],
       verify: (_) {
-        // Assert: Pastikan method dipanggil tepat 1 kali
         verify(() => mockAuthRepository.login('user@fintech2026.com', 'password123')).called(1);
       },
     );
@@ -87,33 +125,26 @@ void main() {
 
 ## 🖼️ 4. Widget Testing & Simulasi Interaksi Pengguna
 
-Widget testing memungkinkan kita menguji interaksi antarmuka tanpa menyalakan emulator Android atau simulator iOS.
-
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Form Login menampilkan pesan error saat password kosong', (WidgetTester tester) async {
-    // 1. Pump Widget ke Headless Test Environment
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(body: LoginForm()),
       ),
     );
 
-    // 2. Simulasi Masukkan Email
     final emailField = find.byKey(const Key('email_input_field'));
     await tester.enterText(emailField, 'budi@fintech2026.com');
 
-    // 3. Ketuk Tombol Login
     final loginButton = find.byType(ElevatedButton);
     await tester.tap(loginButton);
 
-    // 4. Render Ulang Frame UI
     await tester.pumpAndSettle();
 
-    // 5. Assert: Pastikan muncul teks peringatan
     expect(find.text('Password wajib diisi!'), findsOneWidget);
   });
 }
@@ -121,15 +152,44 @@ void main() {
 
 ---
 
-## 📸 5. Visual Regression Testing dengan `Golden Toolkit`
+## 📱 5. Integration Testing (`integration_test`)
 
-Golden test membandingkan hasil render widget saat ini dengan berkas gambar acuan master (*Golden baseline image*). Jika ada perubahan padding atau warna sebesar 1 piksel saja, tes akan otomatis gagal.
+Pengujian end-to-end yang berjalan langsung di atas perangkat nyata:
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:fintech2026/main.dart' as app;
+
+void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+  testWidgets('End-to-End User Flow: Login ➔ Cek Saldo ➔ Logout', (tester) async {
+    app.main();
+    await tester.pumpAndSettle();
+
+    // 1. Ketik Kredensial
+    await tester.enterText(find.byKey(const Key('email_field_key')), 'admin@fintech2026.com');
+    await tester.enterText(find.byKey(const Key('password_field_key')), 'secret123');
+    await tester.tap(find.byKey(const Key('login_button_key')));
+
+    await tester.pumpAndSettle();
+
+    // 2. Verifikasi Masuk ke Dashboard
+    expect(find.text('Total Saldo Tersedia'), findsOneWidget);
+  });
+}
+```
+
+---
+
+## 📸 6. Visual Regression Testing dengan `Golden Toolkit`
 
 <p align="center">
   <img src="images/golden-toolkit-pixel-diff.svg" alt="Visual Regression Testing Golden Toolkit" width="700">
 </p>
 
-### 5.1 Menulis Golden Test
+### 6.1 Menulis Golden Test
 
 ```dart
 import 'package:flutter_test/flutter_test.dart';
@@ -154,7 +214,7 @@ flutter test --update-goldens
 
 ---
 
-## ⚡ 6. Profiling Kinerja & Flutter DevTools
+## ⚡ 7. Profiling Kinerja & Flutter DevTools
 
 Aplikasi yang profesional wajib menjaga waktu pemrosesan tiap frame di bawah **16.6 milidetik** agar dapat menyajikan animasi 60 FPS yang mulus.
 
@@ -162,7 +222,7 @@ Aplikasi yang profesional wajib menjaga waktu pemrosesan tiap frame di bawah **1
   <img src="images/devtools-profiling-flamegraph.svg" alt="DevTools Performance Profiling" width="700">
 </p>
 
-### 6.1 Membedah Tab Penting di Flutter DevTools:
+### 7.1 Membedah Tab Penting di Flutter DevTools:
 1. **CPU Profiler (Flamegraph)**: Mengidentifikasi fungsi Dart mana yang memakan waktu eksekusi paling lama (*Heavy computation*).
 2. **Memory Profiler**: Melacak alokasi heap memori untuk mendeteksi *Memory Leak* (objek yang tidak dibuang oleh Garbage Collector).
 3. **Flutter Frame Rendering Chart**:
@@ -171,7 +231,7 @@ Aplikasi yang profesional wajib menjaga waktu pemrosesan tiap frame di bawah **1
 
 ---
 
-## 💻 7. Hands-on Super Project: Production Test Suite & Auth Feature
+## 💻 8. Hands-on Super Project: Production Test Suite & Auth Feature
 
 Mari kita bangun rangkaian tes komprehensif yang memadukan **Unit Test Logika**, **Simulasi Widget Test**, dan **Pengujian Validasi Form**:
 
@@ -235,7 +295,6 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
       _isLoading = true;
     });
 
-    // Simulasi Network Request
     await Future.delayed(const Duration(milliseconds: 1000));
 
     if (email == 'admin@fintech2026.com' && password == 'secret123') {
@@ -270,7 +329,6 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Testing Info Banner
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -312,7 +370,6 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
                 ),
               ),
             ] else ...[
-              // Email Input
               TextField(
                 key: const Key('email_field_key'),
                 controller: _emailController,
@@ -326,7 +383,6 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
               ),
               const SizedBox(height: 16),
 
-              // Password Input
               TextField(
                 key: const Key('password_field_key'),
                 controller: _passwordController,
@@ -340,7 +396,6 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
               ),
               const SizedBox(height: 12),
 
-              // Error Message Text
               if (_errorMessage != null)
                 Text(
                   _errorMessage!,
@@ -349,7 +404,6 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
                 ),
               const SizedBox(height: 24),
 
-              // Submit Button
               ElevatedButton.icon(
                 key: const Key('login_button_key'),
                 onPressed: _isLoading ? null : _handleLogin,
@@ -380,7 +434,7 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
 
 ---
 
-## ⚠️ 8. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
+## ⚠️ 9. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
 
 | Kesalahan Umum | Gejala Error | Solusi yang Benar |
 |---|---|---|
@@ -392,7 +446,7 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
 
 ---
 
-## 📝 9. Kuis Pemahaman Modul 13
+## 📝 10. Kuis Pemahaman Modul 13
 
 1. **Mengapa Piramida Testing menganjurkan 70% pengujian dialokasikan pada Unit Test?**  
    *Jawaban:* Karena Unit Test mengeksekusi logika secara murni di level memori dalam hitungan milidetik tanpa overhead render widget/OS, sehingga ribuan skenario batas (*edge cases*) dapat diuji secara kilat di pipeline CI/CD.
@@ -407,7 +461,9 @@ class _FintechLoginPageState extends State<FintechLoginPage> {
 
 - [x] Memahami arsitektur dan proporsi ideal Piramida Pengujian (Unit 70%, Widget 20%, Integration 10%).
 - [x] Menguasai Unit Testing & Mocking state BLoC/Cubit dengan `bloc_test` dan `mocktail`.
+- [x] Mengimplementasikan pengujian DataSource & mocking klien `Dio`.
 - [x] Mengimplementasikan Widget Testing interaktif dengan `WidgetTester`, `pumpAndSettle()`, dan finders.
+- [x] Menguasai Integration Testing End-to-End (`integration_test`).
 - [x] Memahami konsep Visual Regression Testing menggunakan `Golden Toolkit`.
 - [x] Mampu membaca grafik Flamegraph dan mendeteksi jank frame (>16.6ms) di Flutter DevTools.
 - [x] Mengidentifikasi kebocoran memori (*Memory Leaks*) dengan Memory Profiler.
