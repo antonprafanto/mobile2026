@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 12**! Tampilan visual yang dinamis, halus, dan responsif adalah kunci utama yang membedakan aplikasi biasa dengan aplikasi kelas dunia (*award-winning apps*). Pengguna modern tidak hanya menginginkan fungsi yang bekerja, melainkan juga pengalaman interaksi yang memanjakan mata dengan *framerate* stabil di 60 hingga 120 FPS.
 
-Di modul ini, Anda akan menguasai teknik grafis dan animasi tingkat lanjut di Flutter: mulai dari koreografi animasi berantai (**Staggered Animations dengan `AnimationController` & `Interval`**), menggambar grafik data keuangan kustom dengan kurva halus (**`CustomPainter`, `Canvas`, & Bézier Path**), efek visual kaca cair & hologram tingkat GPU (**GLSL Fragment Shaders dengan Flutter Impeller Engine**), hingga animasi vektor interaktif berbasis status (**`Rive 2 State Machine`**).
+Di modul ini, Anda akan menguasai teknik grafis dan animasi tingkat lanjut di Flutter: mulai dari koreografi animasi berantai (**Staggered Animations dengan `AnimationController` & `Interval`**), transisi halaman kustom dan efek terbang (**`Hero` & `flightShuttleBuilder`**), menggambar grafik data keuangan kustom dengan kurva halus (**`CustomPainter`, `Canvas`, & Bézier Path**), efek visual kaca cair & hologram tingkat GPU (**GLSL Fragment Shaders dengan Flutter Impeller Engine**), hingga animasi vektor interaktif berbasis status (**`Rive 2 State Machine` & `Lottie`**).
 
 ---
 
@@ -13,6 +13,7 @@ Untuk memahami peran berbagai teknologi animasi di Flutter:
 | Teknologi | Analogi Perfilman Hollywood | Penjelasan Teknis di Flutter |
 |---|---|---|
 | **Staggered Animation** | **Koreografi Aktor & Gerakan Kamera** | Satu sutradara (`AnimationController`) mengatur timing masuknya aktor: Judul muncul di detik 0.0-0.4, Grafik membesar di detik 0.3-0.7, dan Tombol meluncur di detik 0.6-1.0. |
+| **`Hero` & Custom PageRoute** | **Aksi Terbang Stuntman Antar Gedung** | Elemen gambar melayang mulus dari kartu berukuran kecil di halaman daftar menuju layar penuh di halaman detail. |
 | **`CustomPainter` & Canvas** | **Pelukis Konsep Artistik Kanvas** | Menggambar bentuk geometri, lingkaran, dan kurva gelombang (*Bézier curve*) secara bebas piksel demi piksel langsung ke layar. |
 | **GLSL Fragment Shader** | **Efek CGI Cahaya & Kaca Hologram** | Program kecil yang dieksekusi langsung di chip GPU untuk menghitung warna setiap piksel secara instan (efek liquid glass, aura neon, dan gelombang air). |
 | **Rive 2 State Machine** | **Wayang Digital Cerdas Interaktif** | Karakter vektor hidup yang dapat mengubah ekspresi (menutup mata saat ketik password, tersenyum saat transaksi sukses) secara interaktif. |
@@ -71,15 +72,59 @@ class StaggeredAnimationController {
 
 ---
 
-## 🎨 3. Menggambar Kurva Finansial dengan `CustomPainter` & Bézier
+## 🚀 3. Transisi Halaman Lanjutan & Hero Animation
 
-Ketika widget standar tidak mampu menampilkan grafik fluktuasi investasi yang melengkung indah, kita menggunakan **`CustomPainter`**.
+### 3.1 Hero Animation dengan `flightShuttleBuilder` Kustom
+
+```dart
+Widget buildHeroCard(BuildContext context) {
+  return Hero(
+    tag: 'crypto_card_btc',
+    flightShuttleBuilder: (flightContext, animation, flightDirection, fromHeroContext, toHeroContext) {
+      return RotationTransition(
+        turns: animation,
+        child: toHeroContext.widget,
+      );
+    },
+    child: Card(
+      child: Image.asset('assets/images/btc.png', width: 64, height: 64),
+    ),
+  );
+}
+
+// 3.2 Custom PageRouteBuilder (Shared Axis Fade & Scale)
+Route createCustomPageRoute(Widget page) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => page,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 0.1);
+      const end = Offset.zero;
+      const curve = Curves.easeOutCubic;
+
+      final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      final fadeTween = Tween<double>(begin: 0.0, end: 1.0);
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: FadeTransition(
+          opacity: animation.drive(fadeTween),
+          child: child,
+        ),
+      );
+    },
+  );
+}
+```
+
+---
+
+## 🎨 4. Menggambar Kurva Finansial dengan `CustomPainter` & Bézier
 
 <p align="center">
   <img src="images/custom-painter-canvas-bezier.svg" alt="Rendering Grafik Bézier dengan CustomPainter" width="700">
 </p>
 
-### 3.1 Kode `FinancialChartPainter` dengan Kurva Kuadratik
+### 4.1 Kode `FinancialChartPainter` dengan Kurva Kuadratik
 
 ```dart
 import 'package:flutter/material.dart';
@@ -145,15 +190,13 @@ class FinancialChartPainter extends CustomPainter {
 
 ---
 
-## 🔮 4. Fragment Shaders Tingkat GPU dengan GLSL (Impeller Engine)
-
-Dengan engine rendering **Flutter Impeller**, Anda dapat mengeksekusi shader GLSL (*OpenGL Shading Language*) langsung di GPU tanpa hambatan *jank*.
+## 🔮 5. Fragment Shaders Tingkat GPU dengan GLSL (Impeller Engine)
 
 <p align="center">
   <img src="images/glsl-fragment-shader-pipeline.svg" alt="Pipeline Fragment Shader GLSL Impeller" width="700">
 </p>
 
-### 4.1 Berkas Shader GLSL: `shaders/cyber_aurora.frag`
+### 5.1 Berkas Shader GLSL: `shaders/cyber_aurora.frag`
 
 ```glsl
 #version 460 core
@@ -179,7 +222,7 @@ void main() {
 
 ---
 
-## 🐻 5. Animasi Vektor Interaktif dengan Rive 2 (State Machine)
+## 🐻 6. Animasi Vektor Interaktif dengan Rive 2 (State Machine)
 
 <p align="center">
   <img src="images/rive-state-machine-flow.svg" alt="Arsitektur Rive State Machine" width="700">
@@ -227,7 +270,7 @@ class _InteractiveAvatarWidgetState extends State<InteractiveAvatarWidget> {
 
 ---
 
-## 💻 6. Hands-on Super Project: Interactive Fintech Analytics Dashboard & Animated Charts
+## 💻 7. Hands-on Super Project: Interactive Fintech Analytics Dashboard & Animated Charts
 
 Mari kita bangun aplikasi nyata: **Quantum Wealth Analytics 2026** yang memadukan **Staggered Animations**, **CustomPainter Kurva Finansial**, dan **Transisi Interaktif**:
 
@@ -326,7 +369,6 @@ class _FintechAnalyticsDashboardState extends State<FintechAnalyticsDashboard>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Info Banner
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -391,7 +433,6 @@ class _FintechAnalyticsDashboardState extends State<FintechAnalyticsDashboard>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text('Grafik Performa Aset', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.cyanAccent)),
-                            // Timeframe Tabs
                             Row(
                               children: [
                                 _buildTimeframeChip('1B', 0),
@@ -556,7 +597,7 @@ class LiveBézierPainter extends CustomPainter {
 
 ---
 
-## ⚠️ 7. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
+## ⚠️ 8. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
 
 | Kesalahan Umum | Gejala Error | Solusi yang Benar |
 |---|---|---|
@@ -568,7 +609,7 @@ class LiveBézierPainter extends CustomPainter {
 
 ---
 
-## 📝 8. Kuis Pemahaman Modul 12
+## 📝 9. Kuis Pemahaman Modul 12
 
 1. **Bagaimana cara kerja widget `Interval` dalam mengendalikan Staggered Animation?**  
    *Jawaban:* `Interval(start, end)` membagi nilai master controller (0.0 sampai 1.0) menjadi sub-timeline tertentu, sehingga setiap elemen visual (opacity, scale, slide) dapat mulai dan selesai bergerak pada rentang waktu yang berbeda.
@@ -582,6 +623,7 @@ class LiveBézierPainter extends CustomPainter {
 ## 🎯 Rangkuman & Checklist Kompetensi
 
 - [x] Menguasai pembuatan Animasi Eksplisit dan Animasi Berantai (*Staggered Animations*) via `Interval`.
+- [x] Menguasai Transisi Halaman Lanjutan & Custom `Hero` dengan `flightShuttleBuilder`.
 - [x] Memahami arsitektur rendering `CustomPainter`, `Canvas`, dan manipulasi kurva Bézier kuadratik.
 - [x] Mengoptimalkan performa melukis GPU dengan method `shouldRepaint()`.
 - [x] Memahami pipeline penulisan dan kompilasi GLSL Fragment Shaders dengan Flutter Impeller.
