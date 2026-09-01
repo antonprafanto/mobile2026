@@ -65,8 +65,8 @@ Klik tautan modul di bawah untuk langsung membuka panduan materi:
 | **10** | **[Modul 10: Clean Architecture & Monorepo Melos](modul-10-clean-architecture/README.md)** | SOLID, Clean Architecture 3-Layers, DI (get_it), Melos | Enterprise Fintech Architecture Skeleton | ✅ **Selesai** |
 | **11** | **[Modul 11: i18n Multi-Bahasa & Aksesibilitas (a11y)](modul-11-i18n-dan-a11y/README.md)** | ARB files, Rupiah/Tanggal intl, Semantics Screen Reader | Multi-Lingual Booking App with a11y | ✅ **Selesai** |
 | **12** | **[Modul 12: Animasi Lanjutan, Shaders, & CustomPainter](modul-12-animasi-dan-shaders/README.md)** | Explicit Animations, Hero, GLSL Shaders, Lottie, Rive | Interactive Analytics Dashboard & Charts | ✅ **Selesai** |
-| **13** | **[Modul 13: Testing Komprehensif & DevTools Profiling](modul-13-testing-dan-profiling/README.md)** | Unit/Widget/Integration Testing, Golden Tests, Profiler | Test Suite (Coverage > 85%) & Benchmark | ⏳ *Sedang Dikerjakan* |
-| **14** | **[Modul 14: Keamanan, UU PDP, & Crash Reporting](modul-14-keamanan-dan-monitoring/README.md)** | Obfuscation, SSL Pinning, UU PDP & GDPR, Sentry Logging | Hardened Secure Banking App Shell | ⏳ Antrean |
+| **13** | **[Modul 13: Testing Komprehensif & DevTools Profiling](modul-13-testing-dan-profiling/README.md)** | Unit/Widget/Integration Testing, Golden Tests, Profiler | Test Suite (Coverage > 85%) & Benchmark | ✅ **Selesai** |
+| **14** | **[Modul 14: Keamanan, UU PDP, & Crash Reporting](modul-14-keamanan-dan-monitoring/README.md)** | Obfuscation, SSL Pinning, UU PDP & GDPR, Sentry Logging | Hardened Secure Banking App Shell | ⏳ *Sedang Dikerjakan* |
 | **15** | **[Modul 15: CI/CD, Fastlane, Shorebird OTA, & Rilis](modul-15-ci-cd-dan-rilis/README.md)** | GitHub Actions, Fastlane, Shorebird CodePush, Store Release | Automated Release Pipeline to Play Store | ⏳ Antrean |
 | **🏆** | **[Proyek Akhir: Capstone Project Fullstack](capstone-project/README.md)** | End-to-End Enterprise Fullstack Mobile Architecture | Quick-Commerce SuperApp / POS Kasir Utuh | ⏳ Antrean |
 
