@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 10**! Di modul ini, Anda resmi memasuki **FASE 4: Enterprise Architecture & Quality**. Ketika sebuah aplikasi mobile tumbuh dari proyek sederhana menjadi aplikasi skala enterprise (seperti Gojek, Tokopedia, atau SuperApp Perbankan) yang dikerjakan oleh puluhan hingga ratusan engineer secara bersamaan, kode tanpa arsitektur yang solid akan cepat berubah menjadi "spaghetti code" yang mustahil untuk dirawat (*unmaintainable*).
 
-Di modul ini, Anda akan menguasai cara merancang kode berstandar enterprise: mulai dari implementasi prinsip **SOLID**, membedah **Clean Architecture 3-Layers (Presentation, Domain, & Data)**, penanganan error fungsional tanpa try-catch (*`fpdart` & `Either<Failure, T>`*), injeksi dependensi modern (**`get_it` Service Locator**), struktur modular **Feature-First**, hingga mengelola proyek multi-package menggunakan **`Melos Monorepo`**.
+Di modul ini, Anda akan menguasai cara merancang kode berstandar enterprise: mulai dari implementasi prinsip **SOLID**, membedah **Clean Architecture 3-Layers (Presentation, Domain, & Data)**, penanganan error fungsional tanpa try-catch (*`fpdart` & `Either<Failure, T>`*), injeksi dependensi modern (**`get_it` & `injectable`**), struktur modular **Feature-First**, hingga mengelola proyek multi-package menggunakan **`Melos Monorepo`**.
 
 ---
 
@@ -135,7 +135,6 @@ Menghindari penggunaan `try-catch` yang berceceran di UI dengan menggunakan tipe
 </p>
 
 ```dart
-// Model Kegagalan (Failure Hierarchy)
 sealed class Failure {
   final String message;
   const Failure(this.message);
@@ -156,9 +155,9 @@ class ValidationFailure extends Failure {
 
 ---
 
-## 💉 5. Dependency Injection & Service Locator (`get_it`)
+## 💉 5. Dependency Injection & Service Locator (`get_it` & `injectable`)
 
-Untuk menghubungkan seluruh lapisan tanpa melakukan instansiasi manual (*tight coupling*):
+### 5.1 Registrasi Manual dengan `get_it`
 
 ```dart
 import 'package:get_it/get_it.dart';
@@ -179,6 +178,23 @@ Future<void> initServiceLocator() async {
   // 4. Blocs / Cubits (Factory = Instance Baru Tiap Dipanggil)
   sl.registerFactory<BalanceCubit>(() => BalanceCubit(getBalanceUseCase: sl()));
 }
+```
+
+---
+
+### 5.2 Otomatisasi Injeksi dengan `@injectable`
+
+```dart
+import 'package:injectable/injectable.dart';
+
+@lazySingleton
+class GetAccountBalanceUseCase {
+  final BalanceRepository repository;
+  GetAccountBalanceUseCase(this.repository);
+}
+
+@InjectableInit()
+void configureDependencies() => getIt.init();
 ```
 
 ---
@@ -308,7 +324,6 @@ class BalanceRepositoryImpl implements BalanceRepository {
   Future<Either<Failure, AccountBalance>> getBalance(String accountNumber) async {
     await Future.delayed(const Duration(milliseconds: 800)); // Simulasi API Latency
     
-    // Simulasi respons sukses API
     return const Right(AccountBalance(
       accountNumber: "9870-1234-5678",
       amount: 14750000.0,
@@ -349,7 +364,6 @@ class FintechDashboardPage extends StatefulWidget {
 }
 
 class _FintechDashboardPageState extends State<FintechDashboardPage> {
-  // Service Locator Manual Simulation
   late final GetBalanceUseCase _getBalanceUseCase;
   
   AccountBalance? _balance;
@@ -359,7 +373,6 @@ class _FintechDashboardPageState extends State<FintechDashboardPage> {
   @override
   void initState() {
     super.initState();
-    // Dependency Injection Wiring
     final BalanceRepository repository = BalanceRepositoryImpl();
     _getBalanceUseCase = GetBalanceUseCase(repository);
     _loadBalance();
@@ -397,7 +410,6 @@ class _FintechDashboardPageState extends State<FintechDashboardPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Architecture Info Banner
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
@@ -420,7 +432,6 @@ class _FintechDashboardPageState extends State<FintechDashboardPage> {
             ),
             const SizedBox(height: 20),
 
-            // Saldo Card
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -453,7 +464,6 @@ class _FintechDashboardPageState extends State<FintechDashboardPage> {
             ),
             const SizedBox(height: 20),
 
-            // Action Quick Buttons
             Row(
               children: [
                 Expanded(
@@ -511,7 +521,7 @@ class _FintechDashboardPageState extends State<FintechDashboardPage> {
 |---|---|---|
 | **1. Domain Mengimpor Package Flutter** | Domain layer tidak murni (*Polluted*) sehingga sulit diuji di unit test murni. | Domain Layer HANYA boleh berisi kode **Dart Murni** tanpa `import 'package:flutter/material.dart'`. |
 | **2. Mengabaikan Kegagalan `Either`** | Aplikasi crash `LateInitializationError` saat terjadi kegagalan jaringan. | Selalu panggil method `.fold((failure) => ..., (data) => ...)` untuk menangani kedua kondisi. |
-| **3. Lupa Pendaftaran di Service Locator** | Error saat runtime: `GetIt: Object of type X is not registered`. | Pastikan seluruh Repository, Use Case, dan Cubit didaftarkan di fungsi `initServiceLocator()`. |
+| **3. Lupa Pendaftaran di Service Locator** | Error saat runtime: `GetIt: Object of type X is not registered`. | Pastikan seluruh Repository, Use Case, dan Cubit didaftarkan di fungsi `initServiceLocator()` atau gunakan `@injectable`. |
 | **4. Ketergantungan Melingkar (*Circular Dependency*)** | Melos compile error: `Package A depends on Package B which depends on Package A`. | Pisahkan antarmuka bersama atau model data dasar ke dalam `packages/core_model` terpisah. |
 | **5. Over-Engineering di Proyek Sederhana** | Menulis 10 file hanya untuk menampilkan form 1 input sederhana. | Terapkan Clean Architecture penuh untuk modul bisnis penting; gunakan arsitektur praktis untuk form statis. |
 
@@ -533,7 +543,7 @@ class _FintechDashboardPageState extends State<FintechDashboardPage> {
 - [x] Memahami 5 prinsip desain perangkat lunak SOLID dalam ekosistem Dart/Flutter.
 - [x] Menguasai pembagian tanggung jawab Clean Architecture 3-Layers (Presentation, Domain, Data).
 - [x] Mengimplementasikan Functional Error Handling menggunakan `Either<Failure, T>`.
-- [x] Mengonfigurasi Service Locator dan Dependency Injection dengan `get_it`.
+- [x] Mengonfigurasi Service Locator dan Dependency Injection dengan `get_it` & `injectable`.
 - [x] Menyusun struktur direktori modular berbasis *Feature-First*.
 - [x] Memahami arsitektur Multi-Package Monorepo menggunakan `Melos`.
 - [x] Berhasil membangun proyek mini Fintech Transfer & Balance Core Architecture Skeleton.
