@@ -1,6 +1,6 @@
 # Modul 03: Navigasi Deklaratif (go_router), Deep Linking, & Form System
 
-Selamat datang di **Modul 03**! Di modul ini, Anda akan menguasai arsitektur navigasi modern standar industri menggunakan **`go_router`**, mengimplementasikan **Nested Navigation (`StatefulShellRoute`)** untuk mempertahankan state tab aplikasi, mengaktifkan **Deep Linking (App Links & Universal Links)**, animasi transisi kustom (*Custom Transitions*), pelacakan analitik navigasi (*NavigatorObserver*), hingga membangun sistem formulir interaktif (*Form System*) yang aman, tervalidasi, mendukung Autofill OS, dan dilengkapi format otomatis (seperti format mata uang Rupiah).
+Selamat datang di **Modul 03**! Di modul ini, Anda akan menguasai arsitektur navigasi modern standar industri menggunakan **`go_router`**, mengimplementasikan **Nested Navigation (`StatefulShellRoute`)** untuk mempertahankan state tab aplikasi, mengaktifkan **Deep Linking (App Links & Universal Links)**, animasi transisi kustom (*Custom Transitions*), pelacakan analitik navigasi (*NavigatorObserver*), hingga membangun sistem formulir interaktif (*Form System*) yang aman, tervalidasi, mendukung Autofill OS, Dialogs/Pickers, dan dilengkapi format otomatis (seperti format mata uang Rupiah).
 
 ---
 
@@ -106,7 +106,6 @@ final appRouter = GoRouter(
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        // navigationShell mengelola tampilan scaffold dan BottomNavigationBar
         return MainScaffoldPage(navigationShell: navigationShell);
       },
       branches: [
@@ -153,7 +152,7 @@ final appRouter = GoRouter(
 
 ## 🎬 5. Animasi Transisi Halaman Kustom (*Custom Transitions*)
 
-Secara bawaan Flutter menggunakan transisi standar OS (Slide dari bawah di iOS, Fade-through di Android). Anda bisa membuat animasi kustom (misal: Slide dari kanan atau Fade) menggunakan `CustomTransitionPage`:
+Secara bawaan Flutter menggunakan transisi standar OS. Anda bisa membuat animasi kustom menggunakan `CustomTransitionPage`:
 
 ```dart
 GoRoute(
@@ -163,7 +162,6 @@ GoRoute(
       key: state.pageKey,
       child: const DetailSpesialPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        // Animasi Geser dari Kanan ke Kiri yang Elegan
         const begin = Offset(1.0, 0.0);
         const end = Offset.zero;
         const curve = Curves.easeInOutCubic;
@@ -183,8 +181,6 @@ GoRoute(
 ---
 
 ## 🚫 6. Halaman 404 Kustom (*Error Page Builder*)
-
-Jika pengguna memasukkan URL yang salah atau membuka deep link yang sudah kedaluwarsa:
 
 ```dart
 final router = GoRouter(
@@ -214,8 +210,6 @@ final router = GoRouter(
 
 ## 🔒 7. Route Guards & Otentikasi Dinamis (Redirect Logic)
 
-Route Guard berfungsi untuk mencegat pengguna agar tidak bisa membuka halaman rahasia (seperti Dashboard/Profil) jika belum login:
-
 ```dart
 class AuthService extends ChangeNotifier {
   bool _isLoggedIn = false;
@@ -223,7 +217,7 @@ class AuthService extends ChangeNotifier {
 
   void login() {
     _isLoggedIn = true;
-    notifyListeners(); // Memicu router untuk mengevaluasi redirect ulang
+    notifyListeners();
   }
 
   void logout() {
@@ -235,22 +229,13 @@ class AuthService extends ChangeNotifier {
 final authService = AuthService();
 
 final protectedRouter = GoRouter(
-  refreshListenable: authService, // Otomatis trigger redirect saat status login berubah
+  refreshListenable: authService,
   redirect: (BuildContext context, GoRouterState state) {
     final bool loggedIn = authService.isLoggedIn;
     final bool isGoingToLogin = state.matchedLocation == '/login';
 
-    // 1. Jika belum login dan mencoba masuk ke halaman terlindungi -> Lempar ke /login
-    if (!loggedIn && !isGoingToLogin) {
-      return '/login';
-    }
-
-    // 2. Jika sudah login dan masih di halaman /login -> Alihkan ke /home
-    if (loggedIn && isGoingToLogin) {
-      return '/home';
-    }
-
-    // 3. Tidak ada intervensi (biarkan lewat)
+    if (!loggedIn && !isGoingToLogin) return '/login';
+    if (loggedIn && isGoingToLogin) return '/home';
     return null;
   },
   routes: [
@@ -263,8 +248,6 @@ final protectedRouter = GoRouter(
 ---
 
 ## 📊 8. Navigation Observer: Pelacakan Analitik Layar
-
-Untuk mencatat setiap kali pengguna berpindah halaman (misal ke Firebase Analytics atau Sentry):
 
 ```dart
 class AnalyticsRouteObserver extends NavigatorObserver {
@@ -283,14 +266,14 @@ final router = GoRouter(
 
 ---
 
-## 🔗 9. Deep Linking (App Links & Universal Links)
+## 🔗 9. Deep Linking (Android App Links & iOS Universal Links)
 
 <p align="center">
   <img src="images/deep-linking-flow.svg" alt="Alur Deep Linking" width="700">
 </p>
 
-### Konfigurasi Android App Links
-Buka berkas `android/app/src/main/AndroidManifest.xml` dan tambahkan `intent-filter`:
+### 9.1 Konfigurasi Android App Links
+Buka `android/app/src/main/AndroidManifest.xml` dan tambahkan `intent-filter`:
 
 ```xml
 <activity android:name=".MainActivity" ...>
@@ -303,9 +286,27 @@ Buka berkas `android/app/src/main/AndroidManifest.xml` dan tambahkan `intent-fil
 </activity>
 ```
 
-> [!IMPORTANT]
-> **Verifikasi Domain (Digital Asset Links)**:  
-> Unggah berkas JSON verifikasi domain di `https://tokokita2026.com/.well-known/assetlinks.json` yang berisi SHA-256 fingerprint sertifikat rilis aplikasi Anda.
+Unggah berkas `https://tokokita2026.com/.well-known/assetlinks.json` di server web Anda.
+
+---
+
+### 9.2 Konfigurasi iOS Universal Links
+1. Aktifkan **Associated Domains** di Xcode (`applinks:tokokita2026.com`).
+2. Unggah berkas `apple-app-site-association` di `https://tokokita2026.com/.well-known/apple-app-site-association`:
+
+```json
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAM_ID.com.tokokita2026.app",
+        "paths": ["*"]
+      }
+    ]
+  }
+}
+```
 
 ---
 
@@ -316,14 +317,14 @@ Buka berkas `android/app/src/main/AndroidManifest.xml` dan tambahkan `intent-fil
 </p>
 
 ### 10.1 Komponen Form Utama
-* **`GlobalKey<FormState>()`**: Kunci kontrol untuk memicu validasi (`_formKey.currentState!.validate()`) dan menyimpan data.
-* **`TextFormField`**: Widget input teks yang terhubung langsung dengan sistem validasi Form.
+* **`GlobalKey<FormState>()`**: Kunci kontrol untuk validasi (`_formKey.currentState!.validate()`).
+* **`TextFormField`**: Widget input teks terintegrasi validasi Form.
 * **`FocusNode`**: Mengatur perpindahan kursor keyboard antar input secara otomatis.
-* **`AutofillGroup` & `AutofillHints`**: Mengintegrasikan input dengan pengisi otomatis sandi OS (Google Autofill / Apple iCloud Keychain).
+* **`AutofillGroup` & `AutofillHints`**: Integrasi pengisi sandi/alamat otomatis OS.
 
 ---
 
-### 10.2 Custom TextInputFormatter: Format Otomatis Mata Uang Rupiah
+### 10.2 Custom TextInputFormatter: Format Mata Uang Rupiah
 
 ```dart
 import 'package:flutter/services.dart';
@@ -338,9 +339,7 @@ class CurrencyInputFormatter extends TextInputFormatter {
     if (newValue.selection.baseOffset == 0) return newValue;
 
     final cleanText = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
-    if (cleanText.isEmpty) {
-      return newValue.copyWith(text: '');
-    }
+    if (cleanText.isEmpty) return newValue.copyWith(text: '');
 
     final double value = double.parse(cleanText);
     final formatter = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
@@ -356,17 +355,51 @@ class CurrencyInputFormatter extends TextInputFormatter {
 
 ---
 
-## 🛡️ 11. Intersepsi Tombol Back Modern dengan `PopScope`
-
-Di Flutter versi modern (Flutter 3.16+), widget lama `WillPopScope` telah digantikan secara resmi oleh **`PopScope`**. Widget ini berguna untuk menampilkan dialog konfirmasi cegah kehilangan data saat pengguna tidak sengaja menekan tombol Back di HP padahal form belum disimpan:
+### 10.3 Feedback UI: Pickers, Sheets, & Dialogs
 
 ```dart
-bool _isFormDirty = true; // True jika ada input yang belum disimpan
+// 1. DatePicker & TimePicker
+Future<void> pilihTanggal(BuildContext context) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2020),
+    lastDate: DateTime(2030),
+  );
+  if (pickedDate != null && context.mounted) {
+    final TimeOfDay? pickedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+  }
+}
+
+// 2. Modal Bottom Sheet
+void bukaPilihanMetode(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+    builder: (ctx) => Container(
+      padding: const EdgeInsets.all(20),
+      child: const Text('Pilih Metode Pengiriman: Instan, Same Day, Regular'),
+    ),
+  );
+}
+```
+
+---
+
+## 🛡️ 11. Intersepsi Tombol Back Modern dengan `PopScope`
+
+Di Flutter modern (Flutter 3.16+), widget lama `WillPopScope` telah digantikan secara resmi oleh **`PopScope`**:
+
+```dart
+bool _isFormDirty = true;
 
 @override
 Widget build(BuildContext context) {
   return PopScope(
-    canPop: !_isFormDirty, // Jika false, tombol back tidak langsung menutup layar
+    canPop: !_isFormDirty,
     onPopInvokedWithResult: (bool didPop, dynamic result) async {
       if (didPop) return;
 
@@ -376,10 +409,7 @@ Widget build(BuildContext context) {
           title: const Text('Batalkan Perubahan?'),
           content: const Text('Data formulir yang Anda isi belum disimpan.'),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('Lanjut Mengisi'),
-            ),
+            TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Lanjut Mengisi')),
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(true),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -681,6 +711,7 @@ class _CheckoutFormPageState extends State<CheckoutFormPage> {
 - [x] Mengonfigurasi Deep Linking (Android App Links & iOS Universal Links).
 - [x] Menguasai Form System: `Form`, `TextFormField`, `FocusNode`, `AutofillGroup`, dan `AutovalidateMode`.
 - [x] Membuat kustom `TextInputFormatter` untuk format mata uang Rupiah otomatis.
+- [x] Menguasai dialog & pickers: `showDatePicker`, `showTimePicker`, `showModalBottomSheet`.
 - [x] Mengimplementasikan intersepsi tombol back modern menggunakan `PopScope`.
 - [x] Berhasil menguji coba proyek mini Multi-Step Checkout & Form Wizard App.
 
