@@ -1,6 +1,6 @@
 # Modul 02: Flutter UI Mastery, Impeller Engine, & Slivers
 
-Selamat datang di **Modul 02**! Di modul ini, Anda akan mempelajari bagaimana mesin Flutter merender grafis dengan mulus 60/120 FPS melalui **Impeller Rendering Engine**, menguasai konsep fundamental **Tiga Pohon Flutter (*The 3 Trees*)**, memahami siklus hidup widget (*Widget Lifecycle*), aturan emas tata letak (*Box Constraints*), sistem **Keys**, mekanisme **InheritedWidget di balik layar**, hingga merancang antarmuka modern yang memukau menggunakan **Slivers Architecture** dan **Material Design 3**.
+Selamat datang di **Modul 02**! Di modul ini, Anda akan mempelajari bagaimana mesin Flutter merender grafis dengan mulus 60/120 FPS melalui **Impeller Rendering Engine**, menguasai konsep fundamental **Tiga Pohon Flutter (*The 3 Trees*)**, memahami siklus hidup widget (*Widget Lifecycle*), aturan emas tata letak (*Box Constraints*), sistem **Keys**, mekanisme **InheritedWidget di balik layar**, hingga merancang antarmuka modern yang memukau menggunakan **Slivers Architecture**, **Overlay / Stacks**, dan **Material Design 3**.
 
 ---
 
@@ -77,6 +77,12 @@ class _CounterWidgetState extends State<CounterWidget> {
   void initState() {
     super.initState();
     _controller = TextEditingController(text: '0');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Dipanggil saat InheritedWidget (seperti Theme/MediaQuery) berubah
   }
 
   @override
@@ -184,8 +190,6 @@ class UserSessionProvider extends InheritedWidget {
 }
 ```
 
-*Inilah fondasi dasar yang melahirkan state management modern seperti **Provider** dan **Riverpod**!*
-
 ---
 
 ## 📐 6. Aturan Emas Layouting & Box Constraints
@@ -205,8 +209,9 @@ Tiga aturan suci yang mengatur seluruh sistem tata letak Flutter:
 </p>
 
 * **`Container`**: Kotak serbaguna dengan margin, padding, dekorasi (warna, border, border radius, bayangan).
-* **`SizedBox`**: Memberikan jarak tetap atau memaksa anak memiliki lebar/tinggi spesifik (Gunakan `SizedBox` dibanding `Container` kosong untuk performa lebih cepat).
-* **`AspectRatio`**: Mengunci rasio aspek (misal: rasio 16:9 untuk video player atau 1:1 untuk avatar persegi).
+* **`SizedBox`**: Memberikan jarak tetap atau memaksa anak memiliki lebar/tinggi spesifik.
+* **`AspectRatio`**: Mengunci rasio aspek (misal: rasio 16:9 untuk video player).
+* **`FractionallySizedBox`**: Mengatur ukuran anak relatif terhadap ukuran ruang induk (misal: 70% lebar layar).
 * **`Align` & `Center`**: Menempatkan widget anak pada posisi tertentu di dalam ruang induk (misal: `Alignment.bottomRight`).
 
 ---
@@ -215,8 +220,8 @@ Tiga aturan suci yang mengatur seluruh sistem tata letak Flutter:
 
 ```dart
 Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribusi horizontal
-  crossAxisAlignment: CrossAxisAlignment.center,     // Perataan vertikal
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  crossAxisAlignment: CrossAxisAlignment.center,
   children: [
     const Icon(Icons.star, color: Colors.amber),
     const SizedBox(width: 8),
@@ -229,7 +234,7 @@ Row(
       ),
     ),
     
-    const Spacer(), // Memberikan jarak kosong fleksibel
+    const Spacer(),
     ElevatedButton(onPressed: () {}, child: const Text('Beli')),
   ],
 )
@@ -243,7 +248,36 @@ Row(
 
 ---
 
-### 6.3 Mengatasi Error Garis Kuning-Hitam (*RenderFlex Overflow*)
+### 6.3 Lapisan Menumpuk: `Stack`, `Positioned`, & `IndexedStack`
+
+Ketika Anda ingin meletakkan badge notifikasi di atas avatar atau gambar produk dengan label diskon:
+
+```dart
+Stack(
+  clipBehavior: Clip.none,
+  children: [
+    // Lapisan Dasar: Kartu Produk
+    Container(width: 140, height: 180, color: Colors.grey.shade800),
+    
+    // Lapisan Atas: Badge Diskon di pojok kanan atas
+    Positioned(
+      top: 8,
+      right: 8,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(4)),
+        child: const Text('50% OFF', style: TextStyle(fontSize: 10, color: Colors.white)),
+      ),
+    ),
+  ],
+)
+```
+
+> **`IndexedStack`**: Menampilkan **satu widget saja** dari tumpukan anak berdasarkan index yang aktif tanpa menghancurkan state anak lainnya (sangat cocok untuk Tab Bar).
+
+---
+
+### 6.4 Mengatasi Error Garis Kuning-Hitam (*RenderFlex Overflow*)
 
 Garis belang kuning-hitam muncul saat ukuran konten melebihi batas layar yang diberikan induknya.
 
@@ -257,11 +291,10 @@ Garis belang kuning-hitam muncul saat ukuran konten melebihi batas layar yang di
 
 ### 7.1 `GestureDetector` vs `InkWell`
 
-* **`GestureDetector`**: Menangkap semua jenis gestur sentuhan (tap, double tap, long press, drag pan, pinch to zoom) tanpa efek animasi ripple visual.
+* **`GestureDetector`**: Menangkap semua gestur sentuhan (tap, double tap, long press, drag pan, pinch to zoom) tanpa efek visual.
 * **`InkWell`**: Menghasilkan efek animasi percikan air (*Material Ripple Effect*) saat disentuh (Wajib ditaruh di dalam widget `Material`).
 
 ```dart
-// Contoh InkWell dengan efek ripple material
 Material(
   color: Colors.transparent,
   child: InkWell(
@@ -282,7 +315,7 @@ Material(
 ```dart
 Dismissible(
   key: ValueKey(item.id),
-  direction: DismissDirection.endToStart, // Geser ke kiri untuk hapus
+  direction: DismissDirection.endToStart,
   background: Container(
     color: Colors.red,
     alignment: Alignment.centerRight,
@@ -312,17 +345,15 @@ Saat Anda membuat aplikasi seperti **Spotify**, **Netflix**, atau **Tokopedia**,
 
 ### 8.2 Kustomisasi `SliverPersistentHeaderDelegate` (Sticky Header)
 
-Untuk membuat tab bar atau filter kategori yang **menempel di atas** saat di-scroll:
-
 ```dart
 class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
   final String title;
   StickyHeaderDelegate(this.title);
 
   @override
-  double get minExtent => 50.0; // Tinggi saat menempel (paling kecil)
+  double get minExtent => 50.0;
   @override
-  double get maxExtent => 50.0; // Tinggi saat posisi awal
+  double get maxExtent => 50.0;
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -330,10 +361,7 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
       color: Theme.of(context).scaffoldBackgroundColor,
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      ),
+      child: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
     );
   }
 
@@ -344,6 +372,8 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
 }
 ```
 
+> **`SliverFillRemaining`**: Sliver khusus yang mengisi seluruh sisa ruang kosong viewport di bagian bawah layar (misal: untuk menampilkan status *Empty State* atau *Loading Spinner* di tengah layar saat item kosong).
+
 ---
 
 ### 8.3 Kustomisasi Scroll Physics
@@ -353,15 +383,41 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
 
 ---
 
-## 🎨 9. Material Design 3, Cupertino, & ThemeExtension
+## 📱 9. Desain Responsif & Adaptif (`LayoutBuilder` & Breakpoints)
 
-### 9.1 Konfigurasi Material 3 & Skema Warna Otomatis
+Membangun tampilan yang beradaptasi di HP, layar lipat (*Foldable*), dan Tablet:
 
-Material 3 (M3) dapat menghasilkan palet warna harmonis secara otomatis hanya dari satu warna acuan (*seed color*):
+```dart
+Widget buildAdaptiveLayout(BuildContext context) {
+  return LayoutBuilder(
+    builder: (context, constraints) {
+      // Breakpoint Tablet / Layar Lebar (> 600px)
+      if (constraints.maxWidth > 600) {
+        return Row(
+          children: [
+            const NavigationRail(destinations: [], selectedIndex: 0),
+            const VerticalDivider(width: 1),
+            Expanded(child: GridView.count(crossAxisCount: 3, children: [])),
+          ],
+        );
+      }
+      
+      // Layout Smartphone Standar (<= 600px)
+      return ListView.builder(itemCount: 10, itemBuilder: (ctx, i) => ListTile(title: Text('Item $i')));
+    },
+  );
+}
+```
+
+---
+
+## 🎨 10. Material Design 3, Cupertino, & ThemeExtension
+
+### 10.1 Konfigurasi Material 3 & Skema Warna Otomatis
 
 ```dart
 MaterialApp(
-  themeMode: ThemeMode.system, // Mengikuti setting Dark/Light mode di HP
+  themeMode: ThemeMode.system,
   theme: ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
@@ -382,9 +438,7 @@ MaterialApp(
 
 ---
 
-### 9.2 `ThemeExtension`: Membuat Token Warna Khusus
-
-Saat aplikasi Anda memiliki warna branding khusus (misal: warna status transaksi *Sukses*, *Pending*, *Gagal*) yang harus ikut beradaptasi saat Dark Mode:
+### 10.2 `ThemeExtension`: Membuat Token Warna Khusus
 
 ```dart
 @immutable
@@ -418,7 +472,7 @@ class StatusColors extends ThemeExtension<StatusColors> {
 
 ---
 
-## 🖼️ 10. Manajemen Aset & Resolusi Layar (1x, 2x, 3x)
+## 🖼️ 11. Manajemen Aset & Resolusi Layar (1x, 2x, 3x)
 
 Untuk memastikan gambar tajam di semua kerapatan layar (*Retina Display*), Flutter menggunakan konvensi folder berbasis rasio densitas pixel:
 
@@ -440,7 +494,7 @@ flutter:
 
 ---
 
-## 💻 11. Hands-on Project: Spotify & Netflix Media Feed Replica
+## 💻 12. Hands-on Project: Spotify & Netflix Media Feed Replica
 
 Mari kita satukan seluruh konsep modul ini menjadi satu halaman katalog media yang responsif dan elegan:
 
@@ -594,7 +648,7 @@ class MediaFeedPage extends StatelessWidget {
 
 ---
 
-## ⚠️ 12. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
+## ⚠️ 13. Jebakan Umum (*Common Pitfalls*) & Solusi Kilat
 
 | Kesalahan Umum | Gejala Error | Solusi yang Benar |
 |---|---|---|
@@ -606,7 +660,7 @@ class MediaFeedPage extends StatelessWidget {
 
 ---
 
-## 📝 13. Kuis Pemahaman Modul 02
+## 📝 14. Kuis Pemahaman Modul 02
 
 1. **Apa perbedaan antara Widget Tree dan RenderObject Tree?**  
    *Jawaban:* Widget Tree adalah blueprint/naskah konfigurasi UI yang bersifat *immutable* dan sangat ringan. RenderObject Tree adalah objek nyata yang menghitung koordinat layout, batas ukuran (*constraints*), dan mengecat pixel visual ke layar HP.
@@ -620,12 +674,14 @@ class MediaFeedPage extends StatelessWidget {
 ## 🎯 Rangkuman & Checklist Kompetensi
 
 - [x] Memahami arsitektur internal Flutter: Impeller Engine & Tiga Pohon (*The 3 Trees*).
-- [x] Menguasai siklus hidup `StatefulWidget` (`initState`, `didUpdateWidget`, `dispose`) dan `AppLifecycleListener`.
+- [x] Menguasai siklus hidup `StatefulWidget` (`initState`, `didChangeDependencies`, `didUpdateWidget`, `dispose`) dan `AppLifecycleListener`.
 - [x] Memahami fungsi dan jenis `Key` (`ValueKey`, `UniqueKey`, `GlobalKey`).
 - [x] Memahami mekanisme `InheritedWidget` dan `updateShouldNotify` di balik layar.
 - [x] Menguasai aturan emas layouting: *Constraints go down, sizes go up, parent sets position*.
+- [x] Menguasai Flexbox, Box Model, dan Overlays (`Stack`, `Positioned`, `IndexedStack`, `FractionallySizedBox`).
 - [x] Menguasai interaksi sentuh: `GestureDetector`, `InkWell`, dan `Dismissible` swipe-to-delete.
-- [x] Menguasai arsitektur Slivers: `CustomScrollView`, `SliverAppBar`, `SliverPersistentHeaderDelegate`, `SliverList`, `SliverGrid`, dan `SliverToBoxAdapter`.
+- [x] Menguasai arsitektur Slivers: `CustomScrollView`, `SliverAppBar`, `SliverPersistentHeaderDelegate`, `SliverList`, `SliverGrid`, `SliverFillRemaining`, dan `SliverToBoxAdapter`.
+- [x] Menguasai perancangan UI adaptif dan responsif dengan `LayoutBuilder` & `MediaQuery` breakpoint.
 - [x] Mengimplementasikan Material Design 3, Dark/Light Mode, dan custom `ThemeExtension`.
 - [x] Mengelola aset gambar multi-densitas (1x, 2x, 3x) dan font kustom.
 - [x] Berhasil membangun proyek mini Media Feed Replica dengan efek collapsing header modern.
