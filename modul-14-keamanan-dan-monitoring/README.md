@@ -66,6 +66,32 @@ class SecurityGuard {
 
 ---
 
+### 2.3 Proteksi Tangkapan Layar & Rekaman Layar (`FLAG_SECURE`)
+
+Untuk mencegah malware atau pengguna lain merekam PIN/kata sandi, blokir screenshot di level native Android & iOS:
+
+**Di Android (`android/app/src/main/kotlin/.../MainActivity.kt`):**
+```kotlin
+package com.quantum.vault
+
+import android.os.Bundle
+import android.view.WindowManager
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Mencegah screenshot & screen recording serta menyembunyikan thumbnail di app switcher
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
+    }
+}
+```
+
+---
+
 ## 🔒 3. Keamanan Jaringan & SSL/TLS Certificate Pinning
 
 Serangan *Man-In-The-Middle (MITM)* terjadi ketika hacker memasang sertifikat root palsu di perangkat korban untuk membaca lalu lintas data HTTPS (termasuk password dan nomor rekening).
@@ -493,7 +519,7 @@ class _SecureBankingDashboardState extends State<SecureBankingDashboard> {
 
 - [x] Menguasai teknik Code Obfuscation dan manajemen berkas Symbol Map (`--obfuscate`).
 - [x] Mengimplementasikan deteksi perangkat Root (Android) dan Jailbreak (iOS).
-- [x] Menerapkan perlindungan anti-screenshot dan anti-rekam layar (`FLAG_SECURE`).
+- [x] Menerapkan perlindungan anti-screenshot dan anti-rekam layar (`FLAG_SECURE` Android & iOS).
 - [x] Menguasai SSL/TLS Certificate Pinning dengan `Dio` untuk menangkal serangan MITM.
 - [x] Menyimpan token kredensial dan PIN di Android Keystore & iOS Keychain Hardware Vault.
 - [x] Memahami kepatuhan regulasi privasi data UU PDP & GDPR (Consent, Masking, Right to Erasure).
