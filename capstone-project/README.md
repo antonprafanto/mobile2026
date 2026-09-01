@@ -155,7 +155,76 @@ class PosTransactionService {
 
 ---
 
-## 💻 5. Hands-on Runnable SuperApp Master Template: QuantumCommerce 2026
+## 🖨️ 5. Integrasi Hardware POS: Cetak Struk ESC/POS & Payment Webhook
+
+### 5.1 Native Platform Channel Cetak Struk Bluetooth Thermal (Kotlin)
+```kotlin
+// android/app/src/main/kotlin/com/quantum/pos/PrinterChannelPlugin.kt
+package com.quantum.pos
+
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
+import java.io.OutputStream
+
+class PrinterChannelPlugin(private val outputStream: OutputStream?) : MethodChannel.MethodCallHandler {
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+        if (call.method == "printReceiptBytes") {
+            val bytes = call.argument<ByteArray>("bytes")
+            if (bytes != null && outputStream != null) {
+                outputStream.write(bytes)
+                outputStream.flush()
+                result.success(true)
+            } else {
+                result.error("PRINT_FAILED", "Koneksi printer thermal terputus", null)
+            }
+        } else {
+            result.notImplemented()
+        }
+    }
+}
+```
+
+### 5.2 Backend Webhook Handler untuk Verifikasi Pembayaran (Dart Frog)
+```dart
+// routes/api/v1/payments/webhook.dart
+import 'dart:convert';
+import 'dart:io';
+import 'package:crypto/crypto.dart';
+import 'package:dart_frog/dart_frog.dart';
+
+Future<Response> onRequest(RequestContext context) async {
+  if (context.request.method != HttpMethod.post) {
+    return Response(statusCode: HttpStatus.methodNotAllowed);
+  }
+
+  final body = await context.request.json() as Map<String, dynamic>;
+  final orderId = body['order_id'] as String;
+  final statusCode = body['status_code'] as String;
+  final grossAmount = body['gross_amount'] as String;
+  final signatureKey = body['signature_key'] as String;
+
+  // Verifikasi SHA-512 Server Signature
+  const serverKey = 'SB-Mid-server-YOUR_SECRET_KEY';
+  final rawSignature = '$orderId$statusCode$grossAmount$serverKey';
+  final expectedSignature = sha512.convert(utf8.encode(rawSignature)).toString();
+
+  if (signatureKey != expectedSignature) {
+    return Response(statusCode: HttpStatus.unauthorized, body: 'Invalid Signature');
+  }
+
+  // Update Status Order di PostgreSQL
+  if (body['transaction_status'] == 'settlement') {
+    await updateOrderStatusInDb(orderId, status: 'PAID');
+    await sendFcmPushNotification(orderId, title: 'Pembayaran Diterima!');
+  }
+
+  return Response.json(body: {'status': 'OK'});
+}
+```
+
+---
+
+## 💻 6. Hands-on Runnable SuperApp Master Template: QuantumCommerce 2026
 
 Berikut adalah purwarupa aplikasi utuh yang menggabungkan **Cart State Engine**, **Simulasi GPS Live Courier Movement**, dan **Offline Sync Engine**:
 
@@ -431,7 +500,7 @@ class _SuperAppDashboardState extends State<SuperAppDashboard> {
 
 ---
 
-## 📊 6. Rubrik Penilaian & Kriteria Kelulusan Capstone
+## 📊 7. Rubrik Penilaian & Kriteria Kelulusan Capstone
 
 | Kategori | Bobot | Kriteria Penilaian Kelulusan |
 |---|---|---|
