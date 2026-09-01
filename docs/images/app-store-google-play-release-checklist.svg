@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">CHECKLIST LENGKAP RILIS GOOGLE PLAY STORE &amp; APPLE APP STORE</text>
+
+  <!-- Column 1: Semantic Versioning -->
+  <g transform="translate(30, 55)">
+    <rect width="180" height="195" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="180" height="32" rx="10" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="90" y="21" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">1. VERSIONING</text>
+
+    <!-- Checklist -->
+    <rect x="10" y="45" width="160" height="135" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="20" y="68" fill="#F8FAFC" font-family="monospace" font-size="9">☑ SemVer Standard</text>
+    <text x="25" y="84" fill="#38BDF8" font-family="monospace" font-size="8">version: 1.2.0+45</text>
+    <text x="20" y="104" fill="#F8FAFC" font-family="monospace" font-size="9">☑ versionCode +1</text>
+    <text x="20" y="124" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Changelog / Release</text>
+    <text x="25" y="140" fill="#94A3B8" font-family="monospace" font-size="8">Notes Bahasa ID &amp; EN</text>
+    <text x="90" y="168" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">✓ Pubspec Ready</text>
+  </g>
+
+  <!-- Column 2: Signing & Keystore -->
+  <g transform="translate(230, 55)">
+    <rect width="180" height="195" rx="10" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="180" height="32" rx="10" fill="#B45309" fill-opacity="0.25"/>
+    <text x="90" y="21" fill="#FDE047" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">2. CODE SIGNING</text>
+
+    <!-- Checklist -->
+    <rect x="10" y="45" width="160" height="135" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="20" y="68" fill="#F8FAFC" font-family="monospace" font-size="9">☑ release.keystore.jks</text>
+    <text x="20" y="88" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Play App Signing</text>
+    <text x="20" y="108" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Apple Distribution</text>
+    <text x="25" y="124" fill="#94A3B8" font-family="monospace" font-size="8">Certificate &amp; Profile</text>
+    <text x="20" y="144" fill="#FDE047" font-family="monospace" font-size="9">☑ GitHub Secrets</text>
+    <text x="90" y="168" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">✓ Vault Secure</text>
+  </g>
+
+  <!-- Column 3: Assets & Graphics -->
+  <g transform="translate(430, 55)">
+    <rect width="190" height="195" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="2" filter="url(#glow)"/>
+    <rect width="190" height="32" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <text x="95" y="21" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">3. ASSETS &amp; METADATA</text>
+
+    <!-- Checklist -->
+    <rect x="10" y="45" width="170" height="135" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="20" y="68" fill="#F8FAFC" font-family="monospace" font-size="9">☑ App Icon 512x512 PNG</text>
+    <text x="20" y="88" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Feature Graphic (Play)</text>
+    <text x="20" y="108" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Screenshots Device:</text>
+    <text x="25" y="124" fill="#94A3B8" font-family="monospace" font-size="8">iPhone 6.7", 6.5", iPad</text>
+    <text x="20" y="144" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Video Trailer Demo</text>
+    <text x="95" y="168" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">✓ Visuals Approved</text>
+  </g>
+
+  <!-- Column 4: Compliance & Privacy -->
+  <g transform="translate(640, 55)">
+    <rect width="190" height="195" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="190" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="95" y="21" fill="#A5B4FC" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">4. PRIVACY &amp; LEGAL</text>
+
+    <!-- Checklist -->
+    <rect x="10" y="45" width="170" height="135" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="20" y="68" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Privacy Policy URL</text>
+    <text x="20" y="88" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Data Safety Form</text>
+    <text x="20" y="108" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Account Deletion URL</text>
+    <text x="20" y="128" fill="#F8FAFC" font-family="monospace" font-size="9">☑ Content Rating 12+</text>
+    <text x="20" y="148" fill="#FDA4AF" font-family="monospace" font-size="9">☑ Finansial Disclosures</text>
+    <text x="95" y="168" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">✓ 100% Compliant</text>
+  </g>
+</svg>
