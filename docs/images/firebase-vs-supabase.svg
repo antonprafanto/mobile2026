@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">KOMPARASI BaaS: FIREBASE (NOSQL) VS SUPABASE (POSTGRESQL RELASIONAL)</text>
+
+  <!-- Left: Firebase -->
+  <g transform="translate(30, 50)">
+    <rect width="380" height="210" rx="12" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="380" height="34" rx="12" fill="#B45309" fill-opacity="0.25"/>
+    <text x="190" y="23" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">FIREBASE CLOUD FIRESTORE (NOSQL)</text>
+
+    <!-- Schema tree -->
+    <rect x="20" y="48" width="340" height="75" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="35" y="70" fill="#FDE047" font-family="monospace" font-size="11">Collection: "users"</text>
+    <text x="50" y="90" fill="#93C5FD" font-family="monospace" font-size="10">↳ Document: "user_123" {name, email}</text>
+    <text x="65" y="110" fill="#34D399" font-family="monospace" font-size="10">↳ Subcollection: "orders" {total: 50000}</text>
+
+    <text x="190" y="145" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Keamanan: <tspan fill="#FDE047" font-weight="bold">Firestore Security Rules</tspan></text>
+    <text x="190" y="165" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">allow read, write: if request.auth.uid == userId;</text>
+    <text x="190" y="190" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">⚡ Query Cepat &amp; Realtime Snapshot Bawaan</text>
+  </g>
+
+  <!-- Right: Supabase -->
+  <g transform="translate(450, 50)">
+    <rect width="380" height="210" rx="12" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5" filter="url(#glow)"/>
+    <rect width="380" height="34" rx="12" fill="#059669" fill-opacity="0.25"/>
+    <text x="190" y="23" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">SUPABASE POSTGRESQL (SQL RELASIONAL)</text>
+
+    <!-- Schema table -->
+    <rect x="20" y="48" width="340" height="75" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="35" y="70" fill="#34D399" font-family="monospace" font-size="11">Tabel: users (id, name, email)</text>
+    <text x="35" y="90" fill="#38BDF8" font-family="monospace" font-size="10">Tabel: orders (id, user_id, total_harga)</text>
+    <text x="35" y="110" fill="#A7F3D0" font-family="monospace" font-size="10">↳ Foreign Key: orders.user_id ➔ users.id (JOIN)</text>
+
+    <text x="190" y="145" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Keamanan: <tspan fill="#34D399" font-weight="bold">Row Level Security (RLS)</tspan></text>
+    <text x="190" y="165" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">CREATE POLICY "User Data" ON users FOR ALL USING (auth.uid() = id);</text>
+    <text x="190" y="190" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">🏛️ Relasional Kuat, ACID Transaksi &amp; Bebas Lock-In</text>
+  </g>
+</svg>

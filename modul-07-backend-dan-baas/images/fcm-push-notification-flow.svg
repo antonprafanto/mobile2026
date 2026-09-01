@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">ALUR SISTEM PUSH NOTIFIKASI: FCM &amp; APNs KE SMARTPHONE</text>
+
+  <!-- Step 1: Backend Server -->
+  <g transform="translate(30, 55)">
+    <rect width="165" height="195" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="165" height="32" rx="10" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="82" y="21" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">1. App Server</text>
+
+    <text x="82" y="70" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Dart Frog / Cloud</text>
+    <text x="82" y="92" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Kirim Payload</text>
+
+    <rect x="10" y="120" width="145" height="55" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="82" y="142" fill="#FDE047" font-family="monospace" font-size="9" text-anchor="middle">fcm_token: "xyz..."</text>
+    <text x="82" y="160" fill="#94A3B8" font-family="monospace" font-size="9" text-anchor="middle">title: "Diskon 50%"</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 200 150 L 230 150" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="230,145 240,150 230,155" fill="#38BDF8"/>
+
+  <!-- Step 2: FCM Gateway -->
+  <g transform="translate(240, 55)">
+    <rect width="165" height="195" rx="10" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="165" height="32" rx="10" fill="#B45309" fill-opacity="0.25"/>
+    <text x="82" y="21" fill="#FDE047" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">2. Google FCM</text>
+
+    <text x="82" y="70" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Firebase Cloud</text>
+    <text x="82" y="92" fill="#FDE047" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Messaging Hub</text>
+
+    <rect x="10" y="120" width="145" height="55" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="82" y="142" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">Rute Android ➔ Play</text>
+    <text x="82" y="160" fill="#38BDF8" font-family="monospace" font-size="9" text-anchor="middle">Rute iOS ➔ APNs</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 410 150 L 440 150" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="440,145 450,150 440,155" fill="#818CF8"/>
+
+  <!-- Step 3: Platform Services -->
+  <g transform="translate(450, 55)">
+    <rect width="175" height="195" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="175" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="87" y="21" fill="#A5B4FC" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">3. OS Services</text>
+
+    <text x="87" y="70" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Play Services / APNs</text>
+
+    <rect x="10" y="90" width="155" height="40" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="87" y="115" fill="#34D399" font-family="monospace" font-size="10" text-anchor="middle">Google Play (Android)</text>
+
+    <rect x="10" y="140" width="155" height="40" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="87" y="165" fill="#38BDF8" font-family="monospace" font-size="10" text-anchor="middle">Apple APNs (iOS)</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 630 150 L 660 150" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="660,145 670,150 660,155" fill="#10B981"/>
+
+  <!-- Step 4: Flutter App Lifecycle -->
+  <g transform="translate(670, 55)">
+    <rect width="160" height="195" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="2"/>
+    <rect width="160" height="32" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <text x="80" y="21" fill="#34D399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">4. Flutter App</text>
+
+    <text x="80" y="65" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">3 Status Penerimaan:</text>
+
+    <rect x="10" y="80" width="140" height="30" rx="4" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="80" y="100" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">1. onMessage (Foreground)</text>
+
+    <rect x="10" y="115" width="140" height="30" rx="4" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="80" y="135" fill="#FDE047" font-family="monospace" font-size="9" text-anchor="middle">2. Background Handler</text>
+
+    <rect x="10" y="150" width="140" height="30" rx="4" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="80" y="170" fill="#A5B4FC" font-family="monospace" font-size="9" text-anchor="middle">3. getInitialMessage (Dead)</text>
+  </g>
+</svg>
