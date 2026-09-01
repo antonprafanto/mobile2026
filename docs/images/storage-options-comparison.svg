@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">SPEKTRUM PENYIMPANAN DATA LOKAL DI FLUTTER</text>
+
+  <!-- Card 1: SharedPreferences -->
+  <g transform="translate(25, 50)">
+    <rect width="190" height="210" rx="10" fill="url(#cardGrad)" stroke="#64748B" stroke-width="1.5"/>
+    <rect width="190" height="32" rx="10" fill="#334155" fill-opacity="0.3"/>
+    <text x="95" y="21" fill="#94A3B8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">shared_prefs</text>
+
+    <text x="95" y="60" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Key-Value Ringan</text>
+    <text x="95" y="80" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Tipe: int, bool, String</text>
+    <text x="95" y="105" fill="#FDA4AF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">⚠️ Tidak Terenkripsi</text>
+    
+    <rect x="15" y="130" width="160" height="65" rx="6" fill="#0F172A" stroke="#475569" stroke-width="1"/>
+    <text x="95" y="152" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Ideal untuk:</text>
+    <text x="95" y="170" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Dark Mode, Status Onboarding, Bahasa</text>
+  </g>
+
+  <!-- Card 2: Secure Storage -->
+  <g transform="translate(230, 50)">
+    <rect width="190" height="210" rx="10" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="190" height="32" rx="10" fill="#B45309" fill-opacity="0.25"/>
+    <text x="95" y="21" fill="#FDE047" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">secure_storage</text>
+
+    <text x="95" y="60" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Enkripsi Hardware</text>
+    <text x="95" y="80" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Keystore / Keychain</text>
+    <text x="95" y="105" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">🔒 Aman dari Root/Jailbreak</text>
+
+    <rect x="15" y="130" width="160" height="65" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="95" y="152" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Ideal untuk:</text>
+    <text x="95" y="170" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Token JWT, Refresh Token, PIN, Biometric Secret</text>
+  </g>
+
+  <!-- Card 3: Drift (SQL ORM) -->
+  <g transform="translate(435, 50)">
+    <rect width="200" height="210" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="2" filter="url(#glow)"/>
+    <rect width="200" height="32" rx="10" fill="#059669" fill-opacity="0.25"/>
+    <text x="100" y="21" fill="#34D399" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">DRIFT (SQL ORM)</text>
+
+    <text x="100" y="60" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Relasional &amp; Reaktif</text>
+    <text x="100" y="80" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Type-Safe, Schema Migrations</text>
+    <text x="100" y="105" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">⚡ Stream watch() Auto-UI</text>
+
+    <rect x="15" y="130" width="170" height="65" rx="6" fill="#064E3B" fill-opacity="0.25" stroke="#10B981" stroke-width="1"/>
+    <text x="100" y="152" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Ideal untuk:</text>
+    <text x="100" y="170" fill="#A7F3D0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Offline-First App, Transaksi, Sync Queue, Chat History</text>
+  </g>
+
+  <!-- Card 4: Hive / Isar -->
+  <g transform="translate(650, 50)">
+    <rect width="185" height="210" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="185" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="92" y="21" fill="#818CF8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">HIVE / ISAR</text>
+
+    <text x="92" y="60" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">NoSQL Ultra-Cepat</text>
+    <text x="92" y="80" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Binary Box Storage</text>
+    <text x="92" y="105" fill="#818CF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Zero-Native Dependencies</text>
+
+    <rect x="15" y="130" width="155" height="65" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="92" y="152" fill="#818CF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Ideal untuk:</text>
+    <text x="92" y="170" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Caching Response API, Riwayat Pencarian, Feed Cache</text>
+  </g>
+</svg>

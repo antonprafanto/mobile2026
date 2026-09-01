@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">ARSITEKTUR DRIFT ORM (SQL TYPE-SAFE &amp; REAKTIF DI FLUTTER)</text>
+
+  <!-- Step 1: Dart Table Definition -->
+  <g transform="translate(30, 50)">
+    <rect width="240" height="200" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="240" height="32" rx="10" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="120" y="21" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1. Definisi Tabel Dart</text>
+
+    <text x="15" y="60" fill="#E2E8F0" font-family="monospace" font-size="11">class Tasks extends Table {</text>
+    <text x="25" y="85" fill="#93C5FD" font-family="monospace" font-size="11">  IntColumn get id =></text>
+    <text x="35" y="105" fill="#38BDF8" font-family="monospace" font-size="11">    integer().autoIncrement()();</text>
+    <text x="25" y="130" fill="#93C5FD" font-family="monospace" font-size="11">  TextColumn get title =></text>
+    <text x="35" y="150" fill="#38BDF8" font-family="monospace" font-size="11">    text().withLength(max: 100)();</text>
+    <text x="25" y="175" fill="#34D399" font-family="monospace" font-size="11">  BoolColumn get isDone => ...</text>
+    <text x="15" y="195" fill="#E2E8F0" font-family="monospace" font-size="11">}</text>
+  </g>
+
+  <!-- Arrow 1: build_runner -->
+  <g transform="translate(275, 125)">
+    <path d="M 0 10 L 40 10" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="40,5 50,10 40,15" fill="#818CF8"/>
+    <text x="25" y="-5" fill="#A5B4FC" font-family="monospace" font-size="9" text-anchor="middle">drift_dev</text>
+  </g>
+
+  <!-- Step 2: Generated Database Class -->
+  <g transform="translate(330, 50)">
+    <rect width="240" height="200" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="240" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="120" y="21" fill="#818CF8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">2. Generated Database</text>
+
+    <text x="15" y="60" fill="#E2E8F0" font-family="monospace" font-size="11">@DriftDatabase(tables: [Tasks])</text>
+    <text x="15" y="80" fill="#E2E8F0" font-family="monospace" font-size="11">class AppDatabase extends</text>
+    <text x="15" y="100" fill="#818CF8" font-family="monospace" font-size="11">  _$AppDatabase {</text>
+    <text x="25" y="125" fill="#34D399" font-family="monospace" font-size="11">  Stream&lt;List&lt;Task&gt;&gt; watch() {</text>
+    <text x="35" y="145" fill="#FDE047" font-family="monospace" font-size="11">    return select(tasks).watch();</text>
+    <text x="25" y="165" fill="#34D399" font-family="monospace" font-size="11">  }</text>
+    <text x="15" y="188" fill="#E2E8F0" font-family="monospace" font-size="11">}</text>
+  </g>
+
+  <!-- Arrow 2: Stream subscription -->
+  <g transform="translate(575, 125)">
+    <path d="M 0 10 L 40 10" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="40,5 50,10 40,15" fill="#10B981"/>
+    <text x="25" y="-5" fill="#34D399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">watch()</text>
+  </g>
+
+  <!-- Step 3: Reactive StreamBuilder UI -->
+  <g transform="translate(620, 50)">
+    <rect width="210" height="200" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect width="210" height="32" rx="10" fill="#059669" fill-opacity="0.2"/>
+    <text x="105" y="21" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">3. StreamBuilder UI</text>
+
+    <text x="15" y="65" fill="#E2E8F0" font-family="monospace" font-size="11">StreamBuilder&lt;List&gt;(</text>
+    <text x="25" y="90" fill="#93C5FD" font-family="monospace" font-size="11">stream: db.watch(),</text>
+    <text x="25" y="115" fill="#34D399" font-family="monospace" font-size="11">builder: (ctx, snap) {</text>
+    <text x="35" y="140" fill="#FDE047" font-family="monospace" font-size="11">  return ListView(...);</text>
+    <text x="25" y="165" fill="#34D399" font-family="monospace" font-size="11">}</text>
+    <text x="15" y="185" fill="#E2E8F0" font-family="monospace" font-size="11">)</text>
+  </g>
+</svg>
