@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">FITUR MODERN DART 3: RECORDS, PATTERN MATCHING &amp; SEALED SWITCH</text>
+
+  <!-- Box 1: Records & Tuples -->
+  <g transform="translate(30, 55)">
+    <rect width="250" height="200" rx="10" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="250" height="32" rx="10" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="125" y="21" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1. Records (Multiple Return)</text>
+
+    <text x="15" y="65" fill="#E2E8F0" font-family="monospace" font-size="11">(lat, lng, {name}) getPos() {</text>
+    <text x="25" y="88" fill="#93C5FD" font-family="monospace" font-size="11">  return (-6.2, 106.8,</text>
+    <text x="35" y="108" fill="#38BDF8" font-family="monospace" font-size="11">    name: 'Monas');</text>
+    <text x="15" y="130" fill="#E2E8F0" font-family="monospace" font-size="11">}</text>
+
+    <rect x="15" y="145" width="220" height="40" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="125" y="163" fill="#F8FAFC" font-family="monospace" font-size="10" text-anchor="middle">var (lat, lng, name: n) = getPos();</text>
+    <text x="125" y="178" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">✅ Destructuring langsung ke variabel</text>
+  </g>
+
+  <!-- Box 2: Switch Expression -->
+  <g transform="translate(305, 55)">
+    <rect width="250" height="200" rx="10" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="250" height="32" rx="10" fill="#4F46E5" fill-opacity="0.2"/>
+    <text x="125" y="21" fill="#818CF8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">2. Switch Expression</text>
+
+    <text x="15" y="65" fill="#E2E8F0" font-family="monospace" font-size="11">String getStatus(int code) =&gt;</text>
+    <text x="15" y="85" fill="#818CF8" font-family="monospace" font-size="11">  switch (code) {</text>
+    <text x="25" y="105" fill="#34D399" font-family="monospace" font-size="11">    200 =&gt; 'Sukses ✅',</text>
+    <text x="25" y="125" fill="#FDE047" font-family="monospace" font-size="11">    400 || 422 =&gt; 'Validasi ⚠️',</text>
+    <text x="25" y="145" fill="#FDA4AF" font-family="monospace" font-size="11">    &gt;= 500 =&gt; 'Server Error 💥',</text>
+    <text x="25" y="165" fill="#94A3B8" font-family="monospace" font-size="11">    _ =&gt; 'Unknown ❓',</text>
+    <text x="15" y="185" fill="#818CF8" font-family="monospace" font-size="11">  };</text>
+  </g>
+
+  <!-- Box 3: Sealed Class Exhaustive -->
+  <g transform="translate(580, 55)">
+    <rect width="250" height="200" rx="10" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect width="250" height="32" rx="10" fill="#059669" fill-opacity="0.2"/>
+    <text x="125" y="21" fill="#34D399" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">3. Sealed Exhaustive Match</text>
+
+    <text x="15" y="65" fill="#E2E8F0" font-family="monospace" font-size="11">sealed class AuthState {}</text>
+    <text x="15" y="85" fill="#A7F3D0" font-family="monospace" font-size="11">class Initial extends AuthState</text>
+    <text x="15" y="105" fill="#A7F3D0" font-family="monospace" font-size="11">class Success extends AuthState</text>
+    <text x="15" y="125" fill="#A7F3D0" font-family="monospace" font-size="11">class Error extends AuthState</text>
+
+    <rect x="15" y="145" width="220" height="40" rx="6" fill="#064E3B" fill-opacity="0.3" stroke="#10B981" stroke-width="1"/>
+    <text x="125" y="163" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">🔒 Compiler Guarantee</text>
+    <text x="125" y="178" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Error jika ada state yang terlewat!</text>
+  </g>
+</svg>

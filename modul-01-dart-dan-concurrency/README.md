@@ -22,6 +22,10 @@ Bayangkan Anda sedang memimpin sebuah restoran cepat saji berstandar internasion
 
 Dart adalah bahasa yang bertipe kuat (*strongly typed*) dengan fitur **Sound Null Safety**. Artinya, secara bawaan sebuah variabel **tidak boleh bernilai `null`** kecuali Anda mengizinkannya secara eksplisit.
 
+<p align="center">
+  <img src="images/null-safety-operators.svg" alt="Lima Operator Sound Null Safety di Dart" width="700">
+</p>
+
 ### 2.1 Deklarasi Variabel & Immutability
 
 ```dart
@@ -67,8 +71,12 @@ List<String?>? d = null;            // List boleh null, isinya pun boleh null
 
 Dart 3 memperkenalkan fitur revolusioner yang membuat kode lebih ringkas, aman, dan ekspresif.
 
+<p align="center">
+  <img src="images/dart3-pattern-matching-flow.svg" alt="Fitur Modern Dart 3" width="700">
+</p>
+
 ### 3.1 Records & Tuples (Multiple Return Values)
-Anda tidak perlu lagi membuat class model sementara hanya untuk mengembalikan 2 atau lebih nilai dari sebuah fungsi.
+Anda tidak perlu lagi membuat class model sementara hanya untuk mengembalikan 2 atau lebih nilai dari sebuah fungsi:
 
 ```dart
 // Mengembalikan Record dengan posisi dan nama (Positional & Named fields)
@@ -100,13 +108,21 @@ String formatStatusPesanan(int statusCode) => switch (statusCode) {
 
 ---
 
-### 3.3 Sealed Classes & Exhaustive Checking
-`sealed class` sangat ideal untuk memodelkan **State Aplikasi** (digunakan di BLoC / Riverpod). Compiler akan menjamin seluruh kondisi tertangani tanpa butuh `default` case:
+### 3.3 Class Modifiers di Dart 3
+Dart 3 memperkenalkan pengatur izin class yang sangat ketat untuk pembuatan library dan arsitektur enterprise:
+
+| Modifier | Dapat Di-extend (`extends`)? | Dapat Di-implement (`implements`)? | Dapat Di-instansiasi (`new`)? | Kapan Digunakan? |
+|---|:---:|:---:|:---:|---|
+| **`sealed`** | Hanya di berkas yang sama | Hanya di berkas yang sama | ❌ Tidak | State Management (BLoC/Riverpod) untuk *exhaustive matching*. |
+| **`abstract`** | ✅ Ya | ✅ Ya | ❌ Tidak | Kontrak dasar interface atau template class. |
+| **`base`** | ✅ Ya (subclass wajib `base`/`final`/`sealed`) | ❌ Tidak | ✅ Ya | Memaksa pewarisan method utuh tanpa boleh dirombak kontraknya. |
+| **`interface`**| ❌ Di luar library | ✅ Ya | ✅ Ya | Kontrak murni yang wajib diimplementasikan ulang di luar library. |
+| **`final`** | ❌ Tidak boleh di luar library | ❌ Tidak boleh di luar library | ✅ Ya | Mencegah pembajakan / perubahan class dari luar package. |
+| **`mixin class`**| ✅ Ya | ✅ Ya | ✅ Ya (bisa `with`) | Class yang bisa digunakan sebagai `mixin` sekaligus class biasa. |
 
 ```dart
-// Mendefinisikan seluruh kemungkinan status autentikasi
+// Contoh Sealed Class Hierarchy
 sealed class AuthState {}
-
 class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 class AuthSuccess extends AuthState {
@@ -116,16 +132,6 @@ class AuthSuccess extends AuthState {
 class AuthFailure extends AuthState {
   final String errorMessage;
   AuthFailure(this.errorMessage);
-}
-
-// Compiler akan ERROR jika salah satu state lupa di-handle!
-String renderUI(AuthState state) {
-  return switch (state) {
-    AuthInitial() => 'Tampilkan Tombol Login',
-    AuthLoading() => 'Tampilkan Spinner Loading...',
-    AuthSuccess(:final email) => 'Selamat Datang, $email!',
-    AuthFailure(:final errorMessage) => 'Gagal Masuk: $errorMessage',
-  };
 }
 ```
 
@@ -147,17 +153,12 @@ enum PaymentMethod {
 
   int hitungTotal(int harga) => harga + fee;
 }
-
-void main() {
-  final metode = PaymentMethod.qris;
-  print('${metode.label} -> Total Tagihan: Rp ${metode.hitungTotal(50000)}');
-}
 ```
 
 ---
 
 ### 3.5 Extension Types (Dart 3.3+ Zero-Cost Abstraction)
-`extension type` memberikan keamanan tipe data saat *compile-time* tanpa membebani memori (*zero runtime overhead*):
+`extension type` memberikan keamanan tipe data saat *compile-time* tanpa membebani alokasi memori (*zero runtime overhead*):
 
 ```dart
 // Membungkus tipe int murni menjadi UserId bertipe kuat
@@ -176,35 +177,42 @@ void main() {
 
 ## 📦 4. Koleksi & Functional Programming
 
-Dart memiliki koleksi data yang sangat fleksibel untuk memanipulasi data sebelum ditampilkan ke UI.
+Dart memiliki koleksi data yang sangat fleksibel (`List`, `Map`, `Set`, `Queue`) untuk memanipulasi data:
 
 ```dart
+import 'dart:collection';
+
 void main() {
-  final daftarHarga = [15000, 25000, 50000, 100000];
+  final daftarHarga = [15000, 25000, 50000, 100000, 75000];
   final isAdmin = true;
 
   // 1. Collection-If & Spread Operator (...)
   final menuNavigasi = [
     'Home',
     'Katalog',
-    if (isAdmin) 'Dashboard Admin', // Hanya muncul jika admin
-    ...['Pengaturan', 'Keluar'],    // Menggabungkan list lain
+    if (isAdmin) 'Dashboard Admin',
+    ...['Pengaturan', 'Keluar'],
   ];
 
-  // 2. Functional Methods: map, where, fold
+  // 2. Functional Methods: where, map, fold, reduce
   final hargaDiskon = daftarHarga
-      .where((harga) => harga >= 25000)      // Filter: harga >= 25000
-      .map((harga) => (harga * 0.9).round()) // Transformasi: Diskon 10%
+      .where((h) => h >= 25000)
+      .map((h) => (h * 0.9).round())
       .toList();
 
-  final totalBelanja = hargaDiskon.fold<int>(
-    0, 
-    (total, item) => total + item,
-  );
+  final total = hargaDiskon.fold<int>(0, (sum, item) => sum + item);
+  final hargaTertinggi = hargaDiskon.reduce((curr, next) => curr > next ? curr : next);
 
-  print('Menu: $menuNavigasi');
-  print('Harga Diskon: $hargaDiskon');
-  print('Total Tagihan: Rp $totalBelanja');
+  // 3. Utilitas Tambahan: any, every, take, skip
+  final adaHargaMahal = hargaDiskon.any((h) => h > 80000); // true
+  final semuaValid = hargaDiskon.every((h) => h > 0);      // true
+  final duaPertama = hargaDiskon.take(2).toList();
+  final sisaSetelahDua = hargaDiskon.skip(2).toList();
+
+  // 4. Queue (Antrean FIFO / LIFO Efisien)
+  final Queue<String> antreanTiket = Queue()..addAll(['Antrean 1', 'Antrean 2']);
+  antreanTiket.addLast('Antrean 3');
+  final diproses = antreanTiket.removeFirst();
 }
 ```
 
@@ -212,33 +220,28 @@ void main() {
 
 ## 🏛️ 5. Object-Oriented Programming (OOP) Lanjutan
 
-### 5.1 Constructor Khusus: Factory, Named, & Const
+### 5.1 Constructor Khusus: Generative, Named, Factory, & Initializer Lists
 
 ```dart
 class Pengguna {
   final String id;
   final String nama;
   final String email;
-  
-  // Private field (Encapsulation)
   final String _apiKey;
 
-  // 1. Generative Constructor
-  const Pengguna({
+  // 1. Initializer List & Assert
+  Pengguna({
     required this.id,
     required this.nama,
     required this.email,
     required String apiKey,
-  }) : _apiKey = apiKey;
+  }) : _apiKey = apiKey,
+       assert(id.isNotEmpty, 'ID tidak boleh kosong');
 
-  // 2. Named Constructor
-  Pengguna.tamu()
-      : id = 'guest_0',
-        nama = 'Pengunjung Tamu',
-        email = 'guest@app.com',
-        _apiKey = 'PUBLIC_KEY';
+  // 2. Named & Redirecting Constructor
+  Pengguna.tamu() : this(id: 'guest_0', nama: 'Tamu', email: 'guest@app.com', apiKey: 'PUBLIC');
 
-  // 3. Factory Constructor (Berguna untuk JSON Parsing & Caching Singleton)
+  // 3. Factory Constructor (Berguna untuk Caching & JSON Parsing)
   factory Pengguna.fromJson(Map<String, dynamic> json) {
     return Pengguna(
       id: json['id'] as String? ?? '0',
@@ -272,47 +275,24 @@ class Produk {
   @override
   int get hashCode => id.hashCode ^ harga.hashCode;
 }
-
-void main() {
-  final p1 = Produk('P01', 50000);
-  final p2 = Produk('P01', 50000);
-  print('Apakah sama? ${p1 == p2}'); // Output: true (karena operator == di-override)
-}
 ```
 
 ---
 
 ### 5.3 Mixins & Extension Methods
 
-* **Mixin (`with`)**: Berbagi fungsionalitas antar class tanpa inheritance bertingkat:
+* **Mixin (`with`)**: Berbagi fungsionalitas antar class tanpa pewarisan bertingkat:
   ```dart
   mixin LoggerMixin {
-    void logInfo(String pesan) {
-      print('[INFO - ${DateTime.now().toIso8601String()}]: $pesan');
-    }
+    void logInfo(String pesan) => print('[LOG]: $pesan');
   }
-
-  class AuthService with LoggerMixin {
-    void login() {
-      logInfo('Pengguna berhasil login');
-    }
-  }
+  class AuthService with LoggerMixin {}
   ```
 
-* **Extension Methods**: Menambahkan method baru pada tipe data yang sudah ada:
+* **Extension Methods**: Menambahkan method baru pada tipe bawaan:
   ```dart
   extension RupiahFormatter on int {
-    String toRupiah() {
-      return 'Rp ${this.toString().replaceAllMapped(
-        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-        (Match m) => '${m[1]}.',
-      )}';
-    }
-  }
-
-  void main() {
-    int saldo = 1500000;
-    print(saldo.toRupiah()); // Output: Rp 1.500.000
+    String toRupiah() => 'Rp ${toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]}.')}';
   }
   ```
 
@@ -320,73 +300,56 @@ void main() {
 
 ## ⏳ 6. Asynchronous Programming (Future, Stream, async/await)
 
-### 6.1 Event Loop di Dart
-Dart menjalankan program dalam model **Single-Threaded Event Loop**:
-1. **Microtask Queue**: Tugas internal prioritas sangat tinggi (dieksekusi langsung sebelum event berikutnya).
-2. **Event Queue**: Event eksternal (I/O, klik mouse, response HTTP, timer).
-
-### 6.2 Future & async/await
-`Future` mewakili data yang belum tersedia sekarang, tetapi akan selesai di masa depan:
-
+### 6.1 Event Loop & Penanganan Future
 ```dart
-Future<String> ambilDataUser() async {
-  // Simulasi penundaan jaringan 2 detik
-  await Future.delayed(const Duration(seconds: 2));
-  return 'Data Pengguna Berhasil Diambil';
-}
+Future<void> demoAsync() async {
+  // Future.wait untuk menjalankan banyak Future secara paralel
+  final results = await Future.wait([
+    Future.delayed(const Duration(seconds: 1), () => 'Data Profil'),
+    Future.delayed(const Duration(seconds: 1), () => 'Data Transaksi'),
+  ]);
 
-void main() async {
-  print('1. Mulai Request Data');
+  // Timeout Handling
   try {
-    final hasil = await ambilDataUser();
-    print('2. Hasil: $hasil');
-  } catch (error) {
-    print('Terjadi Error: $error');
-  } finally {
-    print('3. Selesai');
+    final res = await Future.delayed(const Duration(seconds: 5), () => 'OK')
+        .timeout(const Duration(seconds: 2));
+  } catch (e) {
+    print('Request Timeout! ⏱️');
   }
 }
 ```
 
 ---
 
-### 6.3 Completer: Mengubah Callback Menjadi Future
-`Completer<T>` berguna untuk menjembatani API callback lama atau event listener manual menjadi `Future`:
-
+### 6.2 Completer: Mengubah Callback Menjadi Future
 ```dart
 import 'dart:async';
 
 Future<String> downloadFileAsync() {
   final completer = Completer<String>();
-
-  // Simulasi callback pihak ketiga
   Timer(const Duration(seconds: 1), () {
     completer.complete('Download File Selesai! 📂');
   });
-
   return completer.future;
 }
 ```
 
 ---
 
-### 6.4 Stream: Aliran Data Realtime (`async*` & `yield`)
-`Stream` digunakan saat data datang berkali-kali secara kontinu (misal: WebSocket, sensor GPS, detak jam):
-
+### 6.3 Stream & Broadcast Streams
 ```dart
 Stream<int> hitungMundur(int detik) async* {
   for (int i = detik; i >= 1; i--) {
     await Future.delayed(const Duration(seconds: 1));
-    yield i; // Mengalirkan nilai ke listener
+    yield i;
   }
 }
 
 void main() async {
-  print('Waktu Peluncuran:');
-  await for (final hitungan in hitungMundur(3)) {
-    print('$hitungan...');
-  }
-  print('🚀 Meluncur!');
+  final stream = hitungMundur(3).asBroadcastStream();
+  // Banyak listener dapat mendengarkan sekaligus
+  stream.listen((v) => print('Listener A: $v'));
+  stream.listen((v) => print('Listener B: $v'));
 }
 ```
 
@@ -394,36 +357,26 @@ void main() async {
 
 ## 🧵 7. Concurrency & Multithreading dengan Dart Isolates
 
-Ketika Anda harus memproses **komputasi super berat** (misal: enkripsi password ribuan kali, manipulasi matriks gambar resolusi tinggi, atau mem-parsing JSON ratusan megabyte), menjalankannya di `Future` biasa tetap bisa membuat UI aplikasi **macet/freeze (jank)**, karena `Future` tetap berbagi thread CPU utama (*Main Thread*).
-
-Solusinya adalah menggunakan **Isolates**!
-
----
+Ketika memproses komputasi berat (misal: enkripsi password ribuan kali, manipulasi matriks gambar resolusi tinggi, atau mem-parsing JSON ratusan megabyte), menjalankannya di `Future` biasa tetap membuat UI aplikasi **macet/freeze (jank)**. Solusinya adalah **Isolates**!
 
 <p align="center">
-  <img src="images/dart-event-loop-isolates.jpg" alt="Dart Event Loop vs Background Worker Isolates" width="650">
+  <img src="images/event-loop-vs-isolates.svg" alt="Arsitektur Concurrency Dart: Event Loop vs Isolates" width="700">
 </p>
 
 ---
 
-### 7.1 Cara Mudah: Menggunakan `compute()` atau `Isolate.run()`
-`Isolate.run()` dan `compute()` mengeksekusi fungsi berat di thread terpisah dan mengembalikan hasilnya ke main thread:
-
+### 7.1 Cara Mudah: `Isolate.run()` atau `compute()`
 ```dart
 import 'dart:isolate';
 
-// Fungsi berat HARUS berupa fungsi top-level atau static
 int hitungFibonacci(int n) {
   if (n <= 1) return n;
   return hitungFibonacci(n - 1) + hitungFibonacci(n - 2);
 }
 
 void main() async {
-  print('Mulai komputasi berat di background thread...');
-  
-  // Dijalankan di Isolate terpisah tanpa membuat UI freeze
+  // Dijalankan di Isolate thread terpisah tanpa membuat UI freeze
   final hasil = await Isolate.run(() => hitungFibonacci(40));
-  
   print('Hasil Fibonacci: $hasil');
 }
 ```
@@ -431,23 +384,17 @@ void main() async {
 ---
 
 ### 7.2 Tingkat Mahir: Komunikasi Port Dua Arah (`Isolate.spawn`)
-Untuk komunikasi kontinu dua arah antar thread:
-
 ```dart
 import 'dart:isolate';
 
 void backgroundWorker(SendPort mainSendPort) {
   final workerReceivePort = ReceivePort();
-  
-  // Kirim SendPort milik worker ini ke main thread
   mainSendPort.send(workerReceivePort.sendPort);
 
-  // Dengarkan pesan yang masuk
   workerReceivePort.listen((pesan) {
     if (pesan is Map<String, dynamic>) {
       final angka = pesan['angka'] as int;
-      final kuadrat = angka * angka;
-      mainSendPort.send({'status': 'SUCCESS', 'hasil': kuadrat});
+      mainSendPort.send({'status': 'SUCCESS', 'hasil': angka * angka});
     }
   });
 }
@@ -456,13 +403,9 @@ void main() async {
   final mainReceivePort = ReceivePort();
   await Isolate.spawn(backgroundWorker, mainReceivePort.sendPort);
 
-  SendPort? workerSendPort;
-
   mainReceivePort.listen((pesan) {
     if (pesan is SendPort) {
-      workerSendPort = pesan;
-      print('✅ Terhubung ke Background Worker Isolate!');
-      workerSendPort?.send({'angka': 125});
+      pesan.send({'angka': 125});
     } else if (pesan is Map<String, dynamic>) {
       print('🎉 Hasil Diterima dari Worker: ${pesan['hasil']}');
       mainReceivePort.close();
@@ -586,11 +529,11 @@ void main() async {
 ## 🎯 Rangkuman & Checklist Kompetensi
 
 - [x] Memahami Sound Null Safety (`?`, `!`, `??`, `?.`, `??=`).
-- [x] Menguasai fitur Dart 3: Records, Pattern Matching, Destructuring, Sealed Classes, dan Enhanced Enums.
+- [x] Menguasai fitur Dart 3: Records, Pattern Matching, Destructuring, Sealed Classes, Class Modifiers, dan Enhanced Enums.
 - [x] Memahami Extension Types (Dart 3.3+ zero-cost wrapper).
-- [x] Mampu memanipulasi List/Map/Set dengan functional programming (`where`, `map`, `fold`).
-- [x] Menguasai OOP: Factory Constructors, Mixins, Generics, Extension Methods, dan Object Equality (`==`).
-- [x] Memahami arsitektur Event Loop, Future, Completer, dan Stream asynchronous.
+- [x] Mampu memanipulasi List/Map/Set/Queue dengan functional programming (`where`, `map`, `fold`, `reduce`, `any`, `every`, `take`, `skip`).
+- [x] Menguasai OOP: Factory, Named, Redirecting Constructors, Initializer Lists, Generics, Extension Methods, dan Object Equality (`==`).
+- [x] Memahami arsitektur Event Loop, Future, Future.wait, Completer, dan Broadcast Stream.
 - [x] Mampu mengimplementasikan Multithreading Concurrency dengan `compute()`, `Isolate.run()`, dan `Isolate.spawn()`.
 - [x] Berhasil menguji coba proyek mini CLI Data Processor paralel.
 

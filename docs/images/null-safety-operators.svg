@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="430" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">LIMA OPERATOR SOUND NULL SAFETY DI DART MODERN</text>
+
+  <!-- Box 1: ? Nullable -->
+  <g transform="translate(25, 55)">
+    <rect width="150" height="200" rx="8" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="75" y="35" fill="#38BDF8" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle">?</text>
+    <text x="75" y="65" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Nullable Type</text>
+    <text x="75" y="90" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Boleh bernilai null</text>
+    
+    <rect x="10" y="120" width="130" height="65" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="75" y="145" fill="#38BDF8" font-family="monospace" font-size="10" text-anchor="middle">String? nama;</text>
+    <text x="75" y="165" fill="#94A3B8" font-family="monospace" font-size="9" text-anchor="middle">(Bisa 'Anton' / null)</text>
+  </g>
+
+  <!-- Box 2: ! Null Assertion -->
+  <g transform="translate(190, 55)">
+    <rect width="150" height="200" rx="8" fill="url(#cardGrad)" stroke="#F43F5E" stroke-width="1.5"/>
+    <text x="75" y="35" fill="#F43F5E" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle">!</text>
+    <text x="75" y="65" fill="#FDA4AF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Null Assertion</text>
+    <text x="75" y="90" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Paksa anggap non-null</text>
+    
+    <rect x="10" y="120" width="130" height="65" rx="6" fill="#0F172A" stroke="#F43F5E" stroke-width="1"/>
+    <text x="75" y="145" fill="#F43F5E" font-family="monospace" font-size="10" text-anchor="middle">nama!.length</text>
+    <text x="75" y="165" fill="#FDA4AF" font-family="monospace" font-size="9" text-anchor="middle">⚠️ Crash jika null!</text>
+  </g>
+
+  <!-- Box 3: ?? If-Null -->
+  <g transform="translate(355, 55)">
+    <rect width="150" height="200" rx="8" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <text x="75" y="35" fill="#34D399" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle">??</text>
+    <text x="75" y="65" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">If-Null Fallback</text>
+    <text x="75" y="90" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Nilai cadangan</text>
+    
+    <rect x="10" y="120" width="130" height="65" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="75" y="145" fill="#34D399" font-family="monospace" font-size="10" text-anchor="middle">nama ?? 'Tamu'</text>
+    <text x="75" y="165" fill="#A7F3D0" font-family="monospace" font-size="9" text-anchor="middle">Ganti 'Tamu' jika null</text>
+  </g>
+
+  <!-- Box 4: ?. Null-Aware Access -->
+  <g transform="translate(520, 55)">
+    <rect width="150" height="200" rx="8" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="75" y="35" fill="#FDE047" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle">?.</text>
+    <text x="75" y="65" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Null-Aware Call</text>
+    <text x="75" y="90" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Panggil jika non-null</text>
+    
+    <rect x="10" y="120" width="130" height="65" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="75" y="145" fill="#FDE047" font-family="monospace" font-size="10" text-anchor="middle">user?.cetak()</text>
+    <text x="75" y="165" fill="#FDE047" font-family="monospace" font-size="9" text-anchor="middle">Lewati jika null</text>
+  </g>
+
+  <!-- Box 5: ??= Null-Aware Assignment -->
+  <g transform="translate(685, 55)">
+    <rect width="150" height="200" rx="8" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <text x="75" y="35" fill="#818CF8" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle">??=</text>
+    <text x="75" y="65" fill="#818CF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Null Assignment</text>
+    <text x="75" y="90" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" text-anchor="middle">Isi jika masih null</text>
+    
+    <rect x="10" y="120" width="130" height="65" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="75" y="145" fill="#818CF8" font-family="monospace" font-size="10" text-anchor="middle">nama ??= 'Budi'</text>
+    <text x="75" y="165" fill="#A5B4FC" font-family="monospace" font-size="9" text-anchor="middle">Hanya assign jika null</text>
+  </g>
+</svg>
