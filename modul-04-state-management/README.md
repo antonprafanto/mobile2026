@@ -1,6 +1,6 @@
 # Modul 04: State Management Lanjutan (Provider, Riverpod 2+, BLoC/Cubit)
 
-Selamat datang di **Modul 04**! State Management adalah jantung dari setiap aplikasi mobile skala produksi. Di modul ini, Anda akan menguasai spektrum manajemen state secara menyeluruh: mulai dari reaktivitas bawaan Flutter (**`ValueNotifier` & `ListenableBuilder`**), pendekatan fundamental **`Provider`**, paradigma modern generasi baru **`Riverpod 2.0+`**, hingga standar ketat industri enterprise & fintech **`BLoC / Cubit`** beserta persistensi otomatis **`HydratedBloc`**.
+Selamat datang di **Modul 04**! State Management adalah jantung dari setiap aplikasi mobile skala produksi. Di modul ini, Anda akan menguasai spektrum manajemen state secara menyeluruh: mulai dari reaktivitas bawaan Flutter (**`ValueNotifier` & `ListenableBuilder`**), pendekatan fundamental **`Provider`**, paradigma modern generasi baru **`Riverpod 2.0+`**, hingga standar ketat industri enterprise & fintech **`BLoC / Cubit`** beserta persistensi otomatis **`HydratedBloc`** dan **`bloc_concurrency`**.
 
 ---
 
@@ -28,7 +28,6 @@ Di Flutter modern, Anda tidak selalu membutuhkan library pihak ketiga untuk stat
 
 ```dart
 class CounterWidget extends StatelessWidget {
-  // ValueNotifier menyimpan nilai dan memancarkan notifikasi saat nilainya berganti
   final ValueNotifier<int> _counter = ValueNotifier<int>(0);
 
   CounterWidget({super.key});
@@ -38,7 +37,6 @@ class CounterWidget extends StatelessWidget {
     return ListenableBuilder(
       listenable: _counter,
       builder: (context, child) {
-        // HANYA bagian Text ini yang di-rebuild saat tombol ditekan!
         return Row(
           children: [
             Text('Jumlah: ${_counter.value}'),
@@ -71,15 +69,12 @@ class CartModel extends ChangeNotifier {
 
   void tambahItem(String nama) {
     _items.add(nama);
-    notifyListeners(); // Memberi tahu semua widget pendengar
+    notifyListeners();
   }
 }
 
 // 2. Di dalam Widget UI:
 Widget build(BuildContext context) {
-  // ❌ SALAH untuk tombol (Memicu rebuild seluruh widget saat data berubah)
-  // final cart = context.watch<CartModel>();
-
   // ✅ BENAR untuk aksi tombol: Hanya membaca 1x tanpa berlangganan rebuild
   return ElevatedButton(
     onPressed: () => context.read<CartModel>().tambahItem('MacBook Pro M4'),
@@ -89,7 +84,7 @@ Widget build(BuildContext context) {
 
 // 3. Optimasi Rebuild dengan context.select():
 Widget buildBadge(BuildContext context) {
-  // HANYA rebuild jika nilai totalCount berubah, perubahan nama item diabaikan!
+  // HANYA rebuild jika nilai totalCount berubah, perubahan lain diabaikan!
   final count = context.select<CartModel, int>((cart) => cart.totalCount);
   return Badge(label: Text('$count'));
 }
@@ -117,10 +112,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // 1. Provider Keranjang Belanja
 class CartNotifier extends Notifier<List<String>> {
   @override
-  List<String> build() => []; // State awal
+  List<String> build() => [];
 
   void tambah(String produk) {
-    state = [...state, produk]; // Immutable update
+    state = [...state, produk];
   }
 
   void hapus(int index) {
@@ -139,10 +134,8 @@ class RiverpodCartPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ref.watch melacak perubahan data secara reaktif
     final items = ref.watch(cartProvider);
 
-    // ref.listen untuk efek samping (SnackBar/Dialog)
     ref.listen<List<String>>(cartProvider, (previous, next) {
       if (next.length > (previous?.length ?? 0)) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -174,6 +167,20 @@ class RiverpodCartPage extends ConsumerWidget {
 
 ---
 
+### 4.2 Provider Modifiers: `.autoDispose` & `.family`
+
+* **`.autoDispose`**: Otomatis menghancurkan (*dispose*) state dari memori saat layar ditutup agar tidak terjadi pemborosan RAM.
+* **`.family`**: Mengizinkan provider menerima parameter dinamis (misal: ID produk untuk detail query).
+
+```dart
+// Mengambil detail produk berdasarkan productId dengan auto-cleanup memori
+final productDetailProvider = FutureProvider.autoDispose.family<Product, String>((ref, productId) async {
+  return await fetchProductFromApi(productId);
+});
+```
+
+---
+
 ## 🏛️ 5. BLoC & Cubit: Standar Enterprise & Fintech
 
 BLoC (*Business Logic Component*) memisahkan tampilan antarmuka secara mutlak dari logika bisnis menggunakan **Aliran Data Searah (*Unidirectional Data Flow / UDF*)**.
@@ -183,13 +190,11 @@ BLoC (*Business Logic Component*) memisahkan tampilan antarmuka secara mutlak da
 </p>
 
 ### 5.1 Cubit (Solusi Cepat Berbasis Fungsi Langsung)
-Cubit adalah versi ringan dari BLoC tanpa perlu mendefinisikan class Event:
-
 ```dart
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterCubit extends Cubit<int> {
-  CounterCubit() : super(0); // Nilai awal
+  CounterCubit() : super(0);
 
   void increment() => emit(state + 1);
   void decrement() => emit(state - 1);
@@ -230,7 +235,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<FetchProducts>((event, emit) async {
       emit(ProductLoading());
       try {
-        await Future.delayed(const Duration(seconds: 1)); // Simulasi API
+        await Future.delayed(const Duration(seconds: 1));
         emit(ProductLoaded(['Laptop Gaming', 'Mechanical Keyboard', 'Monitor 4K']));
       } catch (e) {
         emit(ProductError('Gagal memuat produk dari server'));
@@ -253,22 +258,43 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
 ---
 
-### 5.4 Persistensi Otomatis dengan `HydratedBloc`
-`HydratedBloc` secara otomatis menyimpan dan memulihkan state dari penyimpanan lokal HP (seperti Dark Mode, Keranjang, atau Token) tanpa menulis query database manual:
+### 5.4 Concurrency Transformers (`bloc_concurrency`)
+Untuk mengontrol bagaimana event yang datang bertubi-tubi diproses (misal: tombol ditekan 5 kali dalam 1 detik):
 
+```dart
+import 'package:bloc_concurrency/bloc_concurrency.dart';
+
+class SearchBloc extends Bloc<SearchEvent, SearchState> {
+  SearchBloc() : super(SearchInitial()) {
+    // restartable(): Membatalkan request pencarian lama jika pengguna mengetik huruf baru (Debounce alami)
+    on<QueryChanged>((event, emit) async {
+      final results = await searchApi(event.query);
+      emit(SearchLoaded(results));
+    }, transformer: restartable());
+
+    // droppable(): Mengabaikan klik tombol baru jika proses sebelumnya belum selesai (Anti-Double Submit)
+    on<SubmitPayment>((event, emit) async {
+      await processPayment();
+      emit(PaymentSuccess());
+    }, transformer: droppable());
+  }
+}
+```
+
+---
+
+### 5.5 Persistensi Otomatis dengan `HydratedBloc`
 ```dart
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class ThemeCubit extends HydratedCubit<bool> {
-  ThemeCubit() : super(false); // false = Light Mode, true = Dark Mode
+  ThemeCubit() : super(false);
 
   void toggleTheme() => emit(!state);
 
-  // Menyimpan ke disk lokal saat state berubah
   @override
   Map<String, dynamic>? toJson(bool state) => {'isDark': state};
 
-  // Membaca kembali dari disk saat aplikasi dibuka ulang
   @override
   bool? fromJson(Map<String, dynamic> json) => json['isDark'] as bool?;
 }
@@ -590,8 +616,8 @@ class CartBottomSheet extends StatelessWidget {
    *Jawaban:* Gunakan `context.read()` untuk membaca nilai atau memanggil method satu kali saja (misal: di dalam event callback `onPressed`) tanpa berlangganan terhadap perubahan data. Gunakan `context.watch()` di dalam method `build()` ketika tampilan UI harus otomatis me-rebuild setiap kali datanya berubah.
 2. **Apa keunggulan utama `AsyncValue` pada Riverpod 2.0+?**  
    *Jawaban:* `AsyncValue` menyediakan pattern matching terstruktur (`.when()`) yang secara otomatis menangani tiga status data asynchronous sekaligus (*data*, *loading*, dan *error*) sehingga mencegah runtime crash akibat data null yang belum selesai diambil dari API.
-3. **Mengapa pada BLoC kita tidak boleh memunculkan SnackBar di dalam `BlocBuilder`?**  
-   *Jawaban:* Karena `BlocBuilder` adalah fungsi pure render yang dapat dipanggil berkali-kali oleh framework saat layouting. Untuk aksi efek samping satu kali seperti SnackBar, Dialog, atau Navigasi, kita wajib menggunakan **`BlocListener`**.
+3. **Bagaimana peran `bloc_concurrency` dalam mencegah double-submit formulir?**  
+   *Jawaban:* Transformer `droppable()` dari `bloc_concurrency` mengabaikan (*drop*) semua event baru yang masuk saat event sebelumnya masih diproses, sehingga mencegah pengiriman transaksi ganda jika tombol ditekan berulang kali secara agresif.
 
 ---
 
@@ -600,8 +626,9 @@ class CartBottomSheet extends StatelessWidget {
 - [x] Memahami perbedaan mendasar Ephemeral State vs App State.
 - [x] Menguasai reaktivitas bawaan Flutter dengan `ValueNotifier` dan `ListenableBuilder`.
 - [x] Menguasai `Provider`: `ChangeNotifier`, `context.watch()`, `context.read()`, dan `context.select()`.
-- [x] Menguasai `Riverpod 2.0+`: `NotifierProvider`, `ConsumerWidget`, `ref.watch()`, `ref.listen()`, dan `AsyncValue`.
-- [x] Menguasai arsitektur enterprise `BLoC` & `Cubit`: Events, Immutable States, `BlocBuilder`, `BlocListener`, dan `BlocConsumer`.
+- [x] Menguasai `Riverpod 2.0+`: `NotifierProvider`, `ConsumerWidget`, `ref.watch()`, `ref.listen()`, `AsyncValue`, `.autoDispose`, dan `.family`.
+- [x] Menguasai arsitektur enterprise `BLoC` & `Cubit`: Events, Immutable States, `BlocBuilder`, `BlocListener`, `BlocConsumer`, dan `BlocSelector`.
+- [x] Mengimplementasikan Concurrency Event Transformers (`bloc_concurrency`: `restartable`, `droppable`).
 - [x] Memahami persistensi state otomatis menggunakan `HydratedBloc`.
 - [x] Mampu memilih solusi state management yang tepat berdasarkan skala proyek.
 - [x] Berhasil membangun proyek mini E-Commerce Multi-Filter & Reactive Cart Engine.
