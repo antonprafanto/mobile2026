@@ -2,7 +2,7 @@
 
 Selamat datang di **Modul 07**! Di modul ini, Anda resmi memasuki **FASE 3: Fullstack Services & Cloud**. Seorang mobile engineer berpenghasilan tinggi bukan hanya mampu membuat tampilan antarmuka di HP, melainkan memahami bagaimana data diproses di sisi server, diamankan dengan *Security Rules*, dikirim melalui *Push Notifications*, hingga disimpan ke dalam database cloud.
 
-Di modul ini, Anda akan menguasai cara membangun backend API kustom menggunakan **`Dart Frog`** (Fullstack Dart), memanfaatkan kekuatan NoSQL & Push Notifications dari **`Firebase BaaS`**, serta menguasai database PostgreSQL relasional dengan Row Level Security (RLS) di **`Supabase`**.
+Di modul ini, Anda akan menguasai cara membangun backend API kustom menggunakan **`Dart Frog`** (Fullstack Dart), memanfaatkan kekuatan NoSQL & Push Notifications dari **`Firebase BaaS`**, serta menguasai database PostgreSQL relasional dengan Row Level Security (RLS) dan Edge Functions di **`Supabase`**.
 
 ---
 
@@ -46,16 +46,21 @@ dart_frog dev
 
 ---
 
-### 3.2 Menulis Global Middleware (CORS & Logging)
+### 3.2 Global Middleware, CORS, & Dependency Injection (`provider`)
 
 Buat berkas `routes/_middleware.dart`:
 ```dart
 import 'package:dart_frog/dart_frog.dart';
 import 'package:shelf_cors_headers/shelf_cors_headers.dart' as cors;
 
+class DatabaseService {
+  String get connectionStatus => 'Connected to PostgreSQL';
+}
+
 Handler middleware(Handler handler) {
   return handler
-      .use(requestLogger()) // 1. Logging setiap request yang masuk
+      .use(requestLogger()) // 1. Logging request
+      .use(provider<DatabaseService>((context) => DatabaseService())) // 2. Dependency Injection
       .use(
         fromShelfMiddleware(
           cors.corsHeaders(
@@ -65,49 +70,33 @@ Handler middleware(Handler handler) {
             },
           ),
         ),
-      ); // 2. Menghindari CORS Error
+      ); // 3. Menghindari CORS Error
 }
 ```
 
 ---
 
-### 3.3 Membuat Endpoint RESTful (`GET`, `POST`, `DELETE`)
+### 3.3 Dynamic Routes di Dart Frog: `routes/api/products/[id].dart`
 
-Buat berkas `routes/api/products/index.dart`:
+Dart Frog mendukung routing berbasis struktur file. Untuk menangani request berdasarkan ID (`GET /api/products/101`):
+
 ```dart
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
 
-// In-Memory Data Store (Simulasi Database)
-final List<Map<String, dynamic>> _productDb = [
-  {'id': 1, 'name': 'MacBook Pro M4', 'price': 28000000},
-  {'id': 2, 'name': 'iPhone 17 Pro', 'price': 21000000},
-];
+Future<Response> onRequest(RequestContext context, String id) async {
+  final db = context.read<DatabaseService>(); // Membaca instance dari Dependency Injection
 
-Future<Response> onRequest(RequestContext context) async {
   return switch (context.request.method) {
-    HttpMethod.get => _getProducts(),
-    HttpMethod.post => _createProduct(context),
-    _ => Future.value(Response(statusCode: HttpStatus.methodNotAllowed)),
+    HttpMethod.get => Response.json(body: {
+        'id': id,
+        'name': 'MacBook Pro M4',
+        'price': 28000000,
+        'db_status': db.connectionStatus,
+      }),
+    HttpMethod.delete => Response(statusCode: HttpStatus.noContent),
+    _ => Response(statusCode: HttpStatus.methodNotAllowed),
   };
-}
-
-Response _getProducts() {
-  return Response.json(body: {'status': 'SUCCESS', 'data': _productDb});
-}
-
-Future<Response> _createProduct(RequestContext context) async {
-  final body = await context.request.json() as Map<String, dynamic>;
-  final newProduct = {
-    'id': _productDb.length + 1,
-    'name': body['name'],
-    'price': body['price'],
-  };
-  _productDb.add(newProduct);
-  return Response.json(
-    statusCode: HttpStatus.created,
-    body: {'status': 'CREATED', 'product': newProduct},
-  );
 }
 ```
 
@@ -172,7 +161,6 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
-      // Pengguna HANYA boleh membaca & mengedit dokumen miliknya sendiri
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
     match /orders/{orderId} {
@@ -185,7 +173,30 @@ service cloud.firestore {
 
 ---
 
-### 4.3 Firebase Cloud Messaging (FCM) Push Notifications
+### 4.3 Firebase Cloud Storage: Upload File dengan Progress Stream
+
+```dart
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
+
+Future<String> uploadFotoProfil(String userId, File imageFile) async {
+  final ref = FirebaseStorage.instance.ref().child('avatars/$userId.jpg');
+  final uploadTask = ref.putFile(imageFile, SettableMetadata(contentType: 'image/jpeg'));
+
+  // Memantau Progress Upload
+  uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
+    final progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    print('📤 Progress Upload: ${progress.toStringAsFixed(1)}%');
+  });
+
+  await uploadTask;
+  return await ref.getDownloadURL();
+}
+```
+
+---
+
+### 4.4 Firebase Cloud Messaging (FCM) Push Notifications
 
 <p align="center">
   <img src="images/fcm-push-notification-flow.svg" alt="Alur Sistem Push Notifikasi FCM" width="700">
@@ -194,7 +205,6 @@ service cloud.firestore {
 ```dart
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-// Top-Level Function untuk menangani notifikasi saat aplikasi ditutup/background
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('📬 [FCM Background]: ${message.notification?.title}');
@@ -204,19 +214,15 @@ class PushNotificationService {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
 
   Future<void> initialize() async {
-    // 1. Meminta izin notifikasi ke OS (iOS / Android 13+)
     await _fcm.requestPermission(alert: true, badge: true, sound: true);
 
-    // 2. Mengambil token unik FCM perangkat
     final token = await _fcm.getToken();
     print('🔑 FCM Device Token: $token');
 
-    // 3. Handler saat aplikasi terbuka (Foreground)
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print('🔔 [FCM Foreground]: ${message.notification?.title} - ${message.notification?.body}');
     });
 
-    // 4. Daftarkan background handler
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }
 }
@@ -284,6 +290,26 @@ USING (auth.uid() = user_id);
 CREATE POLICY "Users can insert own orders" 
 ON orders FOR INSERT 
 WITH CHECK (auth.uid() = user_id);
+```
+
+---
+
+### 5.4 Supabase Edge Functions (Deno / TypeScript)
+Untuk webhook pembayaran (Midtrans/Stripe) atau logika server rahasia:
+
+```typescript
+// supabase/functions/payment-webhook/index.ts
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+serve(async (req) => {
+  const payload = await req.json()
+  console.log("Status Pembayaran Masuk:", payload.transaction_status)
+  
+  return new Response(JSON.stringify({ message: "Webhook Processed" }), {
+    headers: { "Content-Type": "application/json" },
+    status: 200,
+  })
+})
 ```
 
 ---
@@ -404,7 +430,6 @@ class _FullstackDashboardPageState extends State<FullstackDashboardPage> {
       ),
       body: Column(
         children: [
-          // Banner Status Koneksi Cloud
           Container(
             padding: const EdgeInsets.all(14),
             color: Colors.cyan.shade900.withOpacity(0.3),
@@ -422,7 +447,6 @@ class _FullstackDashboardPageState extends State<FullstackDashboardPage> {
             ),
           ),
 
-          // Daftar Data Realtime
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(16),
@@ -563,9 +587,10 @@ class _FullstackDashboardPageState extends State<FullstackDashboardPage> {
 
 - [x] Memahami perbedaan arsitektur Custom Backend (Dart Frog), NoSQL BaaS (Firebase), dan SQL BaaS (Supabase).
 - [x] Mampu membuat RESTful API, Route Handlers, dan Middleware CORS dengan `Dart Frog`.
-- [x] Menguasai Firebase Authentication, Firestore Security Rules, dan Cloud Storage.
+- [x] Menguasai Dependency Injection (`provider<T>`) dan dynamic routing `[id].dart` di Dart Frog.
+- [x] Menguasai Firebase Authentication, Firestore Security Rules, dan Cloud Storage upload progress.
 - [x] Mengimplementasikan Firebase Cloud Messaging (FCM) untuk notifikasi foreground dan background.
-- [x] Menguasai integrasi `Supabase` (PostgreSQL Client, Realtime CDC Stream, dan RLS Policies).
+- [x] Menguasai integrasi `Supabase` (PostgreSQL Client, Realtime CDC Stream, RLS Policies, dan Edge Functions).
 - [x] Mampu memilih arsitektur backend yang tepat berdasarkan kebutuhan bisnis dan skalabilitas.
 - [x] Berhasil membangun proyek mini Fullstack Client-Server Dashboard.
 
