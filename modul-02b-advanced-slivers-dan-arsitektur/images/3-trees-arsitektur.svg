@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="900" height="360" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Main Title -->
+  <text x="450" y="36" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">ARSITEKTUR TIGA POHON DI FLUTTER (THE THREE TREES)</text>
+
+  <!-- 1. WIDGET TREE -->
+  <g transform="translate(30, 60)">
+    <rect width="250" height="230" rx="12" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="250" height="36" rx="12" fill="#0284C7" fill-opacity="0.25"/>
+    <text x="125" y="24" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">1. WIDGET TREE</text>
+    
+    <text x="125" y="65" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">📐 Cetak Biru (Blueprint)</text>
+    <line x1="20" y1="80" x2="230" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <text x="20" y="105" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Imutabel (Tidak bisa diubah)</text>
+    <text x="20" y="130" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Sangat ringan &amp; murah</text>
+    <text x="20" y="155" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Dibuat &amp; dibuang saat build()</text>
+
+    <!-- Code Pill -->
+    <rect x="20" y="180" width="210" height="32" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="125" y="201" fill="#38BDF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Container(color: red)</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="290" y1="175" x2="315" y2="175" stroke="#38BDF8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- 2. ELEMENT TREE -->
+  <g transform="translate(325, 60)">
+    <rect width="250" height="230" rx="12" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="250" height="36" rx="12" fill="#4F46E5" fill-opacity="0.25"/>
+    <text x="125" y="24" fill="#818CF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">2. ELEMENT TREE</text>
+
+    <text x="125" y="65" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">👷 Mandor Lapangan (Manager)</text>
+    <line x1="20" y1="80" x2="230" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <text x="20" y="105" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Berumur panjang di memori</text>
+    <text x="20" y="130" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Memegang State widget</text>
+    <text x="20" y="155" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Membandingkan Key &amp; Type</text>
+
+    <!-- Code Pill -->
+    <rect x="20" y="180" width="210" height="32" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="125" y="201" fill="#818CF8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">canUpdate(old, new)</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="585" y1="175" x2="610" y2="175" stroke="#38BDF8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- 3. RENDER OBJECT TREE -->
+  <g transform="translate(620, 60)">
+    <rect width="250" height="230" rx="12" fill="url(#cardGrad)" stroke="#34D399" stroke-width="1.5"/>
+    <rect width="250" height="36" rx="12" fill="#059669" fill-opacity="0.25"/>
+    <text x="125" y="24" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">3. RENDEROBJECT TREE</text>
+
+    <text x="125" y="65" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">🧱 Tukang Bangunan (Worker)</text>
+    <line x1="20" y1="80" x2="230" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <text x="20" y="105" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Objek fisik berbobot berat</text>
+    <text x="20" y="130" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Menghitung ukuran piksel</text>
+    <text x="20" y="155" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">• Melukis visual ke layar (Paint)</text>
+
+    <!-- Code Pill -->
+    <rect x="20" y="180" width="210" height="32" rx="6" fill="#0F172A" stroke="#34D399" stroke-width="1"/>
+    <text x="125" y="201" fill="#34D399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">RenderParagraph / Box</text>
+  </g>
+
+  <!-- Bottom Footer Note -->
+  <rect x="30" y="305" width="840" height="36" rx="8" fill="#0284C7" fill-opacity="0.1" stroke="#0284C7" stroke-width="1"/>
+  <text x="450" y="328" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">⚡ Kunci Kecepatan: Flutter hanya memperbarui properti RenderObject tanpa menghancurkan visual fisiknya!</text>
+</svg>
+

@@ -73,55 +73,95 @@ Menguasai bahasa Dart modern secara mendalam untuk menangani logika aplikasi yan
 
 ---
 
-#### 📘 Modul 02: Flutter UI Mastery, Rendering Engine (Impeller), & Slivers
-Memahami mekanisme render internal Flutter dan membangun antarmuka kelas dunia yang adaptif.
+#### 📘 Modul 02A: Fondasi Flutter UI, Layouting, & Scrolling Dasar
+Membangun pemahaman visual pemula dari nol, konsep widget, tata letak kotak & flexbox, serta penanganan daftar data gulir efisien.
 
-* **2.1 Arsitektur Internal & Rendering Engine**:
-  - Evolusi Rendering: Skia vs **Impeller Engine** (Anti-Jank, Vulkan/Metal backend).
-  - Konsep 3 Pohon: **Widget Tree**, **Element Tree**, dan **RenderObject Tree**.
-  - Pipeline Render: Build, Layout, Paint, Compositing, Rasterizing.
-  - Mengisolasi area repaint dengan `RepaintBoundary`.
-* **2.2 Lifecycle & Dasar State**:
-  - `StatelessWidget` vs `StatefulWidget`.
-  - State Lifecycle: `initState`, `didChangeDependencies`, `build`, `didUpdateWidget`, `deactivate`, `dispose`.
-  - App Lifecycle: `AppLifecycleListener` (Deteksi aplikasi resumed, inactive, hidden, paused, detached).
-* **2.3 Layout Fundamentals & Constraints**:
-  - Aturan Emas Flutter: *Constraints go down. Sizes go up. Parent sets position.*
-  - Box Model: `Container`, `Padding`, `Align`, `Center`, `SizedBox`, `AspectRatio`, `FractionallySizedBox`.
-  - Flexbox Layout: `Row`, `Column`, `Flex`, `Expanded`, `Flexible`, `Spacer`, CrossAxisAlignment & MainAxisAlignment.
-  - Overlay & Stacking: `Stack`, `Positioned`, `IndexedStack`.
-* **2.4 Advanced Scrolling & Slivers System**:
-  - `SingleChildScrollView`, `ListView.builder`, `GridView.builder`.
-  - `CustomScrollView`, `SliverAppBar` (pinned, floating, snap, stretch).
-  - `SliverPersistentHeader` (Header Delegate kustom), `SliverList`, `SliverGrid`, `SliverToBoxAdapter`, `SliverFillRemaining`.
-* **2.5 Design Systems & Adaptabilitas**:
-  - Material Design 3 (M3): ColorScheme, Dynamic Color, NavigationBar, SegmentedButton.
-  - Cupertino Widgets (iOS Native Style).
-  - Multi-theme: Dark Mode, Light Mode, System Theme, dan `ThemeExtension` kustom.
-  - Adaptive & Responsive UI: `LayoutBuilder`, `MediaQuery`, `OrientationBuilder`, breakpoint smartphone, foldable, tablet.
-* **Deliverable / Mini Project**:
-  - *Spotify / Netflix Home Screen Replica* dengan collapsing dynamic sliver header, carousel interaktif, dan adaptive layout.
+* **2A.1 Mental Model & Interaktivitas Dasar**:
+  - Konsep *"Everything is a Widget"* dan dekonstruksi anatomi Widget Tree (Analogi Balok LEGO).
+  - `StatelessWidget` vs `StatefulWidget`: Kapan tampilan statis dan kapan dinamis.
+  - Memahami siklus pembaruan tampilan interaktif dengan `setState()`.
+* **2A.2 Kotak Pembangun Tampilan (Box Model)**:
+  - `Container` (Dekorasi warna, radius, border, bayangan, margin, padding).
+  - `Padding` (Memberi nafas pada komponen), `SizedBox` (Pemisah jarak dimensi pasti), dan `Center`.
+* **2A.3 Flexbox Layouting & Alignment**:
+  - `Row` (Horizontal) dan `Column` (Vertikal): Mengatur `mainAxisAlignment` & `crossAxisAlignment`.
+  - Mengisi ruang kosong dengan `Expanded` dan `Spacer`.
+* **2A.4 Menaklukkan Error Keramat Pemula**:
+  - Memahami penyebab garis belang kuning-hitam (**RenderFlex Overflow**).
+  - 4 Solusi ampuh: `SingleChildScrollView`, `Expanded`, `Wrap` (pilihan turun baris otomatis), dan `FittedBox`.
+* **2A.5 Menumpuk Elemen (Layering)**:
+  - `Stack` dan `Positioned`: Membuat badge diskon produk, status online avatar, dan overlay.
+* **2A.6 Daftar Data Gulir Dinamis**:
+  - Mengapa Column dilarang untuk data banyak: Konsep *lazy loading* / daur ulang memori.
+  - `ListView.builder`: Menampilkan daftar vertikal efisien.
+  - `GridView.builder`: Menampilkan katalog produk 2 kolom responsif.
+* **Deliverable / Hands-on Lab**:
+  - *TokoKita Mini Profile & Product Catalog App* yang rapi, interaktif, dan bebas overflow.
 
 ---
 
-#### 📘 Modul 03: Navigasi Deklaratif (go_router), Deep Linking, & Form System
-Membangun alur navigasi yang tangguh serta penanganan data input pengguna yang aman.
+#### 📘 Modul 02B: Advanced Slivers, Theming Material 3, & Arsitektur Mesin Render
+Meningkatkan antarmuka ke standar enterprise dengan efek paralaks, custom design token, serta membedah jeroan mesin grafis Flutter.
 
-* **3.1 Routing Deklaratif Modern dengan `go_router`**:
+* **2B.1 Paradigma Slivers & CustomScrollView**:
+  - Keterbatasan ListView biasa vs fleksibilitas viewport Slivers.
+  - `SliverAppBar`: Efek `pinned`, `floating`, `snap`, dan `stretch` (overscroll header).
+  - Mengintegrasikan berbagai sliver: `SliverList`, `SliverGrid`, `SliverToBoxAdapter`, dan `SliverFillRemaining`.
+  - Sticky Tab Header kustom dengan `SliverPersistentHeaderDelegate`.
+* **2B.2 Material Design 3 (M3) & Enterprise Design System**:
+  - Pewarnaan otomatis matematis via `ColorScheme.fromSeed(seedColor: ...)`.
+  - Sinkronisasi Light Mode, Dark Mode, dan System Theme.
+  - Custom brand design tokens dengan `ThemeExtension` (`copyWith` & `lerp`).
+* **2B.3 Desain Adaptif & Multi-Density Retina Tree**:
+  - `LayoutBuilder` vs `MediaQuery`: Breakpoint smartphone, tablet, dan foldable.
+  - Struktur aset gambar multi-density (`1x`, `2.0x`, `3.0x`) untuk layar retina bebas buram.
+* **2B.4 Arsitektur Internal Mesin Flutter (Under the Hood)**:
+  - Konsep 3 Pohon: **Widget Tree** (cetak biru), **Element Tree** (pengait), dan **RenderObject Tree** (pekerja komputasi).
+  - Pipeline Render 5 Tahap: Build -> Layout -> Paint -> Compositing -> Rasterizing.
+  - Evolusi Rendering: Skia vs **Impeller Engine** (Anti-Jank, Vulkan/Metal backend).
+  - Mengisolasi area repaint animasi berat menggunakan `RepaintBoundary`.
+* **Deliverable / Mini Project**:
+  - *TokoKita E-Commerce Parallax Sliver Store Page* dengan dynamic collapsing header, custom brand token, dan adaptive layout.
+
+---
+
+#### 📘 Modul 03A: Navigasi Deklaratif Modern (go_router) & Deep Linking
+Membangun alur navigasi aplikasi standar industri yang tangguh, multiplatform, dan terproteksi.
+
+* **3A.1 Routing Deklaratif Modern dengan `go_router`**:
+  - Perbandingan Navigasi Imperative (1.0) vs Deklaratif (2.0).
   - Setup Router, Path Parameters (`:id`), Query Parameters (`?q=`), Extra Object passing.
-  - Nested Navigation dengan `ShellRoute` & `StatefulShellRoute` (Persistent Bottom Navigation Bar & Tab Bar).
-  - Redirection & Route Guards (Proteksi halaman autentikasi & role-based).
+  - Perbedaan `context.go()`, `context.push()`, dan `context.pop()`.
+  - Nested Navigation dengan `StatefulShellRoute.indexedStack` (Mempertahankan state scroll antar tab).
+  - Redirection & Route Guards terpusat (Proteksi halaman autentikasi/login).
   - Error Handling: Halaman 404 kustom dan fallback redirect.
-* **3.2 Deep Linking & Universal Links**:
+* **3A.2 Deep Linking & Universal Links**:
   - Konsep Custom URL Scheme vs Android App Links (`assetlinks.json`) & iOS Universal Links (`apple-app-site-association`).
   - Konfigurasi intent filter dan penanganan tautan URL langsung membuka produk spesifik di dalam aplikasi.
-* **3.3 Form & Input Validation System**:
-  - `Form`, `FormField`, `TextFormField`, `FormState`, `GlobalKey<FormState>`, `TextEditingController`, `FocusNode`, `FocusScope`.
-  - Validasi multi-rule (Regex email, password strength, match validation).
-  - Custom Input Formatters (Format otomatis nomor HP, NPWP/KTP, dan Rupiah).
-  - Feedback UI: `ScaffoldMessenger`, `SnackBar`, `AlertDialog`, `CupertinoAlertDialog`, `ModalBottomSheet`, `DatePicker`, `TimePicker`.
 * **Deliverable / Mini Project**:
-  - *Multi-Step Onboarding, Registration & Checkout Flow* dengan Deep Linking dan Persistent Bottom Navigation.
+  - *TokoKita Multi-Tab Portal & Detail App* dengan Deep Linking dan Persistent Bottom Navigation.
+
+---
+
+#### 📘 Modul 03B: Form System, Input, Validasi Interaktif, & Penanganan Layar Mundur (PopScope)
+Membangun sistem formulir pengumpulan data pengguna yang aman, tervalidasi seketika, dan terlindungi dari kehilangan data.
+
+* **3B.1 Anatomi Form & Validasi Deklaratif**:
+  - `Form`, `FormField`, `TextFormField`, `FormState`, `GlobalKey<FormState>`.
+  - Fungsi validasi bertipe kuat (Regex email, panjang minimum sandi, teks wajib).
+  - Mode validasi interaktif: `AutovalidateMode.onUserInteraction`.
+* **3B.2 Pengelolaan State Input & Anti-Bocor Memori**:
+  - Siklus hidup `TextEditingController` dan `FocusNode` serta kewajiban `dispose()`.
+  - Alur kursor otomatis tombol keyboard Next via `FocusScope.of(context).requestFocus()`.
+  - Integrasi pengisi sandi/alamat otomatis OS (`AutofillGroup` & `AutofillHints`).
+* **3B.3 Format Mata Uang Otomatis & UI Feedback**:
+  - Custom `TextInputFormatter` dengan `intl` (format otomatis nominal Rupiah `Rp 150.000`).
+  - Feedback UI: `DatePicker`, `TimePicker`, `ModalBottomSheet`, dan `AlertDialog`.
+* **3B.4 Proteksi Layar Mundur Modern (`PopScope`)**:
+  - Penggantian resmi `WillPopScope` ke `PopScope` untuk standar Android 14+ Predictive Back.
+  - Mencegah kehilangan data formulir saat pengguna menekan tombol Back secara tidak sengaja.
+* **Deliverable / Mini Project**:
+  - *Checkout Super App 2026* dengan validasi bertahap, format Rupiah otomatis, bottom sheet kurir, dan dialog proteksi batal via `PopScope`.
 
 ---
 

@@ -539,4 +539,4 @@ void main() async {
 
 ---
 
-👉 **Langkah Selanjutnya**: Logika bahasa Dart dan Concurrency Anda sudah sangat matang! Mari melangkah ke **[Modul 02: Flutter UI Mastery, Impeller Engine, & Slivers](../modul-02-ui-dan-slivers/README.md)** untuk mulai merancang antarmuka visual aplikasi yang responsif dan elegan.
+👉 **Langkah Selanjutnya**: Logika bahasa Dart dan Concurrency Anda sudah sangat matang! Mari melangkah ke **[Modul 02A: Fondasi Flutter UI, Layouting, & Scrolling Dasar](../modul-02a-dasar-ui-dan-layout/README.md)** untuk mulai merancang antarmuka visual aplikasi dari dasar dengan mudah dan percaya diri.

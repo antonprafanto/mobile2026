@@ -53,10 +53,12 @@ Klik tautan modul di bawah untuk langsung membuka panduan materi:
 | No | Modul & Tautan | Topik Inti | Target Deliverable / Proyek Mini | Status |
 |:---:|---|---|---|:---:|
 | **00** | **[Modul 00: Persiapan Alat & Lingkungan](modul-00-persiapan/README.md)** | Flutter SDK, Android Studio, JDK 17/21, AVD, VS Code | `flutter doctor -v` All Passed + App Pertama | ✅ **Selesai** |
-| **01** | **[Modul 01: Dart 3+, OOP, & Concurrency](modul-01-dart-dan-concurrency/README.md)** | Null Safety, Records, Pattern Matching, Sealed Class, Isolates | CLI Multithread JSON & Image Parser | ✅ **Selesai** |
-| **02** | **[Modul 02: Flutter UI & Slivers System](modul-02-ui-dan-slivers/README.md)** | Impeller Engine, 3 Trees, CustomScrollView, Material 3 | Spotify/Netflix Collapsing Sliver Feed | ✅ **Selesai** |
-| **03** | **[Modul 03: Routing (go_router) & Form System](modul-03-routing-dan-form/README.md)** | go_router, ShellRoute, Deep Linking, Custom Formatters | Multi-Step Checkout & Onboarding App | ✅ **Selesai** |
-| **04** | **[Modul 04: State Management (Provider, Riverpod, BLoC)](modul-04-state-management/README.md)** | ChangeNotifier, Riverpod 2+, BLoC/Cubit, HydratedBloc | E-Commerce Cart & Multi-Filter Engine | ✅ **Selesai** |
+| **01** | **[Modul 01: Fondasi Dart 3+, OOP & Concurrency](modul-01-dart-dan-concurrency/README.md)** | Null Safety, Records, Pattern Matching, Isolates Multithreading | CLI Multithread JSON & Image Matrix Parser | ✅ **Selesai** |
+| **02A** | **[Modul 02A: Fondasi UI, Layouting & Scrolling](modul-02a-dasar-ui-dan-layout/README.md)** | Widget Tree, Stateless/Stateful, Row/Column, Overflow, ListView | TokoKita Mini Profile & Product Catalog | ✅ **Selesai** |
+| **02B** | **[Modul 02B: Advanced Slivers, Theming & Arsitektur](modul-02b-advanced-slivers-dan-arsitektur/README.md)** | Slivers, CustomScrollView, Material 3, ThemeExtension, Impeller Engine | TokoKita E-Commerce Parallax Store Page | ✅ **Selesai** |
+| **03A** | **[Modul 03A: Navigasi Modern & Deep Linking](modul-03a-navigasi-dan-deep-linking/README.md)** | go_router, StatefulShellRoute, Route Guards Redirect, App Links | TokoKita Multi-Tab Portal & Detail App | ✅ **Selesai** |
+| **03B** | **[Modul 03B: Form System, Input, & Validasi](modul-03b-form-input-dan-validasi/README.md)** | Form, TextFormField, Format Rupiah, PopScope Android 14+ | Checkout Super App 2026 with PopScope | ✅ **Selesai** |
+| **04** | **[Modul 04: State Management Modern](modul-04-state-management/README.md)** | Provider, Riverpod 2.x (Notifiers), BLoC / Cubit | E-Commerce Cart & Reactive Multi-Filter Engine | ⏳ **Target Selanjutnya** |
 | **05** | **[Modul 05: Networking, REST (Dio) & WebSockets](modul-05-networking-dan-api/README.md)** | Dio Interceptors, Silent Token Refresh, Freezed, WebSockets | Realtime Crypto Ticker & Live Chat App | ✅ **Selesai** |
 | **06** | **[Modul 06: Data Lokal, Offline-First & Drift](modul-06-data-lokal-dan-offline/README.md)** | Secure Storage, Drift ORM (SQL), Hive, Sync Queue | Offline-First Task Manager with Sync Queue | ✅ **Selesai** |
 | **07** | **[Modul 07: Backend (Dart Frog, Supabase, Firebase)](modul-07-backend-dan-baas/README.md)** | Backend API Dart Frog, Supabase Postgres RLS, Firebase | Fullstack Microservice & BaaS Dashboard | ✅ **Selesai** |

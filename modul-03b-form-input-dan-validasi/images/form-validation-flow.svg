@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#F87171"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#34D399"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="920" height="400" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="460" y="34" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">ALUR VALIDASI DEKLARATIF FORMULIR FLUTTER (_formKey.validate)</text>
+
+  <!-- Step 1: User Submit -->
+  <g transform="translate(30, 65)">
+    <rect width="210" height="250" rx="12" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="210" height="34" rx="12" fill="#0284C7" fill-opacity="0.25"/>
+    <text x="105" y="22" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">1. TOMBOL SUBMIT</text>
+
+    <text x="105" y="62" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Aksi Pengguna:</text>
+    <rect x="18" y="76" width="174" height="32" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="105" y="97" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" text-anchor="middle">Klik "Daftar / Simpan"</text>
+
+    <text x="105" y="132" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">Pemanggilan Kunci Form:</text>
+    <rect x="12" y="146" width="186" height="52" rx="6" fill="#090D16" stroke="#38BDF8" stroke-width="1"/>
+    <text x="20" y="166" fill="#64748B" font-family="monospace" font-size="10.5">// Panggil stempel teller:</text>
+    <text x="20" y="185" fill="#38BDF8" font-family="monospace" font-size="10.5" font-weight="bold">_formKey.currentState</text>
+
+    <text x="105" y="224" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" text-anchor="middle">Perintah pemeriksaan massal</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="240" y1="190" x2="275" y2="190" stroke="#38BDF8" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: FormState Evaluation -->
+  <g transform="translate(285, 55)">
+    <rect width="280" height="270" rx="12" fill="url(#cardGrad)" stroke="#818CF8" stroke-width="1.5"/>
+    <rect width="280" height="34" rx="12" fill="#4F46E5" fill-opacity="0.3"/>
+    <text x="140" y="23" fill="#818CF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">2. EKSEKUSI .validate()</text>
+
+    <text x="20" y="65" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="bold">Looping Seluruh TextFormField:</text>
+    <rect x="15" y="78" width="250" height="70" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="25" y="98" fill="#A5B4FC" font-family="monospace" font-size="10">String? validator(String? val) {</text>
+    <text x="35" y="116" fill="#EF4444" font-family="monospace" font-size="10">if (val.isEmpty) return 'Wajib!';</text>
+    <text x="35" y="134" fill="#34D399" font-family="monospace" font-size="10">return null; // Valid!</text>
+
+    <text x="140" y="172" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Hasil Evaluasi Sensor:</text>
+    <text x="140" y="194" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" text-anchor="middle">Apakah ada nilai return String?</text>
+    <text x="140" y="212" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" text-anchor="middle">Jika ada SATU saja error, form GAGAL.</text>
+    <text x="140" y="230" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" text-anchor="middle">Jika SEMUA null, form SUKSES.</text>
+  </g>
+
+  <!-- Branching Arrows -->
+  <!-- Ada Error (return String) -->
+  <path d="M 565 140 L 610 140 L 610 105 L 635 105" fill="none" stroke="#F87171" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <text x="580" y="125" fill="#F87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold">ADA ERROR</text>
+
+  <!-- Semua Lolos (return null) -->
+  <path d="M 565 240 L 610 240 L 610 265 L 635 265" fill="none" stroke="#34D399" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <text x="580" y="255" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold">SEMUA LOLOS</text>
+
+  <!-- Destination Cards -->
+  <!-- Target 1: Validasi Gagal -->
+  <g transform="translate(645, 55)">
+    <rect width="245" height="115" rx="10" fill="url(#cardGrad)" stroke="#F87171" stroke-width="1.5"/>
+    <text x="122" y="26" fill="#F87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle">❌ Validasi Gagal (.validate == false)</text>
+    <text x="18" y="50" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11">• Kotak teks otomatis berubah merah</text>
+    <text x="18" y="70" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11">• Pesan peringatan muncul di bawah</text>
+    <text x="18" y="90" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">• Pengiriman data dibatalkan</text>
+  </g>
+
+  <!-- Target 2: Validasi Sukses -->
+  <g transform="translate(645, 205)">
+    <rect width="245" height="120" rx="10" fill="url(#cardGrad)" stroke="#34D399" stroke-width="1.5"/>
+    <text x="122" y="26" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle">✅ Validasi Sukses (.validate == true)</text>
+    <text x="18" y="50" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11">• Jalankan: _formKey.currentState!.save()</text>
+    <text x="18" y="70" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11">• Ekstrak teks dari controller</text>
+    <text x="18" y="90" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold">• Kirim payload ke Server / Database! 🚀</text>
+  </g>
+
+  <!-- Bottom Footer -->
+  <rect x="30" y="348" width="860" height="38" rx="8" fill="#0284C7" fill-opacity="0.1" stroke="#0284C7" stroke-width="1"/>
+  <text x="460" y="372" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">💡 Aturan Emas: Kembalikan null jika input valid; kembalikan String pesan error jika input melanggar aturan.</text>
+</svg>
