@@ -167,32 +167,62 @@ Membangun sistem formulir pengumpulan data pengguna yang aman, tervalidasi seket
 
 ### 🔹 FASE 2: STATE, NETWORKING & DATA (Architecture & Communication)
 
-#### 📘 Modul 04: Manajemen State Kelas Industri (Provider, Riverpod, & BLoC)
-Mengelola status data aplikasi dari skala kecil hingga aplikasi enterprise bernilai jutaan transaksi.
+#### 📘 Modul 04A: Fondasi State, Reaktivitas Bawaan, & Provider
+Membangun pemahaman reaktivitas data dari hal paling mendasar, membedakan state lokal vs global, hingga menguasai pustaka resmi Provider.
 
-* **4.1 Fondasi Teori State**:
+* **4A.1 Fondasi Teori State**:
   - Ephemeral (UI) State vs App (Shared) State.
-  - Unidirectional Data Flow (UDF) & Immutability.
-* **4.2 State Bawaan**:
-  - `setState`, `InheritedWidget`, `InheritedModel`, `ValueNotifier`, `ValueListenableBuilder`.
-* **4.3 Provider (Standar Resmi Flutter)**:
-  - `ChangeNotifierProvider`, `MultiProvider`, `Consumer`, `Selector`.
-  - Membedakan `context.watch()`, `context.read()`, dan `context.select()`.
-* **4.4 Riverpod 2+ (Modern, Compile-Safe, Zero-Context)**:
-  - Konsep `ProviderScope` dan `ConsumerWidget` / `ConsumerStatefulWidget`.
-  - Generator Syntax (`@riverpod` & `riverpod_generator`).
-  - `NotifierProvider`, `AsyncNotifierProvider` (Penanganan Loading, Data, Error otomatis).
-  - Provider Modifiers: `.autoDispose` dan `.family` (Parameterized providers).
-* **4.5 BLoC & Cubit (Standar Korporat & Enterprise)**:
-  - Event-Driven Architecture: Event -> BLoC -> State.
-  - Cubit untuk state sederhana berbasis function.
-  - `BlocProvider`, `MultiBlocProvider`, `BlocBuilder`, `BlocListener`, `BlocConsumer`, `BlocSelector`.
-  - `HydratedBloc` (Auto-persisting state ke storage lokal).
-  - Concurrency Transformers: `bloc_concurrency` (`droppable`, `restartable`, `concurrent`, `sequential`).
-* **4.6 Matriks Keputusan Industri**:
-  - Panduan kapan memilih Provider, Riverpod, atau BLoC di dunia kerja.
+  - Reaktivitas ringan tanpa package: `ValueNotifier<T>` & `ListenableBuilder`.
+* **4A.2 Pustaka Resmi Provider**:
+  - `ChangeNotifier` & `notifyListeners()`.
+  - `ChangeNotifierProvider` & `MultiProvider`.
+* **4A.3 Tiga Mantra Akses Provider**:
+  - `context.watch<T>()` (reaktif di method build).
+  - `context.read<T>()` (aksi satu kali di tombol).
+  - `context.select<T, R>()` (rebuild hemat memori).
+  - Aturan emas Do's & Don'ts Provider.
+* **Deliverable / Hands-on Lab**:
+  - *TokoKita Cart & Wishlist Reaktif* murni berbasis Provider dengan kalkulasi harga Rupiah otomatis.
+
+---
+
+#### 📘 Modul 04B: State Management Modern Generasi Baru (Riverpod 2.x)
+Mempelajari paradigma modern zero-context, compile-safe, dan penanganan status asinkron otomatis yang menjadi standar baru industri startup global.
+
+* **4B.1 Mengapa Dunia Flutter Beralih ke Riverpod?**:
+  - Mengatasi keterikatan `BuildContext` dan `ProviderNotFoundException`.
+  - Konsep memori terpusat via `ProviderScope`.
+* **4B.2 Trio Sakti WidgetRef**:
+  - `ConsumerWidget` & `WidgetRef ref`.
+  - `ref.watch()`, `ref.read()`, dan `ref.listen()` (SnackBar / Dialog tanpa rebuild UI).
+* **4B.3 Notifier Modern & Immutability**:
+  - `NotifierProvider` & aturan ketat pembuatan objek/list baru.
+* **4B.4 Penanganan Data Asinkron Jaringan**:
+  - `FutureProvider` & otomatisasi 3 status API via `AsyncValue.when(data, loading, error)`.
+  - Modifier efisiensi: `.autoDispose` (anti-memory leak) dan `.family` (parameter dinamis).
+* **Deliverable / Hands-on Lab**:
+  - *TokoKita Live Catalog & Wishlist* dengan live search real-time dan ref.listen SnackBar.
+
+---
+
+#### 📘 Modul 04C: Arsitektur Enterprise & Standar Industri Fintech (BLoC & Cubit)
+Menguasai standar arsitektur industri perbankan, e-commerce raksasa, dan fintech dengan pemisahan mutlak logika bisnis melalui aliran data searah (UDF).
+
+* **4C.1 Arsitektur Unidirectional Data Flow (UDF)**:
+  - Mengapa industri keuangan memilih BLoC (audit trail, 100% deterministik, unit testable).
+  - Siklus Event -> BLoC -> State -> UI Rebuild.
+* **4C.2 Cubit vs BLoC Penuh**:
+  - Cubit: Solusi cepat berbasis fungsi langsung (`emit()`).
+  - BLoC: Solusi enterprise berbasis Event-Driven dengan Sealed Classes.
+* **4C.3 Dekonstruksi 4 Widget BLoC**:
+  - `BlocBuilder`, `BlocListener`, `BlocConsumer`, dan `BlocSelector`.
+* **4C.4 Proteksi Transaksi & Concurrency**:
+  - Paket `bloc_concurrency`: `droppable()` (anti double-click) & `restartable()` (debounce pencarian).
+  - Persistensi state otomatis ke memori lokal dengan `HydratedBloc`.
+* **4C.5 Matriks Keputusan Industri**:
+  - Panduan memilih Provider, Riverpod, atau BLoC di dunia kerja.
 * **Deliverable / Mini Project**:
-  - *E-Commerce Cart, Wishlist, & Multi-Filter State Engine* yang diimplementasikan dengan BLoC & Riverpod.
+  - *E-Commerce Multi-Filter & Reactive Cart Engine* berbasis Cubit/BLoC mandiri dengan modal bottom sheet.
 
 ---
 

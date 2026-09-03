@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="920" height="340" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="460" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">TRIO SAKTI PROVIDER: CONTEXT.WATCH VS CONTEXT.READ VS CONTEXT.SELECT</text>
+
+  <!-- Card 1: context.watch() -->
+  <g transform="translate(30, 55)">
+    <rect width="260" height="235" rx="12" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5"/>
+    <rect width="260" height="34" rx="12" fill="#0284C7" fill-opacity="0.25"/>
+    <text x="130" y="22" fill="#38BDF8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">👁️ context.watch&lt;T&gt;()</text>
+
+    <text x="130" y="60" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Lokasi: Di dalam method build()</text>
+    <rect x="15" y="70" width="230" height="60" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+    <text x="25" y="90" fill="#E2E8F0" font-family="monospace" font-size="10.5">final cart =</text>
+    <text x="35" y="112" fill="#38BDF8" font-family="monospace" font-size="10.5">  context.watch&lt;Cart&gt;();</text>
+
+    <rect x="15" y="142" width="230" height="80" rx="6" fill="#0284C7" fill-opacity="0.15" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="164" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold">Perilaku Rebuild UI:</text>
+    <text x="25" y="184" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10">• Re-render otomatis saat data berubah</text>
+    <text x="25" y="202" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10">• Layar selalu sinkron dengan data baru</text>
+  </g>
+
+  <!-- Card 2: context.read() -->
+  <g transform="translate(330, 55)">
+    <rect width="260" height="235" rx="12" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="260" height="34" rx="12" fill="#B45309" fill-opacity="0.25"/>
+    <text x="130" y="22" fill="#FDE047" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">👆 context.read&lt;T&gt;()</text>
+
+    <text x="130" y="60" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Lokasi: Di dalam tombol onPressed()</text>
+    <rect x="15" y="70" width="230" height="60" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="25" y="90" fill="#E2E8F0" font-family="monospace" font-size="10.5">context.read&lt;Cart&gt;()</text>
+    <text x="35" y="112" fill="#FDE047" font-family="monospace" font-size="10.5">  .tambahKeKeranjang();</text>
+
+    <rect x="15" y="142" width="230" height="80" rx="6" fill="#B45309" fill-opacity="0.15" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="164" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold">Perilaku Rebuild UI:</text>
+    <text x="25" y="184" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10">• TIDAK me-rebuild widget pemanggil</text>
+    <text x="25" y="202" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10">• Hanya mengeksekusi aksi/method 1x</text>
+  </g>
+
+  <!-- Card 3: context.select() -->
+  <g transform="translate(630, 55)">
+    <rect width="260" height="235" rx="12" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect width="260" height="34" rx="12" fill="#059669" fill-opacity="0.25"/>
+    <text x="130" y="22" fill="#34D399" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">🔍 context.select&lt;T, R&gt;()</text>
+
+    <text x="130" y="60" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Lokasi: Di dalam build() (Optimasi)</text>
+    <rect x="15" y="70" width="230" height="60" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="25" y="90" fill="#E2E8F0" font-family="monospace" font-size="10.5">final total = context.select&lt;Cart,</text>
+    <text x="35" y="112" fill="#34D399" font-family="monospace" font-size="10.5">  int&gt;((c) =&gt; c.totalItem);</text>
+
+    <rect x="15" y="142" width="230" height="80" rx="6" fill="#059669" fill-opacity="0.15" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="164" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold">Perilaku Rebuild UI:</text>
+    <text x="25" y="184" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10">• HANYA rebuild jika nilai terpilih berubah</text>
+    <text x="25" y="202" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10">• Menghemat komputasi dan baterai HP</text>
+  </g>
+
+  <!-- Bottom Banner -->
+  <rect x="30" y="302" width="860" height="26" rx="6" fill="#0284C7" fill-opacity="0.1" stroke="#0284C7" stroke-width="1"/>
+  <text x="460" y="320" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600" text-anchor="middle">💡 Rumus Ingatan: watch = Mata Memantau, read = Tangan Memencet, select = Kaca Pembesar Tertarget!</text>
+</svg>
+

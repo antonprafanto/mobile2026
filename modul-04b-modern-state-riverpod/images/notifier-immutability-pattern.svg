@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="920" height="340" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="460" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">HUKUM MUTLAK IMMUTABILITY RIVERPOD: MENGAPA HARUS MEMBUAT LIST/OBJEK BARU?</text>
+
+  <!-- Left: Mutating State Directly (Wrong) -->
+  <g transform="translate(30, 55)">
+    <rect width="415" height="240" rx="12" fill="url(#cardGrad)" stroke="#EF4444" stroke-width="1.5"/>
+    <rect width="415" height="34" rx="12" fill="#991B1B" fill-opacity="0.25"/>
+    <text x="207" y="22" fill="#FCA5A5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle">❌ SALAH: MUTASI OBJEK LANGSUNG (state.add)</text>
+
+    <rect x="20" y="48" width="375" height="42" rx="6" fill="#0F172A" stroke="#EF4444" stroke-width="1"/>
+    <text x="35" y="74" fill="#F87171" font-family="monospace" font-size="11">state.add('Earphone'); // Memodifikasi isi</text>
+
+    <!-- Memory Box Comparison -->
+    <rect x="20" y="102" width="175" height="60" rx="6" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+    <text x="107" y="122" fill="#94A3B8" font-family="monospace" font-size="9.5" text-anchor="middle">Alamat Memori Lama</text>
+    <text x="107" y="145" fill="#F8FAFC" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">0xAA10</text>
+
+    <text x="207" y="136" fill="#EF4444" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle">==</text>
+
+    <rect x="220" y="102" width="175" height="60" rx="6" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+    <text x="307" y="122" fill="#94A3B8" font-family="monospace" font-size="9.5" text-anchor="middle">Alamat Memori Baru</text>
+    <text x="307" y="145" fill="#F8FAFC" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">0xAA10</text>
+
+    <!-- Result Banner -->
+    <rect x="20" y="174" width="375" height="52" rx="6" fill="#991B1B" fill-opacity="0.15" stroke="#334155" stroke-width="1"/>
+    <text x="207" y="194" fill="#FCA5A5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">Akibat Fatal:</text>
+    <text x="207" y="212" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" text-anchor="middle">Alamat memori tidak berubah ➔ Riverpod mengira tidak ada data baru ➔ UI Diam!</text>
+  </g>
+
+  <!-- Right: Creating New List/Object (Correct) -->
+  <g transform="translate(475, 55)">
+    <rect width="415" height="240" rx="12" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect width="415" height="34" rx="12" fill="#059669" fill-opacity="0.25"/>
+    <text x="207" y="22" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle">✅ BENAR: BUAT INSTANCE BARU ([...state, item])</text>
+
+    <rect x="20" y="48" width="375" height="42" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="35" y="74" fill="#34D399" font-family="monospace" font-size="11">state = [...state, 'Earphone']; // Wadah baru</text>
+
+    <!-- Memory Box Comparison -->
+    <rect x="20" y="102" width="175" height="60" rx="6" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+    <text x="107" y="122" fill="#94A3B8" font-family="monospace" font-size="9.5" text-anchor="middle">Alamat Memori Lama</text>
+    <text x="107" y="145" fill="#94A3B8" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">0xAA10</text>
+
+    <text x="207" y="136" fill="#10B981" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle">!=</text>
+
+    <rect x="220" y="102" width="175" height="60" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+    <text x="307" y="122" fill="#34D399" font-family="monospace" font-size="9.5" text-anchor="middle">Alamat Memori Baru</text>
+    <text x="307" y="145" fill="#34D399" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">0xBB99</text>
+
+    <!-- Result Banner -->
+    <rect x="20" y="174" width="375" height="52" rx="6" fill="#059669" fill-opacity="0.15" stroke="#334155" stroke-width="1"/>
+    <text x="207" y="194" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">Hasil yang Diharapkan:</text>
+    <text x="207" y="212" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" text-anchor="middle">Alamat memori berbeda ➔ Riverpod mendeteksi perubahan ➔ UI Rebuild Instan! ✨</text>
+  </g>
+
+  <!-- Bottom Banner -->
+  <rect x="30" y="302" width="860" height="26" rx="6" fill="#0284C7" fill-opacity="0.1" stroke="#0284C7" stroke-width="1"/>
+  <text x="460" y="320" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600" text-anchor="middle">📌 Rumus Immutability: Jangan pernah mengubah isi wadah lama; selalu ciptakan wadah baru dengan data yang diperbarui!</text>
+</svg>

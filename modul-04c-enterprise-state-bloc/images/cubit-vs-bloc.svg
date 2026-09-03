@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#111C38"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#F59E0B"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#10B981"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="920" height="380" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="460" y="32" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">PERBANDINGAN ARSITEKTUR: CUBIT (FUNGSI) VS BLOC (EVENT-DRIVEN)</text>
+
+  <!-- SECTION 1: CUBIT (Sebelah Kiri) -->
+  <g transform="translate(30, 55)">
+    <rect width="415" height="275" rx="12" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect width="415" height="34" rx="12" fill="#B45309" fill-opacity="0.25"/>
+    <text x="207" y="22" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">⚡ CUBIT: PENDEKATAN RINGKAS BERBASIS FUNGSI</text>
+
+    <!-- Pipeline Cubit: UI -> Method -> emit -> UI -->
+    <rect x="15" y="48" width="115" height="42" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="72" y="66" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">1. UI Screen</text>
+    <text x="72" y="82" fill="#FDE047" font-family="monospace" font-size="9.5" text-anchor="middle">cubit.tambah()</text>
+
+    <line x1="130" y1="69" x2="160" y2="69" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowAmber)"/>
+
+    <rect x="165" y="48" width="125" height="42" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+    <text x="227" y="66" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">2. Cubit Logic</text>
+    <text x="227" y="82" fill="#34D399" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">emit(state + 1)</text>
+
+    <line x1="290" y1="69" x2="315" y2="69" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowAmber)"/>
+
+    <rect x="320" y="48" width="80" height="42" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="360" y="66" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">3. Rebuild</text>
+    <text x="360" y="82" fill="#34D399" font-family="monospace" font-size="9" text-anchor="middle">Layar Baru</text>
+
+    <!-- Characteristics -->
+    <rect x="15" y="105" width="385" height="155" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="127" fill="#FDE047" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold">Karakteristik Utama Cubit:</text>
+    <text x="25" y="148" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">• Tidak memerlukan kelas Event terpisah.</text>
+    <text x="25" y="168" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">• Memanggil method biasa secara langsung dari tombol UI.</text>
+    <text x="25" y="188" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">• Sangat cepat dibuat dan sedikit baris kode (*boilerplate*).</text>
+    <text x="25" y="215" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold">Kapan Menggunakan Cubit?</text>
+    <text x="25" y="235" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">Filter kategori, toggle dark mode, keranjang sederhana.</text>
+  </g>
+
+  <!-- SECTION 2: BLOC (Sebelah Kanan) -->
+  <g transform="translate(475, 55)">
+    <rect width="415" height="275" rx="12" fill="url(#cardGrad)" stroke="#10B981" stroke-width="1.5"/>
+    <rect width="415" height="34" rx="12" fill="#059669" fill-opacity="0.25"/>
+    <text x="207" y="22" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">🏛️ BLOC: EVENT-DRIVEN &amp; ENTERPRISE GRADE</text>
+
+    <!-- Pipeline BLoC: UI -> Event -> Transformer -> BLoC -> emit -> UI -->
+    <rect x="10" y="48" width="85" height="42" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="52" y="66" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1. Event UI</text>
+    <text x="52" y="82" fill="#38BDF8" font-family="monospace" font-size="8.5" text-anchor="middle">add(Submit())</text>
+
+    <line x1="95" y1="69" x2="115" y2="69" stroke="#10B981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+    <rect x="120" y="48" width="95" height="42" rx="6" fill="#0F172A" stroke="#818CF8" stroke-width="1"/>
+    <text x="167" y="66" fill="#A5B4FC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">2. Transformer</text>
+    <text x="167" y="82" fill="#94A3B8" font-family="monospace" font-size="8" text-anchor="middle">droppable/restart</text>
+
+    <line x1="215" y1="69" x2="235" y2="69" stroke="#10B981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+    <rect x="240" y="48" width="85" height="42" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="282" y="66" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">3. Engine</text>
+    <text x="282" y="82" fill="#34D399" font-family="monospace" font-size="8.5" font-weight="bold" text-anchor="middle">emit(Success)</text>
+
+    <line x1="325" y1="69" x2="345" y2="69" stroke="#10B981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+    <rect x="350" y="48" width="55" height="42" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <text x="377" y="66" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" font-weight="bold" text-anchor="middle">4. State</text>
+    <text x="377" y="82" fill="#34D399" font-family="monospace" font-size="8" text-anchor="middle">Rebuild</text>
+
+    <!-- Characteristics -->
+    <rect x="10" y="105" width="395" height="155" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="127" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold">Karakteristik Utama BLoC:</text>
+    <text x="20" y="148" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">• Setiap aksi wajib melalui kelas Event (*Sealed Class*).</text>
+    <text x="20" y="168" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">• Memiliki kendali penuh atas event beruntun (*concurrency*).</text>
+    <text x="20" y="188" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">• 100% terlacak (*auditable*), riwayat event tercatat rapi.</text>
+    <text x="20" y="215" fill="#38BDF8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="bold">Kapan Menggunakan BLoC?</text>
+    <text x="20" y="235" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5">Fintech, bank, sistem checkout dengan kupon &amp; ongkir ganda.</text>
+  </g>
+
+  <!-- Bottom Banner -->
+  <rect x="30" y="340" width="860" height="28" rx="6" fill="#059669" fill-opacity="0.1" stroke="#059669" stroke-width="1"/>
+  <text x="460" y="359" fill="#34D399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600" text-anchor="middle">🎯 Rumus Praktis: Mulai dari Cubit! Jika butuh kontrol klik bertubi-tubi (debounce/drop), upgrade ke BLoC.</text>
+</svg>
+
