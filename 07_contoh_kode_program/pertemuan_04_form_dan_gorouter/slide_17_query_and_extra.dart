@@ -1,119 +1,154 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 17: QUERY PARAMETERS & EXTRA OBJECT
-// TOPIK: Mengirim kueri filter (?keyword=) dan objek model kompleks (extra)
+// SLIDE 17: QUERY PARAMETERS (?Q=) & OBJEK EXTRA
+// Topik: Mengirim Nilai Filter Opsional & Objek Kelas Kompleks
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Pastikan package go_router sudah terpasang: flutter pub add go_router
-// 2. Salin seluruh isi berkas ini ke: lib/main.dart
-// 3. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Mahasiswa {
-  final String nim;
-  final String nama;
-  final double ipk;
-  const Mahasiswa({required this.nim, required this.nama, required this.ipk});
+void main() {
+  runApp(const QueryAndExtraApp());
 }
 
-final queryRouter = GoRouter(
+// Model data sederhana untuk dikirim via 'extra'
+class MahasiswaModel {
+  final String nim;
+  final String nama;
+  final String prodi;
+
+  const MahasiswaModel({
+    required this.nim,
+    required this.nama,
+    required this.prodi,
+  });
+}
+
+final GoRouter _router = GoRouter(
   initialLocation: '/',
   routes: [
-    GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+    GoRoute(path: '/', builder: (context, state) => const SenderScreen()),
     GoRoute(
-      path: '/cari',
+      path: '/hasil',
       builder: (context, state) {
-        final q = state.uri.queryParameters['q'] ?? 'Kosong';
-        return SearchResultScreen(query: q);
-      },
-    ),
-    GoRoute(
-      path: '/profil',
-      builder: (context, state) {
-        final mhs = state.extra as Mahasiswa;
-        return ProfileScreen(mahasiswa: mhs);
+        // Membaca Query Parameter (?kategori=...)
+        final kategori = state.uri.queryParameters['kategori'] ?? 'Semua';
+        // Membaca Objek Kompleks via state.extra
+        final mhs = state.extra as MahasiswaModel?;
+        return ReceiverScreen(kategori: kategori, mahasiswa: mhs);
       },
     ),
   ],
 );
 
-void main() {
-  runApp(MaterialApp.router(routerConfig: queryRouter, debugShowCheckedModeBanner: false));
+class QueryAndExtraApp extends StatelessWidget {
+  const QueryAndExtraApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Slide 17 - Query & Extra',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.deepOrange),
+      routerConfig: _router,
+    );
+  }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class SenderScreen extends StatelessWidget {
+  const SenderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('SLIDE 17: Query & Extra Demo')),
+      appBar: AppBar(
+        title: const Text('Slide 17: Pengirim Data'),
+        centerTitle: true,
+      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => context.push('/cari?q=Flutter2026'),
-              child: const Text('1. Kirim Query Parameter (?q=Flutter2026)'),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                context.push(
-                  '/profil',
-                  extra: const Mahasiswa(nim: '2301092026', nama: 'Budi Santoso', ipk: 3.88),
-                );
-              },
-              child: const Text('2. Kirim Objek Mahasiswa Utuh (extra)'),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Kirim Query Parameter & Objek Kelas',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: () {
+                  const dataMhs = MahasiswaModel(
+                    nim: '2026001001',
+                    nama: 'Anton Prafanto',
+                    prodi: 'Teknik Informatika',
+                  );
+
+                  // Navigasi dengan query parameter URL dan objek extra
+                  context.go('/hasil?kategori=Reguler', extra: dataMhs);
+                },
+                icon: const Icon(Icons.send),
+                label: const Text('Kirim Objek Mahasiswa + ?kategori'),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class SearchResultScreen extends StatelessWidget {
-  final String query;
-  const SearchResultScreen({super.key, required this.query});
+class ReceiverScreen extends StatelessWidget {
+  final String kategori;
+  final MahasiswaModel? mahasiswa;
+
+  const ReceiverScreen({
+    super.key,
+    required this.kategori,
+    required this.mahasiswa,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Hasil Pencarian')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Kata kunci query: "$query"', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 16),
-            ElevatedButton(onPressed: () => context.pop(), child: const Text('KEMBALI')),
-          ],
-        ),
+      appBar: AppBar(
+        title: const Text('Halaman Penerima Data'),
+        centerTitle: true,
       ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  final Mahasiswa mahasiswa;
-  const ProfileScreen({super.key, required this.mahasiswa});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Profil Mahasiswa (Dari Extra)')),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('NIM  : ${mahasiswa.nim}', style: const TextStyle(fontSize: 16)),
-            Text('Nama : ${mahasiswa.nama}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Text('IPK  : ${mahasiswa.ipk}', style: const TextStyle(fontSize: 16)),
-            const SizedBox(height: 20),
-            ElevatedButton(onPressed: () => context.pop(), child: const Text('KEMBALI')),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.filter_alt),
+                title: const Text('Query Parameter (?kategori=)'),
+                subtitle: Text(
+                  kategori,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.badge),
+                title: const Text('Data Objek Kompleks (state.extra)'),
+                subtitle: Text(
+                  mahasiswa != null
+                      ? 'NIM: ${mahasiswa!.nim}\nNama: ${mahasiswa!.nama}\nProdi: ${mahasiswa!.prodi}'
+                      : 'Objek extra kosong / null',
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            OutlinedButton.icon(
+              onPressed: () => context.go('/'),
+              icon: const Icon(Icons.arrow_back),
+              label: const Text('Kembali ke Pengirim'),
+            ),
           ],
         ),
       ),

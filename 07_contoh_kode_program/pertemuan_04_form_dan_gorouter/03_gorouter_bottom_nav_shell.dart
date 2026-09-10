@@ -141,10 +141,15 @@ class TabHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BERANDA KAMPUS (UJI SCROLL)', style: TextStyle(fontWeight: FontWeight.w900)),
+        title: const Text(
+          'BERANDA KAMPUS (UJI SCROLL)',
+          style: TextStyle(fontWeight: FontWeight.w900),
+        ),
         backgroundColor: const Color(0xFFFFE600),
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
@@ -156,7 +161,9 @@ class TabHomeScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.black, width: 2),
-              boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(3, 3))],
+              boxShadow: const [
+                BoxShadow(color: Colors.black, offset: Offset(3, 3)),
+              ],
             ),
             child: Text(
               'Item Beranda #$index - Coba scroll ke bawah lalu pindah tab!',
@@ -177,10 +184,15 @@ class TabOrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RIWAYAT PESANAN', style: TextStyle(fontWeight: FontWeight.w900)),
+        title: const Text(
+          'RIWAYAT PESANAN',
+          style: TextStyle(fontWeight: FontWeight.w900),
+        ),
         backgroundColor: const Color(0xFF4ADE80),
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: Center(
         child: Container(
@@ -188,12 +200,18 @@ class TabOrdersScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.black, width: 2.5),
-            boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(5, 5))],
+            boxShadow: const [
+              BoxShadow(color: Colors.black, offset: Offset(5, 5)),
+            ],
           ),
           child: const Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.shopping_bag_outlined, size: 60, color: Color(0xFF4ADE80)),
+              Icon(
+                Icons.shopping_bag_outlined,
+                size: 60,
+                color: Color(0xFF4ADE80),
+              ),
               SizedBox(height: 12),
               Text(
                 'Belum Ada Pesanan Aktif',
@@ -220,10 +238,15 @@ class TabProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PROFIL PENGGUNA', style: TextStyle(fontWeight: FontWeight.w900)),
+        title: const Text(
+          'PROFIL PENGGUNA',
+          style: TextStyle(fontWeight: FontWeight.w900),
+        ),
         backgroundColor: const Color(0xFF38BDF8),
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: Center(
         child: Container(
@@ -231,7 +254,9 @@ class TabProfileScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.black, width: 2.5),
-            boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(5, 5))],
+            boxShadow: const [
+              BoxShadow(color: Colors.black, offset: Offset(5, 5)),
+            ],
           ),
           child: const Column(
             mainAxisSize: MainAxisSize.min,

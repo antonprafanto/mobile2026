@@ -1,86 +1,124 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 16: PATH PARAMETERS (:id)
-// TOPIK: Mengirim dan membaca ID unik pada URL (/buku/:id)
+// SLIDE 16: MENGIRIM DATA VIA PATH PARAMETERS (/MAHASISWA/:NIM)
+// Topik: Membaca Parameter URL Dinamis state.pathParameters
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Pastikan package go_router sudah terpasang: flutter pub add go_router
-// 2. Salin seluruh isi berkas ini ke: lib/main.dart
-// 3. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-final pathRouter = GoRouter(
+void main() {
+  runApp(const PathParamsApp());
+}
+
+final GoRouter _router = GoRouter(
   initialLocation: '/',
   routes: [
+    GoRoute(path: '/', builder: (context, state) => const StudentListScreen()),
     GoRoute(
-      path: '/',
-      builder: (context, state) => const KatalogScreen(),
-    ),
-    // Definisi rute dengan placeholder :id
-    GoRoute(
-      path: '/buku/:id',
+      path: '/mahasiswa/:nim',
       builder: (context, state) {
-        // Membaca nilai :id dari URL
-        final id = state.pathParameters['id']!;
-        return DetailBukuScreen(bukuId: id);
+        // Mengekstrak parameter :nim dari URL dinamis
+        final nim = state.pathParameters['nim'] ?? '000000';
+        return StudentDetailScreen(nim: nim);
       },
     ),
   ],
 );
 
-void main() {
-  runApp(MaterialApp.router(routerConfig: pathRouter, debugShowCheckedModeBanner: false));
+class PathParamsApp extends StatelessWidget {
+  const PathParamsApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Slide 16 - Path Parameters',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
+      routerConfig: _router,
+    );
+  }
 }
 
-class KatalogScreen extends StatelessWidget {
-  const KatalogScreen({super.key});
+class StudentListScreen extends StatelessWidget {
+  const StudentListScreen({super.key});
+
+  final List<Map<String, String>> _students = const [
+    {'nim': '2026001001', 'nama': 'Ahmad Fauzi'},
+    {'nim': '2026001002', 'nama': 'Siti Rahmawati'},
+    {'nim': '2026001003', 'nama': 'Budi Santoso'},
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('KATALOG DENGAN PATH PARAMETER')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          ListTile(
-            title: const Text('Buku #101: Flutter Modern'),
-            trailing: const Icon(Icons.arrow_forward),
-            onTap: () => context.push('/buku/101'),
-          ),
-          ListTile(
-            title: const Text('Buku #202: Clean Architecture'),
-            trailing: const Icon(Icons.arrow_forward),
-            onTap: () => context.push('/buku/202'),
-          ),
-          ListTile(
-            title: const Text('Buku #303: Dart Asynchronous'),
-            trailing: const Icon(Icons.arrow_forward),
-            onTap: () => context.push('/buku/303'),
-          ),
-        ],
+      appBar: AppBar(title: const Text('Daftar Mahasiswa'), centerTitle: true),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(12),
+        itemCount: _students.length,
+        itemBuilder: (context, index) {
+          final s = _students[index];
+          return Card(
+            child: ListTile(
+              leading: CircleAvatar(child: Text('${index + 1}')),
+              title: Text(
+                s['nama']!,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text('NIM: ${s['nim']}'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                // Menavigasi ke path dinamis dengan NIM mahasiswa
+                context.go('/mahasiswa/${s['nim']}');
+              },
+            ),
+          );
+        },
       ),
     );
   }
 }
 
-class DetailBukuScreen extends StatelessWidget {
-  final String bukuId;
-  const DetailBukuScreen({super.key, required this.bukuId});
+class StudentDetailScreen extends StatelessWidget {
+  final String nim;
+  const StudentDetailScreen({super.key, required this.nim});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('DETAIL BUKU #$bukuId')),
+      appBar: AppBar(title: const Text('Detail Mahasiswa'), centerTitle: true),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('ID yang dibaca dari URL: $bukuId', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 16),
-            ElevatedButton(onPressed: () => context.pop(), child: const Text('KEMBALI')),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircleAvatar(
+                radius: 40,
+                child: Icon(Icons.person, size: 48),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'NIM: $nim',
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Parameter berhasil diekstrak dari pathParameters!',
+                style: TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(height: 24),
+              OutlinedButton.icon(
+                onPressed: () => context.go('/'),
+                icon: const Icon(Icons.arrow_back),
+                label: const Text('Kembali ke Daftar'),
+              ),
+            ],
+          ),
         ),
       ),
     );

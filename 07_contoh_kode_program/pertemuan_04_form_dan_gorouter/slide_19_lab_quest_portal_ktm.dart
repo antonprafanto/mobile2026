@@ -1,178 +1,231 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 19: SOLUSI MASTER LAB QUEST 04
-// TOPIK: Registrasi Akun Mahasiswa Lengkap -> Kartu KTM Digital Neo-Brutal
+// SLIDE 19: SOLUSI LAB QUEST TUGAS 04 (PORTAL REGISTRASI KTM)
+// Topik: Form Lengkap, Validasi, Dropdown Prodi, & Preview Kartu Mahasiswa
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Pastikan package go_router sudah terpasang: flutter pub add go_router
-// 2. Salin seluruh isi berkas ini ke: lib/main.dart
-// 3. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-class MhsData {
-  final String nim;
-  final String nama;
-  final String prodi;
-  const MhsData({required this.nim, required this.nama, required this.prodi});
+void main() {
+  runApp(const PortalKtmApp());
 }
 
-final labRouter = GoRouter(
-  initialLocation: '/daftar',
-  routes: [
-    GoRoute(path: '/daftar', builder: (ctx, state) => const RegistrasiScreen()),
-    GoRoute(
-      path: '/ktm/:nim',
-      builder: (ctx, state) {
-        final nim = state.pathParameters['nim']!;
-        final mhs = state.extra as MhsData? ?? MhsData(nim: nim, nama: 'Mahasiswa', prodi: 'Informatika');
-        return KtmScreen(mhs: mhs);
-      },
-    ),
-  ],
-);
-
-void main() => runApp(MaterialApp.router(routerConfig: labRouter, debugShowCheckedModeBanner: false));
-
-class RegistrasiScreen extends StatefulWidget {
-  const RegistrasiScreen({super.key});
+class PortalKtmApp extends StatelessWidget {
+  const PortalKtmApp({super.key});
 
   @override
-  State<RegistrasiScreen> createState() => _RegistrasiScreenState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Portal Registrasi KTM Digital',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
+      home: const FormKtmScreen(),
+    );
+  }
 }
 
-class _RegistrasiScreenState extends State<RegistrasiScreen> {
+class FormKtmScreen extends StatefulWidget {
+  const FormKtmScreen({super.key});
+
+  @override
+  State<FormKtmScreen> createState() => _FormKtmScreenState();
+}
+
+class _FormKtmScreenState extends State<FormKtmScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _nim = TextEditingController();
-  final _nama = TextEditingController();
-  final _email = TextEditingController();
-  final _pwd = TextEditingController();
-  bool _obscure = true;
-  String? _prodi;
+  final _nimCtrl = TextEditingController();
+  final _namaCtrl = TextEditingController();
+  final _emailCtrl = TextEditingController();
+
+  String? _selectedProdi;
+  bool _isCardSubmitted = false;
+
+  final List<String> _prodiList = const [
+    'Teknik Informatika',
+    'Sistem Informasi',
+    'Teknik Komputer',
+  ];
 
   @override
   void dispose() {
-    _nim.dispose();
-    _nama.dispose();
-    _email.dispose();
-    _pwd.dispose();
+    _nimCtrl.dispose();
+    _namaCtrl.dispose();
+    _emailCtrl.dispose();
     super.dispose();
   }
 
-  void _submit() {
+  void _submitForm() {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isCardSubmitted = true;
+      });
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Registrasi Berhasil!'), backgroundColor: Colors.green),
-      );
-      context.push(
-        '/ktm/${_nim.text}',
-        extra: MhsData(nim: _nim.text, nama: _nama.text, prodi: _prodi!),
+        const SnackBar(
+          content: Text('Pendaftaran KTM Digital Berhasil!'),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+        ),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('PORTAL REGISTRASI MAHASISWA'), backgroundColor: const Color(0xFFFFE600)),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Form(
-          key: _formKey,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Tugas 04: Registrasi KTM Digital'),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextFormField(
-                controller: _nim,
-                decoration: const InputDecoration(labelText: 'NIM (Minimal 8 digit)', border: OutlineInputBorder()),
-                validator: (v) => (v == null || v.length < 8) ? 'NIM minimal 8 digit!' : null,
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: _nimCtrl,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: 'NIM Mahasiswa',
+                        hintText: 'Contoh: 2026001001',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.numbers),
+                      ),
+                      validator: (val) {
+                        if (val == null || val.trim().isEmpty)
+                          return 'NIM wajib diisi!';
+                        if (val.length != 10)
+                          return 'NIM harus tepat 10 digit!';
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 14),
+                    TextFormField(
+                      controller: _namaCtrl,
+                      textCapitalization: TextCapitalization.words,
+                      decoration: const InputDecoration(
+                        labelText: 'Nama Lengkap',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.person),
+                      ),
+                      validator: (val) {
+                        if (val == null || val.trim().isEmpty)
+                          return 'Nama wajib diisi!';
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 14),
+                    TextFormField(
+                      controller: _emailCtrl,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: 'Email Kampus Resmi',
+                        hintText: 'nama@mhs.kampus.ac.id',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.email_outlined),
+                      ),
+                      validator: (val) {
+                        if (val == null || val.trim().isEmpty)
+                          return 'Email wajib diisi!';
+                        if (!val.contains('@'))
+                          return 'Format email tidak valid!';
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 14),
+                    DropdownButtonFormField<String>(
+                      initialValue: _selectedProdi,
+                      decoration: const InputDecoration(
+                        labelText: 'Program Studi',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.school_outlined),
+                      ),
+                      hint: const Text('Pilih Program Studi...'),
+                      items: _prodiList
+                          .map(
+                            (p) => DropdownMenuItem(value: p, child: Text(p)),
+                          )
+                          .toList(),
+                      onChanged: (val) => setState(() => _selectedProdi = val),
+                      validator: (val) =>
+                          val == null ? 'Pilih salah satu prodi!' : null,
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 12),
-              TextFormField(
-                controller: _nama,
-                decoration: const InputDecoration(labelText: 'Nama Lengkap', border: OutlineInputBorder()),
-                validator: (v) => (v == null || v.isEmpty) ? 'Nama tidak boleh kosong!' : null,
+              const SizedBox(height: 20),
+              FilledButton.icon(
+                onPressed: _submitForm,
+                icon: const Icon(Icons.badge_outlined),
+                label: const Text('Cetak KTM Digital'),
               ),
-              const SizedBox(height: 12),
-              TextFormField(
-                controller: _email,
-                decoration: const InputDecoration(labelText: 'Email Kampus (@mhs.kampus.ac.id)', border: OutlineInputBorder()),
-                validator: (v) {
-                  if (v == null || !v.endsWith('@mhs.kampus.ac.id')) {
-                    return 'Gunakan domain @mhs.kampus.ac.id!';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 12),
-              TextFormField(
-                controller: _pwd,
-                obscureText: _obscure,
-                decoration: InputDecoration(
-                  labelText: 'Kata Sandi',
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon: Icon(_obscure ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () => setState(() => _obscure = !_obscure),
+              const SizedBox(height: 28),
+
+              // Preview Kartu Mahasiswa setelah submit
+              if (_isCardSubmitted) ...[
+                const Text(
+                  'Kartu Tanda Mahasiswa Digital:',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                Card(
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 28,
+                              child: Icon(Icons.person, size: 36),
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    _namaCtrl.text,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    'NIM: ${_nimCtrl.text}',
+                                    style: const TextStyle(color: Colors.grey),
+                                  ),
+                                  Text(
+                                    _selectedProdi ?? '',
+                                    style: const TextStyle(
+                                      color: Colors.indigo,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Divider(height: 24),
+                        Text(
+                          'Email: ${_emailCtrl.text}',
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                validator: (v) => (v == null || v.length < 8) ? 'Sandi minimal 8 karakter!' : null,
-              ),
-              const SizedBox(height: 12),
-              DropdownButtonFormField<String>(
-                value: _prodi,
-                decoration: const InputDecoration(labelText: 'Program Studi', border: OutlineInputBorder()),
-                items: ['Informatika', 'Sistem Informasi', 'Teknik Komputer'].map((p) => DropdownMenuItem(value: p, child: Text(p))).toList(),
-                onChanged: (v) => setState(() => _prodi = v),
-                validator: (v) => v == null ? 'Pilih program studi!' : null,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _submit,
-                style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFFFE600), foregroundColor: Colors.black, minimumSize: const Size(double.infinity, 50)),
-                child: const Text('DAFTAR & TERBITKAN KTM', style: TextStyle(fontWeight: FontWeight.bold)),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class KtmScreen extends StatelessWidget {
-  final MhsData mhs;
-  const KtmScreen({super.key, required this.mhs});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('KTM DIGITAL MAHASISWA'), backgroundColor: const Color(0xFF4ADE80)),
-      body: Center(
-        child: Container(
-          width: 360,
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: const Color(0xFFFFE600),
-            border: Border.all(color: Colors.black, width: 3),
-            boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(6, 6))],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('KARTU TANDA MAHASISWA', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16)),
-              const Divider(color: Colors.black, thickness: 2),
-              Text('NIM  : ${mhs.nim}', style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text('NAMA : ${mhs.nama}'),
-              Text('PRODI: ${mhs.prodi}'),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => context.pop(),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.white, foregroundColor: Colors.black),
-                child: const Text('KEMBALI KE FORM'),
-              ),
+              ],
             ],
           ),
         ),

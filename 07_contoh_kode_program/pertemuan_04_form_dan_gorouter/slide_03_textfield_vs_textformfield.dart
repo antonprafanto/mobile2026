@@ -1,127 +1,144 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 03: DUA JENIS INPUT TEKS
-// TOPIK: Perbedaan TextField (Search Bar) vs TextFormField (Form Validasi)
+// SLIDE 03: DUA JENIS INPUT TEKS (TEXTFIELD VS TEXTFORMFIELD)
+// Topik: Memilih Input yang Tepat untuk Kebutuhan Pengguna
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide03App());
+  runApp(const TextFieldComparisonApp());
 }
 
-class Slide03App extends StatelessWidget {
-  const Slide03App({super.key});
+class TextFieldComparisonApp extends StatelessWidget {
+  const TextFieldComparisonApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
-      home: const Slide03Screen(),
+      title: 'Slide 03 - TextField vs TextFormField',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+      home: const InputComparisonScreen(),
     );
   }
 }
 
-class Slide03Screen extends StatefulWidget {
-  const Slide03Screen({super.key});
+class InputComparisonScreen extends StatefulWidget {
+  const InputComparisonScreen({super.key});
 
   @override
-  State<Slide03Screen> createState() => _Slide03ScreenState();
+  State<InputComparisonScreen> createState() => _InputComparisonScreenState();
 }
 
-class _Slide03ScreenState extends State<Slide03Screen> {
+class _InputComparisonScreenState extends State<InputComparisonScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _hasilPencarian = '';
-  String _hasilForm = '';
+  String _searchQuery = '';
+  String _submittedEmail = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SLIDE 03: TextField vs TextFormField'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 03: TextField vs TextFormField'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // 1. CONTOH TEXTFIELD BIASA (KOLOM PENCARIAN)
-            const Text(
-              '1. CONTOH TEXTFIELD (Untuk Input Bebas / Search Bar):',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              decoration: const InputDecoration(
-                hintText: 'Ketik untuk mencari sesuatu...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+            // 1. TextField biasa (Cocok untuk search bar mandiri)
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      '1. TextField (Input Mandiri / Search Bar)',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    TextField(
+                      decoration: const InputDecoration(
+                        labelText: 'Cari Produk / Mahasiswa',
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          _searchQuery = val;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Query aktif: ${_searchQuery.isEmpty ? "(kosong)" : _searchQuery}',
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
-              onChanged: (text) {
-                setState(() {
-                  _hasilPencarian = text;
-                });
-              },
             ),
-            const SizedBox(height: 6),
-            Text('Karakter pencarian: "$_hasilPencarian"', style: const TextStyle(color: Colors.blueGrey)),
+            const SizedBox(height: 16),
 
-            const Divider(height: 40, thickness: 2),
-
-            // 2. CONTOH TEXTFORMFIELD CERDAS (UNTUK FORM DENGAN VALIDASI)
-            const Text(
-              '2. CONTOH TEXTFORMFIELD (Terintegrasi Form & Validator):',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            const SizedBox(height: 8),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Email Mahasiswa',
-                      hintText: 'nama@mhs.kampus.ac.id',
-                      prefixIcon: Icon(Icons.email_outlined),
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: (val) {
-                      if (val == null || val.trim().isEmpty) {
-                        return 'Email wajib diisi, tidak boleh kosong!';
-                      }
-                      if (!val.contains('@')) {
-                        return 'Format email harus memuat simbol @!';
-                      }
-                      return null; // Lolos
-                    },
-                    onSaved: (val) => _hasilForm = val ?? '',
+            // 2. TextFormField (Cocok untuk Formulir Validasi)
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        '2. TextFormField (Formulir dengan Validasi)',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Email Akun Kampus',
+                          prefixIcon: Icon(Icons.email_outlined),
+                          border: OutlineInputBorder(),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Email wajib diisi!';
+                          }
+                          if (!value.contains('@')) {
+                            return 'Format email tidak valid (harus ada @)';
+                          }
+                          return null; // Valid
+                        },
+                        onSaved: (value) => _submittedEmail = value ?? '',
+                      ),
+                      const SizedBox(height: 12),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Tersimpan: $_submittedEmail'),
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.check),
+                        label: const Text('Validasi & Kirim'),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Lolos Validasi! Nilai tersimpan: $_hasilForm'),
-                            backgroundColor: Colors.green,
-                          ),
-                        );
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFE600),
-                      foregroundColor: Colors.black,
-                    ),
-                    child: const Text('SUBMIT TEXTFORMFIELD'),
-                  ),
-                ],
+                ),
               ),
             ),
           ],

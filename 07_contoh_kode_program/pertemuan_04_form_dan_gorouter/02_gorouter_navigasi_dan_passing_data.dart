@@ -49,13 +49,15 @@ const List<Buku> daftarKatalogBuku = [
     id: '101',
     judul: 'Mastering Flutter 2026',
     pengarang: 'Google Developer Team',
-    deskripsi: 'Panduan lengkap rekayasa aplikasi mobile modern lintas platform.',
+    deskripsi:
+        'Panduan lengkap rekayasa aplikasi mobile modern lintas platform.',
   ),
   Buku(
     id: '102',
     judul: 'Clean Architecture with BLoC',
     pengarang: 'Mobile Enterprise Team',
-    deskripsi: 'Pemisahan logika bisnis, data caching, dan arsitektur enterprise.',
+    deskripsi:
+        'Pemisahan logika bisnis, data caching, dan arsitektur enterprise.',
   ),
   Buku(
     id: '103',
@@ -112,7 +114,8 @@ final GoRouter appRouter = GoRouter(
       path: '/profil',
       builder: (context, state) {
         // Membaca objek data Mahasiswa yang dikirimkan
-        final mhs = state.extra as Mahasiswa? ??
+        final mhs =
+            state.extra as Mahasiswa? ??
             const Mahasiswa(
               nim: '00000',
               nama: 'Tamu Anonim',
@@ -198,7 +201,9 @@ class KatalogBukuScreen extends StatelessWidget {
         ),
         backgroundColor: const Color(0xFFFFE600),
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
         actions: [
           // Tombol menuju profil dengan membawa objek 'extra'
           IconButton(
@@ -227,7 +232,9 @@ class KatalogBukuScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: const Color(0xFF38BDF8), // Electric Cyan
               border: Border.all(color: Colors.black, width: 2.5),
-              boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(4, 4))],
+              boxShadow: const [
+                BoxShadow(color: Colors.black, offset: Offset(4, 4)),
+              ],
             ),
             child: Row(
               children: [
@@ -245,7 +252,9 @@ class KatalogBukuScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
-                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
                     side: const BorderSide(color: Colors.black, width: 2),
                   ),
                   child: const Text('Cari Sekarang'),
@@ -257,7 +266,11 @@ class KatalogBukuScreen extends StatelessWidget {
 
           const Text(
             'DAFTAR KOLEKSI BUKU (KLIK UNTUK DETAIL):',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, letterSpacing: 0.5),
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontSize: 13,
+              letterSpacing: 0.5,
+            ),
           ),
           const SizedBox(height: 10),
 
@@ -268,15 +281,23 @@ class KatalogBukuScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black, width: 2.5),
-                boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(4, 4))],
+                boxShadow: const [
+                  BoxShadow(color: Colors.black, offset: Offset(4, 4)),
+                ],
               ),
               child: ListTile(
                 leading: CircleAvatar(
                   backgroundColor: const Color(0xFFFFE600),
                   foregroundColor: Colors.black,
-                  child: Text(buku.id, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  child: Text(
+                    buku.id,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
-                title: Text(buku.judul, style: const TextStyle(fontWeight: FontWeight.bold)),
+                title: Text(
+                  buku.judul,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
                 subtitle: Text('Oleh: ${buku.pengarang}'),
                 trailing: const Icon(Icons.arrow_forward, color: Colors.black),
                 onTap: () {
@@ -293,7 +314,10 @@ class KatalogBukuScreen extends StatelessWidget {
           TextButton.icon(
             onPressed: () => context.push('/halaman-asal-asalan'),
             icon: const Icon(Icons.bug_report, color: Colors.grey),
-            label: const Text('Uji Coba Rute 404 (Sengaja Salah URL)', style: TextStyle(color: Colors.grey)),
+            label: const Text(
+              'Uji Coba Rute 404 (Sengaja Salah URL)',
+              style: TextStyle(color: Colors.grey),
+            ),
           ),
         ],
       ),
@@ -316,7 +340,9 @@ class DetailBukuScreen extends StatelessWidget {
         title: Text('DETAIL BUKU #${buku.id}'),
         backgroundColor: const Color(0xFF4ADE80), // Mint Green
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -325,7 +351,9 @@ class DetailBukuScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.black, width: 2.5),
-            boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(6, 6))],
+            boxShadow: const [
+              BoxShadow(color: Colors.black, offset: Offset(6, 6)),
+            ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -333,12 +361,19 @@ class DetailBukuScreen extends StatelessWidget {
             children: [
               Text(
                 buku.judul,
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
                 'Pengarang: ${buku.pengarang}',
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black89),
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               const Divider(height: 30, thickness: 2, color: Colors.black),
               const Text(
@@ -346,7 +381,10 @@ class DetailBukuScreen extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
               const SizedBox(height: 6),
-              Text(buku.deskripsi, style: const TextStyle(fontSize: 14, height: 1.5)),
+              Text(
+                buku.deskripsi,
+                style: const TextStyle(fontSize: 14, height: 1.5),
+              ),
               const SizedBox(height: 24),
               ElevatedButton.icon(
                 onPressed: () {
@@ -358,7 +396,9 @@ class DetailBukuScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFFFE600),
                   foregroundColor: Colors.black,
-                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
                   side: const BorderSide(color: Colors.black, width: 2),
                 ),
               ),
@@ -385,7 +425,9 @@ class HasilPencarianScreen extends StatelessWidget {
         title: const Text('HASIL PENCARIAN'),
         backgroundColor: const Color(0xFF38BDF8),
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: Center(
         child: Container(
@@ -394,7 +436,9 @@ class HasilPencarianScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.black, width: 2.5),
-            boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(5, 5))],
+            boxShadow: const [
+              BoxShadow(color: Colors.black, offset: Offset(5, 5)),
+            ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -404,7 +448,10 @@ class HasilPencarianScreen extends StatelessWidget {
               Text(
                 'Menampilkan hasil untuk kata kunci:\n"$keyword"',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -412,7 +459,9 @@ class HasilPencarianScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFFFE600),
                   foregroundColor: Colors.black,
-                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
                   side: const BorderSide(color: Colors.black, width: 2),
                 ),
                 child: const Text('Tutup Hasil'),
@@ -440,7 +489,9 @@ class ProfilMahasiswaScreen extends StatelessWidget {
         title: const Text('PROFIL MAHASISWA'),
         backgroundColor: const Color(0xFFC084FC), // Lavender Neo-Brutal
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: Center(
         child: Container(
@@ -449,7 +500,9 @@ class ProfilMahasiswaScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: const Color(0xFFFFE600),
             border: Border.all(color: Colors.black, width: 2.5),
-            boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(6, 6))],
+            boxShadow: const [
+              BoxShadow(color: Colors.black, offset: Offset(6, 6)),
+            ],
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -459,17 +512,38 @@ class ProfilMahasiswaScreen extends StatelessWidget {
                 children: [
                   Icon(Icons.badge, size: 28),
                   SizedBox(width: 8),
-                  Text('KARTU IDENTITAS SIKAD', style: TextStyle(fontWeight: FontWeight.w900)),
+                  Text(
+                    'KARTU IDENTITAS SIKAD',
+                    style: TextStyle(fontWeight: FontWeight.w900),
+                  ),
                 ],
               ),
               const Divider(color: Colors.black, thickness: 2, height: 24),
-              Text('NIM         : ${mahasiswa.nim}', style: const TextStyle(fontFamily: 'Consolas', fontSize: 14)),
+              Text(
+                'NIM         : ${mahasiswa.nim}',
+                style: const TextStyle(fontFamily: 'Consolas', fontSize: 14),
+              ),
               const SizedBox(height: 6),
-              Text('Nama Lengkap: ${mahasiswa.nama}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+              Text(
+                'Nama Lengkap: ${mahasiswa.nama}',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
               const SizedBox(height: 6),
-              Text('Program Studi: ${mahasiswa.prodi}', style: const TextStyle(fontSize: 14)),
+              Text(
+                'Program Studi: ${mahasiswa.prodi}',
+                style: const TextStyle(fontSize: 14),
+              ),
               const SizedBox(height: 6),
-              Text('IPK Kumulatif: ${mahasiswa.ipk.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+              Text(
+                'IPK Kumulatif: ${mahasiswa.ipk.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
               const SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
@@ -478,7 +552,9 @@ class ProfilMahasiswaScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
-                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
                     side: const BorderSide(color: Colors.black, width: 2),
                   ),
                   child: const Text('KEMBALI'),

@@ -1,82 +1,128 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 12: GESTUREDTECTOR VS INKWELL
-// TOPIK: Membandingkan sentuhan mentah vs riak air Material Splash Effect
+// SLIDE 12: RESPON SENTUHAN (GESTUREDETECTOR VS INKWELL)
+// Topik: Membedakan Respon Hening vs Efek Riak Air Material (Ripple)
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide12App());
+  runApp(const GestureComparisonApp());
 }
 
-class Slide12App extends StatelessWidget {
-  const Slide12App({super.key});
+class GestureComparisonApp extends StatelessWidget {
+  const GestureComparisonApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Slide12Screen(),
+      title: 'Slide 12 - InkWell vs GestureDetector',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+      home: const GestureScreen(),
     );
   }
 }
 
-class Slide12Screen extends StatefulWidget {
-  const Slide12Screen({super.key});
+class GestureScreen extends StatefulWidget {
+  const GestureScreen({super.key});
 
   @override
-  State<Slide12Screen> createState() => _Slide12ScreenState();
+  State<GestureScreen> createState() => _GestureScreenState();
 }
 
-class _Slide12ScreenState extends State<Slide12Screen> {
-  String _statusSentuh = 'Sentuh salah satu kotak di bawah:';
+class _GestureScreenState extends State<GestureScreen> {
+  String _lastAction = 'Belum ada elemen yang disentuh.';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SLIDE 12: GestureDetector vs InkWell'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 12: GestureDetector vs InkWell'),
+        centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(_statusSentuh, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 20),
-
-            // 1. GestureDetector (Sentuhan Mentah Tanpa Efek Visual)
+            // 1. GestureDetector (Respon hening tanpa efek riak)
             GestureDetector(
               onTap: () {
-                setState(() => _statusSentuh = 'Kotak GestureDetector disentuh (tanpa animasi riak air)!');
+                setState(() {
+                  _lastAction =
+                      'GestureDetector disentuh (Tanpa efek visual riak).';
+                });
               },
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                width: double.infinity,
-                color: const Color(0xFF38BDF8),
-                child: const Text('1. GESTUREDTECTOR (Mentah)', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
+              child: Card(
+                color: Colors.blue.shade50,
+                child: const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.touch_app, color: Colors.blue),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          '1. GestureDetector\nSentuhan hening tanpa efek riak.',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
 
-            // 2. InkWell (Sentuhan Ber-animasi Riak Air Material Splash)
-            Material(
-              color: const Color(0xFFFFE600),
+            // 2. InkWell (Membutuhkan Material ancestor untuk efek riak air)
+            Card(
+              clipBehavior: Clip.hardEdge,
               child: InkWell(
                 onTap: () {
-                  setState(() => _statusSentuh = 'Kotak InkWell disentuh (ada efek cipratan riak air tinta)!');
+                  setState(() {
+                    _lastAction =
+                        'InkWell disentuh (Efek riak gelombang air Material 3 aktif!).';
+                  });
                 },
-                splashColor: Colors.black26,
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  width: double.infinity,
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
-                  child: const Text('2. INKWELL (Ada Ripple Splash)', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.water_drop_outlined,
+                        color: Colors.indigo.shade600,
+                      ),
+                      const SizedBox(width: 12),
+                      const Expanded(
+                        child: Text(
+                          '2. InkWell\nAda animasi riak gelombang air (Splash Ripple).',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 32),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Status Sentuhan:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      _lastAction,
+                      style: const TextStyle(color: Colors.indigo),
+                    ),
+                  ],
                 ),
               ),
             ),

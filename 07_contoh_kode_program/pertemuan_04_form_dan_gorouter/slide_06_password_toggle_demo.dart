@@ -1,44 +1,45 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 06: TOGGLE INTIP PASSWORD NYATA
-// TOPIK: Membuat tombol mata interaktif dengan boolean _isObscure & setState
+// SLIDE 06: TOGGLE INTIP PASSWORD INTERAKTIF
+// Topik: Mengamankan Input Sandi dengan obscureText & suffixIcon
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide06App());
+  runApp(const PasswordToggleApp());
 }
 
-class Slide06App extends StatelessWidget {
-  const Slide06App({super.key});
+class PasswordToggleApp extends StatelessWidget {
+  const PasswordToggleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Slide06Screen(),
+      title: 'Slide 06 - Password Toggle',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
+      home: const PasswordToggleScreen(),
     );
   }
 }
 
-class Slide06Screen extends StatefulWidget {
-  const Slide06Screen({super.key});
+class PasswordToggleScreen extends StatefulWidget {
+  const PasswordToggleScreen({super.key});
 
   @override
-  State<Slide06Screen> createState() => _Slide06ScreenState();
+  State<PasswordToggleScreen> createState() => _PasswordToggleScreenState();
 }
 
-class _Slide06ScreenState extends State<Slide06Screen> {
-  bool _isObscure = true; // Status awal: sandi tersembunyi
-  final _pwdController = TextEditingController();
+class _PasswordToggleScreenState extends State<PasswordToggleScreen> {
+  // Variabel penentu apakah kata sandi sedang disamarkan
+  bool _isObscure = true;
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _pwdController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -46,48 +47,56 @@ class _Slide06ScreenState extends State<Slide06Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SLIDE 06: Interactive Password Toggle'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 06: Toggle Intip Sandi'),
+        centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Coba ketik kata sandi lalu klik ikon mata di sebelah kanan:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 12),
-            TextFormField(
-              controller: _pwdController,
-              obscureText: _isObscure, // Dikendalikan boolean _isObscure
+            TextField(
+              controller: _passwordController,
+              // obscureText true akan menampilkan bulatan sandi (••••••)
+              obscureText: _isObscure,
               decoration: InputDecoration(
-                labelText: 'Kata Sandi Akun',
-                hintText: 'Minimal 8 karakter unik',
-                prefixIcon: const Icon(Icons.lock_outline),
+                labelText: 'Kata Sandi Portal',
                 border: const OutlineInputBorder(),
-                // SuffixIcon tombol mata yang mengubah _isObscure
+                prefixIcon: const Icon(Icons.lock_outline),
+                // Tombol intip sandi diletakkan pada suffixIcon
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _isObscure ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.black,
+                    _isObscure ? Icons.visibility_off : Icons.visibility,
                   ),
+                  tooltip: _isObscure ? 'Tampilkan sandi' : 'Sembunyikan sandi',
                   onPressed: () {
                     setState(() {
-                      _isObscure = !_isObscure; // Toggle bolak-balik
+                      _isObscure = !_isObscure;
                     });
                   },
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            Text(
-              'Status saat ini: ${_isObscure ? "TERSEMBUNYI (••••)" : "TERLIHAT (Teks Terbuka)"}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: _isObscure ? Colors.red : Colors.green,
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      _isObscure ? Icons.shield_outlined : Icons.lock_open,
+                      color: _isObscure ? Colors.green : Colors.orange,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        _isObscure
+                            ? 'Mode Aman: Karakter kata sandi disamarkan.'
+                            : 'Mode Intip: Karakter terlihat langsung di layar.',
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

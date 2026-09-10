@@ -1,48 +1,65 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 09: FORM & GLOBALKEY<FORMSTATE>
-// TOPIK: Analogi Map Berkas & Stempel Legalisir untuk mengecek form serentak
+// SLIDE 09: ARSITEKTUR FORM & GLOBALKEY<FORMSTATE>
+// Topik: Menghubungkan Form, Validasi Serentak, & Analogi Stempel
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide09App());
+  runApp(const FormArchitectureApp());
 }
 
-class Slide09App extends StatelessWidget {
-  const Slide09App({super.key});
+class FormArchitectureApp extends StatelessWidget {
+  const FormArchitectureApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Slide09Screen(),
+      title: 'Slide 09 - Form Architecture',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
+      home: const FormArchitectureScreen(),
     );
   }
 }
 
-class Slide09Screen extends StatefulWidget {
-  const Slide09Screen({super.key});
+class FormArchitectureScreen extends StatefulWidget {
+  const FormArchitectureScreen({super.key});
 
   @override
-  State<Slide09Screen> createState() => _Slide09ScreenState();
+  State<FormArchitectureScreen> createState() => _FormArchitectureScreenState();
 }
 
-class _Slide09ScreenState extends State<Slide09Screen> {
-  // Stempel Kunci Form
+class _FormArchitectureScreenState extends State<FormArchitectureScreen> {
+  // GlobalKey bertindak sebagai 'kunci kendali' untuk memvalidasi seluruh input anak sekaligus
   final _formKey = GlobalKey<FormState>();
 
-  void _kirimForm() {
-    // 1 Perintah untuk memeriksa seluruh kolom di dalam Form:
+  final TextEditingController _nimController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nimController.dispose();
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() {
+    // Memanggil fungsi validasi pada semua TextFormField di dalam Form
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Seluruh isian lolos verifikasi!'),
+          content: Text('Semua kolom valid! Data siap dikirim ke server.'),
           backgroundColor: Colors.green,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Ada kolom yang belum valid! Silakan periksa kembali.'),
+          backgroundColor: Colors.red,
         ),
       );
     }
@@ -52,39 +69,48 @@ class _Slide09ScreenState extends State<Slide09Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SLIDE 09: GlobalKey<FormState>'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 09: Arsitektur Form & Key'),
+        centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(24.0),
         child: Form(
-          key: _formKey, // Pasang kunci stempel pada widget Form
+          key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
+                controller: _nimController,
+                decoration: const InputDecoration(
+                  labelText: 'NIM Mahasiswa',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.numbers),
+                ),
+                validator: (val) {
+                  if (val == null || val.trim().isEmpty)
+                    return 'NIM tidak boleh kosong!';
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _nameController,
                 decoration: const InputDecoration(
                   labelText: 'Nama Lengkap',
                   border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.person),
                 ),
-                validator: (val) => val!.isEmpty ? 'Nama wajib diisi!' : null,
-              ),
-              const SizedBox(height: 14),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Nomor Telepon',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (val) => val!.isEmpty ? 'Nomor telepon wajib diisi!' : null,
+                validator: (val) {
+                  if (val == null || val.trim().isEmpty)
+                    return 'Nama tidak boleh kosong!';
+                  return null;
+                },
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _kirimForm,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFFE600),
-                  foregroundColor: Colors.black,
-                ),
-                child: const Text('STEMPEL FORMULIR (VALIDATE)'),
+              ElevatedButton.icon(
+                onPressed: _submitForm,
+                icon: const Icon(Icons.send),
+                label: const Text('Validasi Serentak (_formKey)'),
               ),
             ],
           ),

@@ -1,112 +1,131 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 04: TEXTEDITINGCONTROLLER & DISPOSE
-// TOPIK: Membaca teks, mengosongkan teks, dan mencegah kebocoran memori RAM
+// SLIDE 04: TEXTEDITINGCONTROLLER & SIKLUS HIDUP (ANTI MEMORY LEAK)
+// Topik: Membaca, Mengubah, Mengosongkan, & Wajib dispose()
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide04App());
+  runApp(const ControllerLifecycleApp());
 }
 
-class Slide04App extends StatelessWidget {
-  const Slide04App({super.key});
+class ControllerLifecycleApp extends StatelessWidget {
+  const ControllerLifecycleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Slide04Screen(),
+      title: 'Slide 04 - Controller Lifecycle',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.teal),
+      home: const ControllerDemoScreen(),
     );
   }
 }
 
-class Slide04Screen extends StatefulWidget {
-  const Slide04Screen({super.key});
+class ControllerDemoScreen extends StatefulWidget {
+  const ControllerDemoScreen({super.key});
 
   @override
-  State<Slide04Screen> createState() => _Slide04ScreenState();
+  State<ControllerDemoScreen> createState() => _ControllerDemoScreenState();
 }
 
-class _Slide04ScreenState extends State<Slide04Screen> {
-  // 1. Inisialisasi Controller
-  final _namaController = TextEditingController();
-  String _teksTerbaca = '-';
+class _ControllerDemoScreenState extends State<ControllerDemoScreen> {
+  // 1. Deklarasi controller di dalam State
+  final TextEditingController _nameController = TextEditingController();
+  String _liveText = '';
 
-  // 2. WAJIB DISPOSE: Mencegah Kebocoran Memori (Memory Leak)
+  @override
+  void initState() {
+    super.initState();
+    // Mendengarkan perubahan input secara real-time
+    _nameController.addListener(() {
+      setState(() {
+        _liveText = _nameController.text;
+      });
+    });
+  }
+
   @override
   void dispose() {
-    _namaController.dispose(); // Matikan remote pengendali teks!
+    // 2. WAJIB: Bersihkan controller saat widget dimusnahkan agar tidak bocor di RAM
+    _nameController.dispose();
     super.dispose();
-  }
-
-  void _bacaTeks() {
-    setState(() {
-      _teksTerbaca = _namaController.text;
-    });
-  }
-
-  void _kosongkanKolom() {
-    _namaController.clear();
-    setState(() {
-      _teksTerbaca = '';
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SLIDE 04: Controller & Lifecycle'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 04: Controller & dispose()'),
+        centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Remote Pengendali Input Teks (TextEditingController):',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
             TextField(
-              controller: _namaController,
+              controller: _nameController,
               decoration: const InputDecoration(
-                labelText: 'Ketik Nama Anda',
+                labelText: 'Ketik Nama Lengkap Anda',
                 border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.person),
               ),
             ),
             const SizedBox(height: 16),
             Row(
               children: [
-                ElevatedButton.icon(
-                  onPressed: _bacaTeks,
-                  icon: const Icon(Icons.search),
-                  label: const Text('BACA TEKS'),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      // Mengosongkan kolom input secara terprogram
+                      _nameController.clear();
+                    },
+                    icon: const Icon(Icons.clear),
+                    label: const Text('Bersihkan'),
+                  ),
                 ),
-                const SizedBox(width: 10),
-                OutlinedButton.icon(
-                  onPressed: _kosongkanKolom,
-                  icon: const Icon(Icons.delete_outline),
-                  label: const Text('KOSONGKAN'),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Mengubah teks input secara terprogram
+                      _nameController.text = 'Budi Raharjo';
+                    },
+                    icon: const Icon(Icons.auto_fix_high),
+                    label: const Text('Set Otomatis'),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.all(16),
-              width: double.infinity,
-              color: Colors.amber.shade100,
-              child: Text(
-                'Nilai di controller saat ini:
-"$_teksTerbaca"',
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            const SizedBox(height: 24),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Status Controller di Memori:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Teks terbaca: "${_liveText.isEmpty ? "(masih kosong)" : _liveText}"',
+                      style: const TextStyle(fontSize: 16, color: Colors.teal),
+                    ),
+                    const Divider(height: 24),
+                    const Text(
+                      'Peringatan Penting:\n'
+                      'Setiap objek TextEditingController wajib ditutup menggunakan dispose() '
+                      'di dalam blok override dispose() agar tidak terjadi Memory Leak.',
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

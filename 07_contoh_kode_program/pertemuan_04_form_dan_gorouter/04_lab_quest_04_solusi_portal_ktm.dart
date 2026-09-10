@@ -46,7 +46,8 @@ final GoRouter labRouter = GoRouter(
       path: '/ktm/:nim',
       builder: (context, state) {
         final nim = state.pathParameters['nim']!;
-        final mhs = state.extra as MahasiswaModel? ??
+        final mhs =
+            state.extra as MahasiswaModel? ??
             MahasiswaModel(
               nim: nim,
               nama: 'Nama Mahasiswa',
@@ -60,9 +61,7 @@ final GoRouter labRouter = GoRouter(
 
   // Penanganan Halaman 404
   errorBuilder: (context, state) => Scaffold(
-    body: Center(
-      child: Text('404: Rute ${state.uri} tidak ditemukan!'),
-    ),
+    body: Center(child: Text('404: Rute ${state.uri} tidak ditemukan!')),
   ),
 );
 
@@ -97,7 +96,8 @@ class RegistrasiMahasiswaScreen extends StatefulWidget {
   const RegistrasiMahasiswaScreen({super.key});
 
   @override
-  State<RegistrasiMahasiswaScreen> createState() => _RegistrasiMahasiswaScreenState();
+  State<RegistrasiMahasiswaScreen> createState() =>
+      _RegistrasiMahasiswaScreenState();
 }
 
 class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
@@ -151,10 +151,7 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
       );
 
       // 4. Berpindah ke layar KTM menggunakan context.push()
-      context.push(
-        '/ktm/${model.nim}',
-        extra: model,
-      );
+      context.push('/ktm/${model.nim}', extra: model);
     }
   }
 
@@ -168,7 +165,9 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
         ),
         backgroundColor: const Color(0xFFFFE600),
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -181,7 +180,9 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(color: Colors.black, width: 2.5),
-                  boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(6, 6))],
+                  boxShadow: const [
+                    BoxShadow(color: Colors.black, offset: Offset(6, 6)),
+                  ],
                 ),
                 child: Form(
                   key: _formKey,
@@ -190,7 +191,10 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
                     children: [
                       const Text(
                         'FORMULIR BIODATA MAHASISWA',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                       const SizedBox(height: 6),
                       const Text(
@@ -211,8 +215,10 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
                           border: OutlineInputBorder(),
                         ),
                         validator: (v) {
-                          if (v == null || v.trim().isEmpty) return 'NIM wajib diisi!';
-                          if (v.trim().length < 8) return 'NIM minimal 8 digit angka!';
+                          if (v == null || v.trim().isEmpty)
+                            return 'NIM wajib diisi!';
+                          if (v.trim().length < 8)
+                            return 'NIM minimal 8 digit angka!';
                           return null;
                         },
                       ),
@@ -228,7 +234,8 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
                           border: OutlineInputBorder(),
                         ),
                         validator: (v) {
-                          if (v == null || v.trim().isEmpty) return 'Nama tidak boleh kosong!';
+                          if (v == null || v.trim().isEmpty)
+                            return 'Nama tidak boleh kosong!';
                           return null;
                         },
                       ),
@@ -246,7 +253,8 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
                           border: OutlineInputBorder(),
                         ),
                         validator: (v) {
-                          if (v == null || v.trim().isEmpty) return 'Email wajib diisi!';
+                          if (v == null || v.trim().isEmpty)
+                            return 'Email wajib diisi!';
                           final reg = RegExp(r'^[\w\.-]+@mhs\.kampus\.ac\.id$');
                           if (!reg.hasMatch(v.trim())) {
                             return 'Domain wajib: @mhs.kampus.ac.id';
@@ -265,12 +273,18 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
                           prefixIcon: const Icon(Icons.lock_outline),
                           border: const OutlineInputBorder(),
                           suffixIcon: IconButton(
-                            icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
-                            onPressed: () => setState(() => _isObscure = !_isObscure),
+                            icon: Icon(
+                              _isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                            onPressed: () =>
+                                setState(() => _isObscure = !_isObscure),
                           ),
                         ),
                         validator: (v) {
-                          if (v == null || v.length < 8) return 'Kata sandi minimal 8 karakter!';
+                          if (v == null || v.length < 8)
+                            return 'Kata sandi minimal 8 karakter!';
                           return null;
                         },
                       ),
@@ -278,15 +292,22 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
 
                       // Dropdown Prodi
                       DropdownButtonFormField<String>(
-                        value: _selectedProdi,
+                        initialValue: _selectedProdi,
                         decoration: const InputDecoration(
                           labelText: 'Program Studi Terdaftar',
                           prefixIcon: Icon(Icons.school_outlined),
                           border: OutlineInputBorder(),
                         ),
-                        items: _daftarProdi.map((p) => DropdownMenuItem(value: p, child: Text(p))).toList(),
-                        onChanged: (val) => setState(() => _selectedProdi = val),
-                        validator: (v) => v == null ? 'Pilih salah satu program studi!' : null,
+                        items: _daftarProdi
+                            .map(
+                              (p) => DropdownMenuItem(value: p, child: Text(p)),
+                            )
+                            .toList(),
+                        onChanged: (val) =>
+                            setState(() => _selectedProdi = val),
+                        validator: (v) => v == null
+                            ? 'Pilih salah satu program studi!'
+                            : null,
                       ),
                       const SizedBox(height: 24),
 
@@ -299,12 +320,18 @@ class _RegistrasiMahasiswaScreenState extends State<RegistrasiMahasiswaScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black, width: 2.5),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2.5,
+                              ),
                             ),
                             child: const Text(
                               'TERBITKAN KARTU MAHASISWA',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 1),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: 1,
+                              ),
                             ),
                           ),
                         ),
@@ -333,10 +360,15 @@ class KtmDigitalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('KTM DIGITAL RESMI', style: TextStyle(fontWeight: FontWeight.w900)),
+        title: const Text(
+          'KTM DIGITAL RESMI',
+          style: TextStyle(fontWeight: FontWeight.w900),
+        ),
         backgroundColor: const Color(0xFF4ADE80), // Mint Green
         foregroundColor: Colors.black,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -350,17 +382,20 @@ class KtmDigitalScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xFFFFE600), // Kuning Canary
                   border: Border.all(color: Colors.black, width: 3),
-                  boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(8, 8))],
+                  boxShadow: const [
+                    BoxShadow(color: Colors.black, offset: Offset(8, 8)),
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // Header Kartu
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                      decoration: const BoxDecoration(
-                        color: Colors.black,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
                       ),
+                      decoration: const BoxDecoration(color: Colors.black),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -391,7 +426,11 @@ class KtmDigitalScreen extends StatelessWidget {
                               color: const Color(0xFF38BDF8),
                               border: Border.all(color: Colors.black, width: 2),
                             ),
-                            child: const Icon(Icons.person, size: 60, color: Colors.black),
+                            child: const Icon(
+                              Icons.person,
+                              size: 60,
+                              color: Colors.black,
+                            ),
                           ),
                           const SizedBox(width: 16),
 
@@ -402,22 +441,34 @@ class KtmDigitalScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   mahasiswa.nama.toUpperCase(),
-                                  style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 16,
+                                  ),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   'NIM: ${mahasiswa.nim}',
-                                  style: const TextStyle(fontFamily: 'Consolas', fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                    fontFamily: 'Consolas',
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 const SizedBox(height: 6),
                                 Text(
                                   mahasiswa.prodi,
-                                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   mahasiswa.email,
-                                  style: const TextStyle(fontSize: 10, color: Colors.black87),
+                                  style: const TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.black87,
+                                  ),
                                 ),
                               ],
                             ),
@@ -428,15 +479,26 @@ class KtmDigitalScreen extends StatelessWidget {
 
                     // Footer Kartu Barcode
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 8,
+                      ),
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        border: Border(top: BorderSide(color: Colors.black, width: 2)),
+                        border: Border(
+                          top: BorderSide(color: Colors.black, width: 2),
+                        ),
                       ),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('STATUS: AKTIF 2026/2027', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900)),
+                          Text(
+                            'STATUS: AKTIF 2026/2027',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
                           Icon(Icons.qr_code_2, size: 30),
                         ],
                       ),
@@ -458,8 +520,13 @@ class KtmDigitalScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 14,
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
                   side: const BorderSide(color: Colors.black, width: 2),
                 ),
               ),

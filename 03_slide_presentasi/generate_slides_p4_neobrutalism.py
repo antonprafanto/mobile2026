@@ -369,7 +369,8 @@ flutter run -d chrome
 #   go_router: ^14.8.0  # Terpasang otomatis rapi!""",
     filename="terminal_setup.sh",
     tip="Gunakan 'flutter pub add' di terminal agar berkas pubspec.yaml Anda tidak rusak akibat salah spasi!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_02_persiapan_tools_dan_gorouter.dart"
 )
 
 # ---------------------------------------------------------------------

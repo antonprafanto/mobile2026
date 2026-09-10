@@ -80,6 +80,7 @@ mobile2026/
     │   └── 📄 slide_24_lab_quest_dashboard_profil.dart
     │
     └── 📁 pertemuan_04_form_dan_gorouter/
+        ├── 📄 slide_02_persiapan_tools_dan_gorouter.dart
         ├── 📄 slide_03_textfield_vs_textformfield.dart
         ├── 📄 slide_04_controller_lifecycle.dart
         ├── 📄 slide_05_input_decoration_ux.dart
@@ -211,6 +212,7 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 
 | Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
 | :---: | :--- | :--- |
+| **Slide 02** | Persiapan Tools & Verifikasi GoRouter | [slide_02_persiapan_tools_dan_gorouter.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_02_persiapan_tools_dan_gorouter.dart) |
 | **Slide 03** | `TextField` vs `TextFormField` | [slide_03_textfield_vs_textformfield.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_03_textfield_vs_textformfield.dart) |
 | **Slide 04** | `TextEditingController` & `dispose()` | [slide_04_controller_lifecycle.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_04_controller_lifecycle.dart) |
 | **Slide 05** | `InputDecoration`, Hint & Tipe Keyboard HP | [slide_05_input_decoration_ux.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_05_input_decoration_ux.dart) |

@@ -1,44 +1,49 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 10: LOGIKA VALIDATOR & REGEX KAMPUS
-// TOPIK: Aturan kembalian null vs String galat & Regex @mhs.kampus.ac.id
+// SLIDE 10: LOGIKA VALIDATOR & REGEX EMAIL KAMPUS
+// Topik: Memvalidasi Format Format Khusus (Angka & Domain Kampus)
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide10App());
+  runApp(const RegexValidatorApp());
 }
 
-class Slide10App extends StatelessWidget {
-  const Slide10App({super.key});
+class RegexValidatorApp extends StatelessWidget {
+  const RegexValidatorApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Slide10Screen(),
+      title: 'Slide 10 - Validator Regex',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.deepOrange),
+      home: const RegexValidatorScreen(),
     );
   }
 }
 
-class Slide10Screen extends StatefulWidget {
-  const Slide10Screen({super.key});
+class RegexValidatorScreen extends StatefulWidget {
+  const RegexValidatorScreen({super.key});
 
   @override
-  State<Slide10Screen> createState() => _Slide10ScreenState();
+  State<RegexValidatorScreen> createState() => _RegexValidatorScreenState();
 }
 
-class _Slide10ScreenState extends State<Slide10Screen> {
+class _RegexValidatorScreenState extends State<RegexValidatorScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailCtrl = TextEditingController();
+  final _nimCtrl = TextEditingController();
+
+  // Pola regex email resmi kampus (@mhs.kampus.ac.id atau @kampus.ac.id)
+  final _emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@(mhs\.)?kampus\.ac\.id$');
 
   @override
   void dispose() {
     _emailCtrl.dispose();
+    _nimCtrl.dispose();
     super.dispose();
   }
 
@@ -46,60 +51,71 @@ class _Slide10ScreenState extends State<Slide10Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SLIDE 10: Validator & Regex Sanitasi'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 10: Validasi Regex Email'),
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24.0),
         child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                'Coba masukkan email bebas, lalu bandingkan jika memakai domain resmi @mhs.kampus.ac.id:',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              // 1. Validasi NIM hanya angka 10 digit
+              TextFormField(
+                controller: _nimCtrl,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'NIM (Wajib 10 Digit Angka)',
+                  hintText: 'Contoh: 2026001001',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.numbers),
+                ),
+                validator: (val) {
+                  if (val == null || val.isEmpty)
+                    return 'NIM tidak boleh kosong!';
+                  if (!RegExp(r'^[0-9]+$').hasMatch(val))
+                    return 'Hanya boleh berisi angka!';
+                  if (val.length != 10)
+                    return 'Panjang NIM harus tepat 10 digit!';
+                  return null;
+                },
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
+
+              // 2. Validasi Email Kampus dengan Regex
               TextFormField(
                 controller: _emailCtrl,
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   labelText: 'Email Kampus Resmi',
-                  hintText: 'nama@mhs.kampus.ac.id',
+                  hintText: 'user@mhs.kampus.ac.id',
                   border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.email),
                 ),
-                validator: (value) {
-                  // 1. Periksa teks kosong
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Email tidak boleh kosong!';
+                validator: (val) {
+                  if (val == null || val.trim().isEmpty)
+                    return 'Email wajib diisi!';
+                  if (!_emailRegex.hasMatch(val.trim())) {
+                    return 'Wajib berakhiran @mhs.kampus.ac.id atau @kampus.ac.id';
                   }
-                  // 2. Pola Regex domain resmi
-                  final regex = RegExp(r'^[\w\.-]+@mhs\.kampus\.ac\.id$');
-                  if (!regex.hasMatch(value.trim())) {
-                    return 'Wajib menggunakan domain resmi: @mhs.kampus.ac.id';
-                  }
-                  // 3. Jika benar, WAJIB mengembalikan null!
                   return null;
                 },
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text('Lolos! Email resmi kampus terverifikasi.'),
+                        content: Text('Format NIM & Email kampus valid!'),
                         backgroundColor: Colors.green,
                       ),
                     );
                   }
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFFE600),
-                  foregroundColor: Colors.black,
-                ),
-                child: const Text('UJI REGEX EMAIL'),
+                icon: const Icon(Icons.verified),
+                label: const Text('Uji Validasi Regex'),
               ),
             ],
           ),

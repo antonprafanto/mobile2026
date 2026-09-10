@@ -27,7 +27,9 @@ class FormDemoApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFFE600)),
-        scaffoldBackgroundColor: const Color(0xFFFAF8F5), // Warm Cream Neo-Brutal
+        scaffoldBackgroundColor: const Color(
+          0xFFFAF8F5,
+        ), // Warm Cream Neo-Brutal
       ),
       home: const FormRegistrasiScreen(),
     );
@@ -52,7 +54,7 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
 
   // 3. Status Keamanan & Pilihan Form
   bool _isObscure = true; // Status sembunyikan password
-  String? _selectedProdi;  // Nilai dropdown terpilih
+  String? _selectedProdi; // Nilai dropdown terpilih
 
   final List<String> _daftarProdi = [
     'Teknik Informatika',
@@ -91,7 +93,7 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'Registrasi Berhasil!\nNama: $nama | Prodi: $prodi',
+                  'Registrasi Berhasil!\nNama: $nama | Email: $email | Prodi: $prodi',
                   style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -132,7 +134,9 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
         backgroundColor: const Color(0xFFFFE600), // Kuning Canary Neo-Brutal
         foregroundColor: Colors.black,
         elevation: 0,
-        shape: const Border(bottom: BorderSide(color: Colors.black, width: 2.5)),
+        shape: const Border(
+          bottom: BorderSide(color: Colors.black, width: 2.5),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -211,7 +215,9 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
                             return 'Email tidak boleh kosong!';
                           }
                           // Regex pemeriksaan domain email kampus
-                          final regex = RegExp(r'^[\w\.-]+@mhs\.kampus\.ac\.id$');
+                          final regex = RegExp(
+                            r'^[\w\.-]+@mhs\.kampus\.ac\.id$',
+                          );
                           if (!regex.hasMatch(value.trim())) {
                             return 'Gunakan domain resmi: @mhs.kampus.ac.id';
                           }
@@ -233,12 +239,15 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
                           // Tombol mata intip password
                           suffixIcon: IconButton(
                             icon: Icon(
-                              _isObscure ? Icons.visibility : Icons.visibility_off,
+                              _isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                               color: Colors.black,
                             ),
                             onPressed: () {
                               setState(() {
-                                _isObscure = !_isObscure; // Bolak-balik status intip
+                                _isObscure =
+                                    !_isObscure; // Bolak-balik status intip
                               });
                             },
                           ),
@@ -257,7 +266,7 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
 
                       // Kolom 4: Dropdown Program Studi
                       DropdownButtonFormField<String>(
-                        value: _selectedProdi,
+                        initialValue: _selectedProdi,
                         decoration: const InputDecoration(
                           labelText: 'Program Studi',
                           prefixIcon: Icon(Icons.school_outlined),
@@ -292,7 +301,10 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black, width: 2.5),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2.5,
+                              ),
                             ),
                             child: const Text(
                               'DAFTAR SEKARANG',

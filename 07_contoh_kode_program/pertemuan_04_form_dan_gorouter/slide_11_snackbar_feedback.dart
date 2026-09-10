@@ -1,49 +1,63 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 11: UMPAN BALIK PENGGUNA (SNACKBAR)
-// TOPIK: Menampilkan floating SnackBar hijau (sukses) dan merah (galat)
+// SLIDE 11: UMPAN BALIK VISUAL SNACKBAR & SCAFFOLDMESSENGER
+// Topik: Memberikan Notifikasi Mengambang (Floating SnackBar) & Aksi Batal
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide11App());
+  runApp(const SnackBarFeedbackApp());
 }
 
-class Slide11App extends StatelessWidget {
-  const Slide11App({super.key});
+class SnackBarFeedbackApp extends StatelessWidget {
+  const SnackBarFeedbackApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Slide11Screen(),
+      title: 'Slide 11 - SnackBar Feedback',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.green),
+      home: const SnackBarDemoScreen(),
     );
   }
 }
 
-class Slide11Screen extends StatelessWidget {
-  const Slide11Screen({super.key});
+class SnackBarDemoScreen extends StatelessWidget {
+  const SnackBarDemoScreen({super.key});
 
-  void _tampilkanSnackBar(BuildContext context, bool sukses) {
+  void _showSuccessSnackBar(BuildContext context) {
+    // Menghapus SnackBar lama yang sedang antre jika ada
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+
+    // Menampilkan SnackBar baru bergaya modern (floating)
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Row(
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        content: const Row(
           children: [
-            Icon(sukses ? Icons.check_circle : Icons.error, color: Colors.black),
-            const SizedBox(width: 10),
-            Text(
-              sukses ? 'Registrasi Berhasil Diproses!' : 'Koneksi Server Terputus!',
-              style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            Icon(Icons.check_circle, color: Colors.white),
+            SizedBox(width: 12),
+            Expanded(
+              child: Text('Data pendaftaran berhasil disimpan ke server!'),
             ),
           ],
         ),
-        backgroundColor: sukses ? const Color(0xFF4ADE80) : const Color(0xFFFB7185),
-        behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 2),
+        action: SnackBarAction(
+          label: 'BATALKAN',
+          textColor: Colors.amberAccent,
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                behavior: SnackBarBehavior.floating,
+                content: Text('Penyimpanan data dibatalkan.'),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -52,26 +66,40 @@ class Slide11Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SLIDE 11: SnackBar Feedback UX'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 11: Floating SnackBar'),
+        centerTitle: true,
       ),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => _tampilkanSnackBar(context, true),
-              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF4ADE80), foregroundColor: Colors.black),
-              child: const Text('Uji Sukses (Hijau)'),
-            ),
-            const SizedBox(width: 16),
-            ElevatedButton(
-              onPressed: () => _tampilkanSnackBar(context, false),
-              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFFB7185), foregroundColor: Colors.black),
-              child: const Text('Uji Galat (Merah)'),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.notifications_active_outlined,
+                size: 64,
+                color: Colors.green,
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Umpan Balik Responsif Standar M3',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Gunakan SnackBarBehavior.floating agar notifikasi tidak menempel '
+                'kaku di tepi bawah layar perangkat.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: () => _showSuccessSnackBar(context),
+                icon: const Icon(Icons.send),
+                label: const Text('Tampilkan SnackBar Sukses'),
+              ),
+            ],
+          ),
         ),
       ),
     );

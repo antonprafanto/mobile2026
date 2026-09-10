@@ -1,86 +1,81 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 07: MENJINAKKAN KEYBOARD HP
-// TOPIK: Pindah kolom otomatis dengan Next & menutup keyboard virtual
+// SLIDE 07: KENDALI FOCUS & TUTUP KEYBOARD OTOMATIS
+// Topik: Menutup Papan Ketik Virtual Saat Area Kosong Disentuh
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome (atau di smartphone)
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide07App());
+  runApp(const KeyboardFocusApp());
 }
 
-class Slide07App extends StatelessWidget {
-  const Slide07App({super.key});
+class KeyboardFocusApp extends StatelessWidget {
+  const KeyboardFocusApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Slide07Screen(),
+      title: 'Slide 07 - Focus Control',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blueGrey),
+      home: const KeyboardFocusScreen(),
     );
   }
 }
 
-class Slide07Screen extends StatelessWidget {
-  const Slide07Screen({super.key});
-
-  void _submitData(BuildContext context) {
-    // KUNCI EMAS: Tutup keyboard virtual seketika!
-    FocusScope.of(context).unfocus();
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Keyboard HP berhasil ditutup secara elegan!'),
-        backgroundColor: Colors.green,
-      ),
-    );
-  }
+class KeyboardFocusScreen extends StatelessWidget {
+  const KeyboardFocusScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('SLIDE 07: Unfocus & Keyboard Action'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            // Kolom 1: Menekan Enter HP otomatis pindah ke Kolom 2
-            TextFormField(
-              textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                labelText: 'Kolom 1: Nama (Tekan panah Next pada keyboard HP)',
-                border: OutlineInputBorder(),
+    // GestureDetector membungkus Scaffold untuk mendeteksi ketukan di luar kolom input
+    return GestureDetector(
+      onTap: () {
+        // Menghilangkan fokus dari input aktif dan menutup papan ketik HP
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Slide 07: Tutup Keyboard Otomatis'),
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text(
+                'Trik UX Terbaik di Flutter:',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
-            ),
-            const SizedBox(height: 16),
-
-            // Kolom 2: Menekan Enter HP menandakan Selesai (Done)
-            TextFormField(
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                labelText: 'Kolom 2: Catatan (Ikon centang Done)',
-                border: OutlineInputBorder(),
+              const SizedBox(height: 8),
+              const Text(
+                'Ketik sesuatu di kolom di bawah, lalu sentuh area kosong layar ini. '
+                'Papan ketik akan otomatis tertutup rapi.',
+                style: TextStyle(color: Colors.grey),
               ),
-            ),
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              onPressed: () => _submitData(context),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFFFE600),
-                foregroundColor: Colors.black,
+              const SizedBox(height: 20),
+              const TextField(
+                decoration: InputDecoration(
+                  labelText: 'Kolom Uji Coba Fokus',
+                  hintText: 'Sentuh untuk membuka keyboard...',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.keyboard),
+                ),
               ),
-              child: const Text('SUBMIT & TUTUP KEYBOARD'),
-            ),
-          ],
+              const SizedBox(height: 16),
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Tombol eksplisit untuk menutup keyboard
+                  FocusScope.of(context).unfocus();
+                },
+                icon: const Icon(Icons.keyboard_hide),
+                label: const Text('Tutup Keyboard Manual'),
+              ),
+            ],
+          ),
         ),
       ),
     );
