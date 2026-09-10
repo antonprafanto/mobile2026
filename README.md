@@ -14,14 +14,13 @@ mobile2026/
 │   ├── 📊 PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx
 │   ├── 📊 PERTEMUAN_05_Material3_dan_Responsive_UI.pptx
 │   ├── 📊 PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx
-│   ├── 📊 PERTEMUAN_07_Clean_Architecture_dan_Design_Pattern.pptx
-│   └── 📊 PERTEMUAN_09 s.d. 14.pptx (Dio API, BaaS Firebase, Testing)
+│   └── 📊 PERTEMUAN_07_Clean_Architecture_dan_Design_Pattern.pptx
 │
 ├── 📁 07_contoh_kode_program/                  # Kode Mandiri Siap Run (1 Slide = 1 File .dart)
 │   ├── 📁 pertemuan_01_pengantar_flutter/      # [17 file] Fondasi Flutter, Impeller Engine, & Tools
 │   ├── 📁 pertemuan_02_modern_dart/            # [15 file] Dart OOP, Sound Null Safety, & Concurrency
 │   ├── 📁 pertemuan_03_widget_dan_layouting/   # [23 file] Widget Tree, Layouting, & Solusi Overflow
-│   ├── 📁 pertemuan_04_form_dan_gorouter/      # [21 file] Form Validation, Regex, & GoRouter
+│   ├── 📁 pertemuan_04_form_dan_gorouter/      # [20 file] Form Validation, Regex, & GoRouter
 │   ├── 📁 pertemuan_05_material3_dan_responsive/ # [17 file] Material 3, Theming, & UI Responsif
 │   ├── 📁 pertemuan_06_state_management_cubit/   # [17 file] State Management Reaktif & Cubit
 │   └── 📁 pertemuan_07_clean_architecture/       # [17 file] Clean Architecture & Enterprise Structure
@@ -48,9 +47,10 @@ mobile2026/
 | **05** | Material 3, Adaptive Layout & Dynamic Theming | [⚡ Download M05 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_05_Material3_dan_Responsive_UI.pptx) | [👁️ Baca Online M05](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_05_Material3_dan_Responsive_UI.pptx) |
 | **06** | State Management Reaktif (Cubit & BLoC Pattern) | [⚡ Download M06 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) | [👁️ Baca Online M06](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) |
 | **07** | Clean Architecture & Enterprise Structure (GetIt DI) | [⚡ Download M07 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_07_Clean_Architecture_dan_Design_Pattern.pptx) | [👁️ Baca Online M07](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_07_Clean_Architecture_dan_Design_Pattern.pptx) |
-| **09** | Networking, REST API Client Dio & Error Handling | [⚡ Download M09 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) | [👁️ Baca Online M09](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) |
-| **11** | Backend-as-a-Service Firebase, Kamera & Geolocation GPS | [⚡ Download M11 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) | [👁️ Baca Online M11](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) |
-| **14** | Automated Unit/Widget Testing & DevTools Profiling | [⚡ Download M14 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_14_Automated_Testing_dan_Profiling.pptx) | [👁️ Baca Online M14](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_14_Automated_Testing_dan_Profiling.pptx) |
+
+> [!NOTE]
+> **Fase Pra-UTS (Pertemuan 01 s.d. 07) Selesai.**  
+> Pertemuan 08 adalah **Ujian Tengah Semester (UTS)**. Materi Fase Pasca-UTS (Pertemuan 09 s.d. 16: Networking REST API Dio, Offline Caching, Firebase BaaS, Device Hardware, Security, Automated Testing & Deployment) akan dipublikasikan secara bertahap setelah pelaksanaan UTS.
 
 ---
 
