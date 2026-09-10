@@ -13,14 +13,16 @@ mobile2026/
 │   ├── 📊 PERTEMUAN_03_Widget_Tree_dan_Layouting.pptx
 │   ├── 📊 PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx
 │   ├── 📊 PERTEMUAN_05_Material3_dan_Responsive_UI.pptx
-│   └── 📊 PERTEMUAN_06 s.d. 14.pptx (Cubit/BLoC, Dio API, BaaS Firebase, Testing)
+│   ├── 📊 PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx
+│   └── 📊 PERTEMUAN_09 s.d. 14.pptx (Dio API, BaaS Firebase, Testing)
 │
 ├── 📁 07_contoh_kode_program/                  # Kode Mandiri Siap Run (1 Slide = 1 File .dart)
 │   ├── 📁 pertemuan_01_pengantar_flutter/      # [17 file] Fondasi Flutter, Impeller Engine, & Tools
 │   ├── 📁 pertemuan_02_modern_dart/            # [15 file] Dart OOP, Sound Null Safety, & Concurrency
 │   ├── 📁 pertemuan_03_widget_dan_layouting/   # [23 file] Widget Tree, Layouting, & Solusi Overflow
 │   ├── 📁 pertemuan_04_form_dan_gorouter/      # [21 file] Form Validation, Regex, & GoRouter
-│   └── 📁 pertemuan_05_material3_dan_responsive/ # [17 file] Material 3, Theming, & UI Responsif
+│   ├── 📁 pertemuan_05_material3_dan_responsive/ # [17 file] Material 3, Theming, & UI Responsif
+│   └── 📁 pertemuan_06_state_management_cubit/   # [17 file] State Management Reaktif & Cubit
 │
 ├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md      # Kerangka Kerja & Standar Courseware Repositori
 └── 📄 README.md                                # Katalog Utama & Panduan Akses Cepat
@@ -178,7 +180,29 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 | **Slide 17** | Checklist 5 Aturan Emas Desain Responsif | [slide_17_checklist_responsive_ui.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_17_checklist_responsive_ui.dart) |
 | **Slide 18** | Solusi Lab Quest: Dashboard Akademik Adaptif | [slide_18_lab_quest_dashboard_responsif.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_18_lab_quest_dashboard_responsif.dart) |
 
+---
 
+### ⚡ Pertemuan 06: State Management Reaktif (Cubit & BLoC Pattern)
+
+| Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
+| :---: | :--- | :--- |
+| **Slide 02** | Setup `flutter_bloc`, `equatable` & Ekstensi VS Code | [slide_02_tools_dan_setup_bloc.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_02_tools_dan_setup_bloc.dart) |
+| **Slide 03** | The State Problem: Ephemeral vs App State | [slide_03_ephemeral_vs_app_state.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_03_ephemeral_vs_app_state.dart) |
+| **Slide 04** | Limitasi `setState()` & Jebakan Prop Drilling | [slide_04_keterbatasan_setstate.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_04_keterbatasan_setstate.dart) |
+| **Slide 05** | Mental Model Cubit: Stasiun Radio & Pemancar | [slide_05_mental_model_cubit.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_05_mental_model_cubit.dart) |
+| **Slide 06** | Immutability & Peran `Equatable` (Cetak Ulang KTP) | [slide_06_immutability_equatable.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_06_immutability_equatable.dart) |
+| **Slide 07** | Anatomi Kelas Cubit & Pengumuman `emit()` | [slide_07_anatomi_cubit_emit.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_07_anatomi_cubit_emit.dart) |
+| **Slide 08** | Injeksi `BlocProvider` & Aksi `context.read()` | [slide_08_bloc_provider_context.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_08_bloc_provider_context.dart) |
+| **Slide 09** | Menggambar Ulang UI: `BlocBuilder` & `buildWhen` | [slide_09_bloc_builder_buildwhen.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_09_bloc_builder_buildwhen.dart) |
+| **Slide 10** | Efek Samping: `BlocListener` (SnackBar & Navigasi) | [slide_10_bloc_listener_side_effects.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_10_bloc_listener_side_effects.dart) |
+| **Slide 11** | Duet Maut UI + Notifikasi: `BlocConsumer` | [slide_11_bloc_consumer_duo.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_11_bloc_consumer_duo.dart) |
+| **Slide 12** | Efisiensi Rebuild Spesifik: `BlocSelector` | [slide_12_bloc_selector_opt.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_12_bloc_selector_opt.dart) |
+| **Slide 13** | Arsitektur 4 Status UI (Initial, Loading, Success, Error) | [slide_13_arsitektur_4_status_ui.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_13_arsitektur_4_status_ui.dart) |
+| **Slide 14** | `MultiBlocProvider`: Mengelola Banyak Cubit di Root | [slide_14_multi_bloc_provider.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_14_multi_bloc_provider.dart) |
+| **Slide 15** | CCTV Global: `BlocObserver` Pemantau Transisi State | [slide_15_bloc_observer_cctv.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_15_bloc_observer_cctv.dart) |
+| **Slide 16** | Refactoring Nyata: Dari `setState()` ke Cubit Bersih | [slide_16_refactoring_setstate_cubit.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_16_refactoring_setstate_cubit.dart) |
+| **Slide 17** | Checklist 5 Aturan Emas State Management 2026 | [slide_17_checklist_state_management.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_17_checklist_state_management.dart) |
+| **Slide 18** | Solusi Lab Quest: Mini E-Commerce Cart & Wishlist | [slide_18_lab_quest_cart_cubit.dart](07_contoh_kode_program/pertemuan_06_state_management_cubit/slide_18_lab_quest_cart_cubit.dart) |
 
 ---
 

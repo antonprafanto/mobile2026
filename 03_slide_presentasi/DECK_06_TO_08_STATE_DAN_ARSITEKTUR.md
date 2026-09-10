@@ -3,44 +3,336 @@
 
 ---
 
-# PERTEMUAN 06: The State Problem & Introduction to BLoC/Cubit
-
-### Slide 1: Dilema "SetState": Mengapa Tidak Cukup?
-* **Problem:** 
-  1. *Prop Drilling:* Mengoper callback melewati 5 lapisan widget hanya agar tombol di widget cucu bisa mengubah teks di kakek.
-  2. *Performance Drain:* Memanggil `setState()` di root widget menyebabkan seluruh turunan di-rebuild tanpa perlu.
-  3. *Un-testable UI:* Logika kalkulasi bisnis terkunci di dalam file widget UI dan tidak bisa diuji dengan Unit Test murni.
-
-### Slide 2: Mental Model: Separation of Presentation & Logic
-* **Visual Diagram:**
-  ```
-  [User Action] ---> (Event / Method Call) ---> [ Cubit / BLoC ]
-                                                        |
-                                                  (Emits State)
-                                                        v
-  [ UI Widget ] <--- (Rebuilds only necessary) <--- [ State ]
-  ```
-
-### Slide 3: Implementasi Cubit (Sederhana & Elegan)
-* **Kode State & Cubit:**
-  ```dart
-  class CartCubit extends Cubit<List<Item>> {
-    CartCubit() : super([]);
-
-    void addItem(Item item) {
-      emit([...state, item]);
-    }
-  }
-  ```
-
-### Slide 4: Konsumsi State di UI: BlocBuilder vs BlocListener
-* **Kapan pakai apa?**
-  * `BlocBuilder`: Khusus menggambar ulang antarmuka (*render UI*). Dilarang menampilkan Dialog/SnackBar di sini!
-  * `BlocListener`: Khusus menangani efek samping (*Side Effects*) satu kali, seperti navigasi layar atau pop-up SnackBar.
-  * `BlocConsumer`: Gabungan keduanya.
+# PERTEMUAN 06: State Management Reaktif (Cubit & BLoC Pattern)
 
 ---
 
+### Slide 1: Cover Utama & Sub-CPMK 6
+* **Mata Kuliah:** Pemrograman Piranti Bergerak (Flutter & Dart 2026).
+* **Capaian Sub-CPMK 6:** Mahasiswa mampu memecahkan masalah state management, memisahkan logika bisnis dari UI, dan mengimplementasikan arsitektur reaktif menggunakan `flutter_bloc` & `Cubit`.
+* **Fokus Praktikum:** Immutability, `Equatable`, `BlocProvider`, `BlocBuilder`, `BlocListener`, `BlocConsumer`, `BlocSelector`, dan `BlocObserver`.
+* **Tautan Kode Sumber:** Tersedia 17 berkas mandiri siap run di folder `07_contoh_kode_program/pertemuan_06_state_management_cubit/`.
+
+### Slide 2: Setup & Alat Bantu: flutter_bloc & Ekstensi VS Code
+* **💡 Analogi Alat:** Memasang mesin pabrik modern di bengkel kita agar tidak merakit roda gigi manual dari nol.
+* **Perintah Terminal:** Jalankan `flutter pub add flutter_bloc equatable` di root proyek Flutter.
+* **Ekstensi Resmi VS Code:** Pasang ekstensi 'Bloc' oleh Felix Angelov untuk auto-generate class Cubit dan State dalam 1 detik.
+* **Shortcut Ajaib:** Cukup tekan `Alt + Enter` pada widget, lalu pilih "Wrap with BlocBuilder" atau "Wrap with BlocListener".
+* **Contoh Kode:**
+  ```dart
+  // pubspec.yaml:
+  dependencies:
+    flutter_bloc: ^8.1.6
+    equatable: ^2.0.5
+
+  // Import resmi:
+  import 'package:flutter_bloc/flutter_bloc.dart';
+  import 'package:equatable/equatable.dart';
+  ```
+* **Tips Awam:** Ekstensi VS Code Bloc menghemat waktu mengetik boilerplate hingga 90%!
+
+### Slide 3: The State Problem: Ephemeral State vs App State
+* **🔑 Analogi Kunci:** Kunci kamar tidur (Ephemeral) hanya Anda yang pakai. Kunci gerbang utama (App State) dipakai bersama seluruh penghuni kompleks.
+* **Ephemeral State:** Data lokal sementara yang hanya dibutuhkan oleh 1 widget saja (misal: status animasi, dropdown buka/tutup). Cukup dikelola `setState()`.
+* **App State:** Data penting yang digunakan bersama di banyak halaman (misal: item keranjang belanja, status login pengguna, tema aplikasi).
+* **Aturan Emas:** Gunakan `setState()` untuk Ephemeral State, dan WAJIB gunakan Cubit/BLoC untuk App State!
+* **Contoh Kode:**
+  ```dart
+  // 1. Ephemeral State: Cukup setState lokal
+  bool _isCardOpen = false;
+
+  // 2. App State: Wajib dikelola Cubit bersama
+  class CartCubit extends Cubit<int> {
+    CartCubit() : super(0);
+    void tambahItem() => emit(state + 1);
+  }
+  ```
+* **Tips Awam:** Jangan gunakan BLoC untuk hal sepele seperti warna tombol saat ditekan; gunakan BLoC untuk data lintas halaman!
+
+### Slide 4: Keterbatasan setState() & Bahaya Prop Drilling
+* **📦 Analogi Kurir Berantai:** Kakek ingin menitipkan surat ke Cucu, tetapi terpaksa menitipkannya ke Ayah yang sama sekali tidak peduli isi surat tersebut.
+* **Prop Drilling:** Mengoper data dan fungsi callback melewati 5 lapisan widget hanya agar tombol di widget cucu bisa mengubah data di kakek.
+* **Boros Performa:** Memanggil `setState()` di widget atas memaksa seluruh pohon widget di bawahnya di-rebuild tanpa alasan.
+* **Tidak Bisa Diuji:** Logika perhitungan bisnis terkunci rapat di dalam kode antarmuka UI dan mustahil diuji dengan Unit Test murni.
+* **Contoh Masalah:**
+  ```dart
+  LevelKakek(
+    child: LevelAyah(
+      counter: _counter,       // Dititipkan saja
+      onIncrement: _increment, // Dititipkan saja
+      child: LevelCucu(...),   // Konsumen sesungguhnya
+    ),
+  );
+  ```
+* **Tips Awam:** Prop Drilling membuat kode rapuh! Sekali widget perantara diubah, rantai data aplikasi akan patah semua.
+
+### Slide 5: Mental Model Cubit: Pabrik Radio & Remot Pemancar Siaran
+* **📻 Analogi Pabrik Radio:** Cubit bertindak sebagai stasiun radio pemancar. Widget UI adalah radio penerima yang mendengarkan siaran frekuensi.
+* **Otak vs Otot:** Cubit adalah otak yang memproses angka dan data; Widget adalah otot yang sekadar menggambar pixel ke layar HP.
+* **Alur Satu Arah (Unidirectional):** Pengguna klik tombol -> Panggil method Cubit -> Cubit memancarkan (`emit`) State baru -> UI otomatis bergambar ulang.
+* **Bebas Dependensi UI:** File Cubit murni berisi kode logika Dart tanpa ada satu pun widget Scaffold, Text, atau MaterialApp.
+* **Contoh Kode:**
+  ```dart
+  class CounterCubit extends Cubit<int> {
+    CounterCubit() : super(0); // Frekuensi awal
+
+    void tambah() => emit(state + 1); // Pancarkan
+    void kurang() => emit(state - 1);
+  }
+  ```
+* **Tips Awam:** Karena bebas dari widget Flutter, file Cubit dapat diuji secara otomatis via Unit Test dalam waktu 0.1 detik!
+
+### Slide 6: Immutability & Equatable: Stempel Cetak Ulang KTP
+* **🪪 Analogi KTP:** Jangan mencoret data KTP lama saat Anda pindah rumah; cetaklah blanko KTP baru yang bersih (Immutable / Tidak Berubah).
+* **Larangan Mutasi:** Dilarang mengubah properti objek secara langsung (misal: `state.poin = 100`). Flutter BLoC tidak akan mendeteksi perubahannya!
+* **Method `copyWith()`:** Cara resmi membuat salinan objek baru dengan mengganti nilai spesifik yang diinginkan.
+* **Peran Equatable:** Membandingkan isi nilai objek, bukan referensi memori, sehingga mencegah render ulang yang mubazir.
+* **Contoh Kode:**
+  ```dart
+  class UserState extends Equatable {
+    final String nama;
+    final int poin;
+
+    const UserState({required this.nama, required this.poin});
+
+    UserState copyWith({String? nama, int? poin}) {
+      return UserState(
+        nama: nama ?? this.nama,
+        poin: poin ?? this.poin,
+      );
+    }
+
+    @override
+    List<Object?> get props => [nama, poin];
+  }
+  ```
+* **Tips Awam:** Selalu gunakan `extends Equatable` pada kelas State Anda agar Flutter BLoC tahu persis kapan data benar-benar berubah!
+
+### Slide 7: Anatomi Kelas Cubit & Fungsi emit()
+* **📢 Analogi Manajer Gudang:** Saat barang baru masuk ke gudang, manajer mengumumkan lewat mikrofon `emit()` ke seluruh staf kasir toko.
+* **Pewarisan `Cubit<T>`:** Kelas Cubit wajib mewarisi `Cubit<NamaState>` dan memanggil `super(initialState)` di konstruktornya.
+* **Fungsi Sakti `emit()`:** Satu-satunya jalan legal untuk memperbarui data state dan memberitahu widget UI agar menggambar ulang.
+* **Hak Akses Terlindungi:** `emit()` bersifat protected—hanya bisa dipanggil dari dalam method internal Cubit itu sendiri.
+* **Contoh Kode:**
+  ```dart
+  class CartCubit extends Cubit<CartState> {
+    CartCubit() : super(const CartState(total: 0));
+
+    void beliBarang(int harga) {
+      // Memancarkan state baru ke seluruh aplikasi:
+      emit(state.copyWith(total: state.total + harga));
+    }
+  }
+  ```
+* **Tips Awam:** Dilarang memanggil `emit()` jika nilai baru persis sama dengan nilai lama (Equatable otomatis memblokirnya)!
+
+### Slide 8: BlocProvider & Context: Terminal Colokan Listrik Dinding
+* **🔌 Analogi Colokan Listrik:** Pasang stopkontak di dinding kamar (`BlocProvider`). Alat elektronik apa pun (Widget anak) tinggal colok ke stopkontak.
+* **Pohon Widget:** `BlocProvider(create: (ctx) => MyCubit(), child: ...)` menempatkan instance Cubit agar hidup di ranting widget.
+* **`context.read<T>()`:** Digunakan di dalam tombol aksi (`onPressed`) untuk memicu method Cubit tanpa mendengarkan perubahan data.
+* **`context.watch<T>()`:** Mendengarkan perubahan data terus-menerus dan me-rebuild widget saat data baru terpancar.
+* **Contoh Kode:**
+  ```dart
+  // 1. Menyediakan Cubit ke widget anak:
+  BlocProvider(
+    create: (context) => CounterCubit(),
+    child: const CounterPage(),
+  );
+
+  // 2. Memanggil method Cubit saat tombol diklik:
+  FilledButton(
+    onPressed: () => context.read<CounterCubit>().tambah(),
+    child: const Icon(Icons.add),
+  );
+  ```
+* **Tips Awam:** Gunakan `context.read` di dalam tombol aksi `onPressed`, dan gunakan `context.watch` hanya di dalam method `build()`!
+
+### Slide 9: BlocBuilder & buildWhen: Layar TV Menyala Hanya Saat Acara Cocok
+* **📺 Analogi TV Pintar:** Layar TV yang hanya menyala saat acara favorit Anda mulai tayang, bukan menyala setiap detik.
+* **Peran `BlocBuilder`:** Menggambar ulang widget antarmuka setiap kali Cubit memancarkan state baru.
+* **Optimasi `buildWhen`:** Filter kondisi cerdas `(prev, curr) => curr % 5 == 0`. Mencegah render ulang jika syarat belum terpenuhi.
+* **Pantangan Keras:** DILARANG menampilkan SnackBar, Dialog, atau Navigasi halaman di dalam `BlocBuilder`!
+* **Contoh Kode:**
+  ```dart
+  BlocBuilder<StepCubit, int>(
+    // Hanya rebuild jika angka kelipatan 5:
+    buildWhen: (previous, current) => current % 5 == 0,
+    builder: (context, step) {
+      return Text('Milestone Kelipatan 5: $step');
+    },
+  );
+  ```
+* **Tips Awam:** Bungkus hanya widget kecil yang membutuhkan data, jangan membungkus seluruh Scaffold dengan BlocBuilder!
+
+### Slide 10: BlocListener & listenWhen: Bunyi Klakson Notifikasi
+* **🔔 Analogi Notifikasi WA:** Anda tidak perlu menatap layar terus; saat pesan penting masuk, nada dering 'ting' berbunyi tepat 1 kali.
+* **Penanganan Side Effects:** Tempat resmi memanggil aksi satu kali, seperti memunculkan SnackBar, Dialog galat, atau Navigasi rute.
+* **Bebas Duplikasi:** Berbeda dengan builder yang bisa terpanggil berulang kali, listener hanya dieksekusi tepat 1 kali per transisi state.
+* **Filter `listenWhen`:** Hanya mendengarkan saat kondisi tertentu terjadi (misal: saat status berubah menjadi kode sukses 200).
+* **Contoh Kode:**
+  ```dart
+  BlocListener<FormCubit, int>(
+    listenWhen: (prev, curr) => curr == 200,
+    listener: (context, code) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Pendaftaran Berhasil!')),
+      );
+    },
+    child: const FormInputWidget(),
+  );
+  ```
+* **Tips Awam:** Gunakan BlocListener saat ingin memindahkan halaman pengguna (`context.go`) setelah sukses login!
+
+### Slide 11: BlocConsumer: Duo Komentator & Papan Skor Pertandingan
+* **⚽ Analogi Stadion Bola:** Papan skor mencatat gol (builder), sementara komentator mengumumkan gol lewat peluit (listener).
+* **Dua Fungsi Bersatu:** Menggabungkan `BlocBuilder` dan `BlocListener` ke dalam satu widget ringkas tanpa tumpukan bersarang.
+* **Parameter `listener`:** Untuk menampilkan pesan umpan balik SnackBar atau navigasi rute.
+* **Parameter `builder`:** Untuk menggambar tampilan visual tombol, teks skor, atau ikon status.
+* **Contoh Kode:**
+  ```dart
+  BlocConsumer<LoginCubit, bool>(
+    listener: (context, isLoggedIn) {
+      if (isLoggedIn) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Selamat Datang!')),
+        );
+      }
+    },
+    builder: (context, isLoggedIn) {
+      return FilledButton(
+        onPressed: () => context.read<LoginCubit>().toggle(),
+        child: Text(isLoggedIn ? 'Logout' : 'Login'),
+      );
+    },
+  );
+  ```
+* **Tips Awam:** Gunakan BlocConsumer pada tombol autentikasi login atau proses checkout keranjang belanja!
+
+### Slide 12: BlocSelector: Lensa Kamera Zoom ke Objek Tertentu
+* **🔬 Analogi Lensa Zoom:** Memotret burung di dahan pohon tanpa peduli daun di sekitarnya bergoyang tertiup angin.
+* **Ekstraksi Properti Spesifik:** Jika State Anda memiliki 10 properti, `BlocSelector` hanya memantau 1 properti saja.
+* **Efisiensi Tingkat Dewa:** Widget nama pengguna tidak akan pernah di-rebuild meskipun umur atau saldo pengguna berubah ribuan kali.
+* **Skala Enterprise:** Kunci utama aplikasi Flutter skala besar tetap berjalan mulus 60-120 FPS tanpa stuttering.
+* **Contoh Kode:**
+  ```dart
+  BlocSelector<ProfilCubit, ProfilData, String>(
+    selector: (state) => state.nama, // Hanya pantau 'nama'
+    builder: (context, nama) {
+      return Text('Nama Pengguna: $nama');
+      // Tidak akan di-rebuild saat properti 'umur' berubah!
+    },
+  );
+  ```
+* **Tips Awam:** BlocSelector adalah senjata rahasia saat aplikasi memiliki formulir raksasa dengan puluhan field input!
+
+### Slide 13: Arsitektur 4 Status UI: Empat Lampu Indikator Mesin Cuci
+* **🧺 Analogi Mesin Cuci:** Siap (Initial), Sedang Mencuci (Loading), Cucian Selesai (Success), atau Air Mampet (Error).
+* **Pola Baku Industri:** Seluruh interaksi data dan API wajib dimodelkan ke dalam 4 state terpisah yang jelas (*sealed class*).
+* **DataInitial:** Kondisi awal saat layar baru dibuka sebelum aksi apa pun dijalankan.
+* **DataLoading & DataSuccess / DataError:** Menjamin pengguna tidak pernah bingung melihat layar kosong (*Blank Screen*).
+* **Contoh Kode:**
+  ```dart
+  sealed class DataState extends Equatable {}
+  class DataInitial extends DataState {}
+  class DataLoading extends DataState {}
+  class DataSuccess extends DataState { final List items; ... }
+  class DataError extends DataState { final String pesan; ... }
+
+  // Di UI, tangani dengan switch ekspresif:
+  return switch (state) {
+    DataInitial() => const Text('Tekan Tombol untuk Memuat'),
+    DataLoading() => const CircularProgressIndicator.adaptive(),
+    DataSuccess(:final items) => ListView(...),
+    DataError(:final pesan) => Text('Galat: $pesan'),
+  };
+  ```
+* **Tips Awam:** Gunakan pola pattern matching switch Dart modern untuk memastikan seluruh status UI tertangani tanpa terlewat!
+
+### Slide 14: MultiBlocProvider: Panel Saklar Listrik Rumah Terpusat
+* **⚡ Analogi Panel MCB:** Di meteran listrik rumah tangga, ada saklar untuk kulkas, AC, dan lampu di dalam 1 kotak rapi.
+* **Kebutuhan Nyata:** Aplikasi riil membutuhkan banyak Cubit sekaligus (AuthCubit, CartCubit, ThemeCubit, NotifCubit).
+* **Mencegah Piramida Neraka:** Menghindari susunan bersarang 'BlocProvider di dalam BlocProvider di dalam BlocProvider'.
+* **Pasang di Root:** Tempatkan `MultiBlocProvider` di atas MaterialApp agar semua halaman memiliki akses data yang sama.
+* **Contoh Kode:**
+  ```dart
+  MultiBlocProvider(
+    providers: [
+      BlocProvider<AuthCubit>(create: (ctx) => AuthCubit()),
+      BlocProvider<CartCubit>(create: (ctx) => CartCubit()),
+      BlocProvider<ThemeCubit>(create: (ctx) => ThemeCubit()),
+    ],
+    child: const MainApp(),
+  );
+  ```
+* **Tips Awam:** Daftarkan seluruh Cubit global di MultiBlocProvider pada file main.dart aplikasi Anda!
+
+### Slide 15: Pemantauan Global dengan BlocObserver
+* **📹 Analogi CCTV Satpam:** Kamera pemantau yang mencatat siapa pun yang keluar-masuk gedung tanpa mengganggu aktivitas staf.
+* **Melacak Perubahan Global:** `BlocObserver` menangkap setiap kali ada Cubit yang memanggil `emit()` di seluruh aplikasi.
+* **Logging Otomatis di Terminal:** Mencetak 'CartCubit: state lama -> state baru' secara otomatis tanpa menulis `print()` manual.
+* **Deteksi Galat Terpusat:** Method `onError()` menangkap error logika unhandled sebelum aplikasi sempat mengalami crash.
+* **Contoh Kode:**
+  ```dart
+  class AppBlocObserver extends BlocObserver {
+    @override
+    void onChange(BlocBase bloc, Change change) {
+      super.onChange(bloc, change);
+      debugPrint('[CCTV] ${bloc.runtimeType}: '
+          '${change.currentState} -> ${change.nextState}');
+    }
+  }
+
+  void main() {
+    Bloc.observer = AppBlocObserver(); // Pasang CCTV
+    runApp(const MyApp());
+  }
+  ```
+* **Tips Awam:** BlocObserver menghemat waktu debugging Anda hingga 80% saat mencari sumber kesalahan logika data!
+
+### Slide 16: Refactoring Nyata: Operasi Bedah Memisahkan Otak dari Otot
+* **🏥 Analogi Operasi Medis:** Mengambil tumor logika yang menempel di organ UI dan memindahkannya ke wadah steril tersendiri.
+* **Bersihkan StatefulWidget:** Ubah widget menjadi `StatelessWidget` sederhana yang murni bertugas menggambar antarmuka.
+* **Bungkus Data ke Cubit:** Pindahkan variabel `Set<String> wishlist` dan fungsi `toggle()` ke dalam file `WishlistCubit`.
+* **Hasil Akhir:** UI menjadi sangat bersih, reaktif, mudah dibaca rekan tim, dan siap dihubungkan ke database online!
+* **Contoh Kode:**
+  ```dart
+  // SESUDAH (Cubit bersih & modular):
+  class WishlistCubit extends Cubit<Set<String>> {
+    WishlistCubit() : super({});
+    void toggle(String id) {
+      final updated = Set<String>.from(state);
+      updated.contains(id) ? updated.remove(id) : updated.add(id);
+      emit(updated);
+    }
+  }
+  ```
+* **Tips Awam:** Refactoring dari setState ke Cubit adalah ujian keterampilan nomor 1 pada sesi Live Code Defense UTS!
+
+### Slide 17: Checklist 5 Aturan Emas State Management 2026
+* **1. State Wajib Immutable:** Selalu extends Equatable dan gunakan copyWith() untuk membuat data baru.
+* **2. Dilarang Memanggil Side Effect di BlocBuilder:** Gunakan BlocListener khusus untuk SnackBar & Navigasi.
+* **3. Gunakan context.read() di Event Callback:** Hanya gunakan context.watch() saat membaca nilai untuk tampilan UI.
+* **4. Pasang BlocObserver di main.dart:** Jangan pernah merilis aplikasi tanpa CCTV pencatat transisi state.
+* **5. Pisahkan File State & Cubit:** Satu fitur wajib memiliki folder /cubit/ terisolasi (Feature-First).
+* **Contoh Checklist:**
+  ```dart
+  // [✓] Seluruh App State dikelola Cubit (Zero setState lintas widget)
+  // [✓] BlocBuilder tidak memicu SnackBar/Dialog galat
+  // [✓] Equatable mencegah render ulang saat data tidak berubah
+  // [✓] Log transisi tercetak rapi di terminal via BlocObserver
+  ```
+* **Tips Awam:** Jadikan kelima checklist ini sebagai acuan penilaian proyek UTS kelompok Anda agar meraih nilai A!
+
+### Slide 18: Lab Quest 06 - Cart & Wishlist dengan Cubit
+* **🎯 Misi:** Bangun aplikasi Toko Piranti Bergerak dengan State Management Cubit terpisah dari antarmuka UI.
+* **Pengelolaan State:** Buat kelas `CartCubit` dan `CartItemState` yang mewarisi Equatable untuk mencatat daftar produk belanjaan.
+* **Badge Reaktif:** Tampilkan Badge jumlah item keranjang di AppBar yang otomatis bertambah saat tombol 'Beli' diklik.
+* **Umpan Balik:** Terapkan `BlocListener` untuk memunculkan SnackBar hijau 'Berhasil menambah barang' setiap kali item baru masuk keranjang.
+* **Kalkulasi Otomatis:** Sediakan BottomBar yang menghitung total harga belanjaan secara otomatis dan tombol 'Checkout / Reset'.
+* **Target Pengujian:** Jalankan di browser Chrome (`flutter run -d chrome`), buktikan bahwa penambahan item berjalan instan tanpa lag!
+* **Tips Awam:** Klik tombol kuning di slide presentasi untuk membuka kode lengkap Lab Quest di GitHub!
+
+---
 # PERTEMUAN 07: Clean Architecture & Enterprise Project Structure
 
 ### Slide 1: The Uncle Bob Clean Architecture for Flutter
