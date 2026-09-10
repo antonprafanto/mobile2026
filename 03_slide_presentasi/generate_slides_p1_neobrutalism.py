@@ -110,7 +110,7 @@ class NeoBrutalistDeckBuilder:
         p1 = tf.add_paragraph()
         p1.text = title
         p1.font.name = FONT_HEADING
-        p1.font.size = Pt(31)
+        p1.font.size = Pt(30)
         p1.font.bold = True
         p1.font.color.rgb = COLOR_BLACK
         p1.space_after = Pt(14)
@@ -120,10 +120,10 @@ class NeoBrutalistDeckBuilder:
         p2.font.name = FONT_BODY
         p2.font.size = Pt(15)
         p2.font.color.rgb = RGBColor(60, 60, 60)
-        p2.space_after = Pt(40)
+        p2.space_after = Pt(38)
 
         p3 = tf.add_paragraph()
-        p3.text = f"■  {presenter_info}  ■  OUTCOME-BASED EDUCATION (OBE)"
+        p3.text = f"■  {presenter_info}  ■  OUTCOME-BASED EDUCATION (OBE) • SUB-CPMK {meeting_num}"
         p3.font.name = FONT_HEADING
         p3.font.size = Pt(12)
         p3.font.bold = True
@@ -143,7 +143,7 @@ class NeoBrutalistDeckBuilder:
         tf_l.word_wrap = True
 
         p_lt = tf_l.paragraphs[0]
-        p_lt.text = "KONSEP & CARA KERJA"
+        p_lt.text = "KONSEP & ALUR KERJA"
         p_lt.font.name = FONT_HEADING
         p_lt.font.size = Pt(11.5)
         p_lt.font.bold = True
@@ -154,15 +154,15 @@ class NeoBrutalistDeckBuilder:
             p = tf_l.add_paragraph()
             p.text = f"■  {b}"
             p.font.name = FONT_BODY
-            p.font.size = Pt(11)
+            p.font.size = Pt(10.6)
             p.font.color.rgb = RGBColor(20, 20, 20)
-            p.space_after = Pt(6)
+            p.space_after = Pt(5)
 
         if tip:
             p_tip = tf_l.add_paragraph()
-            p_tip.text = f"💡 Tips Praktik: {tip}"
+            p_tip.text = f"💡 Tips Praktis: {tip}"
             p_tip.font.name = FONT_HEADING
-            p_tip.font.size = Pt(10.5)
+            p_tip.font.size = Pt(10.2)
             p_tip.font.bold = True
             p_tip.font.color.rgb = COLOR_BLACK
 
@@ -172,7 +172,7 @@ class NeoBrutalistDeckBuilder:
         # Yellow Code Header Strip
         c_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.0), Inches(1.8), Inches(6.433), Inches(0.48))
         c_bar.fill.solid()
-        c_bar.fill.fore_color.rgb = COLOR_YELLOW
+        c_bar.fill.fore_color.rgb = tag_color
         c_bar.line.color.rgb = COLOR_BLACK
         c_bar.line.width = Pt(2.5)
 
@@ -192,7 +192,7 @@ class NeoBrutalistDeckBuilder:
         p_code = tf_r.paragraphs[0]
         p_code.text = code_snippet
         p_code.font.name = FONT_CODE
-        p_code.font.size = Pt(9.2)
+        p_code.font.size = Pt(9.1)
         p_code.font.color.rgb = COLOR_CODE_TEXT
 
         # Neo-Brutalist Runnable Code Hyperlink Button at Bottom of Right Box
@@ -250,45 +250,46 @@ class NeoBrutalistDeckBuilder:
 
         tb_b = slide.shapes.add_textbox(Inches(1.2), Inches(1.85), Inches(10.9), Inches(0.45))
         p_b = tb_b.text_frame.paragraphs[0]
-        p_b.text = f"⏱️ ALOKASI: {time_minutes} MENIT  ■  TARGET UJI: SMARTPHONE FISIK VIA USB / BROWSER CHROME"
+        p_b.text = f"⏱️ ALOKASI: {time_minutes} MENIT  ■  TARGET UJI: BROWSER CHROME ATAU SMARTPHONE FISIK"
         p_b.font.name = FONT_HEADING
         p_b.font.size = Pt(11.5)
         p_b.font.bold = True
         p_b.font.color.rgb = COLOR_BLACK
 
-        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.42), Inches(10.7), Inches(3.6))
+        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.40), Inches(10.7), Inches(3.6))
         tf = tb.text_frame
         tf.word_wrap = True
 
-        p1 = tf.paragraphs[0]
-        p1.text = "Checklist Langkah Praktikum di Lab:"
-        p1.font.name = FONT_HEADING
-        p1.font.size = Pt(13.5)
-        p1.font.bold = True
-        p1.font.color.rgb = COLOR_BLACK
-        p1.space_after = Pt(4)
+        p_g = tf.paragraphs[0]
+        p_g.text = "LANGKAH KERJA & SPESIFIKASI TUGAS:"
+        p_g.font.name = FONT_HEADING
+        p_g.font.size = Pt(12)
+        p_g.font.bold = True
+        p_g.font.color.rgb = COLOR_BLACK
+        p_g.space_after = Pt(6)
 
         for g in goals:
             p = tf.add_paragraph()
-            p.text = f"  [  ]   {g}"
+            p.text = f"✔  {g}"
             p.font.name = FONT_BODY
-            p.font.size = Pt(10.5)
+            p.font.size = Pt(10.4)
             p.font.color.rgb = RGBColor(30, 30, 30)
-            p.space_after = Pt(2)
+            p.space_after = Pt(4)
 
-        p_crit = tf.add_paragraph()
-        p_crit.text = f"✔ Kriteria Keberhasilan (Tunjukkan ke Dosen/Asisten Lab): {success_criteria}"
-        p_crit.font.name = FONT_HEADING
-        p_crit.font.size = Pt(11)
-        p_crit.font.bold = True
-        p_crit.font.color.rgb = RGBColor(0, 130, 60)
+        if success_criteria:
+            p_sc = tf.add_paragraph()
+            p_sc.text = f"🎯 TARGET SELESAI: {success_criteria}"
+            p_sc.font.name = FONT_HEADING
+            p_sc.font.size = Pt(10.8)
+            p_sc.font.bold = True
+            p_sc.font.color.rgb = RGBColor(10, 100, 40)
 
         # Bottom full code button for Lab Quest
         if full_code_file:
             btn_x = Inches(1.3)
-            btn_y = Inches(6.16)
+            btn_y = Inches(6.12)
             btn_w = Inches(10.7)
-            btn_h = Inches(0.55)
+            btn_h = Inches(0.62)
 
             btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.04), btn_y + Inches(0.04), btn_w, btn_h)
             btn_shadow.fill.solid()
@@ -297,11 +298,11 @@ class NeoBrutalistDeckBuilder:
 
             btn = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x, btn_y, btn_w, btn_h)
             btn.fill.solid()
-            btn.fill.fore_color.rgb = COLOR_MINT
+            btn.fill.fore_color.rgb = COLOR_YELLOW
             btn.line.color.rgb = COLOR_BLACK
             btn.line.width = Pt(2.0)
 
-            tb_btn = slide.shapes.add_textbox(btn_x + Inches(0.08), btn_y + Inches(0.03), btn_w - Inches(0.16), btn_h - Inches(0.06))
+            tb_btn = slide.shapes.add_textbox(btn_x + Inches(0.12), btn_y + Inches(0.03), btn_w - Inches(0.24), btn_h - Inches(0.06))
             tf_btn = tb_btn.text_frame
             tf_btn.word_wrap = True
 
@@ -309,10 +310,16 @@ class NeoBrutalistDeckBuilder:
             run_btn = p_btn.add_run()
             run_btn.text = f"▶ BUKA KODE SOLUSI LENGKAP LAB QUEST DI GITHUB ({full_code_file})"
             run_btn.font.name = FONT_HEADING
-            run_btn.font.size = Pt(10)
+            run_btn.font.size = Pt(11)
             run_btn.font.bold = True
             run_btn.font.color.rgb = COLOR_BLACK
             run_btn.hyperlink.address = f"{GITHUB_BASE_URL}/{full_code_file}"
+
+            p_btn_sub = tf_btn.add_paragraph()
+            p_btn_sub.text = "💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
+            p_btn_sub.font.name = FONT_BODY
+            p_btn_sub.font.size = Pt(8.3)
+            p_btn_sub.font.color.rgb = RGBColor(50, 50, 50)
 
     def save(self, filepath):
         self.prs.save(filepath)

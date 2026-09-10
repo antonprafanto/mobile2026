@@ -70,155 +70,107 @@ class NeoBrutalistDeckBuilder:
         card.line.width = border_width
         return card
 
-    def _add_header(self, slide, tag_text, title_text, tag_color=COLOR_YELLOW):
-        tb_meta = slide.shapes.add_textbox(Inches(0.9), Inches(0.4), Inches(11.533), Inches(0.35))
-        p_meta = tb_meta.text_frame.paragraphs[0]
-        p_meta.text = self.course_name
-        p_meta.font.name = FONT_HEADING
-        p_meta.font.size = Pt(9)
-        p_meta.font.bold = True
-        p_meta.font.color.rgb = RGBColor(100, 100, 100)
-
-        # Tag Badge
-        tag = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(0.72), Inches(3.2), Inches(0.42))
-        tag.fill.solid()
-        tag.fill.fore_color.rgb = tag_color
-        tag.line.color.rgb = COLOR_BLACK
-        tag.line.width = Pt(2.0)
-
-        tb_tag = slide.shapes.add_textbox(Inches(0.95), Inches(0.72), Inches(3.1), Inches(0.42))
+    def _add_header(self, slide, tag, title, tag_color=COLOR_YELLOW):
+        tag_w = Inches(len(tag) * 0.125 + 0.6)
+        self._add_neobrutal_card(slide, Inches(0.9), Inches(0.4), tag_w, Inches(0.4), fill_color=tag_color, has_shadow=True)
+        tb_tag = slide.shapes.add_textbox(Inches(0.9), Inches(0.4), tag_w, Inches(0.4))
         p_tag = tb_tag.text_frame.paragraphs[0]
-        p_tag.text = tag_text
+        p_tag.text = tag.upper()
         p_tag.font.name = FONT_HEADING
-        p_tag.font.size = Pt(10)
+        p_tag.font.size = Pt(11)
         p_tag.font.bold = True
         p_tag.font.color.rgb = COLOR_BLACK
 
-        # Slide Title
-        tb_title = slide.shapes.add_textbox(Inches(0.9), Inches(1.15), Inches(11.533), Inches(0.55))
+        tb_title = slide.shapes.add_textbox(Inches(0.9), Inches(0.88), Inches(11.5), Inches(0.8))
         p_title = tb_title.text_frame.paragraphs[0]
-        p_title.text = title_text
+        p_title.text = title
         p_title.font.name = FONT_HEADING
-        p_title.font.size = Pt(20)
+        p_title.font.size = Pt(21)
         p_title.font.bold = True
         p_title.font.color.rgb = COLOR_BLACK
 
     # 1. Slide Cover
-    def add_cover(self, meeting_num, title, subtitle, author):
+    def add_cover(self, meeting_num, title, subtitle, presenter_info):
         slide = self.prs.slides.add_slide(self.blank_layout)
         self._set_canvas_bg(slide)
 
-        self._add_neobrutal_card(slide, Inches(1.2), Inches(1.0), Inches(10.933), Inches(5.5), fill_color=COLOR_WHITE)
+        self._add_neobrutal_card(slide, Inches(0.9), Inches(0.9), Inches(11.533), Inches(5.7), fill_color=COLOR_WHITE)
 
-        top_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.2), Inches(1.0), Inches(10.933), Inches(0.6))
-        top_bar.fill.solid()
-        top_bar.fill.fore_color.rgb = COLOR_YELLOW
-        top_bar.line.color.rgb = COLOR_BLACK
-        top_bar.line.width = Pt(2.5)
+        tb = slide.shapes.add_textbox(Inches(1.4), Inches(1.3), Inches(10.5), Inches(4.8))
+        tf = tb.text_frame
+        tf.word_wrap = True
 
-        tb_tb = slide.shapes.add_textbox(Inches(1.5), Inches(1.1), Inches(10.3), Inches(0.4))
-        p_tb = tb_tb.text_frame.paragraphs[0]
-        p_tb.text = f"{self.course_name}  ■  MODUL AJAR STANDAR 2026"
-        p_tb.font.name = FONT_HEADING
-        p_tb.font.size = Pt(11)
-        p_tb.font.bold = True
-        p_tb.font.color.rgb = COLOR_BLACK
+        p0 = tf.paragraphs[0]
+        p0.text = f"✦ {self.course_name.upper()} • PERTEMUAN {meeting_num:02d} ✦"
+        p0.font.name = FONT_HEADING
+        p0.font.size = Pt(12)
+        p0.font.bold = True
+        p0.font.color.rgb = COLOR_BLACK
+        p0.space_after = Pt(18)
 
-        badge = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.6), Inches(2.0), Inches(2.8), Inches(0.55))
-        badge.fill.solid()
-        badge.fill.fore_color.rgb = COLOR_CYAN
-        badge.line.color.rgb = COLOR_BLACK
-        badge.line.width = Pt(2.0)
+        p1 = tf.add_paragraph()
+        p1.text = title
+        p1.font.name = FONT_HEADING
+        p1.font.size = Pt(30)
+        p1.font.bold = True
+        p1.font.color.rgb = COLOR_BLACK
+        p1.space_after = Pt(14)
 
-        tb_badge = slide.shapes.add_textbox(Inches(1.6), Inches(2.05), Inches(2.8), Inches(0.5))
-        p_badge = tb_badge.text_frame.paragraphs[0]
-        p_badge.text = f"PERTEMUAN {meeting_num:02d}"
-        p_badge.font.name = FONT_HEADING
-        p_badge.font.size = Pt(14)
-        p_badge.font.bold = True
-        p_badge.font.color.rgb = COLOR_BLACK
+        p2 = tf.add_paragraph()
+        p2.text = subtitle
+        p2.font.name = FONT_BODY
+        p2.font.size = Pt(15)
+        p2.font.color.rgb = RGBColor(60, 60, 60)
+        p2.space_after = Pt(38)
 
-        tb_main = slide.shapes.add_textbox(Inches(1.6), Inches(2.7), Inches(10.0), Inches(1.8))
-        tf_main = tb_main.text_frame
-        tf_main.word_wrap = True
+        p3 = tf.add_paragraph()
+        p3.text = f"■  {presenter_info}  ■  OUTCOME-BASED EDUCATION (OBE) • SUB-CPMK {meeting_num}"
+        p3.font.name = FONT_HEADING
+        p3.font.size = Pt(12)
+        p3.font.bold = True
+        p3.font.color.rgb = COLOR_BLACK
 
-        p_t = tf_main.paragraphs[0]
-        p_t.text = title
-        p_t.font.name = FONT_HEADING
-        p_t.font.size = Pt(28)
-        p_t.font.bold = True
-        p_t.font.color.rgb = COLOR_BLACK
-
-        p_s = tf_main.add_paragraph()
-        p_s.text = subtitle
-        p_s.font.name = FONT_BODY
-        p_s.font.size = Pt(12.5)
-        p_s.font.color.rgb = RGBColor(60, 60, 60)
-        p_s.space_before = Pt(10)
-
-        tb_auth = slide.shapes.add_textbox(Inches(1.6), Inches(5.4), Inches(10.0), Inches(0.5))
-        p_a = tb_auth.text_frame.paragraphs[0]
-        p_a.text = f"👨‍🏫 Pengampu: {author}  •  Teknik Informatika"
-        p_a.font.name = FONT_HEADING
-        p_a.font.size = Pt(11)
-        p_a.font.bold = True
-        p_a.font.color.rgb = COLOR_BLACK
-
-    # 2. Slide Konsep dengan Kode
-    def add_concept_with_code(self, tag, title, bullets, code_snippet, filename="example.dart", tip=None, tag_color=COLOR_CYAN, full_code_file=None):
+    # 2. Slide Split Screen: Konsep & Tips di Kiri + Kode Sederhana di Kanan
+    def add_concept_with_code(self, tag, title, bullets, code_snippet, filename="example.dart", tip=None, tag_color=COLOR_YELLOW, full_code_file=None):
         slide = self.prs.slides.add_slide(self.blank_layout)
         self._set_canvas_bg(slide)
         self._add_header(slide, tag, title, tag_color=tag_color)
 
-        # Left White Card (4.8 Inches)
-        self._add_neobrutal_card(slide, Inches(0.9), Inches(1.8), Inches(4.8), Inches(5.1), fill_color=COLOR_WHITE)
+        # Left Explanations Card (4.9 Inches)
+        self._add_neobrutal_card(slide, Inches(0.9), Inches(1.8), Inches(4.9), Inches(5.1), fill_color=COLOR_WHITE)
 
-        h_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(1.8), Inches(4.8), Inches(0.48))
-        h_bar.fill.solid()
-        h_bar.fill.fore_color.rgb = tag_color
-        h_bar.line.color.rgb = COLOR_BLACK
-        h_bar.line.width = Pt(2.5)
-
-        tb_hb = slide.shapes.add_textbox(Inches(1.1), Inches(1.86), Inches(4.4), Inches(0.38))
-        p_hb = tb_hb.text_frame.paragraphs[0]
-        p_hb.text = "💡 KONSEP INTI & ANALOGI DUNIA NYATA"
-        p_hb.font.name = FONT_HEADING
-        p_hb.font.size = Pt(10.5)
-        p_hb.font.bold = True
-        p_hb.font.color.rgb = COLOR_BLACK
-
-        content_h = Inches(3.1) if tip else Inches(4.3)
-        tb_l = slide.shapes.add_textbox(Inches(1.1), Inches(2.36), Inches(4.4), content_h)
+        tb_l = slide.shapes.add_textbox(Inches(1.15), Inches(1.95), Inches(4.4), Inches(4.8))
         tf_l = tb_l.text_frame
         tf_l.word_wrap = True
 
-        for i, b in enumerate(bullets):
-            p = tf_l.paragraphs[0] if i == 0 else tf_l.add_paragraph()
+        p_lt = tf_l.paragraphs[0]
+        p_lt.text = "KONSEP & ALUR KERJA"
+        p_lt.font.name = FONT_HEADING
+        p_lt.font.size = Pt(11.5)
+        p_lt.font.bold = True
+        p_lt.font.color.rgb = COLOR_BLACK
+        p_lt.space_after = Pt(8)
+
+        for b in bullets:
+            p = tf_l.add_paragraph()
             p.text = f"■  {b}"
             p.font.name = FONT_BODY
-            p.font.size = Pt(9.8)
+            p.font.size = Pt(10.6)
             p.font.color.rgb = RGBColor(20, 20, 20)
-            p.space_after = Pt(6)
+            p.space_after = Pt(5)
 
         if tip:
-            tip_box = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.05), Inches(5.52), Inches(4.5), Inches(1.15))
-            tip_box.fill.solid()
-            tip_box.fill.fore_color.rgb = COLOR_YELLOW
-            tip_box.line.color.rgb = COLOR_BLACK
-            tip_box.line.width = Pt(2.0)
-
-            tb_tip = slide.shapes.add_textbox(Inches(1.1), Inches(5.55), Inches(4.4), Inches(1.05))
-            tf_tip = tb_tip.text_frame
-            p_tip = tf_tip.paragraphs[0]
-            p_tip.text = f"💡 TIPS PRAKTIKUM & PEDOMAN:\n{tip}"
-            p_tip.font.name = FONT_BODY
-            p_tip.font.size = Pt(9.2)
+            p_tip = tf_l.add_paragraph()
+            p_tip.text = f"💡 Tips Praktis: {tip}"
+            p_tip.font.name = FONT_HEADING
+            p_tip.font.size = Pt(10.2)
             p_tip.font.bold = True
             p_tip.font.color.rgb = COLOR_BLACK
 
         # Right Sharp Black Code Box (6.433 Inches)
         self._add_neobrutal_card(slide, Inches(6.0), Inches(1.8), Inches(6.433), Inches(5.1), fill_color=COLOR_CODE_BG)
 
+        # Header Code Strip
         c_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.0), Inches(1.8), Inches(6.433), Inches(0.48))
         c_bar.fill.solid()
         c_bar.fill.fore_color.rgb = tag_color
@@ -244,17 +196,20 @@ class NeoBrutalistDeckBuilder:
         p_code.font.size = Pt(9.1)
         p_code.font.color.rgb = COLOR_CODE_TEXT
 
+        # Neo-Brutalist Runnable Code Hyperlink Button at Bottom of Right Box
         if full_code_file:
             btn_x = Inches(6.15)
             btn_y = Inches(6.16)
             btn_w = Inches(6.133)
             btn_h = Inches(0.60)
 
+            # Button Shadow (Neo-Brutalism offset)
             btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.04), btn_y + Inches(0.04), btn_w, btn_h)
             btn_shadow.fill.solid()
             btn_shadow.fill.fore_color.rgb = COLOR_BLACK
             btn_shadow.line.fill.background()
 
+            # Button Face
             btn = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x, btn_y, btn_w, btn_h)
             btn.fill.solid()
             btn.fill.fore_color.rgb = COLOR_YELLOW
@@ -275,7 +230,7 @@ class NeoBrutalistDeckBuilder:
             run_btn.hyperlink.address = f"{GITHUB_BASE_URL}/{full_code_file}"
 
             p_btn_sub = tf_btn.add_paragraph()
-            p_btn_sub.text = "💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
+            p_btn_sub.text = f"💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
             p_btn_sub.font.name = FONT_BODY
             p_btn_sub.font.size = Pt(7.6)
             p_btn_sub.font.color.rgb = RGBColor(60, 60, 60)
@@ -302,7 +257,7 @@ class NeoBrutalistDeckBuilder:
         p_b.font.bold = True
         p_b.font.color.rgb = COLOR_BLACK
 
-        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.40), Inches(10.7), Inches(3.2))
+        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.40), Inches(10.7), Inches(3.6))
         tf = tb.text_frame
         tf.word_wrap = True
 
@@ -322,13 +277,22 @@ class NeoBrutalistDeckBuilder:
             p.font.color.rgb = RGBColor(30, 30, 30)
             p.space_after = Pt(4)
 
+        if success_criteria:
+            p_sc = tf.add_paragraph()
+            p_sc.text = f"🎯 TARGET SELESAI: {success_criteria}"
+            p_sc.font.name = FONT_HEADING
+            p_sc.font.size = Pt(10.8)
+            p_sc.font.bold = True
+            p_sc.font.color.rgb = RGBColor(10, 100, 40)
+
+        # Button for Lab Quest Source Code
         if full_code_file:
             btn_x = Inches(1.3)
-            btn_y = Inches(5.8)
+            btn_y = Inches(6.12)
             btn_w = Inches(10.7)
-            btn_h = Inches(0.85)
+            btn_h = Inches(0.62)
 
-            btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.06), btn_y + Inches(0.06), btn_w, btn_h)
+            btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.04), btn_y + Inches(0.04), btn_w, btn_h)
             btn_shadow.fill.solid()
             btn_shadow.fill.fore_color.rgb = COLOR_BLACK
             btn_shadow.line.fill.background()
@@ -353,7 +317,7 @@ class NeoBrutalistDeckBuilder:
             run_btn.hyperlink.address = f"{GITHUB_BASE_URL}/{full_code_file}"
 
             p_btn_sub = tf_btn.add_paragraph()
-            p_btn_sub.text = "💡 Buka di browser: Solusi lengkap Mini E-Commerce Produk dengan Clean Arch & GetIt di GitHub"
+            p_btn_sub.text = "💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
             p_btn_sub.font.name = FONT_BODY
             p_btn_sub.font.size = Pt(8.3)
             p_btn_sub.font.color.rgb = RGBColor(50, 50, 50)
