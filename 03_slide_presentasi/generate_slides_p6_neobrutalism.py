@@ -464,12 +464,12 @@ LevelKakek(
 # -------------------------------------------------------------
 deck6.add_concept_with_code(
     "ARSITEKTUR LOGIKA",
-    "Mental Model Cubit: Pabrik Radio & Remot Pemancar Siaran",
+    "Mental Model Cubit: Pabrik Radio & Konsep Stream Reaktif",
     [
-        "📻 Analogi Pabrik Radio: Cubit bertindak sebagai stasiun radio pemancar. Widget UI adalah radio penerima yang mendengarkan siaran frekuensi.",
-        "🧠 Otak vs Otot: Cubit adalah otak yang memproses angka dan data; Widget adalah otot yang sekadar menggambar pixel ke layar.",
-        "⚡ Alur Satu Arah (Unidirectional): User klik tombol -> Panggil method Cubit -> Cubit memancarkan State baru -> UI otomatis berubah.",
-        "🛡️ Bersih Total: File Cubit murni berisi kode logika Dart tanpa ada satu pun widget Scaffold, Text, atau MaterialApp!"
+        "📻 Analogi Pabrik Radio: Cubit bertindak sebagai stasiun pemancar. Widget UI adalah radio penerima yang mendengarkan siaran frekuensi.",
+        "🌊 Konsep Stream: Di balik layar, Cubit adalah pipa aliran data (Stream). Setiap emit() mengalirkan data baru ke widget secara instan.",
+        "⚖️ Cubit vs BLoC: Cubit memakai fungsi langsung (ringkas untuk 90% aplikasi). BLoC memakai objek Event (untuk debounce pencarian).",
+        "🧠 Otak vs Otot: Cubit murni kode logika Dart tanpa widget; UI murni bertugas menggambar pixel ke layar tanpa logika bisnis."
     ],
     """// Otak murni tanpa ketergantungan UI Flutter:
 class CounterCubit extends Cubit<int> {
@@ -479,7 +479,7 @@ class CounterCubit extends Cubit<int> {
   void kurang() => emit(state - 1);
 }""",
     filename="mental_model_cubit.dart",
-    tip="Karena bebas dari dependensi UI, file Cubit dapat diuji secara otomatis via Unit Test dalam 0.1 detik!",
+    tip="Gunakan Cubit untuk 90% fitur aplikasi! Beralihlah ke full BLoC hanya jika Anda butuh debounce pada Live Search Bar.",
     tag_color=COLOR_PURPLE,
     full_code_file="slide_05_mental_model_cubit.dart"
 )
@@ -539,7 +539,7 @@ deck6.add_concept_with_code(
   }
 }""",
     filename="anatomi_cubit.dart",
-    tip="Dilarang memanggil emit() jika nilai baru persis sama dengan nilai lama (Equatable otomatis memblokirnya)!",
+    tip="Dilarang emit() jika nilai sama, dan selalu cek 'if (!isClosed) emit(...)' pada operasi async agar bebas bug!",
     tag_color=COLOR_YELLOW,
     full_code_file="slide_07_anatomi_cubit_emit.dart"
 )

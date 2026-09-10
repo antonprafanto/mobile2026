@@ -66,11 +66,11 @@
   ```
 * **Tips Awam:** Prop Drilling membuat kode rapuh! Sekali widget perantara diubah, rantai data aplikasi akan patah semua.
 
-### Slide 5: Mental Model Cubit: Pabrik Radio & Remot Pemancar Siaran
-* **📻 Analogi Pabrik Radio:** Cubit bertindak sebagai stasiun radio pemancar. Widget UI adalah radio penerima yang mendengarkan siaran frekuensi.
-* **Otak vs Otot:** Cubit adalah otak yang memproses angka dan data; Widget adalah otot yang sekadar menggambar pixel ke layar HP.
-* **Alur Satu Arah (Unidirectional):** Pengguna klik tombol -> Panggil method Cubit -> Cubit memancarkan (`emit`) State baru -> UI otomatis bergambar ulang.
-* **Bebas Dependensi UI:** File Cubit murni berisi kode logika Dart tanpa ada satu pun widget Scaffold, Text, atau MaterialApp.
+### Slide 5: Mental Model Cubit: Pabrik Radio & Konsep Stream Reaktif
+* **📻 Analogi Pabrik Radio:** Cubit bertindak sebagai stasiun pemancar. Widget UI adalah radio penerima yang mendengarkan siaran frekuensi.
+* **Konsep Stream & Reaktif:** Di balik layar, Cubit adalah pipa aliran data (*Dart Stream*). Setiap `emit()` mengalirkan data baru ke widget secara instan.
+* **Cubit vs BLoC:** Cubit memakai fungsi langsung (*Functions in -> States out*, 90% kasus industri). BLoC memakai objek Event (*Events in -> States out*, untuk live search / debounce).
+* **Otak vs Otot:** Cubit murni logika bisnis Dart tanpa widget; UI murni bertugas menggambar pixel ke layar tanpa logika data.
 * **Contoh Kode:**
   ```dart
   class CounterCubit extends Cubit<int> {
@@ -80,7 +80,7 @@
     void kurang() => emit(state - 1);
   }
   ```
-* **Tips Awam:** Karena bebas dari widget Flutter, file Cubit dapat diuji secara otomatis via Unit Test dalam waktu 0.1 detik!
+* **Tips Awam:** Gunakan Cubit untuk 90% fitur aplikasi! Beralihlah ke full BLoC hanya jika Anda butuh debounce pada Live Search Bar.
 
 ### Slide 6: Immutability & Equatable: Stempel Cetak Ulang KTP
 * **🪪 Analogi KTP:** Jangan mencoret data KTP lama saat Anda pindah rumah; cetaklah blanko KTP baru yang bersih (Immutable / Tidak Berubah).
@@ -124,7 +124,7 @@
     }
   }
   ```
-* **Tips Awam:** Dilarang memanggil `emit()` jika nilai baru persis sama dengan nilai lama (Equatable otomatis memblokirnya)!
+* **Tips Awam:** Dilarang emit() jika nilai sama, dan selalu periksa `if (!isClosed) emit(...)` pada proses asynchronous agar bebas dari bug StateError!
 
 ### Slide 8: BlocProvider & Context: Terminal Colokan Listrik Dinding
 * **🔌 Analogi Colokan Listrik:** Pasang stopkontak di dinding kamar (`BlocProvider`). Alat elektronik apa pun (Widget anak) tinggal colok ke stopkontak.
