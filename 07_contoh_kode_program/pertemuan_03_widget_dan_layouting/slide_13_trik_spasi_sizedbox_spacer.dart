@@ -1,163 +1,96 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 13: TRIK SPASI LAYOUT
-// TOPIK: Menguasai Jarak Antar Elemen: SizedBox vs Spacer vs Expanded
-// =====================================================================
-// CARA MENJALANKAN: flutter run -d chrome
+// CONTOH KODE SEDERHANA - SLIDE 13: SIZEDBOX, SPACER, & EXPANDED
+// TOPIK: Tiga Cara Mengatur Jarak Antar Elemen Tanpa Rumit
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(const Slide13SpacingApp());
+void main() {
+  runApp(
+    const MaterialApp(debugShowCheckedModeBanner: false, home: HalamanSpasi()),
+  );
+}
 
-class Slide13SpacingApp extends StatelessWidget {
-  const Slide13SpacingApp({super.key});
+class HalamanSpasi extends StatelessWidget {
+  const HalamanSpasi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFFAF8F5)),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'SLIDE 13 • SIZEDBOX VS SPACER',
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              color: Colors.black,
-              fontSize: 16,
+    return Scaffold(
+      appBar: AppBar(title: const Text('SizedBox vs Spacer vs Expanded')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 1. SizedBox: Jarak pasti / tetap
+            const Text(
+              '1. SizedBox (Jarak Tetap 20px):',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
-          backgroundColor: const Color(0xFFFFE600),
-          elevation: 0,
-          shape: const Border(
-            bottom: BorderSide(color: Colors.black, width: 2.5),
-          ),
-        ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // 1. SizedBox (Jarak Tetap / Pasti)
-              _buildCard(
-                title: '1. SizedBox (Jarak Pasti / Tetap)',
-                desc:
-                    'Memberi celah tepat sejumlah piksel tertentu (misal: 16px).',
-                color: const Color(0xFFE0F2FE),
-                child: Row(
-                  children: [
-                    _itemBox('A', Colors.amber),
-                    const SizedBox(width: 24), // Jarak pasti 24px
-                    _itemBox('B (SizedBox 24px)', Colors.cyan),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Container(width: 50, height: 50, color: Colors.red),
+                const SizedBox(width: 20), // Memberi spasi tetap 20px
+                Container(width: 50, height: 50, color: Colors.green),
+              ],
+            ),
+            const SizedBox(height: 24),
 
-              // 2. Spacer (Mendorong ke Ujung)
-              _buildCard(
-                title: '2. Spacer() (Pendorong Otomatis)',
-                desc:
-                    'Menghabiskan seluruh ruang kosong untuk mendorong elemen ke tepi kiri dan kanan.',
-                color: const Color(0xFFFEF08A),
-                child: Row(
-                  children: [
-                    const Icon(Icons.arrow_back, color: Colors.black),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Judul Halaman',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const Spacer(), // Dorong tombol bookmark ke pojok paling kanan!
-                    const Icon(Icons.bookmark_border, color: Colors.black),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
+            // 2. Spacer: Mendorong elemen berikutnya ke ujung
+            const Text(
+              '2. Spacer (Mendorong ke Ujung Kanan):',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Row(
+              children: [
+                Text('Judul di Kiri'),
+                Spacer(), // Otomatis menghabiskan ruang kosong di tengah
+                Icon(Icons.star, color: Colors.orange),
+              ],
+            ),
+            const SizedBox(height: 24),
 
-              // 3. Expanded (Mengisi Sisa Ruang)
-              _buildCard(
-                title: '3. Expanded (Membagi Ruang Proporsional)',
-                desc:
-                    'Memaksa widget anak melebar mengisi sisa ruang yang ada (flex: 1 dan flex: 2).',
-                color: const Color(0xFFDCFCE7),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        color: const Color(0xFFFB7185),
-                        child: const Text(
-                          'Flex 1 (33%)',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+            // 3. Expanded: Membagi ruang secara proporsional
+            const Text(
+              '3. Expanded (Memenuhi Sisa Ruang):',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1, // 1 bagian
+                  child: Container(
+                    height: 40,
+                    color: Colors.blue,
+                    child: const Center(
+                      child: Text(
+                        '1 Bagian',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        color: const Color(0xFF4ADE80),
-                        child: const Text(
-                          'Flex 2 (66%)',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  flex: 2, // 2 bagian (dua kali lebih lebar)
+                  child: Container(
+                    height: 40,
+                    color: Colors.teal,
+                    child: const Center(
+                      child: Text(
+                        '2 Bagian',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCard({
-    required String title,
-    required String desc,
-    required Color color,
-    required Widget child,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: color,
-        border: Border.all(color: Colors.black, width: 2.5),
-        boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(4, 4))],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 14),
-          ),
-          Text(
-            desc,
-            style: const TextStyle(fontSize: 11, color: Colors.black87),
-          ),
-          const SizedBox(height: 12),
-          child,
-        ],
-      ),
-    );
-  }
-
-  Widget _itemBox(String text, Color col) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      color: col,
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
+              ],
+            ),
+          ],
         ),
       ),
     );

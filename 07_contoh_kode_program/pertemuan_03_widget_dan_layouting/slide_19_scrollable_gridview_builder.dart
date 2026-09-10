@@ -1,104 +1,49 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 19: GRIDVIEW.BUILDER
-// TOPIK: Katalog Produk & Portofolio Berformat Grid 2 Kolom Responsif
-// =====================================================================
-// CARA MENJALANKAN: flutter run -d chrome
+// CONTOH KODE SEDERHANA - SLIDE 19: GRIDVIEW.BUILDER
+// TOPIK: Menampilkan Item dalam Bentuk Kolom Grid (2 Kolom)
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(const Slide19GridViewApp());
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HalamanGridView(),
+    ),
+  );
+}
 
-class Slide19GridViewApp extends StatelessWidget {
-  const Slide19GridViewApp({super.key});
+class HalamanGridView extends StatelessWidget {
+  const HalamanGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFFAF8F5)),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'SLIDE 19 • GRIDVIEW.BUILDER',
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              color: Colors.black,
-              fontSize: 16,
+    return Scaffold(
+      appBar: AppBar(title: const Text('GridView.builder')),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(12),
+        // Menentukan 2 kolom dengan jarak spasi 10px
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: 8,
+        itemBuilder: (context, index) {
+          return Container(
+            color: Colors.blue[100 * ((index % 5) + 1)],
+            child: Center(
+              child: Text(
+                'Kotak #${index + 1}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
-          backgroundColor: const Color(0xFFFFE600),
-          elevation: 0,
-          shape: const Border(
-            bottom: BorderSide(color: Colors.black, width: 2.5),
-          ),
-        ),
-        body: GridView.builder(
-          padding: const EdgeInsets.all(16),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // 2 kolom sejajar
-            crossAxisSpacing: 14,
-            mainAxisSpacing: 14,
-            childAspectRatio: 0.85,
-          ),
-          itemCount: 8,
-          itemBuilder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black, width: 2.5),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-                ],
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: index % 2 == 0
-                          ? const Color(0xFF38BDF8)
-                          : const Color(0xFFFB7185),
-                      border: Border.all(color: Colors.black, width: 2),
-                    ),
-                    child: const Icon(Icons.code, color: Colors.black),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Proyek #${index + 1}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 14,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  const Text(
-                    'Aplikasi Mobile Flutter',
-                    style: TextStyle(fontSize: 11, color: Colors.black54),
-                  ),
-                  const SizedBox(height: 8),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 2,
-                    ),
-                    color: const Color(0xFF4ADE80),
-                    child: const Text(
-                      '2026',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
+          );
+        },
       ),
     );
   }
