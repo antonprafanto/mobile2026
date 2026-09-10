@@ -62,7 +62,7 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 }
 
-// --- 3. PRESENTATION LAYER (CUBIT) ---
+// --- 3. PRESENTATION LAYER (CUBIT & 4 STATUS UI) ---
 sealed class ProductState extends Equatable {
   const ProductState();
   @override
@@ -80,14 +80,28 @@ class ProductLoaded extends ProductState {
   List<Object?> get props => [products];
 }
 
+class ProductError extends ProductState {
+  final String message;
+  const ProductError(this.message);
+  @override
+  List<Object?> get props => [message];
+}
+
 class ProductCubit extends Cubit<ProductState> {
   final GetProductsUseCase getProducts;
   ProductCubit(this.getProducts) : super(ProductInitial());
 
-  Future<void> fetch() async {
+  Future<void> fetch({bool simulateError = false}) async {
     emit(ProductLoading());
-    final result = await getProducts();
-    emit(ProductLoaded(result));
+    try {
+      if (simulateError) {
+        throw Exception('Koneksi server terputus! Gagal mengambil data.');
+      }
+      final result = await getProducts();
+      emit(ProductLoaded(result));
+    } catch (e) {
+      emit(ProductError(e.toString().replaceAll('Exception: ', '')));
+    }
   }
 }
 
@@ -136,6 +150,14 @@ class ProductCatalogScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Katalog Produk (Clean Arch & GetIt)'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            tooltip: 'Simulasikan Error Server',
+            icon: const Icon(Icons.bolt, color: Colors.amber),
+            onPressed: () =>
+                context.read<ProductCubit>().fetch(simulateError: true),
+          ),
+        ],
       ),
       body: BlocBuilder<ProductCubit, ProductState>(
         builder: (context, state) {
@@ -163,10 +185,42 @@ class ProductCatalogScreen extends StatelessWidget {
                 );
               },
             ),
+            ProductError(message: final msg) => Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.error_outline,
+                      size: 54,
+                      color: Colors.red,
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      msg,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    FilledButton.icon(
+                      onPressed: () => context.read<ProductCubit>().fetch(),
+                      icon: const Icon(Icons.refresh),
+                      label: const Text('Coba Muat Ulang'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           };
         },
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Muat Data Sukses',
         onPressed: () => context.read<ProductCubit>().fetch(),
         child: const Icon(Icons.refresh),
       ),

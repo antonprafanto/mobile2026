@@ -808,10 +808,10 @@ deck7.add_lab_quest(
         "Buat 'GetProductsUseCase' yang memanggil interface abstrak 'ProductRepository'.",
         "Implementasikan 'ProductRepositoryImpl' yang mensimulasikan pemanggilan data asinkron dari server.",
         "Daftarkan Repository (LazySingleton), UseCase (LazySingleton), dan ProductCubit (Factory) di GetIt Service Locator.",
-        "Tampilkan daftar produk secara reaktif menggunakan BlocBuilder dan floating action button untuk refresh data!",
-        "Target Pengujian: Jalankan di browser Chrome ('flutter run -d chrome') dan buktikan bahwa pemanggilan data terisolasi rapi!"
+        "Terapkan 4 Status UI (Initial, Loading, Loaded, Error) secara reaktif dengan tombol muat ulang dan simulasi error server!",
+        "Target Pengujian: Jalankan di browser Chrome ('flutter run -d chrome') dan buktikan seluruh alur terisolasi rapi!"
     ],
-    "Seluruh lapisan terpisah sempurna, dependensi terinjeksi via GetIt, dan katalog produk tampil mulus tanpa error.",
+    "Seluruh lapisan terpisah sempurna, dependensi terinjeksi via GetIt, 4 status UI tertangani, dan data tampil mulus.",
     full_code_file="slide_18_lab_quest_clean_architecture.dart"
 )
 

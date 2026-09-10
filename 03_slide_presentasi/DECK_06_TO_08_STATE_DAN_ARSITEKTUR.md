@@ -424,11 +424,12 @@
 5. Seluruh dependensi diinjeksi via Service Locator GetIt di `main.dart`.
 
 ### Slide 18: Lab Quest 07 - Katalog E-Commerce Clean Arch
-* **🎯 Misi:** Membangun aplikasi Katalog Gadget 2026 menggunakan 3 layer Clean Architecture dan Service Locator GetIt.
+* **🎯 Misi:** Membangun aplikasi Katalog Gadget 2026 menggunakan 3 layer Clean Architecture, 4 status UI reaktif, dan Service Locator GetIt.
 * **Domain:** `Product` Entity, `ProductRepository` Contract, `GetProductsUseCase`.
 * **Data:** `ProductModel` (fromJson) & `ProductRepositoryImpl`.
-* **Presentation:** `ProductCubit` & `ProductCatalogScreen`.
+* **Presentation:** `ProductCubit` (Initial, Loading, Loaded, Error) & `ProductCatalogScreen`.
 * **DI:** Pendaftaran lengkap di GetIt (`LazySingleton` untuk Repo & UseCase, `Factory` untuk Cubit).
+* **Resiliensi Galat:** Tersedia tombol simulasi pemutusan koneksi server dan mekanisme coba ulang (retry) tanpa crash.
 
 
 ---
