@@ -43,7 +43,7 @@
 ### Slide 8: Membuat Proyek Perdana: 'flutter create'
 * **Perintah Terminal:** `flutter create halo_flutter` dan standar penamaan proyek (huruf kecil dan underscore, tanpa spasi/strip).
 
-### Slide 9: Membedah Struktur Folder Proyek (Anti Pusing Pemula)
+### Slide 9: Membedah Struktur Tiga Folder Utama Proyek
 * **Peta Navigasi File:**
   * `lib/`: Tempat ngoding 99% waktu kita (berkas utama: `lib/main.dart`).
   * `pubspec.yaml`: "KTP" aplikasi dan daftar belanja paket pustaka/gambar.
@@ -189,7 +189,7 @@
 * **Analogi Lego:** Aplikasi secanggih Gojek atau Tokopedia hanyalah gabungan ratusan balok Lego widget kecil yang disusun bertingkat ke dalam satu **Widget Tree**.
 
 ### Slide 4: Pondasi Kanvas: Mengapa Wajib Ada MaterialApp & Scaffold?
-* **Bencana Pemula:** Menulis `Text()` langsung tanpa Scaffold menghasilkan layar hitam legam dengan teks bergaris bawah kuning ganda (*double yellow underlines*).
+* **Peringatan Visual:** Menulis `Text()` langsung tanpa Scaffold menghasilkan layar hitam dengan teks bergaris bawah kuning ganda (*double yellow underlines*).
 * **MaterialApp:** Gerbang utama yang mengatur arah teks (LTR), palet tema Material, dan rute.
 * **Scaffold:** Kanvas dasar putih standar Android penyedia AppBar, Body, FloatingActionButton, dan Drawer.
 
@@ -224,7 +224,7 @@
 * **Container:** Kotak serbaguna dengan margin, padding, warna, dan border tebal.
 
 ### Slide 11: Jebakan Klasik Lab: Error 'color' vs 'decoration'
-* **Error Klasik Pemula:** *"Cannot provide both a color and a decoration"*.
+* **Kesalahan Kompilasi Umum:** *"Cannot provide both a color and a decoration"*.
 * **Aturan Emas:** Jika menggunakan `decoration: BoxDecoration()`, properti warna WAJIB dipindahkan ke dalam `BoxDecoration(color: ...)`.
 
 ### Slide 12: Multi-Child Layout: Row & Column (Sumbu Utama vs Sumbu Silang)
@@ -386,7 +386,7 @@
 * **Tips Praktikum:** Menyesuaikan `keyboardType` secara tepat menghindarkan pengguna HP dari kerumitan mencari simbol `@`!
 
 ### Slide 6: Interaktivitas Sandi: Fitur Intip Password Nyata (_isObscure)
-* **Masalah Pemula:** Mengetahui `obscureText: true`, namun bingung cara membuat ikon mata bisa diklik untuk melihat karakter sandi.
+* **Tantangan Implementasi:** Menghubungkan properti `obscureText` dengan tombol aksi interaktif untuk toggle visibilitas kata sandi.
 * **Solusi Interaktif:** Buat variabel boolean `bool _isObscure = true;` di kelas State.
 * **`suffixIcon`:** Pasang `IconButton` dengan ikon kondisional `_isObscure ? Icons.visibility : Icons.visibility_off`.
 * **Aksi Sentuh:** Panggil `setState(() => _isObscure = !_isObscure);` saat ikon mata diklik.
@@ -518,7 +518,7 @@
 * **Tips Praktikum:** Uji coba logika validator dengan memasukkan teks kosong dan format acak saat praktikum berlangsung!
 
 ### Slide 11: Umpan Balik Pengguna: SnackBar & ScaffoldMessenger
-* **Prinsip Interaksi:** Jangan pernah membiarkan pengguna bengong tanpa kepastian setelah memencet tombol submit!
+* **Prinsip Umpan Balik Pengguna:** Berikan konfirmasi visual seketika setelah pengguna menekan tombol aksi untuk kepastian status interaksi.
 * **`ScaffoldMessenger.of(context).showSnackBar()`:** Menampilkan bilah notifikasi melayang di dasar layar ponsel.
 * **Durasi Wajar:** Pasang `Duration(seconds: 2)` agar pengguna sempat membaca tanpa merasa terganggu.
 * **Warna Komunikatif:** Hijau Mint untuk aksi sukses, dan Merah Coral untuk kegagalan koneksi / galat.
@@ -572,7 +572,7 @@
 * **Tips Praktikum:** Selalu utamakan `InkWell` pada tombol dan kartu agar pengguna merasakan umpan balik sentuhan yang nyata.
 
 ### Slide 13: Mengapa Meninggalkan Navigator 1.0? (Imperative vs Declarative)
-* **Kelemahan Navigator 1.0 Kuno:** `Navigator.push()` bekerja seperti tumpukan kartu buta (*Black Box Stack*). Sangat sulit sinkron dengan URL web, tombol *Back* ponsel sering bentrok, dan mustahil menangani promosi *Deep Linking*.
+* **Keterbatasan Navigator 1.0 (Tradisional):** `Navigator.push()` mengelola tumpukan riwayat secara imperatif tertutup (*Imperative Stack*). Sangat sulit sinkron dengan URL web, rentan bentrok tombol *Back*, dan tidak mendukung penanganan *Deep Linking* secara langsung.
 * **Solusi GoRouter (Standar Industri 2026):** Navigasi deklaratif berbasis URL yang terpusat (`/`, `/login`, `/buku/:id`).
 * **Multi-Platform Bersatu:** Satu basis kode navigasi bekerja serentak di Android, iOS, Web, dan Desktop.
 * **Sitasi Resmi:** Google Flutter Navigation Guide (*docs.flutter.dev/ui/navigation*).
@@ -741,7 +741,7 @@
 
 ### Slide 2: Setup & Alat Uji: Menguji UI Responsif di Chrome (Hemat RAM & Anti-Lag)
 * **💡 Analogi Simulator:** Daripada menyiksa laptop lab dengan emulator Android Studio yang berat bak helikopter, gunakan Google Chrome sebagai simulator instan yang super ringan!
-* **Konsumsi Memori Rendah:** Cukup jalankan `flutter run -d chrome`. Konsumsi RAM <150MB sehingga laptop pas-pasan tetap lancar jaya.
+* **Konsumsi Memori Rendah:** Cukup jalankan `flutter run -d chrome`. Konsumsi RAM <150MB sehingga perangkat laboratorium dengan spesifikasi standar tetap bekerja optimal.
 * **↔️ Efek Karet Gelang:** Cukup tarik tepi kanan jendela peramban Chrome untuk menyimulasikan layar ponsel (<600dp), tablet (600–840dp), hingga layar monitor (>840dp).
 * **⚡ Hot Reload Instan (<1 detik):** Memungkinkan iterasi desain responsif secara real-time tanpa restart emulator.
 * **Contoh Kode:**
@@ -888,7 +888,7 @@
     return WindowSize.expanded;                  // Ukuran L (Desktop)
   }
   ```
-* **Tips Praktikum:** Angka sakti yang wajib Anda hafal: **600 dp** adalah batas sakral antara tata letak Ponsel dan Tablet!
+* **Tips Praktikum:** Nilai ambang batas standar: **600 dp** adalah garis pemisah antara tata letak Ponsel dan Tablet!
 
 ### Slide 10: Orientasi Layar: OrientationBuilder (Memutar Buku Sketsa Tegak vs Miring)
 * **🎨 Analogi Buku Gambar:** Saat buku tegak kita menggambar ke bawah; saat dimiringkan kita menggambar melebar ke samping.
@@ -934,7 +934,7 @@
 
 ### Slide 12: Layout Grid: Grid Responsif Dinamis (Rak Pajangan Toko Fleksibel)
 * **🏪 Analogi Rak Toko:** Rak sempit memuat 2 produk, rak lebar memuat 4 hingga 6 produk tanpa membuat kemasan produk melar gepeng.
-* **🚫 Kesalahan Pemula:** Menulis `crossAxisCount: 2` secara permanen. Di tablet lebar, kartu produk akan melar aneh seperti kardus kulkas!
+* **🚫 Jebakan Desain (Anti-Pattern):** Menulis `crossAxisCount: 2` secara statis. Pada layar tablet yang lebar, kartu produk akan meregang secara tidak proporsional!
 * **🧮 Solusi Rumus Adaptif:** Tentukan jumlah kolom lewat rumus lebar: lebar <600 (1–2 kolom), <900 (3 kolom), >900 (4–6 kolom).
 * **✨ Opsi Otomatis:** Atau gunakan `SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 220)`—Flutter yang menghitungkan kolomnya secara otomatis!
 * **Contoh Kode:**

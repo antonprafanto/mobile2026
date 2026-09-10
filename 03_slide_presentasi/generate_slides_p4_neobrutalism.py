@@ -349,7 +349,7 @@ deck4.add_concept_with_code(
     "SETUP & TOOLS",
     "Persiapan Uji Cepat Hari Ini: Terminal VS Code & Chrome",
     [
-        "Sebelum mulai ngoding: Buka terminal terintegrasi di VS Code dengan shortcut 'Ctrl + ~' (Control + Backtick).",
+        "Sebelum memulai implementasi: Buka terminal terintegrasi di VS Code dengan shortcut 'Ctrl + ~' (Control + Backtick).",
         "Pasang library navigasi resmi: Jalankan perintah 'flutter pub add go_router'. Pustaka terpasang otomatis tanpa risiko salah indentasi di pubspec.yaml!",
         "Target Pengujian Cepat: Ketik 'flutter run -d chrome' untuk menjalankan di peramban web Chrome (hemat RAM lab & instan 5 detik).",
         "Pilihan Smartphone: Hubungkan kabel USB ponsel fisik dan buka software 'scrcpy' untuk sensasi papan ketik HP asli."
@@ -478,7 +478,7 @@ deck4.add_concept_with_code(
     "FITUR KEAMANAN UX",
     "Toggle Sandi: Membuat Tombol Intip Password yang Berfungsi",
     [
-        "Masalah Pemula: Tahu obscureText: true, tapi bingung cara membuat ikon mata bisa diklik untuk melihat sandi.",
+        "Tantangan Implementasi: Menghubungkan obscureText dengan tombol aksi toggle visibilitas sandi secara interaktif.",
         "Solusi Mudah: Buat variabel boolean '_isObscure = true' di kelas State.",
         "Pasang IconButton pada 'suffixIcon' dengan ikon kondisional: jika true tampilkan mata terbuka, jika false tampilkan mata dicoret.",
         "Panggil 'setState(() => _isObscure = !_isObscure)' saat ikon ditekan!"
@@ -651,7 +651,7 @@ deck4.add_concept_with_code(
     "UMPAN BALIK PENGGUNA",
     "Memberi Kabar: Menampilkan SnackBar Mengambang",
     [
-        "Prinsip UX: Jangan pernah membiarkan pengguna bengong tanpa kejelasan setelah memencet tombol submit!",
+        "Prinsip UX: Berikan umpan balik visual seketika (Immediate Feedback) setelah pengguna menekan tombol submit!",
         "ScaffoldMessenger.of(context).showSnackBar(): Menampilkan bilah notifikasi melayang di dasar layar ponsel.",
         "Gunakan durasi proporsional: 'Duration(seconds: 2)' agar pengguna sempat membaca tanpa merasa terganggu.",
         "Warna komunikatif: Hijau Mint untuk aksi sukses, dan Merah Coral untuk kegagalan koneksi."
@@ -721,7 +721,7 @@ deck4.add_concept_with_code(
     "ARSITEKTUR NAVIGASI",
     "Mengapa Kita Butuh GoRouter? (Imperative vs Declarative)",
     [
-        "Kelemahan Navigator 1.0 (Kuno): 'Navigator.push()' bekerja seperti tumpukan kartu buta (Black Box Stack). Sulit sinkron dengan URL browser web, tombol 'Back' HP sering bentrok, dan mustahil menangani Deep Linking promosi.",
+        "Keterbatasan Navigator 1.0 (Tradisional): 'Navigator.push()' mengelola tumpukan riwayat secara imperatif tertutup (Imperative Stack). Sulit sinkron dengan URL browser web, berisiko inkonsistensi tombol Back, dan tidak mendukung Deep Linking dinamis.",
         "Solusi GoRouter (Standar Industri 2026): Navigasi deklaratif berbasis URL yang terpusat ('/', '/login', '/buku/:id').",
         "Satu basis kode navigasi bekerja serentak di Android, iOS, Web, dan Desktop.",
         "Sitasi Resmi: Google Flutter Navigation Guide (docs.flutter.dev/ui/navigation)."

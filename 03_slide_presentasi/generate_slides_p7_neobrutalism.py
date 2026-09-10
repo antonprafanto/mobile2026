@@ -563,9 +563,9 @@ deck7.add_concept_with_code(
 # Slide 9: Data Layer - Model / DTO vs Entity
 deck7.add_concept_with_code(
     "DATA LAYER 1",
-    "Model DTO: Baju Dalam Kardus Ekspedisi Pengiriman",
+    "Model DTO: Paket Pembungkus Data Ekspedisi",
     [
-        "📦 Analogi Kardus Ekspedisi: Baju dibungkus kardus berlabel alamat (DTO) selama perjalanan truk, lalu dikeluarkan untuk dipakai rapi oleh manusia (Entity).",
+        "📦 Analogi Paket Ekspedisi: Data dibungkus lapisan pembungkus transfer (DTO) selama transmisi jaringan, lalu dikonversi menjadi entitas murni (Entity) untuk dipakai oleh logika domain.",
         "🚚 Data Transfer Object (DTO): Kelas Model di Data Layer bertugas mem-parsing format mentah API lewat `fromJson` dan `toJson`.",
         "🧬 Pewarisan Hubungan: `class UserModel extends UserEntity`. Model adalah turunan dari Entity yang diberi keahlian membaca JSON.",
         "🛡️ Tameng Pelindung: Jika API backend mengirim data `null` atau tipe string aneh, konversi dilakukan di Model tanpa mencemari Entity."

@@ -47,7 +47,7 @@
     void tambahItem() => emit(state + 1);
   }
   ```
-* **Tips Praktikum:** Jangan gunakan BLoC untuk hal sepele seperti warna tombol saat ditekan; gunakan BLoC untuk data lintas halaman!
+* **Tips Praktikum:** Jangan gunakan BLoC untuk status lokal sederhana seperti warna tombol saat ditekan; gunakan BLoC untuk data lintas halaman!
 
 ### Slide 4: Keterbatasan setState() & Bahaya Prop Drilling
 * **📦 Analogi Kurir Berantai:** Kakek ingin menitipkan surat ke Cucu, tetapi terpaksa menitipkannya ke Ayah yang sama sekali tidak peduli isi surat tersebut.

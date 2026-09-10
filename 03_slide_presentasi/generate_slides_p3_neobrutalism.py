@@ -408,7 +408,7 @@ deck3.add_concept_with_code(
     "PONDASI KANVAS",
     "Mengapa Wajib Ada MaterialApp & Scaffold?",
     [
-        "Bencana Pemula: Jika langsung menulis Text() tanpa Scaffold, layar akan hitam legam dengan teks bergaris bawah kuning ganda!",
+        "Karakteristik Kanvas: Jika menulis Text() tanpa pembungkus Scaffold/Material, teks akan bergaris bawah kuning ganda tanpa tema bawaan!",
         "MaterialApp: Widget gerbang utama penyetel tema Material Design, arah teks (LTR), dan rute navigasi.",
         "Scaffold: Kanvas dasar putih standar HP yang menyediakan slot AppBar, Body, FloatingActionButton, dan Drawer."
     ],
@@ -634,10 +634,10 @@ Container(
 # Slide 11: Jebakan Klasik Lab: Error 'color' vs 'decoration'
 # ---------------------------------------------------------------------
 deck3.add_concept_with_code(
-    "JEBAKAN MAUT LAB",
-    "Jebakan: 'Cannot provide both a color and a decoration'",
+    "ANALISIS KESALAHAN UMUM",
+    "Kesalahan Umum: 'Cannot provide both a color and a decoration'",
     [
-        "Penyebab Galat #1 Mahasiswa Pemula di Minggu ke-3!",
+        "Penyebab Galat Tata Letak Paling Sering Terjadi di Praktikum!",
         "Penyebab: Menulis properti 'color:' langsung di Container SEKALIGUS memakai 'decoration: BoxDecoration()'.",
         "Aturan Emas: Jika Anda menggunakan BoxDecoration, properti warna WAJIB dipindahkan ke dalam BoxDecoration(color: ...)."
     ],
@@ -916,7 +916,7 @@ deck3.add_concept_with_code(
 # ---------------------------------------------------------------------
 deck3.add_concept_with_code(
     "PEMECAHAN MASALAH 1",
-    "Membasmi Bencana Garis Kuning-Hitam (Overflow)",
+    "Mengatasi Galat Tampilan Garis Kuning-Hitam (Overflow)",
     [
         "Pernah melihat garis polisi belang kuning-hitam bertuliskan 'A RenderFlex overflowed by 48 pixels'?",
         "Penyebab: Teks atau gambar di dalam Row/Column melebihi batas piksel fisik layar ponsel pengguna.",
@@ -947,7 +947,7 @@ deck3.add_concept_with_code(
 # ---------------------------------------------------------------------
 deck3.add_concept_with_code(
     "PEMECAHAN MASALAH 2",
-    "Bencana: 'Vertical viewport was given unbounded height'",
+    "Mengatasi Galat: 'Vertical viewport was given unbounded height'",
     [
         "Penyebab: Memasukkan ListView langsung ke dalam Column tanpa batas tinggi yang jelas.",
         "Mengapa Crash? Column ingin tahu tinggi pasti anaknya, sedangkan ListView ingin memanjang tanpa batas hingga tak terhingga!",
@@ -979,12 +979,12 @@ deck3.add_concept_with_code(
 # ---------------------------------------------------------------------
 deck3.add_concept_with_code(
     "RAHASIA KODING CEPAT 1",
-    "Trik Koma Ajaib: 'Trailing Comma' & Auto-Format",
+    "Standar Format Kode: 'Trailing Comma' & Auto-Format",
     [
-        "Pusing melihat kode Flutter memanjang ke kanan hingga 300 karakter dalam satu baris?",
+        "Apakah kode Flutter Anda sering memanjang ke kanan dan sulit dibaca dalam satu baris?",
         "Rahasia Senior Flutter: Selalu akhiri setiap kurung tutup dengan TANDA KOMA ','.",
         "Setelah pasang koma, cukup tekan Ctrl + S (Save). VS Code akan seketika merapikan kode secara vertikal berjenjang yang sangat indah!",
-        "Tidak perlu lagi pusing mencari pasangan kurung secara manual."
+        "Struktur hierarki pohon widget menjadi rapi otomatis tanpa perlu mencari kurung penutup secara manual."
     ],
     """// ❌ KODE KOTOR TANPA KOMA (SULIT DIBACA):
 // Center(child: Padding(padding: EdgeInsets.all(8), child: Text('Halo')));
@@ -1010,7 +1010,7 @@ Center(
 # ---------------------------------------------------------------------
 deck3.add_concept_with_code(
     "RAHASIA KODING CEPAT 2",
-    "Shortcut Sakti: Alt + Enter & Flutter Inspector",
+    "Pintasan Produktivitas: Alt + Enter & Flutter Inspector",
     [
         "1. Shortcut 'Alt + Enter' (Quick Assist): Klik nama widget, tekan Alt + Enter, pilih 'Wrap with Padding' atau 'Wrap with Column'.",
         "2. Flutter Inspector (Penglihatan X-Ray): Buka tab Flutter Inspector di VS Code.",

@@ -388,7 +388,7 @@ deck5.add_concept_with_code(
     "Menguji UI Responsif di Chrome (Hemat RAM & Anti-Lag)",
     [
         "💡 Analogi Simulator: Emulator Android Studio di PC lab sering berat seperti helikopter. Gunakan Chrome sebagai simulator super ringan!",
-        "🚀 Cukup jalankan: 'flutter run -d chrome'. Konsumsi RAM di bawah 150MB sehingga laptop berspesifikasi pas-pasan tetap lancar jaya.",
+        "🚀 Cukup jalankan: 'flutter run -d chrome'. Konsumsi RAM di bawah 150MB sehingga perangkat laboratorium dengan spesifikasi standar tetap bekerja optimal.",
         "↔️ Efek Karet Gelang: Cukup tarik tepi jendela Chrome untuk menyimulasikan layar ponsel (<600dp), tablet (600-840dp), hingga laptop (>840dp).",
         "⚡ Fitur Hot Reload instan (<1 detik) membuat Anda bisa melihat adaptasi tata letak secara langsung tanpa perlu restart."
     ],
@@ -595,7 +595,7 @@ WindowSize getSizeClass(double width) {
   return WindowSize.expanded;                  // Ukuran L (Desktop)
 }""",
     filename="breakpoints_helper.dart",
-    tip="Angka sakti yang wajib Anda hafal: 600 dp adalah batas sakral antara Ponsel dan Tablet!",
+    tip="Nilai ambang batas (threshold) standar: 600 dp adalah garis pemisah antara tata letak Ponsel dan Tablet!",
     tag_color=COLOR_CORAL,
     full_code_file="slide_09_breakpoints_helper.dart"
 )
@@ -667,7 +667,7 @@ deck5.add_concept_with_code(
     "Grid Responsif Dinamis: Rak Pajangan Toko Fleksibel",
     [
         "🏪 Analogi Rak Toko: Rak sempit memuat 2 produk, rak lebar memuat 4 hingga 6 produk tanpa membuat kemasan produk melar gepeng.",
-        "🚫 Kesalahan Pemula: Menulis 'crossAxisCount: 2' permanen. Di tablet layar lebar, kartu produk akan melar aneh seperti kardus kulkas!",
+        "🚫 Jebakan Desain (Anti-Pattern): Menulis 'crossAxisCount: 2' statis. Pada layar tablet yang lebar, kartu produk akan meregang secara tidak proporsional!",
         "🧮 Solusi Rumus Adaptif: Tentukan jumlah kolom lewat rumus lebar: lebar <600 (1-2 kolom), <900 (3 kolom), >900 (4-6 kolom).",
         "✨ Opsi Otomatis: Atau gunakan 'SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 220)'—Flutter yang menghitungkan kolomnya!"
     ],
@@ -786,7 +786,7 @@ deck5.add_concept_with_code(
     [
         "🧳 Analogi Koper Vakum: Saat baju terlalu tebal, kantong vakum mengempiskannya agar tetap muat rapi di dalam koper tanpa merusak resleting.",
         "💥 Masalah Nyata: Kakek/nenek menyetel pembesaran font HP 150% -> angka saldo bank 'Rp 999.999.999,-' meledak memicu overflow garis kuning-hitam!",
-        "🛡️ Solusi Anggun: Bungkus teks dengan widget sakti: 'FittedBox(fit: BoxFit.scaleDown)'.",
+        "🛡️ Solusi Anggun: Bungkus teks dengan widget protektif: 'FittedBox(fit: BoxFit.scaleDown)'.",
         "✨ Menyusut Otomatis: Teks akan otomatis menyusut anggun jika ruang terbatas, dan tetap berukuran normal jika ruang tersedia cukup."
     ],
     """Container(

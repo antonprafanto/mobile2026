@@ -1,7 +1,7 @@
 # 🏛️ PANDUAN KODE PROGRAM MANDIRI (PERTEMUAN 07)
 ## Clean Architecture & Enterprise Project Structure (Design Pattern & DI)
 
-Selamat datang di katalog kode program resmi **Pertemuan 07: Clean Architecture & Enterprise Project Structure**. Folder ini berisi **17 berkas aplikasi Flutter mandiri (*fully runnable code*)** yang mendemonstrasikan pemisahan kode berstandar enterprise tanpa membuat mahasiswa pemula bingung.
+Selamat datang di katalog kode program resmi **Pertemuan 07: Clean Architecture & Enterprise Project Structure**. Folder ini berisi **17 berkas aplikasi Flutter mandiri (*fully runnable code*)** yang mendemonstrasikan pemisahan kode berstandar enterprise secara terstruktur dan mudah dipahami oleh mahasiswa.
 
 ---
 

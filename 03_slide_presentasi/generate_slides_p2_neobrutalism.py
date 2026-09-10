@@ -349,7 +349,7 @@ deck2.add_concept_with_code(
     "PANDUAN PRAKTIK",
     "Di Mana Kita Mengetik & Menguji Kode Hari Ini?",
     [
-        "Opsi 1 (Paling Ringan & Instan): Buka browser dan kunjungi dartpad.dev. Bisa langsung ngoding dan tekan tombol 'Run' tanpa instalasi!",
+        "Opsi 1 (Paling Ringan & Instan): Buka browser dan kunjungi dartpad.dev. Bisa langsung menulis kode dan menekan tombol 'Run' tanpa instalasi!",
         "Opsi 2 (Lokal di Laptop): Buat berkas 'latihan.dart' di VS Code, buka terminal (Ctrl + `), lalu ketik 'dart run latihan.dart'.",
         "Tips Dosen: Pasang ekstensi 'Dart' di VS Code. Tombol 'Run' kecil akan otomatis muncul di atas fungsi void main()!"
     ],
@@ -463,7 +463,7 @@ deck2.add_concept_with_code(
 # ---------------------------------------------------------------------
 deck2.add_concept_with_code(
     "OPERATOR PENJINAK NULL",
-    "Empat Operator Sakti Pengaman Data Kosong",
+    "Empat Operator Penjamin Nilai Aman (Null Safety Operators)",
     [
         "1. Operator ?. (Safe Navigation): Akses properti hanya jika datanya tidak null (tidak akan crash!).",
         "2. Operator ?? (Default Fallback): Berikan nilai pengganti cadangan jika datanya null.",
@@ -632,7 +632,7 @@ deck2.add_concept_with_code(
     ],
     """void main() {
   // 1. List (Berurutan)
-  final List<String> hobi = ['Ngoding', 'Membaca', 'Ngoding'];
+  final List<String> hobi = ['Flutter', 'Algoritma', 'Flutter'];
   print('List: $hobi (Panjang: ${hobi.length})'); // ada duplikat
 
   // 2. Set (Unik & Otomatis Buang Duplikat)
@@ -656,7 +656,7 @@ deck2.add_concept_with_code(
     "MANIPULASI DATA",
     "Operasi Reaktif: .map() dan .where()",
     [
-        "Tinggalkan perulangan for loop manual kuno!",
+        "Tinggalkan perulangan for loop manual imperatif!",
         "Metode .where(): Menyaring (filter) data sesuai kriteria kondisi (misal: hanya ambil produk diskon).",
         "Metode .map(): Mengubah setiap item menjadi bentuk baru secara instan.",
         "Di Pertemuan 3: Kita akan menggunakan .map() untuk mengubah daftar data menjadi daftar Widget visual di layar!"

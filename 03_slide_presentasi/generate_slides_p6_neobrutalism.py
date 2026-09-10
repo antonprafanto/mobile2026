@@ -389,7 +389,7 @@ deck6.add_concept_with_code(
         "💡 Analogi Alat: Memasang mesin pabrik modern di bengkel kita agar tidak merakit roda gigi manual dari nol.",
         "📦 Perintah Terminal: Jalankan 'flutter pub add flutter_bloc equatable' di root proyek Flutter.",
         "⚡ Ekstensi Resmi VS Code: Pasang 'Bloc' oleh Felix Angelov untuk membuat file Cubit dan State dalam 1 detik.",
-        "🪄 Shortcut Ajaib: Cukup tekan Alt + Enter pada widget, pilih 'Wrap with BlocBuilder' atau 'BlocListener'."
+        "🪄 Pintasan Produktivitas: Cukup tekan Alt + Enter pada widget, pilih 'Wrap with BlocBuilder' atau 'BlocListener'."
     ],
     """// Menambahkan dependensi di pubspec.yaml:
 dependencies:
@@ -428,7 +428,7 @@ class CartCubit extends Cubit<int> {
   void tambahBarang() => emit(state + 1);
 }""",
     filename="state_category.dart",
-    tip="Jangan gunakan BLoC untuk hal sepele seperti animasi kursor; gunakan BLoC untuk data lintas halaman!",
+    tip="Jangan gunakan BLoC untuk status lokal sederhana seperti animasi kursor; gunakan BLoC untuk data lintas halaman!",
     tag_color=COLOR_CYAN,
     full_code_file="slide_03_ephemeral_vs_app_state.dart"
 )
@@ -527,7 +527,7 @@ deck6.add_concept_with_code(
     [
         "📢 Analogi Manajer Gudang: Saat barang baru masuk gudang, manajer mengumumkan lewat mikrofon 'emit()' ke seluruh staf kasir.",
         "🏗️ Pewarisan 'Cubit<T>': Kelas Cubit wajib mewarisi 'Cubit<NamaState>' dan memanggil 'super(initialState)' di konstruktornya.",
-        "📣 Fungsi Sakti 'emit()': Satu-satunya jalan legal untuk memperbarui data state dan memberitahu UI agar menggambar ulang.",
+        "📣 Fungsi 'emit()': Mekanisme resmi untuk memperbarui data state dan memberitahu UI agar menggambar ulang.",
         "🔒 Keamanan: 'emit()' berstatus protected—hanya bisa dipanggil dari dalam method internal Cubit itu sendiri."
     ],
     """class CartCubit extends Cubit<CartState> {

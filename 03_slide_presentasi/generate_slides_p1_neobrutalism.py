@@ -538,10 +538,10 @@ code .""",
 # ---------------------------------------------------------------------
 deck1.add_concept_with_code(
     "STRUKTUR PROYEK",
-    "Jangan Pusing! Pahami 3 Folder Utama Ini",
+    "Struktur Folder Proyek: 3 Direktori Utama",
     [
         "Saat proyek dibuat, ada puluhan folder otomatis. Bagi pemula, abaikan yang tidak perlu!",
-        "1. folder 'lib/' (RUMAH UTAMA): 99% waktu ngoding Anda ada di sini. Berkas pintu gerbang utama adalah 'lib/main.dart'.",
+        "1. folder 'lib/' (RUMAH UTAMA): pusat seluruh kode logika dan tampilan aplikasi. Berkas gerbang utama adalah 'lib/main.dart'.",
         "2. berkas 'pubspec.yaml': 'KTP' aplikasi dan daftar belanja pustaka/aset gambar.",
         "3. folder 'android/' & 'ios/': Pembungkus native (jangan diubah-ubah jika belum mahir)."
     ],
@@ -549,7 +549,7 @@ deck1.add_concept_with_code(
 ├── android/          <- Folder native Android (jangan diubah)
 ├── ios/              <- Folder native iOS (jangan diubah)
 ├── web/              <- Folder untuk target browser
-├── lib/              <- 🌟 TEMPAT KITA NGODING SEHARI-HARI!
+├── lib/              <- 🌟 PUSAT PENULISAN KODE SUMBER UTAMA APLIKASI!
 │   └── main.dart     <- Titik awal aplikasi dimulai
 ├── test/             <- Berkas pengujian unit testing
 └── pubspec.yaml      <- 📜 KTP & Daftar paket pustaka/gambar""",
@@ -567,7 +567,7 @@ deck1.add_concept_with_code(
     "pubspec.yaml: KTP & Daftar Belanja Aplikasi",
     [
         "Fungsi Berkas: Menyimpan identitas nama aplikasi, versi rilis, pustaka eksternal (packages), dan aset gambar/font.",
-        "Jebakan Klasik Pemula: Format YAML SANGAT SENSITIF terhadap spasi!",
+        "Catatan Kritis: Format YAML SANGAT SENSITIF terhadap indentasi spasi!",
         "Gunakan TEPAT 2 SPASI untuk indentasi. Jangan pernah memakai tombol TAB, karena akan membuat kompilasi error."
     ],
     """name: halo_flutter
@@ -619,7 +619,7 @@ deck1.add_concept_with_code(
 // Tekan 'q' -> Keluar (Quit)""",
     filename="cheat_sheet_reload.txt",
     full_code_file="slide_11_hot_reload_vs_restart.dart",
-    tip="Hot Reload adalah fitur terbaik Flutter yang membuat ngoding terasa seperti mengedit dokumen live!",
+    tip="Hot Reload adalah fitur terbaik Flutter yang membuat siklus pengembangan antarmuka berjalan sangat cepat!",
     tag_color=COLOR_MINT
 )
 
@@ -771,7 +771,7 @@ deck1.add_concept_with_code(
     [
         "Ekstensi Wajib 1: 'Flutter' & 'Dart' (resmi dari Dart Code).",
         "Ekstensi Pendukung: 'Material Icon Theme' & 'Error Lens' untuk melihat pesan galat langsung di baris kode.",
-        "Shortcut Sakti: 'Ctrl + `' untuk buka terminal, 'Ctrl + P' untuk cari berkas kilat, dan 'Alt + Enter' untuk bantuan refactor kode otomatis."
+        "Pintasan Produktivitas: 'Ctrl + `' untuk buka terminal, 'Ctrl + P' untuk cari berkas kilat, dan 'Alt + Enter' untuk bantuan refactor kode otomatis."
     ],
     """// SETELAN TERBAIK VS CODE (settings.json):
 {
