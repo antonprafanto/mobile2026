@@ -14,6 +14,7 @@ mobile2026/
 │   ├── 📊 PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx
 │   ├── 📊 PERTEMUAN_05_Material3_dan_Responsive_UI.pptx
 │   ├── 📊 PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx
+│   ├── 📊 PERTEMUAN_07_Clean_Architecture_dan_Design_Pattern.pptx
 │   └── 📊 PERTEMUAN_09 s.d. 14.pptx (Dio API, BaaS Firebase, Testing)
 │
 ├── 📁 07_contoh_kode_program/                  # Kode Mandiri Siap Run (1 Slide = 1 File .dart)
@@ -22,7 +23,8 @@ mobile2026/
 │   ├── 📁 pertemuan_03_widget_dan_layouting/   # [23 file] Widget Tree, Layouting, & Solusi Overflow
 │   ├── 📁 pertemuan_04_form_dan_gorouter/      # [21 file] Form Validation, Regex, & GoRouter
 │   ├── 📁 pertemuan_05_material3_dan_responsive/ # [17 file] Material 3, Theming, & UI Responsif
-│   └── 📁 pertemuan_06_state_management_cubit/   # [17 file] State Management Reaktif & Cubit
+│   ├── 📁 pertemuan_06_state_management_cubit/   # [17 file] State Management Reaktif & Cubit
+│   └── 📁 pertemuan_07_clean_architecture/       # [17 file] Clean Architecture & Enterprise Structure
 │
 ├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md      # Kerangka Kerja & Standar Courseware Repositori
 └── 📄 README.md                                # Katalog Utama & Panduan Akses Cepat
@@ -45,6 +47,7 @@ mobile2026/
 | **04** | Form Handling, Validasi Masukan & Navigasi GoRouter | [⚡ Download M04 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx) | [👁️ Baca Online M04](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_04_Form_Handling_dan_GoRouter.pptx) |
 | **05** | Material 3, Adaptive Layout & Dynamic Theming | [⚡ Download M05 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_05_Material3_dan_Responsive_UI.pptx) | [👁️ Baca Online M05](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_05_Material3_dan_Responsive_UI.pptx) |
 | **06** | State Management Reaktif (Cubit & BLoC Pattern) | [⚡ Download M06 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) | [👁️ Baca Online M06](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) |
+| **07** | Clean Architecture & Enterprise Structure (GetIt DI) | [⚡ Download M07 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_07_Clean_Architecture_dan_Design_Pattern.pptx) | [👁️ Baca Online M07](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_07_Clean_Architecture_dan_Design_Pattern.pptx) |
 | **09** | Networking, REST API Client Dio & Error Handling | [⚡ Download M09 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) | [👁️ Baca Online M09](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) |
 | **11** | Backend-as-a-Service Firebase, Kamera & Geolocation GPS | [⚡ Download M11 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) | [👁️ Baca Online M11](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) |
 | **14** | Automated Unit/Widget Testing & DevTools Profiling | [⚡ Download M14 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_14_Automated_Testing_dan_Profiling.pptx) | [👁️ Baca Online M14](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_14_Automated_Testing_dan_Profiling.pptx) |
@@ -206,6 +209,30 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 
 ---
 
+### 🏛️ Pertemuan 07: Clean Architecture & Enterprise Project Structure
+
+| Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
+| :---: | :--- | :--- |
+| **Slide 02** | Setup `get_it: ^9.2.1` & Analogi Lemari Perkakas DI | [slide_02_tools_dan_setup_di.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_02_tools_dan_setup_di.dart) |
+| **Slide 03** | Separation of Concerns: Dapur Restoran vs Spaghetti Code | [slide_03_separation_of_concerns.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_03_separation_of_concerns.dart) |
+| **Slide 04** | Tiga Lapisan Utama: Domain, Data, Presentation | [slide_04_tiga_lapisan_clean_arch.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_04_tiga_lapisan_clean_arch.dart) |
+| **Slide 05** | Standar Industri: Feature-First vs Layer-First | [slide_05_feature_first_structure.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_05_feature_first_structure.dart) |
+| **Slide 06** | Domain Layer 1: Entity Murni Tanpa Ketergantungan UI/JSON | [slide_06_domain_entity.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_06_domain_entity.dart) |
+| **Slide 07** | Domain Layer 2: Repository Contract (Interface Kontrak Kerja) | [slide_07_domain_repository_contract.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_07_domain_repository_contract.dart) |
+| **Slide 08** | Domain Layer 3: Use Case (Single Responsibility Action) | [slide_08_domain_usecase.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_08_domain_usecase.dart) |
+| **Slide 09** | Data Layer 1: Data Model & DTO (`fromJson` & `toJson`) | [slide_09_data_model_dto.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_09_data_model_dto.dart) |
+| **Slide 10** | Data Layer 2: Data Sources (Remote API vs Local Cache Storage) | [slide_10_data_sources.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_10_data_sources.dart) |
+| **Slide 11** | Data Layer 3: Repository Implementation (Konkret Penebus Kontrak) | [slide_11_data_repository_impl.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_11_data_repository_impl.dart) |
+| **Slide 12** | Dependency Inversion Principle (DIP): Bergantung Pada Abstraksi | [slide_12_dependency_inversion.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_12_dependency_inversion.dart) |
+| **Slide 13** | Dependency Injection & Service Locator (`GetIt sl<T>()`) | [slide_13_get_it_service_locator.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_13_get_it_service_locator.dart) |
+| **Slide 14** | Perbedaan Krusial: `registerSingleton` vs `registerFactory` | [slide_14_factory_vs_singleton.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_14_factory_vs_singleton.dart) |
+| **Slide 15** | Presentation Layer: Menghubungkan Cubit dengan Use Case | [slide_15_presentation_cubit_usecase.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_15_presentation_cubit_usecase.dart) |
+| **Slide 16** | Alur Data End-to-End: Dari Tombol UI ke DataSource Kembali ke UI | [slide_16_end_to_end_clean_flow.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_16_end_to_end_clean_flow.dart) |
+| **Slide 17** | Checklist 5 Aturan Emas & Anti-Pattern Clean Architecture | [slide_17_checklist_clean_architecture.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_17_checklist_clean_architecture.dart) |
+| **Slide 18** | Solusi Master Lab Quest: Student Portal Clean Architecture | [slide_18_lab_quest_clean_architecture.dart](07_contoh_kode_program/pertemuan_07_clean_architecture/slide_18_lab_quest_clean_architecture.dart) |
+
+---
+
 ## 💡 Panduan Cepat Menjalankan Kode bagi Mahasiswa Awam
 
 ### A. Untuk Kode Dart Murni (Pertemuan 02):
@@ -217,13 +244,22 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
   dart run 07_contoh_kode_program/pertemuan_02_modern_dart/slide_16_lab_quest_tugas_02.dart
   ```
 
-### B. Untuk Kode Aplikasi Flutter Lengkap (Pertemuan 01 & Pertemuan 04):
+### B. Untuk Kode Aplikasi Flutter Lengkap (Pertemuan 01 & Pertemuan 03-07):
 1. **Buka Proyek Flutter di VS Code:**
    Buka terminal dengan `Ctrl + ~`.
-2. **Pasang Paket Pendukung (Khusus Pertemuan 04):**
-   ```bash
-   flutter pub add go_router
-   ```
+2. **Pasang Paket Pendukung (Sesuai Materi):**
+   - **Pertemuan 04 (Navigasi):**
+     ```bash
+     flutter pub add go_router
+     ```
+   - **Pertemuan 06 (State Management Cubit):**
+     ```bash
+     flutter pub add flutter_bloc equatable
+     ```
+   - **Pertemuan 07 (Clean Architecture & DI):**
+     ```bash
+     flutter pub add flutter_bloc equatable get_it
+     ```
 3. **Salin Kode Contoh:**
    Pilih salah satu berkas di atas, klik tombol **"Copy raw file"** di GitHub, lalu tempelkan (*paste*) seluruhnya menggantikan isi `lib/main.dart` pada proyek Anda.
 4. **Jalankan Aplikasi:**

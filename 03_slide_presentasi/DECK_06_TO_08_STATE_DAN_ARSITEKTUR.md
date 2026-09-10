@@ -335,29 +335,101 @@
 ---
 # PERTEMUAN 07: Clean Architecture & Enterprise Project Structure
 
-### Slide 1: The Uncle Bob Clean Architecture for Flutter
-* **Tiga Lapisan Utama (*Three Core Layers*):**
-  1. **Presentation Layer:** Widgets, Pages, BLoC/Cubit, Animations.
-  2. **Domain Layer (The Core):** Entities, Value Objects, Use Cases. Murni Dart, *zero framework dependency*.
-  3. **Data Layer:** Repositories Implementation, Data Sources (Remote API / Local Database), DTO Models.
+### Slide 1: Cover Utama
+* **Judul:** Clean Architecture & Enterprise Project Structure
+* **Sub-CPMK 7:** Mampu merancang arsitektur aplikasi berskala enterprise menggunakan Clean Architecture, struktur Feature-First, dan Dependency Injection.
+* **Analogi:** Cetak Biru Gedung Pencakar Langit — Membangun fondasi yang kokoh agar gedung tahan gempa saat bertambah tinggi.
 
-### Slide 2: Feature-First vs Layer-First
-* **Mengapa Feature-First Lebih Unggul di Industri?**
-  * Di proyek skala besar, mengelompokkan folder berdasarkan fitur (`features/auth/`, `features/product/`, `features/checkout/`) membuat tim bisa bekerja secara paralel tanpa mengalami *merge conflict* besar di Git.
+### Slide 2: Setup & Alat Bantu Dependency Injection (get_it)
+* **💡 Analogi:** Kotak Perkakas Mekanik Standar di bengkel kerja.
+* **Dependensi:** `flutter pub add get_it equatable flutter_bloc`
+* **Peran GetIt:** Service Locator terpusat untuk memutus ketergantungan antar kelas tanpa prop drilling.
+* **Aturan Emas:** UI dilarang keras membuat objek Repository atau Data Source dengan kata kunci `new / ()`!
 
-### Slide 3: Dependency Injection (DI) dengan `get_it`
-* **Konsep:** Memutus keterikatan langsung (*Decoupling*).
-* **Kode:**
-  ```dart
-  final sl = GetIt.instance;
+### Slide 3: Separation of Concerns (SoC)
+* **🚗 Analogi:** Departemen Pabrik Mobil Mandiri (Bodi UI, Mesin Bisnis, Baut Data).
+* **Bahaya Spaghetti Code:** Menulis pemanggilan API Dio langsung di dalam tombol `onPressed` membuat kode mustahil diuji secara otomatis.
+* **Tanggung Jawab Tunggal:** Pisahkan kode ke dalam tugas murni: Menggambar UI, Aturan Bisnis, dan Mengambil Data.
 
-  void init() {
-    // Repository
-    sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
-    // Cubit
-    sl.registerFactory(() => AuthCubit(authRepository: sl()));
-  }
-  ```
+### Slide 4: Model Tiga Lapisan (Clean Architecture)
+* **🧅 Analogi:** Bawang Bombay Berlapis — Kulit luar melindungi daging, daging melindungi biji inti paling dalam.
+* **1. Presentation Layer:** Widgets, Screens, Cubit/BLoC, State.
+* **2. Domain Layer (Inti):** Entities, Use Cases, Repository Contracts (100% Pure Dart murni).
+* **3. Data Layer:** Data Sources (Dio/Isar), Models (DTO), Repository Implementations.
+
+### Slide 5: Struktur Direktori Feature-First
+* **🏢 Analogi:** Kamar Kos Mandiri vs Lemari Sekompleks.
+* **Keunggulan Enterprise:** Setiap fitur (`features/auth/`, `features/product/`, `features/cart/`) memiliki 3 lapisannya sendiri.
+* **Bebas Konflik Git:** Anggota tim bisa bekerja di fitur berbeda tanpa mengalami merge conflict besar.
+
+### Slide 6: Domain Layer - Entity
+* **🥇 Analogi:** Emas Murni 24 Karat Bebas Karat.
+* **Objek Bisnis Murni:** Merepresentasikan entitas bisnis sejati (`ProductEntity`) dengan validasi aturan bisnis.
+* **Larangan JSON:** Entity dilarang memiliki method `fromJson` atau `toJson`! Itu adalah tugas Data Layer.
+
+### Slide 7: Domain Layer - Repository Contract (Interface)
+* **📜 Analogi:** Surat Perjanjian Kontrak Notaris.
+* **Kelas Abstrak:** Domain mendefinisikan apa yang dibutuhkan sistem (`abstract class ProductRepository`).
+* **Kekuatan Abstraksi:** Domain tidak peduli data diambil dari AWS, Firebase, atau sekadar data palsu (mocking).
+
+### Slide 8: Domain Layer - Use Case (Interactor)
+* **🏧 Analogi:** Satu Tombol Khusus Mesin ATM (Single Responsibility Principle).
+* **Satu Aksi Spesifik:** Satu kelas Use Case hanya menjalankan 1 tugas bisnis (`GetProductsUseCase`, `LoginUserUseCase`).
+* **Reusable & Testable:** Dapat dipanggil oleh Mobile, Tablet, maupun Web dan diuji unit test murni dalam 0.1 detik.
+
+### Slide 9: Data Layer - Model / DTO vs Entity
+* **📦 Analogi:** Baju Dalam Kardus Ekspedisi Pengiriman.
+* **Data Transfer Object (DTO):** Model bertugas membaca JSON dari server (`fromJson`) dan mengubah objek ke JSON (`toJson`).
+* **Pewarisan:** `class ProductModel extends ProductEntity`.
+
+### Slide 10: Data Layer - Data Sources
+* **🚰 Analogi:** Kran Air PAM (Internet) vs Sumur Bor Rumah (Cache Offline).
+* **RemoteDataSource:** Menangani request HTTP mentah via Dio/HTTP client.
+* **LocalDataSource:** Menangani pembacaan data luring dari SharedPreferences atau SQLite.
+
+### Slide 11: Data Layer - Repository Implementation
+* **📋 Analogi:** Manajer Logistik Pengambil Keputusan.
+* **Menepati Kontrak Domain:** Kelas `ProductRepositoryImpl` mengimplementasikan `ProductRepository`.
+* **Orkestrasi:** Memanggil Data Source, mem-parse ke Model, lalu mengembalikannya sebagai Entity murni ke Domain.
+
+### Slide 12: Dependency Inversion Principle (DIP)
+* **🔌 Analogi:** Steker Listrik Standar Stopkontak Universal.
+* **Aturan SOLID:** Modul tingkat tinggi (Presentation/Domain) tidak boleh bergantung pada modul tingkat rendah (Data/API).
+* **Mocking Instan:** Bisa mengganti implementasi database atau notifikasi dalam 1 detik tanpa mengubah kode UI.
+
+### Slide 13: Service Locator GetIt
+* **🛎️ Analogi:** Meja Resepsionis Hotel Bintang Lima Terpusat (`sl<T>()`).
+* **Registrasi Terpusat:** Seluruh instance kelas didaftarkan di `core/di/injection_container.dart`.
+* **Bebas Parameter:** Widget apa pun bisa meminta layanan tanpa perlu passing variabel bertingkat.
+
+### Slide 14: Factory vs Singleton di GetIt
+* **🎫 Analogi:** Karcis Parkir Sekali Pakai (Factory) vs Genset Listrik Gedung (Singleton).
+* **registerLazySingleton:** Objek dibuat 1 kali dan dipakai bersama (Cocok untuk Repository, Dio, Database).
+* **registerFactory:** Objek baru dibuat setiap kali dipanggil (Cocok untuk Cubit agar state segar saat buka halaman baru).
+
+### Slide 15: Presentation Layer: Use Case ke Cubit
+* **👨‍🍳 Analogi:** Kasir Meneruskan Pesanan ke Koki Spesialis Dapur.
+* **Cubit Dilarang Sentuh Repo:** Cubit hanya boleh memanggil Use Case sebagai perantara logika bisnis.
+* **State Reaktif:** Cubit menerima data dari Use Case, lalu memancarkan status `ProductLoaded` ke antarmuka.
+
+### Slide 16: Alur Data Utuh End-to-End
+* **🚚 Analogi:** Ekspedisi Paket Pos dari Pabrik Hingga Tangan Pembeli.
+* **Rantai Pemanggilan:** UI (Button) -> Cubit -> Use Case -> Repo Contract -> Repo Impl -> Data Source -> API Server.
+
+### Slide 17: 5 Aturan Emas Clean Architecture 2026
+1. Domain Layer 100% Bebas dari `package:flutter`.
+2. Satu Use Case hanya memiliki satu tanggung jawab (SRP).
+3. Cubit dilarang memanggil Repository secara langsung.
+4. Model di Data Layer mewarisi Entity di Domain Layer.
+5. Seluruh dependensi diinjeksi via Service Locator GetIt di `main.dart`.
+
+### Slide 18: Lab Quest 07 - Katalog E-Commerce Clean Arch
+* **🎯 Misi:** Membangun aplikasi Katalog Gadget 2026 menggunakan 3 layer Clean Architecture dan Service Locator GetIt.
+* **Domain:** `Product` Entity, `ProductRepository` Contract, `GetProductsUseCase`.
+* **Data:** `ProductModel` (fromJson) & `ProductRepositoryImpl`.
+* **Presentation:** `ProductCubit` & `ProductCatalogScreen`.
+* **DI:** Pendaftaran lengkap di GetIt (`LazySingleton` untuk Repo & UseCase, `Factory` untuk Cubit).
+
 
 ---
 
