@@ -54,6 +54,31 @@ mobile2026/
     │   ├── 📄 slide_15_stream_reactive_data.dart
     │   └── 📄 slide_16_lab_quest_tugas_02.dart
     │
+    ├── 📁 pertemuan_03_widget_dan_layouting/
+    │   ├── 📄 slide_02_panduan_tools_dan_workflow.dart
+    │   ├── 📄 slide_03_filosofi_everything_is_widget.dart
+    │   ├── 📄 slide_04_materialapp_dan_scaffold.dart
+    │   ├── 📄 slide_05_arsitektur_the_three_trees.dart
+    │   ├── 📄 slide_06_stateless_vs_stateful.dart
+    │   ├── 📄 slide_07_siklus_hidup_stateful.dart
+    │   ├── 📄 slide_08_hukum_box_constraints.dart
+    │   ├── 📄 slide_09_penyelamat_layar_safearea.dart
+    │   ├── 📄 slide_10_single_child_layout.dart
+    │   ├── 📄 slide_11_jebakan_color_vs_decoration.dart
+    │   ├── 📄 slide_12_multi_child_row_column.dart
+    │   ├── 📄 slide_13_trik_spasi_sizedbox_spacer.dart
+    │   ├── 📄 slide_14_flexible_vs_expanded.dart
+    │   ├── 📄 slide_15_layout_menumpuk_stack.dart
+    │   ├── 📄 slide_16_penyelamat_kategori_wrap.dart
+    │   ├── 📄 slide_17_scrollable_singlechildscrollview.dart
+    │   ├── 📄 slide_18_scrollable_listview_builder.dart
+    │   ├── 📄 slide_19_scrollable_gridview_builder.dart
+    │   ├── 📄 slide_20_solusi_renderflex_overflow.dart
+    │   ├── 📄 slide_21_solusi_unbounded_height.dart
+    │   ├── 📄 slide_22_trik_koma_ajaib_trailing.dart
+    │   ├── 📄 slide_23_shortcut_refactor_inspector.dart
+    │   └── 📄 slide_24_lab_quest_dashboard_profil.dart
+    │
     └── 📁 pertemuan_04_form_dan_gorouter/
         ├── 📄 slide_03_textfield_vs_textformfield.dart
         ├── 📄 slide_04_controller_lifecycle.dart
@@ -149,6 +174,36 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 | **Slide 14** | Asinkron 1: `Future`, `async`, `await`, & Penanganan `try-catch` | [slide_14_future_async_await.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_14_future_async_await.dart) |
 | **Slide 15** | Asinkron 2: `Stream`, `async*`, & Emisi Reaktif `yield` | [slide_15_stream_reactive_data.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_15_stream_reactive_data.dart) |
 | **Slide 16** | Solusi Master Lab Quest: Simulasi Antrean Cerdas Kafe Kampus | [slide_16_lab_quest_tugas_02.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_16_lab_quest_tugas_02.dart) |
+
+---
+
+### 📱 Pertemuan 03: Widget Tree, Layouting & Anti-Overflow
+
+| Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
+| :---: | :--- | :--- |
+| **Slide 02** | Panduan Alat Pengujian (Chrome, USB HP Fisik & Hot Reload) | [slide_02_panduan_tools_dan_workflow.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_02_panduan_tools_dan_workflow.dart) |
+| **Slide 03** | Filosofi Inti: "Everything is a Widget" (Analogi Lego) | [slide_03_filosofi_everything_is_widget.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_03_filosofi_everything_is_widget.dart) |
+| **Slide 04** | Pondasi Kanvas: Mengapa Butuh `MaterialApp` & `Scaffold`? | [slide_04_materialapp_dan_scaffold.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_04_materialapp_dan_scaffold.dart) |
+| **Slide 05** | Di Balik Layar: The Three Trees (Widget, Element, RenderObject) | [slide_05_arsitektur_the_three_trees.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_05_arsitektur_the_three_trees.dart) |
+| **Slide 06** | Klasifikasi Widget: `StatelessWidget` vs `StatefulWidget` | [slide_06_stateless_vs_stateful.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_06_stateless_vs_stateful.dart) |
+| **Slide 07** | Tiga Fase Siklus Hidup: `initState()`, `build()`, & `dispose()` | [slide_07_siklus_hidup_stateful.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_07_siklus_hidup_stateful.dart) |
+| **Slide 08** | Hukum Emas: "Constraints Down, Sizes Up, Parent Sets Position" | [slide_08_hukum_box_constraints.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_08_hukum_box_constraints.dart) |
+| **Slide 09** | Penyelamat Layar Berponi / Kamera Tompel: Widget `SafeArea` | [slide_09_penyelamat_layar_safearea.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_09_penyelamat_layar_safearea.dart) |
+| **Slide 10** | Single-Child Layout: `Container`, `Padding`, & `Center` | [slide_10_single_child_layout.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_10_single_child_layout.dart) |
+| **Slide 11** | Jebakan Maut Lab: Error `color` vs `BoxDecoration(color:)` | [slide_11_jebakan_color_vs_decoration.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_11_jebakan_color_vs_decoration.dart) |
+| **Slide 12** | Multi-Child Layout: `Row`, `Column`, Main & Cross Axis | [slide_12_multi_child_row_column.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_12_multi_child_row_column.dart) |
+| **Slide 13** | Trik Pengatur Spasi: `SizedBox`, `Spacer()`, & `Expanded` | [slide_13_trik_spasi_sizedbox_spacer.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_13_trik_spasi_sizedbox_spacer.dart) |
+| **Slide 14** | `Flexible(loose)` vs `Expanded(tight)`: Kapan Pakai yang Mana? | [slide_14_flexible_vs_expanded.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_14_flexible_vs_expanded.dart) |
+| **Slide 15** | Tata Letak Menumpuk & Melayang: `Stack` & `Positioned` | [slide_15_layout_menumpuk_stack.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_15_layout_menumpuk_stack.dart) |
+| **Slide 16** | Penyelamat Deretan Kategori / Chip: Widget `Wrap` | [slide_16_penyelamat_kategori_wrap.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_16_penyelamat_kategori_wrap.dart) |
+| **Slide 17** | Scrollable 1: `SingleChildScrollView` Mencegah Tutup Keyboard | [slide_17_scrollable_singlechildscrollview.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_17_scrollable_singlechildscrollview.dart) |
+| **Slide 18** | Scrollable 2: `ListView.builder` Lazy Loading Panjang Efisien | [slide_18_scrollable_listview_builder.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_18_scrollable_listview_builder.dart) |
+| **Slide 19** | Scrollable 3: `GridView.builder` Katalog Grid 2 Kolom | [slide_19_scrollable_gridview_builder.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_19_scrollable_gridview_builder.dart) |
+| **Slide 20** | Solusi Error 1: Garis Kuning-Hitam "RenderFlex overflowed" | [slide_20_solusi_renderflex_overflow.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_20_solusi_renderflex_overflow.dart) |
+| **Slide 21** | Solusi Error 2: "Vertical viewport was given unbounded height" | [slide_21_solusi_unbounded_height.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_21_solusi_unbounded_height.dart) |
+| **Slide 22** | Rahasia Koding Cepat 1: Trik Koma Ajaib (*Trailing Comma*) | [slide_22_trik_koma_ajaib_trailing.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_22_trik_koma_ajaib_trailing.dart) |
+| **Slide 23** | Rahasia Koding Cepat 2: Pintasan `Alt+Enter` & Flutter Inspector | [slide_23_shortcut_refactor_inspector.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_23_shortcut_refactor_inspector.dart) |
+| **Slide 24** | Solusi Master Lab Quest: Dashboard Profil Mahasiswa & Portofolio | [slide_24_lab_quest_dashboard_profil.dart](07_contoh_kode_program/pertemuan_03_widget_dan_layouting/slide_24_lab_quest_dashboard_profil.dart) |
 
 ---
 

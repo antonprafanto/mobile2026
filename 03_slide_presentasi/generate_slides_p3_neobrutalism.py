@@ -32,6 +32,7 @@ FONT_BODY = "Segoe UI"
 FONT_CODE = "Consolas"
 
 SHADOW_OFFSET = Inches(0.08)
+GITHUB_BASE_URL = "https://github.com/antonprafanto/mobile2026/blob/main/07_contoh_kode_program/pertemuan_03_widget_dan_layouting"
 
 class NeoBrutalistDeckBuilder:
     def __init__(self, course_name="IF3205 • PEMROGRAMAN PIRANTI BERGERAK"):
@@ -129,7 +130,7 @@ class NeoBrutalistDeckBuilder:
         p3.font.color.rgb = COLOR_BLACK
 
     # 2. Slide Split Screen: Konsep & Tips di Kiri + Kode Sederhana di Kanan
-    def add_concept_with_code(self, tag, title, bullets, code_snippet, filename="contoh_widget.dart", tip=None, tag_color=COLOR_YELLOW):
+    def add_concept_with_code(self, tag, title, bullets, code_snippet, filename="contoh_widget.dart", tip=None, tag_color=COLOR_YELLOW, full_code_file=None):
         slide = self.prs.slides.add_slide(self.blank_layout)
         self._set_canvas_bg(slide)
         self._add_header(slide, tag, title, tag_color=tag_color)
@@ -183,18 +184,58 @@ class NeoBrutalistDeckBuilder:
         p_cb.font.bold = True
         p_cb.font.color.rgb = COLOR_BLACK
 
-        tb_r = slide.shapes.add_textbox(Inches(6.2), Inches(2.38), Inches(6.0), Inches(4.35))
+        code_box_h = Inches(3.68) if full_code_file else Inches(4.35)
+        tb_r = slide.shapes.add_textbox(Inches(6.2), Inches(2.32), Inches(6.0), code_box_h)
         tf_r = tb_r.text_frame
         tf_r.word_wrap = True
 
         p_code = tf_r.paragraphs[0]
         p_code.text = code_snippet
         p_code.font.name = FONT_CODE
-        p_code.font.size = Pt(9.8)
+        p_code.font.size = Pt(9.2)
         p_code.font.color.rgb = COLOR_CODE_TEXT
 
+        # Neo-Brutalist Runnable Code Hyperlink Button at Bottom of Right Box
+        if full_code_file:
+            btn_x = Inches(6.15)
+            btn_y = Inches(6.16)
+            btn_w = Inches(6.133)
+            btn_h = Inches(0.60)
+
+            # Button Shadow (Neo-Brutalism offset)
+            btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.04), btn_y + Inches(0.04), btn_w, btn_h)
+            btn_shadow.fill.solid()
+            btn_shadow.fill.fore_color.rgb = COLOR_BLACK
+            btn_shadow.line.fill.background()
+
+            # Button Face
+            btn = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x, btn_y, btn_w, btn_h)
+            btn.fill.solid()
+            btn.fill.fore_color.rgb = COLOR_YELLOW
+            btn.line.color.rgb = COLOR_BLACK
+            btn.line.width = Pt(2.0)
+
+            tb_btn = slide.shapes.add_textbox(btn_x + Inches(0.08), btn_y + Inches(0.03), btn_w - Inches(0.16), btn_h - Inches(0.06))
+            tf_btn = tb_btn.text_frame
+            tf_btn.word_wrap = True
+
+            p_btn = tf_btn.paragraphs[0]
+            run_btn = p_btn.add_run()
+            run_btn.text = f"▶ BUKA KODE LENGKAP DI GITHUB ({full_code_file})"
+            run_btn.font.name = FONT_HEADING
+            run_btn.font.size = Pt(9.6)
+            run_btn.font.bold = True
+            run_btn.font.color.rgb = COLOR_BLACK
+            run_btn.hyperlink.address = f"{GITHUB_BASE_URL}/{full_code_file}"
+
+            p_btn_sub = tf_btn.add_paragraph()
+            p_btn_sub.text = f"💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
+            p_btn_sub.font.name = FONT_BODY
+            p_btn_sub.font.size = Pt(7.6)
+            p_btn_sub.font.color.rgb = RGBColor(60, 60, 60)
+
     # 3. Slide Lab Quest
-    def add_lab_quest(self, meeting_num, title, time_minutes, goals, success_criteria):
+    def add_lab_quest(self, meeting_num, title, time_minutes, goals, success_criteria, full_code_file="slide_24_lab_quest_dashboard_profil.dart"):
         slide = self.prs.slides.add_slide(self.blank_layout)
         self._set_canvas_bg(slide)
         self._add_header(slide, "LAB QUEST MANDIRI", f"Pertemuan {meeting_num:02d}: {title}", tag_color=COLOR_YELLOW)
@@ -215,32 +256,69 @@ class NeoBrutalistDeckBuilder:
         p_b.font.bold = True
         p_b.font.color.rgb = COLOR_BLACK
 
-        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.45), Inches(10.7), Inches(4.3))
+        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.42), Inches(10.7), Inches(3.6))
         tf = tb.text_frame
         tf.word_wrap = True
 
         p1 = tf.paragraphs[0]
         p1.text = "Checklist Langkah Praktikum di Lab:"
         p1.font.name = FONT_HEADING
-        p1.font.size = Pt(14.5)
+        p1.font.size = Pt(13.5)
         p1.font.bold = True
         p1.font.color.rgb = COLOR_BLACK
-        p1.space_after = Pt(5)
+        p1.space_after = Pt(4)
 
         for g in goals:
             p = tf.add_paragraph()
             p.text = f"  [  ]   {g}"
             p.font.name = FONT_BODY
-            p.font.size = Pt(11)
+            p.font.size = Pt(10.5)
             p.font.color.rgb = RGBColor(30, 30, 30)
-            p.space_after = Pt(3)
+            p.space_after = Pt(2)
 
         p_crit = tf.add_paragraph()
-        p_crit.text = f"\n✔ Kriteria Keberhasilan (Tunjukkan ke Dosen/Asisten Lab):\n{success_criteria}"
+        p_crit.text = f"✔ Kriteria Keberhasilan (Tunjukkan ke Dosen/Asisten Lab): {success_criteria}"
         p_crit.font.name = FONT_HEADING
-        p_crit.font.size = Pt(11.5)
+        p_crit.font.size = Pt(11)
         p_crit.font.bold = True
         p_crit.font.color.rgb = RGBColor(0, 130, 60)
+
+        # Bottom full code button for Lab Quest
+        if full_code_file:
+            btn_x = Inches(1.3)
+            btn_y = Inches(6.16)
+            btn_w = Inches(10.7)
+            btn_h = Inches(0.55)
+
+            btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.04), btn_y + Inches(0.04), btn_w, btn_h)
+            btn_shadow.fill.solid()
+            btn_shadow.fill.fore_color.rgb = COLOR_BLACK
+            btn_shadow.line.fill.background()
+
+            btn = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x, btn_y, btn_w, btn_h)
+            btn.fill.solid()
+            btn.fill.fore_color.rgb = COLOR_MINT
+            btn.line.color.rgb = COLOR_BLACK
+            btn.line.width = Pt(2.0)
+
+            tb_btn = slide.shapes.add_textbox(btn_x + Inches(0.08), btn_y + Inches(0.03), btn_w - Inches(0.16), btn_h - Inches(0.06))
+            tf_btn = tb_btn.text_frame
+            tf_btn.word_wrap = True
+
+            p_btn = tf_btn.paragraphs[0]
+            run_btn = p_btn.add_run()
+            run_btn.text = f"▶ BUKA KODE SOLUSI LENGKAP LAB QUEST DI GITHUB ({full_code_file})"
+            run_btn.font.name = FONT_HEADING
+            run_btn.font.size = Pt(10)
+            run_btn.font.bold = True
+            run_btn.font.color.rgb = COLOR_BLACK
+            run_btn.hyperlink.address = f"{GITHUB_BASE_URL}/{full_code_file}"
+
+            p_btn_sub = tf_btn.add_paragraph()
+            p_btn_sub.text = f"💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
+            p_btn_sub.font.name = FONT_BODY
+            p_btn_sub.font.size = Pt(8.0)
+            p_btn_sub.font.color.rgb = RGBColor(60, 60, 60)
 
     def save(self, filepath):
         self.prs.save(filepath)
@@ -289,7 +367,8 @@ flutter run
 # tekan huruf 'r' pada terminal untuk Hot Reload!""",
     filename="terminal_workflow.sh",
     tip="Gunakan Chrome saat mendesain tampilan awal agar laptop tidak panas dan baterai awet!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_02_panduan_tools_dan_workflow.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -318,7 +397,8 @@ Widget build(BuildContext context) {
 }""",
     filename="balok_widget.dart",
     tip="Perhatikan bagaimana Center membungkus Padding, dan Padding membungkus Tombol!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_03_filosofi_everything_is_widget.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -351,7 +431,8 @@ class MyApp extends StatelessWidget {
 }""",
     filename="main_scaffold.dart",
     tip="Anggap Scaffold seperti tiang tenda. Tanpa Scaffold, atap antarmuka Anda akan roboh!",
-    tag_color=COLOR_CORAL
+    tag_color=COLOR_CORAL,
+    full_code_file="slide_04_materialapp_dan_scaffold.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -380,7 +461,8 @@ Container(
 // RenderBox mengukur koordinat piksel & melukis warna.""",
     filename="arsitektur_tiga_pohon.dart",
     tip="Flutter hanya melukis ulang piksel yang berubah, bukan merombak seluruh layar ponsel!",
-    tag_color=COLOR_CYAN
+    tag_color=COLOR_CYAN,
+    full_code_file="slide_05_arsitektur_the_three_trees.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -414,7 +496,8 @@ class KartuMahasiswa extends StatelessWidget {
 }""",
     filename="stateless_demo.dart",
     tip="Gunakan StatelessWidget secara default. Ubah ke Stateful HANYA jika datanya berubah di layar!",
-    tag_color=COLOR_PURPLE
+    tag_color=COLOR_PURPLE,
+    full_code_file="slide_06_stateless_vs_stateful.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -450,7 +533,8 @@ deck3.add_concept_with_code(
 }""",
     filename="lifecycle_demo.dart",
     tip="Jangan pernah memanggil request API di method build(), selalu taruh di initState()!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_07_siklus_hidup_stateful.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -477,7 +561,8 @@ SizedBox(
 )""",
     filename="box_constraints.dart",
     tip="Jika sebuah tombol melebar memenuhi layar, periksa batasan yang diberikan oleh induknya!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_08_hukum_box_constraints.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -509,7 +594,8 @@ deck3.add_concept_with_code(
 }""",
     filename="safe_area_demo.dart",
     tip="Selalu bungkus konten body dengan SafeArea jika Anda tidak menggunakan AppBar bawaan!",
-    tag_color=COLOR_CYAN
+    tag_color=COLOR_CYAN,
+    full_code_file="slide_09_penyelamat_layar_safearea.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -540,7 +626,8 @@ Container(
 );""",
     filename="single_child_demo.dart",
     tip="Jangan gunakan Container jika Anda hanya butuh jarak spasi kosong, gunakan Padding atau SizedBox!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_10_single_child_layout.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -571,7 +658,8 @@ Container(
 )""",
     filename="box_decoration_fix.dart",
     tip="Ingat rumusnya: Begitu ada BoxDecoration, warna di luar wajib dicoret dan dipindah ke dalam!",
-    tag_color=COLOR_CORAL
+    tag_color=COLOR_CORAL,
+    full_code_file="slide_11_jebakan_color_vs_decoration.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -598,7 +686,8 @@ Row(
 )""",
     filename="row_column_demo.dart",
     tip="Gunakan MainAxisAlignment.spaceBetween untuk memisahkan judul di kiri dan aksi di kanan!",
-    tag_color=COLOR_PURPLE
+    tag_color=COLOR_PURPLE,
+    full_code_file="slide_12_multi_child_row_column.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -623,7 +712,8 @@ deck3.add_concept_with_code(
 )""",
     filename="spasi_demo.dart",
     tip="Gunakan Spacer() saat Anda butuh tombol 'Lihat Semua' menempel tepat di pojok kanan layar!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_13_trik_spasi_sizedbox_spacer.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -653,7 +743,8 @@ deck3.add_concept_with_code(
 )""",
     filename="flexible_vs_expanded.dart",
     tip="Gunakan Expanded jika Anda ingin tombol atau kartu memenuhi seluruh lebar yang tersisa!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_14_flexible_vs_expanded.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -685,7 +776,8 @@ deck3.add_concept_with_code(
 )""",
     filename="stack_positioned_demo.dart",
     tip="Sangat ideal untuk membuat badge diskon toko online atau avatar dengan lampu hijau status online!",
-    tag_color=COLOR_CYAN
+    tag_color=COLOR_CYAN,
+    full_code_file="slide_15_layout_menumpuk_stack.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -713,7 +805,8 @@ deck3.add_concept_with_code(
 )""",
     filename="wrap_chip_demo.dart",
     tip="Gunakan Wrap saat membuat tag topik, hashtag, atau filter kategori yang jumlahnya tidak pasti!",
-    tag_color=COLOR_CORAL
+    tag_color=COLOR_CORAL,
+    full_code_file="slide_16_penyelamat_kategori_wrap.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -751,7 +844,8 @@ deck3.add_concept_with_code(
 }""",
     filename="scrollview_form.dart",
     tip="Selalu bungkus halaman formulir input dengan SingleChildScrollView!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_17_scrollable_singlechildscrollview.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -779,7 +873,8 @@ ListView.builder(
 )""",
     filename="listview_builder_demo.dart",
     tip="Gunakan ListTile di dalam ListView.builder untuk membuat baris daftar berstandar industri!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_18_scrollable_listview_builder.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -812,7 +907,8 @@ deck3.add_concept_with_code(
 )""",
     filename="gridview_builder_demo.dart",
     tip="Jangan menghitung lebar kotak secara manual dengan MediaQuery jika bisa pakai GridView!",
-    tag_color=COLOR_PURPLE
+    tag_color=COLOR_PURPLE,
+    full_code_file="slide_19_scrollable_gridview_builder.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -842,7 +938,8 @@ deck3.add_concept_with_code(
 )""",
     filename="solusi_overflow.dart",
     tip="Di dalam Row, jangan biarkan Text berdiri sendiri tanpa perlindungan Expanded jika isinya dinamis!",
-    tag_color=COLOR_CORAL
+    tag_color=COLOR_CORAL,
+    full_code_file="slide_20_solusi_renderflex_overflow.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -873,7 +970,8 @@ deck3.add_concept_with_code(
 )""",
     filename="unbounded_height_fix.dart",
     tip="Ingat rumusnya: ListView di dalam Column WAJIB dibungkus Expanded!",
-    tag_color=COLOR_CYAN
+    tag_color=COLOR_CYAN,
+    full_code_file="slide_21_solusi_unbounded_height.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -903,7 +1001,8 @@ Center(
 ) // <- Ada koma""",
     filename="trailing_comma_demo.dart",
     tip="Pasang koma di ujung widget, lalu tekan Ctrl + S. Kode Anda langsung rapi otomatis!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_22_trik_koma_ajaib_trailing.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -933,7 +1032,8 @@ Padding(
 )""",
     filename="shortcut_refactor.dart",
     tip="Gunakan 'Toggle Debug Paint' di Flutter Inspector saat mencari letak sumber overflow!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_23_shortcut_refactor_inspector.dart"
 )
 
 # ---------------------------------------------------------------------
