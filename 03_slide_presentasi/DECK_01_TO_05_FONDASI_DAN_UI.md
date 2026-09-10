@@ -296,7 +296,7 @@
 * **Subjudul:** Membangun Formulir Interaktif Bebas Kebocoran Memori, Validasi Regex Otomatis, dan Navigasi URL Modern Standar Industri 2026.
 * **Capaian (Sub-CPMK 4):** Mahasiswa mampu membuat form interaktif dengan validasi masukan regex serta merancang arsitektur navigasi deklaratif menggunakan package `go_router`.
 
-### Slide 2: Panduan Alat (Tools) & Persiapan Hari Ini (Ramah Awam)
+### Slide 2: Panduan Alat (Tools) & Persiapan Hari Ini (Persiapan Praktikum)
 * **Buka Terminal VS Code:** Tekan shortcut `Ctrl + ~` (Control + Backtick).
 * **Instalasi Otomatis:** Ketik `flutter pub add go_router` lalu tekan Enter. Pustaka terpasang otomatis tanpa risiko salah indentasi di `pubspec.yaml`.
 * **Target Pengujian Cepat:** Ketik `flutter run -d chrome` untuk menjalankan di Google Chrome (hemat RAM lab & kompilasi instan 5 detik). URL browser langsung berganti secara visual saat navigasi berpindah.
@@ -310,7 +310,7 @@
   # 3. Jalankan aplikasi di browser Chrome (Paling ringan lab PC):
   flutter run -d chrome
   ```
-* **Tips Awam:** Gunakan selalu `flutter pub add` di terminal daripada menyalin teks manual ke `pubspec.yaml` agar terhindar dari galat indentasi 2 spasi!
+* **Tips Praktikum:** Gunakan selalu `flutter pub add` di terminal daripada menyalin teks manual ke `pubspec.yaml` agar terhindar dari galat indentasi 2 spasi!
 
 ### Slide 3: Dua Jenis Input Teks: TextField vs TextFormField
 * **Kapan Menggunakan `TextField`?** Sangat cocok untuk input mandiri tanpa validasi (misal: kolom pencarian *Search Bar* di AppBar).
@@ -337,7 +337,7 @@
     },
   );
   ```
-* **Tips Awam:** Jika ada tombol *Submit* atau *Kirim Data*, selalu gunakan `TextFormField`!
+* **Tips Praktikum:** Jika ada tombol *Submit* atau *Kirim Data*, selalu gunakan `TextFormField`!
 
 ### Slide 4: Mengendalikan Input: TextEditingController (Anti-Bocor Memori)
 * **Peran Controller:** Bertindak sebagai *remote control* untuk membaca isi teks (`_ctrl.text`), mengubah teks dari kode, atau mengosongkan kolom (`_ctrl.clear()`).
@@ -362,7 +362,7 @@
     }
   }
   ```
-* **Tips Awam:** Hafalkan aturan emas: Setiap `TextEditingController` yang Anda buat, WAJIB di-`dispose()`!
+* **Tips Praktikum:** Hafalkan aturan emas: Setiap `TextEditingController` yang Anda buat, WAJIB di-`dispose()`!
 
 ### Slide 5: Desain UX Input: InputDecoration, Hint, & Tipe Keyboard HP
 * **`labelText`:** Label teks mengambang yang naik ke atas saat pengguna mulai mengetik.
@@ -383,7 +383,7 @@
     ),
   );
   ```
-* **Tips Awam:** Menyesuaikan `keyboardType` secara tepat menghindarkan pengguna HP dari kerumitan mencari simbol `@`!
+* **Tips Praktikum:** Menyesuaikan `keyboardType` secara tepat menghindarkan pengguna HP dari kerumitan mencari simbol `@`!
 
 ### Slide 6: Interaktivitas Sandi: Fitur Intip Password Nyata (_isObscure)
 * **Masalah Pemula:** Mengetahui `obscureText: true`, namun bingung cara membuat ikon mata bisa diklik untuk melihat karakter sandi.
@@ -413,7 +413,7 @@
     }
   }
   ```
-* **Tips Awam:** Fitur toggle intip sandi adalah standar wajib pada semua formulir login komersial modern!
+* **Tips Praktikum:** Fitur toggle intip sandi adalah standar wajib pada semua formulir login komersial modern!
 
 ### Slide 7: Menjinakkan Keyboard HP: Unfocus & Pindah Kolom Otomatis
 * **Keluhan Populer Mahasiswa:** *"Pak, setelah saya klik Submit, kenapa keyboard virtual HP tetap muncul dan menutupi tombol/SnackBar?"*
@@ -437,7 +437,7 @@
     }
   }
   ```
-* **Tips Awam:** Selalu panggil `FocusScope.of(context).unfocus()` agar SnackBar dan tombol tidak terhalang keyboard virtual!
+* **Tips Praktikum:** Selalu panggil `FocusScope.of(context).unfocus()` agar SnackBar dan tombol tidak terhalang keyboard virtual!
 
 ### Slide 8: Input Pilihan Form: DropdownButtonFormField
 * **Kebutuhan Form:** Formulir pendaftaran tidak hanya teks, tapi juga pilihan pasti (misal: Program Studi, Jalur Masuk).
@@ -459,7 +459,7 @@
     },
   );
   ```
-* **Tips Awam:** `DropdownButtonFormField` menghindarkan pengguna dari salah ketik nama jurusan/program studi!
+* **Tips Praktikum:** `DropdownButtonFormField` menghindarkan pengguna dari salah ketik nama jurusan/program studi!
 
 ### Slide 9: Pondasi Keamanan: Form Widget & GlobalKey<FormState>
 * **Analogi Membumi:** Bayangkan widget `Form` adalah Map Berkas yang menampung seluruh formulir kertas.
@@ -489,7 +489,7 @@
     }
   }
   ```
-* **Tips Awam:** Selalu simpan `GlobalKey<FormState>` sebagai variabel `final` di kelas `State`.
+* **Tips Praktikum:** Selalu simpan `GlobalKey<FormState>` sebagai variabel `final` di kelas `State`.
 
 ### Slide 10: Logika Validator & Sanitasi Regex (Email & Sandi Kuat)
 * **Aturan Nilai Kembalian:**
@@ -515,7 +515,7 @@
     },
   );
   ```
-* **Tips Awam:** Uji coba logika validator dengan memasukkan teks kosong dan format acak saat praktikum berlangsung!
+* **Tips Praktikum:** Uji coba logika validator dengan memasukkan teks kosong dan format acak saat praktikum berlangsung!
 
 ### Slide 11: Umpan Balik Pengguna: SnackBar & ScaffoldMessenger
 * **Prinsip Interaksi:** Jangan pernah membiarkan pengguna bengong tanpa kepastian setelah memencet tombol submit!
@@ -542,7 +542,7 @@
     );
   }
   ```
-* **Tips Awam:** Pasang properti `behavior: SnackBarBehavior.floating` agar SnackBar melayang rapi di atas bilah bawah ponsel.
+* **Tips Praktikum:** Pasang properti `behavior: SnackBarBehavior.floating` agar SnackBar melayang rapi di atas bilah bawah ponsel.
 
 ### Slide 12: Interaksi Sentuhan: GestureDetector vs InkWell
 * **`GestureDetector`:** Pendeteksi sentuhan serbaguna (tap, double tap, drag, long press), namun bekerja secara mentah tanpa feedback visual bawaan.
@@ -569,7 +569,7 @@
     ),
   );
   ```
-* **Tips Awam:** Selalu utamakan `InkWell` pada tombol dan kartu agar pengguna merasakan umpan balik sentuhan yang nyata.
+* **Tips Praktikum:** Selalu utamakan `InkWell` pada tombol dan kartu agar pengguna merasakan umpan balik sentuhan yang nyata.
 
 ### Slide 13: Mengapa Meninggalkan Navigator 1.0? (Imperative vs Declarative)
 * **Kelemahan Navigator 1.0 Kuno:** `Navigator.push()` bekerja seperti tumpukan kartu buta (*Black Box Stack*). Sangat sulit sinkron dengan URL web, tombol *Back* ponsel sering bentrok, dan mustahil menangani promosi *Deep Linking*.
@@ -591,7 +591,7 @@
   // Berpindah semudah:
   context.go('/login'); // URL otomatis sinkron di browser!
   ```
-* **Tips Awam:** Industri modern mewajibkan deklaratif routing agar aplikasi siap dirilis ke Web dan mendukung tautan promosi!
+* **Tips Praktikum:** Industri modern mewajibkan deklaratif routing agar aplikasi siap dirilis ke Web dan mendukung tautan promosi!
 
 ### Slide 14: Konfigurasi GoRouter & MaterialApp.router
 * **Definisi Terpusat:** Buat variabel `final GoRouter appRouter = GoRouter(...)`.
@@ -607,7 +607,7 @@
       GoRoute(path: '/', builder: (context, state) => const HomePage()),
       GoRoute(path: '/daftar', builder: (context, state) => const FormPage()),
     ],
-    // Penanganan Galat Halaman 404 Ramah Awam:
+    // Penanganan Galat Halaman 404 Terstruktur:
     errorBuilder: (context, state) => Scaffold(
       body: Center(child: Text('404: Rute ${state.uri} Tidak Ditemukan!')),
     ),
@@ -618,7 +618,7 @@
     runApp(MaterialApp.router(routerConfig: appRouter));
   }
   ```
-* **Tips Awam:** Halaman `errorBuilder` wajib dipasang agar aplikasi tidak mengalami layar abu-abu *crash* saat salah mengetikkan URL!
+* **Tips Praktikum:** Halaman `errorBuilder` wajib dipasang agar aplikasi tidak mengalami layar abu-abu *crash* saat salah mengetikkan URL!
 
 ### Slide 15: Cara Berpindah Halaman: context.go() vs context.push()
 * **`context.go('/rute')`:** Mengarahkan langsung ke URL tujuan dan merombak tumpukan rute (Cocok untuk: Selesai Login $\rightarrow$ Masuk Beranda, atau Ganti Tab Menu Bawah).
@@ -641,7 +641,7 @@
     context.pop(); // Menutup layar aktif saat ini
   }
   ```
-* **Tips Awam:** Ingat rumus mudahnya: Ingin ada tombol panah *Back* otomatis di pojok kiri atas? Gunakan `context.push()`!
+* **Tips Praktikum:** Ingat rumus mudahnya: Ingin ada tombol panah *Back* otomatis di pojok kiri atas? Gunakan `context.push()`!
 
 ### Slide 16: Mengirim Data 1: Path Parameters (/buku/:id)
 * **Format URL RESTful:** Gunakan tanda titik dua `/:id` pada path rute (contoh: `'/buku/:id'`).
@@ -665,7 +665,7 @@
     context.push('/buku/$id'); // Menuju '/buku/101'
   }
   ```
-* **Tips Awam:** *Path Parameters* sangat ideal untuk *identifier* unik seperti NIM, ID Produk, atau Nomor Transaksi!
+* **Tips Praktikum:** *Path Parameters* sangat ideal untuk *identifier* unik seperti NIM, ID Produk, atau Nomor Transaksi!
 
 ### Slide 17: Mengirim Data 2: Query Parameters & Extra Object
 * **Query Parameters (`?keyword=`):** Menyematkan filter pencarian opsional pada URL (misal: `'/cari?keyword=flutter'`). Dibaca lewat `state.uri.queryParameters['keyword']`.
@@ -688,7 +688,7 @@
     },
   );
   ```
-* **Tips Awam:** Gunakan `extra` saat Anda ingin mengirim objek data kompleks tanpa mengotori alamat URL browser!
+* **Tips Praktikum:** Gunakan `extra` saat Anda ingin mengirim objek data kompleks tanpa mengotori alamat URL browser!
 
 ### Slide 18: Rute Bersarang (Nested Routes) & StatefulShellRoute
 * **Rute Bersarang (*Nested Routes*):** Menempatkan sub-rute di dalam properti `routes: [...]` milik parent `GoRoute` (`/katalog` $\rightarrow$ `detail/:id`).
@@ -710,7 +710,7 @@
 
   // 2. Navigasi Tab Bawah: StatefulShellRoute.indexedStack(...)
   ```
-* **Tips Awam:** Gunakan nested routes agar struktur rute Anda mencerminkan susunan hierarki halaman aplikasi secara alami!
+* **Tips Praktikum:** Gunakan nested routes agar struktur rute Anda mencerminkan susunan hierarki halaman aplikasi secara alami!
 
 ### Slide 19: Lab Quest Mandiri Pertemuan 04 (Tantangan 60 Menit)
 * **Studi Kasus:** "Portal Registrasi Mahasiswa & Detail KTM Ber-GoRouter".
@@ -751,7 +751,7 @@
   final isMobile = screenWidth < 600;
   print(isMobile ? 'Mode: Layar Ponsel' : 'Mode: Layar Tablet/PC');
   ```
-* **Tips Awam:** Selalu gunakan browser Chrome selama merancang layout responsif untuk menghemat baterai laptop dan memori PC laboratorium!
+* **Tips Praktikum:** Selalu gunakan browser Chrome selama merancang layout responsif untuk menghemat baterai laptop dan memori PC laboratorium!
 
 ### Slide 3: Desain Sistem M3: Filosofi Material 3 (Sudut Alami, Tombol, & 3 Varian Kartu)
 * **🛋️ Analogi Furnitur Skandinavia:** M3 hadir layaknya sofa modern minimalis—tanpa sudut siku tajam menusuk, bayangan halus, dan warna menyejukkan.
@@ -779,7 +779,7 @@
     ),
   );
   ```
-* **Tips Awam:** Gunakan `Card.outlined` untuk tampilan daftar data yang padat dan bersih, serta `FilledButton` untuk aksi simpan formulir!
+* **Tips Praktikum:** Gunakan `Card.outlined` untuk tampilan daftar data yang padat dan bersih, serta `FilledButton` untuk aksi simpan formulir!
 
 ### Slide 4: Palet Warna Dinamis: ColorScheme Seed & Aturan Kaus-Sablon (Prefix 'on')
 * **🌱 Analogi Pohon Warna:** Cukup tanam 1 biji benih warna (`colorSchemeSeed: Colors.teal`), Google otomatis menumbuhkan 30+ paduan warna daun, dahan, bunga, dan bayangan yang serasi tanpa pusing memilih kode HEX manual.
@@ -798,7 +798,7 @@
     ),
   );
   ```
-* **Tips Awam:** Hukum Emas Kontras: Wadah warna `xyzContainer` WAJIB dipasangkan dengan teks `onXyzContainer` agar tulisan selalu terbaca jelas!
+* **Tips Praktikum:** Hukum Emas Kontras: Wadah warna `xyzContainer` WAJIB dipasangkan dengan teks `onXyzContainer` agar tulisan selalu terbaca jelas!
 
 ### Slide 5: Hirarki Tipografi: Skala TextTheme M3 (Anti-Hardcode & Peduli Lansia)
 * **📰 Analogi Koran & Majalah:** Desain punya susunan rapi—Display (baliho depan), Headline (judul bab), Title (judul kartu), Body (isi bacaan).
@@ -814,7 +814,7 @@
   Text('Isi Paragraf', style: textTheme.bodyMedium);
   Text('Keterangan Kecil', style: textTheme.labelSmall);
   ```
-* **Tips Awam:** Selalu gunakan `Theme.of(context).textTheme` agar aplikasi Anda otomatis ramah bagi pengguna lansia!
+* **Tips Praktikum:** Selalu gunakan `Theme.of(context).textTheme` agar aplikasi Anda otomatis ramah bagi pengguna lansia!
 
 ### Slide 6: Theme Mode: Tema Dinamis Kacamata Transitions (Light, Dark, System)
 * **🕶️ Analogi Lensa Transitions:** Bening saat di dalam ruangan, otomatis gelap sejuk saat di luar terik matahari. Begitu pula tema terang dan gelap.
@@ -837,7 +837,7 @@
     themeMode: _isDark ? ThemeMode.dark : ThemeMode.light,
   );
   ```
-* **Tips Awam:** Gunakan `SegmentedButton` untuk memberikan pilihan fleksibel: Mode Terang, Mode Gelap, atau Mengikuti Sistem OS!
+* **Tips Praktikum:** Gunakan `SegmentedButton` untuk memberikan pilihan fleksibel: Mode Terang, Mode Gelap, atau Mengikuti Sistem OS!
 
 ### Slide 7: Responsif 1: MediaQuery (Sertifikat Luas Layar Global & Safe Area)
 * **📐 Analogi Luas Tanah Rumah:** MediaQuery mengukur luas total seluruh bentang kaca layar HP dari ujung kiri atas ke kanan bawah.
@@ -852,7 +852,7 @@
 
   print('Lebar Layar Total: ${size.width} dp');
   ```
-* **Tips Awam:** Gunakan `MediaQuery.sizeOf(context)` alih-alih `MediaQuery.of(context).size` untuk mencegah widget rebuild yang tidak perlu!
+* **Tips Praktikum:** Gunakan `MediaQuery.sizeOf(context)` alih-alih `MediaQuery.of(context).size` untuk mencegah widget rebuild yang tidak perlu!
 
 ### Slide 8: Responsif 2: LayoutBuilder (Ruang Kosong Sudut Kamar untuk Lemari)
 * **🚪 Analogi Lemari Sudut Kamar:** Lemari tidak peduli luas seluruh rumah (MediaQuery), yang penting berapa ruang kosong di sudut kamar!
@@ -871,7 +871,7 @@
     },
   );
   ```
-* **Tips Awam:** LayoutBuilder membuat komponen antarmuka Anda luwes ditempatkan di mana saja: di HP penuh, di tablet split-pane, maupun di pop-up modal!
+* **Tips Praktikum:** LayoutBuilder membuat komponen antarmuka Anda luwes ditempatkan di mana saja: di HP penuh, di tablet split-pane, maupun di pop-up modal!
 
 ### Slide 9: Breakpoints: Standar Ambang Layar Google (Ukuran Baju S, M, L)
 * **👕 Analogi Ukuran Baju:** Tubuh punya ukuran baju S, M, L. Layar digital pun memiliki 3 klasifikasi standar industri resmi Google:
@@ -888,7 +888,7 @@
     return WindowSize.expanded;                  // Ukuran L (Desktop)
   }
   ```
-* **Tips Awam:** Angka sakti yang wajib Anda hafal: **600 dp** adalah batas sakral antara tata letak Ponsel dan Tablet!
+* **Tips Praktikum:** Angka sakti yang wajib Anda hafal: **600 dp** adalah batas sakral antara tata letak Ponsel dan Tablet!
 
 ### Slide 10: Orientasi Layar: OrientationBuilder (Memutar Buku Sketsa Tegak vs Miring)
 * **🎨 Analogi Buku Gambar:** Saat buku tegak kita menggambar ke bawah; saat dimiringkan kita menggambar melebar ke samping.
@@ -907,7 +907,7 @@
     },
   );
   ```
-* **Tips Awam:** Uji rotasi layar dengan shortcut Ctrl+F11 di emulator atau perkecil tinggi jendela browser Chrome!
+* **Tips Praktikum:** Uji rotasi layar dengan shortcut Ctrl+F11 di emulator atau perkecil tinggi jendela browser Chrome!
 
 ### Slide 11: Navigasi Adaptif: Ergonomi Jangkauan Jempol (NavigationBar vs NavigationRail)
 * **👍 Analogi Jangkauan Jempol:** Saat memegang HP satu tangan, jempol berada di bawah. Saat memegang tablet dua tangan di pinggir, jempol berada di sisi samping layar!
@@ -930,7 +930,7 @@
     bottomNavigationBar: isTablet ? null : NavigationBar(...), // Bawah di HP
   );
   ```
-* **Tips Awam:** `NavigationRail` di sisi kiri membuat antarmuka tablet terlihat berkelas seperti aplikasi profesional iPad/Android Tablet!
+* **Tips Praktikum:** `NavigationRail` di sisi kiri membuat antarmuka tablet terlihat berkelas seperti aplikasi profesional iPad/Android Tablet!
 
 ### Slide 12: Layout Grid: Grid Responsif Dinamis (Rak Pajangan Toko Fleksibel)
 * **🏪 Analogi Rak Toko:** Rak sempit memuat 2 produk, rak lebar memuat 4 hingga 6 produk tanpa membuat kemasan produk melar gepeng.
@@ -952,7 +952,7 @@
     itemBuilder: (ctx, i) => Card(...),
   );
   ```
-* **Tips Awam:** Gunakan `maxCrossAxisExtent` jika Anda ingin ukuran kartu selalu konsisten di segala resolusi layar!
+* **Tips Praktikum:** Gunakan `maxCrossAxisExtent` jika Anda ingin ukuran kartu selalu konsisten di segala resolusi layar!
 
 ### Slide 13: Pola Arsitektur UI: Master-Detail (WhatsApp HP vs WhatsApp Web di Laptop)
 * **💬 Analogi WhatsApp & Gmail:** Di HP, kita ketuk nama teman -> tumpukan layar ganti ke chat -> tekan tombol Back untuk kembali.
@@ -971,7 +971,7 @@
   else
     MasterList(); // Di ponsel: push() ke layar rincian baru
   ```
-* **Tips Awam:** Pola Master-Detail meningkatkan produktivitas pengguna tablet hingga dua kali lipat!
+* **Tips Praktikum:** Pola Master-Detail meningkatkan produktivitas pengguna tablet hingga dua kali lipat!
 
 ### Slide 14: Widget Adaptif: Komponen .adaptive() (Colokan Adaptor Universal)
 * **🔌 Analogi Steker Adaptor:** Satu colokan charger yang otomatis cocok di stopkontak Indonesia maupun stopkontak luar negeri tanpa adaptor tambahan.
@@ -989,7 +989,7 @@
   // Loading spinner otomatis bergaya native OS:
   CircularProgressIndicator.adaptive();
   ```
-* **Tips Awam:** Gunakan `Switch.adaptive()` dan `Slider.adaptive()` agar aplikasi Anda berasa native di Android dan iPhone!
+* **Tips Praktikum:** Gunakan `Switch.adaptive()` dan `Slider.adaptive()` agar aplikasi Anda berasa native di Android dan iPhone!
 
 ### Slide 15: Reusable Component: Reusable Component Kit (Balok LEGO Standar Berkualitas)
 * **🧱 Analogi Balok LEGO:** Membangun istana megah dari balok LEGO standar yang rapi, bukan mencetak ulang cetakan plastik dari nol setiap saat!
@@ -1016,7 +1016,7 @@
     }
   }
   ```
-* **Tips Awam:** Komponen reusable yang bersih memudahkan pembagian tugas antar anggota kelompok proyek!
+* **Tips Praktikum:** Komponen reusable yang bersih memudahkan pembagian tugas antar anggota kelompok proyek!
 
 ### Slide 16: Aksesibilitas & Font: FittedBox Scaling (Koper Pakaian Berkemasan Vakum)
 * **🧳 Analogi Koper Vakum:** Saat baju terlalu tebal, kantong vakum mengempiskannya agar tetap muat rapi di dalam koper tanpa merusak resleting.
@@ -1036,7 +1036,7 @@
     ),
   );
   ```
-* **Tips Awam:** Wajib pasang FittedBox pada label harga, saldo dompet, nomor rekening, dan kartu identitas!
+* **Tips Praktikum:** Wajib pasang FittedBox pada label harga, saldo dompet, nomor rekening, dan kartu identitas!
 
 ### Slide 17: Checklist Produksi: 5 Aturan Emas Desain UI Responsif (Checklist Penilaian UTS)
 * **1. Dilarang Hardcode Dimensi:** Hindari menulis `width: 380`, gunakan Expanded, Flexible, atau LayoutBuilder.
@@ -1052,7 +1052,7 @@
   // [✓] Tombol dan kartu menggunakan token warna Material 3
   // [✓] Berjalan mulus di Chrome Web & Smartphone Fisik
   ```
-* **Tips Awam:** Jadikan kelima checklist ini sebagai acuan penilaian proyek UTS kelompok Anda agar meraih nilai A!
+* **Tips Praktikum:** Jadikan kelima checklist ini sebagai acuan penilaian proyek UTS kelompok Anda agar meraih nilai A!
 
 ### Slide 18: Lab Quest Mandiri: Dashboard Akademik Responsif 60 Menit
 * **🎯 Misi:** Bangun Dashboard Mahasiswa yang otomatis beradaptasi saat diuji di Chrome (lebar <600dp ponsel vs >=600dp tablet).
@@ -1062,4 +1062,4 @@
 * **📏 Indikator Layar Real-time:** Tampilkan lebar layar aktif saat ini dalam satuan dp menggunakan `MediaQuery.sizeOf(context)`.
 * **🚀 Cara Uji:** Jalankan `flutter run -d chrome` lalu tarik pinggir jendela browser untuk melihat keajaiban antarmuka adaptif!
 * **Contoh Kode:** Tersedia lengkap di `slide_18_lab_quest_dashboard_responsif.dart`.
-* **Tips Awam:** Klik tombol kuning di slide presentasi untuk membuka kode lengkap Lab Quest di GitHub!
+* **Tips Praktikum:** Klik tombol kuning di slide presentasi untuk membuka kode lengkap Lab Quest di GitHub!

@@ -1,12 +1,12 @@
 """
-Generator Slide Pertemuan 03 (Edisi Masterpiece 24 Slide Lengkap & Super Ramah Awam)
+Generator Slide Pertemuan 03 (Edisi Masterpiece 24 Slide Lengkap & Komprehensif)
 Mata Kuliah: Pemrograman Piranti Bergerak (Flutter & Dart 2026)
 Standar Desain: Neo-Brutalism Murni (designprompts.dev/neo-brutalism)
 - ZERO BORDER RADIUS: Sudut 90 derajat siku murni tanpa kelengkungan (MSO_SHAPE.RECTANGLE).
 - BOLD SOLID BLACK BORDERS: Garis hitam tegas 2.5 Pt (#000000).
 - HARD OFFSET BLOCK SHADOWS: Bayangan blok hitam solid +0.08 inch di belakang kartu.
 - PALET NEO-BRUTALISM: Warm Cream (#FAF8F5), Canary Yellow (#FFE600), Electric Cyan (#38BDF8), Mint (#4ADE80), Coral (#FB7185), Lavender (#C084FC).
-- FITUR UTAMA: 100% SLIDE PEMBAHASAN DISERTAI KODE NYATA, ANALOGI MEMBUMI, DAN TIPS AWAM.
+- FITUR UTAMA: 100% SLIDE PEMBAHASAN DISERTAI KODE NYATA, ANALOGI MEMBUMI, DAN TIPS PRAKTIK.
 """
 
 import os

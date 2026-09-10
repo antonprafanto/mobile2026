@@ -29,7 +29,7 @@
   import 'package:flutter_bloc/flutter_bloc.dart';
   import 'package:equatable/equatable.dart';
   ```
-* **Tips Awam:** Ekstensi VS Code Bloc menghemat waktu mengetik boilerplate hingga 90%!
+* **Tips Praktikum:** Ekstensi VS Code Bloc menghemat waktu mengetik boilerplate hingga 90%!
 
 ### Slide 3: The State Problem: Ephemeral State vs App State
 * **🔑 Analogi Kunci:** Kunci kamar tidur (Ephemeral) hanya Anda yang pakai. Kunci gerbang utama (App State) dipakai bersama seluruh penghuni kompleks.
@@ -47,7 +47,7 @@
     void tambahItem() => emit(state + 1);
   }
   ```
-* **Tips Awam:** Jangan gunakan BLoC untuk hal sepele seperti warna tombol saat ditekan; gunakan BLoC untuk data lintas halaman!
+* **Tips Praktikum:** Jangan gunakan BLoC untuk hal sepele seperti warna tombol saat ditekan; gunakan BLoC untuk data lintas halaman!
 
 ### Slide 4: Keterbatasan setState() & Bahaya Prop Drilling
 * **📦 Analogi Kurir Berantai:** Kakek ingin menitipkan surat ke Cucu, tetapi terpaksa menitipkannya ke Ayah yang sama sekali tidak peduli isi surat tersebut.
@@ -64,7 +64,7 @@
     ),
   );
   ```
-* **Tips Awam:** Prop Drilling membuat kode rapuh! Sekali widget perantara diubah, rantai data aplikasi akan patah semua.
+* **Tips Praktikum:** Prop Drilling membuat kode rapuh! Sekali widget perantara diubah, rantai data aplikasi akan patah semua.
 
 ### Slide 5: Mental Model Cubit: Pabrik Radio & Konsep Stream Reaktif
 * **📻 Analogi Pabrik Radio:** Cubit bertindak sebagai stasiun pemancar. Widget UI adalah radio penerima yang mendengarkan siaran frekuensi.
@@ -80,7 +80,7 @@
     void kurang() => emit(state - 1);
   }
   ```
-* **Tips Awam:** Gunakan Cubit untuk 90% fitur aplikasi! Beralihlah ke full BLoC hanya jika Anda butuh debounce pada Live Search Bar.
+* **Tips Praktikum:** Gunakan Cubit untuk 90% fitur aplikasi! Beralihlah ke full BLoC hanya jika Anda butuh debounce pada Live Search Bar.
 
 ### Slide 6: Immutability & Equatable: Stempel Cetak Ulang KTP
 * **🪪 Analogi KTP:** Jangan mencoret data KTP lama saat Anda pindah rumah; cetaklah blanko KTP baru yang bersih (Immutable / Tidak Berubah).
@@ -106,7 +106,7 @@
     List<Object?> get props => [nama, poin];
   }
   ```
-* **Tips Awam:** Selalu gunakan `extends Equatable` pada kelas State Anda agar Flutter BLoC tahu persis kapan data benar-benar berubah!
+* **Tips Praktikum:** Selalu gunakan `extends Equatable` pada kelas State Anda agar Flutter BLoC tahu persis kapan data benar-benar berubah!
 
 ### Slide 7: Anatomi Kelas Cubit & Fungsi emit()
 * **📢 Analogi Manajer Gudang:** Saat barang baru masuk ke gudang, manajer mengumumkan lewat mikrofon `emit()` ke seluruh staf kasir toko.
@@ -124,7 +124,7 @@
     }
   }
   ```
-* **Tips Awam:** Dilarang emit() jika nilai sama, dan selalu periksa `if (!isClosed) emit(...)` pada proses asynchronous agar bebas dari bug StateError!
+* **Tips Praktikum:** Dilarang emit() jika nilai sama, dan selalu periksa `if (!isClosed) emit(...)` pada proses asynchronous agar bebas dari bug StateError!
 
 ### Slide 8: BlocProvider & Context: Terminal Colokan Listrik Dinding
 * **🔌 Analogi Colokan Listrik:** Pasang stopkontak di dinding kamar (`BlocProvider`). Alat elektronik apa pun (Widget anak) tinggal colok ke stopkontak.
@@ -145,7 +145,7 @@
     child: const Icon(Icons.add),
   );
   ```
-* **Tips Awam:** Gunakan `context.read` di dalam tombol aksi `onPressed`, dan gunakan `context.watch` hanya di dalam method `build()`!
+* **Tips Praktikum:** Gunakan `context.read` di dalam tombol aksi `onPressed`, dan gunakan `context.watch` hanya di dalam method `build()`!
 
 ### Slide 9: BlocBuilder & buildWhen: Layar TV Menyala Hanya Saat Acara Cocok
 * **📺 Analogi TV Pintar:** Layar TV yang hanya menyala saat acara favorit Anda mulai tayang, bukan menyala setiap detik.
@@ -162,7 +162,7 @@
     },
   );
   ```
-* **Tips Awam:** Bungkus hanya widget kecil yang membutuhkan data, jangan membungkus seluruh Scaffold dengan BlocBuilder!
+* **Tips Praktikum:** Bungkus hanya widget kecil yang membutuhkan data, jangan membungkus seluruh Scaffold dengan BlocBuilder!
 
 ### Slide 10: BlocListener & listenWhen: Bunyi Klakson Notifikasi
 * **🔔 Analogi Notifikasi WA:** Anda tidak perlu menatap layar terus; saat pesan penting masuk, nada dering 'ting' berbunyi tepat 1 kali.
@@ -181,7 +181,7 @@
     child: const FormInputWidget(),
   );
   ```
-* **Tips Awam:** Gunakan BlocListener saat ingin memindahkan halaman pengguna (`context.go`) setelah sukses login!
+* **Tips Praktikum:** Gunakan BlocListener saat ingin memindahkan halaman pengguna (`context.go`) setelah sukses login!
 
 ### Slide 11: BlocConsumer: Duo Komentator & Papan Skor Pertandingan
 * **⚽ Analogi Stadion Bola:** Papan skor mencatat gol (builder), sementara komentator mengumumkan gol lewat peluit (listener).
@@ -206,7 +206,7 @@
     },
   );
   ```
-* **Tips Awam:** Gunakan BlocConsumer pada tombol autentikasi login atau proses checkout keranjang belanja!
+* **Tips Praktikum:** Gunakan BlocConsumer pada tombol autentikasi login atau proses checkout keranjang belanja!
 
 ### Slide 12: BlocSelector: Lensa Kamera Zoom ke Objek Tertentu
 * **🔬 Analogi Lensa Zoom:** Memotret burung di dahan pohon tanpa peduli daun di sekitarnya bergoyang tertiup angin.
@@ -223,7 +223,7 @@
     },
   );
   ```
-* **Tips Awam:** BlocSelector adalah senjata rahasia saat aplikasi memiliki formulir raksasa dengan puluhan field input!
+* **Tips Praktikum:** BlocSelector adalah senjata rahasia saat aplikasi memiliki formulir raksasa dengan puluhan field input!
 
 ### Slide 13: Arsitektur 4 Status UI: Empat Lampu Indikator Mesin Cuci
 * **🧺 Analogi Mesin Cuci:** Siap (Initial), Sedang Mencuci (Loading), Cucian Selesai (Success), atau Air Mampet (Error).
@@ -246,7 +246,7 @@
     DataError(:final pesan) => Text('Galat: $pesan'),
   };
   ```
-* **Tips Awam:** Gunakan pola pattern matching switch Dart modern untuk memastikan seluruh status UI tertangani tanpa terlewat!
+* **Tips Praktikum:** Gunakan pola pattern matching switch Dart modern untuk memastikan seluruh status UI tertangani tanpa terlewat!
 
 ### Slide 14: MultiBlocProvider: Panel Saklar Listrik Rumah Terpusat
 * **⚡ Analogi Panel MCB:** Di meteran listrik rumah tangga, ada saklar untuk kulkas, AC, dan lampu di dalam 1 kotak rapi.
@@ -264,7 +264,7 @@
     child: const MainApp(),
   );
   ```
-* **Tips Awam:** Daftarkan seluruh Cubit global di MultiBlocProvider pada file main.dart aplikasi Anda!
+* **Tips Praktikum:** Daftarkan seluruh Cubit global di MultiBlocProvider pada file main.dart aplikasi Anda!
 
 ### Slide 15: Pemantauan Global dengan BlocObserver
 * **📹 Analogi CCTV Satpam:** Kamera pemantau yang mencatat siapa pun yang keluar-masuk gedung tanpa mengganggu aktivitas staf.
@@ -287,7 +287,7 @@
     runApp(const MyApp());
   }
   ```
-* **Tips Awam:** BlocObserver menghemat waktu debugging Anda hingga 80% saat mencari sumber kesalahan logika data!
+* **Tips Praktikum:** BlocObserver menghemat waktu debugging Anda hingga 80% saat mencari sumber kesalahan logika data!
 
 ### Slide 16: Refactoring Nyata: Operasi Bedah Memisahkan Otak dari Otot
 * **🏥 Analogi Operasi Medis:** Mengambil tumor logika yang menempel di organ UI dan memindahkannya ke wadah steril tersendiri.
@@ -306,7 +306,7 @@
     }
   }
   ```
-* **Tips Awam:** Refactoring dari setState ke Cubit adalah ujian keterampilan nomor 1 pada sesi Live Code Defense UTS!
+* **Tips Praktikum:** Refactoring dari setState ke Cubit adalah ujian keterampilan nomor 1 pada sesi Live Code Defense UTS!
 
 ### Slide 17: Checklist 5 Aturan Emas State Management 2026
 * **1. State Wajib Immutable:** Selalu extends Equatable dan gunakan copyWith() untuk membuat data baru.
@@ -321,7 +321,7 @@
   // [✓] Equatable mencegah render ulang saat data tidak berubah
   // [✓] Log transisi tercetak rapi di terminal via BlocObserver
   ```
-* **Tips Awam:** Jadikan kelima checklist ini sebagai acuan penilaian proyek UTS kelompok Anda agar meraih nilai A!
+* **Tips Praktikum:** Jadikan kelima checklist ini sebagai acuan penilaian proyek UTS kelompok Anda agar meraih nilai A!
 
 ### Slide 18: Lab Quest 06 - Cart & Wishlist dengan Cubit
 * **🎯 Misi:** Bangun aplikasi Toko Piranti Bergerak dengan State Management Cubit terpisah dari antarmuka UI.
@@ -330,7 +330,7 @@
 * **Umpan Balik:** Terapkan `BlocListener` untuk memunculkan SnackBar hijau 'Berhasil menambah barang' setiap kali item baru masuk keranjang.
 * **Kalkulasi Otomatis:** Sediakan BottomBar yang menghitung total harga belanjaan secara otomatis dan tombol 'Checkout / Reset'.
 * **Target Pengujian:** Jalankan di browser Chrome (`flutter run -d chrome`), buktikan bahwa penambahan item berjalan instan tanpa lag!
-* **Tips Awam:** Klik tombol kuning di slide presentasi untuk membuka kode lengkap Lab Quest di GitHub!
+* **Tips Praktikum:** Klik tombol kuning di slide presentasi untuk membuka kode lengkap Lab Quest di GitHub!
 
 ---
 # PERTEMUAN 07: Clean Architecture & Enterprise Project Structure

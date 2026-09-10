@@ -233,7 +233,7 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 
 ---
 
-## 💡 Panduan Cepat Menjalankan Kode bagi Mahasiswa Awam
+## 💡 Panduan Cepat Menjalankan Kode bagi Mahasiswa
 
 ### A. Untuk Kode Dart Murni (Pertemuan 02):
 - **Opsi 1 (Paling Ringan & Instan via Browser):**

@@ -1,5 +1,5 @@
 """
-Generator Slide Pertemuan 01 (Edisi Masterpiece 18 Slide Lengkap & Super Ramah Awam)
+Generator Slide Pertemuan 01 (Edisi Masterpiece 18 Slide Lengkap & Komprehensif)
 Mata Kuliah: Pemrograman Piranti Bergerak (Flutter & Dart 2026)
 Standar Desain: Neo-Brutalism Murni (designprompts.dev/neo-brutalism)
 - ZERO BORDER RADIUS: Sudut 90 derajat siku murni tanpa kelengkungan (MSO_SHAPE.RECTANGLE).

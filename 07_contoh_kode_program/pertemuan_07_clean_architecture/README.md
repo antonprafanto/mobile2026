@@ -55,7 +55,7 @@ Setiap berkas di bawah ini adalah **1 berkas aplikasi Flutter utuh** (`void main
 
 ---
 
-## ⚡ Langkah Cepat Menjalankan Kode bagi Mahasiswa Awam
+## ⚡ Langkah Cepat Menjalankan Kode bagi Mahasiswa
 
 Ikuti 3 langkah praktis ini untuk mencoba kode di laptop atau komputer lab:
 

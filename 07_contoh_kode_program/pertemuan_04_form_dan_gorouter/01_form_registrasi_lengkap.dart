@@ -74,7 +74,7 @@ class _FormRegistrasiScreenState extends State<FormRegistrasiScreen> {
 
   // 5. Logika Eksekusi Pengiriman Form
   void _submitForm() {
-    // Trik Awam: Sembunyikan keyboard virtual HP seketika agar tidak menutupi layar
+    // Trik Praktis: Sembunyikan keyboard virtual HP seketika agar tidak menutupi layar
     FocusScope.of(context).unfocus();
 
     // Periksa keabsahan seluruh kolom formulir sekaligus

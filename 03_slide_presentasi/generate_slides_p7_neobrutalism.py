@@ -1,5 +1,5 @@
 """
-Generator Slide Pertemuan 07 (Edisi Masterpiece 18 Slide Lengkap & Super Ramah Awam)
+Generator Slide Pertemuan 07 (Edisi Masterpiece 18 Slide Lengkap & Komprehensif)
 Mata Kuliah: Pemrograman Piranti Bergerak (Flutter & Dart 2026)
 Topik: Clean Architecture & Enterprise Project Structure (Feature-First)
 Standar Desain: Neo-Brutalism Murni (designprompts.dev/neo-brutalism)
@@ -181,7 +181,7 @@ class NeoBrutalistDeckBuilder:
 
         tb_hb = slide.shapes.add_textbox(Inches(1.1), Inches(1.86), Inches(4.4), Inches(0.38))
         p_hb = tb_hb.text_frame.paragraphs[0]
-        p_hb.text = "💡 KONSEP INTI & ANALOGI AWAM"
+        p_hb.text = "💡 KONSEP INTI & ANALOGI DUNIA NYATA"
         p_hb.font.name = FONT_HEADING
         p_hb.font.size = Pt(10.5)
         p_hb.font.bold = True

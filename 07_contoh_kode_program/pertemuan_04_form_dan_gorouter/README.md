@@ -16,7 +16,7 @@ Seluruh kode program di dalam folder ini adalah **aplikasi Flutter lengkap (*ful
 
 ---
 
-### 2. Langkah Cepat Menjalankan Kode (Khusus Mahasiswa Awam)
+### 2. Langkah Cepat Menjalankan Kode Praktikum
 
 Ikuti 3 langkah mudah ini di komputer lab atau laptop pribadi:
 

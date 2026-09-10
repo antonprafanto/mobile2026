@@ -1,5 +1,5 @@
 """
-Generator Slide Pertemuan 04 (Edisi Masterpiece 19 Slide Lengkap & Super Ramah Awam)
+Generator Slide Pertemuan 04 (Edisi Masterpiece 19 Slide Lengkap & Komprehensif)
 Mata Kuliah: Pemrograman Piranti Bergerak (Flutter & Dart 2026)
 Topik: Form Handling, Input Validation, & Navigasi Deklaratif GoRouter
 Standar Desain: Neo-Brutalism Murni (designprompts.dev/neo-brutalism)
@@ -7,7 +7,7 @@ Standar Desain: Neo-Brutalism Murni (designprompts.dev/neo-brutalism)
 - BOLD SOLID BLACK BORDERS: Garis hitam tegas 2.5 Pt (#000000).
 - HARD OFFSET BLOCK SHADOWS: Bayangan blok hitam solid +0.08 inch di belakang kartu.
 - PALET NEO-BRUTALISM: Warm Cream (#FAF8F5), Canary Yellow (#FFE600), Electric Cyan (#38BDF8), Mint (#4ADE80), Coral (#FB7185), Lavender (#C084FC).
-- FITUR UTAMA: 100% SLIDE PEMBAHASAN DISERTAI KODE NYATA FLUTTER, ANALOGI MEMBUMI, DAN TIPS AWAM.
+- FITUR UTAMA: 100% SLIDE PEMBAHASAN DISERTAI KODE NYATA FLUTTER, ANALOGI MEMBUMI, DAN TIPS PRAKTIK.
 """
 
 import os
@@ -343,7 +343,7 @@ deck4.add_cover(
 )
 
 # ---------------------------------------------------------------------
-# Slide 2: Panduan Alat Pengujian & Instalasi Cepat (Ramah Awam)
+# Slide 2: Panduan Alat Pengujian & Instalasi Cepat (Persiapan Praktikum)
 # ---------------------------------------------------------------------
 deck4.add_concept_with_code(
     "SETUP & TOOLS",
@@ -417,7 +417,7 @@ deck4.add_concept_with_code(
     [
         "TextEditingController bertindak sebagai remote pengendali kolom input: membaca isi teks (_ctrl.text), mengubah teks, atau mengosongkan kolom (_ctrl.clear()).",
         "Wajib diletakkan di dalam StatefulWidget pada variabel kelas State.",
-        "⚠️ Peringatan Kritis Mahasiswa Awam: Controller WAJIB dimatikan menggunakan method '_ctrl.dispose()' di dalam blok dispose().",
+        "⚠️ Peringatan Kritis Pengembang: Controller WAJIB dimatikan menggunakan method '_ctrl.dispose()' di dalam blok dispose().",
         "Jika lupa di-dispose, objek controller akan terus tertinggal di RAM dan memicu kebocoran memori (Memory Leak)!"
     ],
     """class InputDemoState extends State<InputDemo> {
@@ -763,7 +763,7 @@ deck4.add_concept_with_code(
     GoRoute(path: '/', builder: (context, state) => const HomePage()),
     GoRoute(path: '/daftar', builder: (context, state) => const FormPage()),
   ],
-  // Penanganan Galat Halaman 404 Ramah Awam:
+  // Penanganan Galat Halaman 404 Terstruktur:
   errorBuilder: (context, state) => Scaffold(
     body: Center(child: Text('404: Rute ${state.uri} Tidak Ditemukan!')),
   ),
