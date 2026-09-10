@@ -70,3 +70,9 @@ local.properties
 # Temporary test files
 test_link.pptx
 scratch/
+# Internal course documents & faculty files (kept safe locally, untracked from public GitHub)
+01_kurikulum_dan_rps/
+02_infrastruktur_dan_lab/
+04_modul_praktikum/
+05_proyek_dan_evaluasi/
+06_starter_boilerplate/
