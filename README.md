@@ -37,6 +37,23 @@ mobile2026/
     │   ├── 📄 slide_17_lab_quest_tugas_01.dart
     │   └── 📄 slide_18_preview_modern_dart.dart
     │
+    ├── 📁 pertemuan_02_modern_dart/
+    │   ├── 📄 slide_02_tools_dan_environment.dart
+    │   ├── 📄 slide_03_mindset_dart_logika.dart
+    │   ├── 📄 slide_04_variabel_dan_tipe_data.dart
+    │   ├── 📄 slide_05_sound_null_safety.dart
+    │   ├── 📄 slide_06_operator_penjinak_null.dart
+    │   ├── 📄 slide_07_fat_arrow_functions.dart
+    │   ├── 📄 slide_08_oop_named_parameters.dart
+    │   ├── 📄 slide_09_mixins_with_keyword.dart
+    │   ├── 📄 slide_10_extension_methods.dart
+    │   ├── 📄 slide_11_collections_list_map_set.dart
+    │   ├── 📄 slide_12_reactive_collections.dart
+    │   ├── 📄 slide_13_dilema_sync_vs_async.dart
+    │   ├── 📄 slide_14_future_async_await.dart
+    │   ├── 📄 slide_15_stream_reactive_data.dart
+    │   └── 📄 slide_16_lab_quest_tugas_02.dart
+    │
     └── 📁 pertemuan_04_form_dan_gorouter/
         ├── 📄 slide_03_textfield_vs_textformfield.dart
         ├── 📄 slide_04_controller_lifecycle.dart
@@ -113,6 +130,28 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 
 ---
 
+### 📱 Pertemuan 02: Modern Dart Programming: Logika, Null Safety, & Asinkron
+
+| Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
+| :---: | :--- | :--- |
+| **Slide 02** | Panduan Tools & Environment (DartPad & VS Code) | [slide_02_tools_dan_environment.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_02_tools_dan_environment.dart) |
+| **Slide 03** | Mindset Pemula: Mengapa Wajib Paham Dart Terlebih Dahulu? | [slide_03_mindset_dart_logika.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_03_mindset_dart_logika.dart) |
+| **Slide 04** | Variabel & Tipe Data Modern: `var`, `final`, dan `const` | [slide_04_variabel_dan_tipe_data.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_04_variabel_dan_tipe_data.dart) |
+| **Slide 05** | Sound Null Safety: Analogi Kotak Kado & Type System | [slide_05_sound_null_safety.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_05_sound_null_safety.dart) |
+| **Slide 06** | Empat Operator Penjinak Null: `?.`, `??`, `??=`, dan `late` | [slide_06_operator_penjinak_null.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_06_operator_penjinak_null.dart) |
+| **Slide 07** | Sintaks Elegan: Fat Arrow Functions (`=>`) | [slide_07_fat_arrow_functions.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_07_fat_arrow_functions.dart) |
+| **Slide 08** | OOP Modern 1: Class, Constructor, & Named Parameters (`{ }`) | [slide_08_oop_named_parameters.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_08_oop_named_parameters.dart) |
+| **Slide 09** | OOP Modern 2: Mixins (`with`) Komposisi Tanpa Warisan Kaku | [slide_09_mixins_with_keyword.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_09_mixins_with_keyword.dart) |
+| **Slide 10** | OOP Modern 3: Extension Methods Tambah Fitur Tanpa Warisan | [slide_10_extension_methods.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_10_extension_methods.dart) |
+| **Slide 11** | Struktur Koleksi Data: `List<T>`, `Map<K, V>`, dan `Set<T>` | [slide_11_collections_list_map_set.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_11_collections_list_map_set.dart) |
+| **Slide 12** | Manipulasi Data Reaktif: Metode `.where()` dan `.map()` | [slide_12_reactive_collections.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_12_reactive_collections.dart) |
+| **Slide 13** | Paradigma Eksekusi: Mengapa UI HP Tidak Boleh Membeku? | [slide_13_dilema_sync_vs_async.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_13_dilema_sync_vs_async.dart) |
+| **Slide 14** | Asinkron 1: `Future`, `async`, `await`, & Penanganan `try-catch` | [slide_14_future_async_await.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_14_future_async_await.dart) |
+| **Slide 15** | Asinkron 2: `Stream`, `async*`, & Emisi Reaktif `yield` | [slide_15_stream_reactive_data.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_15_stream_reactive_data.dart) |
+| **Slide 16** | Solusi Master Lab Quest: Simulasi Antrean Cerdas Kafe Kampus | [slide_16_lab_quest_tugas_02.dart](07_contoh_kode_program/pertemuan_02_modern_dart/slide_16_lab_quest_tugas_02.dart) |
+
+---
+
 ### 📱 Pertemuan 04: Form Handling, Validasi Masukan & Navigasi GoRouter
 
 | Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
@@ -139,9 +178,19 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 
 ## 💡 Panduan Cepat Menjalankan Kode bagi Mahasiswa Awam
 
-1. **Buka Terminal di VS Code:**
-   Tekan kombinasi tombol `Ctrl + ~` (Control + Backtick).
-2. **Pasang Paket Navigasi Resmi:**
+### A. Untuk Kode Dart Murni (Pertemuan 02):
+- **Opsi 1 (Paling Ringan & Instan via Browser):**
+  Buka [https://dartpad.dev](https://dartpad.dev), salin seluruh isi berkas Dart dari GitHub, tempelkan ke DartPad, lalu klik tombol **"Run"**.
+- **Opsi 2 (Terminal VS Code Lokal):**
+  Buka terminal (`Ctrl + ~`), lalu jalankan langsung berkasnya:
+  ```bash
+  dart run 07_contoh_kode_program/pertemuan_02_modern_dart/slide_16_lab_quest_tugas_02.dart
+  ```
+
+### B. Untuk Kode Aplikasi Flutter Lengkap (Pertemuan 01 & Pertemuan 04):
+1. **Buka Proyek Flutter di VS Code:**
+   Buka terminal dengan `Ctrl + ~`.
+2. **Pasang Paket Pendukung (Khusus Pertemuan 04):**
    ```bash
    flutter pub add go_router
    ```

@@ -32,6 +32,7 @@ FONT_BODY = "Segoe UI"
 FONT_CODE = "Consolas"
 
 SHADOW_OFFSET = Inches(0.08)
+GITHUB_BASE_URL = "https://github.com/antonprafanto/mobile2026/blob/main/07_contoh_kode_program/pertemuan_02_modern_dart"
 
 class NeoBrutalistDeckBuilder:
     def __init__(self, course_name="IF3205 • PEMROGRAMAN PIRANTI BERGERAK"):
@@ -129,7 +130,7 @@ class NeoBrutalistDeckBuilder:
         p3.font.color.rgb = COLOR_BLACK
 
     # 2. Slide Split Screen: Konsep & Tips di Kiri + Kode Sederhana di Kanan
-    def add_concept_with_code(self, tag, title, bullets, code_snippet, filename="latihan.dart", tip=None, tag_color=COLOR_YELLOW):
+    def add_concept_with_code(self, tag, title, bullets, code_snippet, filename="latihan.dart", tip=None, tag_color=COLOR_YELLOW, full_code_file=None):
         slide = self.prs.slides.add_slide(self.blank_layout)
         self._set_canvas_bg(slide)
         self._add_header(slide, tag, title, tag_color=tag_color)
@@ -183,18 +184,58 @@ class NeoBrutalistDeckBuilder:
         p_cb.font.bold = True
         p_cb.font.color.rgb = COLOR_BLACK
 
-        tb_r = slide.shapes.add_textbox(Inches(6.2), Inches(2.38), Inches(6.0), Inches(4.35))
+        code_box_h = Inches(3.68) if full_code_file else Inches(4.35)
+        tb_r = slide.shapes.add_textbox(Inches(6.2), Inches(2.32), Inches(6.0), code_box_h)
         tf_r = tb_r.text_frame
         tf_r.word_wrap = True
 
         p_code = tf_r.paragraphs[0]
         p_code.text = code_snippet
         p_code.font.name = FONT_CODE
-        p_code.font.size = Pt(9.8)
+        p_code.font.size = Pt(9.2)
         p_code.font.color.rgb = COLOR_CODE_TEXT
 
+        # Neo-Brutalist Runnable Code Hyperlink Button at Bottom of Right Box
+        if full_code_file:
+            btn_x = Inches(6.15)
+            btn_y = Inches(6.16)
+            btn_w = Inches(6.133)
+            btn_h = Inches(0.60)
+
+            # Button Shadow (Neo-Brutalism offset)
+            btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.04), btn_y + Inches(0.04), btn_w, btn_h)
+            btn_shadow.fill.solid()
+            btn_shadow.fill.fore_color.rgb = COLOR_BLACK
+            btn_shadow.line.fill.background()
+
+            # Button Face
+            btn = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x, btn_y, btn_w, btn_h)
+            btn.fill.solid()
+            btn.fill.fore_color.rgb = COLOR_YELLOW
+            btn.line.color.rgb = COLOR_BLACK
+            btn.line.width = Pt(2.0)
+
+            tb_btn = slide.shapes.add_textbox(btn_x + Inches(0.08), btn_y + Inches(0.03), btn_w - Inches(0.16), btn_h - Inches(0.06))
+            tf_btn = tb_btn.text_frame
+            tf_btn.word_wrap = True
+
+            p_btn = tf_btn.paragraphs[0]
+            run_btn = p_btn.add_run()
+            run_btn.text = f"▶ BUKA KODE LENGKAP DI GITHUB ({full_code_file})"
+            run_btn.font.name = FONT_HEADING
+            run_btn.font.size = Pt(9.6)
+            run_btn.font.bold = True
+            run_btn.font.color.rgb = COLOR_BLACK
+            run_btn.hyperlink.address = f"{GITHUB_BASE_URL}/{full_code_file}"
+
+            p_btn_sub = tf_btn.add_paragraph()
+            p_btn_sub.text = f"💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
+            p_btn_sub.font.name = FONT_BODY
+            p_btn_sub.font.size = Pt(7.6)
+            p_btn_sub.font.color.rgb = RGBColor(60, 60, 60)
+
     # 3. Slide Lab Quest
-    def add_lab_quest(self, meeting_num, title, time_minutes, goals, success_criteria):
+    def add_lab_quest(self, meeting_num, title, time_minutes, goals, success_criteria, full_code_file="slide_16_lab_quest_tugas_02.dart"):
         slide = self.prs.slides.add_slide(self.blank_layout)
         self._set_canvas_bg(slide)
         self._add_header(slide, "LAB QUEST MANDIRI", f"Pertemuan {meeting_num:02d}: {title}", tag_color=COLOR_YELLOW)
@@ -215,32 +256,69 @@ class NeoBrutalistDeckBuilder:
         p_b.font.bold = True
         p_b.font.color.rgb = COLOR_BLACK
 
-        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.45), Inches(10.7), Inches(4.3))
+        tb = slide.shapes.add_textbox(Inches(1.3), Inches(2.42), Inches(10.7), Inches(3.6))
         tf = tb.text_frame
         tf.word_wrap = True
 
         p1 = tf.paragraphs[0]
         p1.text = "Checklist Langkah Praktikum di Lab:"
         p1.font.name = FONT_HEADING
-        p1.font.size = Pt(14.5)
+        p1.font.size = Pt(13.5)
         p1.font.bold = True
         p1.font.color.rgb = COLOR_BLACK
-        p1.space_after = Pt(5)
+        p1.space_after = Pt(4)
 
         for g in goals:
             p = tf.add_paragraph()
             p.text = f"  [  ]   {g}"
             p.font.name = FONT_BODY
-            p.font.size = Pt(11)
+            p.font.size = Pt(10.5)
             p.font.color.rgb = RGBColor(30, 30, 30)
-            p.space_after = Pt(3)
+            p.space_after = Pt(2)
 
         p_crit = tf.add_paragraph()
-        p_crit.text = f"\n✔ Kriteria Keberhasilan (Tunjukkan ke Dosen/Asisten Lab):\n{success_criteria}"
+        p_crit.text = f"✔ Kriteria Keberhasilan (Tunjukkan ke Dosen/Asisten Lab): {success_criteria}"
         p_crit.font.name = FONT_HEADING
-        p_crit.font.size = Pt(11.5)
+        p_crit.font.size = Pt(11)
         p_crit.font.bold = True
         p_crit.font.color.rgb = RGBColor(0, 130, 60)
+
+        # Bottom full code button for Lab Quest
+        if full_code_file:
+            btn_x = Inches(1.3)
+            btn_y = Inches(6.16)
+            btn_w = Inches(10.7)
+            btn_h = Inches(0.55)
+
+            btn_shadow = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x + Inches(0.04), btn_y + Inches(0.04), btn_w, btn_h)
+            btn_shadow.fill.solid()
+            btn_shadow.fill.fore_color.rgb = COLOR_BLACK
+            btn_shadow.line.fill.background()
+
+            btn = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, btn_x, btn_y, btn_w, btn_h)
+            btn.fill.solid()
+            btn.fill.fore_color.rgb = COLOR_MINT
+            btn.line.color.rgb = COLOR_BLACK
+            btn.line.width = Pt(2.0)
+
+            tb_btn = slide.shapes.add_textbox(btn_x + Inches(0.08), btn_y + Inches(0.03), btn_w - Inches(0.16), btn_h - Inches(0.06))
+            tf_btn = tb_btn.text_frame
+            tf_btn.word_wrap = True
+
+            p_btn = tf_btn.paragraphs[0]
+            run_btn = p_btn.add_run()
+            run_btn.text = f"▶ BUKA KODE SOLUSI LENGKAP LAB QUEST DI GITHUB ({full_code_file})"
+            run_btn.font.name = FONT_HEADING
+            run_btn.font.size = Pt(10)
+            run_btn.font.bold = True
+            run_btn.font.color.rgb = COLOR_BLACK
+            run_btn.hyperlink.address = f"{GITHUB_BASE_URL}/{full_code_file}"
+
+            p_btn_sub = tf_btn.add_paragraph()
+            p_btn_sub.text = f"💡 Buka di browser / salin source code: github.com/antonprafanto/mobile2026"
+            p_btn_sub.font.name = FONT_BODY
+            p_btn_sub.font.size = Pt(8.0)
+            p_btn_sub.font.color.rgb = RGBColor(60, 60, 60)
 
     def save(self, filepath):
         self.prs.save(filepath)
@@ -287,7 +365,8 @@ void main() {
 // $ dart run latihan.dart""",
     filename="terminal_dartpad.sh",
     tip="Gunakan DartPad jika laptop lab sedang lemot atau belum terpasang Flutter SDK!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_02_tools_dan_environment.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -314,7 +393,8 @@ void main() {
 }""",
     filename="mindset_dart.dart",
     tip="Logika Dart yang kuat akan membuat Anda sangat mudah menguasai State Management di Minggu ke-6!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_03_mindset_dart_logika.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -344,7 +424,8 @@ deck2.add_concept_with_code(
 }""",
     filename="variabel_dasar.dart",
     tip="Di Flutter, selalu pasang 'const' pada widget statis agar performa aplikasi sangat hemat RAM!",
-    tag_color=COLOR_CYAN
+    tag_color=COLOR_CYAN,
+    full_code_file="slide_04_variabel_dan_tipe_data.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -373,7 +454,8 @@ deck2.add_concept_with_code(
 }""",
     filename="null_safety_intro.dart",
     tip="Gunakan tanda tanya (?) hanya pada data yang memang wajar jika tidak diisi oleh pengguna!",
-    tag_color=COLOR_CORAL
+    tag_color=COLOR_CORAL,
+    full_code_file="slide_05_sound_null_safety.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -405,7 +487,8 @@ deck2.add_concept_with_code(
 }""",
     filename="null_operators.dart",
     tip="Hindari memakai tanda seru (!) jika Anda tidak 100% yakin datanya pasti ada!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_06_operator_penjinak_null.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -432,7 +515,8 @@ int kaliDua(int x) => x * 2;
 void main() => print('Hasil 10 x 2 = ${kaliDua(10)}');""",
     filename="fat_arrow_demo.dart",
     tip="Gunakan fat arrow '=>' untuk fungsi sederhana agar kode Flutter Anda terlihat profesional!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_07_fat_arrow_functions.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -467,7 +551,8 @@ void main() {
 }""",
     filename="oop_named_params.dart",
     tip="Semua widget seperti Text(data), Container(padding: ...), Row(children: ...) memakai named parameters!",
-    tag_color=COLOR_CYAN
+    tag_color=COLOR_CYAN,
+    full_code_file="slide_08_oop_named_parameters.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -499,7 +584,8 @@ void main() {
 }""",
     filename="mixins_demo.dart",
     tip="Anggap mixin seperti ransel perkakas: class Anda bisa memakai ransel itu kapan saja dibutuhkan!",
-    tag_color=COLOR_PURPLE
+    tag_color=COLOR_PURPLE,
+    full_code_file="slide_09_mixins_with_keyword.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -529,7 +615,8 @@ void main() {
 }""",
     filename="extension_methods.dart",
     tip="Extension method membuat kode aplikasi Anda sangat rapi dan mudah dibaca!",
-    tag_color=COLOR_CORAL
+    tag_color=COLOR_CORAL,
+    full_code_file="slide_10_extension_methods.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -558,7 +645,8 @@ deck2.add_concept_with_code(
 }""",
     filename="collections_demo.dart",
     tip="Gunakan Map untuk menampung respon JSON dari REST API!",
-    tag_color=COLOR_YELLOW
+    tag_color=COLOR_YELLOW,
+    full_code_file="slide_11_collections_list_map_set.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -586,7 +674,8 @@ deck2.add_concept_with_code(
 }""",
     filename="reactive_collections.dart",
     tip="Rangkaian .where() dan .map() adalah teknik standar industri dalam mengolah data di Flutter!",
-    tag_color=COLOR_MINT
+    tag_color=COLOR_MINT,
+    full_code_file="slide_12_reactive_collections.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -615,7 +704,8 @@ void main() {
 }""",
     filename="sync_vs_async.dart",
     tip="Semua proses jaringan internet, database, dan GPS di mobile WAJIB berjalan secara asinkron!",
-    tag_color=COLOR_CYAN
+    tag_color=COLOR_CYAN,
+    full_code_file="slide_13_dilema_sync_vs_async.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -648,7 +738,8 @@ Future<void> main() async {
 }""",
     filename="async_await_demo.dart",
     tip="Konsep 'async/await' adalah standar emas saat kita menghubungkan Flutter ke REST API di Minggu ke-9!",
-    tag_color=COLOR_PURPLE
+    tag_color=COLOR_PURPLE,
+    full_code_file="slide_14_future_async_await.dart"
 )
 
 # ---------------------------------------------------------------------
@@ -680,7 +771,8 @@ Future<void> main() async {
 }""",
     filename="stream_demo.dart",
     tip="Stream adalah fondasi utama dari arsitektur reaktif BLoC yang akan kita pakai di aplikasi skala besar!",
-    tag_color=COLOR_CORAL
+    tag_color=COLOR_CORAL,
+    full_code_file="slide_15_stream_reactive_data.dart"
 )
 
 # ---------------------------------------------------------------------
