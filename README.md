@@ -20,7 +20,7 @@ mobile2026/
 │   ├── 📁 pertemuan_01_pengantar_flutter/      # [17 file] Fondasi Flutter, Impeller Engine, & Tools
 │   ├── 📁 pertemuan_02_modern_dart/            # [15 file] Dart OOP, Sound Null Safety, & Concurrency
 │   ├── 📁 pertemuan_03_widget_dan_layouting/   # [23 file] Widget Tree, Layouting, & Solusi Overflow
-│   ├── 📁 pertemuan_04_form_dan_gorouter/      # [20 file] Form Validation, Regex, & GoRouter
+│   ├── 📁 pertemuan_04_form_dan_gorouter/      # [22 file] Form Validation, Regex, & GoRouter
 │   ├── 📁 pertemuan_05_material3_dan_responsive/ # [17 file] Material 3, Theming, & UI Responsif
 │   ├── 📁 pertemuan_06_state_management_cubit/   # [17 file] State Management Reaktif & Cubit
 │   └── 📁 pertemuan_07_clean_architecture/       # [17 file] Clean Architecture & Enterprise Structure
@@ -158,6 +158,13 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 | **Slide 17** | Kirim Data 2: Query (`?q=`) & Objek `extra` | [slide_17_query_and_extra.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_17_query_and_extra.dart) |
 | **Slide 18** | Rute Bersarang & `StatefulShellRoute` Tab | [slide_18_nested_and_shell_routes.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_18_nested_and_shell_routes.dart) |
 | **Slide 19** | Solusi Master Lab Quest: Portal KTM Digital | [slide_19_lab_quest_portal_ktm.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_19_lab_quest_portal_ktm.dart) |
+
+> [!TIP]
+> **Aplikasi Demonstrasi Komprehensif Tambahan (Master Demos):**
+> - [01_form_registrasi_lengkap.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/01_form_registrasi_lengkap.dart) — *Formulir registrasi lengkap ber-regex, dropdown, dan toggle sandi*.
+> - [02_gorouter_navigasi_dan_passing_data.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/02_gorouter_navigasi_dan_passing_data.dart) — *Navigasi multi-halaman katalog buku & penanganan 404*.
+> - [03_gorouter_bottom_nav_shell.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/03_gorouter_bottom_nav_shell.dart) — *Menu tab bawah persisten (`StatefulShellRoute.indexedStack`)*.
+> - [04_lab_quest_04_solusi_portal_ktm.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/04_lab_quest_04_solusi_portal_ktm.dart) — *Solusi terpadu dari form registrasi ke kartu KTM digital*.
 
 ---
 
