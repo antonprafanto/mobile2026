@@ -12,6 +12,7 @@ mobile2026/
 │   ├── 📊 PERTEMUAN_02_Modern_Dart_Programming.pptx
 │   ├── 📊 PERTEMUAN_03_Widget_Tree_dan_Layouting.pptx
 │   ├── 📊 PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx
+│   ├── 📊 PERTEMUAN_05_Material3_dan_Responsive_UI.pptx
 │   ├── 📊 PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx
 │   ├── 📊 PERTEMUAN_09_Networking_REST_API_dan_Dio.pptx
 │   ├── 📊 PERTEMUAN_11_Backend_as_a_Service_Firebase.pptx
@@ -101,7 +102,26 @@ mobile2026/
         ├── 📄 01_form_registrasi_lengkap.dart
         ├── 📄 02_gorouter_navigasi_dan_passing_data.dart
         ├── 📄 03_gorouter_bottom_nav_shell.dart
-        └── 📄 04_lab_quest_04_solusi_portal_ktm.dart
+        ├── 📄 04_lab_quest_04_solusi_portal_ktm.dart
+│
+└── 📁 pertemuan_05_material3_dan_responsive/
+    ├── 📄 slide_02_tools_dan_preview_responsif.dart
+    ├── 📄 slide_03_filosofi_material3.dart
+    ├── 📄 slide_04_color_scheme_seed.dart
+    ├── 📄 slide_05_typography_text_theme.dart
+    ├── 📄 slide_06_dynamic_theme_light_dark.dart
+    ├── 📄 slide_07_mediaquery_dimensions.dart
+    ├── 📄 slide_08_layoutbuilder_constraints.dart
+    ├── 📄 slide_09_breakpoints_helper.dart
+    ├── 📄 slide_10_orientation_builder.dart
+    ├── 📄 slide_11_adaptive_navigation.dart
+    ├── 📄 slide_12_responsive_grid_layout.dart
+    ├── 📄 slide_13_master_detail_pattern.dart
+    ├── 📄 slide_14_adaptive_widgets_native.dart
+    ├── 📄 slide_15_reusable_component_kit.dart
+    ├── 📄 slide_16_fittedbox_scaling.dart
+    ├── 📄 slide_17_checklist_responsive_ui.dart
+    └── 📄 slide_18_lab_quest_dashboard_responsif.dart
 ```
 
 ---
@@ -119,6 +139,7 @@ mobile2026/
 | **02** | Modern Dart Programming (Null Safety & Concurrency) | [⚡ Download M02 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_02_Modern_Dart_Programming.pptx) | [👁️ Baca Online M02](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_02_Modern_Dart_Programming.pptx) |
 | **03** | Everything is a Widget (Widget Tree & Layout Anti-Overflow) | [⚡ Download M03 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_03_Widget_Tree_dan_Layouting.pptx) | [👁️ Baca Online M03](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_03_Widget_Tree_dan_Layouting.pptx) |
 | **04** | Form Handling, Validasi Masukan & Navigasi GoRouter | [⚡ Download M04 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx) | [👁️ Baca Online M04](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_04_Form_Handling_dan_GoRouter.pptx) |
+| **05** | Material 3, Adaptive Layout & Dynamic Theming | [⚡ Download M05 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_05_Material3_dan_Responsive_UI.pptx) | [👁️ Baca Online M05](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_05_Material3_dan_Responsive_UI.pptx) |
 | **06** | State Management Reaktif (Cubit & BLoC Pattern) | [⚡ Download M06 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) | [👁️ Baca Online M06](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) |
 | **09** | Networking, REST API Client Dio & Error Handling | [⚡ Download M09 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) | [👁️ Baca Online M09](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) |
 | **11** | Backend-as-a-Service Firebase, Kamera & Geolocation GPS | [⚡ Download M11 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) | [👁️ Baca Online M11](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) |
@@ -230,6 +251,32 @@ Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()
 | **Slide 17** | Kirim Data 2: Query (`?q=`) & Objek `extra` | [slide_17_query_and_extra.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_17_query_and_extra.dart) |
 | **Slide 18** | Rute Bersarang & `StatefulShellRoute` Tab | [slide_18_nested_and_shell_routes.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_18_nested_and_shell_routes.dart) |
 | **Slide 19** | Solusi Master Lab Quest: Portal KTM Digital | [slide_19_lab_quest_portal_ktm.dart](07_contoh_kode_program/pertemuan_04_form_dan_gorouter/slide_19_lab_quest_portal_ktm.dart) |
+
+---
+
+### 📱 Pertemuan 05: Material 3, UI Responsif & Dynamic Theming
+
+| Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
+| :---: | :--- | :--- |
+| **Slide 02** | Uji Cepat Responsif di Browser Chrome | [slide_02_tools_dan_preview_responsif.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_02_tools_dan_preview_responsif.dart) |
+| **Slide 03** | Filosofi Material 3 & Komponen Modern | [slide_03_filosofi_material3.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_03_filosofi_material3.dart) |
+| **Slide 04** | Sistem Warna Harmonis `colorSchemeSeed` | [slide_04_color_scheme_seed.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_04_color_scheme_seed.dart) |
+| **Slide 05** | Hirarki Tipografi M3 (`TextTheme`) | [slide_05_typography_text_theme.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_05_typography_text_theme.dart) |
+| **Slide 06** | Theming Dinamis: Light & Dark Mode | [slide_06_dynamic_theme_light_dark.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_06_dynamic_theme_light_dark.dart) |
+| **Slide 07** | `MediaQuery`: Membaca Dimensi Layar Total | [slide_07_mediaquery_dimensions.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_07_mediaquery_dimensions.dart) |
+| **Slide 08** | `LayoutBuilder`: Mengetahui Batasan Parent | [slide_08_layoutbuilder_constraints.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_08_layoutbuilder_constraints.dart) |
+| **Slide 09** | Standar Breakpoints (Compact, Medium, Expanded) | [slide_09_breakpoints_helper.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_09_breakpoints_helper.dart) |
+| **Slide 10** | `OrientationBuilder`: Merespons Rotasi Layar | [slide_10_orientation_builder.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_10_orientation_builder.dart) |
+| **Slide 11** | Navigasi Adaptif: `NavigationBar` vs `NavigationRail` | [slide_11_adaptive_navigation.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_11_adaptive_navigation.dart) |
+| **Slide 12** | Grid Responsif: Mengatur Kolom Otomatis | [slide_12_responsive_grid_layout.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_12_responsive_grid_layout.dart) |
+| **Slide 13** | Pola Arsitektur UI: Master-Detail Pattern | [slide_13_master_detail_pattern.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_13_master_detail_pattern.dart) |
+| **Slide 14** | Widget Adaptif Bawaan (`.adaptive()`) | [slide_14_adaptive_widgets_native.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_14_adaptive_widgets_native.dart) |
+| **Slide 15** | Komponen Reusable: Kartu Statistik Kuliah | [slide_15_reusable_component_kit.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_15_reusable_component_kit.dart) |
+| **Slide 16** | `FittedBox`: Skala Teks Aksesibilitas Anti-Overflow | [slide_16_fittedbox_scaling.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_16_fittedbox_scaling.dart) |
+| **Slide 17** | Checklist 5 Aturan Emas Desain Responsif | [slide_17_checklist_responsive_ui.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_17_checklist_responsive_ui.dart) |
+| **Slide 18** | Solusi Lab Quest: Dashboard Akademik Adaptif | [slide_18_lab_quest_dashboard_responsif.dart](07_contoh_kode_program/pertemuan_05_material3_dan_responsive/slide_18_lab_quest_dashboard_responsif.dart) |
+
+
 
 ---
 
