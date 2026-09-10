@@ -7,121 +7,23 @@ Selamat datang di repositori resmi materi perkuliahan **Pemrograman Piranti Berg
 
 ```text
 mobile2026/
-├── 📁 03_slide_presentasi/            # Berkas Slide Presentasi (.pptx) & Panduan
+├── 📁 03_slide_presentasi/                     # Slide Presentasi Kuliah (.pptx 16:9) & Naskah Modul
 │   ├── 📊 PERTEMUAN_01_Pengantar_Flutter_dan_Ekosistem.pptx
 │   ├── 📊 PERTEMUAN_02_Modern_Dart_Programming.pptx
 │   ├── 📊 PERTEMUAN_03_Widget_Tree_dan_Layouting.pptx
 │   ├── 📊 PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx
 │   ├── 📊 PERTEMUAN_05_Material3_dan_Responsive_UI.pptx
-│   ├── 📊 PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx
-│   ├── 📊 PERTEMUAN_09_Networking_REST_API_dan_Dio.pptx
-│   ├── 📊 PERTEMUAN_11_Backend_as_a_Service_Firebase.pptx
-│   └── 📊 PERTEMUAN_14_Automated_Testing_dan_Profiling.pptx
+│   └── 📊 PERTEMUAN_06 s.d. 14.pptx (Cubit/BLoC, Dio API, BaaS Firebase, Testing)
 │
-└── 📁 07_contoh_kode_program/         # Kode Program Lengkap Siap Run (1 Slide = 1 File)
-    ├── 📁 pertemuan_01_pengantar_flutter/
-    │   ├── 📄 slide_02_roadmap_semester.dart
-    │   ├── 📄 slide_03_relevansi_mobile.dart
-    │   ├── 📄 slide_04_dart_vs_flutter.dart
-    │   ├── 📄 slide_05_arsitektur_grafis.dart
-    │   ├── 📄 slide_06_impeller_engine_demo.dart
-    │   ├── 📄 slide_07_diagnostik_flutter_doctor.dart
-    │   ├── 📄 slide_08_aturan_penamaan_proyek.dart
-    │   ├── 📄 slide_09_struktur_folder_proyek.dart
-    │   ├── 📄 slide_10_pubspec_yaml_simulator.dart
-    │   ├── 📄 slide_11_hot_reload_vs_restart.dart
-    │   ├── 📄 slide_12_hello_flutter_minimal.dart
-    │   ├── 📄 slide_13_counter_app_deepdive.dart
-    │   ├── 📄 slide_14_chrome_preview_frame.dart
-    │   ├── 📄 slide_15_device_info_hardware.dart
-    │   ├── 📄 slide_16_vscode_shortcuts_guide.dart
-    │   ├── 📄 slide_17_lab_quest_tugas_01.dart
-    │   └── 📄 slide_18_preview_modern_dart.dart
-    │
-    ├── 📁 pertemuan_02_modern_dart/
-    │   ├── 📄 slide_02_tools_dan_environment.dart
-    │   ├── 📄 slide_03_mindset_dart_logika.dart
-    │   ├── 📄 slide_04_variabel_dan_tipe_data.dart
-    │   ├── 📄 slide_05_sound_null_safety.dart
-    │   ├── 📄 slide_06_operator_penjinak_null.dart
-    │   ├── 📄 slide_07_fat_arrow_functions.dart
-    │   ├── 📄 slide_08_oop_named_parameters.dart
-    │   ├── 📄 slide_09_mixins_with_keyword.dart
-    │   ├── 📄 slide_10_extension_methods.dart
-    │   ├── 📄 slide_11_collections_list_map_set.dart
-    │   ├── 📄 slide_12_reactive_collections.dart
-    │   ├── 📄 slide_13_dilema_sync_vs_async.dart
-    │   ├── 📄 slide_14_future_async_await.dart
-    │   ├── 📄 slide_15_stream_reactive_data.dart
-    │   └── 📄 slide_16_lab_quest_tugas_02.dart
-    │
-    ├── 📁 pertemuan_03_widget_dan_layouting/
-    │   ├── 📄 slide_02_panduan_tools_dan_workflow.dart
-    │   ├── 📄 slide_03_filosofi_everything_is_widget.dart
-    │   ├── 📄 slide_04_materialapp_dan_scaffold.dart
-    │   ├── 📄 slide_05_arsitektur_the_three_trees.dart
-    │   ├── 📄 slide_06_stateless_vs_stateful.dart
-    │   ├── 📄 slide_07_siklus_hidup_stateful.dart
-    │   ├── 📄 slide_08_hukum_box_constraints.dart
-    │   ├── 📄 slide_09_penyelamat_layar_safearea.dart
-    │   ├── 📄 slide_10_single_child_layout.dart
-    │   ├── 📄 slide_11_jebakan_color_vs_decoration.dart
-    │   ├── 📄 slide_12_multi_child_row_column.dart
-    │   ├── 📄 slide_13_trik_spasi_sizedbox_spacer.dart
-    │   ├── 📄 slide_14_flexible_vs_expanded.dart
-    │   ├── 📄 slide_15_layout_menumpuk_stack.dart
-    │   ├── 📄 slide_16_penyelamat_kategori_wrap.dart
-    │   ├── 📄 slide_17_scrollable_singlechildscrollview.dart
-    │   ├── 📄 slide_18_scrollable_listview_builder.dart
-    │   ├── 📄 slide_19_scrollable_gridview_builder.dart
-    │   ├── 📄 slide_20_solusi_renderflex_overflow.dart
-    │   ├── 📄 slide_21_solusi_unbounded_height.dart
-    │   ├── 📄 slide_22_trik_koma_ajaib_trailing.dart
-    │   ├── 📄 slide_23_shortcut_refactor_inspector.dart
-    │   └── 📄 slide_24_lab_quest_dashboard_profil.dart
-    │
-    └── 📁 pertemuan_04_form_dan_gorouter/
-        ├── 📄 slide_02_persiapan_tools_dan_gorouter.dart
-        ├── 📄 slide_03_textfield_vs_textformfield.dart
-        ├── 📄 slide_04_controller_lifecycle.dart
-        ├── 📄 slide_05_input_decoration_ux.dart
-        ├── 📄 slide_06_password_toggle_demo.dart
-        ├── 📄 slide_07_keyboard_focus_control.dart
-        ├── 📄 slide_08_dropdown_form_field.dart
-        ├── 📄 slide_09_form_architecture.dart
-        ├── 📄 slide_10_validator_regex.dart
-        ├── 📄 slide_11_snackbar_feedback.dart
-        ├── 📄 slide_12_inkwell_gestures.dart
-        ├── 📄 slide_13_why_gorouter.dart
-        ├── 📄 slide_14_app_router_config.dart
-        ├── 📄 slide_15_navigation_actions.dart
-        ├── 📄 slide_16_path_parameters.dart
-        ├── 📄 slide_17_query_and_extra.dart
-        ├── 📄 slide_18_nested_and_shell_routes.dart
-        ├── 📄 slide_19_lab_quest_portal_ktm.dart
-        ├── 📄 01_form_registrasi_lengkap.dart
-        ├── 📄 02_gorouter_navigasi_dan_passing_data.dart
-        ├── 📄 03_gorouter_bottom_nav_shell.dart
-        ├── 📄 04_lab_quest_04_solusi_portal_ktm.dart
+├── 📁 07_contoh_kode_program/                  # Kode Mandiri Siap Run (1 Slide = 1 File .dart)
+│   ├── 📁 pertemuan_01_pengantar_flutter/      # [17 file] Fondasi Flutter, Impeller Engine, & Tools
+│   ├── 📁 pertemuan_02_modern_dart/            # [15 file] Dart OOP, Sound Null Safety, & Concurrency
+│   ├── 📁 pertemuan_03_widget_dan_layouting/   # [23 file] Widget Tree, Layouting, & Solusi Overflow
+│   ├── 📁 pertemuan_04_form_dan_gorouter/      # [21 file] Form Validation, Regex, & GoRouter
+│   └── 📁 pertemuan_05_material3_dan_responsive/ # [17 file] Material 3, Theming, & UI Responsif
 │
-└── 📁 pertemuan_05_material3_dan_responsive/
-    ├── 📄 slide_02_tools_dan_preview_responsif.dart
-    ├── 📄 slide_03_filosofi_material3.dart
-    ├── 📄 slide_04_color_scheme_seed.dart
-    ├── 📄 slide_05_typography_text_theme.dart
-    ├── 📄 slide_06_dynamic_theme_light_dark.dart
-    ├── 📄 slide_07_mediaquery_dimensions.dart
-    ├── 📄 slide_08_layoutbuilder_constraints.dart
-    ├── 📄 slide_09_breakpoints_helper.dart
-    ├── 📄 slide_10_orientation_builder.dart
-    ├── 📄 slide_11_adaptive_navigation.dart
-    ├── 📄 slide_12_responsive_grid_layout.dart
-    ├── 📄 slide_13_master_detail_pattern.dart
-    ├── 📄 slide_14_adaptive_widgets_native.dart
-    ├── 📄 slide_15_reusable_component_kit.dart
-    ├── 📄 slide_16_fittedbox_scaling.dart
-    ├── 📄 slide_17_checklist_responsive_ui.dart
-    └── 📄 slide_18_lab_quest_dashboard_responsif.dart
+├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md      # Kerangka Kerja & Standar Courseware Repositori
+└── 📄 README.md                                # Katalog Utama & Panduan Akses Cepat
 ```
 
 ---
