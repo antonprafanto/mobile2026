@@ -1,167 +1,77 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 03: RELEVANSI INDUSTRI & SINGLE CODEBASE
-// TOPIK: Simulasi Efisiensi Biaya & Waktu Flutter vs Dual Native Team
-// =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// CONTOH KODE SEDERHANA - SLIDE 03: EFISIENSI SINGLE CODEBASE
+// TOPIK: Mengapa Flutter Efisien? Satu Basis Kode untuk Android & iOS
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide03EfisiensiApp());
+  runApp(const AplikasiKalkulatorEfisiensi());
 }
 
-class Slide03EfisiensiApp extends StatelessWidget {
-  const Slide03EfisiensiApp({super.key});
+class AplikasiKalkulatorEfisiensi extends StatefulWidget {
+  const AplikasiKalkulatorEfisiensi({super.key});
+
+  @override
+  State<AplikasiKalkulatorEfisiensi> createState() =>
+      _AplikasiKalkulatorEfisiensiState();
+}
+
+class _AplikasiKalkulatorEfisiensiState
+    extends State<AplikasiKalkulatorEfisiensi> {
+  double _jumlahFitur = 5;
 
   @override
   Widget build(BuildContext context) {
+    final estimasiHariNative = (_jumlahFitur * 6)
+        .toInt(); // 2 tim terpisah (Android + iOS)
+    final estimasiHariFlutter = (_jumlahFitur * 3.2).toInt(); // 1 tim Flutter
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 03 - Single Codebase Simulator',
-      theme: ThemeData(useMaterial3: true),
-      home: const EfisiensiScreen(),
-    );
-  }
-}
-
-class EfisiensiScreen extends StatefulWidget {
-  const EfisiensiScreen({super.key});
-
-  @override
-  State<EfisiensiScreen> createState() => _EfisiensiScreenState();
-}
-
-class _EfisiensiScreenState extends State<EfisiensiScreen> {
-  int _jumlahFitur = 5;
-
-  @override
-  Widget build(BuildContext context) {
-    // Perhitungan kalkulator komparasi:
-    final waktuNativeBulan = (_jumlahFitur * 1.5).toStringAsFixed(1);
-    final waktuFlutterBulan = (_jumlahFitur * 0.8).toStringAsFixed(1);
-    const engineerNative = 6; // 3 Kotlin + 3 Swift
-    const engineerFlutter = 3; // 3 Flutter/Dart
-
-    return Scaffold(
-      backgroundColor: const Color(0xFFFAF8F5),
-      appBar: AppBar(
-        title: const Text('SLIDE 03: Mengapa Flutter di 2026?'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Kalkulator Simulasi: Efisiensi Pengembangan Aplikasi',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              'Geser slider jumlah fitur di bawah untuk melihat perbedaan waktu dan sumber daya antara pendekatan Native terpisah vs Flutter Single Codebase:',
-              style: TextStyle(fontSize: 13, color: Colors.black87),
-            ),
-            const SizedBox(height: 16),
-
-            // Slider Jumlah Fitur
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black, width: 2),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black, offset: Offset(3, 3)),
-                ],
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Simulasi Efisiensi Single Codebase'),
+          backgroundColor: Colors.blue,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Geser Jumlah Fitur Aplikasi:',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Estimasi Fitur Aplikasi yang Dibangun: $_jumlahFitur Fitur',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                    ),
-                  ),
-                  Slider(
-                    value: _jumlahFitur.toDouble(),
-                    min: 1,
-                    max: 20,
-                    divisions: 19,
-                    activeColor: Colors.black,
-                    label: '$_jumlahFitur Fitur',
-                    onChanged: (val) =>
-                        setState(() => _jumlahFitur = val.toInt()),
-                  ),
-                ],
+              Slider(
+                value: _jumlahFitur,
+                min: 1,
+                max: 15,
+                divisions: 14,
+                label: '${_jumlahFitur.toInt()} Fitur',
+                onChanged: (val) => setState(() => _jumlahFitur = val),
               ),
-            ),
-            const SizedBox(height: 20),
-
-            // Kartu Pendekatan Lama (Native)
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFFFFE4E6), // Light Red/Pink
-                border: Border.all(color: Colors.black, width: 2),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-                ],
+              Text('Jumlah Fitur: ${_jumlahFitur.toInt()} Fitur'),
+              const SizedBox(height: 20),
+              const Divider(),
+              const SizedBox(height: 10),
+              // Perbandingan Waktu
+              ListTile(
+                leading: const Icon(Icons.people, color: Colors.orange),
+                title: const Text('Pendekatan Dual Native (Kotlin + Swift)'),
+                subtitle: Text(
+                  'Estimasi pengerjaan: ~$estimasiHariNative hari (2 Tim Terpisah)',
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    '❌ CARA LAMA: DUA TIM NATIVE TERPISAH',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      color: Colors.red,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    '• Tim Android (Kotlin): 3 Engineer\n• Tim iOS (Swift): 3 Engineer\n• Total Engineer: $engineerNative Orang\n• Estimasi Waktu Rilis: $waktuNativeBulan Bulan\n• Kelemahan: Biaya 2x lipat, fitur Android dan iOS sering tidak sinkron!',
-                  ),
-                ],
+              ListTile(
+                leading: const Icon(Icons.flash_on, color: Colors.green),
+                title: const Text('Pendekatan Flutter (Single Codebase)'),
+                subtitle: Text(
+                  'Estimasi pengerjaan: ~$estimasiHariFlutter hari (Hemat ~50% Waktu & Biaya)',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-
-            // Kartu Pendekatan Modern (Flutter)
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFFDCFCE7), // Light Green
-                border: Border.all(color: Colors.black, width: 2),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    '✅ CARA MODERN: FLUTTER SINGLE CODEBASE',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      color: Colors.green,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    '• 1 Tim Gabungan (Dart): $engineerFlutter Engineer Cukup!\n• 1 Basis Kode: Otomatis jalan di Android, iPhone, Web, & Desktop\n• Estimasi Waktu Rilis: $waktuFlutterBulan Bulan (Lebih Cepat ~50%!)\n• Keunggulan: Sekali buat, rilis serentak di Google Play & App Store.',
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

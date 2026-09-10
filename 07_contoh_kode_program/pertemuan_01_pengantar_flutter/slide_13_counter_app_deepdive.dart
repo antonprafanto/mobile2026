@@ -1,30 +1,25 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 13: MEMBEDAH DEFAULT COUNTER APP
-// TOPIK: Penjelasan Anotasi Tiap Baris, setState(), Tambah, Kurang, & Reset
+// SLIDE 13: MEMBEDAH DEFAULT COUNTER APP
+// Topik: Memahami setState() dengan Tambah, Kurang, dan Reset
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide13CounterApp());
+  runApp(const CounterDeepDiveApp());
 }
 
-class Slide13CounterApp extends StatelessWidget {
-  const Slide13CounterApp({super.key});
+class CounterDeepDiveApp extends StatelessWidget {
+  const CounterDeepDiveApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 13 - Counter App Deep Dive',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: const Color(0xFF38BDF8),
-      ),
+      title: 'Slide 13 - Counter Deep Dive',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.teal),
       home: const CounterScreen(),
     );
   }
@@ -38,25 +33,22 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
-  // 1. VARIABEL STATE DI MEMORI
+  // Variabel penampung state di memori
   int _counter = 0;
 
-  // 2. FUNGSI PENAMBAH DENGAN setState()
-  void _incrementCounter() {
+  void _increment() {
     setState(() {
       _counter++;
-    }); // <- Flutter menggambar ulang Text di layar seketika!
+    });
   }
 
-  // 3. FUNGSI PENGURANG
-  void _decrementCounter() {
+  void _decrement() {
     setState(() {
       if (_counter > 0) _counter--;
     });
   }
 
-  // 4. FUNGSI RESET KE NOL
-  void _resetCounter() {
+  void _reset() {
     setState(() {
       _counter = 0;
     });
@@ -65,121 +57,58 @@ class _CounterScreenState extends State<CounterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAF8F5),
       appBar: AppBar(
-        title: const Text('SLIDE 13: Bedah Counter App bawaan Flutter'),
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
+        title: const Text('Slide 13: Counter Deep Dive'),
+        centerTitle: true,
       ),
       body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Kartu Display Angka
-              Container(
-                width: 280,
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black, width: 2.5),
-                  boxShadow: const [
-                    BoxShadow(color: Colors.black, offset: Offset(5, 5)),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    const Text(
-                      'TOTAL KLIK SAAT INI:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      '$_counter',
-                      style: const TextStyle(
-                        fontSize: 60,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    // Tiga Tombol Operasi
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton.filled(
-                          style: IconButton.filled(
-                            backgroundColor: const Color(0xFFFB7185),
-                          ),
-                          onPressed: _decrementCounter,
-                          icon: const Icon(Icons.remove, color: Colors.black),
-                        ),
-                        IconButton.filled(
-                          style: IconButton.filled(
-                            backgroundColor: const Color(0xFFE2E8F0),
-                          ),
-                          onPressed: _resetCounter,
-                          icon: const Icon(Icons.refresh, color: Colors.black),
-                        ),
-                        IconButton.filled(
-                          style: IconButton.filled(
-                            backgroundColor: const Color(0xFF4ADE80),
-                          ),
-                          onPressed: _incrementCounter,
-                          icon: const Icon(Icons.add, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  ],
+              const Text(
+                'Anda telah menekan tombol sebanyak:',
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               const SizedBox(height: 24),
-
-              // Kotak Penjelasan Cara Kerja setState()
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black, width: 2),
-                  boxShadow: const [
-                    BoxShadow(color: Colors.black, offset: Offset(3, 3)),
-                  ],
-                ),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '❓ MENGAPA TOMBOL BISA MENGUBAH LAYAR?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                      ),
-                    ),
-                    SizedBox(height: 6),
-                    Text(
-                      '1. Variabel int _counter = 0; adalah tempat menyimpan angka.\n2. Saat tombol ditekan, fungsi setState() dipanggil.\n3. setState() memberi sinyal ke mesin Flutter: "Tolong jalankan ulang fungsi build() karena datanya sudah berubah!"\n4. Flutter hanya menggambar ulang teks angka tersebut dengan kecepatan milidetik.',
-                      style: TextStyle(fontSize: 12, height: 1.4),
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: _decrement,
+                    icon: const Icon(Icons.remove),
+                    label: const Text('Kurang'),
+                  ),
+                  const SizedBox(width: 8),
+                  OutlinedButton.icon(
+                    onPressed: _reset,
+                    icon: const Icon(Icons.refresh),
+                    label: const Text('Reset'),
+                  ),
+                  const SizedBox(width: 8),
+                  FilledButton.icon(
+                    onPressed: _increment,
+                    icon: const Icon(Icons.add),
+                    label: const Text('Tambah'),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
-      // Floating Action Button standar Flutter
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFFFFE600),
-        foregroundColor: Colors.black,
-        shape: const RoundedRectangleBorder(
-          side: BorderSide(color: Colors.black, width: 2),
-          borderRadius: BorderRadius.zero,
-        ),
-        onPressed: _incrementCounter,
-        tooltip: 'Tambah Angka',
+        onPressed: _increment,
+        tooltip: 'Tambah',
         child: const Icon(Icons.add),
       ),
     );

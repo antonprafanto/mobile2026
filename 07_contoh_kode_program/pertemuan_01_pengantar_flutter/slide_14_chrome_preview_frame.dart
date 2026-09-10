@@ -1,133 +1,82 @@
 // =====================================================================
-// KODE LENGKAP RUNNABLE - SLIDE 14: SIMULATOR LAYAR HP DI GOOGLE CHROME
-// TOPIK: Solusi Komputer Lab RAM 8GB (Tanpa Emulator Android yang Berat)
+// SLIDE 14: SOLUSI LAB RAM 8GB (FLUTTER RUN DI WEB / CHROME)
+// Topik: Menjalankan Aplikasi Mobile di Browser Tanpa Emulator Berat
 // =====================================================================
-// CARA MENJALANKAN:
-// 1. Salin seluruh isi berkas ini ke: lib/main.dart
-// 2. Jalankan di terminal: flutter run -d chrome
+// Jalankan dengan: flutter run -d chrome
 // =====================================================================
 
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Slide14ChromeFrameApp());
+  runApp(const ChromePreviewApp());
 }
 
-class Slide14ChromeFrameApp extends StatelessWidget {
-  const Slide14ChromeFrameApp({super.key});
+class ChromePreviewApp extends StatelessWidget {
+  const ChromePreviewApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 14 - Chrome Phone Frame Simulator',
-      theme: ThemeData(useMaterial3: true),
-      home: const PhoneSimulatorScreen(),
+      title: 'Slide 14 - Web Preview',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
+      home: const ChromePreviewScreen(),
     );
   }
 }
 
-class PhoneSimulatorScreen extends StatelessWidget {
-  const PhoneSimulatorScreen({super.key});
+class ChromePreviewScreen extends StatelessWidget {
+  const ChromePreviewScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1E293B), // Slate Dark Canvas
+      appBar: AppBar(
+        title: const Text('Slide 14: Preview Ringan di Chrome'),
+        centerTitle: true,
+      ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(12),
-                child: Text(
-                  '💻 KOMPILASI GOOGLE CHROME: HEMAT RAM < 150MB',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                  ),
-                ),
-              ),
-              // Bingkai Smartphone Fisik Mockup
-              Container(
-                width: 340,
-                height: 600,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(32),
-                  border: Border.all(color: Colors.black, width: 8),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black54,
-                      blurRadius: 20,
-                      offset: Offset(0, 10),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 420),
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.laptop_chromebook,
+                      size: 56,
+                      color: Colors.indigo,
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Target Kompilasi: Chrome',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Emulator Android membutuhkan RAM 2GB - 4GB.\n'
+                      'Dengan Chrome, memori yang terpakai < 150MB dan '
+                      'Hot Reload bekerja sangat cepat!',
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 16),
+                    ListTile(
+                      leading: const Icon(Icons.terminal, color: Colors.green),
+                      title: const Text('Perintah Terminal:'),
+                      subtitle: const Text('flutter run -d chrome'),
+                      dense: true,
                     ),
                   ],
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(24),
-                  child: Scaffold(
-                    backgroundColor: const Color(0xFFFAF8F5),
-                    appBar: AppBar(
-                      title: const Text(
-                        'Aplikasi Mobile Saya',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      backgroundColor: const Color(0xFFFFE600),
-                      foregroundColor: Colors.black,
-                      centerTitle: true,
-                    ),
-                    body: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.check_circle_outline,
-                            size: 50,
-                            color: Colors.green,
-                          ),
-                          const SizedBox(height: 12),
-                          const Text(
-                            'Kompilasi Sukses 5 Detik!',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            'Dengan menargetkan Chrome, komputer lab RAM 8GB tetap adem dan tidak macet/freeze!',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.black87,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 20),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
-                              foregroundColor: Colors.white,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: const Text('Tombol Interaktif'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
               ),
-            ],
+            ),
           ),
         ),
       ),
