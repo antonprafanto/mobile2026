@@ -18,6 +18,25 @@ mobile2026/
 │   └── 📊 PERTEMUAN_14_Automated_Testing_dan_Profiling.pptx
 │
 └── 📁 07_contoh_kode_program/         # Kode Program Lengkap Siap Run (1 Slide = 1 File)
+    ├── 📁 pertemuan_01_pengantar_flutter/
+    │   ├── 📄 slide_02_roadmap_semester.dart
+    │   ├── 📄 slide_03_relevansi_mobile.dart
+    │   ├── 📄 slide_04_dart_vs_flutter.dart
+    │   ├── 📄 slide_05_arsitektur_grafis.dart
+    │   ├── 📄 slide_06_impeller_engine_demo.dart
+    │   ├── 📄 slide_07_diagnostik_flutter_doctor.dart
+    │   ├── 📄 slide_08_aturan_penamaan_proyek.dart
+    │   ├── 📄 slide_09_struktur_folder_proyek.dart
+    │   ├── 📄 slide_10_pubspec_yaml_simulator.dart
+    │   ├── 📄 slide_11_hot_reload_vs_restart.dart
+    │   ├── 📄 slide_12_hello_flutter_minimal.dart
+    │   ├── 📄 slide_13_counter_app_deepdive.dart
+    │   ├── 📄 slide_14_chrome_preview_frame.dart
+    │   ├── 📄 slide_15_device_info_hardware.dart
+    │   ├── 📄 slide_16_vscode_shortcuts_guide.dart
+    │   ├── 📄 slide_17_lab_quest_tugas_01.dart
+    │   └── 📄 slide_18_preview_modern_dart.dart
+    │
     └── 📁 pertemuan_04_form_dan_gorouter/
         ├── 📄 slide_03_textfield_vs_textformfield.dart
         ├── 📄 slide_04_controller_lifecycle.dart
@@ -67,6 +86,34 @@ mobile2026/
 ## 🚀 Katalog Contoh Kode Mandiri Per-Slide (Siap Run)
 
 Setiap berkas di bawah ini adalah **1-file aplikasi Flutter utuh** (`void main()`, `MaterialApp`, & `Scaffold`). Mahasiswa cukup menyalin isinya ke berkas `lib/main.dart` pada proyek Flutter lokal untuk langsung mencobanya!
+
+---
+
+### 📱 Pertemuan 01: Pengantar Flutter, Arsitektur Mobile & Impeller Engine
+
+| Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
+| :---: | :--- | :--- |
+| **Slide 02** | Roadmap Semester 16 Minggu & Portofolio | [slide_02_roadmap_semester.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_02_roadmap_semester.dart) |
+| **Slide 03** | Kalkulator Efisiensi Single Codebase vs Native | [slide_03_relevansi_mobile.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_03_relevansi_mobile.dart) |
+| **Slide 04** | Analogi Mobil: Dart (Mesin) vs Flutter (Bodi UI) | [slide_04_dart_vs_flutter.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_04_dart_vs_flutter.dart) |
+| **Slide 05** | Arsitektur Grafis: Native vs Hybrid vs Impeller | [slide_05_arsitektur_grafis.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_05_arsitektur_grafis.dart) |
+| **Slide 06** | Demo Engine Impeller: 60 Partikel Bebas Lag | [slide_06_impeller_engine_demo.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_06_impeller_engine_demo.dart) |
+| **Slide 07** | Diagnostik Instalasi `flutter doctor` Interaktif | [slide_07_diagnostik_flutter_doctor.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_07_diagnostik_flutter_doctor.dart) |
+| **Slide 08** | Validator Format Nama Proyek (`snake_case`) | [slide_08_aturan_penamaan_proyek.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_08_aturan_penamaan_proyek.dart) |
+| **Slide 09** | Eksplorer Pohon Struktur Folder Proyek Flutter | [slide_09_struktur_folder_proyek.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_09_struktur_folder_proyek.dart) |
+| **Slide 10** | Simulator `pubspec.yaml` (2 Spasi vs Error Tab) | [slide_10_pubspec_yaml_simulator.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_10_pubspec_yaml_simulator.dart) |
+| **Slide 11** | Lab Bukti State Hot Reload vs Hot Restart | [slide_11_hot_reload_vs_restart.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_11_hot_reload_vs_restart.dart) |
+| **Slide 12** | Anatomi Berkas `lib/main.dart` Minimalis | [slide_12_hello_flutter_minimal.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_12_hello_flutter_minimal.dart) |
+| **Slide 13** | Bedah Default Counter App & Cara Kerja `setState` | [slide_13_counter_app_deepdive.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_13_counter_app_deepdive.dart) |
+| **Slide 14** | Bingkai Simulasi Smartphone di Google Chrome | [slide_14_chrome_preview_frame.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_14_chrome_preview_frame.dart) |
+| **Slide 15** | Detektor Dimensi Layar HP & USB Debugging | [slide_15_device_info_hardware.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_15_device_info_hardware.dart) |
+| **Slide 16** | Cheatsheet Shortcut Sakti VS Code & Terminal | [slide_16_vscode_shortcuts_guide.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_16_vscode_shortcuts_guide.dart) |
+| **Slide 17** | Solusi Master Lab Quest: Hello Flutter & Hot Reload | [slide_17_lab_quest_tugas_01.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_17_lab_quest_tugas_01.dart) |
+| **Slide 18** | Jembatan Pertemuan 02: Null Safety & Asinkronus | [slide_18_preview_modern_dart.dart](07_contoh_kode_program/pertemuan_01_pengantar_flutter/slide_18_preview_modern_dart.dart) |
+
+---
+
+### 📱 Pertemuan 04: Form Handling, Validasi Masukan & Navigasi GoRouter
 
 | Slide | Konsep Materi yang Dibahas | Tautan Berkas Kode di GitHub |
 | :---: | :--- | :--- |
