@@ -46,16 +46,21 @@ mobile2026/
 
 ## 📊 Daftar Slide Presentasi Kuliah (.pptx)
 
-| Pertemuan | Topik Materi | Unduh / Buka Slide PPTX |
-| :---: | :--- | :---: |
-| **01** | Pengantar Mobile, Ekosistem Flutter & Impeller Engine | [📥 Buka Slide M01](03_slide_presentasi/PERTEMUAN_01_Pengantar_Flutter_dan_Ekosistem.pptx) |
-| **02** | Modern Dart Programming (Null Safety & Concurrency) | [📥 Buka Slide M02](03_slide_presentasi/PERTEMUAN_02_Modern_Dart_Programming.pptx) |
-| **03** | Everything is a Widget (Widget Tree & Layout Anti-Overflow) | [📥 Buka Slide M03](03_slide_presentasi/PERTEMUAN_03_Widget_Tree_dan_Layouting.pptx) |
-| **04** | Form Handling, Validasi Masukan & Navigasi GoRouter | [📥 Buka Slide M04](03_slide_presentasi/PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx) |
-| **06** | State Management Reaktif (Cubit & BLoC Pattern) | [📥 Buka Slide M06](03_slide_presentasi/PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) |
-| **09** | Networking, REST API Client Dio & Error Handling | [📥 Buka Slide M09](03_slide_presentasi/PERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) |
-| **11** | Backend-as-a-Service Firebase, Kamera & Geolocation GPS | [📥 Buka Slide M11](03_slide_presentasi/PERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) |
-| **14** | Automated Unit/Widget Testing & DevTools Profiling | [📥 Buka Slide M14](03_slide_presentasi/PERTEMUAN_14_Automated_Testing_dan_Profiling.pptx) |
+> [!TIP]
+> **Petunjuk Akses Slide:**
+> - Klik **⚡ Download (.pptx)** untuk langsung mengunduh otomatis file slide ke laptop/HP Anda.
+> - Klik **👁️ Baca di Web** jika Anda ingin langsung membuka dan membaca slide di browser tanpa perlu menginstal Microsoft PowerPoint.
+
+| Pertemuan | Topik Materi | Unduh Slide (.pptx) | Alternatif: Baca di Web |
+| :---: | :--- | :---: | :---: |
+| **01** | Pengantar Mobile, Ekosistem Flutter & Impeller Engine | [⚡ Download M01 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_01_Pengantar_Flutter_dan_Ekosistem.pptx) | [👁️ Baca Online M01](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_01_Pengantar_Flutter_dan_Ekosistem.pptx) |
+| **02** | Modern Dart Programming (Null Safety & Concurrency) | [⚡ Download M02 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_02_Modern_Dart_Programming.pptx) | [👁️ Baca Online M02](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_02_Modern_Dart_Programming.pptx) |
+| **03** | Everything is a Widget (Widget Tree & Layout Anti-Overflow) | [⚡ Download M03 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_03_Widget_Tree_dan_Layouting.pptx) | [👁️ Baca Online M03](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_03_Widget_Tree_dan_Layouting.pptx) |
+| **04** | Form Handling, Validasi Masukan & Navigasi GoRouter | [⚡ Download M04 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_04_Form_Handling_dan_GoRouter.pptx) | [👁️ Baca Online M04](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_04_Form_Handling_dan_GoRouter.pptx) |
+| **06** | State Management Reaktif (Cubit & BLoC Pattern) | [⚡ Download M06 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) | [👁️ Baca Online M06](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_06_State_Management_Cubit_dan_BLoC.pptx) |
+| **09** | Networking, REST API Client Dio & Error Handling | [⚡ Download M09 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) | [👁️ Baca Online M09](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_09_Networking_REST_API_dan_Dio.pptx) |
+| **11** | Backend-as-a-Service Firebase, Kamera & Geolocation GPS | [⚡ Download M11 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) | [👁️ Baca Online M11](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_11_Backend_as_a_Service_Firebase.pptx) |
+| **14** | Automated Unit/Widget Testing & DevTools Profiling | [⚡ Download M14 (.pptx)](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/03_slide_presentasi/PERTEMUAN_14_Automated_Testing_dan_Profiling.pptx) | [👁️ Baca Online M14](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2F03_slide_presentasi%2FPERTEMUAN_14_Automated_Testing_dan_Profiling.pptx) |
 
 ---
 
