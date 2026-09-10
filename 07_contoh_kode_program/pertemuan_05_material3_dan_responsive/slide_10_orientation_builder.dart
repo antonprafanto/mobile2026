@@ -46,11 +46,7 @@ class OrientationScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      isPortrait
-                          ? Icons.smartphone
-                          : Icons.screen_rotation,
-                    ),
+                    Icon(isPortrait ? Icons.smartphone : Icons.screen_rotation),
                     const SizedBox(width: 8),
                     Text(
                       isPortrait

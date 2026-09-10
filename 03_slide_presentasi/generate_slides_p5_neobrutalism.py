@@ -182,14 +182,14 @@ class NeoBrutalistDeckBuilder:
 
         tb_hb = slide.shapes.add_textbox(Inches(1.1), Inches(1.86), Inches(4.4), Inches(0.38))
         p_hb = tb_hb.text_frame.paragraphs[0]
-        p_hb.text = "💡 KONSEP INTI & CARA KERJA"
+        p_hb.text = "💡 KONSEP INTI & ANALOGI AWAM"
         p_hb.font.name = FONT_HEADING
         p_hb.font.size = Pt(10.5)
         p_hb.font.bold = True
         p_hb.font.color.rgb = COLOR_BLACK
 
-        content_h = Inches(3.2) if tip else Inches(4.3)
-        tb_l = slide.shapes.add_textbox(Inches(1.1), Inches(2.38), Inches(4.4), content_h)
+        content_h = Inches(3.1) if tip else Inches(4.3)
+        tb_l = slide.shapes.add_textbox(Inches(1.1), Inches(2.36), Inches(4.4), content_h)
         tf_l = tb_l.text_frame
         tf_l.word_wrap = True
 
@@ -197,24 +197,24 @@ class NeoBrutalistDeckBuilder:
             p = tf_l.paragraphs[0] if i == 0 else tf_l.add_paragraph()
             p.text = f"■  {b}"
             p.font.name = FONT_BODY
-            p.font.size = Pt(10.5)
+            p.font.size = Pt(9.8)
             p.font.color.rgb = RGBColor(20, 20, 20)
-            p.space_after = Pt(8)
+            p.space_after = Pt(6)
 
         if tip:
-            tip_box = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.05), Inches(5.55), Inches(4.5), Inches(1.1))
+            tip_box = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.05), Inches(5.52), Inches(4.5), Inches(1.15))
             tip_box.fill.solid()
             tip_box.fill.fore_color.rgb = COLOR_YELLOW
             tip_box.line.color.rgb = COLOR_BLACK
             tip_box.line.width = Pt(2.0)
 
-            tb_tip = slide.shapes.add_textbox(Inches(1.1), Inches(5.58), Inches(4.4), Inches(1.0))
+            tb_tip = slide.shapes.add_textbox(Inches(1.1), Inches(5.55), Inches(4.4), Inches(1.05))
             tf_tip = tb_tip.text_frame
             tf_tip.word_wrap = True
             p_tip = tf_tip.paragraphs[0]
-            p_tip.text = f"💡 TIPS PRAKTIKUM:\n{tip}"
+            p_tip.text = f"💡 TIPS PRAKTIKUM & PEDOMAN:\n{tip}"
             p_tip.font.name = FONT_BODY
-            p_tip.font.size = Pt(9.5)
+            p_tip.font.size = Pt(9.2)
             p_tip.font.bold = True
             p_tip.font.color.rgb = COLOR_BLACK
 
@@ -385,12 +385,12 @@ deck5.add_cover(
 # ---------------------------------------------------------------------
 deck5.add_concept_with_code(
     "SETUP & ALAT UJI",
-    "Menguji UI Responsif di Browser Chrome (Hemat RAM)",
+    "Menguji UI Responsif di Chrome (Hemat RAM & Anti-Lag)",
     [
-        "Tidak perlu membeli banyak perangkat fisik atau membuka emulator tablet yang sangat berat di PC lab.",
-        "Cukup jalankan: 'flutter run -d chrome'. Peramban web Google Chrome memakan RAM < 150MB.",
-        "Tarik sisi kanan jendela Chrome untuk menyimulasikan layar ponsel (lebar <600dp) hingga layar tablet/desktop (>840dp).",
-        "Hot Reload (<1 detik) membuat iterasi desain responsif menjadi sangat instan dan menyenangkan."
+        "💡 Analogi Simulator: Emulator Android Studio di PC lab sering berat seperti helikopter. Gunakan Chrome sebagai simulator super ringan!",
+        "🚀 Cukup jalankan: 'flutter run -d chrome'. Konsumsi RAM di bawah 150MB sehingga laptop berspesifikasi pas-pasan tetap lancar jaya.",
+        "↔️ Efek Karet Gelang: Cukup tarik tepi jendela Chrome untuk menyimulasikan layar ponsel (<600dp), tablet (600-840dp), hingga laptop (>840dp).",
+        "⚡ Fitur Hot Reload instan (<1 detik) membuat Anda bisa melihat adaptasi tata letak secara langsung tanpa perlu restart."
     ],
     """// Membaca lebar layar peramban saat di-resize:
 final screenWidth = MediaQuery.sizeOf(context).width;
@@ -400,7 +400,7 @@ final isMobile = screenWidth < 600;
 
 print(isMobile ? 'Tampilan: Ponsel' : 'Tampilan: Tablet/PC');""",
     filename="responsive_tools.dart",
-    tip="Gunakan 'flutter run -d chrome' untuk menghemat memori PC laboratorium Anda!",
+    tip="Tarik pinggir jendela Chrome untuk menguji responsivitas tanpa perlu emulator berat!",
     tag_color=COLOR_YELLOW,
     full_code_file="slide_02_tools_dan_preview_responsif.dart"
 )
@@ -410,29 +410,30 @@ print(isMobile ? 'Tampilan: Ponsel' : 'Tampilan: Tablet/PC');""",
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "DESAIN SISTEM M3",
-    "Filosofi Material 3: Sudut Alami & Komponen Modern",
+    "Filosofi Material 3: Sudut Alami, Tombol, & 3 Varian Kartu",
     [
-        "Material 3 adalah evolusi desain antarmuka resmi Google untuk Android 12 ke atas dan lintas platform.",
-        "Ciri khas utama: Sudut membulat alami (12dp s.d. 16dp), bayangan elevasi halus, dan tombol hierarki tonal.",
-        "Komponen tombol standar M3: 'FilledButton' (aksi utama), 'FilledButton.tonal' (aksi sekunder), dan 'OutlinedButton'.",
-        "Wajib diaktifkan di Flutter dengan menetapkan: 'useMaterial3: true' di dalam ThemeData."
+        "🛋️ Analogi Furnitur Modern: M3 hadir layaknya sofa Skandinavia minimalis—tanpa sudut tajam menusuk, bayangan lembut, dan warna menyejukkan.",
+        "🔘 Tombol Modern: Gunakan 'FilledButton' (aksi utama kontras), 'FilledButton.tonal' (aksi sekunder lembut), dan 'OutlinedButton'.",
+        "🃏 3 Varian Kartu M3: 'Card()' (elevated/melayang halus), 'Card.filled()' (rata warna tonal), dan 'Card.outlined()' (garis tepi halus).",
+        "⚙️ Syarat Wajib: Selalu pasang 'useMaterial3: true' di dalam ThemeData agar komponen otomatis beralih ke standar modern 2026."
     ],
     """MaterialApp(
   theme: ThemeData(
     useMaterial3: true, // Wajib diaktifkan!
     colorSchemeSeed: Colors.indigo,
   ),
-  home: const Scaffold(
-    body: Center(
-      child: FilledButton(
-        onPressed: null,
-        child: Text('Tombol Material 3'),
-      ),
+  home: Scaffold(
+    body: Column(
+      children: [
+        FilledButton(onPressed: (){}, child: Text('Aksi')),
+        Card(child: Text('Card Elevated')),
+        Card.outlined(child: Text('Card Outlined')),
+      ],
     ),
   ),
 );""",
     filename="material3_philosophy.dart",
-    tip="Gunakan FilledButton sebagai pengganti ElevatedButton lama untuk standar UI 2026!",
+    tip="Gunakan Card.outlined untuk tampilan bersih dan FilledButton untuk tombol aksi utama!",
     tag_color=COLOR_CYAN,
     full_code_file="slide_03_filosofi_material3.dart"
 )
@@ -442,25 +443,25 @@ deck5.add_concept_with_code(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "PALET WARNA DINAMIS",
-    "ColorScheme Seed: Satu Warna Menghasilkan Seluruh Tema",
+    "ColorScheme Seed: Pohon Warna Harmonis & Aturan Kaus-Sablon",
     [
-        "Di era Material 3, Anda tidak perlu lagi menentukan puluhan kode warna heksadesimal secara manual!",
-        "Cukup sediakan satu warna benih: 'colorSchemeSeed: Colors.teal'.",
-        "Flutter otomatis menghitung palet harmonis: 'primary', 'primaryContainer', 'secondary', 'surface', dsb.",
-        "Dapat dibaca di mana saja melalui: 'Theme.of(context).colorScheme'."
+        "🌱 Analogi Pohon Warna: Anda tanam 1 biji benih ('colorSchemeSeed: Colors.teal'), Google menumbuhkan 30+ warna daun & bunga harmonis otomatis!",
+        "👕 Aturan Kaus & Sablon (Prefix 'on'): Jika kaus berwarna gelap ('primary'), tinta tulisan di atasnya wajib ('onPrimary'). Jangan sablon gelap di atas gelap!",
+        "📦 Pasangan Kontainer: Gunakan 'primaryContainer' (warna wadah kotak) dipadukan dengan 'onPrimaryContainer' (warna teks di dalamnya).",
+        "🎯 Cara Memanggil: Ambil seluruh palet warna aktif di widget mana saja melalui: 'Theme.of(context).colorScheme'."
     ],
     """// Mengambil palet warna aktif di widget:
 final colors = Theme.of(context).colorScheme;
 
 Card(
-  color: colors.primaryContainer,
+  color: colors.primaryContainer, // Warna kotak kaus
   child: Text(
     'Teks Kontras Otomatis',
-    style: TextStyle(color: colors.onPrimaryContainer),
+    style: TextStyle(color: colors.onPrimaryContainer), // Warna sablon
   ),
 );""",
     filename="color_scheme_seed.dart",
-    tip="Selalu pasangkan wadah warna (primaryContainer) dengan teks pasangannya (onPrimaryContainer)!",
+    tip="Hukum Emas Kontras: Wadah 'xyzContainer' WAJIB dipasangkan dengan teks 'onXyzContainer'!",
     tag_color=COLOR_CORAL,
     full_code_file="slide_04_color_scheme_seed.dart"
 )
@@ -470,12 +471,12 @@ Card(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "HIRARKI TIPOGRAFI",
-    "Skala Tipografi M3: Display, Headline, Title, Body",
+    "Skala Tipografi M3: Hirarki Koran & Majalah (Anti-Hardcode)",
     [
-        "Hindari melakukan hardcode 'fontSize: 24' pada widget Text Anda!",
-        "Gunakan skala teks resmi Google: Display (sangat besar), Headline (judul bab), Title (judul kartu), Body (paragraf isi).",
-        "Standar default teks aplikasi adalah 'bodyMedium' (14sp).",
-        "Keuntungan: Otomatis mematuhi pengaturan aksesibilitas pembesaran huruf di smartphone pengguna tunanetra."
+        "📰 Analogi Koran & Majalah: Desain punya susunan rapi—Display (baliho), Headline (judul bab), Title (judul kartu), Body (isi bacaan).",
+        "🚫 Dilarang Keras: Hindari menulis 'fontSize: 24' manual! Ukuran kaku membuat teks tidak fleksibel terhadap setelan HP pengguna.",
+        "👓 Peduli Lansia: Saat kakek/nenek memperbesar ukuran huruf sistem di HP (150%), 'TextTheme' otomatis menyesuaikan diri tanpa merusak mata.",
+        "📖 Standar Default: Standar paragraf utama aplikasi Flutter adalah 'bodyMedium' (14sp), nyaman dibaca di segala kerapatan layar."
     ],
     """final textTheme = Theme.of(context).textTheme;
 
@@ -484,7 +485,7 @@ Text('Judul Kartu', style: textTheme.titleMedium);
 Text('Paragraf Artikel', style: textTheme.bodyMedium);
 Text('Keterangan Kecil', style: textTheme.labelSmall);""",
     filename="typography_hierarchy.dart",
-    tip="Memanfaatkan TextTheme menjamin aplikasi Anda ramah aksesibilitas tunanetra!",
+    tip="Gunakan TextTheme agar aplikasi Anda otomatis mematuhi aksesibilitas pembesaran font!",
     tag_color=COLOR_PURPLE,
     full_code_file="slide_05_typography_text_theme.dart"
 )
@@ -494,28 +495,28 @@ Text('Keterangan Kecil', style: textTheme.labelSmall);""",
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "THEME MODE",
-    "Mendukung Tema Terang & Gelap (Light & Dark)",
+    "Tema Dinamis: Kacamata Hitam Transitions (Light, Dark, System)",
     [
-        "Aplikasi modern wajib mendukung mode gelap demi kenyamanan mata dan efisiensi baterai layar OLED.",
-        "MaterialApp memiliki 3 properti kunci: 'theme' (terang), 'darkTheme' (gelap), dan 'themeMode'.",
-        "'ThemeMode.system' akan otomatis mengikuti setelan tema di sistem operasi HP pengguna.",
-        "Uji kontras teks Anda pada kedua mode sebelum mengumpulkan tugas praktikum."
+        "🕶️ Analogi Lensa Transitions: Bening saat di dalam ruangan, otomatis gelap sejuk saat di luar terik matahari. Begitu pula tema terang dan gelap.",
+        "🌙 Manfaat Mode Gelap: Mengistirahatkan mata pengguna di malam hari dan menghemat baterai layar OLED/AMOLED smartphone secara signifikan.",
+        "⚙️ Tiga Pasak Utama: MaterialApp memiliki properti 'theme' (terang), 'darkTheme' (gelap), dan pengatur saklar 'themeMode'.",
+        "🔄 Ikut Setelan HP: 'ThemeMode.system' akan otomatis mendeteksi apakah smartphone pengguna sedang mode gelap tanpa perlu tombol manual."
     ],
     """MaterialApp(
   theme: ThemeData(
     useMaterial3: true,
     colorSchemeSeed: Colors.indigo,
-    brightness: Brightness.light,
+    brightness: Brightness.light, // Terang
   ),
   darkTheme: ThemeData(
     useMaterial3: true,
     colorSchemeSeed: Colors.indigo,
-    brightness: Brightness.dark,
+    brightness: Brightness.dark,  // Gelap
   ),
   themeMode: _isDark ? ThemeMode.dark : ThemeMode.light,
 );""",
     filename="dynamic_theme.dart",
-    tip="Gunakan SegmentedButton untuk memberikan opsi ganti tema Terang/Gelap/Sistem.",
+    tip="Gunakan SegmentedButton untuk memberi opsi ganti tema Terang, Gelap, atau Ikut Sistem!",
     tag_color=COLOR_MINT,
     full_code_file="slide_06_dynamic_theme_light_dark.dart"
 )
@@ -525,23 +526,23 @@ deck5.add_concept_with_code(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "RESPONSIF 1",
-    "MediaQuery: Membaca Ukuran Layar Fisik Total",
+    "MediaQuery: Sertifikat Luas Tanah Seluruh Layar HP",
     [
-        "MediaQuery memberikan informasi menyeluruh tentang perangkat fisik tempat aplikasi berjalan.",
-        "Membaca dimensi: 'MediaQuery.sizeOf(context).width' dan '.height'.",
-        "Membaca orientasi: 'MediaQuery.orientationOf(context) == Orientation.portrait'.",
-        "⚠️ Catatan Awam: MediaQuery mengukur SELURUH layar HP, bukan ruang sempit di dalam dialog atau split-view."
+        "📐 Analogi Luas Tanah Rumah: MediaQuery mengukur luas total seluruh bentang kaca layar HP dari ujung kiri atas ke kanan bawah.",
+        "📏 Membaca Dimensi: 'MediaQuery.sizeOf(context).width' dan '.height' mengembalikan lebar & tinggi total dalam satuan dp.",
+        "📱 Deteksi Poni & Keyboard: MediaQuery juga mengetahui area terpotong kamera depan (Safe Area / paddingOf) dan munculnya keyboard.",
+        "⚠️ Batasan: MediaQuery mengukur SELURUH layar fisik, bukan ruang sempit di dalam kartu atau dialog pop-up split-view."
     ],
     """// Membaca ukuran layar total:
 final size = MediaQuery.sizeOf(context);
 
-// Deteksi orientasi:
+// Deteksi orientasi tegak vs miring:
 final isPortrait = MediaQuery.orientationOf(context) 
     == Orientation.portrait;
 
-print('Lebar Layar: ${size.width} dp');""",
+print('Lebar Layar Total: ${size.width} dp');""",
     filename="mediaquery_screen.dart",
-    tip="Gunakan MediaQuery.sizeOf(context) daripada MediaQuery.of(context).size untuk efisiensi rebuild!",
+    tip="Gunakan MediaQuery.sizeOf(context) alih-alih MediaQuery.of(context).size untuk efisiensi rebuild!",
     tag_color=COLOR_YELLOW,
     full_code_file="slide_07_mediaquery_dimensions.dart"
 )
@@ -551,15 +552,16 @@ print('Lebar Layar: ${size.width} dp');""",
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "RESPONSIF 2",
-    "LayoutBuilder: Mengetahui Ruang Tersedia dari Parent",
+    "LayoutBuilder: Ruang Kosong Sudut Kamar untuk Lemari",
     [
-        "Inilah senjata rahasia membangun komponen antarmuka yang benar-benar modular dan fleksibel.",
-        "LayoutBuilder menyediakan objek 'BoxConstraints': memberi tahu lebar maksimum yang boleh digunakan widget anak.",
-        "Sangat ideal untuk kartu yang bisa tampil di ponsel penuh (lebar 400dp) maupun di dalam tablet split-view (lebar 300dp).",
-        "Hukum Emas: Jika membuat widget modular, gunakan LayoutBuilder, BUKAN MediaQuery!"
+        "🚪 Analogi Lemari Sudut Kamar: Lemari tidak peduli luas seluruh rumah (MediaQuery), yang penting berapa ruang kosong di sudut kamar!",
+        "📦 BoxConstraints: LayoutBuilder memberikan 'constraints.maxWidth'—lebar maksimum yang disiapkan oleh widget induk (*parent*).",
+        "🧩 Senjata Komponen Modular: Satu kartu yang sama bisa otomatis tampil vertikal (Column) jika sempit, atau horizontal (Row) jika lapang.",
+        "👑 Hukum Emas Widget: Jika Anda membangun widget modular/reusable, selalu gunakan LayoutBuilder, BUKAN MediaQuery!"
     ],
     """LayoutBuilder(
   builder: (context, constraints) {
+    // Membaca ruang yang diizinkan oleh parent:
     if (constraints.maxWidth < 500) {
       return const Column(children: [...]); // Vertikal
     } else {
@@ -568,7 +570,7 @@ deck5.add_concept_with_code(
   },
 );""",
     filename="layout_builder_demo.dart",
-    tip="LayoutBuilder memungkinkan satu widget yang sama tampil rapi di HP, tablet, maupun dialog pop-up!",
+    tip="LayoutBuilder membuat widget Anda fleksibel tampil di HP penuh, tablet split-pane, maupun pop-up!",
     tag_color=COLOR_CYAN,
     full_code_file="slide_08_layoutbuilder_constraints.dart"
 )
@@ -578,22 +580,22 @@ deck5.add_concept_with_code(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "BREAKPOINTS",
-    "Standar Ambang Layar Google (Compact, Medium, Expanded)",
+    "Standar Breakpoints Google: Ukuran Baju S, M, L Layar Digital",
     [
-        "Compact (< 600 dp): Mayoritas smartphone dalam posisi tegak (portrait). Tata letak 1 kolom.",
-        "Medium (600 dp s.d. 840 dp): Tablet kecil, ponsel lipat terbuka (*foldable*), atau ponsel miring (landscape).",
-        "Expanded (> 840 dp): Tablet besar, laptop, dan layar monitor desktop. Tata letak multi-kolom.",
-        "Gunakan enum atau helper class sederhana untuk mengklasifikasikan tampilan aplikasi Anda."
+        "👕 Analogi Ukuran Baju: Tubuh punya ukuran baju S, M, L. Layar digital pun memiliki 3 klasifikasi standar industri resmi Google:",
+        "📱 S - Compact (< 600 dp): Mayoritas smartphone posisi tegak (*portrait*). Tata letak 1 kolom sederhana.",
+        "📖 M - Medium (600 s.d. 840 dp): Tablet kecil, HP lipat (*foldable*), atau HP miring (*landscape*). Tata letak 2 kolom.",
+        "🖥️ L - Expanded (> 840 dp): Tablet besar, laptop, dan monitor desktop. Tata letak multi-kolom berdampingan."
     ],
     """enum WindowSize { compact, medium, expanded }
 
 WindowSize getSizeClass(double width) {
-  if (width < 600) return WindowSize.compact;
-  if (width < 840) return WindowSize.medium;
-  return WindowSize.expanded;
+  if (width < 600) return WindowSize.compact;  // Ukuran S (HP)
+  if (width < 840) return WindowSize.medium;   // Ukuran M (Tablet)
+  return WindowSize.expanded;                  // Ukuran L (Desktop)
 }""",
     filename="breakpoints_helper.dart",
-    tip="Angka sakti yang wajib Anda hafal: 600 dp adalah batas antara Ponsel dan Tablet!",
+    tip="Angka sakti yang wajib Anda hafal: 600 dp adalah batas sakral antara Ponsel dan Tablet!",
     tag_color=COLOR_CORAL,
     full_code_file="slide_09_breakpoints_helper.dart"
 )
@@ -603,24 +605,25 @@ WindowSize getSizeClass(double width) {
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "ORIENTASI LAYAR",
-    "OrientationBuilder: Merespons Rotasi Layar Smartphone",
+    "OrientationBuilder: Memutar Buku Sketsa (Tegak vs Miring)",
     [
-        "Ketika pengguna memiringkan ponselnya, tinggi layar berkurang drastis sementara lebar bertambah.",
-        "OrientationBuilder mendengarkan event rotasi dan membangun ulang UI secara reaktif.",
-        "Pola umum: Mengubah GridView dari 2 kolom (portrait) menjadi 4 kolom (landscape).",
-        "Mencegah elemen formulir terpotong oleh keyboard saat ponsel dalam posisi miring."
+        "🎨 Analogi Buku Gambar: Saat buku tegak kita menggambar ke bawah; saat dimiringkan kita menggambar melebar ke samping.",
+        "🔄 Reaksi Rotasi Layar: 'OrientationBuilder' mendengarkan perputaran HP secara instan dan membangun ulang antarmuka yang cocok.",
+        "📊 Adaptasi Grid Cerdas: Ubah daftar dari 2 kolom (saat portrait) menjadi 4 kolom (saat landscape) agar ruang tidak terbuang sia-sia.",
+        "⌨️ Anti-Terpotong Keyboard: Pada posisi landscape, tinggi layar sangat terbatas, pastikan elemen formulir dapat di-scroll vertikal."
     ],
     """OrientationBuilder(
   builder: (context, orientation) {
     final isPortrait = orientation == Orientation.portrait;
     return GridView.count(
+      // 2 kolom saat tegak, 4 kolom saat miring:
       crossAxisCount: isPortrait ? 2 : 4,
       children: [...],
     );
   },
 );""",
     filename="orientation_builder.dart",
-    tip="Uji rotasi layar di emulator atau Chrome dengan shortcut Ctrl + F11 / rotasi jendela!",
+    tip="Uji rotasi layar dengan shortcut Ctrl+F11 di emulator atau ubah rasio jendela Chrome!",
     tag_color=COLOR_PURPLE,
     full_code_file="slide_10_orientation_builder.dart"
 )
@@ -630,28 +633,28 @@ deck5.add_concept_with_code(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "NAVIGASI ADAPTIF",
-    "Navigasi Layar Lebar: NavigationBar vs NavigationRail",
+    "Navigasi Adaptif: Ergonomi Jangkauan Jempol Tangan Manusia",
     [
-        "Di ponsel: Jempol pengguna mudah menjangkau bilah bawah -> Gunakan 'NavigationBar'.",
-        "Di tablet/desktop: Layar terlalu lebar untuk menu bawah -> Pindahkan ke bilah samping kiri: 'NavigationRail'.",
-        "Kedua widget ini memiliki properti 'destinations' dan 'selectedIndex' yang serupa sehingga mudah digabungkan.",
-        "Standar baku pengalaman pengguna profesional di tahun 2026."
+        "👍 Analogi Jangkauan Jempol: Saat memegang HP satu tangan, jempol berada di bawah. Saat pegang tablet dua tangan di pinggir, jempol berada di sisi layar!",
+        "📱 Layar Ponsel (<600dp): Gunakan 'NavigationBar' di dasar layar agar navigasi mudah dijangkau satu tangan pengguna.",
+        "🖥️ Layar Tablet (>=600dp): Pindahkan ke 'NavigationRail' di sisi kiri layar untuk menghemat ruang vertikal yang sangat berharga.",
+        "🤝 Berbagi Halaman: Keduanya berbagi 'selectedIndex' dan daftar tujuan yang sama sehingga logika navigasi tidak perlu ditulis ulang."
     ],
     """Scaffold(
   body: Row(
     children: [
       if (isTablet)
-        NavigationRail(
+        NavigationRail( // Samping kiri di tablet
           selectedIndex: _idx,
           destinations: [...],
         ),
       Expanded(child: _pages[_idx]),
     ],
   ),
-  bottomNavigationBar: isTablet ? null : NavigationBar(...),
+  bottomNavigationBar: isTablet ? null : NavigationBar(...), // Bawah di HP
 );""",
     filename="adaptive_navigation.dart",
-    tip="NavigationRail di samping menghemat ruang vertikal tablet yang sangat berharga!",
+    tip="NavigationRail di sisi kiri membuat antarmuka tablet terlihat elegan dan berkelas profesional!",
     tag_color=COLOR_MINT,
     full_code_file="slide_11_adaptive_navigation.dart"
 )
@@ -661,17 +664,17 @@ deck5.add_concept_with_code(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "LAYOUT GRID",
-    "Grid Responsif: Menyesuaikan Kolom Otomatis",
+    "Grid Responsif Dinamis: Rak Pajangan Toko Fleksibel",
     [
-        "Jangan mematok jumlah kolom grid secara kaku (misal: crossAxisCount: 2). Di tablet, kartu akan melar aneh!",
-        "Gunakan rumus pembagi atau fungsi helper berdasarkan lebar ruang: width < 600 (1 kolom), < 900 (2 kolom), > 900 (3 kolom).",
-        "Atau gunakan: 'SliverGridDelegateWithMaxCrossAxisExtent' dengan maxCrossAxisExtent: 250.",
-        "Hasilnya: Berapa pun lebar layar yang ditarik pengguna, ukuran kartu tetap proporsional."
+        "🏪 Analogi Rak Toko: Rak sempit memuat 2 produk, rak lebar memuat 4 hingga 6 produk tanpa membuat kemasan produk melar gepeng.",
+        "🚫 Kesalahan Pemula: Menulis 'crossAxisCount: 2' permanen. Di tablet layar lebar, kartu produk akan melar aneh seperti kardus kulkas!",
+        "🧮 Solusi Rumus Adaptif: Tentukan jumlah kolom lewat rumus lebar: lebar <600 (1-2 kolom), <900 (3 kolom), >900 (4-6 kolom).",
+        "✨ Opsi Otomatis: Atau gunakan 'SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 220)'—Flutter yang menghitungkan kolomnya!"
     ],
     """int calculateColumns(double width) {
-  if (width < 600) return 1; // Ponsel
-  if (width < 900) return 2; // Tablet
-  return 3;                  // Desktop
+  if (width < 600) return 1; // Ponsel (1 kolom)
+  if (width < 900) return 2; // Tablet (2 kolom)
+  return 3;                  // Desktop (3 kolom)
 }
 
 GridView.builder(
@@ -681,7 +684,7 @@ GridView.builder(
   itemBuilder: (ctx, i) => Card(...),
 );""",
     filename="responsive_grid.dart",
-    tip="Uji grid Anda pada resolusi tablet agar kartu tidak terlihat gepeng atau meregang.",
+    tip="Gunakan maxCrossAxisExtent jika Anda ingin ukuran kartu selalu konsisten di segala resolusi layar!",
     tag_color=COLOR_YELLOW,
     full_code_file="slide_12_responsive_grid_layout.dart"
 )
@@ -691,24 +694,24 @@ GridView.builder(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "POLA ARSITEKTUR UI",
-    "Pola Master-Detail: Tumpukan HP vs Split Pane Tablet",
+    "Pola Master-Detail: WhatsApp di HP vs WhatsApp Web di Komputer",
     [
-        "Di ponsel: Pengguna mengetuk item daftar -> Berpindah ke layar detail baru (Navigator.push).",
-        "Di tablet: Daftar (Master) dan rincian (Detail) ditampilkan berdampingan dalam satu layar (Split Pane).",
-        "Pengguna tablet tidak perlu bolak-balik menekan tombol 'Back' untuk membaca isi berkas.",
-        "Merupakan pola desain antarmuka wajib pada aplikasi email, pesan chat, dan katalog e-commerce."
+        "💬 Analogi WhatsApp & Gmail: Di HP, kita ketuk kontak -> tumpukan layar ganti ke chat -> tekan tombol Back untuk kembali.",
+        "💻 Di Laptop/Tablet: Daftar kontak (Master) di sisi kiri dan obrolan pesan (Detail) di sisi kanan tampil berdampingan dalam satu layar.",
+        "⚡ Efisiensi 2x Lipat: Pengguna tablet tidak perlu lelah bolak-balik menekan tombol 'Back' hanya untuk membaca rincian data.",
+        "🏛️ Standar Industri: Pola arsitektur wajib untuk aplikasi e-commerce, portal berita, email, dan catatan medis rumah sakit."
     ],
     """if (isTablet)
   Row(
     children: [
-      SizedBox(width: 300, child: MasterList()),
-      Expanded(child: DetailView(selectedItem)),
+      SizedBox(width: 300, child: MasterList()), // Kiri: Daftar
+      Expanded(child: DetailView(selectedItem)),  // Kanan: Rincian
     ],
   )
 else
-  MasterList(); // Di ponsel: push() ke layar baru""",
+  MasterList(); // Di ponsel: push() ke layar rincian baru""",
     filename="master_detail_pattern.dart",
-    tip="Pola Master-Detail meningkatkan produktivitas pengguna tablet hingga 2 kali lipat!",
+    tip="Pola Master-Detail meningkatkan produktivitas pengguna tablet hingga dua kali lipat!",
     tag_color=COLOR_CYAN,
     full_code_file="slide_13_master_detail_pattern.dart"
 )
@@ -718,23 +721,23 @@ else
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "WIDGET ADAPTIF",
-    "Komponen .adaptive(): Otomatis Rasa Android & iOS",
+    "Widget Adaptif: Colokan Adaptor Universal Internasional",
     [
-        "Flutter menyediakan konstruktor khusus '.adaptive()' untuk komponen yang memiliki perbedaan gaya drastis.",
-        "Contoh: 'Switch.adaptive()' akan bergaya Material 3 di Android/Web, dan bergaya saklar hijau lonjong di iPhone.",
-        "'CircularProgressIndicator.adaptive()' menampilkan lingkaran putar di Android dan pemintal abu di iOS.",
-        "Memberikan sensasi aplikasi asli (*native feel*) tanpa perlu menulis percabangan kode 'if (Platform.isIOS)' manual."
+        "🔌 Analogi Steker Adaptor: Satu colokan charger yang otomatis cocok di stopkontak Indonesia maupun stopkontak luar negeri tanpa adaptor tambahan.",
+        "🔄 Konstruktor '.adaptive()': Flutter menyediakan komponen yang otomatis berubah bentuk mengikuti gaya asli sistem operasi perangkat.",
+        "🟢 Switch.adaptive(): Tampil saklar Material 3 di Android/Web, dan saklar bulat hijau lonjong khas iOS di perangkat iPhone/iPad.",
+        "⏳ CircularProgressIndicator.adaptive(): Berputar gaya Material di Android dan animasi pemintal abu-abu khas Cupertino di iOS."
     ],
-    """// Saklar otomatis menyesuaikan OS:
+    """// Saklar otomatis menyesuaikan Android / iOS:
 Switch.adaptive(
   value: _isActive,
   onChanged: (val) => setState(() => _isActive = val),
 );
 
-// Loading spinner otomatis:
+// Loading spinner otomatis bergaya native OS:
 CircularProgressIndicator.adaptive();""",
     filename="adaptive_widgets.dart",
-    tip="Gunakan konstruktor .adaptive() untuk elemen kontrol formulir lintas platform!",
+    tip="Gunakan Switch.adaptive() dan Slider.adaptive() agar aplikasi Anda berasa native di Android dan iPhone!",
     tag_color=COLOR_CORAL,
     full_code_file="slide_14_adaptive_widgets_native.dart"
 )
@@ -744,12 +747,12 @@ CircularProgressIndicator.adaptive();""",
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "REUSABLE COMPONENT",
-    "Membangun Komponen Kit: Kartu Statistik Kuliah",
+    "Reusable Component Kit: Balok LEGO Standar Berkualitas",
     [
-        "Aplikasi profesional tidak menduplikasi kode tata letak berulang-ulang (*Don't Repeat Yourself / DRY*).",
-        "Bungkus pola UI yang sering dipakai ke dalam StatelessWidget tersendiri (misal: 'StatCard').",
-        "Terapkan warna dari 'Theme.of(context).colorScheme' agar kartu otomatis berubah saat tema berganti gelap/terang.",
-        "Mendukung konsistensi desain sistem di seluruh tim pengembang mahasiswa."
+        "🧱 Analogi Balok LEGO: Membangun istana megah dari balok LEGO standar yang rapi, bukan mencetak ulang cetakan plastik dari nol setiap saat!",
+        "🚫 Prinsip DRY (Don't Repeat Yourself): Jangan menduplikasi kode kartu statistik berulang kali di berbagai berkas layar.",
+        "📦 Buat Widget Kustom: Bungkus pola UI yang sering dipakai ke dalam StatelessWidget tersendiri (misal: 'StatCard').",
+        "🎨 Desain Token Terpusat: Selalu ambil warna dari 'Theme.of(context).colorScheme' agar kartu otomatis berubah saat tema berganti."
     ],
     """class StatCard extends StatelessWidget {
   final String title;
@@ -779,17 +782,17 @@ deck5.add_concept_with_code(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "AKSESIBILITAS & FONT",
-    "FittedBox: Menangani Skala Teks Besar (Anti-Overflow)",
+    "FittedBox Scaling: Koper Pakaian Berkemasan Vakum",
     [
-        "Masalah nyata: Pengguna lanjut usia menyetel ukuran teks HP menjadi 150% (Font Scale) di setelan sistem.",
-        "Akibatnya: Angka saldo bank 'Rp 10.000.000' meledak dan memicu error garis kuning-hitam (RenderFlex overflow).",
-        "Solusi: Bungkus teks dengan widget 'FittedBox(fit: BoxFit.scaleDown)'.",
-        "Teks akan otomatis menyusut anggun agar muat di dalam lebar kotak yang disediakan tanpa pernah terpotong."
+        "🧳 Analogi Koper Vakum: Saat baju terlalu tebal, kantong vakum mengempiskannya agar tetap muat rapi di dalam koper tanpa merusak resleting.",
+        "💥 Masalah Nyata: Kakek/nenek menyetel pembesaran font HP 150% -> angka saldo bank 'Rp 999.999.999,-' meledak memicu overflow garis kuning-hitam!",
+        "🛡️ Solusi Anggun: Bungkus teks dengan widget sakti: 'FittedBox(fit: BoxFit.scaleDown)'.",
+        "✨ Menyusut Otomatis: Teks akan otomatis menyusut anggun jika ruang terbatas, dan tetap berukuran normal jika ruang tersedia cukup."
     ],
     """Container(
   width: 200,
   child: FittedBox(
-    fit: BoxFit.scaleDown, // Menyusut jika kepanjangan
+    fit: BoxFit.scaleDown, // Otomatis menyusut jika kepanjangan
     child: Text(
       'Rp 999.999.999,-',
       style: TextStyle(fontSize: 32),
@@ -797,7 +800,7 @@ deck5.add_concept_with_code(
   ),
 );""",
     filename="fitted_box_scaling.dart",
-    tip="Gunakan FittedBox pada label saldo, harga produk, dan nomor telepon penting!",
+    tip="Wajib pasang FittedBox pada label harga, saldo dompet, nomor rekening, dan kartu identitas!",
     tag_color=COLOR_MINT,
     full_code_file="slide_16_fittedbox_scaling.dart"
 )
@@ -807,21 +810,21 @@ deck5.add_concept_with_code(
 # -------------------------------------------------------------
 deck5.add_concept_with_code(
     "CHECKLIST PRODUKSI",
-    "5 Aturan Emas Desain Antarmuka Mobile Responsif",
+    "5 Aturan Emas Desain UI Responsif (Checklist Penilaian UTS)",
     [
-        "1. Dilarang Hardcode Dimensi: Jangan menulis 'width: 360', gunakan Expanded, Flexible, atau MediaQuery.",
-        "2. Hormati Breakpoint 600dp: Pisahkan tata letak 1 kolom ponsel vs multi-kolom tablet.",
-        "3. Navigasi Adaptif: NavigationBar di bawah untuk ponsel, NavigationRail di samping untuk tablet.",
-        "4. Uji Rotasi Landscape: Pastikan antarmuka tidak terpotong saat layar dimiringkan.",
-        "5. Cek Uji Kontras Light/Dark: Pastikan teks terbaca jelas pada tema terang maupun gelap."
+        "1. Dilarang Hardcode Dimensi: Hindari menulis 'width: 380', gunakan Expanded, Flexible, atau LayoutBuilder.",
+        "2. Hormati Breakpoint Sakral 600dp: Bedakan tata letak 1 kolom untuk ponsel dan multi-kolom untuk tablet.",
+        "3. Navigasi Adaptif Ergonomis: Bottom NavigationBar di ponsel, Side NavigationRail di tablet.",
+        "4. Lolos Uji Rotasi Layar: Pastikan antarmuka tidak terpotong saat layar dimiringkan horizontal.",
+        "5. Kontras Warna Sempurna: Pastikan teks terbaca jelas di Tema Terang maupun Tema Gelap."
     ],
-    """// Checklist Uji Praktikum Responsif:
-// [✓] Tampilan tidak overflow saat jendela ditarik sempit
-// [✓] Menu pindah ke samping saat layar melebihi 600dp
+    """// Checklist Uji Praktikum Responsif Standar 2026:
+// [✓] Tampilan bebas dari overflow garis kuning-hitam
+// [✓] Navigasi pindah ke samping saat layar melebihi 600dp
 // [✓] Tombol dan kartu menggunakan token warna Material 3
-// [✓] Berjalan mulus di Chrome Web & Ponsel Fisik""",
+// [✓] Berjalan mulus di Chrome Web & Smartphone Fisik""",
     filename="checklist_responsive.dart",
-    tip="Jadikan kelima checklist ini sebagai acuan penilaian proyek UTS kelompok Anda!",
+    tip="Jadikan kelima checklist ini sebagai acuan penilaian proyek UTS kelompok Anda agar meraih nilai A!",
     tag_color=COLOR_YELLOW,
     full_code_file="slide_17_checklist_responsive_ui.dart"
 )

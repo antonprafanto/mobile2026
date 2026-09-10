@@ -66,16 +66,26 @@ class Material3Screen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // 4. Card Material 3
+              // 4. Tiga Varian Kartu M3: Elevated, Filled, dan Outlined
               const Card(
                 elevation: 1,
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    'Ciri Khas M3: Sudut membulat alami (12dp), bayangan elevasi '
-                    'halus, dan pewarnaan tonal harmonis dari benih warna utama.',
-                    textAlign: TextAlign.center,
-                  ),
+                  padding: EdgeInsets.all(12.0),
+                  child: Text('Card (Elevated): Mengambang halus'),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Card.filled(
+                child: const Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Text('Card.filled: Rata dengan warna tonal'),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Card.outlined(
+                child: const Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Text('Card.outlined: Rata dengan garis tepi halus'),
                 ),
               ),
             ],
