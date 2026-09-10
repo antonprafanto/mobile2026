@@ -313,10 +313,10 @@
 * **Tips Awam:** Gunakan selalu `flutter pub add` di terminal daripada menyalin teks manual ke `pubspec.yaml` agar terhindar dari galat indentasi 2 spasi!
 
 ### Slide 3: Dua Jenis Input Teks: TextField vs TextFormField
-* **Kapan Menggunakan `TextField`?** Cocok untuk input berdiri sendiri tanpa form terikat (misal: kolom pencarian *Search Bar* di AppBar).
-* **Kapan Menggunakan `TextFormField`?** Wajib digunakan di dalam formulir pendaftaran, login, transaksi, atau survei.
-* **Keunggulan `TextFormField`:** Terintegrasi langsung dengan ekosistem `Form`, mendukung properti `validator`, `onSaved`, dan penampilan pesan galat merah otomatis.
-* **Sitasi Resmi:** Flutter Cookbook - Build a form with validation (*docs.flutter.dev/cookbook/forms/validation*).
+* **Kapan Menggunakan `TextField`?** Sangat cocok untuk input mandiri tanpa validasi (misal: kolom pencarian *Search Bar* di AppBar).
+* **Kapan Menggunakan `TextFormField`?** Wajib digunakan di formulir pendaftaran/login yang butuh pengecekan data sebelum dikirim.
+* **Keunggulan `TextFormField`:** Jika isian salah, teks peringatan merah (*error text*) otomatis muncul tepat di bawah kotak input tanpa perlu `setState()` manual.
+* **Terintegrasi dengan `Form`:** Mendukung fungsi pengecekan `validator`, penyimpanan `onSaved`, dan dapat divalidasi serentak lewat tombol Submit via `_formKey.currentState!.validate()`.
 * **Contoh Kode:**
   ```dart
   // 1. TextField Sederhana (Untuk Kolom Pencarian):

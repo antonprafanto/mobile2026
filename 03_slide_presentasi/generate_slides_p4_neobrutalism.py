@@ -380,10 +380,10 @@ deck4.add_concept_with_code(
     "KOMPONEN INPUT",
     "Dua Jenis Input Teks: TextField vs TextFormField",
     [
-        "Kapan memakai TextField biasa? Sangat cocok untuk input mandiri tanpa form terikat (misal: kolom pencarian 'Search Bar' di AppBar).",
-        "Kapan memakai TextFormField? Wajib digunakan di dalam formulir pendaftaran, login, transaksi, atau survei.",
-        "TextFormField adalah TextField pintar yang terintegrasi ke ekosistem Form, mendukung properti 'validator', 'onSaved', dan pesan galat otomatis.",
-        "Sitasi Resmi: Flutter Cookbook - Build a form with validation (docs.flutter.dev/cookbook/forms/validation)."
+        "Kapan memakai TextField biasa? Sangat cocok untuk input mandiri tanpa validasi (misal: kolom pencarian 'Search Bar' di AppBar).",
+        "Kapan memakai TextFormField? Wajib digunakan di formulir pendaftaran/login yang butuh pengecekan data sebelum dikirim.",
+        "Keunggulan TextFormField: Jika isian salah, teks peringatan merah (error text) otomatis muncul tepat di bawah kotak input tanpa perlu setState manual.",
+        "Terintegrasi dengan Form: Mendukung fungsi pengecekan 'validator' dan dapat diperiksa serentak via '_formKey.currentState!.validate()'.",
     ],
     """// 1. TextField Sederhana (Untuk Kolom Pencarian):
 TextField(
