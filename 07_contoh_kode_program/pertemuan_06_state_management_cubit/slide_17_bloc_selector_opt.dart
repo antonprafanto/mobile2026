@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 12: OPTIMASI TINGKAT TINGGI DENGAN BLOCSELECTOR
+// SLIDE 17: OPTIMASI TINGKAT TINGGI DENGAN BLOCSELECTOR
 // Topik: Hanya Menggambar Ulang Widget Saat Properti Tertentu Berubah
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -41,7 +41,7 @@ class BlocSelectorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 12 - BlocSelector',
+      title: 'Slide 17 - BlocSelector',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.teal),
       home: BlocProvider(
         create: (context) => ProfilCubit(),
@@ -57,7 +57,7 @@ class SelectorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 12: BlocSelector')),
+      appBar: AppBar(title: const Text('Slide 17: BlocSelector')),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

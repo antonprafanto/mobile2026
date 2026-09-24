@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 08: MENYEDIAKAN CUBIT DENGAN BLOCPROVIDER
+// SLIDE 12: MENYEDIAKAN CUBIT DENGAN BLOCPROVIDER
 // Topik: Dependency Injection & Cara Mengakses Cubit via BuildContext
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -34,7 +34,7 @@ class BlocProviderApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 08 - BlocProvider',
+      title: 'Slide 12 - BlocProvider',
       theme: ThemeData(
         useMaterial3: true,
         brightness: isDark ? Brightness.dark : Brightness.light,
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 08: BlocProvider & Context')),
+      appBar: AppBar(title: const Text('Slide 12: BlocProvider & Context')),
       body: Center(
         child: Card(
           child: Padding(

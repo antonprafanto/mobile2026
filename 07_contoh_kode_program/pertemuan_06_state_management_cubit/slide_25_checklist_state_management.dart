@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 17: CHECKLIST 5 ATURAN EMAS STATE MANAGEMENT INDUSTRI 2026
+// SLIDE 25: CHECKLIST 5 ATURAN EMAS STATE MANAGEMENT INDUSTRI 2026
 // Topik: Pedoman Kebersihan Kode Proyek UTS & Standar Perusahaan
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -18,11 +18,11 @@ class ChecklistBlocApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 17 - Checklist BLoC',
+      title: 'Slide 25 - Checklist BLoC',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Slide 17: 5 Aturan Emas BLoC/Cubit'),
+          title: const Text('Slide 25: 5 Aturan Emas BLoC/Cubit'),
           centerTitle: true,
         ),
         body: ListView(

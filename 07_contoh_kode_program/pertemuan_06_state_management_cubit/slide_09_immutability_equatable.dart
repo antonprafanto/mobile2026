@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 06: IMMUTABILITY & KESETARAAN DATA EQUATABLE
+// SLIDE 09: IMMUTABILITY & KESETARAAN DATA EQUATABLE
 // Topik: Mengapa State Wajib Tidak Berubah (Immutable) & Peran Equatable
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -43,10 +43,10 @@ class EquatableDemoApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 06 - Equatable',
+      title: 'Slide 09 - Equatable',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.purple),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Slide 06: Immutability & Equatable')),
+        appBar: AppBar(title: const Text('Slide 09: Immutability & Equatable')),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(

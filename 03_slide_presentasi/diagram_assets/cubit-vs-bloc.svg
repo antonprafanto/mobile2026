@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" width="100%" height="100%">
+  <defs>
+    <marker id="arrowDark" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 0 L 6 3 L 0 6 z" fill="#111827"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="920" height="360" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="460" y="28" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle">PERBANDINGAN ARSITEKTUR: CUBIT (BERBASIS FUNGSI) VS BLOC (EVENT-DRIVEN)</text>
+
+  <!-- Left: Cubit -->
+  <g transform="translate(25, 45)">
+    <rect width="425" height="295" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="425" height="34" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="33" width="425" height="1" fill="#E5E7EB"/>
+    <text x="20" y="22" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="bold">CUBIT: PENDEKATAN BERBASIS FUNGSI</text>
+    <rect x="315" y="8" width="95" height="18" rx="3" fill="#E5E7EB"/>
+    <text x="362" y="20.5" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold" text-anchor="middle">RINGKAS &amp; LINIER</text>
+
+    <!-- Pipeline -->
+    <rect x="15" y="46" width="115" height="42" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="72" y="63" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">1. UI Screen</text>
+    <text x="72" y="78" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">cubit.tambah()</text>
+
+    <line x1="130" y1="67" x2="160" y2="67" stroke="#111827" stroke-width="1.4" marker-end="url(#arrowDark)"/>
+
+    <rect x="165" y="46" width="125" height="42" rx="4" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
+    <text x="227" y="63" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">2. Cubit Engine</text>
+    <text x="227" y="78" fill="#111827" font-family="'Consolas', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">emit(state + 1)</text>
+
+    <line x1="290" y1="67" x2="320" y2="67" stroke="#111827" stroke-width="1.4" marker-end="url(#arrowDark)"/>
+
+    <rect x="325" y="46" width="85" height="42" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="367" y="63" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">3. Rebuild</text>
+    <text x="367" y="78" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">UI Update</text>
+
+    <!-- Characteristics Box -->
+    <rect x="15" y="100" width="395" height="180" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="25" y="120" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="bold">Karakteristik Arsitektur Cubit:</text>
+    <text x="25" y="140" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.8">• Tidak memerlukan definisi kelas Event terpisah.</text>
+    <text x="25" y="158" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.8">• Memanggil method langsung dari handler interaksi UI.</text>
+    <text x="25" y="176" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.8">• Sedikit baris kode (minimal boilerplate); cepat diimplementasikan.</text>
+
+    <line x1="25" y1="190" x2="385" y2="190" stroke="#F3F4F6" stroke-width="1"/>
+    <text x="25" y="208" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="bold">Rekomendasi Penggunaan:</text>
+    <text x="25" y="226" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">Form sederhana, toggle tema gelap/terang, filter katalog produk,</text>
+    <text x="25" y="242" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">serta kebutuhan state lokal modul yang tidak butuh audit event.</text>
+  </g>
+
+  <!-- Right: BLoC -->
+  <g transform="translate(470, 45)">
+    <rect width="425" height="295" rx="6" fill="#FAFAFA" stroke="#111827" stroke-width="1.5"/>
+    <rect width="425" height="34" rx="6" fill="#18181B"/>
+    <text x="20" y="22" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="bold">BLOC: PENDEKATAN BERBASIS EVENT (FORMAL)</text>
+    <rect x="295" y="8" width="115" height="18" rx="3" fill="#3F3F46"/>
+    <text x="352" y="20.5" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold" text-anchor="middle">ENTERPRISE GRADE</text>
+
+    <!-- Pipeline -->
+    <rect x="10" y="46" width="85" height="42" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="52" y="63" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">1. Event UI</text>
+    <text x="52" y="78" fill="#4B5563" font-family="'Consolas', monospace" font-size="8" text-anchor="middle">add(Submit())</text>
+
+    <line x1="95" y1="67" x2="115" y2="67" stroke="#111827" stroke-width="1.4" marker-end="url(#arrowDark)"/>
+
+    <rect x="120" y="46" width="95" height="42" rx="4" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
+    <text x="167" y="63" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">2. Transformer</text>
+    <text x="167" y="78" fill="#6B7280" font-family="'Consolas', monospace" font-size="7.8" text-anchor="middle">droppable()</text>
+
+    <line x1="215" y1="67" x2="235" y2="67" stroke="#111827" stroke-width="1.4" marker-end="url(#arrowDark)"/>
+
+    <rect x="240" y="46" width="85" height="42" rx="4" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
+    <text x="282" y="63" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">3. Engine</text>
+    <text x="282" y="78" fill="#111827" font-family="'Consolas', monospace" font-size="8" font-weight="bold" text-anchor="middle">emit(State)</text>
+
+    <line x1="325" y1="67" x2="345" y2="67" stroke="#111827" stroke-width="1.4" marker-end="url(#arrowDark)"/>
+
+    <rect x="350" y="46" width="65" height="42" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="382" y="63" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">4. Rebuild</text>
+    <text x="382" y="78" fill="#4B5563" font-family="'Consolas', monospace" font-size="8" text-anchor="middle">UI Update</text>
+
+    <!-- Characteristics Box -->
+    <rect x="15" y="100" width="395" height="180" rx="4" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="25" y="120" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="bold">Karakteristik Arsitektur BLoC:</text>
+    <text x="25" y="140" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.8">• Memisahkan masukan (Event) dan luaran (State) secara ketat.</text>
+    <text x="25" y="158" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.8">• Mendukung debounce, throttle, droppable via event transformers.</text>
+    <text x="25" y="176" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.8">• Jejak audit lengkap; seluruh interaksi dapat direkam dan diulang.</text>
+
+    <line x1="25" y1="190" x2="385" y2="190" stroke="#F3F4F6" stroke-width="1"/>
+    <text x="25" y="208" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="bold">Rekomendasi Penggunaan:</text>
+    <text x="25" y="226" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">Modul transaksi perbankan, form checkout e-commerce,</text>
+    <text x="25" y="242" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">pencarian asinkron real-time, dan sistem skala enterprise.</text>
+  </g>
+</svg>

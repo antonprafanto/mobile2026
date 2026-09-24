@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 05: MENTAL MODEL CUBIT (SEPARATION OF CONCERNS)
+// SLIDE 07: MENTAL MODEL CUBIT (SEPARATION OF CONCERNS)
 // Topik: Memisahkan Otak Logika (Cubit) dari Otot Tampilan (Widget UI)
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -47,7 +47,7 @@ class MentalModelCubitApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 05 - Mental Model Cubit',
+      title: 'Slide 07 - Mental Model Cubit',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.teal),
       // 2. Injeksi Cubit ke pohon widget:
       home: BlocProvider(
@@ -64,7 +64,7 @@ class CounterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 05: Model Mental Cubit')),
+      appBar: AppBar(title: const Text('Slide 07: Model Mental Cubit')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

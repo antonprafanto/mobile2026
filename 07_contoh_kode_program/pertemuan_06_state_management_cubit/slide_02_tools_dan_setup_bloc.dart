@@ -25,11 +25,11 @@ class SetupBlocApp extends StatelessWidget {
           title: const Text('Slide 02: Setup flutter_bloc'),
           centerTitle: true,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
+        body: const Padding(
+          padding: EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [
+            children: [
               Card(
                 child: ListTile(
                   leading: Icon(Icons.terminal, color: Colors.indigo),

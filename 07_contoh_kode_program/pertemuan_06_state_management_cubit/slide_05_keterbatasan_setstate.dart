@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 04: KETERBATASAN SETSTATE & JEBAKAN PROP DRILLING
+// SLIDE 05: KETERBATASAN SETSTATE & JEBAKAN PROP DRILLING
 // Topik: Mengapa Mengoper Callback Melewati Banyak Widget Berbahaya
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -29,10 +29,10 @@ class _PropDrillingDemoAppState extends State<PropDrillingDemoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 04 - Prop Drilling',
+      title: 'Slide 05 - Prop Drilling',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.amber),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Slide 04: Masalah Prop Drilling')),
+        appBar: AppBar(title: const Text('Slide 05: Masalah Prop Drilling')),
         body: Center(
           // Kakek harus mengoper callback ke Ayah, lalu Ayah ke Cucu:
           child: LevelAyahWidget(counter: _counter, onIncrement: _increment),

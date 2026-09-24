@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" width="100%" height="100%">
+  <!-- Background Canvas -->
+  <rect width="920" height="360" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="460" y="28" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle">MATRIKS KUADRAN KONSUMSI WIDGET FLUTTER BLOC</text>
+
+  <!-- Card 1: BlocBuilder (Top-Left) -->
+  <g transform="translate(25, 45)">
+    <rect width="425" height="135" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="425" height="30" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="29" width="425" height="1" fill="#E5E7EB"/>
+    <text x="18" y="20" fill="#111827" font-family="'Consolas', monospace" font-size="11" font-weight="bold">1. BlocBuilder&lt;Bloc, State&gt;</text>
+    <rect x="305" y="6" width="105" height="18" rx="3" fill="#E5E7EB"/>
+    <text x="357" y="18.5" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">VISUAL REBUILD</text>
+
+    <text x="18" y="50" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold">Fungsi: Menggambar ulang antarmuka visual secara reaktif.</text>
+    <text x="18" y="70" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Parameter Wajib: builder: (context, state) =&gt; Widget</text>
+    <text x="18" y="88" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Perilaku: Me-rebuild subtree setiap kali state baru yang valid terpancar.</text>
+
+    <rect x="18" y="100" width="389" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="212" y="116" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold" text-anchor="middle">Batasan: Dilarang memicu Dialog, SnackBar, atau Navigasi rute di dalam builder.</text>
+  </g>
+
+  <!-- Card 2: BlocListener (Top-Right) -->
+  <g transform="translate(470, 45)">
+    <rect width="425" height="135" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="425" height="30" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="29" width="425" height="1" fill="#E5E7EB"/>
+    <text x="18" y="20" fill="#111827" font-family="'Consolas', monospace" font-size="11" font-weight="bold">2. BlocListener&lt;Bloc, State&gt;</text>
+    <rect x="305" y="6" width="105" height="18" rx="3" fill="#E5E7EB"/>
+    <text x="357" y="18.5" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">SIDE EFFECTS</text>
+
+    <text x="18" y="50" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold">Fungsi: Menjalankan aksi satu kali (efek samping non-visual).</text>
+    <text x="18" y="70" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Parameter Wajib: listener: (context, state) { ... }</text>
+    <text x="18" y="88" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Perilaku: Dieksekusi tepat 1 kali per transisi state; TIDAK me-rebuild UI.</text>
+
+    <rect x="18" y="100" width="389" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="212" y="116" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold" text-anchor="middle">Tempat Resmi: SnackBar pemberitahuan, Dialog konfirmasi, dan Navigasi rute.</text>
+  </g>
+
+  <!-- Card 3: BlocConsumer (Bottom-Left) -->
+  <g transform="translate(25, 195)">
+    <rect width="425" height="145" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="425" height="30" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="29" width="425" height="1" fill="#E5E7EB"/>
+    <text x="18" y="20" fill="#111827" font-family="'Consolas', monospace" font-size="11" font-weight="bold">3. BlocConsumer&lt;Bloc, State&gt;</text>
+    <rect x="305" y="6" width="105" height="18" rx="3" fill="#18181B"/>
+    <text x="357" y="18.5" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">DUO HYBRID</text>
+
+    <text x="18" y="50" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold">Fungsi: Menggabungkan Builder dan Listener dalam satu widget.</text>
+    <text x="18" y="70" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Parameter Wajib: Memiliki builder: DAN listener: sekaligus.</text>
+    <text x="18" y="88" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Perilaku: Me-rebuild visual antarmuka sekaligus memicu efek samping aksi.</text>
+
+    <rect x="18" y="104" width="389" height="28" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="212" y="122" fill="#374151" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" text-anchor="middle">Keunggulan: Menghilangkan antipola nesting bertingkat (Listener membungkus Builder).</text>
+  </g>
+
+  <!-- Card 4: BlocSelector (Bottom-Right) -->
+  <g transform="translate(470, 195)">
+    <rect width="425" height="145" rx="6" fill="#FAFAFA" stroke="#111827" stroke-width="1.5"/>
+    <rect width="425" height="30" rx="6" fill="#18181B"/>
+    <text x="18" y="20" fill="#FFFFFF" font-family="'Consolas', monospace" font-size="11" font-weight="bold">4. BlocSelector&lt;Bloc, State, Value&gt;</text>
+    <rect x="305" y="6" width="105" height="18" rx="3" fill="#3F3F46"/>
+    <text x="357" y="18.5" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">OPTIMASI TINGGI</text>
+
+    <text x="18" y="50" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold">Fungsi: Filter nilai parsial spesifik untuk performa render maksimal.</text>
+    <text x="18" y="70" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Parameter Wajib: selector: (state) =&gt; state.selectedField</text>
+    <text x="18" y="88" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">• Perilaku: HANYA me-rebuild UI jika nilai properti yang dipilih berubah.</text>
+
+    <rect x="18" y="104" width="389" height="28" rx="3" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="212" y="122" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold" text-anchor="middle">Kasus Ideal: Badge jumlah notifikasi di AppBar tanpa me-rebuild seluruh layar.</text>
+  </g>
+</svg>

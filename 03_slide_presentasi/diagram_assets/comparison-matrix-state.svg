@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 290" width="100%" height="100%">
+  <!-- Background Canvas -->
+  <rect width="880" height="290" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="440" y="28" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle">MATRIKS EVALUASI ARSITEKTUR STATE MANAGEMENT FLUTTER 2026</text>
+
+  <!-- Column 1: Provider -->
+  <g transform="translate(30, 48)">
+    <rect width="250" height="225" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="250" height="34" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="33" width="250" height="1" fill="#E5E7EB"/>
+    <text x="125" y="22" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">PROVIDER</text>
+
+    <text x="16" y="58" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Kurva Belajar: <tspan fill="#111827" font-weight="bold">Rendah (Cepat)</tspan></text>
+    <text x="16" y="82" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Boilerplate: <tspan fill="#111827" font-weight="bold">Sangat Ringan</tspan></text>
+    <text x="16" y="106" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">BuildContext: <tspan fill="#4B5563" font-weight="bold">Wajib (Pohon Widget)</tspan></text>
+    <text x="16" y="130" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Testabilitas: <tspan fill="#4B5563" font-weight="bold">Menengah</tspan></text>
+    <text x="16" y="154" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Skala Proyek: <tspan fill="#111827" font-weight="bold">Kecil - Menengah</tspan></text>
+
+    <rect x="15" y="172" width="220" height="38" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="125" y="188" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Target Penerapan:</text>
+    <text x="125" y="202" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Fondasi Awal, Prototipe, &amp; MVP</text>
+  </g>
+
+  <!-- Column 2: Riverpod 2.x -->
+  <g transform="translate(315, 48)">
+    <rect width="250" height="225" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="250" height="34" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="33" width="250" height="1" fill="#E5E7EB"/>
+    <text x="125" y="22" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">RIVERPOD 2.X</text>
+
+    <text x="16" y="58" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Kurva Belajar: <tspan fill="#111827" font-weight="bold">Menengah</tspan></text>
+    <text x="16" y="82" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Boilerplate: <tspan fill="#111827" font-weight="bold">Ringan (Codegen)</tspan></text>
+    <text x="16" y="106" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">BuildContext: <tspan fill="#111827" font-weight="bold">Bebas (Compile-safe)</tspan></text>
+    <text x="16" y="130" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Testabilitas: <tspan fill="#111827" font-weight="bold">Tinggi</tspan></text>
+    <text x="16" y="154" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Skala Proyek: <tspan fill="#111827" font-weight="bold">Menengah - Besar</tspan></text>
+
+    <rect x="15" y="172" width="220" height="38" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="125" y="188" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Target Penerapan:</text>
+    <text x="125" y="202" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Aplikasi Modern &amp; Reaktif</text>
+  </g>
+
+  <!-- Column 3: BLoC / Cubit -->
+  <g transform="translate(600, 48)">
+    <rect width="250" height="225" rx="6" fill="#FAFAFA" stroke="#111827" stroke-width="1.5"/>
+    <rect width="250" height="34" rx="6" fill="#18181B"/>
+    <text x="125" y="22" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">BLOC / CUBIT</text>
+
+    <text x="16" y="58" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Kurva Belajar: <tspan fill="#111827" font-weight="bold">Menengah - Tinggi</tspan></text>
+    <text x="16" y="82" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Boilerplate: <tspan fill="#111827" font-weight="bold">Terstruktur &amp; Ketat</tspan></text>
+    <text x="16" y="106" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">BuildContext: <tspan fill="#111827" font-weight="bold">Scoped Injection</tspan></text>
+    <text x="16" y="130" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Testabilitas: <tspan fill="#111827" font-weight="bold">100% Deterministik</tspan></text>
+    <text x="16" y="154" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Skala Proyek: <tspan fill="#111827" font-weight="bold">Enterprise &amp; FinTech</tspan></text>
+
+    <rect x="15" y="172" width="220" height="38" rx="4" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="125" y="188" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Target Penerapan:</text>
+    <text x="125" y="202" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">Sistem Kritis &amp; Skala Besar</text>
+  </g>
+</svg>

@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 14: MULTIBLOCPROVIDER (MENGELOLA BANYAK CUBIT SEKALIGUS)
+// SLIDE 21: MULTIBLOCPROVIDER (MENGELOLA BANYAK CUBIT SEKALIGUS)
 // Topik: Menggabungkan Lebih dari Satu State Management pada Root Aplikasi
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -40,7 +40,7 @@ class MultiBlocApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 14 - MultiBlocProvider',
+      title: 'Slide 21 - MultiBlocProvider',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blueGrey),
       home: const MultiBlocScreen(),
     );
@@ -57,7 +57,7 @@ class MultiBlocScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Slide 14: MultiBlocProvider'),
+        title: const Text('Slide 21: MultiBlocProvider'),
         actions: [
           Badge(
             label: Text('$notifCount'),

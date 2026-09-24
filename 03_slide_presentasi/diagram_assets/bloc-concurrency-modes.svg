@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" width="100%" height="100%">
+  <!-- Background Canvas -->
+  <rect width="920" height="360" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="460" y="28" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle">4 STRATEGI CONCURRENCY EVENT TRANSFORMER PADA BLOC</text>
+
+  <!-- Card 1: droppable() -->
+  <g transform="translate(25, 45)">
+    <rect width="205" height="295" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="205" height="32" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="31" width="205" height="1" fill="#E5E7EB"/>
+    <text x="102" y="21" fill="#111827" font-family="'Consolas', monospace" font-size="11" font-weight="bold" text-anchor="middle">1. droppable()</text>
+
+    <text x="102" y="52" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Abaikan Jika Sedang Sibuk</text>
+
+    <!-- Visual Timeline -->
+    <rect x="15" y="65" width="175" height="26" rx="3" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
+    <text x="102" y="81" fill="#111827" font-family="'Consolas', monospace" font-size="9" text-anchor="middle">Event 1: Diproses</text>
+
+    <text x="102" y="105" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" text-anchor="middle">Event baru masuk saat sibuk:</text>
+
+    <rect x="15" y="115" width="175" height="24" rx="3" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="102" y="131" fill="#6B7280" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event 2: Diabaikan (Drop)</text>
+
+    <rect x="15" y="145" width="175" height="24" rx="3" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="102" y="161" fill="#6B7280" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event 3: Diabaikan (Drop)</text>
+
+    <!-- Description -->
+    <rect x="12" y="185" width="181" height="95" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="20" y="202" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold">Karakteristik &amp; Kasus:</text>
+    <text x="20" y="218" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Mencegah duplikasi data.</text>
+    <text x="20" y="233" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Proteksi klik berulang.</text>
+    <text x="20" y="252" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold">Kasus: Checkout &amp; Bayar</text>
+  </g>
+
+  <!-- Card 2: restartable() -->
+  <g transform="translate(245, 45)">
+    <rect width="205" height="295" rx="6" fill="#FAFAFA" stroke="#111827" stroke-width="1.5"/>
+    <rect width="205" height="32" rx="6" fill="#18181B"/>
+    <text x="102" y="21" fill="#FFFFFF" font-family="'Consolas', monospace" font-size="11" font-weight="bold" text-anchor="middle">2. restartable()</text>
+
+    <text x="102" y="52" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Batalkan Lama, Jalankan Baru</text>
+
+    <!-- Visual Timeline -->
+    <rect x="15" y="65" width="175" height="24" rx="3" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="102" y="81" fill="#6B7280" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Ketik 'lap' : Dibatalkan</text>
+
+    <rect x="15" y="95" width="175" height="24" rx="3" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="102" y="111" fill="#6B7280" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Ketik 'lapt' : Dibatalkan</text>
+
+    <rect x="15" y="125" width="175" height="26" rx="3" fill="#FFFFFF" stroke="#111827" stroke-width="1.2"/>
+    <text x="102" y="141" fill="#111827" font-family="'Consolas', monospace" font-size="9" font-weight="bold" text-anchor="middle">Ketik 'laptop' : Selesai</text>
+
+    <text x="102" y="168" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.2" text-anchor="middle">Hanya hasil mutakhir yang diproses</text>
+
+    <!-- Description -->
+    <rect x="12" y="185" width="181" height="95" rx="4" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="20" y="202" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold">Karakteristik &amp; Kasus:</text>
+    <text x="20" y="218" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Mengabaikan respon lama.</text>
+    <text x="20" y="233" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Hemat bandwidth &amp; CPU.</text>
+    <text x="20" y="252" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold">Kasus: Search Autocomplete</text>
+  </g>
+
+  <!-- Card 3: sequential() -->
+  <g transform="translate(465, 45)">
+    <rect width="205" height="295" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="205" height="32" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="31" width="205" height="1" fill="#E5E7EB"/>
+    <text x="102" y="21" fill="#111827" font-family="'Consolas', monospace" font-size="11" font-weight="bold" text-anchor="middle">3. sequential()</text>
+
+    <text x="102" y="52" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Antrean Berurutan (FIFO)</text>
+
+    <!-- Visual Timeline -->
+    <rect x="15" y="65" width="175" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="102" y="81" fill="#111827" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event 1: Antrean 1</text>
+
+    <rect x="15" y="95" width="175" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="102" y="111" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event 2: Antrean 2</text>
+
+    <rect x="15" y="125" width="175" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="102" y="141" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event 3: Antrean 3</text>
+
+    <text x="102" y="168" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.2" text-anchor="middle">Default perilaku event pada BLoC</text>
+
+    <!-- Description -->
+    <rect x="12" y="185" width="181" height="95" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="20" y="202" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold">Karakteristik &amp; Kasus:</text>
+    <text x="20" y="218" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Menjamin konsistensi data.</text>
+    <text x="20" y="233" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Eksekusi satu per satu.</text>
+    <text x="20" y="252" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold">Kasus: Sinkronisasi Offline</text>
+  </g>
+
+  <!-- Card 4: concurrent() -->
+  <g transform="translate(685, 45)">
+    <rect width="205" height="295" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="205" height="32" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="31" width="205" height="1" fill="#E5E7EB"/>
+    <text x="102" y="21" fill="#111827" font-family="'Consolas', monospace" font-size="11" font-weight="bold" text-anchor="middle">4. concurrent()</text>
+
+    <text x="102" y="52" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Eksekusi Paralel Simultan</text>
+
+    <!-- Visual Timeline -->
+    <rect x="15" y="65" width="175" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="102" y="81" fill="#111827" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event A: Berjalan paralel</text>
+
+    <rect x="15" y="95" width="175" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="102" y="111" fill="#111827" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event B: Berjalan paralel</text>
+
+    <rect x="15" y="125" width="175" height="24" rx="3" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="102" y="141" fill="#111827" font-family="'Consolas', monospace" font-size="8.5" text-anchor="middle">Event C: Berjalan paralel</text>
+
+    <text x="102" y="168" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.2" text-anchor="middle">Tidak saling menunggu atau memblokir</text>
+
+    <!-- Description -->
+    <rect x="12" y="185" width="181" height="95" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="20" y="202" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="bold">Karakteristik &amp; Kasus:</text>
+    <text x="20" y="218" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Throughput maksimal.</text>
+    <text x="20" y="233" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5">• Task independen satu sama lain.</text>
+    <text x="20" y="252" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8.5" font-weight="bold">Kasus: Multi-file Download</text>
+  </g>
+</svg>

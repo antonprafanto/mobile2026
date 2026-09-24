@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 15: PEMANTAUAN GLOBAL DENGAN BLOCOBSERVER
+// SLIDE 22: PEMANTAUAN GLOBAL DENGAN BLOCOBSERVER
 // Topik: CCTV Pemantau Seluruh Transisi & Kesalahan State di Terminal
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // 1. Kelas Pengawas Global (CCTV):
 class AppBlocObserver extends BlocObserver {
   @override
-  void onChange(BlocBase bloc, Change change) {
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
     // Tercetak otomatis di terminal setiap ada state berubah di seluruh aplikasi:
     debugPrint(
@@ -38,7 +38,7 @@ class ObserverApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 15 - BlocObserver',
+      title: 'Slide 22 - BlocObserver',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
       home: BlocProvider(
         create: (context) => CounterCubit(),
@@ -56,7 +56,7 @@ class ObserverScreen extends StatelessWidget {
     final count = context.watch<CounterCubit>().state;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 15: BlocObserver')),
+      appBar: AppBar(title: const Text('Slide 22: BlocObserver')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

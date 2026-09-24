@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 10: MENANGANI SIDE EFFECTS DENGAN BLOCLISTENER
+// SLIDE 15: MENANGANI SIDE EFFECTS DENGAN BLOCLISTENER
 // Topik: Memunculkan SnackBar & Navigasi Tanpa Mengotori BlocBuilder
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -26,7 +26,7 @@ class BlocListenerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 10 - BlocListener',
+      title: 'Slide 15 - BlocListener',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.orange),
       home: BlocProvider(
         create: (context) => FormSubmitCubit(),
@@ -42,7 +42,7 @@ class BlocListenerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 10: BlocListener')),
+      appBar: AppBar(title: const Text('Slide 15: BlocListener')),
       // BlocListener hanya dipanggil saat state berubah untuk aksi 1 kali (side effect):
       body: BlocListener<FormSubmitCubit, int>(
         listenWhen: (previous, current) => current != 0,

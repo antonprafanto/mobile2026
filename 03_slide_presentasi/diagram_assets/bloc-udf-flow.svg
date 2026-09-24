@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 290" width="100%" height="100%">
+  <defs>
+    <marker id="arrowDark" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 0 L 6 3 L 0 6 z" fill="#111827"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="880" height="290" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="440" y="28" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle">SIKLUS TERTUTUP UNIDIRECTIONAL DATA FLOW (UDF) PADA BLOC</text>
+
+  <!-- Left: UI Screen -->
+  <g transform="translate(30, 50)">
+    <rect width="235" height="205" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="235" height="34" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="33" width="235" height="1" fill="#E5E7EB"/>
+    <text x="117" y="22" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">1. UI COMPONENT</text>
+
+    <text x="117" y="60" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" text-anchor="middle">Pengguna berinteraksi:</text>
+    <text x="117" y="78" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Menekan "Tambah Produk"</text>
+
+    <rect x="18" y="98" width="199" height="60" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="117" y="120" fill="#4B5563" font-family="'Consolas', monospace" font-size="9" text-anchor="middle">context.read&lt;CartBloc&gt;()</text>
+    <text x="117" y="140" fill="#111827" font-family="'Consolas', monospace" font-size="9.5" font-weight="bold" text-anchor="middle">.add(AddToCart(item))</text>
+
+    <text x="117" y="185" fill="#6B7280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Aksi ditransformasi menjadi Event</text>
+  </g>
+
+  <!-- Arrow Top: EVENT -->
+  <g transform="translate(265, 80)">
+    <line x1="10" y1="15" x2="70" y2="15" stroke="#111827" stroke-width="2" marker-end="url(#arrowDark)"/>
+    <rect x="16" y="2" width="48" height="13" rx="2" fill="#18181B"/>
+    <text x="40" y="11.5" fill="#FFFFFF" font-family="'Consolas', monospace" font-size="8" font-weight="bold" text-anchor="middle">EVENT</text>
+  </g>
+
+  <!-- Middle: BLoC / Cubit Engine -->
+  <g transform="translate(345, 50)">
+    <rect width="250" height="205" rx="6" fill="#FAFAFA" stroke="#111827" stroke-width="1.5"/>
+    <rect width="250" height="34" rx="6" fill="#18181B"/>
+    <text x="125" y="22" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">2. BLOC ENGINE</text>
+
+    <!-- Code Block Inside -->
+    <rect x="15" y="48" width="220" height="118" rx="4" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="25" y="68" fill="#6B7280" font-family="'Consolas', monospace" font-size="9">// Handler Event</text>
+    <text x="25" y="86" fill="#111827" font-family="'Consolas', monospace" font-size="9">on&lt;AddToCart&gt;((e, emit) {</text>
+    <text x="35" y="104" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.8">  final items = update(e);</text>
+    <text x="35" y="122" fill="#6B7280" font-family="'Consolas', monospace" font-size="8.8">  // Pancarkan state baru</text>
+    <text x="35" y="140" fill="#111827" font-family="'Consolas', monospace" font-size="9" font-weight="bold">  emit(CartLoaded(items));</text>
+    <text x="25" y="156" fill="#111827" font-family="'Consolas', monospace" font-size="9">});</text>
+
+    <text x="125" y="188" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Mengeksekusi kalkulasi bisnis</text>
+  </g>
+
+  <!-- Arrow Bottom: STATE -->
+  <g transform="translate(595, 175)">
+    <line x1="70" y1="15" x2="10" y2="15" stroke="#111827" stroke-width="2" marker-end="url(#arrowDark)"/>
+    <rect x="16" y="2" width="48" height="13" rx="2" fill="#18181B"/>
+    <text x="40" y="11.5" fill="#FFFFFF" font-family="'Consolas', monospace" font-size="8" font-weight="bold" text-anchor="middle">STATE</text>
+  </g>
+
+  <!-- Right: UI Re-render -->
+  <g transform="translate(675, 50)">
+    <rect width="235" height="205" rx="6" fill="#FAFAFA" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect width="235" height="34" rx="6" fill="#F3F4F6"/>
+    <rect x="0" y="33" width="235" height="1" fill="#E5E7EB"/>
+    <text x="117" y="22" fill="#111827" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">3. RE-RENDER UI</text>
+
+    <!-- Code Block Inside -->
+    <rect x="15" y="48" width="205" height="118" rx="4" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="25" y="68" fill="#111827" font-family="'Consolas', monospace" font-size="8.8">BlocBuilder&lt;Cart, State&gt;(</text>
+    <text x="35" y="86" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.8">builder: (ctx, state) {</text>
+    <text x="45" y="104" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.5">  if (state is Loaded)</text>
+    <text x="55" y="122" fill="#111827" font-family="'Consolas', monospace" font-size="8.8" font-weight="bold">    Badge(count: n);</text>
+    <text x="35" y="140" fill="#4B5563" font-family="'Consolas', monospace" font-size="8.8">  return Empty();</text>
+    <text x="25" y="156" fill="#111827" font-family="'Consolas', monospace" font-size="8.8">},</text>
+
+    <text x="117" y="188" fill="#4B5563" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Widget me-rebuild tampilan visual</text>
+  </g>
+</svg>

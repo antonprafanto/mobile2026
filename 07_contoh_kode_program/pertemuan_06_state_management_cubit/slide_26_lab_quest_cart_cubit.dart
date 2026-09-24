@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 18: SOLUSI MASTER LAB QUEST TUGAS 06
+// SLIDE 26: SOLUSI MASTER LAB QUEST TUGAS 06
 // Topik: Keranjang Belanja & Wishlist Multi-Bloc Reaktif dengan SnackBar
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome

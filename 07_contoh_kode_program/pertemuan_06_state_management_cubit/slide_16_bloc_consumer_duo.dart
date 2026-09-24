@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 11: DUET MAUT DENGAN BLOCCONSUMER
+// SLIDE 16: DUET MAUT DENGAN BLOCCONSUMER
 // Topik: Menggabungkan BlocBuilder & BlocListener dalam Satu Widget Ringkas
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -26,7 +26,7 @@ class BlocConsumerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 11 - BlocConsumer',
+      title: 'Slide 16 - BlocConsumer',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.pink),
       home: BlocProvider(
         create: (context) => LoginCubit(),
@@ -42,7 +42,7 @@ class ConsumerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 11: BlocConsumer')),
+      appBar: AppBar(title: const Text('Slide 16: BlocConsumer')),
       body: Center(
         child: BlocConsumer<LoginCubit, bool>(
           // 1. listener: Menangani efek samping (notifikasi):

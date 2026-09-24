@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 13: ARSITEKTUR 4 STATUS UI (INITIAL, LOADING, SUCCESS, ERROR)
+// SLIDE 18: ARSITEKTUR 4 STATUS UI (INITIAL, LOADING, SUCCESS, ERROR)
 // Topik: Pola Baku Industri Menangani Kondisi Jaringan & Data di BLoC
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -40,7 +40,7 @@ class DataFetchCubit extends Cubit<DataFetchState> {
 
   Future<void> fetchData({bool sukses = true}) async {
     emit(DataLoading());
-    await Future.delayed(const Duration(milliseconds: 1000));
+    await Future<void>.delayed(const Duration(milliseconds: 1000));
 
     if (sukses) {
       emit(const DataSuccess(['Flutter 3.24', 'Dart 3.5', 'Material 3']));
@@ -61,7 +61,7 @@ class DataFetchApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 13 - 4 Status UI',
+      title: 'Slide 18 - 4 Status UI',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
       home: BlocProvider(
         create: (context) => DataFetchCubit(),
@@ -77,7 +77,7 @@ class DataFetchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 13: 4 Status UI')),
+      appBar: AppBar(title: const Text('Slide 18: 4 Status UI')),
       body: Center(
         child: BlocBuilder<DataFetchCubit, DataFetchState>(
           builder: (context, state) {

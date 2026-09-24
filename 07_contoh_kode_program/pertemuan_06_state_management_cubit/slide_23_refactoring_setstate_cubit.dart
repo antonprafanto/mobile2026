@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 16: REFACTORING DARI SETSTATE() MENUJU CUBIT BERSIH
+// SLIDE 23: REFACTORING DARI SETSTATE() MENUJU CUBIT BERSIH
 // Topik: Memisahkan Logika Bisnis dari Tampilan Widget
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -34,7 +34,7 @@ class RefactorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 16 - Refactoring Cubit',
+      title: 'Slide 23 - Refactoring Cubit',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.pink),
       home: BlocProvider(
         create: (context) => WishlistCubit(),

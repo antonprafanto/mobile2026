@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 07: ANATOMI KELAS CUBIT & FUNGSI EMIT()
+// SLIDE 10: ANATOMI KELAS CUBIT & FUNGSI EMIT()
 // Topik: Membangun Cubit Berbasis State Objek & Memancarkan Nilai
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -57,7 +57,7 @@ class AnatomiCubitApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 07 - Anatomi Cubit',
+      title: 'Slide 10 - Anatomi Cubit',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.cyan),
       home: BlocProvider(
         create: (context) => AdvanceCounterCubit(),
@@ -73,7 +73,7 @@ class AnatomiCubitScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 07: Anatomi Cubit & emit()')),
+      appBar: AppBar(title: const Text('Slide 10: Anatomi Cubit & emit()')),
       body: Center(
         child: BlocBuilder<AdvanceCounterCubit, CounterState>(
           builder: (context, state) {

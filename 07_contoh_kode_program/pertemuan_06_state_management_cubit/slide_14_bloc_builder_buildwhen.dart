@@ -1,5 +1,5 @@
 // =====================================================================
-// SLIDE 09: MENGGAMBAR ULANG UI DENGAN BLOCBUILDER & BUILDWHEN
+// SLIDE 14: MENGGAMBAR ULANG UI DENGAN BLOCBUILDER & BUILDWHEN
 // Topik: Memfilter Kondisi Kapan Widget Perlu Di-Rebuild
 // =====================================================================
 // Jalankan dengan: flutter run -d chrome
@@ -25,7 +25,7 @@ class BuildWhenApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Slide 09 - BlocBuilder buildWhen',
+      title: 'Slide 14 - BlocBuilder buildWhen',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.green),
       home: BlocProvider(
         create: (context) => StepCubit(),
@@ -41,7 +41,7 @@ class BuildWhenScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Slide 09: BlocBuilder & buildWhen')),
+      appBar: AppBar(title: const Text('Slide 14: BlocBuilder & buildWhen')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
