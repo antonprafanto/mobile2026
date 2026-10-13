@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 12_map_dan_set.dart
+// B. Di terminal: dart run contoh_12_map_dan_set.dart
 // =====================================================================
 
 void main() {

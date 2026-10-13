@@ -293,7 +293,7 @@ Simpan dan lakukan *hot reload*.
 Ganti *Nama Lengkap Anda*, NIM, program studi, email, dan hobi dengan **data Anda sendiri**. Simpan dan amati hasilnya.
 
 > ### ✅ Checkpoint D 📸
-> Halaman menampilkan avatar, nama, NIM, dan kartu berisi tiga baris informasi milik Anda. Bandingkan kode Anda dengan [kode/07_kartu_perkenalan.dart](kode/07_kartu_perkenalan.dart). Ambil *screenshot*.
+> Halaman menampilkan avatar, nama, NIM, dan kartu berisi tiga baris informasi milik Anda. Bandingkan kode Anda dengan [kode/contoh_07_kartu_perkenalan.dart](kode/contoh_07_kartu_perkenalan.dart). Ambil *screenshot*.
 
 ---
 
@@ -326,7 +326,7 @@ Kembangkan Kartu Perkenalan Anda dengan ketentuan berikut:
 
 Kumpulkan melalui tempat yang ditentukan dosen (LMS/Google Classroom/lainnya):
 
-1. Berkas `lib/main.dart` hasil **Bagian F**, diberi nama `P01_NIM_NamaPanggilan.dart`.
+1. Berkas `lib/main.dart` hasil **Bagian F**, diberi nama `p01_nim_namapanggilan.dart` dengan huruf kecil semua, misalnya `p01_2609106001_rina.dart`.
 2. Tiga *screenshot*: hasil `flutter doctor` (Checkpoint A), aplikasi *counter* (Checkpoint B), dan Kartu Perkenalan hasil Bagian F.
 
 ## 📊 Kriteria Penilaian

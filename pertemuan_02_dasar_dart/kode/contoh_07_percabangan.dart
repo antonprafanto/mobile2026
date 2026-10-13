@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 07_percabangan.dart
+// B. Di terminal: dart run contoh_07_percabangan.dart
 // =====================================================================
 
 void main() {

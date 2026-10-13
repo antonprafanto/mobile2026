@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 05_null_safety.dart
+// B. Di terminal: dart run contoh_05_null_safety.dart
 // =====================================================================
 
 // Fungsi kecil (fungsi dibahas di Contoh 09) yang mengembalikan nama

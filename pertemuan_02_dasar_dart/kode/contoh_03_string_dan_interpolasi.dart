@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 03_string_dan_interpolasi.dart
+// B. Di terminal: dart run contoh_03_string_dan_interpolasi.dart
 // =====================================================================
 
 void main() {

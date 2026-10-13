@@ -109,7 +109,7 @@ Di VS Code, Anda juga bisa mengeklik tulisan kecil **Run** yang muncul tepat di 
 
 ## 3. Anatomi Program Dart
 
-Mari bedah [`kode/01_halo_dart.dart`](kode/01_halo_dart.dart):
+Mari bedah [`kode/contoh_01_halo_dart.dart`](kode/contoh_01_halo_dart.dart):
 
 ```dart
 // Ini komentar satu baris.
@@ -167,7 +167,7 @@ TipeData   namaVariabel = nilai;
 | `String` | Teks, diapit tanda kutip | `'Samarinda'`, `"Halo"` |
 | `bool` | Hanya dua kemungkinan | `true`, `false` |
 
-Contoh lengkapnya ada di [`kode/02_variabel_dan_tipe_data.dart`](kode/02_variabel_dan_tipe_data.dart).
+Contoh lengkapnya ada di [`kode/contoh_02_variabel_dan_tipe_data.dart`](kode/contoh_02_variabel_dan_tipe_data.dart).
 
 ### 4.3 `var`: biarkan Dart menebak tipenya
 
@@ -252,7 +252,7 @@ Aturannya sederhana:
 | `.split(pemisah)` | Pecah menjadi daftar | `'a,b'.split(',')` → `[a, b]` |
 | `.isEmpty` | Apakah teks kosong? | `''.isEmpty` → `true` |
 
-Lihat semuanya beraksi di [`kode/03_string_dan_interpolasi.dart`](kode/03_string_dan_interpolasi.dart).
+Lihat semuanya beraksi di [`kode/contoh_03_string_dan_interpolasi.dart`](kode/contoh_03_string_dan_interpolasi.dart).
 
 ---
 
@@ -278,7 +278,7 @@ final DateTime waktuMulai = DateTime.now();       // baru diketahui saat program
 
 **Kebiasaan baik:** jika sebuah variabel tidak akan pernah diubah lagi, jadikan `final` atau `const`. Kode jadi lebih aman dan mudah dipahami. Ingat juga Pertemuan 1: widget yang diberi `const` membuat Flutter bisa menghemat kerja saat menggambar ulang layar.
 
-Contoh lengkap: [`kode/04_final_dan_const.dart`](kode/04_final_dan_const.dart).
+Contoh lengkap: [`kode/contoh_04_final_dan_const.dart`](kode/contoh_04_final_dan_const.dart).
 
 ---
 
@@ -307,7 +307,7 @@ String? namaPanggilan;     // ✅ boleh null, dan saat ini memang null
 | `??=` | "isi hanya jika masih kosong" | `x ??= 'Tamu';` | `x` menjadi `'Tamu'` |
 | `!` | "saya **jamin** tidak kosong" | `x!.length` | 💥 *crash* |
 
-Semuanya dipraktikkan di [`kode/05_null_safety.dart`](kode/05_null_safety.dart). Contoh paling sering di dunia nyata adalah `int.tryParse`, yang menghasilkan `null` jika teks gagal diubah menjadi angka:
+Semuanya dipraktikkan di [`kode/contoh_05_null_safety.dart`](kode/contoh_05_null_safety.dart). Contoh paling sering di dunia nyata adalah `int.tryParse`, yang menghasilkan `null` jika teks gagal diubah menjadi angka:
 
 ```dart
 int? umur = int.tryParse('dua puluh');   // gagal -> null
@@ -327,7 +327,7 @@ Fitur ini disebut ***type promotion***. Inilah cara paling aman menangani nilai 
 
 ### 7.4 Tentang `late`
 
-Kata kunci `late` berarti "variabel ini **pasti** diisi, tetapi **nanti**, sebelum dipakai". Anda sudah melihatnya di Pertemuan 1, [Contoh 06](../pertemuan_01_pengenalan_flutter/kode/06_siklus_hidup_aplikasi.dart):
+Kata kunci `late` berarti "variabel ini **pasti** diisi, tetapi **nanti**, sebelum dipakai". Anda sudah melihatnya di Pertemuan 1, [Contoh 06](../pertemuan_01_pengenalan_flutter/kode/contoh_06_siklus_hidup_aplikasi.dart):
 
 ```dart
 late final AppLifecycleListener _pendengar;   // diisi nanti di initState()
@@ -340,7 +340,7 @@ late final AppLifecycleListener _pendengar;   // diisi nanti di initState()
 
 ## 8. Operator
 
-Contoh lengkap: [`kode/06_operator.dart`](kode/06_operator.dart).
+Contoh lengkap: [`kode/contoh_06_operator.dart`](kode/contoh_06_operator.dart).
 
 ### 8.1 Aritmatika
 
@@ -400,7 +400,7 @@ String status = nilai >= 60 ? 'LULUS' : 'TIDAK LULUS';
 
 ## 9. Percabangan
 
-Percabangan membuat program bisa **mengambil keputusan**, seperti persimpangan jalan. Contoh lengkap: [`kode/07_percabangan.dart`](kode/07_percabangan.dart).
+Percabangan membuat program bisa **mengambil keputusan**, seperti persimpangan jalan. Contoh lengkap: [`kode/contoh_07_percabangan.dart`](kode/contoh_07_percabangan.dart).
 
 ### 9.1 `if` – `else if` – `else`
 
@@ -467,7 +467,7 @@ String keterangan = switch (huruf) {
 
 ## 10. Perulangan
 
-Perulangan membuat komputer **mengerjakan hal yang sama berkali-kali** tanpa kita menulis ulang perintahnya. Contoh lengkap: [`kode/08_perulangan.dart`](kode/08_perulangan.dart).
+Perulangan membuat komputer **mengerjakan hal yang sama berkali-kali** tanpa kita menulis ulang perintahnya. Contoh lengkap: [`kode/contoh_08_perulangan.dart`](kode/contoh_08_perulangan.dart).
 
 | Jenis | Kapan dipakai | Contoh situasi |
 | :--- | :--- | :--- |
@@ -526,7 +526,7 @@ int        tambah  (int a, int b)  { return a + b; }
 - Jika fungsi **tidak menghasilkan nilai**, tipe hasilnya ditulis `void`.
 - Jika isinya **hanya satu ekspresi**, gunakan bentuk panah: `bool apakahLulus(int nilai) => nilai >= 60;`
 
-Contoh lengkap: [`kode/09_fungsi_dasar.dart`](kode/09_fungsi_dasar.dart).
+Contoh lengkap: [`kode/contoh_09_fungsi_dasar.dart`](kode/contoh_09_fungsi_dasar.dart).
 
 ### 11.2 Jenis-jenis parameter
 
@@ -556,7 +556,7 @@ ulangi(3, (int ke) {
 });
 ```
 
-Fungsi tanpa nama seperti `(int ke) { ... }` disebut **fungsi anonim**. Di Flutter, Anda akan menulisnya terus-menerus, misalnya `onPressed: () { ... }` pada tombol. Contoh lengkap: [`kode/10_parameter_fungsi.dart`](kode/10_parameter_fungsi.dart).
+Fungsi tanpa nama seperti `(int ke) { ... }` disebut **fungsi anonim**. Di Flutter, Anda akan menulisnya terus-menerus, misalnya `onPressed: () { ... }` pada tombol. Contoh lengkap: [`kode/contoh_10_parameter_fungsi.dart`](kode/contoh_10_parameter_fungsi.dart).
 
 ---
 
@@ -594,7 +594,7 @@ List<String> label = nilai.map((int n) => 'Nilai $n').toList();    // mengubah
 - `map` = **ubah**: ubah setiap isi menjadi bentuk lain.
 - `toList()` = jadikan hasilnya `List` kembali.
 
-Contoh lengkap: [`kode/11_list.dart`](kode/11_list.dart).
+Contoh lengkap: [`kode/contoh_11_list.dart`](kode/contoh_11_list.dart).
 
 ### 12.2 Map dan Set
 
@@ -614,7 +614,7 @@ List<String> daftarIsian = ['Andi', 'Budi', 'Andi', 'Citra'];
 Set<String> peminat = daftarIsian.toSet();   // {Andi, Budi, Citra}
 ```
 
-Contoh lengkap: [`kode/12_map_dan_set.dart`](kode/12_map_dan_set.dart).
+Contoh lengkap: [`kode/contoh_12_map_dan_set.dart`](kode/contoh_12_map_dan_set.dart).
 
 <details>
 <summary>🔍 <b>Pengayaan:</b> <code>if</code> dan <code>for</code> di dalam List (sering dipakai di Flutter)</summary>
@@ -650,7 +650,7 @@ Saatnya menggabungkan semuanya. **Masalah:** seorang dosen ingin merekap nilai a
 3. Data kelas disimpan dalam `Map`: kunci = nama, nilai = `List` berisi tiga nilai.
 4. Perulangan `for-in` memproses setiap mahasiswa, sambil menghitung jumlah lulus, total nilai, dan nilai tertinggi.
 
-Kode lengkapnya ada di [`kode/13_studi_kasus_rekap_nilai.dart`](kode/13_studi_kasus_rekap_nilai.dart). Bagian intinya:
+Kode lengkapnya ada di [`kode/contoh_13_studi_kasus_rekap_nilai.dart`](kode/contoh_13_studi_kasus_rekap_nilai.dart). Bagian intinya:
 
 ```dart
 for (MapEntry<String, List<int>> data in kelas.entries) {

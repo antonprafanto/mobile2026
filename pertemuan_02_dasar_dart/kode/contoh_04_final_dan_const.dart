@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 04_final_dan_const.dart
+// B. Di terminal: dart run contoh_04_final_dan_const.dart
 // =====================================================================
 
 // Konstanta di luar fungsi (tingkat atas) memakai const.

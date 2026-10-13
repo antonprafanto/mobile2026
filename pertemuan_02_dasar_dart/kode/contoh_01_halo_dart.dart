@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 01_halo_dart.dart
+// B. Di terminal: dart run contoh_01_halo_dart.dart
 // =====================================================================
 
 // Ini komentar satu baris. Komputer mengabaikannya; ini catatan untuk

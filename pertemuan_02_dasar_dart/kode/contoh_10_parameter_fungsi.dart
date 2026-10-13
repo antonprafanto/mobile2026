@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 10_parameter_fungsi.dart
+// B. Di terminal: dart run contoh_10_parameter_fungsi.dart
 // =====================================================================
 
 // 1) Parameter posisi opsional: dibungkus [ ] dan boleh tidak diisi.

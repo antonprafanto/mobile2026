@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 02_variabel_dan_tipe_data.dart
+// B. Di terminal: dart run contoh_02_variabel_dan_tipe_data.dart
 // =====================================================================
 
 void main() {

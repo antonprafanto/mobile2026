@@ -269,7 +269,7 @@ Jumlah minuman es: 2
 
 ## 🏆 Tugas Mandiri — Kasir Kantin Kampus
 
-Buat **satu program utuh** bernama `P02_NIM_NamaPanggilan.dart` dengan ketentuan berikut:
+Buat **satu program utuh** bernama `p02_nim_namapanggilan.dart` (huruf kecil semua, misalnya `p02_2609106001_rina.dart`) dengan ketentuan berikut:
 
 1. Daftar menu dan harga disimpan dalam `Map<String, int>`, **minimal 5 menu**.
 2. Pesanan pelanggan disimpan dalam `List<String>`. Pesanan **wajib** mengandung minimal satu menu yang dipesan lebih dari sekali dan minimal satu menu yang **tidak tersedia**.
@@ -304,7 +304,7 @@ TOTAL BAYAR            Rp18000
 Kumpulkan melalui tempat yang ditentukan dosen:
 
 1. Berkas `praktikum1.dart` sampai `praktikum5.dart` yang **sudah berisi modifikasi**.
-2. Berkas tugas mandiri `P02_NIM_NamaPanggilan.dart`.
+2. Berkas tugas mandiri `p02_nim_namapanggilan.dart`.
 3. *Screenshot* output tugas mandiri untuk pelanggan biasa dan pelanggan member.
 
 ## 📊 Kriteria Penilaian

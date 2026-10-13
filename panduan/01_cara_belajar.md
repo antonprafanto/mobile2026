@@ -37,7 +37,7 @@ flowchart LR
 
 ## 3. Cara Menyalin Kode dari GitHub
 
-1. Buka berkas kode yang diinginkan, misalnya `kode/02_materialapp_dan_scaffold.dart`.
+1. Buka berkas kode yang diinginkan, misalnya `kode/contoh_02_materialapp_dan_scaffold.dart`.
 2. Di pojok kanan atas tampilan kode, klik tombol **Copy raw file** (ikon dua kotak bertumpuk).
 3. Tempelkan (`Ctrl` + `V`) ke tempat yang dituju: `lib/main.dart` di proyek Flutter Anda, atau editor DartPad.
 

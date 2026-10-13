@@ -61,31 +61,31 @@ Setiap berkas adalah **program utuh** yang siap dijalankan. Cara menjalankannya 
 
 | No | Konsep | Yang dipelajari | Berkas |
 | :---: | :--- | :--- | :--- |
-| 01 | Aplikasi Flutter paling sederhana | `runApp()` menampilkan satu widget teks di tengah layar | [01_aplikasi_pertama.dart](pertemuan_01_pengenalan_flutter/kode/01_aplikasi_pertama.dart) |
-| 02 | `MaterialApp` dan `Scaffold` | Kerangka standar aplikasi: tema, `AppBar`, dan isi halaman | [02_materialapp_dan_scaffold.dart](pertemuan_01_pengenalan_flutter/kode/02_materialapp_dan_scaffold.dart) |
-| 03 | Tema warna dan gaya teks | Satu warna benih → palet Material 3 + gaya teks dari tema | [03_tema_warna_dan_teks.dart](pertemuan_01_pengenalan_flutter/kode/03_tema_warna_dan_teks.dart) |
-| 04 | *Hot reload* vs *hot restart* | Membuktikan *hot reload* menjaga data, *hot restart* mengulang | [04_hot_reload_vs_hot_restart.dart](pertemuan_01_pengenalan_flutter/kode/04_hot_reload_vs_hot_restart.dart) |
-| 05 | Membedah aplikasi *counter* bawaan | Isi `lib/main.dart` hasil `flutter create`, dijelaskan dalam bahasa Indonesia | [05_aplikasi_counter_bawaan.dart](pertemuan_01_pengenalan_flutter/kode/05_aplikasi_counter_bawaan.dart) |
-| 06 | Siklus hidup aplikasi | `AppLifecycleListener` mencatat perubahan status aplikasi | [06_siklus_hidup_aplikasi.dart](pertemuan_01_pengenalan_flutter/kode/06_siklus_hidup_aplikasi.dart) |
-| 07 | Kartu perkenalan | Menyusun widget siap pakai menjadi halaman profil (hasil jobsheet) | [07_kartu_perkenalan.dart](pertemuan_01_pengenalan_flutter/kode/07_kartu_perkenalan.dart) |
+| 01 | Aplikasi Flutter paling sederhana | `runApp()` menampilkan satu widget teks di tengah layar | [contoh_01_aplikasi_pertama.dart](pertemuan_01_pengenalan_flutter/kode/contoh_01_aplikasi_pertama.dart) |
+| 02 | `MaterialApp` dan `Scaffold` | Kerangka standar aplikasi: tema, `AppBar`, dan isi halaman | [contoh_02_materialapp_dan_scaffold.dart](pertemuan_01_pengenalan_flutter/kode/contoh_02_materialapp_dan_scaffold.dart) |
+| 03 | Tema warna dan gaya teks | Satu warna benih → palet Material 3 + gaya teks dari tema | [contoh_03_tema_warna_dan_teks.dart](pertemuan_01_pengenalan_flutter/kode/contoh_03_tema_warna_dan_teks.dart) |
+| 04 | *Hot reload* vs *hot restart* | Membuktikan *hot reload* menjaga data, *hot restart* mengulang | [contoh_04_hot_reload_vs_hot_restart.dart](pertemuan_01_pengenalan_flutter/kode/contoh_04_hot_reload_vs_hot_restart.dart) |
+| 05 | Membedah aplikasi *counter* bawaan | Isi `lib/main.dart` hasil `flutter create`, dijelaskan dalam bahasa Indonesia | [contoh_05_aplikasi_counter_bawaan.dart](pertemuan_01_pengenalan_flutter/kode/contoh_05_aplikasi_counter_bawaan.dart) |
+| 06 | Siklus hidup aplikasi | `AppLifecycleListener` mencatat perubahan status aplikasi | [contoh_06_siklus_hidup_aplikasi.dart](pertemuan_01_pengenalan_flutter/kode/contoh_06_siklus_hidup_aplikasi.dart) |
+| 07 | Kartu perkenalan | Menyusun widget siap pakai menjadi halaman profil (hasil jobsheet) | [contoh_07_kartu_perkenalan.dart](pertemuan_01_pengenalan_flutter/kode/contoh_07_kartu_perkenalan.dart) |
 
 ### Pertemuan 02 — Dasar Pemrograman Dart *(program Dart murni)*
 
 | No | Konsep | Yang dipelajari | Berkas |
 | :---: | :--- | :--- | :--- |
-| 01 | Halo, Dart! | Struktur program, komentar, dan `print()` | [01_halo_dart.dart](pertemuan_02_dasar_dart/kode/01_halo_dart.dart) |
-| 02 | Variabel dan tipe data | `String`, `int`, `double`, `bool`, `num`, `var`, konversi tipe | [02_variabel_dan_tipe_data.dart](pertemuan_02_dasar_dart/kode/02_variabel_dan_tipe_data.dart) |
-| 03 | String dan interpolasi | Menyisipkan nilai ke teks dan method `String` yang sering dipakai | [03_string_dan_interpolasi.dart](pertemuan_02_dasar_dart/kode/03_string_dan_interpolasi.dart) |
-| 04 | `final` dan `const` | Nilai yang tidak boleh diubah setelah diisi | [04_final_dan_const.dart](pertemuan_02_dasar_dart/kode/04_final_dan_const.dart) |
-| 05 | *Null safety* | `?`, `??`, `?.`, `??=`, dan `!` | [05_null_safety.dart](pertemuan_02_dasar_dart/kode/05_null_safety.dart) |
-| 06 | Operator | Aritmatika, penugasan, perbandingan, logika, kondisional | [06_operator.dart](pertemuan_02_dasar_dart/kode/06_operator.dart) |
-| 07 | Percabangan | `if`–`else`, `switch` pernyataan, dan `switch` ekspresi | [07_percabangan.dart](pertemuan_02_dasar_dart/kode/07_percabangan.dart) |
-| 08 | Perulangan | `for`, `for-in`, `while`, `do-while`, `break`, `continue` | [08_perulangan.dart](pertemuan_02_dasar_dart/kode/08_perulangan.dart) |
-| 09 | Fungsi dasar | Parameter, `return`, dan fungsi panah | [09_fungsi_dasar.dart](pertemuan_02_dasar_dart/kode/09_fungsi_dasar.dart) |
-| 10 | Jenis parameter fungsi | Opsional `[ ]`, bernama `{ }`, `required`, nilai bawaan | [10_parameter_fungsi.dart](pertemuan_02_dasar_dart/kode/10_parameter_fungsi.dart) |
-| 11 | List | Mengakses, mengubah, menyaring (`where`), mengubah (`map`), mengurutkan | [11_list.dart](pertemuan_02_dasar_dart/kode/11_list.dart) |
-| 12 | Map dan Set | Pasangan kunci-nilai dan kumpulan nilai unik | [12_map_dan_set.dart](pertemuan_02_dasar_dart/kode/12_map_dan_set.dart) |
-| 13 | Studi kasus | Rekap nilai satu kelas: gabungan semua konsep | [13_studi_kasus_rekap_nilai.dart](pertemuan_02_dasar_dart/kode/13_studi_kasus_rekap_nilai.dart) |
+| 01 | Halo, Dart! | Struktur program, komentar, dan `print()` | [contoh_01_halo_dart.dart](pertemuan_02_dasar_dart/kode/contoh_01_halo_dart.dart) |
+| 02 | Variabel dan tipe data | `String`, `int`, `double`, `bool`, `num`, `var`, konversi tipe | [contoh_02_variabel_dan_tipe_data.dart](pertemuan_02_dasar_dart/kode/contoh_02_variabel_dan_tipe_data.dart) |
+| 03 | String dan interpolasi | Menyisipkan nilai ke teks dan method `String` yang sering dipakai | [contoh_03_string_dan_interpolasi.dart](pertemuan_02_dasar_dart/kode/contoh_03_string_dan_interpolasi.dart) |
+| 04 | `final` dan `const` | Nilai yang tidak boleh diubah setelah diisi | [contoh_04_final_dan_const.dart](pertemuan_02_dasar_dart/kode/contoh_04_final_dan_const.dart) |
+| 05 | *Null safety* | `?`, `??`, `?.`, `??=`, dan `!` | [contoh_05_null_safety.dart](pertemuan_02_dasar_dart/kode/contoh_05_null_safety.dart) |
+| 06 | Operator | Aritmatika, penugasan, perbandingan, logika, kondisional | [contoh_06_operator.dart](pertemuan_02_dasar_dart/kode/contoh_06_operator.dart) |
+| 07 | Percabangan | `if`–`else`, `switch` pernyataan, dan `switch` ekspresi | [contoh_07_percabangan.dart](pertemuan_02_dasar_dart/kode/contoh_07_percabangan.dart) |
+| 08 | Perulangan | `for`, `for-in`, `while`, `do-while`, `break`, `continue` | [contoh_08_perulangan.dart](pertemuan_02_dasar_dart/kode/contoh_08_perulangan.dart) |
+| 09 | Fungsi dasar | Parameter, `return`, dan fungsi panah | [contoh_09_fungsi_dasar.dart](pertemuan_02_dasar_dart/kode/contoh_09_fungsi_dasar.dart) |
+| 10 | Jenis parameter fungsi | Opsional `[ ]`, bernama `{ }`, `required`, nilai bawaan | [contoh_10_parameter_fungsi.dart](pertemuan_02_dasar_dart/kode/contoh_10_parameter_fungsi.dart) |
+| 11 | List | Mengakses, mengubah, menyaring (`where`), mengubah (`map`), mengurutkan | [contoh_11_list.dart](pertemuan_02_dasar_dart/kode/contoh_11_list.dart) |
+| 12 | Map dan Set | Pasangan kunci-nilai dan kumpulan nilai unik | [contoh_12_map_dan_set.dart](pertemuan_02_dasar_dart/kode/contoh_12_map_dan_set.dart) |
+| 13 | Studi kasus | Rekap nilai satu kelas: gabungan semua konsep | [contoh_13_studi_kasus_rekap_nilai.dart](pertemuan_02_dasar_dart/kode/contoh_13_studi_kasus_rekap_nilai.dart) |
 
 ---
 

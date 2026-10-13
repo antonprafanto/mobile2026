@@ -119,12 +119,12 @@ Pernyataan 1 → Bagian 11 · Pernyataan 2 → Bagian 4.1 · Pernyataan 3–4 �
 
 ### D1 — Modifikasi
 
-Salin [`kode/02_materialapp_dan_scaffold.dart`](kode/02_materialapp_dan_scaffold.dart) ke `lib/main.dart`, lalu:
+Salin [`kode/contoh_02_materialapp_dan_scaffold.dart`](kode/contoh_02_materialapp_dan_scaffold.dart) ke `lib/main.dart`, lalu:
 
 1. Ubah judul `AppBar` menjadi nama lengkap Anda.
 2. Tambahkan tema dengan `ColorScheme.fromSeed` memakai warna `Colors.orange`.
    (Petunjuk: `MaterialApp` di contoh itu diawali `const`. Anda perlu menghapus `const` tersebut karena `ThemeData(...)` tidak bisa dibuat sebagai konstanta.)
-3. Ganti isi `body` agar menampilkan **dua baris** tulisan di tengah layar: nama mata kuliah dan nama kampus Anda. (Petunjuk: lihat cara `Column` dipakai di [Contoh 03](kode/03_tema_warna_dan_teks.dart).)
+3. Ganti isi `body` agar menampilkan **dua baris** tulisan di tengah layar: nama mata kuliah dan nama kampus Anda. (Petunjuk: lihat cara `Column` dipakai di [Contoh 03](kode/contoh_03_tema_warna_dan_teks.dart).)
 
 ### D2 — Tebak Hasilnya
 
@@ -146,7 +146,7 @@ Setelah menebak, jalankan kodenya untuk membuktikan tebakan Anda.
 <details>
 <summary>💡 Petunjuk D2</summary>
 
-Bandingkan dengan [Contoh 01](kode/01_aplikasi_pertama.dart) dan baca baris terakhir tabel di [Bagian 13](README.md#13-kesalahan-umum-pemula-dan-solusinya).
+Bandingkan dengan [Contoh 01](kode/contoh_01_aplikasi_pertama.dart) dan baca baris terakhir tabel di [Bagian 13](README.md#13-kesalahan-umum-pemula-dan-solusinya).
 </details>
 
 ### D3 — Temukan Kesalahannya

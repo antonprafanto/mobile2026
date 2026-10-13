@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 09_fungsi_dasar.dart
+// B. Di terminal: dart run contoh_09_fungsi_dasar.dart
 // =====================================================================
 
 // 1) Fungsi tanpa nilai kembali: diawali kata void ("tidak mengembalikan").

@@ -79,11 +79,11 @@ Untuk menampilkan layar HP ke proyektor, gunakan [scrcpy](https://github.com/Gen
 
 Cocok untuk: **contoh Dart murni**.
 
-1. Simpan kode contoh sebagai berkas, misalnya `05_null_safety.dart`.
+1. Simpan kode contoh sebagai berkas, misalnya `contoh_05_null_safety.dart`.
 2. Dari folder tempat berkas itu berada, jalankan:
 
 ```bash
-dart run 05_null_safety.dart
+dart run contoh_05_null_safety.dart
 ```
 
 > [!NOTE]
@@ -102,7 +102,7 @@ flutter pub get
 Setelah itu VS Code dapat memeriksa semua contoh kode (garis merah/kuning akan muncul jika ada yang salah), dan contoh Dart murni bisa langsung dijalankan, misalnya:
 
 ```bash
-dart run pertemuan_02_dasar_dart/kode/01_halo_dart.dart
+dart run pertemuan_02_dasar_dart/kode/contoh_01_halo_dart.dart
 ```
 
 > [!IMPORTANT]

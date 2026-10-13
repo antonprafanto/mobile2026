@@ -63,7 +63,7 @@ module.exports = {
 
     d.kode({
       judul: 'Anatomi Program Dart',
-      berkas: 'kode/01_halo_dart.dart',
+      berkas: 'kode/contoh_01_halo_dart.dart',
       kode: [
         '// Komentar satu baris: diabaikan komputer',
         '',
@@ -89,7 +89,7 @@ module.exports = {
 
     d.kode({
       judul: 'Variabel = Toples Berlabel',
-      berkas: 'kode/02_variabel_dan_tipe_data.dart',
+      berkas: 'kode/contoh_02_variabel_dan_tipe_data.dart',
       kode: [
         "String nama = 'Siti Aminah'; // teks",
         'int umur = 19;               // bilangan bulat',
@@ -130,7 +130,7 @@ module.exports = {
 
     d.kode({
       judul: 'String dan Interpolasi',
-      berkas: 'kode/03_string_dan_interpolasi.dart',
+      berkas: 'kode/contoh_03_string_dan_interpolasi.dart',
       kode: [
         "String namaDepan = 'Budi';",
         '',
@@ -156,7 +156,7 @@ module.exports = {
 
     d.kode({
       judul: 'final dan const: Nilai yang Terkunci',
-      berkas: 'kode/04_final_dan_const.dart',
+      berkas: 'kode/contoh_04_final_dan_const.dart',
       kode: [
         '// const: pasti SEBELUM program berjalan',
         'const int jumlahHariSeminggu = 7;',
@@ -198,7 +198,7 @@ module.exports = {
 
     d.kode({
       judul: 'Null Safety dalam Praktik',
-      berkas: 'kode/05_null_safety.dart',
+      berkas: 'kode/contoh_05_null_safety.dart',
       kode: [
         "String nama = 'Dewi';                  // tak boleh null",
         'String? panggilan = cariPanggilan(nama); // boleh null',
@@ -242,11 +242,11 @@ module.exports = {
       batasBawah: 5.55,
       catatan: 'Lanjutkan dengan operator perbandingan (==, !=, >, <, >=, <=) dan logika: && (DAN), || (ATAU), ! (BUKAN). Ingatkan: = mengisi nilai, == membandingkan.',
     });
-    d.tombolKode(sOp, { x: 0.6, y: 5.85, w: 7.4, berkas: 'kode/06_operator.dart' });
+    d.tombolKode(sOp, { x: 0.6, y: 5.85, w: 7.4, berkas: 'kode/contoh_06_operator.dart' });
 
     d.kode({
       judul: 'Percabangan: if dan switch',
-      berkas: 'kode/07_percabangan.dart',
+      berkas: 'kode/contoh_07_percabangan.dart',
       kode: [
         'String huruf;',
         'if (nilai >= 85) {',
@@ -286,13 +286,13 @@ module.exports = {
       ],
       catatan: 'Jelaskan continue (lewati putaran ini) dan break (hentikan perulangan). Peringatkan infinite loop: hentikan dengan Ctrl+C di terminal atau muat ulang DartPad.',
     });
-    d.tombolKode(sLoop, { x: 0.6, y: 5.85, w: 7.4, berkas: 'kode/08_perulangan.dart' });
+    d.tombolKode(sLoop, { x: 0.6, y: 5.85, w: 7.4, berkas: 'kode/contoh_08_perulangan.dart' });
 
     d.bagian({ label: 'BAGIAN 4', judul: 'Fungsi: Membungkus Logika', ikon: 'fungsi' });
 
     d.kode({
       judul: 'Fungsi Itu Seperti Mesin Jus',
-      berkas: 'kode/09_fungsi_dasar.dart',
+      berkas: 'kode/contoh_09_fungsi_dasar.dart',
       kode: [
         '// tipe hasil, nama, parameter',
         'int tambah(int a, int b) {',
@@ -334,7 +334,7 @@ module.exports = {
       { text: 'Inilah kunci membaca kode Flutter! ', options: { bold: true } },
       { text: 'AppBar(title: ...) dan Text(\'Hai\', style: ...) memakai parameter bernama. Urutannya bebas dan maknanya langsung terbaca.' },
     ], { x: 1.4, y: 4.55, w: 11.3, h: 0.85, fontSize: 17, color: C.text1, valign: 'middle', margin: 0, isTextBox: true });
-    d.tombolKode(sParam, { x: 0.6, y: 5.85, w: 7.4, berkas: 'kode/10_parameter_fungsi.dart' });
+    d.tombolKode(sParam, { x: 0.6, y: 5.85, w: 7.4, berkas: 'kode/contoh_10_parameter_fungsi.dart' });
 
     d.bagian({ label: 'BAGIAN 5', judul: 'Koleksi: Mengelola Banyak Data', ikon: 'daftar' });
 
@@ -361,8 +361,8 @@ module.exports = {
       ],
       catatan: 'Tanda <...> seperti List<String> menyatakan jenis isi koleksi.',
     });
-    d.tombolKode(sKoleksi, { x: 0.6, y: 5.85, w: 5.85, berkas: 'kode/11_list.dart' });
-    d.tombolKode(sKoleksi, { x: 6.85, y: 5.85, w: 5.85, berkas: 'kode/12_map_dan_set.dart' });
+    d.tombolKode(sKoleksi, { x: 0.6, y: 5.85, w: 5.85, berkas: 'kode/contoh_11_list.dart' });
+    d.tombolKode(sKoleksi, { x: 6.85, y: 5.85, w: 5.85, berkas: 'kode/contoh_12_map_dan_set.dart' });
 
     d.kode({
       judul: 'Menyaring dan Mengubah Isi List',
@@ -394,7 +394,7 @@ module.exports = {
 
     d.kode({
       judul: 'Studi Kasus: Rekap Nilai Satu Kelas',
-      berkas: 'kode/13_studi_kasus_rekap_nilai.dart',
+      berkas: 'kode/contoh_13_studi_kasus_rekap_nilai.dart',
       kode: [
         'Map<String, List<int>> kelas = {',
         "  'Andi': [85, 78, 90],",

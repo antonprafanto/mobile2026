@@ -6,7 +6,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 13_studi_kasus_rekap_nilai.dart
+// B. Di terminal: dart run contoh_13_studi_kasus_rekap_nilai.dart
 // =====================================================================
 
 // Nilai akhir = 30% tugas + 30% UTS + 40% UAS

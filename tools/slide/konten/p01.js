@@ -157,7 +157,7 @@ module.exports = {
 
     d.kode({
       judul: 'Melihat Siklus Hidup Secara Langsung',
-      berkas: 'kode/06_siklus_hidup_aplikasi.dart',
+      berkas: 'kode/contoh_06_siklus_hidup_aplikasi.dart',
       kode: [
         'late final AppLifecycleListener _pendengar;',
         '',
@@ -272,7 +272,7 @@ module.exports = {
 
     d.kode({
       judul: 'Aplikasi Paling Sederhana',
-      berkas: 'kode/01_aplikasi_pertama.dart',
+      berkas: 'kode/contoh_01_aplikasi_pertama.dart',
       kode: [
         "import 'package:flutter/material.dart';",
         '',
@@ -299,7 +299,7 @@ module.exports = {
 
     d.kode({
       judul: 'Semua Adalah Widget: MaterialApp & Scaffold',
-      berkas: 'kode/02_materialapp_dan_scaffold.dart',
+      berkas: 'kode/contoh_02_materialapp_dan_scaffold.dart',
       kode: [
         'class AplikasiSaya extends StatelessWidget {',
         '  const AplikasiSaya({super.key});',
@@ -331,7 +331,7 @@ module.exports = {
 
     d.kode({
       judul: 'Warna dari Tema, Bukan Ditulis Manual',
-      berkas: 'kode/03_tema_warna_dan_teks.dart',
+      berkas: 'kode/contoh_03_tema_warna_dan_teks.dart',
       kode: [
         'theme: ThemeData(',
         '  colorScheme: ColorScheme.fromSeed(',
@@ -370,7 +370,7 @@ module.exports = {
       batasBawah: 5.7,
       catatan: 'Analogi: hot reload = mengganti baju orang yang sedang tidur tanpa membangunkannya; hot restart = membangunkannya dan menyuruh mulai hari dari awal. Demo dengan contoh 04.',
     });
-    d.tombolKode(sHot, { x: 0.6, y: 6.0, w: 7.4, berkas: 'kode/04_hot_reload_vs_hot_restart.dart' });
+    d.tombolKode(sHot, { x: 0.6, y: 6.0, w: 7.4, berkas: 'kode/contoh_04_hot_reload_vs_hot_restart.dart' });
 
     const sAlur = d.alur({
       judul: 'Apa yang Terjadi Saat Tombol + Ditekan?',
@@ -385,7 +385,7 @@ module.exports = {
       tinggiKotak: 3.35,
       catatan: 'Jelaskan bahwa template asli memakai .center dan .fromSeed (dot shorthand Dart 3.10), artinya sama dengan MainAxisAlignment.center dan ColorScheme.fromSeed.',
     });
-    d.tombolKode(sAlur, { x: 0.6, y: 5.95, w: 7.4, berkas: 'kode/05_aplikasi_counter_bawaan.dart' });
+    d.tombolKode(sAlur, { x: 0.6, y: 5.95, w: 7.4, berkas: 'kode/contoh_05_aplikasi_counter_bawaan.dart' });
 
     d.tabel({
       judul: 'Kesalahan Umum Pemula',

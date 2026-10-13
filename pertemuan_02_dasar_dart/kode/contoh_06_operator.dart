@@ -5,7 +5,7 @@
 // =====================================================================
 // CARA MENJALANKAN (pilih salah satu):
 // A. Buka https://dartpad.dev, tempel seluruh isi berkas ini, klik Run.
-// B. Di terminal: dart run 06_operator.dart
+// B. Di terminal: dart run contoh_06_operator.dart
 // =====================================================================
 
 void main() {

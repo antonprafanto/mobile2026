@@ -208,7 +208,7 @@ stateDiagram-v2
 
 ### 6.3 Melihatnya secara langsung
 
-Contoh [`06_siklus_hidup_aplikasi.dart`](kode/06_siklus_hidup_aplikasi.dart) mencatat setiap perubahan status ke layar. Bagian terpentingnya:
+Contoh [`contoh_06_siklus_hidup_aplikasi.dart`](kode/contoh_06_siklus_hidup_aplikasi.dart) mencatat setiap perubahan status ke layar. Bagian terpentingnya:
 
 ```dart
 // "Pendengar" yang dikabari setiap kali status aplikasi berubah.
@@ -379,7 +379,7 @@ Emulator adalah "HP palsu" di dalam komputer. Praktis, tetapi bisa memakan beber
 
 ### 10.1 Aplikasi paling sederhana di dunia Flutter
 
-Buka [`kode/01_aplikasi_pertama.dart`](kode/01_aplikasi_pertama.dart). Inilah intinya:
+Buka [`kode/contoh_01_aplikasi_pertama.dart`](kode/contoh_01_aplikasi_pertama.dart). Inilah intinya:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -420,7 +420,7 @@ Di Flutter, **hampir semua yang tampil di layar adalah widget**: teks, tombol, i
 
 ### 10.3 Agar terlihat seperti aplikasi sungguhan: `MaterialApp` dan `Scaffold`
 
-Sekarang buka [`kode/02_materialapp_dan_scaffold.dart`](kode/02_materialapp_dan_scaffold.dart):
+Sekarang buka [`kode/contoh_02_materialapp_dan_scaffold.dart`](kode/contoh_02_materialapp_dan_scaffold.dart):
 
 ```dart
 class AplikasiSaya extends StatelessWidget {
@@ -472,7 +472,7 @@ flowchart TD
 
 ### 10.4 Memberi warna dengan tema
 
-Contoh [`03_tema_warna_dan_teks.dart`](kode/03_tema_warna_dan_teks.dart) menunjukkan cara memberi warna **tanpa menulis kode warna satu per satu**:
+Contoh [`contoh_03_tema_warna_dan_teks.dart`](kode/contoh_03_tema_warna_dan_teks.dart) menunjukkan cara memberi warna **tanpa menulis kode warna satu per satu**:
 
 ```dart
 theme: ThemeData(
@@ -509,7 +509,7 @@ Ini fitur favorit pengembang Flutter. Perhatikan perbedaannya:
 
 **Analogi:** *hot reload* seperti **mengganti baju** seseorang tanpa membangunkannya dari tidur. Ia tetap di posisi yang sama. *Hot restart* seperti **membangunkannya lalu menyuruhnya mulai hari dari awal**.
 
-Buktikan sendiri dengan [`04_hot_reload_vs_hot_restart.dart`](kode/04_hot_reload_vs_hot_restart.dart): tekan tombol `+` lima kali, ganti warna `AppBar`, lalu simpan. Warna berubah, angka tetap 5. Setelah itu tekan `R`; angka kembali ke 0.
+Buktikan sendiri dengan [`contoh_04_hot_reload_vs_hot_restart.dart`](kode/contoh_04_hot_reload_vs_hot_restart.dart): tekan tombol `+` lima kali, ganti warna `AppBar`, lalu simpan. Warna berubah, angka tetap 5. Setelah itu tekan `R`; angka kembali ke 0.
 
 > [!NOTE]
 > **Kapan keduanya tidak cukup?** Jika Anda menambah paket baru di `pubspec.yaml` atau mengubah pengaturan platform, **hentikan aplikasi** (tekan `q` atau tombol stop ⏹️), lalu jalankan ulang dari awal.
@@ -518,7 +518,7 @@ Buktikan sendiri dengan [`04_hot_reload_vs_hot_restart.dart`](kode/04_hot_reload
 
 ## 12. Membaca Aplikasi Counter Bawaan
 
-Saat membuat proyek baru, Flutter langsung memberi contoh aplikasi penghitung. Versi yang sudah diberi komentar berbahasa Indonesia ada di [`05_aplikasi_counter_bawaan.dart`](kode/05_aplikasi_counter_bawaan.dart). Inilah alur kerjanya ketika tombol `+` ditekan:
+Saat membuat proyek baru, Flutter langsung memberi contoh aplikasi penghitung. Versi yang sudah diberi komentar berbahasa Indonesia ada di [`contoh_05_aplikasi_counter_bawaan.dart`](kode/contoh_05_aplikasi_counter_bawaan.dart). Inilah alur kerjanya ketika tombol `+` ditekan:
 
 ```mermaid
 sequenceDiagram

@@ -98,7 +98,7 @@ Jika `flutter doctor` menampilkan `Cannot find Chrome. Try setting CHROME_EXECUT
 ### Layar merah bertuliskan `No Directionality widget found.`
 
 **Penyebab:** widget teks dipakai tanpa `MaterialApp` dan tanpa `textDirection`.
-**Solusi:** bungkus aplikasi dengan `MaterialApp` (lihat [Pertemuan 1, Contoh 02](../pertemuan_01_pengenalan_flutter/kode/02_materialapp_dan_scaffold.dart)).
+**Solusi:** bungkus aplikasi dengan `MaterialApp` (lihat [Pertemuan 1, Contoh 02](../pertemuan_01_pengenalan_flutter/kode/contoh_02_materialapp_dan_scaffold.dart)).
 
 ---
 
