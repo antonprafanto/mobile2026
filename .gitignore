@@ -1,0 +1,49 @@
+# ---------------------------------------------------------------------
+# Dokumen internal dosen (disimpan lokal, TIDAK diunggah ke GitHub)
+# ---------------------------------------------------------------------
+_internal_dosen/
+01_kurikulum_dan_rps/
+02_infrastruktur_dan_lab/
+04_modul_praktikum/
+05_proyek_dan_evaluasi/
+06_starter_boilerplate/
+
+# ---------------------------------------------------------------------
+# Dart & Flutter
+# ---------------------------------------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+pubspec.lock
+
+# ---------------------------------------------------------------------
+# Node.js (generator slide di tools/slide)
+# ---------------------------------------------------------------------
+node_modules/
+
+# ---------------------------------------------------------------------
+# Editor & sistem operasi
+# ---------------------------------------------------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.history
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------
+# Berkas sementara (Office, Python, pratinjau slide)
+# ---------------------------------------------------------------------
+~$*
+*.tmp
+*.log
+__pycache__/
+*.pyc
+scratch/
+tools/slide/_pratinjau/

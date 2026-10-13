@@ -1,0 +1,19 @@
+{
+  "name": "ppb-generator-slide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generator slide perkuliahan Pemrograman Piranti Bergerak (pptxgenjs).",
+  "scripts": {
+    "slide": "node buat_slide.js",
+    "ikon": "node buat_ikon.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  },
+  "overrides": {
+    "image-size": "^2.0.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

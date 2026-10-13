@@ -1,0 +1,5 @@
+# Pengaturan "polisi kode" khusus folder ini.
+# Contoh di folder ini adalah program Dart murni yang menampilkan hasil ke
+# konsol, jadi perintah print() diizinkan. (Di aplikasi Flutter kita memakai
+# debugPrint() atau logging, sehingga aturan avoid_print tetap aktif di sana.)
+include: package:lints/recommended.yaml

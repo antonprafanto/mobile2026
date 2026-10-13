@@ -1,0 +1,8 @@
+# Aturan "polisi kode" (linter) untuk seluruh contoh aplikasi Flutter.
+# Folder berisi program Dart murni punya analysis_options.yaml sendiri
+# yang mengizinkan print().
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**

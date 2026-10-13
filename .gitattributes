@@ -1,0 +1,10 @@
+# Simpan semua berkas teks dengan akhir baris LF (gaya Linux/macOS),
+# termasuk saat repositori di-clone di Windows. Ini mencegah peringatan
+# "LF will be replaced by CRLF" dan menjaga hasil `dart format` konsisten.
+* text=auto eol=lf
+
+# Berkas biner: jangan pernah diubah oleh Git.
+*.png binary
+*.jpg binary
+*.pptx binary
+*.bundle binary

@@ -1,0 +1,21 @@
+# ---------------------------------------------------------------------
+# Berkas ini BUKAN untuk menjalankan aplikasi.
+# Fungsinya hanya agar seluruh contoh kode di repositori ini dapat
+# diperiksa sekaligus (dart format & flutter analyze), baik oleh
+# GitHub Actions maupun oleh Anda di VS Code setelah `flutter pub get`.
+# ---------------------------------------------------------------------
+name: ppb_mobile2026
+description: "Materi kuliah Pemrograman Piranti Bergerak (Flutter 2026)."
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ^3.13.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  lints: ^6.1.0
