@@ -37,15 +37,15 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 ## Menambah Slide Pertemuan Baru
 
-1. Salin `konten/p02.js` menjadi `konten/p03.js`.
+1. Salin konten pertemuan terakhir, misalnya `konten/p04.js` menjadi `konten/p05.js`.
 2. Ubah bagian identitas di atas berkas:
 
    ```js
    module.exports = {
-     nomor: '03',
-     folder: 'pertemuan_03_dart_lanjutan',      // nama folder pertemuan
-     namaBerkas: 'PERTEMUAN_03_Dart_Lanjutan',   // nama berkas .pptx
-     topik: 'Dart Lanjutan',                     // tampil di kaki slide
+     nomor: '05',
+     folder: 'pertemuan_05_interaksi_dan_state',   // nama folder pertemuan
+     namaBerkas: 'PERTEMUAN_05_Interaksi_dan_State', // nama berkas .pptx
+     topik: 'Interaksi Pengguna & State Lokal',    // tampil di kaki slide
      bangun(d) {
        // satu pemanggilan d.xxx({...}) = satu slide
      },
@@ -53,7 +53,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
    ```
 
 3. Isi fungsi `bangun(d)` dengan jenis slide yang tersedia (lihat tabel di bawah).
-4. Jalankan `node buat_slide.js 03`, lalu buka hasilnya untuk diperiksa.
+4. Jalankan `node buat_slide.js 05`, lalu buka hasilnya untuk diperiksa.
 
 ### Jenis Slide yang Tersedia
 
@@ -65,20 +65,24 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 | `d.bagian({ label, judul, ikon })` | Pembatas antarbagian materi |
 | `d.kartu({ judul, kolom, item })` | Kartu berikon; item boleh punya `kode` (potongan kode kecil) |
 | `d.statistik({ judul, item, sumber })` | Angka besar + keterangan |
-| `d.banding({ judul, kolom })` | Perbandingan 2–3 kolom; kolom boleh punya `tag`, `sorot`, `contoh` |
+| `d.banding({ judul, kolom })` | Perbandingan 2–3 kolom; kolom boleh punya `tag`, `sorot`, `contoh` (ukuran hurufnya diatur `ukuranContoh`) |
 | `d.tabel({ judul, kepala, baris })` | Tabel; ukuran baris menyesuaikan ruang kosong |
 | `d.kode({ judul, kode, berkas, poin })` | Potongan kode berwarna + penjelasan + tombol ke GitHub |
+| `d.layar({ judul, gambar, kode, berkas, poin })` | Tangkapan layar aplikasi di kanan (satu berkas atau daftar berkas dari folder `gambar/` pertemuan), kode/tombol/poin di kiri; atur ukuran gambar dengan `tinggiGambar` dan `lebarMaks` |
 | `d.lapisan({ judul, lapisan })` | Diagram berlapis (misalnya arsitektur) |
 | `d.ringkasan({ poin })` | Ringkasan akhir |
 | `d.penutup({ judul, tautan })` | Slide penutup dengan tombol tautan |
 
 Semua jenis slide menerima `catatan` — teks **catatan pembicara** (speaker notes)
-untuk dosen. Contoh lengkap pemakaian setiap jenis ada di `konten/p01.js` dan
-`konten/p02.js`.
+untuk dosen. Contoh lengkap pemakaian setiap jenis ada di `konten/p01.js` sampai
+`konten/p04.js` (contoh `d.layar` ada di `konten/p04.js`).
 
 > [!TIP]
-> Tulis potongan kode di slide **pendek saja** (maksimal ±16 baris). Kode lengkap
+> Tulis potongan kode di slide **pendek saja** (maksimal ±16 baris, dan tidak
+> lebih dari ±60 karakter per baris di samping tangkapan layar). Kode lengkap
 > tetap tinggal di folder `kode/` — slide cukup menautkannya lewat `berkas`.
+> Jika ruangnya sempit, tombol GitHub otomatis memakai label pendek
+> ("Kode di GitHub · nama_berkas.dart") agar tetap satu baris.
 
 ## Mengganti atau Menambah Ikon
 
@@ -105,3 +109,7 @@ Nama ikon yang dipakai di konten (misalnya `ikon: 'kilat'`) merujuk ke
   kaki slide otomatis.
 - Alamat repositori untuk tombol GitHub diatur oleh konstanta `REPO` dan `CABANG`
   di `desain.js`.
+- Setelah berkas ditulis, `desain.js` merapikan XML slide: warna tema ditulis ke
+  `theme1.xml`, garis bawah tautan pada tombol dihapus, dan `<a:pPr>` ganda di
+  tengah paragraf (bawaan pptxgenjs 4 untuk teks berwarna-warni) dibuang agar
+  berkas tetap sesuai skema OOXML dan tidak memicu "perbaikan" di PowerPoint.

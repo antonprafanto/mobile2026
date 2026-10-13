@@ -1,6 +1,9 @@
 # Pemeriksaan otomatis setiap kali ada push ke branch main.
-# Memastikan seluruh contoh kode rapi (dart format) dan bersih dari
-# error, peringatan, maupun API usang (flutter analyze --fatal-infos).
+# 1. Seluruh contoh kode rapi (dart format).
+# 2. Bersih dari error, peringatan, maupun API usang (flutter analyze --fatal-infos).
+# 3. Output setiap contoh Dart murni sama dengan blok "// OUTPUT" di berkasnya.
+# Jika ada yang gagal, temuan ditampilkan sebagai anotasi pada halaman
+# hasil pemeriksaan (tab "Checks"), lengkap dengan nama berkas dan barisnya.
 name: Quality Gate Kode
 
 on:
@@ -11,7 +14,7 @@ on:
 
 jobs:
   periksa-kode:
-    name: Format & analisis kode
+    name: Format, analisis & output kode
     runs-on: ubuntu-latest
     steps:
       - name: Ambil isi repositori
@@ -33,4 +36,24 @@ jobs:
         run: dart format --output=none --set-exit-if-changed .
 
       - name: Analisis kode (flutter analyze)
+        if: ${{ !cancelled() }}
         run: flutter analyze --fatal-infos
+
+      - name: Jalankan contoh Dart murni dan cocokkan output
+        if: ${{ !cancelled() }}
+        run: python3 tools/cek_output.py
+
+      - name: Tampilkan temuan format dan analisis sebagai anotasi
+        if: ${{ failure() }}
+        run: |
+          # Berkas yang belum diformat
+          dart format --output=none . | sed -n 's/^Changed \(.*\)$/\1/p' | while read -r berkas; do
+            echo "::error file=${berkas}::Berkas belum diformat. Jalankan: dart format ${berkas}"
+          done
+          # Temuan analyzer. Format mesin: TINGKAT|JENIS|KODE|BERKAS|BARIS|KOLOM|PANJANG|PESAN
+          dart analyze --format=machine . 2>&1 | grep -E '^(INFO|WARNING|ERROR)\|' | while IFS='|' read -r tingkat jenis kode berkas baris kolom panjang pesan; do
+            berkas="${berkas#"$GITHUB_WORKSPACE/"}"
+            pesan="${pesan//%/%25}"
+            echo "::error file=${berkas},line=${baris},col=${kolom}::[${kode}] ${pesan}"
+          done
+          exit 0

@@ -6,7 +6,7 @@ Setiap berkas di folder `kode/` adalah **program utuh** yang bisa langsung dijal
 
 | Jenis | Ciri | Contoh | Cara menjalankan |
 | :--- | :--- | :--- | :--- |
-| **Dart murni** | Tidak ada `import 'package:flutter/...'`; hasilnya berupa tulisan di konsol | Pertemuan 2 | [Cara 1](#cara-1--dartpad) atau [Cara 3](#cara-3--dart-run-di-terminal) |
+| **Dart murni** | Tidak ada `import 'package:flutter/...'`; hasilnya berupa tulisan di konsol | Pertemuan 2 dan 3 | [Cara 1](#cara-1--dartpad) atau [Cara 3](#cara-3--dart-run-di-terminal) |
 | **Aplikasi Flutter** | Ada `import 'package:flutter/material.dart';` dan `runApp(...)` | Pertemuan 1, 4, dan seterusnya | [Cara 1](#cara-1--dartpad) atau [Cara 2](#cara-2--proyek-latihan-flutter-di-komputer-sendiri) |
 
 Bagian paling atas setiap berkas juga selalu berisi petunjuk **CARA MENJALANKAN**.

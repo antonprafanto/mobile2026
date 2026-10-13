@@ -17,6 +17,7 @@ Setiap pertemuan memiliki folder sendiri, misalnya `pertemuan_01_pengenalan_flut
 | 💻 | `kode/` | **Contoh kode siap jalan**: satu konsep = satu berkas utuh | Saat kelas dan saat belajar mandiri |
 | 🧪 | `JOBSHEET.md` | **Panduan praktikum** langkah demi langkah, ditambah tugas mandiri | **Saat** praktikum |
 | ✍️ | `LATIHAN.md` | **Soal latihan** untuk mengukur pemahaman | **Setelah** kelas |
+| 🖼️ | `gambar/` *(mulai Pertemuan 4)* | Tangkapan layar hasil contoh kode dan praktikum | Tampil otomatis di dalam modul dan jobsheet |
 
 > [!TIP]
 > Di GitHub, berkas `README.md` di dalam sebuah folder **langsung tampil** saat folder itu dibuka. Jadi, cukup klik folder pertemuan dan modulnya akan langsung terbaca.

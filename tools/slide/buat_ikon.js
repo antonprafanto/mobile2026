@@ -83,6 +83,24 @@ const DAFTAR_IKON = {
   bintang: 'MdAutoAwesome',
   unduh: 'MdDownload',
   orang: 'MdPerson',
+  // Pertemuan 3
+  kelas: 'MdClass',
+  pabrik: 'MdFactory',
+  puzzle: 'MdExtension',
+  perisai: 'MdShield',
+  jam: 'MdHourglassTop',
+  aliran: 'MdStream',
+  nomor: 'MdFormatListNumbered',
+  // Pertemuan 4
+  kolom: 'MdViewColumn',
+  baris: 'MdTableRows',
+  ukur: 'MdStraighten',
+  bungkus: 'MdWrapText',
+  gulir: 'MdSwipeVertical',
+  dasbor: 'MdDashboard',
+  rata: 'MdFormatAlignLeft',
+  bingkai: 'MdBorderOuter',
+  layarpas: 'MdFitScreen',
 };
 
 async function main() {

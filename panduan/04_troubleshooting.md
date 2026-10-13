@@ -100,6 +100,14 @@ Jika `flutter doctor` menampilkan `Cannot find Chrome. Try setting CHROME_EXECUT
 **Penyebab:** widget teks dipakai tanpa `MaterialApp` dan tanpa `textDirection`.
 **Solusi:** bungkus aplikasi dengan `MaterialApp` (lihat [Pertemuan 1, Contoh 02](../pertemuan_01_pengenalan_flutter/kode/contoh_02_materialapp_dan_scaffold.dart)).
 
+### Garis kuning-hitam dan pesan `A RenderFlex overflowed by ... pixels`
+
+**Penyebab:** isi tampilan lebih lebar (`on the right`) atau lebih tinggi (`on the bottom`) daripada ruang yang tersedia. Garis ini hanya tampil saat *debug*; di aplikasi rilis isinya terpotong diam-diam.
+**Solusi:** teks panjang di dalam `Row` → bungkus dengan `Expanded`; banyak item kecil dalam satu baris → ganti `Row` dengan `Wrap`; halaman lebih tinggi daripada layar → bungkus dengan `SingleChildScrollView`. Penjelasan lengkapnya ada di [Pertemuan 4, Bagian 9](../pertemuan_04_widget_dan_layout/README.md#9-overflow-saat-isi-tidak-muat).
+
+> [!TIP]
+> Satu kesalahan tata letak bisa memicu puluhan pesan error berantai. Selalu baca dan perbaiki pesan **pertama** di konsol, lalu jalankan ulang.
+
 ---
 
 ## D. Masalah Penulisan Kode
@@ -121,9 +129,9 @@ Garis kuning = **peringatan** (*warning*); garis biru = **saran** (*info/lint*).
 **Penyebab:** ada karakter Tab, atau indentasi tidak rata.
 **Solusi:** gunakan **spasi** (2 spasi per tingkat), bukan Tab. Pastikan setiap tingkat sejajar dengan rapi.
 
-### Kesalahan umum bahasa Dart
+### Kesalahan umum bahasa Dart dan tata letak Flutter
 
-Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/README.md#15-kesalahan-umum-pemula-dan-solusinya).
+Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/README.md#15-kesalahan-umum-pemula-dan-solusinya) (variabel, tipe data, *null safety*), [Pertemuan 3, Bagian 14](../pertemuan_03_dart_lanjutan/README.md#14-kesalahan-umum-pemula-dan-solusinya) (*class*, pewarisan, *exception*, `Future`, dan `Stream`), dan [Pertemuan 4, Bagian 15](../pertemuan_04_widget_dan_layout/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`child`/`children`, `Expanded`, *overflow*, dan *constraints*).
 
 ---
 

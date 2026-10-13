@@ -40,8 +40,8 @@ Setiap pertemuan memiliki folder sendiri berisi **modul bacaan**, **contoh kode 
 | :---: | :--- | :--- | :---: | :---: |
 | **1** | [Pengenalan Pemrograman Piranti Bergerak & Flutter](pertemuan_01_pengenalan_flutter/README.md) | Menjelaskan ekosistem dan pendekatan pengembangan aplikasi mobile serta siklus hidup aplikasi; menyiapkan lingkungan kerja; menjalankan dan memodifikasi aplikasi Flutter pertama. | 1 | ✅ Tersedia |
 | **2** | [Dasar Pemrograman Dart](pertemuan_02_dasar_dart/README.md) | Menulis program Dart memakai variabel, tipe data, *null safety*, operator, percabangan, perulangan, fungsi, dan koleksi data dengan gaya penulisan yang rapi. | 4 | ✅ Tersedia |
-| **3** | Dart Lanjutan: OOP & Pemrograman Asinkron | Menerapkan *class*, *constructor*, pewarisan, *mixin*, *enum*, penanganan *error*, serta `Future`, `async`/`await`, dan `Stream`. | 3 | 🔜 Segera |
-| **4** | Widget & Tata Letak (*Layout*) | Menyusun tampilan memakai widget dasar dan widget tata letak (`Row`, `Column`, `Stack`, `Expanded`), memahami *constraints*, dan mengatasi *overflow*. | 2 | 🔜 Segera |
+| **3** | [Dart Lanjutan: OOP & Pemrograman Asinkron](pertemuan_03_dart_lanjutan/README.md) | Menerapkan *class*, *constructor*, pewarisan, *mixin*, *enum*, penanganan *error*, serta `Future`, `async`/`await`, dan `Stream`. | 3 | ✅ Tersedia |
+| **4** | [Widget & Tata Letak (*Layout*)](pertemuan_04_widget_dan_layout/README.md) | Menyusun tampilan memakai widget dasar dan widget tata letak (`Row`, `Column`, `Stack`, `Expanded`), memahami *constraints*, dan mengatasi *overflow*. | 2 | ✅ Tersedia |
 | **5** | Interaksi Pengguna & State Lokal | Membuat tampilan interaktif dengan `StatefulWidget` dan `setState`, memahami siklus hidup widget, serta membuat formulir beserta validasinya. | 1, 2 | 🔜 Segera |
 | **6** | Daftar Data & Navigasi Antarhalaman | Menampilkan data dengan `ListView`/`GridView` dan berpindah halaman sambil mengirim data (`Navigator` dan `go_router`). | 2 | 🔜 Segera |
 | **7** | Material Design 3 & UI Responsif | Menerapkan tema Material 3 (warna, tipografi, mode gelap) dan tata letak yang menyesuaikan ukuran layar. | 2 | 🔜 Segera |

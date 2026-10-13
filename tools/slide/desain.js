@@ -69,6 +69,9 @@ const KATA_KUNCI = new Set([
   'if', 'else', 'for', 'while', 'do', 'switch', 'case', 'default', 'break',
   'continue', 'late', 'required', 'super', 'this', 'true', 'false', 'null',
   'in', 'new', 'async', 'await', 'dynamic', 'with', 'is', 'as',
+  // Pertemuan 3: OOP dan asinkron
+  'abstract', 'implements', 'mixin', 'enum', 'factory', 'get', 'set',
+  'try', 'on', 'catch', 'finally', 'throw', 'yield', 'sealed',
 ]);
 const TIPE_DASAR = new Set(['int', 'double', 'num', 'bool', 'String', 'List', 'Map', 'Set', 'Object']);
 
@@ -175,6 +178,30 @@ function runsKode(kode, ukuran, shell) {
     });
   });
   return { runs, jumlahBaris: baris.length, terpanjang: Math.max(...baris.map((b) => b.length)) };
+}
+
+// Ukuran piksel gambar PNG/JPEG, dipakai agar perbandingan sisi gambar
+// tidak berubah saat ditempel ke slide.
+function ukuranGambar(berkas) {
+  const b = fs.readFileSync(berkas);
+  if (b[0] === 0x89 && b[1] === 0x50) {
+    return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+  }
+  let i = 2;
+  while (i + 9 < b.length) {
+    if (b[i] !== 0xff) {
+      i++;
+      continue;
+    }
+    const kode = b[i + 1];
+    const panjang = b.readUInt16BE(i + 2);
+    // Penanda SOF (C0..CF) menyimpan tinggi dan lebar, kecuali C4, C8, CC.
+    if (kode >= 0xc0 && kode <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(kode)) {
+      return { h: b.readUInt16BE(i + 5), w: b.readUInt16BE(i + 7) };
+    }
+    i += 2 + panjang;
+  }
+  throw new Error(`Ukuran gambar tidak terbaca: ${berkas}`);
 }
 
 // --------------------------------------------------------------------
@@ -320,7 +347,12 @@ class Dek {
 
   tombolKode(s, { x, y, w, berkas }) {
     const nama = berkas.split('/').pop();
-    this.tombol(s, { x, y, w, teks: `Buka kode lengkap di GitHub  ·  ${nama}`, url: this.urlKode(berkas), ikon: 'kode' });
+    // Perkiraan lebar teks: huruf Calibri tebal rata-rata ±0,46 em. Jika
+    // label panjang tidak muat dalam satu baris, pakai label yang pendek.
+    const ruang = (w - 0.75) * 72;
+    const panjang = `Buka kode lengkap di GitHub  ·  ${nama}`;
+    const teks = panjang.length * 13 * 0.46 <= ruang ? panjang : `Kode di GitHub  ·  ${nama}`;
+    this.tombol(s, { x, y, w, teks, url: this.urlKode(berkas), ikon: 'kode' });
   }
 
   kotakKode(s, { x, y, w, h, kode, ukuran = 15, shell = false }) {
@@ -470,7 +502,7 @@ class Dek {
     return s;
   }
 
-  banding({ judul, kolom, catatan, pesan, tinggiKolom, ukuranPoin = 16 }) {
+  banding({ judul, kolom, catatan, pesan, tinggiKolom, ukuranPoin = 16, ukuranContoh = 14 }) {
     const s = this._slide('KONTEN', judul, catatan);
     const n = kolom.length;
     const gx = 0.35;
@@ -485,10 +517,10 @@ class Dek {
       if (k.tag) {
         s.addText(k.tag, { x: x + 0.25, y: y + 1.15, w: lebar - 0.5, h: 0.4, fontSize: 14, bold: true, color: k.warna || this.C.accent1, margin: 0, isTextBox: true });
       }
-      const tinggiContoh = k.contoh ? 0.32 + k.contoh.split('\n').length * 0.28 : 0;
+      const tinggiContoh = k.contoh ? 0.32 + k.contoh.split('\n').length * 0.28 * (ukuranContoh / 14) : 0;
       this.daftarPoin(s, { x: x + 0.25, y: y + (k.tag ? 1.7 : 1.3), w: lebar - 0.5, h: tinggi - (k.tag ? 1.85 : 1.45) - tinggiContoh, poin: k.poin, ukuran: ukuranPoin });
       if (k.contoh) {
-        this.kotakKode(s, { x: x + 0.2, y: y + tinggi - tinggiContoh - 0.2, w: lebar - 0.4, h: tinggiContoh, kode: k.contoh, ukuran: 14 });
+        this.kotakKode(s, { x: x + 0.2, y: y + tinggi - tinggiContoh - 0.2, w: lebar - 0.4, h: tinggiContoh, kode: k.contoh, ukuran: ukuranContoh });
       }
     });
     if (pesan) {
@@ -541,6 +573,52 @@ class Dek {
     if (berkas) this.tombolKode(s, { x: M, y: ATAS + 0.05 + h + 0.25, w: lebarKode, berkas });
     const xk = M + lebarKode + 0.45;
     this.daftarPoin(s, { x: xk, y: ATAS + 0.1, w: L - M - xk, h: 5.1, poin, ukuran: 17 });
+    return s;
+  }
+
+  // Tangkapan layar aplikasi (satu atau beberapa gambar dari folder
+  // <pertemuan>/gambar/) di kanan, serta kode/tombol/poin di kiri.
+  layar({ judul, gambar, kode, berkas, poin, catatan, ukuranKode = 14, ukuranPoin = 17, tinggiGambar = 5.15, lebarMaks = 6.4 }) {
+    const s = this._slide('KONTEN', judul, catatan);
+    const daftar = Array.isArray(gambar) ? gambar : [gambar];
+    const gx = 0.3;
+    const ruangCelah = gx * (daftar.length - 1);
+    const ukuran = daftar.map((g) => {
+      const p = path.join(__dirname, '..', '..', this.folder, 'gambar', g);
+      const { w, h } = ukuranGambar(p);
+      return { p, nama: g, w: (tinggiGambar * w) / h, h: tinggiGambar };
+    });
+    let totalW = ukuran.reduce((a, u) => a + u.w, 0) + ruangCelah;
+    if (totalW > lebarMaks) {
+      const f = (lebarMaks - ruangCelah) / (totalW - ruangCelah);
+      ukuran.forEach((u) => {
+        u.w *= f;
+        u.h *= f;
+      });
+      totalW = lebarMaks;
+    }
+    const y0 = ATAS + 0.05;
+    let x = L - M - totalW;
+    ukuran.forEach((u, i) => {
+      s.addShape(this.pres.ShapeType.roundRect, { x: x - 0.06, y: y0 - 0.06, w: u.w + 0.12, h: u.h + 0.12, rectRadius: 0.1, fill: { color: 'FFFFFF' }, line: { color: 'C9D3E0', width: 1 }, objectName: `bingkai layar ${i + 1}` });
+      s.addImage({ path: u.p, x, y: y0, w: u.w, h: u.h, altText: `Tangkapan layar aplikasi (${u.nama})`, objectName: `layar ${i + 1}` });
+      x += u.w + gx;
+    });
+    const lebarKiri = L - 2 * M - totalW - 0.5;
+    let y = ATAS + 0.05;
+    if (kode) {
+      const { jumlahBaris } = runsKode(kode, ukuranKode, false);
+      const h = Math.min(3.8, 0.45 + ((jumlahBaris * ukuranKode * 1.2) / 72) * 1.05);
+      this.kotakKode(s, { x: M, y, w: lebarKiri, h, kode, ukuran: ukuranKode });
+      y += h + 0.2;
+    }
+    if (berkas) {
+      this.tombolKode(s, { x: M, y, w: lebarKiri, berkas });
+      y += 0.75;
+    }
+    if (poin) {
+      this.daftarPoin(s, { x: M, y: y + 0.05, w: lebarKiri, h: BAWAH - y - 0.05, poin, ukuran: ukuranPoin });
+    }
     return s;
   }
 
@@ -626,6 +704,21 @@ async function rapikanBerkas(berkas) {
   const slides = Object.keys(zip.files).filter((f) => /^ppt\/slides\/slide\d+\.xml$/.test(f));
   for (const f of slides) {
     let xml = await zip.file(f).async('string');
+    // pptxgenjs 4 menulis <a:pPr> untuk SETIAP potongan teks (run), sehingga
+    // paragraf berisi beberapa run (kode berwarna, poin bercampur format)
+    // memiliki <a:pPr> di tengah paragraf. Itu melanggar skema OOXML dan
+    // bisa memicu "perbaikan berkas" di PowerPoint, serta menghapus bullet.
+    // Pertahankan hanya <a:pPr> pertama yang berada di awal paragraf.
+    const PPR = /<a:pPr\b[^>]*?(?:\/>|>[\s\S]*?<\/a:pPr>)/;
+    xml = xml.replace(/<a:p>([\s\S]*?)<\/a:p>/g, (p, isi) => {
+      let awal = '';
+      const m = new RegExp(`^${PPR.source}`).exec(isi);
+      if (m) {
+        awal = m[0];
+        isi = isi.slice(m[0].length);
+      }
+      return `<a:p>${awal}${isi.replace(new RegExp(PPR.source, 'g'), '')}</a:p>`;
+    });
     xml = xml.replace(/<p:sp>[\s\S]*?<\/p:sp>/g, (sp) => {
       if (!/<p:cNvPr[^>]*>\s*<a:hlinkClick/.test(sp)) return sp;
       // Pertahankan hyperlink milik shape (di <p:cNvPr>), hapus hyperlink

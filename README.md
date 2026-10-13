@@ -34,8 +34,8 @@ Rencana lengkap satu semester ada di **[📋 Silabus](SILABUS.md)**.
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
 | **01** | Pengenalan Pemrograman Piranti Bergerak & Flutter | [📖 Baca](pertemuan_01_pengenalan_flutter/README.md) | [🧪 Buka](pertemuan_01_pengenalan_flutter/JOBSHEET.md) | [✍️ Buka](pertemuan_01_pengenalan_flutter/LATIHAN.md) | [💻 7 berkas](pertemuan_01_pengenalan_flutter/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_01_pengenalan_flutter/slide/PERTEMUAN_01_Pengenalan_Flutter.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_01_pengenalan_flutter%2Fslide%2FPERTEMUAN_01_Pengenalan_Flutter.pptx) |
 | **02** | Dasar Pemrograman Dart | [📖 Baca](pertemuan_02_dasar_dart/README.md) | [🧪 Buka](pertemuan_02_dasar_dart/JOBSHEET.md) | [✍️ Buka](pertemuan_02_dasar_dart/LATIHAN.md) | [💻 13 berkas](pertemuan_02_dasar_dart/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_02_dasar_dart/slide/PERTEMUAN_02_Dasar_Dart.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_02_dasar_dart%2Fslide%2FPERTEMUAN_02_Dasar_Dart.pptx) |
-| 03 | Dart Lanjutan: OOP & Pemrograman Asinkron | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
-| 04 | Widget & Tata Letak (*Layout*) | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
+| **03** | Dart Lanjutan: OOP & Pemrograman Asinkron | [📖 Baca](pertemuan_03_dart_lanjutan/README.md) | [🧪 Buka](pertemuan_03_dart_lanjutan/JOBSHEET.md) | [✍️ Buka](pertemuan_03_dart_lanjutan/LATIHAN.md) | [💻 13 berkas](pertemuan_03_dart_lanjutan/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_03_dart_lanjutan/slide/PERTEMUAN_03_Dart_Lanjutan.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_03_dart_lanjutan%2Fslide%2FPERTEMUAN_03_Dart_Lanjutan.pptx) |
+| **04** | Widget & Tata Letak (*Layout*) | [📖 Baca](pertemuan_04_widget_dan_layout/README.md) | [🧪 Buka](pertemuan_04_widget_dan_layout/JOBSHEET.md) | [✍️ Buka](pertemuan_04_widget_dan_layout/LATIHAN.md) | [💻 11 berkas](pertemuan_04_widget_dan_layout/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_04_widget_dan_layout/slide/PERTEMUAN_04_Widget_dan_Layout.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_04_widget_dan_layout%2Fslide%2FPERTEMUAN_04_Widget_dan_Layout.pptx) |
 | 05 | Interaksi Pengguna & State Lokal | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
 | 06 | Daftar Data & Navigasi Antarhalaman | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
 | 07 | Material Design 3 & UI Responsif | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
@@ -87,6 +87,40 @@ Setiap berkas adalah **program utuh** yang siap dijalankan. Cara menjalankannya 
 | 12 | Map dan Set | Pasangan kunci-nilai dan kumpulan nilai unik | [contoh_12_map_dan_set.dart](pertemuan_02_dasar_dart/kode/contoh_12_map_dan_set.dart) |
 | 13 | Studi kasus | Rekap nilai satu kelas: gabungan semua konsep | [contoh_13_studi_kasus_rekap_nilai.dart](pertemuan_02_dasar_dart/kode/contoh_13_studi_kasus_rekap_nilai.dart) |
 
+### Pertemuan 03 — Dart Lanjutan: OOP & Pemrograman Asinkron *(program Dart murni)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | *Class* dan objek | Properti, *constructor*, *method*, dan beberapa objek dari satu *class* | [contoh_01_class_dan_objek.dart](pertemuan_03_dart_lanjutan/kode/contoh_01_class_dan_objek.dart) |
+| 02 | *Constructor* | Parameter bernama, `required`, nilai bawaan, dan *named constructor* | [contoh_02_constructor.dart](pertemuan_03_dart_lanjutan/kode/contoh_02_constructor.dart) |
+| 03 | *Constructor* lainnya | `const`, `factory`, dan *primary constructor* (Dart 3.13) | [contoh_03_constructor_lainnya.dart](pertemuan_03_dart_lanjutan/kode/contoh_03_constructor_lainnya.dart) |
+| 04 | Enkapsulasi | Anggota privat `_`, *getter*, dan *setter* dengan validasi | [contoh_04_enkapsulasi.dart](pertemuan_03_dart_lanjutan/kode/contoh_04_enkapsulasi.dart) |
+| 05 | Pewarisan | `extends`, `super`, `@override`, polimorfisme, dan operator `is` | [contoh_05_pewarisan.dart](pertemuan_03_dart_lanjutan/kode/contoh_05_pewarisan.dart) |
+| 06 | *Abstract class* dan *interface* | Kontrak dengan anggota abstrak dan `implements` | [contoh_06_abstract_dan_interface.dart](pertemuan_03_dart_lanjutan/kode/contoh_06_abstract_dan_interface.dart) |
+| 07 | *Mixin* | Menempelkan kemampuan dengan `with` dan `on` | [contoh_07_mixin.dart](pertemuan_03_dart_lanjutan/kode/contoh_07_mixin.dart) |
+| 08 | *Enum* | *Enum* berproperti dan `switch` yang memeriksa kelengkapan | [contoh_08_enum.dart](pertemuan_03_dart_lanjutan/kode/contoh_08_enum.dart) |
+| 09 | *Exception* | `try`, `on`, `catch`, `finally`, `throw`, dan *exception* buatan sendiri | [contoh_09_exception.dart](pertemuan_03_dart_lanjutan/kode/contoh_09_exception.dart) |
+| 10 | `Future`, `async`, `await` | Menunggu tanpa membekukan aplikasi; `then()` vs `await` | [contoh_10_future_async_await.dart](pertemuan_03_dart_lanjutan/kode/contoh_10_future_async_await.dart) |
+| 11 | `Future.wait` dan error asinkron | Pekerjaan paralel dan `try`–`catch`–`finally` dengan `await` | [contoh_11_future_paralel_dan_error.dart](pertemuan_03_dart_lanjutan/kode/contoh_11_future_paralel_dan_error.dart) |
+| 12 | `Stream` | `async*`, `yield`, `await for`, `listen`, `where`, dan `map` | [contoh_12_stream.dart](pertemuan_03_dart_lanjutan/kode/contoh_12_stream.dart) |
+| 13 | Studi kasus | Sistem pesanan kantin: gabungan semua konsep | [contoh_13_studi_kasus_pesanan_kantin.dart](pertemuan_03_dart_lanjutan/kode/contoh_13_studi_kasus_pesanan_kantin.dart) |
+
+### Pertemuan 04 — Widget & Tata Letak (*Layout*) *(aplikasi Flutter)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | Widget dasar | `Text` dengan gaya dari tema, `Icon`, `CircleAvatar`, dan gambar dari internet | [contoh_01_widget_dasar.dart](pertemuan_04_widget_dan_layout/kode/contoh_01_widget_dasar.dart) |
+| 02 | Jarak, ukuran, dan posisi | `Padding`/`EdgeInsets`, `SizedBox`, `Center`, dan `Align` | [contoh_02_padding_sizedbox_align.dart](pertemuan_04_widget_dan_layout/kode/contoh_02_padding_sizedbox_align.dart) |
+| 03 | `Container` dan dekorasi | `BoxDecoration` (sudut bulat, garis tepi, bayangan) dan `Card` Material 3 | [contoh_03_container_dan_dekorasi.dart](pertemuan_04_widget_dan_layout/kode/contoh_03_container_dan_dekorasi.dart) |
+| 04 | `Row` dan `Column` | Sumbu utama dan silang, `MainAxisAlignment`, `CrossAxisAlignment`, `spacing` | [contoh_04_row_dan_column.dart](pertemuan_04_widget_dan_layout/kode/contoh_04_row_dan_column.dart) |
+| 05 | `Expanded`, `Flexible`, `Spacer` | Membagi sisa ruang dengan `flex` dan baris keranjang belanja | [contoh_05_expanded_flexible_spacer.dart](pertemuan_04_widget_dan_layout/kode/contoh_05_expanded_flexible_spacer.dart) |
+| 06 | `Stack` dan `Positioned` | Banner promo, lencana notifikasi, `Badge`, dan titik status | [contoh_06_stack_dan_positioned.dart](pertemuan_04_widget_dan_layout/kode/contoh_06_stack_dan_positioned.dart) |
+| 07 | *Constraints* | Batasan ketat, longgar, dan tak terbatas dilihat lewat `LayoutBuilder` | [contoh_07_constraints.dart](pertemuan_04_widget_dan_layout/kode/contoh_07_constraints.dart) |
+| 08 | Mengatasi *overflow* | Garis kuning-hitam dan solusinya: `Expanded`, `Wrap`, `SingleChildScrollView` | [contoh_08_mengatasi_overflow.dart](pertemuan_04_widget_dan_layout/kode/contoh_08_mengatasi_overflow.dart) |
+| 09 | `Card` dan `ListTile` | Baris informasi siap pakai: `leading`, `title`, `subtitle`, `trailing` | [contoh_09_card_dan_listtile.dart](pertemuan_04_widget_dan_layout/kode/contoh_09_card_dan_listtile.dart) |
+| 10 | Memecah widget | Membuat `StatelessWidget` sendiri yang menerima parameter | [contoh_10_memecah_widget.dart](pertemuan_04_widget_dan_layout/kode/contoh_10_memecah_widget.dart) |
+| 11 | Studi kasus | Halaman detail menu kantin yang aman di layar sempit | [contoh_11_studi_kasus_detail_menu.dart](pertemuan_04_widget_dan_layout/kode/contoh_11_studi_kasus_detail_menu.dart) |
+
 ---
 
 ## 🧰 Panduan Pendukung
@@ -114,7 +148,10 @@ mobile2026/
 │   ├── 💻 kode/                         ← contoh kode siap jalan
 │   └── 📊 slide/                        ← slide presentasi (.pptx)
 ├── 📁 pertemuan_02_dasar_dart/          ← (struktur sama)
+├── 📁 pertemuan_03_dart_lanjutan/       ← (struktur sama)
+├── 📁 pertemuan_04_widget_dan_layout/   ← (struktur sama + 🖼️ gambar/ untuk tangkapan layar)
 ├── 📁 tools/slide/                      ← skrip pembuat slide (untuk dosen)
+├── 📄 tools/cek_output.py               ← pencocok output contoh kode (dipakai CI)
 ├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md
 ├── ⚙️ pubspec.yaml, analysis_options.yaml   ← hanya untuk pemeriksaan kualitas kode
 └── ⚙️ .github/workflows/quality-gate.yml    ← pemeriksaan otomatis setiap push
@@ -133,7 +170,7 @@ Seluruh contoh kode mengikuti **[Kerangka Kerja Courseware](KERANGKA_KERJA_COURS
 - **Fokus pada konsep**: memakai komponen dan warna bawaan tema, tanpa dekorasi yang mengalihkan perhatian.
 - **Komentar edukatif** berbahasa Indonesia yang menjelaskan *mengapa*, bukan sekadar *apa*.
 - **Tanpa API usang (*deprecated*)** dan mengikuti versi Flutter *stable* terbaru.
-- **Lolos pemeriksaan otomatis**: `dart format` dan `flutter analyze` dengan aturan [`flutter_lints`](https://pub.dev/packages/flutter_lints) dijalankan oleh GitHub Actions di setiap *push*.
+- **Lolos pemeriksaan otomatis**: `dart format` dan `flutter analyze` dengan aturan [`flutter_lints`](https://pub.dev/packages/flutter_lints) dijalankan oleh GitHub Actions di setiap *push*. Setiap contoh Dart murni juga **dijalankan**, dan hasilnya dicocokkan dengan blok `// OUTPUT` di berkasnya.
 
 <details>
 <summary>👩‍🏫 <b>Untuk dosen dan kontributor</b></summary>
@@ -144,6 +181,7 @@ Seluruh contoh kode mengikuti **[Kerangka Kerja Courseware](KERANGKA_KERJA_COURS
   flutter pub get
   dart format --output=none --set-exit-if-changed .
   flutter analyze --fatal-infos
+  python3 tools/cek_output.py   # menjalankan contoh Dart murni dan mencocokkan output
   ```
 
 - **Membuat ulang slide**: lihat [`tools/slide/README.md`](tools/slide/README.md).
