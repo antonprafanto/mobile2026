@@ -1952,7 +1952,7 @@ flutter run -d chrome
 
 ✅ **Hasil yang diharapkan** (lebar 360, setelah lingkaran memuat hilang):
 
-<p align="center"><img src="gambar/jobsheet_praktikum5.jpg" width="280" alt="Tugas Kuliahku: kotak pencarian, chip prioritas, tulisan 10 tugas belum selesai, dan sepuluh tugas berbahasa Inggris dari server, misalnya Do something nice for someone you care about dan Memorize a poem, masing-masing bertuliskan Umum · Sedang"></p>
+<p align="center"><img src="gambar/jobsheet_praktikum5.jpg" width="280" alt="Tugas Kuliahku: kotak pencarian, chip prioritas dengan Semua terpilih, tulisan 10 tugas belum selesai, dan daftar tugas berbahasa Inggris dari server, misalnya Do something nice for someone you care about dan Memorize a poem, masing-masing bertuliskan Umum · Sedang dan berkotak centang kosong, serta tombol Tambah tugas"></p>
 
 Tarik daftar ke bawah: lingkaran kecil muncul di bagian atas, lalu data dimuat ulang dari server.
 

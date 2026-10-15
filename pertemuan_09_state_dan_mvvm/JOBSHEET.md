@@ -1370,7 +1370,7 @@ Jalankan dan coba urutan berikut: tunggu daftar muncul → tekan ikon muat ulang
 ✅ **Hasil yang diharapkan** (lebar 360):
 
 <p align="center">
-  <img src="gambar/jobsheet_praktikum4a.jpg" width="240" alt="Info Beasiswa berhasil dimuat: kotak pencarian, chip Semua terpilih beserta chip Prestasi, Bantuan ekonomi, dan Riset, lalu daftar beasiswa lengkap dengan penyelenggara, nominal per bulan, dan batas pendaftaran">
+  <img src="gambar/jobsheet_praktikum4a.jpg" width="240" alt="Info Beasiswa berhasil dimuat: kotak pencarian, chip Semua terpilih beserta chip Prestasi dan Bantuan ekonomi (chip Riset tersembunyi di kanan, bisa digeser), lalu daftar beasiswa lengkap dengan penyelenggara, nominal per bulan, dan batas pendaftaran">
   &nbsp;
   <img src="gambar/jobsheet_praktikum4b.jpg" width="240" alt="Info Beasiswa saat gagal dimuat: kotak pencarian dan chip tetap tampil, di bawahnya ikon awan tercoret berwarna merah, tulisan Data beasiswa gagal dimuat, dan tombol Coba lagi">
 </p>

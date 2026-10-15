@@ -567,11 +567,17 @@ class IsiCatatan extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        subtitle: Text(
-                          '${catatan.isi}\n'
-                          'Diubah ${formatWaktu(catatan.diubah)}',
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                        // Isi dibatasi dua baris agar keterangan "Diubah" selalu terlihat.
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              catatan.isi,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text('Diubah ${formatWaktu(catatan.diubah)}'),
+                          ],
                         ),
                         isThreeLine: true,
                         // [BARU] Tombol sematkan/lepas sematan.

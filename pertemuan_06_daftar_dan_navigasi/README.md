@@ -1489,7 +1489,7 @@ bottomNavigationBar: porsi == 0
 📄 Kode lengkap: [`kode/contoh_12_studi_kasus_katalog_menu.dart`](kode/contoh_12_studi_kasus_katalog_menu.dart)
 
 <p align="center">
-  <img src="gambar/hasil_contoh_12a.jpg" width="200" alt="Katalog Kantin: kotak pencarian, chip kategori, delapan kartu menu dengan kategori dan harga, tanda ×2 pada Nasi Goreng Spesial dan ×1 pada Es Teh Manis, serta tombol 3 porsi · Rp34.000 di bawah">
+  <img src="gambar/hasil_contoh_12a.jpg" width="200" alt="Katalog Kantin: kotak pencarian, chip kategori dengan Semua terpilih, kartu menu berisi kategori dan harga (Nasi Goreng Spesial bertanda ×2, Mie Ayam Bakso, Soto Banjar, Es Teh Manis bertanda ×1, dan Jus Alpukat yang terpotong di bawah), serta tombol 3 porsi · Rp34.000 di bagian bawah layar">
   &nbsp;
   <img src="gambar/hasil_contoh_12b.jpg" width="200" alt="Halaman detail Nasi Goreng Spesial: ikon besar, kategori Makanan, deskripsi, harga Rp15.000, tombol kurang dan tambah dengan angka 2, serta tombol Tambah · Rp30.000">
   &nbsp;

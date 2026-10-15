@@ -257,9 +257,9 @@ Dua hal baru di sini:
 Kode lengkap: [`kode/contoh_01_tema_dan_theme_of.dart`](kode/contoh_01_tema_dan_theme_of.dart). Jalankan, lalu ganti `warnaBenih` dari `Colors.teal` menjadi `Colors.deepOrange` dan jalankan ulang.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_01a.jpg" width="240" alt="Pengumuman Himpunan dengan warna benih teal: Kartu A berlatar hijau kebiruan muda dengan tombol Daftar sekarang, Kartu B berlatar biru muda dengan tombol biru, chip Seminar dan Lomba, tombol Arsip dan Bantuan, serta bilah kuota 70 persen">
+  <img src="gambar/hasil_contoh_01a.jpg" width="240" alt="Pengumuman Himpunan dengan warna benih teal: Kartu A berlatar hijau kebiruan muda dengan tombol Daftar sekarang, Kartu B berlatar biru muda dengan tombol biru, chip Seminar dan Lomba, tombol Arsip dan Bantuan, serta tombol pensil di kanan bawah yang menutupi sebagian tombol Arsip">
   &nbsp;
-  <img src="gambar/hasil_contoh_01b.jpg" width="240" alt="Halaman yang sama dengan warna benih deepOrange: Kartu A, tombol, ikon chip, bilah kuota, dan tombol pensil ikut bernuansa jingga, sedangkan Kartu B tetap biru">
+  <img src="gambar/hasil_contoh_01b.jpg" width="240" alt="Halaman yang sama dengan warna benih deepOrange: Kartu A, tombolnya, ikon chip, tombol Bantuan, dan tombol pensil ikut bernuansa jingga, sedangkan Kartu B tetap biru">
 </p>
 
 Perhatikan perbedaannya:
@@ -347,9 +347,9 @@ Ada sembilan varian. Empat yang paling sering dicoba:
 Kode lengkap: [`kode/contoh_02_peran_warna.dart`](kode/contoh_02_peran_warna.dart). Aplikasi ini **menggambar** skema hasil `fromSeed` sebagai kotak-kotak. Setiap kotak berlatar satu peran warna, dan tulisan di dalamnya memakai pasangan "*on*"-nya.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_02a.jpg" width="240" alt="Palet Warna Material 3 dengan benih Biru, varian tonalSpot, mode terang: kotak primary sampai errorContainer berwarna biru, biru keunguan, dan merah, masing-masing bertuliskan nama peran dan pasangan on-nya">
+  <img src="gambar/hasil_contoh_02a.jpg" width="240" alt="Palet Warna Material 3: chip Biru dan tonalSpot terpilih, sakelar Mode gelap mati, lalu kotak primary biru tua, primaryContainer biru muda, secondary biru keabu-abuan tua, dan secondaryContainer yang terpotong di tepi bawah, masing-masing bertuliskan nama peran dan pasangan on-nya">
   &nbsp;
-  <img src="gambar/hasil_contoh_02b.jpg" width="240" alt="Palet yang sama dengan benih Oranye dan mode gelap aktif: kanvas berlatar gelap, kotak-kotak bernuansa jingga lembut dengan tulisan gelap atau terang sesuai pasangannya">
+  <img src="gambar/hasil_contoh_02b.jpg" width="240" alt="Palet yang sama dengan chip Oranye terpilih dan Mode gelap menyala: hanya kotak pratinjau yang berlatar gelap; kotak primary dan secondary jingga muda bertulisan gelap, primaryContainer dan secondaryContainer cokelat tua bertulisan terang">
 </p>
 
 Cobalah:
@@ -413,7 +413,7 @@ Kode lengkap: [`kode/contoh_03_tipografi.dart`](kode/contoh_03_tipografi.dart). 
 <p align="center">
   <img src="gambar/hasil_contoh_03a.jpg" width="240" alt="Tipografi Material 3: kartu artikel berisi label BERITA PRODI berwarna hijau, judul Mahasiswa Informatika Juara Lomba Aplikasi, keterangan tanggal, paragraf isi, dan tombol Baca selengkapnya, disusul kelompok Display dengan tulisan Kampus berukuran 57">
   &nbsp;
-  <img src="gambar/hasil_contoh_03b.jpg" width="240" alt="Bagian bawah halaman setelah digulir: kelompok Title, Body, dan Label, masing-masing berisi tulisan Kampus dalam tiga ukuran beserta nama gaya, ukuran, dan keterangan w500 untuk gaya yang tebal sedang">
+  <img src="gambar/hasil_contoh_03b.jpg" width="240" alt="Bagian bawah halaman setelah digulir: baris terakhir kelompok Title (titleSmall, 14, w500), lalu kelompok Body dan Label, masing-masing berisi tulisan Kampus dalam tiga ukuran beserta nama gaya, ukuran, dan keterangan w500 untuk gaya yang tebal sedang">
 </p>
 
 > [!TIP]
@@ -487,7 +487,7 @@ return MaterialApp(
 Di halaman pendaftarannya **tidak ada satu pun** warna, garis tepi, atau tinggi tombol yang ditulis. `TextField` cukup diberi `labelText` dan ikon, tombol cukup diberi tulisan; selebihnya datang dari tema.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_04.jpg" width="240" alt="Pendaftaran UKM: AppBar berlatar ungu muda, kartu Data diri bergaris tepi berisi kolom Nama lengkap dan NIM yang berlatar, kartu Pilih UKM berisi lima chip dengan Paduan Suara terpilih, tombol Kirim pendaftaran selebar layar, dan di bagian Zona berbahaya tombol merah Batalkan semua pendaftaran">
+  <img src="gambar/hasil_contoh_04.jpg" width="240" alt="Pendaftaran UKM: AppBar berlatar ungu muda, kartu Data diri bergaris tepi berisi kolom Nama lengkap dan NIM yang berlatar, kartu Pilih UKM berisi lima chip dengan Paduan Suara terpilih, dan tombol Kirim pendaftaran selebar layar; di tepi bawah mulai tampak judul Zona berbahaya">
 </p>
 
 > [!NOTE]
@@ -533,6 +533,10 @@ Theme(
 ```
 
 `Theme.of(context).copyWith(...)` berarti "ambil tema yang berlaku sekarang, lalu ganti sebagian isinya". Cara ini lebih aman daripada membuat `ThemeData` baru dari nol, karena pengaturan lain (huruf, tema komponen) tetap terbawa. `FilledButton` di dalamnya membaca tema terdekat, yaitu tema lokal ini, sehingga warnanya merah.
+
+<p align="center">
+  <img src="gambar/hasil_contoh_04b.jpg" width="240" alt="Bagian bawah halaman Pendaftaran UKM setelah digulir: kartu Pilih UKM dengan Paduan Suara terpilih, tombol Kirim pendaftaran selebar layar, judul Zona berbahaya, dan di bawahnya tombol merah Batalkan semua pendaftaran berikon tempat sampah yang juga selebar layar">
+</p>
 
 > **🧠 Cek Cepat:** Tombol "Batalkan semua pendaftaran" juga selebar layar dan setinggi 52, padahal tidak diatur di tema lokal. Mengapa?
 >
@@ -639,7 +643,7 @@ Saat `onModeBerubah` dipanggil, akar aplikasi menjalankan `setState`, `MaterialA
 ### 7.4 Membuktikannya: warna tema vs warna yang ditulis langsung
 
 <p align="center">
-  <img src="gambar/hasil_contoh_05a.jpg" width="240" alt="Pengaturan Tampilan mode terang: SegmentedButton dengan Terang terpilih, tulisan Tema yang sedang dipakai: terang, lalu tiga kartu pratinjau yang semuanya terbaca">
+  <img src="gambar/hasil_contoh_05a.jpg" width="240" alt="Pengaturan Tampilan mode terang: SegmentedButton dengan Terang terpilih, tulisan Tema yang sedang dipakai: terang, lalu dua kartu pratinjau dan sebuah kotak putih, semuanya terbaca">
   &nbsp;
   <img src="gambar/hasil_contoh_05b.jpg" width="240" alt="Halaman yang sama dalam mode gelap: latar gelap, kartu pertama tetap terbaca, kartu kedua bertuliskan teks hitam yang nyaris hilang di atas latar gelap, dan kotak putih di bawahnya tampak menyilaukan">
 </p>
@@ -1227,9 +1231,9 @@ final MediaQueryData dataTiruan = dataAsli.copyWith(
 Lalu kedua kartu dibungkus `MediaQuery(data: dataTiruan, child: ...)`, sehingga hanya kartu-kartu itu yang hurufnya diperbesar.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_11a.jpg" width="240" alt="Uji Ukuran Huruf pada 1,00x: kartu jadwal dengan tinggi dipatok dan kartu jadwal lentur tampil sama rapinya">
+  <img src="gambar/hasil_contoh_11a.jpg" width="240" alt="Uji Ukuran Huruf pada 1.00x: kartu jadwal dengan tinggi dipatok dan kartu jadwal lentur tampil sama rapinya">
   &nbsp;
-  <img src="gambar/hasil_contoh_11b.jpg" width="240" alt="Uji Ukuran Huruf pada 2,00x: kartu yang tingginya dipatok menampilkan garis kuning-hitam di kanan dan bawah karena tulisannya tidak muat, sedangkan kartu lentur ikut meninggi dan tulisannya turun ke baris berikutnya">
+  <img src="gambar/hasil_contoh_11b.jpg" width="240" alt="Uji Ukuran Huruf pada 2.00x: kartu yang tingginya dipatok menampilkan garis kuning-hitam di kanan dan bawah karena tulisannya tidak muat, sedangkan kartu lentur ikut meninggi dan tulisannya turun ke baris berikutnya">
 </p>
 
 | Kartu | Masalah / kelebihan |
@@ -1451,14 +1455,14 @@ return LayoutBuilder(
 ### 16.7 Hasilnya
 
 <p align="center">
-  <img src="gambar/hasil_contoh_12a.jpg" width="220" alt="Pustaka Kampus di lebar 360: katalog delapan buku dengan ikon kategori, nama penulis, dan tahun; buku yang dipinjam bertanda pita; NavigationBar berisi Katalog, Pinjaman berlencana angka 2, dan Pengaturan">
+  <img src="gambar/hasil_contoh_12a.jpg" width="220" alt="Pustaka Kampus di lebar 360: katalog buku dengan ikon kategori, nama penulis, dan tahun (enam buku terlihat utuh, sisanya digulir); buku yang dipinjam bertanda pita; NavigationBar berisi Katalog, Pinjaman berlencana angka 2, dan Pengaturan">
   &nbsp;
   <img src="gambar/hasil_contoh_12b.jpg" width="220" alt="Halaman Detail Buku Belajar Flutter dari Nol di lebar 360: sampul berikon komputer di tengah atas, judul, penulis dan tahun, chip Teknologi, tombol Pinjam buku, serta sinopsis">
   &nbsp;
   <img src="gambar/hasil_contoh_12c.jpg" width="220" alt="Pengaturan dalam mode gelap dengan warna Hijau: SegmentedButton Gelap terpilih, chip Hijau terpilih, dan kartu Lebar jendela 360, kelas ringkas">
 </p>
 <p align="center">
-  <img src="gambar/hasil_contoh_12d.jpg" width="680" alt="Pustaka Kampus di lebar 1000: NavigationRail di kiri, daftar buku dengan baris terpilih ditandai, dan panel detail di kanan dengan sampul di kiri serta keterangan dan tombol di kanannya">
+  <img src="gambar/hasil_contoh_12d.jpg" width="680" alt="Pustaka Kampus di lebar 1000: NavigationRail di kiri, daftar buku dengan baris Belajar Flutter dari Nol ditandai, dan panel detail di kanan dengan sampul di kiri serta keterangan dan tombol Pinjam buku di kanannya">
 </p>
 
 **Coba sendiri:**

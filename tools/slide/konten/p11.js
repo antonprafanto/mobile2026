@@ -110,7 +110,7 @@ module.exports = {
         'Kodenya sama untuk semua platform.',
         'Paket berplugin: setelah memasang, hentikan aplikasi (q), lalu jalankan lagi.',
       ],
-      catatan: 'Jika paket dipasang saat aplikasi sedang berjalan, hot reload atau hot restart memunculkan MissingPluginException, karena bagian aslinya belum ikut terpasang. Alasan --web-port=8080 dijelaskan dua slide lagi.',
+      catatan: 'Jika paket dipasang saat aplikasi sedang berjalan, hot reload atau hot restart memunculkan MissingPluginException, karena bagian aslinya belum ikut terpasang. Alasan --web-port=8080 dijelaskan dua slide lagi. Paket ini tidak berjalan di DartPad: jendela hasil DartPad tidak diizinkan memakai penyimpanan browser, sehingga aplikasinya hanya menampilkan lingkaran memuat. Karena itu semua contoh hari ini dijalankan di proyek latihan.',
     });
 
     d.tabel({

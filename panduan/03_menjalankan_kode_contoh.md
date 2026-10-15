@@ -24,7 +24,7 @@ Cocok untuk: **semua contoh Dart murni** dan **contoh Flutter sederhana** (yang 
    - Aplikasi Flutter: tampilannya muncul di panel sebelah kanan (atau di tab *Output* pada layar sempit).
 
 > [!NOTE]
-> DartPad hanya mendukung sebagian paket dari [pub.dev](https://pub.dev). Paket `go_router` (Pertemuan 6), `provider` (Pertemuan 9), dan `http` (Pertemuan 10) sudah tersedia di DartPad. Paket `sqflite` (Pertemuan 11) **belum** tersedia, jadi contoh Pertemuan 11 dijalankan dengan Cara 2. Cara 2 juga lebih tepat untuk materi penyimpanan, karena Anda perlu membuktikan data tetap ada setelah aplikasi dihentikan lalu dijalankan lagi. Petunjuk **CARA MENJALANKAN** di setiap berkas selalu menyebutkan cara yang tepat.
+> DartPad hanya mendukung sebagian paket dari [pub.dev](https://pub.dev). Paket `go_router` (Pertemuan 6), `provider` (Pertemuan 9), dan `http` (Pertemuan 10) sudah tersedia di DartPad. Paket `sqflite` (Pertemuan 11) **belum** tersedia. Paket `shared_preferences` (Pertemuan 11) memang tersedia, tetapi tidak bisa bekerja karena jendela hasil DartPad tidak diizinkan memakai penyimpanan *browser*. Jadi, semua contoh Pertemuan 11 dijalankan dengan Cara 2. Cara 2 juga lebih tepat untuk materi penyimpanan, karena Anda perlu membuktikan data tetap ada setelah aplikasi dihentikan lalu dijalankan lagi. Petunjuk **CARA MENJALANKAN** di setiap berkas selalu menyebutkan cara yang tepat.
 
 ---
 

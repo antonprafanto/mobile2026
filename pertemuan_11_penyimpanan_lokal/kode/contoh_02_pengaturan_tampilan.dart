@@ -13,7 +13,7 @@
 //          dengan asNameMap().
 //        Polanya MVVM (Pertemuan 9): Repository -> ViewModel -> View.
 // =====================================================================
-// CARA MENJALANKAN:
+// CARA MENJALANKAN (tidak bisa di DartPad):
 // 1. Proyek Flutter: jalankan `flutter pub add shared_preferences provider`
 //    sekali.
 // 2. Salin seluruh isi berkas ini ke lib/main.dart.
@@ -325,7 +325,18 @@ class KartuPratinjau extends StatelessWidget {
               runSpacing: 8,
               children: [
                 FilledButton(onPressed: () {}, child: const Text('Tombol')),
-                OutlinedButton(onPressed: () {}, child: const Text('Garis')),
+                // Di atas primaryContainer, tulisan dan garis memakai
+                // pasangannya (onPrimaryContainer). Warna bawaan tombol ini
+                // (primary) bisa nyaris tak terlihat di mode gelap kontras
+                // tinggi, karena kartunya ikut menjadi terang.
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: warna.onPrimaryContainer,
+                    side: BorderSide(color: warna.onPrimaryContainer),
+                  ),
+                  onPressed: () {},
+                  child: const Text('Garis'),
+                ),
               ],
             ),
           ],

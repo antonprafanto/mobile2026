@@ -8,7 +8,7 @@
 | Pertemuan | 11 — Penyimpanan Lokal |
 | Bentuk kegiatan | Praktikum individu |
 | Estimasi waktu | 150 menit |
-| Alat | Proyek Flutter di VS Code, dijalankan di Chrome (`flutter run -d chrome --web-port=8080`) **atau** di HP Android. DartPad **tidak** bisa dipakai untuk Praktikum 3–5. Praktikum 5: **wajib** proyek `tugas_kuliahku` dari Pertemuan 10 |
+| Alat | Proyek Flutter di VS Code, dijalankan di Chrome (`flutter run -d chrome --web-port=8080`) **atau** di HP Android. DartPad **tidak** bisa dipakai untuk semua praktikum hari ini (`shared_preferences` dan `sqflite` tidak berjalan di sana). Praktikum 5: **wajib** proyek `tugas_kuliahku` dari Pertemuan 10 |
 | Paket | `shared_preferences` (Praktikum 1, 2), `provider` (Praktikum 2–5), `sqflite` dan `sqflite_common_ffi_web` (Praktikum 3–5), `http` (Praktikum 5) |
 | Koneksi | Hanya dibutuhkan untuk memasang paket, langkah *setup* web, dan fitur impor di Praktikum 5 |
 | Hasil akhir | Proyek "Tugas Kuliahku" yang tugas-tugasnya tersimpan di database perangkat dan tetap bisa dipakai tanpa internet, ditambah tiga aplikasi kecil: catatan minum air, profil dan preferensi, serta kamus istilah kuliah (dua versi) |
@@ -2670,7 +2670,7 @@ flutter run -d chrome --web-port=8080
 
 ✅ **Hasil yang diharapkan** (lebar 360):
 
-<p align="center"><img src="gambar/jobsheet_praktikum5.jpg" width="280" alt="Tugas Kuliahku: tombol impor di AppBar, kotak pencarian, chip prioritas, tulisan sekian tugas belum selesai, daftar tugas dari server dan satu tugas buatan sendiri, dua di antaranya tercentang dan dicoret"></p>
+<p align="center"><img src="gambar/jobsheet_praktikum5.jpg" width="280" alt="Tugas Kuliahku: tombol impor di AppBar, kotak pencarian, chip prioritas dengan Semua terpilih, tulisan 4 tugas belum selesai, lalu bagian bawah daftar: tugas berbahasa Inggris dari server dan satu tugas buatan sendiri, Laporan praktikum Basis Data. Tugas yang sudah selesai tercentang dan judulnya dicoret"></p>
 
 Kini hentikan aplikasi, **matikan internet**, lalu jalankan lagi. Semua tugas, centang, dan hapusan Anda masih ada, dan semua fitur tetap bisa dipakai. Hanya impor yang menampilkan pesan "Tidak dapat terhubung...".
 

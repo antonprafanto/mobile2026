@@ -12,7 +12,7 @@
 //        Coba isi sebagian formulir, lalu hot restart (tekan R): isinya
 //        kembali seperti semula.
 // =====================================================================
-// CARA MENJALANKAN:
+// CARA MENJALANKAN (tidak bisa di DartPad):
 // 1. Proyek Flutter: jalankan `flutter pub add shared_preferences` sekali.
 // 2. Salin seluruh isi berkas ini ke lib/main.dart.
 // 3. Jalankan di terminal: flutter run -d chrome --web-port=8080

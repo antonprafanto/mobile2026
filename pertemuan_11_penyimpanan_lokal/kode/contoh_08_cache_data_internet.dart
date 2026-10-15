@@ -14,7 +14,7 @@
 //        Sebelum aplikasi tampil, jalankanUji() memeriksa ketiga langkah
 //        itu dengan MockClient (tanpa internet). Lihat konsol.
 // =====================================================================
-// CARA MENJALANKAN:
+// CARA MENJALANKAN (tidak bisa di DartPad):
 // 1. Proyek Flutter: jalankan sekali
 //      flutter pub add http provider shared_preferences
 // 2. Salin seluruh isi berkas ini ke lib/main.dart.
@@ -482,10 +482,17 @@ class DaftarPengumuman extends StatelessWidget {
         return ListTile(
           leading: const Icon(Icons.campaign_outlined),
           title: Text(pengumuman.judul),
-          subtitle: Text(
-            '${pengumuman.isi}\nDibaca ${pengumuman.dibaca} kali',
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
+          // Isi dibatasi dua baris agar keterangan "Dibaca" selalu terlihat.
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                pengumuman.isi,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              Text('Dibaca ${pengumuman.dibaca} kali'),
+            ],
           ),
           isThreeLine: true,
         );

@@ -596,7 +596,7 @@ void initState() {
 Contoh 04 membuktikannya. Nyalakan sakelar **"Future dibuat di build() (cara salah)"**, lalu tekan **Bangun ulang layar** beberapa kali. Setiap ketukan menambah angka **Permintaan terkirim**, dan lingkaran memuat muncul lagi. Matikan sakelarnya, lalu tekan tombol yang sama: angkanya tidak bertambah lagi.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_04.jpg" width="240" alt="Tugas dari Internet: sakelar Future dibuat di build mati, tulisan jumlah permintaan terkirim dan jumlah layar dibangun ulang, tombol Bangun ulang layar, serta daftar sepuluh tugas dengan ikon centang atau lingkaran kosong">
+  <img src="gambar/hasil_contoh_04.jpg" width="240" alt="Tugas dari Internet setelah percobaan: sakelar Future dibuat di build() (cara salah) sudah dimatikan, tulisan Permintaan terkirim: 4 dan Layar dibangun ulang: 3 kali, tombol Bangun ulang layar, serta daftar tugas bernomor dengan ikon centang atau lingkaran kosong">
 </p>
 
 Untuk meminta data baru dengan sengaja (misalnya tombol muat ulang), **ganti** `Future` yang disimpan di dalam `setState`:
@@ -707,7 +707,7 @@ Urutan cabang penting: yang lebih khusus (`404`) ditulis **sebelum** yang lebih 
 <p align="center">
   <img src="gambar/hasil_contoh_05a.jpg" width="240" alt="Uji Ketahanan dengan skenario Lambat 5 detik terpilih: kartu merah muda berisi pesan Server terlalu lama menjawab, detail teknis TimeoutException, dan tombol Coba lagi">
   &nbsp;&nbsp;
-  <img src="gambar/hasil_contoh_05b.jpg" width="240" alt="Uji Ketahanan dengan skenario Bukan JSON terpilih: kartu merah muda berisi pesan Data dari server tidak bisa dibaca dan detail teknis FormatException">
+  <img src="gambar/hasil_contoh_05b.jpg" width="240" alt="Uji Ketahanan dengan skenario Bukan JSON terpilih: kartu merah muda berisi pesan Data dari server tidak bisa dibaca, detail teknis FormatException, dan tombol Coba lagi">
 </p>
 
 | Skenario | Pesan untuk pengguna |
@@ -859,7 +859,7 @@ Bandingkan dengan [Contoh 08 Pertemuan 9](../pertemuan_09_state_dan_mvvm/kode/co
 Contoh 06 menyimpan kedua *repository*. Ubah satu baris `create` di `main` untuk berpindah di antara keduanya. ViewModel dan View tidak tahu, dan tidak perlu tahu, dari mana datanya.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_06.jpg" width="240" alt="Pengumuman Prodi: daftar artikel berbahasa Inggris dari DummyJSON dengan ikon pengeras suara, isi singkat, dan keterangan berapa kali dibaca">
+  <img src="gambar/hasil_contoh_06.jpg" width="240" alt="Pengumuman Prodi: daftar artikel berbahasa Inggris dari DummyJSON dengan ikon pengeras suara, judul, isi singkat dua baris, dan keterangan Dibaca sekian kali">
 </p>
 
 > **🧠 Cek Cepat:** Server pengumuman pindah ke alamat `api.kampus.ac.id`. Bagian mana yang diubah?
@@ -964,9 +964,9 @@ Image.network(
 Gambar yang sudah diunduh disimpan sementara di memori, sehingga tidak diunduh ulang saat daftar digulir kembali.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_07a.jpg" width="240" alt="Katalog Produk: kotak pencarian, daftar produk dengan gambar kecil, harga dalam dolar AS dan rating, serta tulisan Menampilkan 10 dari 194 produk dan tombol Muat lebih banyak di bagian bawah">
+  <img src="gambar/hasil_contoh_07a.jpg" width="240" alt="Katalog Produk yang digulir sampai bawah: kotak pencarian, daftar produk parfum dengan gambar kecil, harga dalam dolar AS dan rating, lalu tulisan Menampilkan 10 dari 194 produk dan tombol Muat lebih banyak">
   &nbsp;&nbsp;
-  <img src="gambar/hasil_contoh_07b.jpg" width="240" alt="Katalog Produk setelah mencari phone: daftar ponsel beserta gambarnya dan jumlah hasil pencarian">
+  <img src="gambar/hasil_contoh_07b.jpg" width="240" alt="Katalog Produk setelah mencari phone: hasilnya berisi aksesori dan ponsel, misalnya Selfie Lamp with iPhone, Selfie Stick Monopod, iPhone 5s, iPhone 6, dan iPhone 13 Pro, beserta gambarnya, lalu tulisan Menampilkan 10 dari 23 produk dan tombol Muat lebih banyak">
 </p>
 
 > **🧠 Cek Cepat:** Di halaman ketiga, nilai `skip` berapa yang harus dikirim jika setiap halaman berisi 10 produk?
@@ -1399,7 +1399,7 @@ Perhatikan juga koma di parameter `current` dan `daily` ditulis sebagai `%2C` di
 ### 13.8 Hasilnya
 
 <p align="center">
-  <img src="gambar/hasil_contoh_11a.jpg" width="200" alt="Cuaca Kampus untuk Jakarta: chip kota di atas, kartu biru berisi suhu saat ini, kondisi, kelembapan, angin, dan jam diperbarui, lalu daftar prakiraan Hari ini, Besok, dan hari-hari berikutnya">
+  <img src="gambar/hasil_contoh_11a.jpg" width="200" alt="Cuaca Kampus untuk Jakarta: chip kota di atas dengan Jakarta terpilih, kartu biru berisi suhu saat ini, kondisi, kelembapan, angin, dan jam diperbarui, lalu awal daftar Prakiraan 7 hari: Hari ini, Besok, dan hari berikutnya">
   &nbsp;
   <img src="gambar/hasil_contoh_11b.jpg" width="200" alt="Cuaca Kampus dalam mode gelap untuk Samarinda dengan chip Samarinda terpilih">
   &nbsp;

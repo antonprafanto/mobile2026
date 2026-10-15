@@ -60,7 +60,7 @@ flowchart LR
 | 12–13 | Bagaimana melihat isi penyimpanan, mengujinya, dan menjaga keamanannya? |
 
 > [!NOTE]
-> Contoh dengan SQLite **tidak bisa dijalankan di DartPad**, karena paket `sqflite` belum tersedia di sana. Jalankan semua contoh hari ini di proyek latihan Anda ([Panduan Menjalankan Kode, Cara 2](../panduan/03_menjalankan_kode_contoh.md#cara-2--proyek-latihan-flutter-di-komputer-sendiri)), di Chrome atau di HP Android. Persiapannya dijelaskan di [Bagian 2.1](#21-memasang-paket) dan [Bagian 5.4](#54-memasang-sqflite).
+> Contoh hari ini **tidak bisa dijalankan di DartPad**. Paket `sqflite` belum tersedia di sana. Paket `shared_preferences` memang tersedia, tetapi jendela hasil DartPad tidak diizinkan memakai penyimpanan *browser*, sehingga aplikasinya hanya menampilkan lingkaran memuat. Jalankan semua contoh hari ini di proyek latihan Anda ([Panduan Menjalankan Kode, Cara 2](../panduan/03_menjalankan_kode_contoh.md#cara-2--proyek-latihan-flutter-di-komputer-sendiri)), di Chrome atau di HP Android. Persiapannya dijelaskan di [Bagian 2.1](#21-memasang-paket) dan [Bagian 5.4](#54-memasang-sqflite).
 
 ---
 
@@ -182,7 +182,7 @@ Future<void> _ubah(int selisih) async {
 | `_memuat` | Membaca penyimpanan butuh waktu (asinkron), jadi halaman menampilkan lingkaran memuat lebih dulu, seperti saat mengambil data dari internet |
 
 <p align="center">
-  <img src="gambar/hasil_contoh_01.jpg" width="240" alt="Penghitung Tamu Seminar: kartu hijau toska bertuliskan angka 5, tamu sudah hadir, dan waktu terakhir diubah; di bawahnya tombol Tamu datang (+1) dan Salah hitung (-1)">
+  <img src="gambar/hasil_contoh_01.jpg" width="240" alt="Penghitung Tamu Seminar: kartu hijau toska bertuliskan angka 5, tamu sudah hadir, dan tanggal serta jam terakhir diubah; di bawahnya tombol Tamu datang (+1), tombol Salah hitung (-1), dan ajakan mencoba hot restart">
 </p>
 
 ### 2.4 Membuktikan data benar-benar tersimpan
@@ -323,9 +323,9 @@ Bagian setelah titik dua (`: _pengaturan = ...`) dijalankan sebelum objeknya jad
 `MaterialApp` mendengarkan ViewModel ini dengan `context.watch`, sehingga tema seluruh aplikasi langsung berganti. Satu tambahan dari Pertemuan 7: `ColorScheme.fromSeed` kini menerima `contrastLevel` (`0.0` normal, `0.5` sedang, `1.0` tinggi) untuk pengguna yang butuh warna lebih kontras.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_02a.jpg" width="240" alt="Pengaturan Tampilan mode terang dengan warna hijau toska: kartu Pratinjau, pilihan mode tema Sistem, Terang, Gelap, pilihan warna utama, pilihan kontras, dan tombol Kembalikan ke bawaan">
+  <img src="gambar/hasil_contoh_02a.jpg" width="240" alt="Pengaturan Tampilan mode terang dengan warna hijau toska: kartu Pratinjau berisi tombol Tombol dan Garis, lalu pilihan mode tema dengan Terang terpilih, warna utama dengan Hijau toska terpilih, dan kontras warna dengan Normal terpilih">
   &nbsp;
-  <img src="gambar/hasil_contoh_02b.jpg" width="240" alt="Halaman yang sama dalam mode gelap dengan warna indigo dan kontras tinggi">
+  <img src="gambar/hasil_contoh_02b.jpg" width="240" alt="Halaman yang sama dalam mode gelap dengan warna Indigo dan kontras Tinggi: kartu Pratinjau berwarna ungu muda dan kedua tombolnya tetap jelas terbaca">
 </p>
 
 Pilih mode **Gelap**, warna **Indigo**, dan kontras **Tinggi**. Hentikan aplikasi (`q`), lalu jalankan lagi dengan port yang sama: aplikasi langsung tampil gelap sejak layar pertama, tanpa berkedip.
@@ -402,7 +402,7 @@ Future<List<String>> tambahRiwayat(String entri) async {
 ```
 
 <p align="center">
-  <img src="gambar/hasil_contoh_03.jpg" width="240" alt="Surat Izin Kuliah: keterangan Draf tersimpan pukul sekian, kolom mata kuliah berisi Basis Data, pilihan jenis izin Sakit terpilih, kolom alasan terisi, tombol Kirim, dan daftar riwayat berisi satu surat terkirim">
+  <img src="gambar/hasil_contoh_03.jpg" width="240" alt="Surat Izin Kuliah: keterangan Draf tersimpan pukul sekian, kolom mata kuliah berisi Basis Data, jenis izin Sakit terpilih, kolom alasan terisi, tombol Kirim, dan Riwayat (5 terakhir) berisi satu surat terkirim untuk Pemrograman Web">
 </p>
 
 Isi sebagian formulir, tunggu tulisan "Draf tersimpan pukul ..." muncul, lalu lakukan *hot restart*. Isian Anda kembali, disertai pesan "Draf terakhir dipulihkan."
@@ -619,7 +619,7 @@ Aturan seperti `NOT NULL`, `UNIQUE`, dan `CHECK` adalah **pagar terakhir**: wala
 ### 6.5 Hasil seluruh langkah
 
 <p align="center">
-  <img src="gambar/hasil_contoh_04.jpg" width="240" alt="Lab SQL Mini: tombol Jalankan dan daftar hasil langkah 1 sampai 11, misalnya INSERT Rina id 1, Bayu id 2, Citra id 3, dan UPDATE IPK Bayu 1 baris berubah">
+  <img src="gambar/hasil_contoh_04.jpg" width="240" alt="Lab SQL Mini setelah tombol Jalankan ditekan: hasil langkah 1 sampai 9, misalnya INSERT Rina id 1, Bayu id 2, Citra id 3, UPDATE IPK Bayu 1 baris berubah, dan COUNT 3 mahasiswa dengan rata-rata IPK 3.69. Langkah 10 dan 11 terlihat setelah digulir">
 </p>
 
 ```text
@@ -987,7 +987,7 @@ Future<void> tingkatkanSkema(Database db, int versiLama, int versiBaru) async {
 4. Hentikan dan jalankan sekali lagi. Kali ini pesan migrasi **tidak** muncul, karena database sudah versi 2.
 
 <p align="center">
-  <img src="gambar/hasil_contoh_06.jpg" width="240" alt="Catatan Kuliah versi 2: catatan yang disematkan berada paling atas dengan ikon pin terisi, catatan lain memiliki ikon pin bergaris">
+  <img src="gambar/hasil_contoh_06.jpg" width="240" alt="Catatan Kuliah versi 2: catatan Rangkuman Basis Data yang disematkan berada paling atas dengan ikon pin terisi, dua catatan lain memiliki ikon pin bergaris, dan setiap catatan menampilkan waktu diubah">
 </p>
 
 ---
@@ -1046,7 +1046,7 @@ Coba ketiga kombinasi berikut dengan jumlah **50 rb**. Tekan tombol **Atur ulang
 | ❌ | ⚡ | Rp450.000 | Rp0 | **Rp450.000** ❌ (uang hilang) |
 
 <p align="center">
-  <img src="gambar/hasil_contoh_07.jpg" width="240" alt="Kas Kelas: kartu Kas Kelas Rp450.000 dan Kas Study Tour Rp0, tulisan total uang Rp450.000, sakelar Pakai transaksi mati, sakelar Simulasikan gangguan menyala, dan pesan bahwa uangnya hilang">
+  <img src="gambar/hasil_contoh_07.jpg" width="240" alt="Kas Kelas: kartu Kas Kelas Rp450.000 dan Kas Study Tour Rp0, tulisan total uang Rp450.000, jumlah 50 rb terpilih, sakelar Pakai transaksi mati, sakelar Simulasikan gangguan menyala, dan SnackBar yang mengabarkan uangnya hilang">
 </p>
 
 Tulisan **Total uang** dihitung langsung oleh SQL, bukan dengan perulangan di Dart:
@@ -1164,7 +1164,7 @@ Perhatikan juga bahwa *cache* memakai **format milik aplikasi sendiri** (`judul`
 ### 10.4 Memberi tahu pengguna
 
 <p align="center">
-  <img src="gambar/hasil_contoh_08.jpg" width="240" alt="Pengumuman Prodi saat luring: spanduk Mode luring bertuliskan menampilkan data tersimpan dari tanggal dan pukul tertentu, di atas daftar pengumuman">
+  <img src="gambar/hasil_contoh_08.jpg" width="240" alt="Pengumuman Prodi saat luring: spanduk Mode luring bertuliskan menampilkan data tersimpan dari tanggal dan pukul tertentu, di atas daftar pengumuman berbahasa Inggris dari DummyJSON yang masing-masing berketerangan Dibaca sekian kali">
 </p>
 
 Spanduk **Mode luring** menjelaskan bahwa data yang tampil adalah salinan, lengkap dengan waktunya. Tanpa spanduk itu, pengguna bisa mengira pengumuman yang sudah basi adalah yang terbaru.
@@ -1383,7 +1383,7 @@ Di antara baris-baris itu juga tampil pesan seperti `Galat saat memuat cuaca: Cl
 ### 11.7 Hasilnya
 
 <p align="center">
-  <img src="gambar/hasil_contoh_09a.jpg" width="240" alt="Cuaca Kampus: pilihan kota dengan Samarinda bertanda bintang di depan, kartu cuaca Samarinda, dan prakiraan tujuh hari">
+  <img src="gambar/hasil_contoh_09a.jpg" width="240" alt="Cuaca Kampus: ikon bintang terisi di AppBar, chip Samarinda bertanda bintang berada paling depan dan terpilih, kartu cuaca Samarinda berisi suhu, kondisi, kelembapan, angin, dan waktu diperbarui, lalu awal daftar Prakiraan 7 hari">
   &nbsp;
   <img src="gambar/hasil_contoh_09b.jpg" width="240" alt="Cuaca Kampus saat luring: spanduk Gagal memperbarui, Tidak dapat terhubung ke internet, data terakhir dari tanggal dan pukul tertentu, di atas kartu cuaca yang tersimpan">
 </p>

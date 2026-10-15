@@ -307,6 +307,11 @@ Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/READM
 
 ## F. Masalah Penyimpanan Lokal
 
+### Contoh Pertemuan 11 di DartPad hanya menampilkan lingkaran memuat (atau gagal karena `sqflite`)
+
+**Penyebab:** jendela hasil DartPad tidak diizinkan memakai penyimpanan *browser*, sehingga `shared_preferences` gagal membaca data (di konsol *browser* muncul `SecurityError` yang menyebut `localStorage`). Paket `sqflite` juga belum tersedia di DartPad.
+**Solusi:** jalankan contoh dan praktikum Pertemuan 11 di proyek latihan dengan `flutter run -d chrome --web-port=8080` atau di HP Android. Lihat [Panduan Menjalankan Kode, Cara 2](03_menjalankan_kode_contoh.md#cara-2--proyek-latihan-flutter-di-komputer-sendiri).
+
 ### `MissingPluginException(No implementation found for method ...)`
 
 **Penyebab:** paket yang membawa bagian asli (*plugin*), misalnya `shared_preferences` atau `sqflite`, baru dipasang saat aplikasi sedang berjalan. *Hot reload* dan *hot restart* tidak memuat bagian aslinya.

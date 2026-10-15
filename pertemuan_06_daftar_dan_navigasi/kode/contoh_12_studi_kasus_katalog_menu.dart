@@ -274,6 +274,9 @@ class _HalamanKatalogState extends State<HalamanKatalog> {
     final bool? pesanSekarang = await showModalBottomSheet<bool>(
       context: context,
       showDragHandle: true,
+      // Tanpa ini, tinggi lembar dibatasi 9/16 layar. Pada layar pendek
+      // isinya tidak muat dan muncul garis kuning-hitam (overflow).
+      isScrollControlled: true,
       builder: (BuildContext context) {
         return LembarKeranjang(isi: _isiKeranjang, total: _totalHarga);
       },
@@ -435,7 +438,8 @@ class LembarKeranjang extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme gayaTeks = Theme.of(context).textTheme;
 
-    return Padding(
+    // Jika keranjang berisi banyak menu, isinya bisa digulir.
+    return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Column(
         mainAxisSize: MainAxisSize.min,

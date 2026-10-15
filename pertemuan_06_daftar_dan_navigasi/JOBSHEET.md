@@ -354,7 +354,7 @@ class KotakBarang extends StatelessWidget {
 
 ✅ **Hasil yang diharapkan** (setelah kotak **Jaket Himpunan** diketuk):
 
-<p align="center"><img src="gambar/jobsheet_praktikum2.jpg" width="280" alt="Etalase merchandise dua kolom: kotak Kaos Angkatan, Jaket Himpunan, Tumbler, Totebag, Buku Catatan, dan Gantungan Kunci, masing-masing berisi ikon dalam lingkaran, nama, harga, dan keterangan stok. Tumbler bertuliskan Habis berwarna merah. Di bawah layar tampil SnackBar Jaket Himpunan dipilih."></p>
+<p align="center"><img src="gambar/jobsheet_praktikum2.jpg" width="280" alt="Etalase merchandise dua kolom: kotak Kaos Angkatan, Jaket Himpunan, Tumbler, dan Totebag, masing-masing berisi ikon dalam lingkaran, nama, harga, dan keterangan stok. Tumbler bertuliskan Habis berwarna merah. Baris berikutnya (Buku Catatan dan Gantungan Kunci) tertutup SnackBar Jaket Himpunan dipilih."></p>
 
 Jika Anda menjalankannya di Chrome, coba perlebar jendela browser. Jumlah kolom bertambah dengan sendirinya, karena yang kita tentukan adalah **lebar maksimal** kotak, bukan jumlah kolomnya.
 
