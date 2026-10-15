@@ -101,6 +101,14 @@ const DAFTAR_IKON = {
   rata: 'MdFormatAlignLeft',
   bingkai: 'MdBorderOuter',
   layarpas: 'MdFitScreen',
+  // Pertemuan 5
+  sinkron: 'MdSync',
+  tombol: 'MdSmartButton',
+  sakelar: 'MdToggleOn',
+  siklus: 'MdAutorenew',
+  formulir: 'MdEditNote',
+  dialog: 'MdQuestionAnswer',
+  angkat: 'MdUpload',
 };
 
 async function main() {

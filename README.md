@@ -36,7 +36,7 @@ Rencana lengkap satu semester ada di **[📋 Silabus](SILABUS.md)**.
 | **02** | Dasar Pemrograman Dart | [📖 Baca](pertemuan_02_dasar_dart/README.md) | [🧪 Buka](pertemuan_02_dasar_dart/JOBSHEET.md) | [✍️ Buka](pertemuan_02_dasar_dart/LATIHAN.md) | [💻 13 berkas](pertemuan_02_dasar_dart/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_02_dasar_dart/slide/PERTEMUAN_02_Dasar_Dart.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_02_dasar_dart%2Fslide%2FPERTEMUAN_02_Dasar_Dart.pptx) |
 | **03** | Dart Lanjutan: OOP & Pemrograman Asinkron | [📖 Baca](pertemuan_03_dart_lanjutan/README.md) | [🧪 Buka](pertemuan_03_dart_lanjutan/JOBSHEET.md) | [✍️ Buka](pertemuan_03_dart_lanjutan/LATIHAN.md) | [💻 13 berkas](pertemuan_03_dart_lanjutan/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_03_dart_lanjutan/slide/PERTEMUAN_03_Dart_Lanjutan.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_03_dart_lanjutan%2Fslide%2FPERTEMUAN_03_Dart_Lanjutan.pptx) |
 | **04** | Widget & Tata Letak (*Layout*) | [📖 Baca](pertemuan_04_widget_dan_layout/README.md) | [🧪 Buka](pertemuan_04_widget_dan_layout/JOBSHEET.md) | [✍️ Buka](pertemuan_04_widget_dan_layout/LATIHAN.md) | [💻 11 berkas](pertemuan_04_widget_dan_layout/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_04_widget_dan_layout/slide/PERTEMUAN_04_Widget_dan_Layout.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_04_widget_dan_layout%2Fslide%2FPERTEMUAN_04_Widget_dan_Layout.pptx) |
-| 05 | Interaksi Pengguna & State Lokal | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
+| **05** | Interaksi Pengguna & *State* Lokal | [📖 Baca](pertemuan_05_interaksi_dan_state/README.md) | [🧪 Buka](pertemuan_05_interaksi_dan_state/JOBSHEET.md) | [✍️ Buka](pertemuan_05_interaksi_dan_state/LATIHAN.md) | [💻 11 berkas](pertemuan_05_interaksi_dan_state/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_05_interaksi_dan_state/slide/PERTEMUAN_05_Interaksi_dan_State.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_05_interaksi_dan_state%2Fslide%2FPERTEMUAN_05_Interaksi_dan_State.pptx) |
 | 06 | Daftar Data & Navigasi Antarhalaman | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
 | 07 | Material Design 3 & UI Responsif | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
 | 08 | **Ujian Tengah Semester (UTS)** | — | — | — | — | — |
@@ -121,6 +121,22 @@ Setiap berkas adalah **program utuh** yang siap dijalankan. Cara menjalankannya 
 | 10 | Memecah widget | Membuat `StatelessWidget` sendiri yang menerima parameter | [contoh_10_memecah_widget.dart](pertemuan_04_widget_dan_layout/kode/contoh_10_memecah_widget.dart) |
 | 11 | Studi kasus | Halaman detail menu kantin yang aman di layar sempit | [contoh_11_studi_kasus_detail_menu.dart](pertemuan_04_widget_dan_layout/kode/contoh_11_studi_kasus_detail_menu.dart) |
 
+### Pertemuan 05 — Interaksi Pengguna & *State* Lokal *(aplikasi Flutter)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | `StatefulWidget` dan `setState` | Dua *class* berpasangan, `widget.xxx`, dan tombol nonaktif dengan `onPressed: null` | [contoh_01_stateful_dasar.dart](pertemuan_05_interaksi_dan_state/kode/contoh_01_stateful_dasar.dart) |
+| 02 | Jenis-jenis tombol | Lima tombol Material 3, tombol berikon, `IconButton`, dan tombol *toggle* | [contoh_02_jenis_tombol.dart](pertemuan_05_interaksi_dan_state/kode/contoh_02_jenis_tombol.dart) |
+| 03 | Sentuhan dan `SnackBar` | `InkWell`, `GestureDetector` (ketuk dua kali), dan `SnackBar` dengan tombol "Batalkan" | [contoh_03_sentuhan_dan_snackbar.dart](pertemuan_05_interaksi_dan_state/kode/contoh_03_sentuhan_dan_snackbar.dart) |
+| 04 | `Switch`, `Checkbox`, `Radio` | `SwitchListTile`, `CheckboxListTile`, `RadioGroup`, dan ringkasan sebagai nilai turunan | [contoh_04_switch_checkbox_radio.dart](pertemuan_05_interaksi_dan_state/kode/contoh_04_switch_checkbox_radio.dart) |
+| 05 | `SegmentedButton`, `Slider`, *chip* | Memilih satu atau banyak pilihan, serta angka dalam rentang | [contoh_05_slider_segmented_chip.dart](pertemuan_05_interaksi_dan_state/kode/contoh_05_slider_segmented_chip.dart) |
+| 06 | Siklus hidup *State* | Urutan `initState`, `build`, `didUpdateWidget`, dan `dispose` dilihat di konsol | [contoh_06_siklus_hidup_state.dart](pertemuan_05_interaksi_dan_state/kode/contoh_06_siklus_hidup_state.dart) |
+| 07 | `TextField` dan *controller* | Membaca, mengosongkan, dan membuang `TextEditingController`; menutup keyboard | [contoh_07_textfield_controller.dart](pertemuan_05_interaksi_dan_state/kode/contoh_07_textfield_controller.dart) |
+| 08 | Formulir dan validasi | `Form`, `GlobalKey`, *validator*, *dropdown*, dan kotak centang persetujuan | [contoh_08_form_validasi.dart](pertemuan_05_interaksi_dan_state/kode/contoh_08_form_validasi.dart) |
+| 09 | Dialog dan *bottom sheet* | Menunggu jawaban dengan `await`, lalu memeriksa `mounted` | [contoh_09_dialog_dan_bottom_sheet.dart](pertemuan_05_interaksi_dan_state/kode/contoh_09_dialog_dan_bottom_sheet.dart) |
+| 10 | Mengangkat *state* | Widget anak melapor lewat `VoidCallback`; total sebagai nilai turunan | [contoh_10_mengangkat_state.dart](pertemuan_05_interaksi_dan_state/kode/contoh_10_mengangkat_state.dart) |
+| 11 | Studi kasus | Halaman pesan menu kantin yang benar-benar bekerja | [contoh_11_studi_kasus_pesan_menu.dart](pertemuan_05_interaksi_dan_state/kode/contoh_11_studi_kasus_pesan_menu.dart) |
+
 ---
 
 ## 🧰 Panduan Pendukung
@@ -150,6 +166,7 @@ mobile2026/
 ├── 📁 pertemuan_02_dasar_dart/          ← (struktur sama)
 ├── 📁 pertemuan_03_dart_lanjutan/       ← (struktur sama)
 ├── 📁 pertemuan_04_widget_dan_layout/   ← (struktur sama + 🖼️ gambar/ untuk tangkapan layar)
+├── 📁 pertemuan_05_interaksi_dan_state/ ← (struktur sama + 🖼️ gambar/)
 ├── 📁 tools/slide/                      ← skrip pembuat slide (untuk dosen)
 ├── 📄 tools/cek_output.py               ← pencocok output contoh kode (dipakai CI)
 ├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md

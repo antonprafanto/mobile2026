@@ -108,6 +108,16 @@ Jika `flutter doctor` menampilkan `Cannot find Chrome. Try setting CHROME_EXECUT
 > [!TIP]
 > Satu kesalahan tata letak bisa memicu puluhan pesan error berantai. Selalu baca dan perbaiki pesan **pertama** di konsol, lalu jalankan ulang.
 
+### Tombol ditekan, tetapi tampilan tidak berubah
+
+**Penyebab:** data diubah tanpa `setState()`, atau data disimpan di dalam `StatelessWidget`. Nilainya memang berubah di memori, tetapi Flutter tidak tahu bahwa layar perlu digambar ulang.
+**Solusi:** simpan data di *class State* milik `StatefulWidget`, lalu ubah di dalam `setState(() { ... })`. Penjelasan lengkapnya ada di [Pertemuan 5, Bagian 2](../pertemuan_05_interaksi_dan_state/README.md#2-anatomi-statefulwidget).
+
+### `setState() called after dispose()`
+
+**Penyebab:** `setState` dipanggil setelah `await` (misalnya setelah dialog atau pengambilan data selesai), padahal halamannya sudah ditutup.
+**Solusi:** tepat setelah `await`, tambahkan `if (!mounted) return;`. Lihat [Pertemuan 5, Bagian 10.2](../pertemuan_05_interaksi_dan_state/README.md#102-periksa-mounted-setelah-await).
+
 ---
 
 ## D. Masalah Penulisan Kode
@@ -129,9 +139,9 @@ Garis kuning = **peringatan** (*warning*); garis biru = **saran** (*info/lint*).
 **Penyebab:** ada karakter Tab, atau indentasi tidak rata.
 **Solusi:** gunakan **spasi** (2 spasi per tingkat), bukan Tab. Pastikan setiap tingkat sejajar dengan rapi.
 
-### Kesalahan umum bahasa Dart dan tata letak Flutter
+### Kesalahan umum bahasa Dart dan widget Flutter
 
-Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/README.md#15-kesalahan-umum-pemula-dan-solusinya) (variabel, tipe data, *null safety*), [Pertemuan 3, Bagian 14](../pertemuan_03_dart_lanjutan/README.md#14-kesalahan-umum-pemula-dan-solusinya) (*class*, pewarisan, *exception*, `Future`, dan `Stream`), dan [Pertemuan 4, Bagian 15](../pertemuan_04_widget_dan_layout/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`child`/`children`, `Expanded`, *overflow*, dan *constraints*).
+Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/README.md#15-kesalahan-umum-pemula-dan-solusinya) (variabel, tipe data, *null safety*), [Pertemuan 3, Bagian 14](../pertemuan_03_dart_lanjutan/README.md#14-kesalahan-umum-pemula-dan-solusinya) (*class*, pewarisan, *exception*, `Future`, dan `Stream`), [Pertemuan 4, Bagian 15](../pertemuan_04_widget_dan_layout/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`child`/`children`, `Expanded`, *overflow*, dan *constraints*), dan [Pertemuan 5, Bagian 14](../pertemuan_05_interaksi_dan_state/README.md#14-kesalahan-umum-pemula-dan-solusinya) (`setState`, siklus hidup, *controller*, formulir, dan dialog).
 
 ---
 

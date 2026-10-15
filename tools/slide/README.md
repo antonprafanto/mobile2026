@@ -37,15 +37,15 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 ## Menambah Slide Pertemuan Baru
 
-1. Salin konten pertemuan terakhir, misalnya `konten/p04.js` menjadi `konten/p05.js`.
+1. Salin konten pertemuan terakhir, misalnya `konten/p05.js` menjadi `konten/p06.js`.
 2. Ubah bagian identitas di atas berkas:
 
    ```js
    module.exports = {
-     nomor: '05',
-     folder: 'pertemuan_05_interaksi_dan_state',   // nama folder pertemuan
-     namaBerkas: 'PERTEMUAN_05_Interaksi_dan_State', // nama berkas .pptx
-     topik: 'Interaksi Pengguna & State Lokal',    // tampil di kaki slide
+     nomor: '06',
+     folder: 'pertemuan_06_daftar_dan_navigasi',   // nama folder pertemuan
+     namaBerkas: 'PERTEMUAN_06_Daftar_dan_Navigasi', // nama berkas .pptx
+     topik: 'Daftar Data & Navigasi',              // tampil di kaki slide
      bangun(d) {
        // satu pemanggilan d.xxx({...}) = satu slide
      },
@@ -53,7 +53,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
    ```
 
 3. Isi fungsi `bangun(d)` dengan jenis slide yang tersedia (lihat tabel di bawah).
-4. Jalankan `node buat_slide.js 05`, lalu buka hasilnya untuk diperiksa.
+4. Jalankan `node buat_slide.js 06`, lalu buka hasilnya untuk diperiksa.
 
 ### Jenis Slide yang Tersedia
 
@@ -75,7 +75,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 Semua jenis slide menerima `catatan` — teks **catatan pembicara** (speaker notes)
 untuk dosen. Contoh lengkap pemakaian setiap jenis ada di `konten/p01.js` sampai
-`konten/p04.js` (contoh `d.layar` ada di `konten/p04.js`).
+`konten/p05.js` (contoh `d.layar` dan `d.lapisan` ada di `konten/p04.js` dan `konten/p05.js`).
 
 > [!TIP]
 > Tulis potongan kode di slide **pendek saja** (maksimal ±16 baris, dan tidak
