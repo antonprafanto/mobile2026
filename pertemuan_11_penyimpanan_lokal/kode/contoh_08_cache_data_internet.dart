@@ -220,11 +220,7 @@ abstract class RepositoriPengumuman {
 }
 
 class RepositoriPengumumanLuring implements RepositoriPengumuman {
-  RepositoriPengumumanLuring({
-    required LayananDummyJson layanan,
-    required CachePengumuman cache,
-  }) : _layanan = layanan,
-       _cache = cache;
+  RepositoriPengumumanLuring({required this._layanan, required this._cache});
 
   final LayananDummyJson _layanan;
   final CachePengumuman _cache;
@@ -291,8 +287,7 @@ String pesanRamah(Object galat) {
 }
 
 class PengumumanViewModel extends ChangeNotifier {
-  PengumumanViewModel({required RepositoriPengumuman repositori})
-    : _repositori = repositori;
+  PengumumanViewModel({required this._repositori});
 
   final RepositoriPengumuman _repositori;
 

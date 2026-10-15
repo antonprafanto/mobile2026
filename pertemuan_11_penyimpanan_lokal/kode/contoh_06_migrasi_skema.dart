@@ -100,7 +100,7 @@ class Catatan {
 
   Map<String, Object?> keBaris() {
     return {
-      if (id != null) 'id': id,
+      'id': ?id, // hanya dimasukkan jika id tidak null
       'judul': judul,
       'isi': isi,
       'diubah': diubah.millisecondsSinceEpoch,
@@ -223,8 +223,7 @@ abstract class RepositoriCatatan {
 }
 
 class RepositoriCatatanSqlite implements RepositoriCatatan {
-  RepositoriCatatanSqlite({required LayananBasisData layanan})
-    : _layanan = layanan;
+  RepositoriCatatanSqlite({required this._layanan});
 
   static const String _tabel = 'catatan';
 
@@ -304,8 +303,7 @@ class RepositoriCatatanSqlite implements RepositoriCatatan {
 enum StatusMuat { memuat, berhasil, gagal }
 
 class CatatanViewModel extends ChangeNotifier {
-  CatatanViewModel({required RepositoriCatatan repositori})
-    : _repositori = repositori;
+  CatatanViewModel({required this._repositori});
 
   final RepositoriCatatan _repositori;
 

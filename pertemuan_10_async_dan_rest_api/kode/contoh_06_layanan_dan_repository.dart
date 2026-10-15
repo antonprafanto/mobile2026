@@ -118,8 +118,7 @@ abstract class RepositoriPengumuman {
 
 // Repository mengubah data mentah dari service menjadi Model.
 class RepositoriPengumumanApi implements RepositoriPengumuman {
-  RepositoriPengumumanApi({required LayananDummyJson layanan})
-    : _layanan = layanan;
+  RepositoriPengumumanApi({required this._layanan});
 
   final LayananDummyJson _layanan;
 
@@ -174,8 +173,7 @@ class RepositoriPengumumanPalsu implements RepositoriPengumuman {
 enum StatusMuat { memuat, berhasil, gagal }
 
 class PengumumanViewModel extends ChangeNotifier {
-  PengumumanViewModel({required RepositoriPengumuman repositori})
-    : _repositori = repositori;
+  PengumumanViewModel({required this._repositori});
 
   final RepositoriPengumuman _repositori;
 

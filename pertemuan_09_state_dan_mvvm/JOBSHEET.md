@@ -1144,8 +1144,7 @@ class RepositoriBeasiswaPalsu implements RepositoriBeasiswa {
 enum StatusMuat { memuat, berhasil, gagal }
 
 class BeasiswaViewModel extends ChangeNotifier {
-  BeasiswaViewModel({required RepositoriBeasiswa repositori})
-    : _repositori = repositori;
+  BeasiswaViewModel({required this._repositori});
 
   final RepositoriBeasiswa _repositori;
 
@@ -1620,8 +1619,7 @@ import 'package:tugas_kuliahku/domain/models/tugas.dart';
 
 class DaftarTugasViewModel extends ChangeNotifier {
   // Repository diterima lewat constructor, tidak dibuat sendiri.
-  DaftarTugasViewModel({required RepositoriTugas repositori})
-    : _repositori = repositori;
+  DaftarTugasViewModel({required this._repositori});
 
   final RepositoriTugas _repositori;
 

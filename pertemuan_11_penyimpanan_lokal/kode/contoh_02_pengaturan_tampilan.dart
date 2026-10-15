@@ -138,10 +138,11 @@ class RepositoriPengaturanPrefs implements RepositoriPengaturan {
 // ========================= VIEWMODEL =========================
 
 class PengaturanViewModel extends ChangeNotifier {
-  PengaturanViewModel({required RepositoriPengaturan repositori})
-    : _repositori = repositori,
-      // Nilai awal langsung dibaca dari repository (sinkron).
-      _pengaturan = repositori.baca();
+  // Nilai awal langsung dibaca dari repository (sinkron). Bagian setelah
+  // titik dua dijalankan sebelum objek jadi; di situ _repositori berarti
+  // parameter yang baru diterima.
+  PengaturanViewModel({required this._repositori})
+    : _pengaturan = _repositori.baca();
 
   final RepositoriPengaturan _repositori;
   Pengaturan _pengaturan;

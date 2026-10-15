@@ -305,7 +305,7 @@ abstract class CacheCuaca {
 }
 
 class CacheCuacaSqlite implements CacheCuaca {
-  CacheCuacaSqlite({required LayananBasisData layanan}) : _layanan = layanan;
+  CacheCuacaSqlite({required this._layanan});
 
   final LayananBasisData _layanan;
 
@@ -436,11 +436,7 @@ abstract class RepositoriCuaca {
 }
 
 class RepositoriCuacaLuring implements RepositoriCuaca {
-  RepositoriCuacaLuring({
-    required LayananOpenMeteo layanan,
-    required CacheCuaca cache,
-  }) : _layanan = layanan,
-       _cache = cache;
+  RepositoriCuacaLuring({required this._layanan, required this._cache});
 
   final LayananOpenMeteo _layanan;
   final CacheCuaca _cache;
@@ -616,11 +612,7 @@ String pesanRamah(Object galat) {
 }
 
 class CuacaViewModel extends ChangeNotifier {
-  CuacaViewModel({
-    required RepositoriCuaca repositori,
-    required RepositoriPreferensi preferensi,
-  }) : _repositori = repositori,
-       _preferensi = preferensi;
+  CuacaViewModel({required this._repositori, required this._preferensi});
 
   final RepositoriCuaca _repositori;
   final RepositoriPreferensi _preferensi;

@@ -242,10 +242,9 @@ enum KeadaanPilihan { biasa, benar, salah }
 class KuisViewModel extends ChangeNotifier {
   KuisViewModel({
     required this.topik,
-    required RepositoriSoal repositori,
-    required RiwayatSkor riwayat,
-  }) : _repositori = repositori,
-       _riwayat = riwayat;
+    required this._repositori,
+    required this._riwayat,
+  });
 
   final Topik topik;
   final RepositoriSoal _repositori;

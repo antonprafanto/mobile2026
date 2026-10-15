@@ -638,8 +638,7 @@ abstract class RepositoriIstilah {
 }
 
 class RepositoriIstilahSqlite implements RepositoriIstilah {
-  RepositoriIstilahSqlite({required LayananBasisData layanan})
-    : _layanan = layanan;
+  RepositoriIstilahSqlite({required this._layanan});
 
   static const String _tabel = 'istilah';
 
@@ -751,8 +750,7 @@ class RepositoriIstilahSqlite implements RepositoriIstilah {
 enum StatusMuat { memuat, berhasil, gagal }
 
 class KamusViewModel extends ChangeNotifier {
-  KamusViewModel({required RepositoriIstilah repositori})
-    : _repositori = repositori;
+  KamusViewModel({required this._repositori});
 
   final RepositoriIstilah _repositori;
 
@@ -1865,11 +1863,7 @@ import 'package:tugas_kuliahku/domain/models/tugas.dart';
 // Database di perangkat adalah SUMBER KEBENARAN. Server hanya dipakai
 // untuk mengimpor tugas saat pengguna memintanya.
 class RepositoriTugasLuring implements RepositoriTugas {
-  RepositoriTugasLuring({
-    required LayananBasisData basisData,
-    required LayananDummyJson server,
-  }) : _basisData = basisData,
-       _server = server;
+  RepositoriTugasLuring({required this._basisData, required this._server});
 
   static const String _tabel = 'tugas';
 
@@ -2161,8 +2155,7 @@ import 'package:tugas_kuliahku/ui/core/pemuatan.dart';
 
 class DaftarTugasViewModel extends ChangeNotifier {
   // Repository diterima lewat constructor, tidak dibuat sendiri.
-  DaftarTugasViewModel({required RepositoriTugas repositori})
-    : _repositori = repositori;
+  DaftarTugasViewModel({required this._repositori});
 
   final RepositoriTugas _repositori;
 

@@ -125,7 +125,7 @@ abstract class RepositoriProduk {
 }
 
 class RepositoriProdukApi implements RepositoriProduk {
-  RepositoriProdukApi({required LayananDummyJson layanan}) : _layanan = layanan;
+  RepositoriProdukApi({required this._layanan});
 
   final LayananDummyJson _layanan;
 
@@ -178,8 +178,7 @@ class RepositoriProdukApi implements RepositoriProduk {
 enum StatusMuat { memuat, berhasil, gagal }
 
 class KatalogViewModel extends ChangeNotifier {
-  KatalogViewModel({required RepositoriProduk repositori})
-    : _repositori = repositori;
+  KatalogViewModel({required this._repositori});
 
   static const int _perHalaman = 10;
 

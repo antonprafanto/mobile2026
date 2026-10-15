@@ -4,6 +4,8 @@
 # 3. Output setiap contoh Dart murni sama dengan blok "// OUTPUT" di berkasnya.
 # Jika ada yang gagal, temuan ditampilkan sebagai anotasi pada halaman
 # hasil pemeriksaan (tab "Checks"), lengkap dengan nama berkas dan barisnya.
+# GitHub hanya menampilkan 10 anotasi per langkah, jadi daftar LENGKAP-nya
+# juga ditulis ke ringkasan (Summary) halaman hasil pemeriksaan.
 name: Quality Gate Kode
 
 on:
@@ -27,7 +29,14 @@ jobs:
           cache: true
 
       - name: Tampilkan versi Flutter
-        run: flutter --version
+        run: |
+          flutter --version
+          {
+            echo '### Versi Flutter yang dipakai pemeriksaan'
+            echo '```text'
+            flutter --version
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Unduh paket
         run: flutter pub get
@@ -41,19 +50,48 @@ jobs:
 
       - name: Jalankan contoh Dart murni dan cocokkan output
         if: ${{ !cancelled() }}
-        run: python3 tools/cek_output.py
+        shell: bash
+        run: python3 tools/cek_output.py | tee "$RUNNER_TEMP/cek_output.txt"
 
       - name: Tampilkan temuan format dan analisis sebagai anotasi
         if: ${{ failure() }}
+        shell: bash
         run: |
+          ringkasan="$GITHUB_STEP_SUMMARY"
+          echo '## Temuan pemeriksaan kode' >> "$ringkasan"
+
           # Berkas yang belum diformat
-          dart format --output=none . | sed -n 's/^Changed \(.*\)$/\1/p' | while read -r berkas; do
-            echo "::error file=${berkas}::Berkas belum diformat. Jalankan: dart format ${berkas}"
-          done
+          dart format --output=none . | sed -n 's/^Changed \(.*\)$/\1/p' > "$RUNNER_TEMP/belum_rapi.txt" || true
+          if [ -s "$RUNNER_TEMP/belum_rapi.txt" ]; then
+            echo "### Berkas yang belum diformat ($(wc -l < "$RUNNER_TEMP/belum_rapi.txt"))" >> "$ringkasan"
+            while read -r berkas; do
+              echo "::error file=${berkas}::Berkas belum diformat. Jalankan: dart format ${berkas}"
+              echo "- \`${berkas}\`" >> "$ringkasan"
+            done < "$RUNNER_TEMP/belum_rapi.txt"
+          fi
+
           # Temuan analyzer. Format mesin: TINGKAT|JENIS|KODE|BERKAS|BARIS|KOLOM|PANJANG|PESAN
-          dart analyze --format=machine . 2>&1 | grep -E '^(INFO|WARNING|ERROR)\|' | while IFS='|' read -r tingkat jenis kode berkas baris kolom panjang pesan; do
-            berkas="${berkas#"$GITHUB_WORKSPACE/"}"
-            pesan="${pesan//%/%25}"
-            echo "::error file=${berkas},line=${baris},col=${kolom}::[${kode}] ${pesan}"
-          done
+          dart analyze --format=machine . 2>&1 | grep -E '^(INFO|WARNING|ERROR)\|' > "$RUNNER_TEMP/temuan.txt" || true
+          if [ -s "$RUNNER_TEMP/temuan.txt" ]; then
+            {
+              echo "### Temuan analyzer ($(wc -l < "$RUNNER_TEMP/temuan.txt"))"
+              echo '| Berkas:baris | Aturan | Pesan |'
+              echo '| :--- | :--- | :--- |'
+            } >> "$ringkasan"
+            while IFS='|' read -r tingkat jenis kode berkas baris kolom panjang pesan; do
+              berkas="${berkas#"$GITHUB_WORKSPACE/"}"
+              echo "::error file=${berkas},line=${baris},col=${kolom}::[${kode}] ${pesan//%/%25}"
+              echo "| \`${berkas}:${baris}\` | \`${kode}\` | ${pesan//|/\\|} |" >> "$ringkasan"
+            done < "$RUNNER_TEMP/temuan.txt"
+          fi
+
+          # Perbedaan output contoh Dart murni
+          if grep -q 'GAGAL' "$RUNNER_TEMP/cek_output.txt" 2>/dev/null; then
+            {
+              echo '### Output contoh Dart murni yang berbeda'
+              echo '```text'
+              grep -v '^::' "$RUNNER_TEMP/cek_output.txt" | tail -n 60
+              echo '```'
+            } >> "$ringkasan"
+          fi
           exit 0

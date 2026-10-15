@@ -810,8 +810,7 @@ Provider<LayananDummyJson>(
 
 ```dart
 class RepositoriPengumumanApi implements RepositoriPengumuman {
-  RepositoriPengumumanApi({required LayananDummyJson layanan})
-    : _layanan = layanan;
+  RepositoriPengumumanApi({required this._layanan});
 
   final LayananDummyJson _layanan;
 
@@ -841,7 +840,7 @@ class RepositoriPengumumanApi implements RepositoriPengumuman {
 }
 ```
 
-Parameter `select=title,body,views` adalah fitur DummyJSON untuk meminta kolom tertentu saja, sehingga jawabannya lebih kecil.
+Parameter `select=title,body,views` adalah fitur DummyJSON untuk meminta kolom tertentu saja, sehingga jawabannya lebih kecil. Layanan diterima lewat *constructor* dengan `{required this._layanan}`, cara yang sama seperti ViewModel menerima *repository* ([Pertemuan 9 Bagian 10.4](../pertemuan_09_state_dan_mvvm/README.md#104-menitipkan-repository-dan-menyerahkannya-ke-viewmodel)).
 
 Di contoh ini, pengubahan JSON menjadi Model ditulis di *repository*, sehingga *class* `Pengumuman` tetap bersih dari urusan JSON. Cara lain yang juga umum (dipakai Contoh 03 dan 04) adalah menaruh `fromJson` di *class* Model. Pertemuan 12 membahas kapan masing-masing cara lebih tepat.
 

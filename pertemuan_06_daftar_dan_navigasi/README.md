@@ -1064,7 +1064,9 @@ PopScope(
 
     // Masih tertahan: tanyakan dulu kepada pengguna.
     final bool buang = await _tanyaBuang();
-    if (!mounted) return;
+    // Fungsi ini ditulis di dalam build, jadi context di sini adalah
+    // parameter build. Karena itu yang diperiksa context.mounted.
+    if (!context.mounted) return;
     if (buang) {
       Navigator.pop(context);
     }
@@ -1084,6 +1086,16 @@ Alurnya:
 1. Selama catatan kosong, `canPop` bernilai `true`, sehingga panah kembali langsung menutup halaman.
 2. Begitu ada tulisan, `canPop` menjadi `false`. Panah kembali ditahan, dan `onPopInvokedWithResult` dipanggil dengan `sudahTertutup: false`.
 3. Kita menampilkan dialog. Jika pengguna memilih **"Buang"**, kita menutup halaman sendiri dengan `Navigator.pop(context)`.
+
+> [!IMPORTANT]
+> Mengapa di sini `context.mounted`, bukan `mounted` seperti di `_pilihKota` ([Bagian 11.3](#113-halaman-pertama-await-hasilnya))? Fungsi untuk `onPopInvokedWithResult` ditulis **di dalam `build`**, sehingga `context` yang dipakainya adalah **parameter `build`**, bukan `context` milik *class State*. Aturannya: periksa "masih terpasang" pada `context` yang memang Anda pakai.
+>
+> | Letak kode yang memakai `context` setelah `await` | Pemeriksaan |
+> | :--- | :--- |
+> | Metode *class State*, misalnya `_pilihKota` | `if (!mounted) return;` |
+> | Fungsi yang ditulis di dalam `build` atau di dalam *builder* | `if (!context.mounted) return;` |
+>
+> Jika tertukar, `flutter analyze` memberi peringatan `use_build_context_synchronously` dengan pesan "*guarded by an unrelated 'mounted' check*".
 
 > [!NOTE]
 > `PopScope` hanya menahan tombol dan gerakan **kembali** (panah AppBar, tombol kembali Android). Perintah `Navigator.pop(context)` yang kita tulis sendiri **tidak ditahan**. Itu sebabnya tombol "Simpan" di contoh 10 tetap bisa menutup halaman sambil mengirim catatan:
@@ -1520,7 +1532,7 @@ Jika dijalankan di Chrome, coba juga ketik alamat `.../#/menu/3` di *address bar
 | Kolom pencarian sudah kosong, tetapi daftar masih tersaring | `controller.clear()` tidak memanggil `onChanged` | Kosongkan juga variabel kata kunci di dalam `setState` (Bagian 8.4) |
 | `Navigator operation requested with a context that does not include a Navigator.` | `Navigator.push` memakai `context` milik widget **di atas** `MaterialApp` | Panggil dari widget yang berada **di dalam** `MaterialApp` (misalnya halaman `home`) |
 | Hasil dari halaman kedua selalu `null` | Halaman kedua ditutup dengan `Navigator.pop(context)` tanpa hasil, atau pengguna menekan panah kembali | Kirim hasil dengan `Navigator.pop(context, nilai)`, dan selalu tangani kemungkinan `null` |
-| Peringatan `use_build_context_synchronously` atau `setState() called after dispose()` setelah `await Navigator.push(...)` | Tidak memeriksa `mounted` setelah menunggu | `if (!mounted) return;` tepat setelah `await` |
+| Peringatan `use_build_context_synchronously` atau `setState() called after dispose()` setelah `await Navigator.push(...)` | Tidak memeriksa `mounted` setelah menunggu | `if (!mounted) return;` tepat setelah `await`; di fungsi yang ditulis di dalam `build`, `if (!context.mounted) return;` ([Bagian 12.2](#122-cara-kerja-popscope)) |
 | `WillPopScope` atau `onPopInvoked` dicoret VS Code | Memakai API usang | Gunakan `PopScope` dengan `onPopInvokedWithResult` (Bagian 12) |
 | `The method 'go' isn't defined for the type 'BuildContext'.` | Lupa `import 'package:go_router/go_router.dart';` | Tambahkan *import*-nya |
 | `Target of URI doesn't exist: 'package:go_router/go_router.dart'.` | Paket belum ditambahkan di `pubspec.yaml` atau belum `flutter pub get` | Ikuti Bagian 13.2 |

@@ -209,8 +209,7 @@ abstract class RepositoriCuaca {
 }
 
 class RepositoriCuacaOpenMeteo implements RepositoriCuaca {
-  RepositoriCuacaOpenMeteo({required LayananOpenMeteo layanan})
-    : _layanan = layanan;
+  RepositoriCuacaOpenMeteo({required this._layanan});
 
   final LayananOpenMeteo _layanan;
 
@@ -299,8 +298,7 @@ String pesanRamah(Object galat) {
 }
 
 class CuacaViewModel extends ChangeNotifier {
-  CuacaViewModel({required RepositoriCuaca repositori})
-    : _repositori = repositori;
+  CuacaViewModel({required this._repositori});
 
   final RepositoriCuaca _repositori;
 

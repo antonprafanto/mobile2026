@@ -1032,6 +1032,28 @@ Tiga hal yang perlu diperhatikan:
 2. ViewModel **tidak membuat** *repository*-nya sendiri; *repository* "disuntikkan" lewat *constructor*. Cara ini disebut ***dependency injection*** (Pertemuan 12 membahasnya lebih dalam).
 3. Tanda `..` (*cascade*) berarti: buat objeknya, panggil `muat()` pada objek itu, lalu yang dikembalikan tetap **objeknya** (bukan hasil `muat()`). Jadi data langsung mulai dimuat begitu ViewModel dibuat.
 
+Di sisi ViewModel, *constructor*-nya cukup satu baris:
+
+```dart
+class PengumumanViewModel extends ChangeNotifier {
+  PengumumanViewModel({required this._repositori});
+
+  final RepositoriPengumuman _repositori;
+  // ...
+}
+```
+
+`this._repositori` mengisi *field* **privat** `_repositori` langsung dari parameter **bernama** (fitur Dart 3.12). Untuk nama parameternya, Dart membuang garis bawah di depan, sehingga pemanggil tetap menulis `repositori:` seperti di `main` tadi. *Field*-nya tetap privat: bagian lain aplikasi tidak bisa menggantinya diam-diam.
+
+Di tutorial yang lebih lama Anda akan menemukan bentuk panjang yang artinya sama persis:
+
+```dart
+PengumumanViewModel({required RepositoriPengumuman repositori})
+  : _repositori = repositori;
+```
+
+Bentuk panjang itu masih berjalan, tetapi `flutter analyze` kini menyarankan bentuk singkat (aturan `prefer_initializing_formals`). Modul ini memakai bentuk singkat.
+
 ### 10.5 Mencoba ketiga status
 
 | Langkah | Yang terlihat |

@@ -96,8 +96,7 @@ enum StatusMuat { memuat, berhasil, gagal }
 class PengumumanViewModel extends ChangeNotifier {
   // Repository diterima lewat constructor (bukan dibuat sendiri), sehingga
   // mudah ditukar dengan repository lain.
-  PengumumanViewModel({required RepositoriPengumuman repositori})
-    : _repositori = repositori;
+  PengumumanViewModel({required this._repositori});
 
   final RepositoriPengumuman _repositori;
 

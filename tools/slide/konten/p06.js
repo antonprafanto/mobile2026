@@ -468,7 +468,7 @@ module.exports = {
         '      (bool sudahTertutup, Object? hasil) async {',
         '    if (sudahTertutup) return;',
         '    final bool buang = await _tanyaBuang();',
-        '    if (!mounted) return;',
+        '    if (!context.mounted) return;',
         '    if (buang) Navigator.pop(context);',
         '  },',
         '  child: Scaffold(...),',

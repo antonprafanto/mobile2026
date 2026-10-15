@@ -152,7 +152,9 @@ class _HalamanTulisCatatanState extends State<HalamanTulisCatatan> {
 
         // Masih tertahan: tanyakan dulu kepada pengguna.
         final bool buang = await _tanyaBuang();
-        if (!mounted) return;
+        // Fungsi ini ditulis di dalam build, jadi context di sini adalah
+        // parameter build. Karena itu yang diperiksa context.mounted.
+        if (!context.mounted) return;
         if (buang) {
           Navigator.pop(context);
         }

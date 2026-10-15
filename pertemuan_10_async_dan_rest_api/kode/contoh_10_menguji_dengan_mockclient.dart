@@ -94,7 +94,7 @@ class LayananDummyJson {
 }
 
 class RepositoriProdukApi {
-  RepositoriProdukApi({required LayananDummyJson layanan}) : _layanan = layanan;
+  RepositoriProdukApi({required this._layanan});
 
   final LayananDummyJson _layanan;
 

@@ -207,7 +207,7 @@ abstract class RepositoriKas {
 }
 
 class RepositoriKasSqlite implements RepositoriKas {
-  RepositoriKasSqlite({required LayananBasisData layanan}) : _layanan = layanan;
+  RepositoriKasSqlite({required this._layanan});
 
   final LayananBasisData _layanan;
 
@@ -385,7 +385,7 @@ const List<String> daftarMahasiswa = [
 ];
 
 class KasViewModel extends ChangeNotifier {
-  KasViewModel({required RepositoriKas repositori}) : _repositori = repositori;
+  KasViewModel({required this._repositori});
 
   final RepositoriKas _repositori;
 

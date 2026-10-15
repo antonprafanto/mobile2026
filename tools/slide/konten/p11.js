@@ -253,7 +253,8 @@ module.exports = {
       berkas: 'kode/contoh_02_pengaturan_tampilan.dart',
       kode: [
         '// sinkron: nilainya sudah ada di cache',
-        '_pengaturan = repositori.baca();',
+        'PengaturanViewModel({required this._repositori})',
+        '  : _pengaturan = _repositori.baca();',
         '',
         'Future<void> ubahMode(ThemeMode mode) =>',
         '    _terapkan(_pengaturan.copyWith(mode: mode));',
@@ -658,7 +659,7 @@ module.exports = {
         '}',
         '',
         'Map<String, Object?> keBaris() => {',
-        "  if (id != null) 'id': id, // catatan baru: id diisi SQLite",
+        "  'id': ?id, // id null: diisi SQLite",
         "  'judul': judul,",
         "  'isi': isi,",
         "  'diubah': diubah.millisecondsSinceEpoch, // DateTime -> int",

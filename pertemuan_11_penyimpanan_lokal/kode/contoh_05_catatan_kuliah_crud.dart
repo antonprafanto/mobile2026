@@ -94,7 +94,9 @@ class Catatan {
   // disimpan sebagai bilangan bulat (milidetik sejak 1 Januari 1970).
   Map<String, Object?> keBaris() {
     return {
-      if (id != null) 'id': id, // id baru diisi otomatis oleh SQLite
+      // ?id: entri 'id' hanya dimasukkan jika id tidak null. Catatan baru
+      // belum punya id, sehingga SQLite mengisinya sendiri.
+      'id': ?id,
       'judul': judul,
       'isi': isi,
       'diubah': diubah.millisecondsSinceEpoch,
@@ -182,8 +184,7 @@ abstract class RepositoriCatatan {
 }
 
 class RepositoriCatatanSqlite implements RepositoriCatatan {
-  RepositoriCatatanSqlite({required LayananBasisData layanan})
-    : _layanan = layanan;
+  RepositoriCatatanSqlite({required this._layanan});
 
   static const String _tabel = 'catatan';
 
@@ -251,8 +252,7 @@ class RepositoriCatatanSqlite implements RepositoriCatatan {
 enum StatusMuat { memuat, berhasil, gagal }
 
 class CatatanViewModel extends ChangeNotifier {
-  CatatanViewModel({required RepositoriCatatan repositori})
-    : _repositori = repositori;
+  CatatanViewModel({required this._repositori});
 
   final RepositoriCatatan _repositori;
 

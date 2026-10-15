@@ -299,9 +299,8 @@ Polanya sama dengan [Pertemuan 9 Bagian 8](../pertemuan_09_state_dan_mvvm/README
 
 ```dart
 class PengaturanViewModel extends ChangeNotifier {
-  PengaturanViewModel({required RepositoriPengaturan repositori})
-    : _repositori = repositori,
-      _pengaturan = repositori.baca(); // sinkron: sudah ada di cache
+  PengaturanViewModel({required this._repositori})
+    : _pengaturan = _repositori.baca(); // sinkron: sudah ada di cache
 
   final RepositoriPengaturan _repositori;
   Pengaturan _pengaturan;
@@ -318,6 +317,8 @@ class PengaturanViewModel extends ChangeNotifier {
   }
 }
 ```
+
+Bagian setelah titik dua (`: _pengaturan = ...`) dijalankan sebelum objeknya jadi. Di situ `_repositori` berarti **parameter** yang baru diterima, sehingga nilai awal `_pengaturan` bisa langsung dibaca darinya.
 
 `MaterialApp` mendengarkan ViewModel ini dengan `context.watch`, sehingga tema seluruh aplikasi langsung berganti. Satu tambahan dari Pertemuan 7: `ColorScheme.fromSeed` kini menerima `contrastLevel` (`0.0` normal, `0.5` sedang, `1.0` tinggi) untuk pengguna yang butuh warna lebih kontras.
 
@@ -711,7 +712,7 @@ flowchart LR
 // Model -> baris tabel
 Map<String, Object?> keBaris() {
   return {
-    if (id != null) 'id': id, // catatan baru: id diisi SQLite
+    'id': ?id, // catatan baru (id null): kolom id diisi SQLite
     'judul': judul,
     'isi': isi,
     'diubah': diubah.millisecondsSinceEpoch, // DateTime -> int
@@ -739,6 +740,8 @@ factory Catatan.dariBaris(Map<String, Object?> baris) {
 ```
 
 `id` bertipe `int?`: **`null`** berarti catatan itu belum pernah disimpan. Setelah `insert`, *repository* mengembalikan salinan catatan yang sudah ber-`id` dengan `copyWith(id: id)`.
+
+Tanda `?` di depan nilai (`'id': ?id`) disebut ***null-aware element*** (sejak Dart 3.8): entri itu hanya dimasukkan ke `Map` jika nilainya **tidak** `null`. Jadi catatan baru dikirim tanpa kolom `id`, lalu SQLite mengisinya sendiri (`AUTOINCREMENT`). Di tutorial lain Anda mungkin menemukan bentuk lama `if (id != null) 'id': id`. Artinya sama, tetapi `flutter analyze` kini menyarankan bentuk `?id` (aturan `use_null_aware_elements`).
 
 ### 7.3 Layanan: membuka database sekali saja
 

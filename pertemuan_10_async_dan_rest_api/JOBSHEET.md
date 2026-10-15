@@ -757,7 +757,7 @@ abstract class RepositoriResep {
 }
 
 class RepositoriResepApi implements RepositoriResep {
-  RepositoriResepApi({required LayananDummyJson layanan}) : _layanan = layanan;
+  RepositoriResepApi({required this._layanan});
 
   final LayananDummyJson _layanan;
 
@@ -834,8 +834,7 @@ String pesanRamah(Object galat) {
 }
 
 class ResepViewModel extends ChangeNotifier {
-  ResepViewModel({required RepositoriResep repositori})
-    : _repositori = repositori;
+  ResepViewModel({required this._repositori});
 
   final RepositoriResep _repositori;
 
@@ -1661,7 +1660,7 @@ import 'package:tugas_kuliahku/domain/models/tugas.dart';
 
 // Repository yang mengambil tugas dari internet (server latihan DummyJSON).
 class RepositoriTugasApi implements RepositoriTugas {
-  RepositoriTugasApi({required LayananDummyJson layanan}) : _layanan = layanan;
+  RepositoriTugasApi({required this._layanan});
 
   final LayananDummyJson _layanan;
 
