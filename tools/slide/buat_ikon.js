@@ -109,6 +109,48 @@ const DAFTAR_IKON = {
   formulir: 'MdEditNote',
   dialog: 'MdQuestionAnswer',
   angkat: 'MdUpload',
+  // Pertemuan 6
+  grid: 'MdGridView',
+  cari: 'MdSearch',
+  hapus: 'MdDelete',
+  geser: 'MdSwipeLeft',
+  urungkan: 'MdUndo',
+  kembali: 'MdArrowBack',
+  tautan: 'MdLink',
+  rute: 'MdRoute',
+  rambu: 'MdSignpost',
+  // Pertemuan 7
+  gelap: 'MdDarkMode',
+  terang: 'MdLightMode',
+  tablet: 'MdTabletAndroid',
+  aksesibilitas: 'MdAccessibilityNew',
+  jelajah: 'MdExplore',
+  duapanel: 'MdVerticalSplit',
+  huruf: 'MdTextFields',
+  kontras: 'MdContrast',
+  responsif: 'MdDevices',
+  samping: 'MdViewSidebar',
+  // Pertemuan 9
+  pengeras: 'MdCampaign',
+  gedung: 'MdApartment',
+  lonceng: 'MdNotificationsActive',
+  restoran: 'MdRestaurant',
+  uji: 'MdFactCheck',
+  gudang: 'MdWarehouse',
+  // Pertemuan 10
+  awan: 'MdCloud',
+  server: 'MdDns',
+  kirim: 'MdSend',
+  awanputus: 'MdCloudOff',
+  cuaca: 'MdThunderstorm',
+  kurir: 'MdDeliveryDining',
+  // Pertemuan 11
+  disket: 'MdSave',
+  naik: 'MdUpgrade',
+  dompet: 'MdAccountBalanceWallet',
+  pin: 'MdPushPin',
+  catatan: 'MdStickyNote2',
+  luring: 'MdOfflinePin',
 };
 
 async function main() {

@@ -15,6 +15,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Dipakai contoh navigasi mulai Pertemuan 6. Versi 17 dipilih karena
+  # masih memakai package:flutter/material.dart, sama seperti templat
+  # flutter create pada Flutter 3.47 (penjelasan: modul Pertemuan 6).
+  go_router: ^17.5.0
+  # Dipakai contoh manajemen state (ChangeNotifier + MVVM) mulai
+  # Pertemuan 9.
+  provider: ^6.1.5
+  # Dipakai contoh REST API (permintaan HTTP dan MockClient) mulai
+  # Pertemuan 10.
+  http: ^1.6.0
+  # Dipakai contoh penyimpanan lokal mulai Pertemuan 11: pasangan
+  # kunci-nilai (shared_preferences) dan SQLite (sqflite). Paket
+  # sqflite_common_ffi_web membuat sqflite bisa berjalan di Chrome.
+  shared_preferences: ^2.5.5
+  sqflite: ^2.4.4
+  sqflite_common_ffi_web: ^1.2.0
 
 dev_dependencies:
   flutter_lints: ^6.0.0

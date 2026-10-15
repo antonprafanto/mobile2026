@@ -37,15 +37,15 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 ## Menambah Slide Pertemuan Baru
 
-1. Salin konten pertemuan terakhir, misalnya `konten/p05.js` menjadi `konten/p06.js`.
+1. Salin konten pertemuan terakhir, misalnya `konten/p06.js` menjadi `konten/p07.js`.
 2. Ubah bagian identitas di atas berkas:
 
    ```js
    module.exports = {
-     nomor: '06',
-     folder: 'pertemuan_06_daftar_dan_navigasi',   // nama folder pertemuan
-     namaBerkas: 'PERTEMUAN_06_Daftar_dan_Navigasi', // nama berkas .pptx
-     topik: 'Daftar Data & Navigasi',              // tampil di kaki slide
+     nomor: '07',
+     folder: 'pertemuan_07_material3_dan_responsif',   // nama folder pertemuan
+     namaBerkas: 'PERTEMUAN_07_Material3_dan_Responsif', // nama berkas .pptx
+     topik: 'Material 3 & UI Responsif',               // tampil di kaki slide
      bangun(d) {
        // satu pemanggilan d.xxx({...}) = satu slide
      },
@@ -53,7 +53,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
    ```
 
 3. Isi fungsi `bangun(d)` dengan jenis slide yang tersedia (lihat tabel di bawah).
-4. Jalankan `node buat_slide.js 06`, lalu buka hasilnya untuk diperiksa.
+4. Jalankan `node buat_slide.js 07`, lalu buka hasilnya untuk diperiksa.
 
 ### Jenis Slide yang Tersedia
 
@@ -75,14 +75,15 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 Semua jenis slide menerima `catatan` — teks **catatan pembicara** (speaker notes)
 untuk dosen. Contoh lengkap pemakaian setiap jenis ada di `konten/p01.js` sampai
-`konten/p05.js` (contoh `d.layar` dan `d.lapisan` ada di `konten/p04.js` dan `konten/p05.js`).
+`konten/p11.js` (contoh `d.layar` ada di `konten/p04.js` sampai `konten/p11.js`, dan `d.lapisan` ada di `konten/p01.js`, `konten/p05.js`, `konten/p09.js`, `konten/p10.js`, dan `konten/p11.js`).
 
 > [!TIP]
 > Tulis potongan kode di slide **pendek saja** (maksimal ±16 baris, dan tidak
 > lebih dari ±60 karakter per baris di samping tangkapan layar). Kode lengkap
 > tetap tinggal di folder `kode/` — slide cukup menautkannya lewat `berkas`.
 > Jika ruangnya sempit, tombol GitHub otomatis memakai label pendek
-> ("Kode di GitHub · nama_berkas.dart") agar tetap satu baris.
+> ("Kode di GitHub · nama_berkas.dart"). Jika nama berkasnya sendiri masih
+> terlalu panjang untuk satu baris, ukuran hurufnya dikecilkan sedikit.
 
 ## Mengganti atau Menambah Ikon
 

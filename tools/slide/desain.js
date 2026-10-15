@@ -352,7 +352,14 @@ class Dek {
     const ruang = (w - 0.75) * 72;
     const panjang = `Buka kode lengkap di GitHub  ·  ${nama}`;
     const teks = panjang.length * 13 * 0.46 <= ruang ? panjang : `Kode di GitHub  ·  ${nama}`;
-    this.tombol(s, { x, y, w, teks, url: this.urlKode(berkas), ikon: 'kode' });
+    // Label pendek boleh turun menjadi dua baris ("Kode di GitHub ·", lalu
+    // nama berkas). Jika nama berkasnya sendiri tidak muat dalam satu baris
+    // (kolom kiri sempit), hurufnya dikecilkan sedikit (paling kecil 10).
+    let ukuran = 13;
+    if (teks !== panjang) {
+      while (ukuran > 10 && nama.length * ukuran * 0.48 > ruang) ukuran -= 0.5;
+    }
+    this.tombol(s, { x, y, w, teks, url: this.urlKode(berkas), ikon: 'kode', ukuran });
   }
 
   kotakKode(s, { x, y, w, h, kode, ukuran = 15, shell = false }) {

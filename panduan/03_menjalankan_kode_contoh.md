@@ -24,7 +24,7 @@ Cocok untuk: **semua contoh Dart murni** dan **contoh Flutter sederhana** (yang 
    - Aplikasi Flutter: tampilannya muncul di panel sebelah kanan (atau di tab *Output* pada layar sempit).
 
 > [!NOTE]
-> DartPad hanya mendukung sebagian paket dari [pub.dev](https://pub.dev). Untuk contoh yang memakai paket tambahan (mulai pertengahan semester), gunakan Cara 2.
+> DartPad hanya mendukung sebagian paket dari [pub.dev](https://pub.dev). Paket `go_router` (Pertemuan 6), `provider` (Pertemuan 9), dan `http` (Pertemuan 10) sudah tersedia di DartPad. Paket `sqflite` (Pertemuan 11) **belum** tersedia, jadi contoh Pertemuan 11 dijalankan dengan Cara 2. Cara 2 juga lebih tepat untuk materi penyimpanan, karena Anda perlu membuktikan data tetap ada setelah aplikasi dihentikan lalu dijalankan lagi. Petunjuk **CARA MENJALANKAN** di setiap berkas selalu menyebutkan cara yang tepat.
 
 ---
 
@@ -61,6 +61,26 @@ flutter run -d chrome
 > ```bash
 > flutter run -d chrome -t lib/contoh_03.dart
 > ```
+
+### Contoh yang memakai paket tambahan
+
+Beberapa contoh memakai paket dari luar Flutter. Tandanya ada baris `import 'package:...'` selain `package:flutter/...`, dan petunjuk **CARA MENJALANKAN** di berkasnya menyebutkan paket itu. Pasang paketnya **sekali** di proyek latihan Anda, dari terminal di folder proyek:
+
+| Paket | Dipakai mulai | Cara memasang |
+| :--- | :--- | :--- |
+| `go_router` | [Pertemuan 6](../pertemuan_06_daftar_dan_navigasi/README.md#132-memasang-paket-go_router) | Tambahkan `go_router: ^17.5.0` di bawah `dependencies:` pada `pubspec.yaml`, simpan, lalu jalankan `flutter pub get` |
+| `provider` | [Pertemuan 9](../pertemuan_09_state_dan_mvvm/README.md#63-memasang-paket) | `flutter pub add provider` |
+| `http` | [Pertemuan 10](../pertemuan_10_async_dan_rest_api/README.md#41-memasang-paket) | `flutter pub add http` (untuk Android, tambahkan juga izin internet; lihat [Pertemuan 10 Bagian 14.2](../pertemuan_10_async_dan_rest_api/README.md#142-di-android-izin-internet)) |
+| `shared_preferences` | [Pertemuan 11](../pertemuan_11_penyimpanan_lokal/README.md#21-memasang-paket) | `flutter pub add shared_preferences` |
+| `sqflite` dan `sqflite_common_ffi_web` | [Pertemuan 11](../pertemuan_11_penyimpanan_lokal/README.md#54-memasang-sqflite) | `flutter pub add sqflite sqflite_common_ffi_web`. Khusus Chrome, jalankan juga **sekali** `dart run sqflite_common_ffi_web:setup` (butuh internet) |
+
+Jika paket belum dipasang, VS Code menandai baris `import` dengan garis merah dan pesan `Target of URI doesn't exist`. Lihat [Troubleshooting](04_troubleshooting.md) bila masalahnya berlanjut.
+
+> [!IMPORTANT]
+> **Contoh yang menyimpan data (mulai Pertemuan 11):**
+>
+> - Paket `shared_preferences` dan `sqflite` membawa bagian asli (*plugin*). Jika paketnya dipasang saat aplikasi sedang berjalan, hentikan dulu aplikasinya (`q`), lalu jalankan lagi. *Hot restart* saja tidak cukup.
+> - Di Chrome, jalankan selalu dengan *port* yang sama: `flutter run -d chrome --web-port=8080`. Chrome menyimpan data per alamat situs, termasuk nomor *port*-nya. Tanpa *port* tetap, data yang tersimpan seolah-olah hilang setiap kali aplikasi dijalankan ulang ([Pertemuan 11 Bagian 2.4](../pertemuan_11_penyimpanan_lokal/README.md#24-membuktikan-data-benar-benar-tersimpan)).
 
 ### Menjalankan di HP Android
 
@@ -107,6 +127,9 @@ dart run pertemuan_02_dasar_dart/kode/contoh_01_halo_dart.dart
 
 > [!IMPORTANT]
 > Repositori ini **bukan satu aplikasi utuh**. Berkas `pubspec.yaml` di folder utama hanya dipakai untuk pemeriksaan kualitas kode. Untuk menjalankan contoh Flutter, tetap gunakan proyek latihan Anda sendiri (Cara 2).
+
+> [!NOTE]
+> Sejak Pertemuan 11, `pubspec.yaml` repositori ini memuat paket SQLite yang membawa kode *native* (paket `sqlite3`). Karena itu, `dart run` dari folder utama repositori bisa lebih lama pada kali pertama, sebab Dart menyiapkan pustaka SQLite lebih dulu (butuh internet). Jika terasa lama atau gagal, salin berkas contohnya ke folder lain, lalu jalankan dari sana seperti [Cara 3](#cara-3--dart-run-di-terminal).
 
 ---
 

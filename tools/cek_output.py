@@ -20,11 +20,18 @@ Aturan pencocokan:
 - Baris berakhiran "(di terminal `dart run`: X)" berarti tampilan DartPad dan
   terminal berbeda; ekor baris boleh berupa X (misalnya 100 vs 100.0).
 - Contoh aplikasi Flutter (mengimpor package:flutter) dilewati.
+- Contoh yang tidak mengimpor paket apa pun dijalankan dari salinannya di
+  folder sementara (di luar repositori). Dengan begitu `dart` tidak ikut
+  menyiapkan paket berkode native milik repositori (misalnya sqlite3 yang
+  terbawa paket SQLite di Pertemuan 11), yang memang tidak dibutuhkan contoh
+  Dart murni.
 """
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 
 BATAS_DETIK = 90
 
@@ -67,6 +74,21 @@ def cocok(harapan, aktual):
     return False
 
 
+def jalankan(berkas, teks):
+    if "import 'package:" in teks:
+        return subprocess.run(
+            ['dart', berkas],
+            capture_output=True, text=True, timeout=BATAS_DETIK,
+        )
+    with tempfile.TemporaryDirectory(prefix='cek_output_') as folder:
+        salinan = os.path.join(folder, os.path.basename(berkas))
+        shutil.copyfile(berkas, salinan)
+        return subprocess.run(
+            ['dart', salinan],
+            capture_output=True, text=True, timeout=BATAS_DETIK, cwd=folder,
+        )
+
+
 def periksa(berkas):
     teks = open(berkas, encoding='utf-8').read()
     if 'package:flutter/' in teks:
@@ -75,10 +97,7 @@ def periksa(berkas):
     if harapan is None:
         return None
     try:
-        proses = subprocess.run(
-            ['dart', berkas],
-            capture_output=True, text=True, timeout=BATAS_DETIK,
-        )
+        proses = jalankan(berkas, teks)
     except subprocess.TimeoutExpired:
         return [f'{berkas}: program tidak selesai dalam {BATAS_DETIK} detik']
     if proses.returncode != 0:

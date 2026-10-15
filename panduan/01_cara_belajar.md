@@ -107,5 +107,6 @@ Screenshot         : (lampirkan)
 2. 🛠️ [Panduan Instalasi Flutter di Windows](02_instalasi_flutter_windows.md)
 3. ▶️ [Panduan Menjalankan Kode Contoh](03_menjalankan_kode_contoh.md)
 4. 🩺 [Panduan Troubleshooting (Mengatasi Masalah)](04_troubleshooting.md)
+5. 🚀 [Panduan Proyek Akhir](05_proyek_akhir.md)
 
 [🏠 Beranda](../README.md)
