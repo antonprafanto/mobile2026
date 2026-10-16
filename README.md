@@ -47,7 +47,7 @@ Rencana lengkap satu semester ada di **[📋 Silabus](SILABUS.md)**.
 | **13** | Fitur Perangkat & Izin Akses | [📖 Baca](pertemuan_13_fitur_perangkat_dan_izin/README.md) | [🧪 Buka](pertemuan_13_fitur_perangkat_dan_izin/JOBSHEET.md) | [✍️ Buka](pertemuan_13_fitur_perangkat_dan_izin/LATIHAN.md) | [💻 8 berkas](pertemuan_13_fitur_perangkat_dan_izin/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_13_fitur_perangkat_dan_izin/slide/PERTEMUAN_13_Fitur_Perangkat_dan_Izin.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_13_fitur_perangkat_dan_izin%2Fslide%2FPERTEMUAN_13_Fitur_Perangkat_dan_Izin.pptx) |
 | **14** | Pengujian & *Debugging* | [📖 Baca](pertemuan_14_pengujian_dan_debugging/README.md) | [🧪 Buka](pertemuan_14_pengujian_dan_debugging/JOBSHEET.md) | [✍️ Buka](pertemuan_14_pengujian_dan_debugging/LATIHAN.md) | [💻 10 berkas](pertemuan_14_pengujian_dan_debugging/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_14_pengujian_dan_debugging/slide/PERTEMUAN_14_Pengujian_dan_Debugging.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_14_pengujian_dan_debugging%2Fslide%2FPERTEMUAN_14_Pengujian_dan_Debugging.pptx) |
 | **15** | *Build*, Rilis & Finalisasi Proyek | [📖 Baca](pertemuan_15_build_rilis_dan_finalisasi/README.md) | [🧪 Buka](pertemuan_15_build_rilis_dan_finalisasi/JOBSHEET.md) | [✍️ Buka](pertemuan_15_build_rilis_dan_finalisasi/LATIHAN.md) | [💻 7 berkas](pertemuan_15_build_rilis_dan_finalisasi/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_15_build_rilis_dan_finalisasi/slide/PERTEMUAN_15_Build_Rilis_dan_Finalisasi.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_15_build_rilis_dan_finalisasi%2Fslide%2FPERTEMUAN_15_Build_Rilis_dan_Finalisasi.pptx) |
-| 16 | **Ujian Akhir Semester (UAS)**: presentasi proyek | — | — | — | — | — |
+| **16** | **Ujian Akhir Semester (UAS)**: presentasi dan demo proyek akhir | [📝 Panduan](pertemuan_16_uas/README.md) | [🎯 Gladi Resik](pertemuan_16_uas/GLADI_RESIK.md) | [✍️ Buka](pertemuan_16_uas/LATIHAN.md) | [💻 3 berkas](pertemuan_16_uas/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_16_uas/slide/PERTEMUAN_16_Persiapan_UAS.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_16_uas%2Fslide%2FPERTEMUAN_16_Persiapan_UAS.pptx) |
 
 <sub>**⚡ Unduh** = berkas `.pptx` langsung terunduh. **👁️ Lihat** = dibuka di browser tanpa PowerPoint.</sub>
 
@@ -276,6 +276,14 @@ Setiap berkas adalah **program utuh** yang siap dijalankan. Cara menjalankannya 
 | 06 | Pemeriksa kesiapan rilis | Daftar periksa rilis sebagai program: OK, SARAN, dan WAJIB untuk proyek "Tugas Kuliahku" sebelum dan sesudah dirapikan | [contoh_06_pemeriksa_kesiapan_rilis_dart_murni.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_06_pemeriksa_kesiapan_rilis_dart_murni.dart) |
 | 07 | Studi kasus | "Cuaca Kampus 1.0.0": aplikasi Pertemuan 10 disiapkan untuk rilis tanpa menambah fitur: `--dart-define`, jaring pengaman galat, halaman Tentang, dan cek pembaruan dari [`data/info_rilis_cuaca_kampus.json`](pertemuan_15_build_rilis_dan_finalisasi/data/info_rilis_cuaca_kampus.json) | [contoh_07_studi_kasus_cuaca_kampus_siap_rilis.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_07_studi_kasus_cuaca_kampus_siap_rilis.dart) |
 
+### Pertemuan 16 — Ujian Akhir Semester *(alat bantu persiapan UAS: 01 program Dart murni, DartPad atau `dart run`; 02–03 aplikasi Flutter, DartPad atau proyek latihan. Folder [`templat/`](pertemuan_16_uas/templat/) berisi naskah demo, kontribusi tim, lembar umpan balik gladi, dan templat slide UAS)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | Menghitung nilai proyek akhir | Bobot komponen di satu `enum`, nilai tim, faktor individu, penolakan skor yang tidak masuk akal, dan sumbangan pada nilai akhir, dihitung dengan bilangan bulat | [contoh_01_hitung_nilai_proyek_akhir_dart_murni.dart](pertemuan_16_uas/kode/contoh_01_hitung_nilai_proyek_akhir_dart_murni.dart) |
+| 02 | Pengatur waktu presentasi | Empat bagian waktu UAS; jam yang disuntikkan, sisa waktu dari selisih jam, warna cukup/hampir habis/lewat waktu, dua panel mulai lebar 840 | [contoh_02_pengatur_waktu_presentasi.dart](pertemuan_16_uas/kode/contoh_02_pengatur_waktu_presentasi.dart) |
+| 03 | Kartu latihan tanya jawab | 21 kartu dari tujuh kategori untuk latihan berpasangan, pengacak yang disuntikkan, dan ringkasan kartu yang perlu diulang | [contoh_03_kartu_latihan_tanya_jawab.dart](pertemuan_16_uas/kode/contoh_03_kartu_latihan_tanya_jawab.dart) |
+
 ---
 
 ## 🧰 Panduan Pendukung
@@ -317,6 +325,7 @@ mobile2026/
 ├── 📁 pertemuan_13_fitur_perangkat_dan_izin/ ← (struktur sama + 🖼️ gambar/)
 ├── 📁 pertemuan_14_pengujian_dan_debugging/ ← (struktur sama; kode/ berisi berkas tes *_test.dart)
 ├── 📁 pertemuan_15_build_rilis_dan_finalisasi/ ← (struktur sama + 🖼️ gambar/ + templat/, aset/, data/)
+├── 📁 pertemuan_16_uas/               ← panduan UAS, gladi resik, latihan persiapan, alat bantu, templat
 ├── 📁 tools/slide/                      ← skrip pembuat slide (untuk dosen)
 ├── 📄 tools/cek_output.py               ← pencocok output contoh kode (dipakai CI)
 ├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md

@@ -208,11 +208,16 @@ function ukuranGambar(berkas) {
 // Pembuat dek
 // --------------------------------------------------------------------
 class Dek {
-  constructor({ nomor, folder, namaBerkas, topik }) {
+  // kaki: teks kaki slide pengganti (opsional).
+  // templat: true untuk templat mahasiswa; sampul tidak memuat label mata
+  // kuliah dan alamat repositori kuliah (diganti kotak teks yang bisa diubah).
+  constructor({ nomor, folder, namaBerkas, topik, kaki, templat = false }) {
     this.nomor = nomor;
     this.folder = folder;
     this.namaBerkas = namaBerkas;
     this.topik = topik;
+    this.kaki = kaki;
+    this.templat = templat;
     this.pres = new PptxGenJS();
     this.pres.layout = 'LAYOUT_WIDE';
     this.pres.author = 'Pemrograman Piranti Bergerak - Informatika S1';
@@ -228,7 +233,7 @@ class Dek {
   // ---------------- layout (slide master) ----------------
   _layout() {
     const C = this.C;
-    const footer = `Pemrograman Piranti Bergerak  ·  Pertemuan ${this.nomor}  ·  ${this.topik}`;
+    const footer = this.kaki || `Pemrograman Piranti Bergerak  ·  Pertemuan ${this.nomor}  ·  ${this.topik}`;
 
     this.pres.defineSlideMaster({
       title: 'JUDUL',
@@ -236,18 +241,20 @@ class Dek {
       objects: [
         { text: { text: '', options: { shape: 'ellipse', x: 9.2, y: 3.2, w: 6.2, h: 6.2, fill: { color: C.accent1, transparency: 70 }, line: { type: 'none' } } } },
         { text: { text: '', options: { shape: 'ellipse', x: 10.6, y: -1.4, w: 3.6, h: 3.6, fill: { color: C.accent2, transparency: 80 }, line: { type: 'none' } } } },
-        {
-          text: {
-            text: 'PEMROGRAMAN PIRANTI BERGERAK  ·  INFORMATIKA S1',
-            options: { x: M + 0.2, y: 1.1, w: 9, h: 0.4, fontSize: 14, bold: true, color: C.accent2, charSpacing: 2, margin: 0 },
+        ...(this.templat ? [] : [
+          {
+            text: {
+              text: 'PEMROGRAMAN PIRANTI BERGERAK  ·  INFORMATIKA S1',
+              options: { x: M + 0.2, y: 1.1, w: 9, h: 0.4, fontSize: 14, bold: true, color: C.accent2, charSpacing: 2, margin: 0 },
+            },
           },
-        },
-        {
-          text: {
-            text: REPO.replace('https://', ''),
-            options: { x: M + 0.2, y: 6.55, w: 8, h: 0.35, fontSize: 13, color: C.background2, margin: 0 },
+          {
+            text: {
+              text: REPO.replace('https://', ''),
+              options: { x: M + 0.2, y: 6.55, w: 8, h: 0.35, fontSize: 13, color: C.background2, margin: 0 },
+            },
           },
-        },
+        ]),
         {
           placeholder: {
             options: { name: 'judul', type: 'title', x: M + 0.2, y: 1.7, w: 9.6, h: 2.3, fontSize: 44, bold: true, color: C.background1, valign: 'bottom', align: 'left', margin: 0 },
@@ -684,8 +691,9 @@ class Dek {
   }
 
   // ---------------- simpan ----------------
-  async simpan(folderRepo) {
-    const tujuan = path.join(folderRepo, this.folder, 'slide', `${this.namaBerkas}.pptx`);
+  // subfolder: bawaannya 'slide'; templat untuk mahasiswa memakai 'templat'.
+  async simpan(folderRepo, subfolder = 'slide') {
+    const tujuan = path.join(folderRepo, this.folder, subfolder, `${this.namaBerkas}.pptx`);
     fs.mkdirSync(path.dirname(tujuan), { recursive: true });
     await this.pres.writeFile({ fileName: tujuan });
     await rapikanBerkas(tujuan);

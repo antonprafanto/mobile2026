@@ -18,7 +18,8 @@ Slide dibuat dari kode (bukan disunting manual) agar:
 | `desain.js` | "Sistem desain": tema warna, tata letak, pewarnaan sintaks kode Dart, dan jenis-jenis slide |
 | `konten/p01.js`, `konten/p02.js`, … | Isi slide per pertemuan (teks, poin, potongan kode, catatan pembicara) |
 | `ikon/` | Ikon PNG putih (Material Design) yang dipakai di slide |
-| `buat_ikon.js` | (Opsional) membuat ulang isi folder `ikon/` |
+| `buat_ikon.js` | (Opsional) membuat ikon baru di folder `ikon/` |
+| `buat_templat_uas.js` | Membuat templat slide presentasi UAS untuk mahasiswa: `pertemuan_16_uas/templat/TEMPLAT_SLIDE_UAS.pptx` (enam slide, huruf isi minimal 24 pt, petunjuk di catatan pembicara) |
 
 ## Membuat Ulang Slide
 
@@ -29,6 +30,7 @@ cd tools/slide
 npm ci                   # sekali saja: memasang pptxgenjs 4.0.1 sesuai package-lock.json
 node buat_slide.js       # membuat slide SEMUA pertemuan
 node buat_slide.js 02    # hanya Pertemuan 02
+node buat_templat_uas.js # templat slide UAS untuk mahasiswa
 ```
 
 Hasilnya menimpa berkas lama, misalnya
@@ -75,7 +77,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 Semua jenis slide menerima `catatan` — teks **catatan pembicara** (speaker notes)
 untuk dosen. Contoh lengkap pemakaian setiap jenis ada di `konten/p01.js` sampai
-`konten/p15.js` (contoh `d.layar` ada di `konten/p04.js` sampai `konten/p13.js` dan `konten/p15.js`, `d.statistik` ada di `konten/p01.js`, `konten/p08.js`, `konten/p13.js`, dan `konten/p15.js`, dan `d.lapisan` ada di `konten/p01.js`, `konten/p05.js`, `konten/p09.js` sampai `konten/p13.js`).
+`konten/p16.js` (contoh `d.layar` ada di `konten/p04.js` sampai `konten/p13.js`, `konten/p15.js`, dan `konten/p16.js`, `d.statistik` ada di `konten/p01.js`, `konten/p08.js`, `konten/p13.js`, `konten/p15.js`, dan `konten/p16.js`, dan `d.lapisan` ada di `konten/p01.js`, `konten/p05.js`, `konten/p09.js` sampai `konten/p13.js`).
 
 > [!TIP]
 > Tulis potongan kode di slide **pendek saja** (maksimal ±16 baris, dan tidak
@@ -100,6 +102,9 @@ Nama ikon yang dipakai di konten (misalnya `ikon: 'kilat'`) merujuk ke
    node buat_ikon.js
    ```
 
+   Hanya ikon yang **belum ada** yang dibuat, sehingga berkas ikon lama tidak
+   berubah. Untuk membuat ulang semuanya: `node buat_ikon.js --semua`.
+
 ## Catatan Teknis
 
 - Ukuran slide 16:9 (13,33 × 7,5 inci), huruf Calibri (isi) dan Consolas (kode).
@@ -110,6 +115,10 @@ Nama ikon yang dipakai di konten (misalnya `ikon: 'kilat'`) merujuk ke
   kaki slide otomatis.
 - Alamat repositori untuk tombol GitHub diatur oleh konstanta `REPO` dan `CABANG`
   di `desain.js`.
+- `new Dek({ ..., kaki, templat: true })` dipakai `buat_templat_uas.js`: `kaki`
+  mengganti teks kaki slide, dan `templat: true` membuang label mata kuliah serta
+  alamat repositori kuliah dari sampul. `simpan(folderRepo, 'templat')` menyimpan
+  hasilnya ke folder `templat/` pertemuan, bukan `slide/`.
 - Setelah berkas ditulis, `desain.js` merapikan XML slide: warna tema ditulis ke
   `theme1.xml`, garis bawah tautan pada tombol dihapus, dan `<a:pPr>` ganda di
   tengah paragraf (bawaan pptxgenjs 4 untuk teks berwarna-warni) dibuang agar

@@ -7,7 +7,8 @@
 // Persiapan (sekali saja, di folder tools/slide):
 //   npm install --no-save react react-dom react-icons sharp
 // Menjalankan:
-//   node buat_ikon.js
+//   node buat_ikon.js          -> hanya membuat ikon yang belum ada
+//   node buat_ikon.js --semua  -> membuat ulang semua ikon
 // =====================================================================
 const fs = require('fs');
 const path = require('path');
@@ -156,12 +157,25 @@ const DAFTAR_IKON = {
   lokasi: 'MdLocationOn',
   peta: 'MdMap',
   privasi: 'MdPrivacyTip',
+  // Pertemuan 16: UAS
+  presentasi: 'MdCoPresent',
+  video: 'MdVideocam',
+  piala: 'MdEmojiEvents',
+  timer: 'MdTimer',
 };
+
+// Ikon yang sudah ada TIDAK dibuat ulang, agar berkas lama tidak berubah.
+// Untuk membuat ulang semuanya: node buat_ikon.js --semua
+const SEMUA = process.argv.includes('--semua');
 
 async function main() {
   const folderIkon = path.join(__dirname, 'ikon');
   fs.mkdirSync(folderIkon, { recursive: true });
+  let dibuat = 0;
   for (const [namaBerkas, namaKomponen] of Object.entries(DAFTAR_IKON)) {
+    const tujuan = path.join(folderIkon, `${namaBerkas}.png`);
+    if (!SEMUA && fs.existsSync(tujuan)) continue;
+    dibuat++;
     const Komponen = md[namaKomponen];
     if (!Komponen) throw new Error(`Ikon ${namaKomponen} tidak ditemukan`);
     const svg = renderToStaticMarkup(
@@ -170,9 +184,9 @@ async function main() {
     await sharp(Buffer.from(svg))
       .resize(256, 256)
       .png()
-      .toFile(path.join(folderIkon, `${namaBerkas}.png`));
+      .toFile(tujuan);
   }
-  console.log(`Selesai: ${Object.keys(DAFTAR_IKON).length} ikon di ${folderIkon}`);
+  console.log(`Selesai: ${dibuat} ikon dibuat; ${Object.keys(DAFTAR_IKON).length} ikon terdaftar di ${folderIkon}`);
 }
 
 main().catch((e) => {

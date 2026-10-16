@@ -53,7 +53,7 @@ Setiap pertemuan memiliki folder sendiri berisi **modul bacaan**, **contoh kode 
 | **13** | [Fitur Perangkat & Izin Akses](pertemuan_13_fitur_perangkat_dan_izin/README.md) | Mengambil foto dari galeri dan kamera (`image_picker`) serta lokasi perangkat (`geolocator`); menangani izin akses beserta statusnya (ditolak, diblokir) dengan alur yang sopan; menghitung jarak, arah, dan zona dari koordinat; mengikuti lokasi dengan `Stream`; membungkus fitur perangkat di balik kontrak agar bisa diuji dengan data palsu tanpa HP; serta menerapkan prinsip privasi. | 1, 3, 4 | ✅ Tersedia |
 | **14** | [Pengujian & *Debugging*](pertemuan_14_pengujian_dan_debugging/README.md) | Menulis tes unit (nilai batas, *matcher*, *exception*, kode asinkron) dan tes widget, lalu menjalankannya dengan `flutter test`; menguji *ViewModel* dengan data palsu dan jam palsu; memeriksa layar sempit, huruf besar, mode gelap, dan pedoman aksesibilitas; menguji kode yang memakai *plugin*; membaca pesan galat dan *stack trace*; memakai *debugger* VS Code (*breakpoint*, *logpoint*) dan Flutter DevTools; memperbaiki galat tata letak; serta mengukur cakupan kode dan menjalankan tes otomatis di GitHub Actions. | 4 | ✅ Tersedia |
 | **15** | [*Build*, Rilis & Finalisasi Proyek](pertemuan_15_build_rilis_dan_finalisasi/README.md) | Membedakan mode *debug*, *profile*, dan *release*; memberi konfigurasi dengan `--dart-define`; menyiapkan identitas aplikasi (nama tampilan, *application ID*, nomor versi, ikon adaptif, layar pembuka); memasang jaring pengaman galat dan halaman Tentang yang memuat versi, atribusi, kebijakan privasi, dan lisensi; menerbitkan versi web di GitHub Pages; membuat APK dan *App Bundle* yang ditandatangani kunci unggah; merilis otomatis dengan *tag* Git dan GitHub Releases, termasuk cek pembaruan; mengenal Google Play dan App Store; serta menyelesaikan finalisasi proyek akhir (daftar periksa rilis, `README.md`, `CHANGELOG.md`, persiapan demo). | 4 | ✅ Tersedia |
-| **16** | **Ujian Akhir Semester (UAS)** | Presentasi dan demo proyek akhir. | 1–4 | — |
+| **16** | [**Ujian Akhir Semester (UAS)**](pertemuan_16_uas/README.md) | Presentasi dan demo proyek akhir (± 20 menit per tim): slide singkat, demo alur utama, uji langsung oleh penguji (luring, layar lebar, mode gelap, `flutter test`), lalu tanya jawab tentang kode buatan sendiri. Nilai setiap anggota dihitung dari nilai tim, faktor individu, serta presentasi dan tanya jawabnya. | 1–4 | ✅ Panduan dan gladi resik |
 
 > [!NOTE]
 > Urutan materi disusun **berjenjang**: setiap pertemuan memakai bekal dari pertemuan sebelumnya. Jika Anda tertinggal satu pertemuan, kejar dulu materi tersebut sebelum lanjut.
@@ -76,7 +76,7 @@ Mulai Pertemuan 9, Anda mengerjakan satu aplikasi berbasis **kasus nyata** (indi
 | Proposal | Pertemuan 9 | Ide aplikasi, sumber data (API), dan sketsa tampilan |
 | Kemajuan | Pertemuan 12 | Demo fitur utama yang sudah berjalan |
 | Finalisasi | Pertemuan 15 | Aplikasi lengkap, *test*, dan berkas rilis |
-| Presentasi | Pertemuan 16 | Demo langsung dan tanya jawab |
+| Presentasi | Pertemuan 16 | Demo langsung, uji langsung, dan tanya jawab ([Panduan UAS](pertemuan_16_uas/README.md)) |
 
 Penjelasan lengkap tentang memilih tema dan API, templat proposal, struktur repositori, dan rubrik penilaian ada di **[🚀 Panduan Proyek Akhir](panduan/05_proyek_akhir.md)**.
 

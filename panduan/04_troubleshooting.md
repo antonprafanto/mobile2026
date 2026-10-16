@@ -648,6 +648,67 @@ Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/READM
 
 ---
 
+## K. Masalah Saat Presentasi dan Demo (UAS)
+
+Masalah yang sering muncul saat gladi resik dan hari-H. Panduan lengkapnya ada di [Panduan UAS](../pertemuan_16_uas/README.md) dan [Gladi Resik](../pertemuan_16_uas/GLADI_RESIK.md).
+
+### `ERROR: Could not find any ADB device` saat menjalankan `scrcpy`
+
+**Penyebab:** HP belum terdeteksi laptop: Debugging USB belum aktif, kabelnya hanya untuk mengisi daya, atau (di Windows) *driver* USB HP belum terpasang.
+**Solusi:** aktifkan Debugging USB ([Panduan Instalasi Bagian 7.3](02_instalasi_flutter_windows.md#73-menyambungkan-hp-android-lewat-kabel-usb)), ganti dengan kabel data, dan coba port USB lain. Periksa dengan `flutter devices`: HP Anda harus tercantum. Beberapa HP membutuhkan *driver* USB dari pabrikannya. Jika tetap gagal, demo dengan versi web di Chrome ([Panduan UAS Bagian 10](../pertemuan_16_uas/README.md#10-rencana-cadangan-saat-ada-kendala)).
+
+### `ERROR: Device is unauthorized` saat menjalankan `scrcpy`
+
+**Penyebab:** izin debugging USB dari laptop ini belum diterima di HP.
+**Solusi:** buka kunci layar HP, lalu ketuk **Izinkan** pada pertanyaan *"Izinkan debugging USB?"* (centang *Selalu izinkan dari komputer ini*). Jika pertanyaannya tidak muncul, cabut kabel, matikan lalu nyalakan lagi Debugging USB, kemudian sambungkan ulang.
+
+### `'scrcpy' is not recognized as an internal or external command`
+
+**Penyebab:** terminal dibuka sebelum `scrcpy` dipasang, sehingga belum mengenal lokasinya; atau `scrcpy` dipasang manual dari berkas ZIP.
+**Solusi:** tutup lalu buka lagi terminal setelah `winget install --exact Genymobile.scrcpy`. Untuk pemasangan manual, klik dua kali `open_a_terminal_here.bat` di folder `scrcpy`, lalu ketik perintahnya di terminal yang terbuka. Lihat [Panduan UAS Bagian 5.5](../pertemuan_16_uas/README.md#55-menampilkan-layar-hp-di-proyektor-dengan-scrcpy).
+
+### Layar laptop tidak muncul di proyektor
+
+**Penyebab:** mode tampilan Windows belum diatur, atau kabel HDMI dan adaptornya longgar.
+**Solusi:** tekan `Windows` + `P`, lalu pilih **Duplikat** (*Duplicate*). Periksa kabel dan adaptor, lalu cabut dan pasang lagi. Cobalah di ruang ujian sebelum giliran Anda. Jika tetap gagal, demo langsung menghadap penguji.
+
+### Tampilan di proyektor terpotong, atau hurufnya terlalu kecil dari belakang ruangan
+
+**Penyebab:** resolusi proyektor lebih kecil daripada layar laptop, atau aplikasi web ditampilkan pada ukuran 100%.
+**Solusi:** di Chrome, perbesar dengan `Ctrl` + `+` (kembali normal dengan `Ctrl` + `0`); jendela `scrcpy` bisa diperbesar seperti jendela biasa. Jika gambar terpotong, buka **Settings** → **System** → **Display**, lalu pilih resolusi yang didukung proyektor. Saat diperbesar, aplikasi Flutter web bisa berpindah ke tata letak layar sempit; itu justru bukti tampilannya responsif.
+
+### Data dari API tidak muncul di jaringan kampus, padahal di rumah lancar
+
+**Penyebab:** Wi-Fi kampus meminta *login* lewat halaman *browser* lebih dulu, memblokir alamat tertentu, atau sedang lambat.
+**Solusi:** buka satu situs di *browser* untuk memastikan sudah *login* Wi-Fi; nyalakan *hotspot* dari HP lain; atau jalankan versi data palsu (`main_pengembangan.dart` atau `--dart-define=LINGKUNGAN=pengembangan`) sambil menjelaskan alasannya. Tunjukkan juga pesan ramah yang tampil saat gagal terhubung.
+
+### Saat demo, aplikasi ternyata memakai data palsu (atau sebaliknya)
+
+**Penyebab:** aplikasi dijalankan dengan titik masuk atau nilai `--dart-define` yang keliru.
+**Solusi:** periksa perintahnya. Data asli: `flutter run -d chrome --release`. Data palsu: `flutter run -d chrome -t lib/main_pengembangan.dart` atau dengan `--dart-define=LINGKUNGAN=pengembangan`. Pita penanda seperti "BUILD UJI" membantu membedakan keduanya. Lihat [Pertemuan 15, Bagian 3.7](../pertemuan_15_build_rilis_dan_finalisasi/README.md#37-dua-titik-masuk-atau---dart-define).
+
+### `flutter test` lama sekali saat diminta penguji
+
+**Penyebab:** saat pertama kali dijalankan, tes harus dikompilasi dulu. Di laptop yang lambat, ini bisa lebih dari satu menit.
+**Solusi:** jalankan `flutter test` sekali sebelum giliran, dan biarkan terminalnya tetap terbuka di folder proyek. Saat diminta penguji, hasilnya keluar jauh lebih cepat.
+
+### Layar HP mati sendiri, atau notifikasi pribadi muncul di proyektor
+
+**Penyebab:** waktu tunggu layar HP pendek, dan mode Jangan Ganggu belum aktif.
+**Solusi:** jalankan `scrcpy --stay-awake`, perpanjang waktu tunggu layar HP (misalnya 10 menit), lalu aktifkan **Jangan Ganggu** di HP serta **Do not disturb** di Windows 11 (**Settings** → **System** → **Notifications**) atau **Focus assist** di Windows 10.
+
+### Video demo cadangan tidak bisa diputar orang lain
+
+**Penyebab:** tautan Google Drive hanya bisa dibuka pemiliknya, atau formatnya tidak didukung pemutar.
+**Solusi:** ubah akses berbagi menjadi **Siapa saja yang memiliki link** (*Anyone with the link*), lalu coba buka dari akun atau HP lain. Rekam dalam format MP4, misalnya `scrcpy --record=demo_uas.mp4`, yang bisa diputar hampir semua perangkat. Lihat [Gladi Resik, Kegiatan 4](../pertemuan_16_uas/GLADI_RESIK.md#kegiatan-4--video-demo-cadangan).
+
+### *Commit* saya tidak muncul di **Insights** → **Contributors** GitHub
+
+**Penyebab:** GitHub mengenali pemilik *commit* dari **email** di `git config user.email`. Jika email di laptop Anda tidak terdaftar di akun GitHub, *commit* itu tidak dihitung sebagai milik Anda, walaupun tetap ada di riwayat.
+**Solusi:** lihat nama dan email setiap *commit* dengan `git shortlog -sne`. Tambahkan email itu di GitHub (**Settings** → **Emails**), atau samakan `git config --global user.email` dengan email akun untuk *commit* berikutnya. Jika satu orang memakai beberapa nama atau email, tuliskan di [`KONTRIBUSI_TIM.md`](../pertemuan_16_uas/templat/KONTRIBUSI_TIM.md).
+
+---
+
 ## Masih Belum Terpecahkan?
 
 1. Jalankan `flutter doctor -v` dan simpan hasilnya.

@@ -96,7 +96,7 @@ flowchart LR
 | **12** | **Laporan kemajuan** | Fitur utama sudah berjalan dari ujung ke ujung | Demo singkat di kelas + *commit* terbaru di repositori |
 | 13–14 | Melengkapi | Fitur tambahan, *unit test*, perbaikan *bug* | — (tetap *commit* rutin) |
 | **15** | **Finalisasi** | Aplikasi lengkap, *test* lulus, berkas rilis (versi web di GitHub Pages dan/atau APK di GitHub Releases), dokumen rilis ([Pertemuan 15, Bagian 17](../pertemuan_15_build_rilis_dan_finalisasi/README.md#17-finalisasi-proyek-akhir)) | Repositori final dengan *tag* `v1.0.0`, tautan versi web dan/atau halaman rilis APK, `README.md`, `CHANGELOG.md`, `KEBIJAKAN_PRIVASI.md` |
-| **16** | **Presentasi (UAS)** | Demo langsung dan tanya jawab | Slide singkat (jika diminta) + demo |
+| **16** | **Presentasi (UAS)** | Presentasi dan demo langsung, uji langsung oleh penguji, lalu tanya jawab ([Panduan UAS](../pertemuan_16_uas/README.md)) | Paling lambat dua hari sebelumnya: tautan repositori dan rilis, slide PDF, tautan video demo cadangan, `KONTRIBUSI_TIM.md` ([Panduan UAS Bagian 12](../pertemuan_16_uas/README.md#12-yang-dikumpulkan-sebelum-uas)) |
 
 > [!TIP]
 > Jangan menumpuk pekerjaan di minggu terakhir. Setiap selesai satu pertemuan, terapkan materinya ke proyek Anda. Misalnya, setelah Pertemuan 10, langsung coba ambil data dari API pilihan Anda.
@@ -372,7 +372,7 @@ Bobot proyek akhir + UAS adalah **40%** dari nilai akhir. Komponennya (dosen dap
 | Arsitektur dan kualitas kode | 15 | MVVM atau *Clean Architecture* yang konsisten, *repository*, `flutter analyze` bersih, kode terformat, penamaan jelas |
 | UI/UX | 10 | Material 3 dari tema, mode gelap, nyaman di lebar 360 dan ≥ 840, teks terbaca |
 | Pengujian | 10 | Minimal tiga *unit test* bermakna yang lulus, termasuk menguji nilai batas |
-| Repositori dan dokumentasi | 10 | Riwayat *commit* bertahap dari setiap anggota, `README.md` lengkap, tanpa kunci API |
+| Repositori, rilis, dan dokumentasi | 10 | Riwayat *commit* bertahap dari setiap anggota, *tag* versi dan berkas rilis yang bisa dipakai, `README.md` lengkap, tanpa kunci API |
 | Presentasi dan tanya jawab (UAS) | 15 | Demo lancar, setiap anggota mampu menjelaskan kode bagiannya |
 | **Total** | **100** | |
 
@@ -386,7 +386,7 @@ Bobot proyek akhir + UAS adalah **40%** dari nilai akhir. Komponennya (dosen dap
 | Pengujian | Tiga uji atau lebih yang memeriksa logika penting dan nilai batas | Uji ada dan lulus, tetapi hanya memeriksa hal sepele | Kurang dari tiga uji, atau uji gagal |
 
 > [!IMPORTANT]
-> - Untuk proyek kelompok, **nilai setiap anggota bisa berbeda**, dilihat dari riwayat *commit* dan jawaban saat tanya jawab.
+> - Untuk proyek kelompok, **nilai setiap anggota bisa berbeda**, dilihat dari riwayat *commit* dan jawaban saat tanya jawab. Rumusnya (nilai tim × faktor individu + presentasi) dijelaskan di [Panduan UAS Bagian 9](../pertemuan_16_uas/README.md#9-nilai-setiap-anggota-tim), dan patokan skor setiap komponen yang dinilai saat UAS ada di [Bagian 8](../pertemuan_16_uas/README.md#8-rubrik-penilaian).
 > - Bagian kode yang **tidak bisa Anda jelaskan** saat tanya jawab tidak dinilai.
 > - Siapkan **video demo cadangan** berdurasi 1–3 menit. Jika jaringan atau perangkat bermasalah saat presentasi, video itu bisa diputar.
 
@@ -470,12 +470,14 @@ Boleh untuk potongan kecil yang Anda pahami, dengan menyebutkan sumbernya. Menya
 - [ ] `README.md` lengkap (tautan web dan unduhan APK, tangkapan layar, atribusi), `CHANGELOG.md`, dan `KEBIJAKAN_PRIVASI.md`.
 - [ ] Tidak ada kunci API, kata sandi, `key.properties`, atau berkas `.jks` di repositori.
 
-**Presentasi (Pertemuan 16)** — persiapan lengkapnya di [Pertemuan 15, Bagian 17.6](../pertemuan_15_build_rilis_dan_finalisasi/README.md#176-persiapan-demo-uas-pertemuan-16)
+**Presentasi (Pertemuan 16)** — persiapan lengkapnya di [Panduan UAS](../pertemuan_16_uas/README.md) dan [Gladi Resik](../pertemuan_16_uas/GLADI_RESIK.md)
 
 - [ ] APK sudah terpasang di HP demo, dan tautan versi web sudah dicoba dari HP lain.
-- [ ] Alur demo 5–7 menit sudah dilatih.
-- [ ] Video demo cadangan sudah disiapkan.
-- [ ] Setiap anggota siap menjelaskan bagian kodenya.
+- [ ] Naskah demo ditulis; presentasi dan demo selesai dalam 7 menit.
+- [ ] Gladi resik dengan tim lain sudah dilakukan.
+- [ ] Video demo cadangan sudah diunggah dan tautannya dicoba dari perangkat lain.
+- [ ] `KONTRIBUSI_TIM.md` sudah diisi, dan setiap anggota siap menjelaskan bagian kodenya.
+- [ ] Semua berkas sudah dikumpulkan paling lambat dua hari sebelum UAS ([Panduan UAS Bagian 12](../pertemuan_16_uas/README.md#12-yang-dikumpulkan-sebelum-uas)).
 
 ---
 

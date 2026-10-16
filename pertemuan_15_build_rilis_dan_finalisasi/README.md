@@ -1874,6 +1874,9 @@ Tanpa berkas lisensi, kode Anda secara hukum "semua hak dilindungi", walaupun re
 | Alur demo **5–7 menit** sudah dilatih | Waktu demo terbatas; alur yang dilatih tidak tersendat |
 | Setiap anggota tahu bagian kodenya | Bagian kode yang tidak bisa dijelaskan tidak dinilai |
 
+> [!TIP]
+> Aturan main UAS, rubrik, dan daftar periksa lengkapnya ada di [📝 Panduan UAS](../pertemuan_16_uas/README.md). Latih semuanya bersama tim lain dengan [🎯 Gladi Resik](../pertemuan_16_uas/GLADI_RESIK.md).
+
 ### 17.7 Yang dikumpulkan
 
 Ikuti arahan dosen. Umumnya:
@@ -2057,6 +2060,6 @@ Ikuti arahan dosen. Umumnya:
 1. Kerjakan [🧪 Jobsheet Pertemuan 15](JOBSHEET.md) di laboratorium: merilis "Tugas Kuliahku" versi 1.0.0, mulai dari identitas aplikasi, halaman Tentang, versi web di GitHub Pages, APK bertanda tangan, sampai rilis otomatis.
 2. Kerjakan [✍️ Latihan Pertemuan 15](LATIHAN.md) untuk menguji pemahaman Anda.
 3. **Proyek akhir:** selesaikan daftar periksa [Bagian 17.1](#171-daftar-periksa-rilis), lalu buat *tag* `v1.0.0`.
-4. **Pertemuan 16** adalah **Ujian Akhir Semester (UAS)**: presentasi dan demo proyek akhir, dilanjutkan tanya jawab. Pelajari lagi cara penilaiannya di [Panduan Proyek Akhir](../panduan/05_proyek_akhir.md#9-penilaian), dan latih alur demonya sejak sekarang ([Bagian 17.6](#176-persiapan-demo-uas-pertemuan-16)).
+4. **Pertemuan 16** adalah **Ujian Akhir Semester (UAS)**: presentasi dan demo proyek akhir, dilanjutkan tanya jawab. Pelajari aturan main dan cara penilaiannya di [📝 Panduan UAS](../pertemuan_16_uas/README.md), lalu latih alur demonya bersama tim lain dengan [🎯 Gladi Resik](../pertemuan_16_uas/GLADI_RESIK.md) ([Bagian 17.6](#176-persiapan-demo-uas-pertemuan-16)).
 
 [⬆️ Kembali ke atas](#pertemuan-15--build-rilis--finalisasi-proyek)

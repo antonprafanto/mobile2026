@@ -1,0 +1,102 @@
+# Pemeriksaan otomatis setiap kali ada push ke branch main.
+# 1. Seluruh contoh kode rapi (dart format).
+# 2. Bersih dari error, peringatan, maupun API usang (flutter analyze --fatal-infos).
+# 3. Output setiap contoh Dart murni sama dengan blok "// OUTPUT" di berkasnya.
+# 4. Semua tes contoh Pertemuan 14 lulus (flutter test).
+# Jika ada yang gagal, temuan ditampilkan sebagai anotasi pada halaman
+# hasil pemeriksaan (tab "Checks"), lengkap dengan nama berkas dan barisnya.
+# GitHub hanya menampilkan 10 anotasi per langkah, jadi daftar LENGKAP-nya
+# juga ditulis ke ringkasan (Summary) halaman hasil pemeriksaan.
+name: Quality Gate Kode
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  periksa-kode:
+    name: Format, analisis & output kode
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil isi repositori
+        uses: actions/checkout@v5
+
+      - name: Pasang Flutter (kanal stable)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Tampilkan versi Flutter
+        run: |
+          flutter --version
+          {
+            echo '### Versi Flutter yang dipakai pemeriksaan'
+            echo '```text'
+            flutter --version
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Unduh paket
+        run: flutter pub get
+
+      - name: Cek format kode (dart format)
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analisis kode (flutter analyze)
+        if: ${{ !cancelled() }}
+        run: flutter analyze --fatal-infos
+
+      - name: Jalankan contoh Dart murni dan cocokkan output
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: python3 tools/cek_output.py | tee "$RUNNER_TEMP/cek_output.txt"
+
+      - name: Jalankan tes contoh Pertemuan 14 (flutter test)
+        if: ${{ !cancelled() }}
+        run: flutter test pertemuan_14_pengujian_dan_debugging/kode/
+
+      - name: Tampilkan temuan format dan analisis sebagai anotasi
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          ringkasan="$GITHUB_STEP_SUMMARY"
+          echo '## Temuan pemeriksaan kode' >> "$ringkasan"
+
+          # Berkas yang belum diformat
+          dart format --output=none . | sed -n 's/^Changed \(.*\)$/\1/p' > "$RUNNER_TEMP/belum_rapi.txt" || true
+          if [ -s "$RUNNER_TEMP/belum_rapi.txt" ]; then
+            echo "### Berkas yang belum diformat ($(wc -l < "$RUNNER_TEMP/belum_rapi.txt"))" >> "$ringkasan"
+            while read -r berkas; do
+              echo "::error file=${berkas}::Berkas belum diformat. Jalankan: dart format ${berkas}"
+              echo "- \`${berkas}\`" >> "$ringkasan"
+            done < "$RUNNER_TEMP/belum_rapi.txt"
+          fi
+
+          # Temuan analyzer. Format mesin: TINGKAT|JENIS|KODE|BERKAS|BARIS|KOLOM|PANJANG|PESAN
+          dart analyze --format=machine . 2>&1 | grep -E '^(INFO|WARNING|ERROR)\|' > "$RUNNER_TEMP/temuan.txt" || true
+          if [ -s "$RUNNER_TEMP/temuan.txt" ]; then
+            {
+              echo "### Temuan analyzer ($(wc -l < "$RUNNER_TEMP/temuan.txt"))"
+              echo '| Berkas:baris | Aturan | Pesan |'
+              echo '| :--- | :--- | :--- |'
+            } >> "$ringkasan"
+            while IFS='|' read -r tingkat jenis kode berkas baris kolom panjang pesan; do
+              berkas="${berkas#"$GITHUB_WORKSPACE/"}"
+              echo "::error file=${berkas},line=${baris},col=${kolom}::[${kode}] ${pesan//%/%25}"
+              echo "| \`${berkas}:${baris}\` | \`${kode}\` | ${pesan//|/\\|} |" >> "$ringkasan"
+            done < "$RUNNER_TEMP/temuan.txt"
+          fi
+
+          # Perbedaan output contoh Dart murni
+          if grep -q 'GAGAL' "$RUNNER_TEMP/cek_output.txt" 2>/dev/null; then
+            {
+              echo '### Output contoh Dart murni yang berbeda'
+              echo '```text'
+              grep -v '^::' "$RUNNER_TEMP/cek_output.txt" | tail -n 60
+              echo '```'
+            } >> "$ringkasan"
+          fi
+          exit 0
