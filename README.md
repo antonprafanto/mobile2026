@@ -43,8 +43,8 @@ Rencana lengkap satu semester ada di **[📋 Silabus](SILABUS.md)**.
 | **09** | Manajemen *State* & Pola MVVM | [📖 Baca](pertemuan_09_state_dan_mvvm/README.md) | [🧪 Buka](pertemuan_09_state_dan_mvvm/JOBSHEET.md) | [✍️ Buka](pertemuan_09_state_dan_mvvm/LATIHAN.md) | [💻 11 berkas](pertemuan_09_state_dan_mvvm/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_09_state_dan_mvvm/slide/PERTEMUAN_09_State_dan_MVVM.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_09_state_dan_mvvm%2Fslide%2FPERTEMUAN_09_State_dan_MVVM.pptx) |
 | **10** | Asinkron & Integrasi REST API | [📖 Baca](pertemuan_10_async_dan_rest_api/README.md) | [🧪 Buka](pertemuan_10_async_dan_rest_api/JOBSHEET.md) | [✍️ Buka](pertemuan_10_async_dan_rest_api/LATIHAN.md) | [💻 11 berkas](pertemuan_10_async_dan_rest_api/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_10_async_dan_rest_api/slide/PERTEMUAN_10_Async_dan_REST_API.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_10_async_dan_rest_api%2Fslide%2FPERTEMUAN_10_Async_dan_REST_API.pptx) |
 | **11** | Penyimpanan Lokal | [📖 Baca](pertemuan_11_penyimpanan_lokal/README.md) | [🧪 Buka](pertemuan_11_penyimpanan_lokal/JOBSHEET.md) | [✍️ Buka](pertemuan_11_penyimpanan_lokal/LATIHAN.md) | [💻 9 berkas](pertemuan_11_penyimpanan_lokal/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_11_penyimpanan_lokal/slide/PERTEMUAN_11_Penyimpanan_Lokal.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_11_penyimpanan_lokal%2Fslide%2FPERTEMUAN_11_Penyimpanan_Lokal.pptx) |
-| 12 | Arsitektur Aplikasi: *Clean Architecture* | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
-| 13 | Fitur Perangkat & Izin Akses | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
+| **12** | Arsitektur Aplikasi: *Clean Architecture* | [📖 Baca](pertemuan_12_clean_architecture/README.md) | [🧪 Buka](pertemuan_12_clean_architecture/JOBSHEET.md) | [✍️ Buka](pertemuan_12_clean_architecture/LATIHAN.md) | [💻 8 berkas](pertemuan_12_clean_architecture/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_12_clean_architecture/slide/PERTEMUAN_12_Clean_Architecture.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_12_clean_architecture%2Fslide%2FPERTEMUAN_12_Clean_Architecture.pptx) |
+| **13** | Fitur Perangkat & Izin Akses | [📖 Baca](pertemuan_13_fitur_perangkat_dan_izin/README.md) | [🧪 Buka](pertemuan_13_fitur_perangkat_dan_izin/JOBSHEET.md) | [✍️ Buka](pertemuan_13_fitur_perangkat_dan_izin/LATIHAN.md) | [💻 8 berkas](pertemuan_13_fitur_perangkat_dan_izin/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_13_fitur_perangkat_dan_izin/slide/PERTEMUAN_13_Fitur_Perangkat_dan_Izin.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_13_fitur_perangkat_dan_izin%2Fslide%2FPERTEMUAN_13_Fitur_Perangkat_dan_Izin.pptx) |
 | 14 | Pengujian & *Debugging* | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
 | 15 | *Build*, Rilis & Finalisasi Proyek | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
 | 16 | **Ujian Akhir Semester (UAS)**: presentasi proyek | — | — | — | — | — |
@@ -223,6 +223,32 @@ Setiap berkas adalah **program utuh** yang siap dijalankan. Cara menjalankannya 
 | 08 | *Cache* data internet | Pengumuman Prodi tetap terbaca saat luring: strategi "data lokal sebagai cadangan" dan spanduk Mode luring | [contoh_08_cache_data_internet.dart](pertemuan_11_penyimpanan_lokal/kode/contoh_08_cache_data_internet.dart) |
 | 09 | Studi kasus | Aplikasi "Cuaca Kampus Luring": kota terakhir dan favorit, *cache* SQLite, dan strategi "lokal dulu, lalu server" dengan `Stream` | [contoh_09_studi_kasus_cuaca_luring.dart](pertemuan_11_penyimpanan_lokal/kode/contoh_09_studi_kasus_cuaca_luring.dart) |
 
+### Pertemuan 12 — Arsitektur Aplikasi: *Clean Architecture* *(contoh 02, 04, dan 06 program Dart murni; lainnya aplikasi Flutter dengan `provider` dan/atau `http`; semuanya bisa dijalankan di DartPad; hanya 01, 03, dan 08 yang butuh internet)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | Kode kusut (jangan ditiru) | Semua pekerjaan di satu widget: HTTP, JSON, aturan bisnis, dan `DateTime.now()`, ditandai MASALAH 1–6 | [contoh_01_kode_kusut.dart](pertemuan_12_clean_architecture/kode/contoh_01_kode_kusut.dart) |
+| 02 | Domain dalam Dart murni | Entitas, objek nilai `RentangWaktu` dengan `==`, aturan bisnis sebagai fungsi, dan jam yang disuntikkan | [contoh_02_domain_dart_murni.dart](pertemuan_12_clean_architecture/kode/contoh_02_domain_dart_murni.dart) |
+| 03 | Kontrak dan *dependency injection* | Satu kontrak, dua implementasi (palsu dan server), akar komposisi, dan sumber data yang bisa ditukar | [contoh_03_kontrak_dan_dependency_injection.dart](pertemuan_12_clean_architecture/kode/contoh_03_kontrak_dan_dependency_injection.dart) |
+| 04 | Model API dan pemetaan | Program konsol: JSON → model API → entitas dengan `keDomain()`, elemen *null-aware*, dan server versi 2 | [contoh_04_model_api_dan_pemetaan.dart](pertemuan_12_clean_architecture/kode/contoh_04_model_api_dan_pemetaan.dart) |
+| 05 | `Hasil` dan `Kegagalan` | *Repository* sebagai satu-satunya penerjemah *exception*; lima skenario server palsu (`MockClient`) | [contoh_05_hasil_dan_kegagalan.dart](pertemuan_12_clean_architecture/kode/contoh_05_hasil_dan_kegagalan.dart) |
+| 06 | *Use case* dan data palsu | `AjukanPeminjaman` yang menggabungkan dua *repository* dan jam, diuji dengan data palsu dan mata-mata | [contoh_06_use_case_dan_data_palsu.dart](pertemuan_12_clean_architecture/kode/contoh_06_use_case_dan_data_palsu.dart) |
+| 07 | Perintah (*Command*) | Status milik setiap aksi, penjaga ketukan ganda, `try`–`finally`, dan `SnackBar` sekali jalan | [contoh_07_perintah_command.dart](pertemuan_12_clean_architecture/kode/contoh_07_perintah_command.dart) |
+| 08 | Studi kasus | Aplikasi "Pinjam Ruang Kampus": tiga lapisan, dua lingkungan dalam satu baris, dan 23 pemeriksaan sebelum `runApp` | [contoh_08_studi_kasus_pinjam_ruang.dart](pertemuan_12_clean_architecture/kode/contoh_08_studi_kasus_pinjam_ruang.dart) |
+
+### Pertemuan 13 — Fitur Perangkat & Izin Akses *(contoh 01 dan 04 program Dart murni; 05 dan 07 aplikasi Flutter yang bisa dijalankan di DartPad; 02, 03, 06, dan 08 memakai `image_picker` dan/atau `geolocator`, jadi dijalankan di proyek latihan, misalnya di Chrome)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | Status izin | Lima status izin lokasi, aturan Android (penolakan kedua = diblokir, "Hanya kali ini"), dan sistem operasi tiruan untuk mencobanya | [contoh_01_status_izin_dart_murni.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_01_status_izin_dart_murni.dart) |
+| 02 | Galeri dan kamera | Aplikasi "Foto Profil": `pickImage`, tiga kemungkinan hasil, pesan galat dalam satu fungsi, `Image.memory`, dan foto yang sempat "hilang" | [contoh_02_galeri_dan_kamera.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_02_galeri_dan_kamera.dart) |
+| 03 | Lokasi sekarang | Aplikasi "Di Mana Saya?": layanan → izin → posisi dengan batas waktu, jarak ke kampus, dan pemeriksaan ulang saat kembali dari Pengaturan | [contoh_03_lokasi_sekarang.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_03_lokasi_sekarang.dart) |
+| 04 | Jarak, arah, dan zona | Program konsol: rumus *haversine*, arah delapan mata angin, dan aturan zona presensi (lokasi palsu, akurasi, jarak) | [contoh_04_jarak_dan_zona_dart_murni.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_04_jarak_dan_zona_dart_murni.dart) |
+| 05 | Alur izin yang sopan | Aplikasi "Ruang Belajar": penjelasan sebelum dialog, tetap berfungsi saat ditolak, dan tawaran Pengaturan saat diblokir (dialog dan Pengaturan disimulasikan) | [contoh_05_alur_izin_yang_sopan.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_05_alur_izin_yang_sopan.dart) |
+| 06 | Lokasi terus-menerus | Aplikasi "Jalan Pagi": `getPositionStream`, `distanceFilter`, penyaringan titik yang kabur, dan `cancel()` | [contoh_06_lokasi_terus_menerus.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_06_lokasi_terus_menerus.dart) |
+| 07 | Kontrak dan data palsu | Aplikasi "Catatan Lapangan": kontrak perangkat di *domain*, kegagalan baru, `tanggapanUntuk`, dan 15 pemeriksaan tanpa HP | [contoh_07_kontrak_perangkat_dan_data_palsu.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_07_kontrak_perangkat_dan_data_palsu.dart) |
+| 08 | Studi kasus | Aplikasi "Presensi Praktikum": foto selfie dan lokasi, aturan presensi, dua lingkungan dalam satu baris, jam palsu, dan 18 pemeriksaan sebelum `runApp` | [contoh_08_studi_kasus_presensi.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_08_studi_kasus_presensi.dart) |
+
 ---
 
 ## 🧰 Panduan Pendukung
@@ -260,6 +286,8 @@ mobile2026/
 ├── 📁 pertemuan_09_state_dan_mvvm/     ← (struktur sama + 🖼️ gambar/)
 ├── 📁 pertemuan_10_async_dan_rest_api/ ← (struktur sama + 🖼️ gambar/)
 ├── 📁 pertemuan_11_penyimpanan_lokal/  ← (struktur sama + 🖼️ gambar/)
+├── 📁 pertemuan_12_clean_architecture/ ← (struktur sama + 🖼️ gambar/ + data/ruang_kampus.json)
+├── 📁 pertemuan_13_fitur_perangkat_dan_izin/ ← (struktur sama + 🖼️ gambar/)
 ├── 📁 tools/slide/                      ← skrip pembuat slide (untuk dosen)
 ├── 📄 tools/cek_output.py               ← pencocok output contoh kode (dipakai CI)
 ├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md

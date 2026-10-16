@@ -1029,7 +1029,7 @@ home: ChangeNotifierProvider(
 Tiga hal yang perlu diperhatikan:
 
 1. Tipe *provider*-nya adalah **kontrak** (`Provider<RepositoriPengumuman>`), bukan *class* palsunya. Bagian lain aplikasi hanya mengenal kontrak. Saat Pertemuan 10 membuat *repository* yang benar-benar memanggil API, **hanya baris `create` di `main` yang diganti**.
-2. ViewModel **tidak membuat** *repository*-nya sendiri; *repository* "disuntikkan" lewat *constructor*. Cara ini disebut ***dependency injection*** (Pertemuan 12 membahasnya lebih dalam).
+2. ViewModel **tidak membuat** *repository*-nya sendiri; *repository* "disuntikkan" lewat *constructor*. Cara ini disebut ***dependency injection*** ([Pertemuan 12](../pertemuan_12_clean_architecture/README.md#43-dependency-injection-bahan-diantar-bukan-dicari) membahasnya lebih dalam).
 3. Tanda `..` (*cascade*) berarti: buat objeknya, panggil `muat()` pada objek itu, lalu yang dikembalikan tetap **objeknya** (bukan hasil `muat()`). Jadi data langsung mulai dimuat begitu ViewModel dibuat.
 
 Di sisi ViewModel, *constructor*-nya cukup satu baris:

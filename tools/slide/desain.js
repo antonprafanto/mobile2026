@@ -488,7 +488,9 @@ class Dek {
     return s;
   }
 
-  statistik({ judul, item, pesan, sumber, catatan }) {
+  // ukuranAngka: kecilkan jika angkanya panjang (misalnya "111,3 km"),
+  // agar tidak turun ke baris kedua dan menimpa labelnya.
+  statistik({ judul, item, pesan, sumber, catatan, ukuranAngka = 66 }) {
     const s = this._slide('KONTEN', judul, catatan);
     const n = item.length;
     const lebar = (L - 2 * M - (n - 1) * 0.5) / n;
@@ -496,7 +498,7 @@ class Dek {
       const x = M + i * (lebar + 0.5);
       s.addShape(this.pres.ShapeType.roundRect, { x, y: ATAS + 0.1, w: lebar, h: 3.2, rectRadius: 0.15, fill: { color: this.C.background2 }, line: { type: 'none' } });
       this.ikonBulat(s, { x: x + 0.35, y: ATAS + 0.4, d: 0.8, ikon: it.ikon, warna: it.warna });
-      s.addText(it.angka, { x: x + 0.3, y: ATAS + 1.25, w: lebar - 0.6, h: 1.3, fontSize: 66, bold: true, color: it.warna, margin: 0, isTextBox: true });
+      s.addText(it.angka, { x: x + 0.3, y: ATAS + 1.25, w: lebar - 0.6, h: 1.3, fontSize: ukuranAngka, bold: true, color: it.warna, margin: 0, isTextBox: true });
       s.addText(it.label, { x: x + 0.35, y: ATAS + 2.55, w: lebar - 0.7, h: 0.6, fontSize: 18, color: this.C.text1, margin: 0, isTextBox: true });
     });
     if (pesan) {

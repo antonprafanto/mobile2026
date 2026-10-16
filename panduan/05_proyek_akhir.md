@@ -65,7 +65,7 @@ Aplikasi Anda **wajib** memenuhi enam syarat berikut ([Silabus Bagian 5](../SILA
 > [!NOTE]
 > Sebagian syarat baru dipelajari setelah Pertemuan 9. **Itu tidak masalah.** Di proposal, Anda cukup **merencanakan**: API apa yang dipakai, data apa yang disimpan di perangkat, dan halaman apa saja yang dibuat. Cara membuatnya akan dipelajari tepat waktu sebelum dibutuhkan.
 
-**Nilai tambah (tidak wajib):** fitur perangkat seperti kamera atau lokasi (Pertemuan 13), navigasi dengan `go_router`, data tetap bisa dilihat saat tidak ada internet ([Pertemuan 11, Bagian 10](../pertemuan_11_penyimpanan_lokal/README.md#10-cache-data-internet-yang-tetap-terbaca-saat-luring)), atau perhatian khusus pada aksesibilitas (ukuran huruf besar, label untuk pembaca layar).
+**Nilai tambah (tidak wajib):** fitur perangkat seperti kamera atau lokasi ([Pertemuan 13, Bagian 15](../pertemuan_13_fitur_perangkat_dan_izin/README.md#15-fitur-perangkat-untuk-proyek-akhir)), navigasi dengan `go_router`, data tetap bisa dilihat saat tidak ada internet ([Pertemuan 11, Bagian 10](../pertemuan_11_penyimpanan_lokal/README.md#10-cache-data-internet-yang-tetap-terbaca-saat-luring)), atau perhatian khusus pada aksesibilitas (ukuran huruf besar, label untuk pembaca layar).
 
 ### 2.1 Merencanakan data yang disimpan di perangkat
 
@@ -324,6 +324,9 @@ ppb-resep-anak-kos/
 └── test/                  ← unit test (minimal tiga)
 ```
 
+> [!NOTE]
+> Setelah [Pertemuan 12](../pertemuan_12_clean_architecture/README.md#10-menata-folder-proyek), proyek boleh ditata lebih jauh: kontrak *repository* di `lib/domain/repositories/`, akar komposisi di `lib/config/dependensi.dart`, dan `lib/main_pengembangan.dart` agar anggota tim bisa mengerjakan tampilan dengan data palsu. Ambil secukupnya ([Pertemuan 12, Bagian 12](../pertemuan_12_clean_architecture/README.md#12-kapan-cukup-kapan-berlebihan)): struktur MVVM + *repository* di atas sudah memenuhi syarat.
+
 **Isi minimal `README.md` proyek:**
 
 1. Nama aplikasi dan deskripsi singkat (2–3 kalimat).
@@ -455,6 +458,7 @@ Boleh untuk potongan kecil yang Anda pahami, dengan menyebutkan sumbernya. Menya
 - [ ] Minimal satu data sudah tersimpan di perangkat.
 - [ ] Struktur folder MVVM sudah dipakai; `flutter analyze` tanpa masalah.
 - [ ] Setiap anggota sudah punya *commit* sendiri.
+- [ ] Demo 3–5 menit sudah dilatih: alur utama, struktur `lib/`, satu aturan bisnis beserta cara memeriksanya, dan rencana sampai Pertemuan 15 ([Pertemuan 12, Bagian 14](../pertemuan_12_clean_architecture/README.md#14-laporan-kemajuan-proyek-akhir)).
 
 **Finalisasi (Pertemuan 15)**
 

@@ -31,6 +31,12 @@ dependencies:
   shared_preferences: ^2.5.5
   sqflite: ^2.4.4
   sqflite_common_ffi_web: ^1.2.0
+  # Dipakai contoh fitur perangkat mulai Pertemuan 13: foto dari galeri
+  # dan kamera (image_picker) serta lokasi (geolocator). Paket
+  # url_launcher (membuka Google Maps) dipakai jobsheet Pertemuan 13.
+  geolocator: ^14.1.1
+  image_picker: ^1.2.4
+  url_launcher: ^6.3.3
 
 dev_dependencies:
   flutter_lints: ^6.0.0

@@ -1571,6 +1571,6 @@ Karena itu, **jangan pernah** menyimpan *password*, PIN, atau token masuk dengan
 1. Kerjakan [🧪 Jobsheet Pertemuan 11](JOBSHEET.md) di laboratorium.
 2. Kerjakan [✍️ Latihan Pertemuan 11](LATIHAN.md) untuk menguji pemahaman Anda.
 3. **Proyek akhir:** tentukan data apa yang disimpan di perangkat (pengaturan, data utama, atau *cache*) dan di mana menyimpannya. Lihat [🚀 Panduan Proyek Akhir](../panduan/05_proyek_akhir.md).
-4. Pertemuan 12 membahas ***Clean Architecture***: menata layanan, *repository*, dan ViewModel yang sudah kita pakai sejak Pertemuan 9 menjadi lapisan-lapisan yang lebih rapi untuk aplikasi yang semakin besar.
+4. [Pertemuan 12](../pertemuan_12_clean_architecture/README.md) membahas ***Clean Architecture***: menata layanan, *repository*, dan ViewModel yang sudah kita pakai sejak Pertemuan 9 menjadi lapisan-lapisan yang lebih rapi untuk aplikasi yang semakin besar.
 
 [⬆️ Kembali ke atas](#pertemuan-11--penyimpanan-lokal)

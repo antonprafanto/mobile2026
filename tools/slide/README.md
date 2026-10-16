@@ -64,7 +64,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 | `d.alur({ judul, langkah })` | Proses berurutan (kotak + panah); `langkah` berisi `{ ikon, judul, isi }` |
 | `d.bagian({ label, judul, ikon })` | Pembatas antarbagian materi |
 | `d.kartu({ judul, kolom, item })` | Kartu berikon; item boleh punya `kode` (potongan kode kecil) |
-| `d.statistik({ judul, item, sumber })` | Angka besar + keterangan |
+| `d.statistik({ judul, item, sumber })` | Angka besar + keterangan; kecilkan angka yang panjang (misalnya "111,3 km") dengan `ukuranAngka` (bawaan 66) |
 | `d.banding({ judul, kolom })` | Perbandingan 2–3 kolom; kolom boleh punya `tag`, `sorot`, `contoh` (ukuran hurufnya diatur `ukuranContoh`) |
 | `d.tabel({ judul, kepala, baris })` | Tabel; ukuran baris menyesuaikan ruang kosong |
 | `d.kode({ judul, kode, berkas, poin })` | Potongan kode berwarna + penjelasan + tombol ke GitHub |
@@ -75,7 +75,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 Semua jenis slide menerima `catatan` — teks **catatan pembicara** (speaker notes)
 untuk dosen. Contoh lengkap pemakaian setiap jenis ada di `konten/p01.js` sampai
-`konten/p11.js` (contoh `d.layar` ada di `konten/p04.js` sampai `konten/p11.js`, dan `d.lapisan` ada di `konten/p01.js`, `konten/p05.js`, `konten/p09.js`, `konten/p10.js`, dan `konten/p11.js`).
+`konten/p13.js` (contoh `d.layar` ada di `konten/p04.js` sampai `konten/p13.js`, dan `d.lapisan` ada di `konten/p01.js`, `konten/p05.js`, `konten/p09.js` sampai `konten/p13.js`).
 
 > [!TIP]
 > Tulis potongan kode di slide **pendek saja** (maksimal ±16 baris, dan tidak

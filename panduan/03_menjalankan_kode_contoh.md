@@ -24,7 +24,7 @@ Cocok untuk: **semua contoh Dart murni** dan **contoh Flutter sederhana** (yang 
    - Aplikasi Flutter: tampilannya muncul di panel sebelah kanan (atau di tab *Output* pada layar sempit).
 
 > [!NOTE]
-> DartPad hanya mendukung sebagian paket dari [pub.dev](https://pub.dev). Paket `go_router` (Pertemuan 6), `provider` (Pertemuan 9), dan `http` (Pertemuan 10) sudah tersedia di DartPad. Paket `sqflite` (Pertemuan 11) **belum** tersedia. Paket `shared_preferences` (Pertemuan 11) memang tersedia, tetapi tidak bisa bekerja karena jendela hasil DartPad tidak diizinkan memakai penyimpanan *browser*. Jadi, semua contoh Pertemuan 11 dijalankan dengan Cara 2. Cara 2 juga lebih tepat untuk materi penyimpanan, karena Anda perlu membuktikan data tetap ada setelah aplikasi dihentikan lalu dijalankan lagi. Petunjuk **CARA MENJALANKAN** di setiap berkas selalu menyebutkan cara yang tepat.
+> DartPad hanya mendukung sebagian paket dari [pub.dev](https://pub.dev). Paket `go_router` (Pertemuan 6), `provider` (Pertemuan 9), dan `http` (Pertemuan 10) sudah tersedia di DartPad. Paket `sqflite` (Pertemuan 11) **belum** tersedia. Paket `shared_preferences` (Pertemuan 11) memang tersedia, tetapi tidak bisa bekerja karena jendela hasil DartPad tidak diizinkan memakai penyimpanan *browser*. Jadi, semua contoh Pertemuan 11 dijalankan dengan Cara 2. Cara 2 juga lebih tepat untuk materi penyimpanan, karena Anda perlu membuktikan data tetap ada setelah aplikasi dihentikan lalu dijalankan lagi. Contoh Pertemuan 12 kembali bisa dijalankan di DartPad, karena hanya memakai `http` dan `provider`. Di Pertemuan 13, paket `image_picker` dan `geolocator` **tidak** tersedia di DartPad, jadi Contoh 02, 03, 06, dan 08 dijalankan dengan Cara 2; Contoh 01, 04, 05, dan 07 tetap bisa dijalankan di DartPad. Petunjuk **CARA MENJALANKAN** di setiap berkas selalu menyebutkan cara yang tepat.
 
 ---
 
@@ -73,6 +73,8 @@ Beberapa contoh memakai paket dari luar Flutter. Tandanya ada baris `import 'pac
 | `http` | [Pertemuan 10](../pertemuan_10_async_dan_rest_api/README.md#41-memasang-paket) | `flutter pub add http` (untuk Android, tambahkan juga izin internet; lihat [Pertemuan 10 Bagian 14.2](../pertemuan_10_async_dan_rest_api/README.md#142-di-android-izin-internet)) |
 | `shared_preferences` | [Pertemuan 11](../pertemuan_11_penyimpanan_lokal/README.md#21-memasang-paket) | `flutter pub add shared_preferences` |
 | `sqflite` dan `sqflite_common_ffi_web` | [Pertemuan 11](../pertemuan_11_penyimpanan_lokal/README.md#54-memasang-sqflite) | `flutter pub add sqflite sqflite_common_ffi_web`. Khusus Chrome, jalankan juga **sekali** `dart run sqflite_common_ffi_web:setup` (butuh internet) |
+| `image_picker` dan `geolocator` | [Pertemuan 13](../pertemuan_13_fitur_perangkat_dan_izin/README.md#31-menambah-paket) | `flutter pub add image_picker geolocator`. Untuk lokasi di Android, tambahkan juga izin lokasi di `AndroidManifest.xml`; untuk iOS, kalimat alasan di `Info.plist` ([Pertemuan 13 Bagian 3](../pertemuan_13_fitur_perangkat_dan_izin/README.md#3-menyiapkan-proyek-paket-dan-pengaturan-platform)) |
+| `url_launcher` | [Pertemuan 13](../pertemuan_13_fitur_perangkat_dan_izin/README.md#13-paket-lain-dan-kapan-memakainya) (jobsheet) | `flutter pub add url_launcher` |
 
 Jika paket belum dipasang, VS Code menandai baris `import` dengan garis merah dan pesan `Target of URI doesn't exist`. Lihat [Troubleshooting](04_troubleshooting.md) bila masalahnya berlanjut.
 
@@ -81,6 +83,9 @@ Jika paket belum dipasang, VS Code menandai baris `import` dengan garis merah da
 >
 > - Paket `shared_preferences` dan `sqflite` membawa bagian asli (*plugin*). Jika paketnya dipasang saat aplikasi sedang berjalan, hentikan dulu aplikasinya (`q`), lalu jalankan lagi. *Hot restart* saja tidak cukup.
 > - Di Chrome, jalankan selalu dengan *port* yang sama: `flutter run -d chrome --web-port=8080`. Chrome menyimpan data per alamat situs, termasuk nomor *port*-nya. Tanpa *port* tetap, data yang tersimpan seolah-olah hilang setiap kali aplikasi dijalankan ulang ([Pertemuan 11 Bagian 2.4](../pertemuan_11_penyimpanan_lokal/README.md#24-membuktikan-data-benar-benar-tersimpan)).
+
+> [!TIP]
+> **Proyek dengan dua titik masuk (mulai Pertemuan 12).** Pilih berkas `main` yang dijalankan dengan opsi `-t` (*target*), misalnya `flutter run -d chrome --web-port=8080 -t lib/main_pengembangan.dart` untuk versi data palsu. Tanpa `-t`, yang dijalankan adalah `lib/main.dart` ([Pertemuan 12 Bagian 10.3](../pertemuan_12_clean_architecture/README.md#103-dua-titik-masuk-maindart-dan-main_pengembangandart)).
 
 ### Menjalankan di HP Android
 

@@ -247,7 +247,7 @@ Garis kuning = **peringatan** (*warning*); garis biru = **saran** (*info/lint*).
 
 ### Kesalahan umum bahasa Dart dan widget Flutter
 
-Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/README.md#15-kesalahan-umum-pemula-dan-solusinya) (variabel, tipe data, *null safety*), [Pertemuan 3, Bagian 14](../pertemuan_03_dart_lanjutan/README.md#14-kesalahan-umum-pemula-dan-solusinya) (*class*, pewarisan, *exception*, `Future`, dan `Stream`), [Pertemuan 4, Bagian 15](../pertemuan_04_widget_dan_layout/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`child`/`children`, `Expanded`, *overflow*, dan *constraints*), [Pertemuan 5, Bagian 14](../pertemuan_05_interaksi_dan_state/README.md#14-kesalahan-umum-pemula-dan-solusinya) (`setState`, siklus hidup, *controller*, formulir, dan dialog), [Pertemuan 6, Bagian 15](../pertemuan_06_daftar_dan_navigasi/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`ListView`, `Dismissible`, pencarian, `Navigator`, dan `go_router`), [Pertemuan 7, Bagian 17](../pertemuan_07_material3_dan_responsif/README.md#17-kesalahan-umum-pemula-dan-solusinya) (tema, peran warna, mode gelap, *breakpoint*, dan navigasi adaptif), [Pertemuan 9, Bagian 15](../pertemuan_09_state_dan_mvvm/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`ChangeNotifier`, `provider`, MVVM, dan *repository*), [Pertemuan 10, Bagian 15](../pertemuan_10_async_dan_rest_api/README.md#15-kesalahan-umum-pemula-dan-solusinya) (paket `http`, JSON, `FutureBuilder`, galat jaringan, dan CORS), dan [Pertemuan 11, Bagian 14](../pertemuan_11_penyimpanan_lokal/README.md#14-kesalahan-umum-pemula-dan-solusinya) (`shared_preferences`, SQLite, migrasi, transaksi, dan *cache*).
+Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/README.md#15-kesalahan-umum-pemula-dan-solusinya) (variabel, tipe data, *null safety*), [Pertemuan 3, Bagian 14](../pertemuan_03_dart_lanjutan/README.md#14-kesalahan-umum-pemula-dan-solusinya) (*class*, pewarisan, *exception*, `Future`, dan `Stream`), [Pertemuan 4, Bagian 15](../pertemuan_04_widget_dan_layout/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`child`/`children`, `Expanded`, *overflow*, dan *constraints*), [Pertemuan 5, Bagian 14](../pertemuan_05_interaksi_dan_state/README.md#14-kesalahan-umum-pemula-dan-solusinya) (`setState`, siklus hidup, *controller*, formulir, dan dialog), [Pertemuan 6, Bagian 15](../pertemuan_06_daftar_dan_navigasi/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`ListView`, `Dismissible`, pencarian, `Navigator`, dan `go_router`), [Pertemuan 7, Bagian 17](../pertemuan_07_material3_dan_responsif/README.md#17-kesalahan-umum-pemula-dan-solusinya) (tema, peran warna, mode gelap, *breakpoint*, dan navigasi adaptif), [Pertemuan 9, Bagian 15](../pertemuan_09_state_dan_mvvm/README.md#15-kesalahan-umum-pemula-dan-solusinya) (`ChangeNotifier`, `provider`, MVVM, dan *repository*), [Pertemuan 10, Bagian 15](../pertemuan_10_async_dan_rest_api/README.md#15-kesalahan-umum-pemula-dan-solusinya) (paket `http`, JSON, `FutureBuilder`, galat jaringan, dan CORS), [Pertemuan 11, Bagian 14](../pertemuan_11_penyimpanan_lokal/README.md#14-kesalahan-umum-pemula-dan-solusinya) (`shared_preferences`, SQLite, migrasi, transaksi, dan *cache*), [Pertemuan 12, Bagian 13](../pertemuan_12_clean_architecture/README.md#13-kesalahan-umum-pemula-dan-solusinya) (lapisan, kontrak, `Hasil`, *use case*, dan Perintah), dan [Pertemuan 13, Bagian 14](../pertemuan_13_fitur_perangkat_dan_izin/README.md#14-kesalahan-umum-pemula-dan-solusinya) (izin akses, kamera, galeri, dan lokasi).
 
 ---
 
@@ -314,8 +314,8 @@ Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/READM
 
 ### `MissingPluginException(No implementation found for method ...)`
 
-**Penyebab:** paket yang membawa bagian asli (*plugin*), misalnya `shared_preferences` atau `sqflite`, baru dipasang saat aplikasi sedang berjalan. *Hot reload* dan *hot restart* tidak memuat bagian aslinya.
-**Solusi:** hentikan aplikasi (tekan `q` di terminal), lalu jalankan lagi dengan `flutter run`. Lihat [Pertemuan 11, Bagian 2.1](../pertemuan_11_penyimpanan_lokal/README.md#21-memasang-paket).
+**Penyebab:** paket yang membawa bagian asli (*plugin*), misalnya `shared_preferences`, `sqflite`, `image_picker`, atau `geolocator`, baru dipasang saat aplikasi sedang berjalan. *Hot reload* dan *hot restart* tidak memuat bagian aslinya.
+**Solusi:** hentikan aplikasi (tekan `q` di terminal), lalu jalankan lagi dengan `flutter run`. Lihat [Pertemuan 11, Bagian 2.1](../pertemuan_11_penyimpanan_lokal/README.md#21-memasang-paket) dan [Pertemuan 13, Bagian 3.1](../pertemuan_13_fitur_perangkat_dan_izin/README.md#31-menambah-paket).
 
 ### Data yang disimpan hilang setiap kali `flutter run -d chrome` dijalankan
 
@@ -376,6 +376,112 @@ Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/READM
 
 **Penyebab:** nilai ditempel langsung ke teks SQL, sehingga tanda kutip memotong perintahnya. Cara ini juga membuka celah *SQL injection*.
 **Solusi:** selalu pakai tanda `?` dan kirim nilainya lewat `whereArgs` (atau daftar argumen `rawQuery`). Lihat [Pertemuan 11, Bagian 6.6](../pertemuan_11_penyimpanan_lokal/README.md#66-mengapa-harus-whereargs).
+
+## G. Masalah Arsitektur Berlapis
+
+### `Error: Could not find the correct Provider<RepositoriRuang> ...` padahal *provider*-nya sudah dipasang
+
+**Penyebab:** *provider* dititipkan dengan jenis **implementasinya**, misalnya `Provider(create: (context) => RepositoriRuangServer(...))`. Tanpa `<...>`, jenisnya disimpulkan menjadi `RepositoriRuangServer`, sedangkan ViewModel meminta kontraknya dengan `context.read<RepositoriRuang>()`. Kebalikannya juga gagal: dititipkan sebagai kontrak, tetapi diminta sebagai implementasi.
+**Solusi:** tulis jenis kontraknya saat menitipkan, `Provider<RepositoriRuang>(create: ...)`, dan selalu minta kontraknya. Lihat [Pertemuan 12, Bagian 4.4](../pertemuan_12_clean_architecture/README.md#44-akar-komposisi-composition-root).
+
+### Sumber data sudah diganti di akar komposisi, tetapi tampilan tetap memakai data lama
+
+**Penyebab:** ViewModel membuat *repository*-nya sendiri, misalnya `final RepositoriRuang _repositori = RepositoriRuangContoh();`, sehingga parameter *constructor*-nya diterima lalu diabaikan.
+**Solusi:** terima *repository* dari luar dengan `DaftarRuangViewModel({required this._repositori})` dan *field* `final RepositoriRuang _repositori;` tanpa nilai awal. Lihat [Pertemuan 12, Bagian 4.3](../pertemuan_12_clean_architecture/README.md#43-dependency-injection-bahan-diantar-bukan-dicari).
+
+### `Named parameters can't start with an underscore.`
+
+**Penyebab:** bentuk singkat `required this._repositori` baru didukung sejak Dart 3.12. SDK Anda masih lebih lama.
+**Solusi:** perbarui Flutter dengan `flutter upgrade` (mata kuliah ini memakai Flutter 3.47 / Dart 3.13). Jika belum bisa memperbarui, pakai bentuk panjang: `({required RepositoriRuang repositori}) : _repositori = repositori;`. Lihat [Pertemuan 9, Bagian 10.4](../pertemuan_09_state_dan_mvvm/README.md#104-menitipkan-repository-dan-menyerahkannya-ke-viewmodel).
+
+### `The named parameter '_repositori' isn't defined.`
+
+**Penyebab:** saat memanggil *constructor*, nama parameternya ditulis dengan garis bawah.
+**Solusi:** dari luar, nama parameternya ditulis **tanpa** garis bawah: `DaftarRuangViewModel(repositori: ...)`. Lihat [Pertemuan 12, Bagian 4.3](../pertemuan_12_clean_architecture/README.md#43-dependency-injection-bahan-diantar-bukan-dicari).
+
+### `The type 'Kegagalan' isn't exhaustively matched by the switch cases since it doesn't match the pattern '...'.`
+
+**Penyebab:** jenis kegagalan baru ditambahkan ke `sealed class Kegagalan`, tetapi sebuah `switch` (misalnya di `pesanKegagalan`) belum punya cabangnya.
+**Solusi:** tambahkan cabang untuk jenis baru itu di **setiap** `switch` yang ditandai. Jangan menutupnya dengan cabang `_ =>`, karena justru galat inilah yang menjaga agar tidak ada kegagalan tanpa pesan. Lihat [Pertemuan 12, Bagian 6.5](../pertemuan_12_clean_architecture/README.md#65-viewmodel-dan-view-membaca-hasil).
+
+### `The method 'fromJson' isn't defined for the type 'Ruang'.`
+
+**Penyebab:** `fromJson` sudah dipindah ke model API di lapisan data, tetapi pemanggilnya belum diubah.
+**Solusi:** baca JSON lewat model API, lalu terjemahkan: `RuangApiModel.fromJson(json).keDomain()`. Lihat [Pertemuan 12, Bagian 5.3](../pertemuan_12_clean_architecture/README.md#53-langkah-2-model-api-menjadi-entitas).
+
+### Lingkaran memuat berputar terus tanpa pesan, padahal *repository* sudah mengembalikan `Hasil`
+
+**Penyebab:** ada *exception* yang tidak diterjemahkan, misalnya `on TimeoutException` terlupa di *repository*. *Exception* itu lolos ke ViewModel, sehingga baris sesudah `await` (yang mematikan lingkaran memuat) tidak pernah dijalankan.
+**Solusi:** pastikan semua kode yang bisa gagal berada di dalam `try`, dan setiap jenis *exception* punya `on ...` sendiri. Lihat [Pertemuan 12, Bagian 6.4](../pertemuan_12_clean_architecture/README.md#64-repository-satu-satunya-penerjemah).
+
+### Tombol tetap bertuliskan "Menyimpan..." dan tidak bisa diketuk lagi
+
+**Penyebab:** Perintah dijalankan tanpa `try`–`finally`. Saat aksinya melempar *exception*, status `sedangBerjalan` tidak pernah dikembalikan menjadi `false`, dan penjaganya menolak semua ketukan berikutnya.
+**Solusi:** kembalikan statusnya di blok `finally`: `try { _hasil = await aksi(); } finally { _sedangBerjalan = false; _kabari(); }`. Lihat [Pertemuan 12, Bagian 8.2](../pertemuan_12_clean_architecture/README.md#82-isi-class-perintah).
+
+### `SnackBar` yang sama muncul berulang-ulang
+
+**Penyebab:** `SnackBar` ditampilkan dari dalam `build()` (sering lewat `addPostFrameCallback`) berdasarkan hasil yang masih tersimpan. `build()` dipanggil ulang setiap kali layar berubah, misalnya saat sakelar diketuk, sehingga pesannya ikut terjadwal lagi.
+**Solusi:** tampilkan `SnackBar` dari *listener*, sekali untuk setiap hasil, lalu panggil `bersihkanHasil()`. Lihat [Pertemuan 12, Bagian 8.4](../pertemuan_12_clean_architecture/README.md#84-memakai-perintah-di-viewmodel-dan-view).
+
+### Pemeriksaan lulus hari ini, tetapi gagal besok
+
+**Penyebab:** aturan bisnis memanggil `DateTime.now()` sendiri, sehingga hasilnya bergantung pada hari dan jam saat dijalankan.
+**Solusi:** suntikkan "waktu sekarang" sebagai parameter (`required DateTime sekarang`) atau sebagai fungsi (`DateTime Function()? sekarang`), lalu pakai jam tetap saat memeriksa. Lihat [Pertemuan 12, Bagian 3.3](../pertemuan_12_clean_architecture/README.md#33-waktu-sekarang-sebagai-parameter).
+
+---
+
+## H. Masalah Fitur Perangkat dan Izin Akses
+
+### `PermissionDefinitionsNotFoundException`
+
+**Penyebab:** izin lokasi belum ditulis di `android/app/src/main/AndroidManifest.xml` (Android), atau kalimat alasannya belum ditulis di `ios/Runner/Info.plist` (iOS).
+**Solusi:** tambahkan baris `ACCESS_COARSE_LOCATION` dan `ACCESS_FINE_LOCATION` (atau `NSLocationWhenInUseUsageDescription` untuk iOS), lalu hentikan aplikasi dan jalankan ulang. Lihat [Pertemuan 13, Bagian 3.2](../pertemuan_13_fitur_perangkat_dan_izin/README.md#32-android-androidmanifestxml) dan [Bagian 3.3](../pertemuan_13_fitur_perangkat_dan_izin/README.md#33-ios-infoplist).
+
+### Tombol lokasi diketuk, tetapi tidak terjadi apa-apa (dialog izin tidak muncul)
+
+**Penyebab:** izin sudah **diblokir** (`deniedForever`). Di Android, penolakan kedua dianggap permanen, sehingga `requestPermission()` langsung menjawab tanpa dialog, sedangkan aplikasi belum punya pesan untuk keadaan ini.
+**Solusi:** tangani `deniedForever` dengan pesan dan tombol **Buka Pengaturan** (`Geolocator.openAppSettings()`). Untuk mencoba dialognya lagi, cabut izinnya lewat Pengaturan. Lihat [Pertemuan 13, Bagian 2.6](../pertemuan_13_fitur_perangkat_dan_izin/README.md#26-menjalankan-contoh-01) dan [Bagian 11.4](../pertemuan_13_fitur_perangkat_dan_izin/README.md#114-mengulang-dari-awal-mencabut-izin).
+
+### Kamera tidak mau terbuka di Android, padahal galeri bisa
+
+**Penyebab:** baris izin `CAMERA` tertulis di `AndroidManifest.xml`, tetapi belum diberikan pengguna. Dalam keadaan ini Android menolak membuka aplikasi kamera bawaan.
+**Solusi:** hapus baris `android.permission.CAMERA` jika aplikasi hanya memakai `image_picker`. Lihat [Pertemuan 13, Bagian 3.2](../pertemuan_13_fitur_perangkat_dan_izin/README.md#32-android-androidmanifestxml).
+
+### Aplikasi iOS tertutup sendiri saat kamera atau galeri dibuka
+
+**Penyebab:** kalimat alasan `NSCameraUsageDescription` atau `NSPhotoLibraryUsageDescription` belum ditulis di `Info.plist`.
+**Solusi:** tambahkan kalimat alasannya, lalu jalankan ulang. Lihat [Pertemuan 13, Bagian 3.3](../pertemuan_13_fitur_perangkat_dan_izin/README.md#33-ios-infoplist).
+
+### `Unsupported operation` saat menampilkan foto di Chrome
+
+**Penyebab:** foto ditampilkan dengan `Image.file(File(berkas.path))`. `File` berasal dari `dart:io`, yang tidak tersedia di web; di sana `berkas.path` hanyalah alamat sementara `blob:...`.
+**Solusi:** baca isinya dengan `await berkas.readAsBytes()`, lalu tampilkan dengan `Image.memory(...)`, yang berjalan di semua platform. Lihat [Pertemuan 13, Bagian 4.4](../pertemuan_13_fitur_perangkat_dan_izin/README.md#44-membaca-dan-menampilkan-foto).
+
+### Dialog izin lokasi tidak muncul di *browser*
+
+**Penyebab:** izin situs itu pernah diblokir, atau halaman dibuka lewat alamat yang tidak aman (misalnya `http://` dengan alamat IP). Lokasi dan kamera hanya tersedia di HTTPS atau `localhost`.
+**Solusi:** klik ikon di sebelah kiri alamat situs, lalu pilih **Reset izin**. Jalankan dengan `flutter run -d chrome`, yang memakai `localhost`. Lihat [Pertemuan 13, Bagian 3.4](../pertemuan_13_fitur_perangkat_dan_izin/README.md#34-web).
+
+### Di Chrome, lokasi palsu selalu "kurang akurat (± 150 m)"
+
+**Penyebab:** kolom **Accuracy** di Chrome DevTools → *Sensors* dibiarkan kosong, sehingga Chrome memakai akurasi 150 m.
+**Solusi:** isi **Accuracy**, misalnya `10`. Lihat [Pertemuan 13, Bagian 11.1](../pertemuan_13_fitur_perangkat_dan_izin/README.md#111-chrome-devtools-sensors).
+
+### Tombol lokasi berputar terus tanpa hasil
+
+**Penyebab:** `getCurrentPosition` dipanggil tanpa batas waktu, sedangkan GPS sulit mendapat posisi di dalam gedung.
+**Solusi:** beri `timeLimit` pada `LocationSettings`, tangkap `TimeoutException`, lalu tampilkan pesan seperti "Coba di dekat jendela atau di luar ruangan". Lihat [Pertemuan 13, Bagian 5.3](../pertemuan_13_fitur_perangkat_dan_izin/README.md#53-tiga-pemeriksaan-berurutan).
+
+### Jarak ke kampus belasan ribu kilometer saat dicoba di emulator
+
+**Penyebab:** lokasi bawaan emulator Android biasanya berada di Amerika Serikat.
+**Solusi:** atur lokasinya lewat **Extended controls** (tombol ⋯) → **Location**. Lihat [Pertemuan 13, Bagian 11.2](../pertemuan_13_fitur_perangkat_dan_izin/README.md#112-emulator-android).
+
+### Baterai cepat habis setelah memakai aplikasi yang mengikuti lokasi
+
+**Penyebab:** langganan `getPositionStream` tidak dibatalkan, sehingga GPS tetap menyala walaupun halamannya sudah ditutup.
+**Solusi:** panggil `cancel()` pada langganannya di tombol Berhenti **dan** di `dispose()`. Lihat [Pertemuan 13, Bagian 8.2](../pertemuan_13_fitur_perangkat_dan_izin/README.md#82-berlangganan-lalu-berhenti).
 
 ---
 

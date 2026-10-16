@@ -1,0 +1,78 @@
+{
+  "campus": "Kampus Contoh Pemrograman Piranti Bergerak",
+  "updated_at": "2026-10-16T08:00:00+08:00",
+  "rooms": [
+    {
+      "room_code": "LAB-1",
+      "room_name": "Laboratorium Komputer 1",
+      "building": "B",
+      "floor": 2,
+      "capacity": 40,
+      "facilities": ["projector", "air_conditioner", "computer"],
+      "is_active": true
+    },
+    {
+      "room_code": "LAB-2",
+      "room_name": "Laboratorium Komputer 2",
+      "building": "B",
+      "floor": 2,
+      "capacity": 30,
+      "facilities": ["projector", "air_conditioner", "computer"],
+      "is_active": true
+    },
+    {
+      "room_code": "B-204",
+      "room_name": "Ruang Kelas B.204",
+      "building": "B",
+      "floor": 2,
+      "capacity": 45,
+      "facilities": ["projector", "air_conditioner", "whiteboard"],
+      "is_active": true
+    },
+    {
+      "room_code": "C-105",
+      "room_name": "Ruang Seminar C.105",
+      "building": "C",
+      "floor": 1,
+      "capacity": 80,
+      "facilities": ["projector", "air_conditioner", "sound_system"],
+      "is_active": true
+    },
+    {
+      "room_code": "C-110",
+      "room_name": "Ruang Diskusi C.110",
+      "building": "C",
+      "floor": 1,
+      "capacity": 12,
+      "facilities": ["whiteboard", "air_conditioner"],
+      "is_active": true
+    },
+    {
+      "room_code": "A-302",
+      "room_name": "Ruang Rapat A.302",
+      "building": "A",
+      "floor": 3,
+      "capacity": 20,
+      "facilities": ["projector", "air_conditioner", "video_conference"],
+      "is_active": true
+    },
+    {
+      "room_code": "AULA",
+      "room_name": "Aula Fakultas",
+      "building": "A",
+      "floor": 1,
+      "capacity": 200,
+      "facilities": ["projector", "air_conditioner", "sound_system", "stage"],
+      "is_active": true
+    },
+    {
+      "room_code": "STUDIO",
+      "room_name": "Studio Multimedia",
+      "building": "C",
+      "floor": 2,
+      "capacity": 15,
+      "facilities": ["computer", "air_conditioner"],
+      "is_active": false
+    }
+  ]
+}

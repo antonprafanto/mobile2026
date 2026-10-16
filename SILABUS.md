@@ -49,8 +49,8 @@ Setiap pertemuan memiliki folder sendiri berisi **modul bacaan**, **contoh kode 
 | **9** | [Manajemen *State* & Pola MVVM](pertemuan_09_state_dan_mvvm/README.md) | Mengelola *state* aplikasi dengan `ChangeNotifier` dan `provider`, memisahkan *View*, *ViewModel*, dan *repository*, serta memeriksa logika *ViewModel* tanpa layar. **Proyek akhir dimulai.** | 1, 4 | ✅ Tersedia |
 | **10** | [Asinkron & Integrasi REST API](pertemuan_10_async_dan_rest_api/README.md) | Mengambil dan mengirim data ke REST API (paket `http`, JSON, model data dengan pola Dart 3), menangani kondisi *loading* dan *error* dengan pesan yang ramah, menata lapisan data (layanan dan *repository*), serta mengujinya tanpa internet dengan `MockClient`. | 3, 4 | ✅ Tersedia |
 | **11** | [Penyimpanan Lokal](pertemuan_11_penyimpanan_lokal/README.md) | Menyimpan data di perangkat dengan `shared_preferences` dan SQLite (`sqflite`): CRUD yang aman dengan `whereArgs`, migrasi versi database, transaksi dan *batch*, serta *cache* agar data internet tetap terbaca saat luring. | 3 | ✅ Tersedia |
-| **12** | Arsitektur Aplikasi: *Clean Architecture* | Menata aplikasi berlapis (UI, *domain*, data) dengan *repository pattern* dan *dependency injection*. | 1 | 🔜 Segera |
-| **13** | Fitur Perangkat & Izin Akses | Mengakses kamera/galeri dan lokasi, serta menangani izin (*permission*) dengan benar. | 3 | 🔜 Segera |
+| **12** | [Arsitektur Aplikasi: *Clean Architecture*](pertemuan_12_clean_architecture/README.md) | Menata aplikasi menjadi lapisan UI, *domain*, dan data sesuai aturan ketergantungan: entitas dan aturan bisnis dalam Dart murni, kontrak *repository* dengan *dependency injection* dari satu akar komposisi, model API, `Hasil` dan `Kegagalan`, *use case*, serta pola Perintah (*Command*), lalu mengujinya dengan data palsu. **Laporan kemajuan proyek akhir.** | 1, 4 | ✅ Tersedia |
+| **13** | [Fitur Perangkat & Izin Akses](pertemuan_13_fitur_perangkat_dan_izin/README.md) | Mengambil foto dari galeri dan kamera (`image_picker`) serta lokasi perangkat (`geolocator`); menangani izin akses beserta statusnya (ditolak, diblokir) dengan alur yang sopan; menghitung jarak, arah, dan zona dari koordinat; mengikuti lokasi dengan `Stream`; membungkus fitur perangkat di balik kontrak agar bisa diuji dengan data palsu tanpa HP; serta menerapkan prinsip privasi. | 1, 3, 4 | ✅ Tersedia |
 | **14** | Pengujian & *Debugging* | Menulis *unit test* dan *widget test*, serta memakai Flutter DevTools untuk mencari dan memperbaiki masalah. | 4 | 🔜 Segera |
 | **15** | *Build*, Rilis & Finalisasi Proyek | Menyiapkan identitas aplikasi, membuat berkas rilis (APK/AAB/web), dan memeriksa kesiapan rilis. | 4 | 🔜 Segera |
 | **16** | **Ujian Akhir Semester (UAS)** | Presentasi dan demo proyek akhir. | 1–4 | — |
@@ -101,7 +101,7 @@ Penjelasan lengkap tentang memilih tema dan API, templat proposal, struktur repo
 > [!TIP]
 > **Laptop Anda RAM 8 GB?** Tidak masalah. Hampir semua contoh bisa dijalankan di **Google Chrome** yang jauh lebih ringan daripada emulator. Jika punya HP Android, Anda juga bisa menjalankan aplikasi langsung di HP lewat kabel USB.
 >
-> SQLite di Pertemuan 11 juga bisa dicoba di Chrome dengan bantuan paket `sqflite_common_ffi_web`. Sebagian kecil fitur di Pertemuan 13 (misalnya kamera dan izin akses) paling baik dicoba di HP Android. Modul pertemuan tersebut akan menjelaskan alternatifnya bila Anda tidak memiliki HP Android.
+> SQLite di Pertemuan 11 juga bisa dicoba di Chrome dengan bantuan paket `sqflite_common_ffi_web`. Fitur perangkat di Pertemuan 13 (kamera, lokasi, dan izin akses) paling lengkap dicoba di HP Android, tetapi semuanya tetap bisa dicoba di Chrome: kamera dan galeri membuka pemilih berkas, dan lokasi bisa diatur sendiri lewat Chrome DevTools ([Pertemuan 13, Bagian 11](pertemuan_13_fitur_perangkat_dan_izin/README.md#11-menguji-tanpa-keluar-ruangan)).
 
 ## 8. Referensi Utama
 

@@ -151,6 +151,11 @@ const DAFTAR_IKON = {
   pin: 'MdPushPin',
   catatan: 'MdStickyNote2',
   luring: 'MdOfflinePin',
+  kamera: 'MdPhotoCamera',
+  galeri: 'MdPhotoLibrary',
+  lokasi: 'MdLocationOn',
+  peta: 'MdMap',
+  privasi: 'MdPrivacyTip',
 };
 
 async function main() {
