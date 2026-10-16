@@ -75,7 +75,7 @@ Folder `node_modules/` tidak ikut di-commit (sudah tercantum di `.gitignore`).
 
 Semua jenis slide menerima `catatan` — teks **catatan pembicara** (speaker notes)
 untuk dosen. Contoh lengkap pemakaian setiap jenis ada di `konten/p01.js` sampai
-`konten/p13.js` (contoh `d.layar` ada di `konten/p04.js` sampai `konten/p13.js`, dan `d.lapisan` ada di `konten/p01.js`, `konten/p05.js`, `konten/p09.js` sampai `konten/p13.js`).
+`konten/p15.js` (contoh `d.layar` ada di `konten/p04.js` sampai `konten/p13.js` dan `konten/p15.js`, `d.statistik` ada di `konten/p01.js`, `konten/p08.js`, `konten/p13.js`, dan `konten/p15.js`, dan `d.lapisan` ada di `konten/p01.js`, `konten/p05.js`, `konten/p09.js` sampai `konten/p13.js`).
 
 > [!TIP]
 > Tulis potongan kode di slide **pendek saja** (maksimal ±16 baris, dan tidak

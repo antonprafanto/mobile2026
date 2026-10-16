@@ -485,6 +485,169 @@ Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/READM
 
 ---
 
+## I. Masalah Pengujian dan *Debugging*
+
+### `No tests ran.` atau `flutter test` tidak menemukan tes
+
+**Penyebab:** nama berkas tidak berakhiran `_test.dart`, atau berkasnya tidak berada di folder `test/`.
+**Solusi:** ganti nama menjadi `nama_test.dart` dan letakkan di folder `test/`, lalu jalankan `flutter test`. Lihat [Pertemuan 14, Bagian 2.1](../pertemuan_14_pengujian_dan_debugging/README.md#21-folder-test-dan-paket-flutter_test).
+
+### Tes lulus, padahal kodenya jelas salah, lalu muncul `This test failed after it had already completed.`
+
+**Penyebab:** tes asinkron ditulis tanpa `async`/`await`, sehingga tes dianggap selesai (dan lulus) sebelum hasilnya diperiksa. Pesan kegagalannya baru muncul belakangan.
+**Solusi:** tulis `() async { ... }` dan `await` di depan setiap `Future`, termasuk `await expectLater(...)`. Lihat [Pertemuan 14, Bagian 4.1](../pertemuan_14_pengujian_dan_debugging/README.md#41-tes-async-jangan-lupa-await).
+
+### `expect(...)` dengan `throwsArgumentError` gagal karena *exception* yang justru sedang diuji
+
+**Penyebab:** kodenya dijalankan **sebelum** `expect` bekerja, misalnya `expect(NilaiUjian(101), throwsArgumentError)`.
+**Solusi:** bungkus dengan fungsi: `expect(() => NilaiUjian(101), throwsArgumentError)`. Lihat [Pertemuan 14, Bagian 3.2](../pertemuan_14_pengujian_dan_debugging/README.md#32-menguji-exception).
+
+### Setelah `tap`, tes berkata `Found 0 widgets with text ...`
+
+**Penyebab:** layar belum digambar ulang setelah `setState` atau `notifyListeners`.
+**Solusi:** tambahkan `await tester.pump();` setelah setiap aksi (`tap`, `enterText`). Lihat [Pertemuan 14, Bagian 6.4](../pertemuan_14_pengujian_dan_debugging/README.md#64-aksi-mengetik-mengetuk-menggulir).
+
+### `pumpAndSettle timed out`
+
+**Penyebab:** ada animasi yang tidak pernah berhenti, biasanya `CircularProgressIndicator` yang terus berputar selama data belum datang.
+**Solusi:** pakai `await tester.pump();`, atau buat data palsunya selesai lebih dulu sebelum memanggil `pumpAndSettle()`. Lihat [Pertemuan 14, Bagian 6.5](../pertemuan_14_pengujian_dan_debugging/README.md#65-pump-pumpdurasi-dan-pumpandsettle).
+
+### `... ambiguously found multiple matching widgets. The "tap()" method needs a single target.`
+
+**Penyebab:** *finder* menemukan lebih dari satu widget, misalnya tulisan "Simpan" ada di judul `AppBar` **dan** di tombol.
+**Solusi:** pakai *finder* yang lebih spesifik: `find.byKey`, `find.byTooltip`, `find.widgetWithText(FilledButton, 'Simpan')`, atau `find.descendant`. Lihat [Pertemuan 14, Bagian 6.3](../pertemuan_14_pengujian_dan_debugging/README.md#63-finder-mencari-widget-di-layar).
+
+### Peringatan `... would not hit test on the specified widget` saat mengetuk
+
+**Penyebab:** widget yang diketuk berada di luar layar (misalnya di bagian bawah lembar formulir pada layar sempit) atau tertutup widget lain.
+**Solusi:** gulir dulu sampai terlihat (`ensureVisible` atau `scrollUntilVisible`), lalu `pumpAndSettle()`, baru ketuk. Lihat [Pertemuan 14, Bagian 9.6](../pertemuan_14_pengujian_dan_debugging/README.md#96-satu-tes-untuk-seluruh-alur).
+
+### `A Timer is still pending even after the widget tree was disposed.`
+
+**Penyebab:** saat tes selesai, kode yang diuji masih menunggu `Future.delayed` atau *timer*, misalnya *repository* memori yang sengaja diberi jeda. Jam di tes widget adalah jam palsu; `pump()` tanpa durasi tidak memajukannya.
+**Solusi:** pakai *repository* palsu **tanpa** jeda, atau majukan jam dengan `await tester.pump(const Duration(...))` sampai semua *timer* selesai. Lihat [Pertemuan 14, Bagian 9.5](../pertemuan_14_pengujian_dan_debugging/README.md#95-menepati-janji-tombol-ajukan-mati-selama-menyimpan).
+
+### `A SemanticsHandle was active at the end of the test.`
+
+**Penyebab:** `tester.ensureSemantics()` dipanggil di tes aksesibilitas, tetapi pegangannya tidak dilepas.
+**Solusi:** panggil `pegangan.dispose()` di akhir tes. Lihat [Pertemuan 14, Bagian 7.7](../pertemuan_14_pengujian_dan_debugging/README.md#77-pedoman-aksesibilitas).
+
+### Tes berikutnya ikut memakai layar 320 piksel atau huruf 200%
+
+**Penyebab:** ukuran layar atau ukuran huruf diubah di dalam tes tanpa dikembalikan.
+**Solusi:** tulis `addTearDown(tester.view.reset)` dan `addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue)` tepat setelah mengubahnya. Lihat [Pertemuan 14, Bagian 7.5](../pertemuan_14_pengujian_dan_debugging/README.md#75-layar-sempit-dan-huruf-besar).
+
+### `MissingPluginException` saat menjalankan `flutter test`
+
+**Penyebab:** tes memanggil *plugin* (misalnya `image_picker` atau `geolocator`) yang membutuhkan kode Android/iOS, padahal di lingkungan uji tidak ada HP.
+**Solusi:** bungkus *plugin* di balik kontrak lalu pakai data palsu, atau palsukan objeknya dengan `Fake`. Lihat [Pertemuan 14, Bagian 8](../pertemuan_14_pengujian_dan_debugging/README.md#8-menguji-kode-yang-memakai-plugin).
+
+### `LateInitializationError: Field '...' has not been initialized.`
+
+**Penyebab:** variabel `late` dibaca sebelum pernah diisi, misalnya `late final TextEditingController _surel;` yang lupa dibuat.
+**Solusi:** isi langsung saat dideklarasikan (`final TextEditingController _surel = TextEditingController();`) atau di `initState`. Baris kode Anda yang membacanya bisa dicari lewat *stack trace*. Lihat [Pertemuan 14, Bagian 10.5](../pertemuan_14_pengujian_dan_debugging/README.md#105-membaca-stack-trace).
+
+### *Breakpoint* tidak pernah berhenti
+
+**Penyebab:** aplikasi dijalankan tanpa *debugger*, misalnya dengan `flutter run` di terminal atau **Run Without Debugging** (`Ctrl` + `F5`).
+**Solusi:** jalankan dengan **Run → Start Debugging** (`F5`) di VS Code. Untuk tes, klik **Debug** (bukan **Run**) di atas `test(` atau `testWidgets(`. Lihat [Pertemuan 14, Bagian 11.2](../pertemuan_14_pengujian_dan_debugging/README.md#112-breakpoint-pertama) dan [Bagian 11.6](../pertemuan_14_pengujian_dan_debugging/README.md#116-debugger-untuk-tes).
+
+### Tab **Actions** di GitHub bertanda ❌, padahal di laptop semua tes hijau
+
+**Penyebab:** langkah **Analisis kode** gagal karena masih ada temuan `flutter analyze` (bahkan sekadar *info*), atau tes bergantung pada sesuatu yang hanya ada di laptop Anda (berkas lokal, jam, atau internet).
+**Solusi:** buka langkah yang merah di halaman Actions, jalankan `flutter analyze` di laptop dan perbaiki semua temuannya, lalu pastikan tes memakai data palsu dan jam palsu. Lihat [Pertemuan 14, Bagian 14.2](../pertemuan_14_pengujian_dan_debugging/README.md#142-tes-otomatis-di-github-ci).
+
+---
+
+## J. Masalah *Build* dan Rilis
+
+### APK rilis tidak bisa memuat data internet, padahal saat `flutter run` lancar
+
+**Penyebab:** izin internet hanya ada di `AndroidManifest.xml` versi *debug* (dipakai `flutter run`). *Manifest* utama, yang dipakai *build* rilis, belum memuatnya.
+**Solusi:** tambahkan `<uses-permission android:name="android.permission.INTERNET" />` di `android/app/src/main/AndroidManifest.xml`, di dalam `<manifest>` dan sebelum `<application>`, lalu *build* ulang. Lihat [Pertemuan 15, Bagian 10.2](../pertemuan_15_build_rilis_dan_finalisasi/README.md#102-sebelum-build-izin-internet-dan-teman-temannya).
+
+### Situs di GitHub Pages hanya putih, dan konsol *browser* penuh galat 404
+
+**Penyebab:** `--base-href` tidak diisi, atau tidak sama dengan nama repositori, sehingga aplikasi mencari berkasnya di alamat yang salah.
+**Solusi:** `flutter build web --base-href "/nama-repositori/"` (diawali dan diakhiri `/`). Lebih mudah lagi, pakai `templat/web.yml`, yang mengisinya otomatis. Lihat [Pertemuan 15, Bagian 9.3](../pertemuan_15_build_rilis_dan_finalisasi/README.md#93-alamat-dasar---base-href).
+
+### `build/web/index.html` diklik dua kali, tetapi layarnya kosong
+
+**Penyebab:** *browser* tidak menjalankan aplikasi web dari alamat `file://`.
+**Solusi:** jalankan *web server* kecil: `dart pub global activate dhttpd` (sekali saja), lalu `dhttpd --path build/web` dan buka `http://localhost:8080`. Lihat [Pertemuan 15, Bagian 9.2](../pertemuan_15_build_rilis_dan_finalisasi/README.md#92-mencoba-hasil-build-di-laptop).
+
+### *Workflow* `web.yml` gagal di langkah **Terbitkan**
+
+**Penyebab:** GitHub Pages belum diatur ke **Source: GitHub Actions**, atau repositorinya privat tanpa GitHub Pro.
+**Solusi:** buka **Settings** → **Pages** → **Source**, pilih **GitHub Actions**, lalu jalankan ulang *workflow*-nya dari tab **Actions**. Lihat [Pertemuan 15, Bagian 9.4](../pertemuan_15_build_rilis_dan_finalisasi/README.md#94-terbit-otomatis-di-github-pages).
+
+### Situs sudah diperbarui, tetapi yang tampil masih versi lama
+
+**Penyebab:** *browser* dan GitHub Pages menyimpan salinan sementara (*cache*).
+**Solusi:** tunggu sampai tanda centang hijau muncul di tab **Actions**, lalu muat ulang paksa dengan `Ctrl` + `Shift` + `R`. Lihat [Pertemuan 15, Bagian 9.5](../pertemuan_15_build_rilis_dan_finalisasi/README.md#95-hal-yang-perlu-diperhatikan-di-web).
+
+### `Aplikasi tidak terpasang karena paket bentrok dengan paket yang sudah ada`
+
+**Penyebab:** tanda tangan APK baru berbeda dengan aplikasi yang terpasang, misalnya APK lama di-*build* di laptop lain atau oleh robot GitHub dengan kunci *debug*.
+**Solusi:** hapus dulu aplikasi lama dari HP. Untuk seterusnya, tanda tangani semua rilis dengan **kunci unggah yang sama**. Lihat [Pertemuan 15, Bagian 11.1](../pertemuan_15_build_rilis_dan_finalisasi/README.md#111-mengapa-aplikasi-ditandatangani).
+
+### `flutter build apk` gagal di laptop teman atau di robot GitHub, dengan pesan yang menyebut *keystore* atau *signing config*
+
+**Penyebab:** `build.gradle.kts` selalu memakai kunci rilis, padahal `key.properties` tidak ada di sana.
+**Solusi:** pakai pola "kunci rilis jika `key.properties` ada, kunci *debug* jika tidak". Lihat [Pertemuan 15, Bagian 11.4](../pertemuan_15_build_rilis_dan_finalisasi/README.md#114-memberi-tahu-gradle-letak-kuncinya).
+
+### `'keytool' is not recognized as an internal or external command`
+
+**Penyebab:** `keytool` (bagian dari Java di Android Studio) tidak terdaftar di PATH.
+**Solusi:** jalankan `flutter doctor -v`, cari baris **Java binary at:**, lalu panggil `keytool` dengan alamat lengkap dari folder yang sama. Lihat [Pertemuan 15, Bagian 11.3](../pertemuan_15_build_rilis_dan_finalisasi/README.md#113-membuat-kunci-unggah).
+
+### `key.properties` atau berkas `.jks` muncul di `git status`
+
+**Penyebab:** kunci disimpan di folder yang tidak diabaikan Git, atau isi `android/.gitignore` berubah.
+**Solusi:** **jangan di-*commit***. Simpan berkas `.jks` di luar folder proyek, periksa dengan `git check-ignore -v android/key.properties`, dan perbaiki `android/.gitignore`. Kunci yang terlanjur di-*push* harus dianggap bocor. Lihat [Pertemuan 15, Bagian 11.5](../pertemuan_15_build_rilis_dan_finalisasi/README.md#115-menjaga-kunci-dua-aturan-mutlak).
+
+### Berkas `.aab` tidak bisa dipasang di HP
+
+**Penyebab:** *App Bundle* bukan APK; berkas ini harus diolah dulu oleh Google Play.
+**Solusi:** bagikan APK (`flutter build apk`). Berkas `.aab` hanya untuk diunggah ke Google Play. Lihat [Pertemuan 15, Bagian 11.6](../pertemuan_15_build_rilis_dan_finalisasi/README.md#116-app-bundle-aab-untuk-google-play).
+
+### Ikon di HP masih logo Flutter setelah `dart run flutter_launcher_icons`
+
+**Penyebab:** peluncur HP masih menyimpan ikon lama.
+**Solusi:** hapus aplikasi dari HP, lalu pasang lagi. Di Chrome, muat ulang paksa dengan `Ctrl` + `Shift` + `R`. Lihat [Pertemuan 15, Bagian 6.3](../pertemuan_15_build_rilis_dan_finalisasi/README.md#63-melihat-ikon-barunya).
+
+### `Unsupported operation: String.fromEnvironment can only be used as a const constructor`
+
+**Penyebab:** `String.fromEnvironment` (atau `int.`/`bool.fromEnvironment`) dipanggil tanpa `const`.
+**Solusi:** tulis `const String nama = String.fromEnvironment('NAMA', defaultValue: '...');`. Lihat [Pertemuan 15, Bagian 3.3](../pertemuan_15_build_rilis_dan_finalisasi/README.md#33-membaca-nilainya-wajib-const).
+
+### Nilai `--dart-define` tidak terbaca, selalu nilai bawaan
+
+**Penyebab:** namanya berbeda (huruf besar dan kecil dibedakan), opsinya lupa ditulis saat `flutter build`, atau aplikasi hanya di-*hot reload* setelah nilainya diganti.
+**Solusi:** samakan namanya persis, tulis opsi itu di `flutter run` **maupun** `flutter build`, dan hentikan aplikasi (`q`) lalu jalankan lagi setiap kali nilainya diganti. Lihat [Pertemuan 15, Bagian 3.2](../pertemuan_15_build_rilis_dan_finalisasi/README.md#32-memberi-nilai-dengan---dart-define).
+
+### *Tag* sudah dibuat, tetapi *workflow* `rilis.yml` tidak berjalan
+
+**Penyebab:** *tag* belum di-*push* (`git push` biasa tidak ikut mengirim *tag*), atau namanya tidak diawali `v`.
+**Solusi:** `git push origin v1.0.0`. Lihat [Pertemuan 15, Bagian 12.1](../pertemuan_15_build_rilis_dan_finalisasi/README.md#121-tag-penanda-versi-di-riwayat-git).
+
+### `rilis.yml` gagal membuat rilis: `Resource not accessible by integration`
+
+**Penyebab:** izin `contents: write` terhapus dari *workflow*.
+**Solusi:** kembalikan `permissions:` → `contents: write` seperti di `templat/rilis.yml`. Lihat [Pertemuan 15, Bagian 12.2](../pertemuan_15_build_rilis_dan_finalisasi/README.md#122-robot-yang-mem-build-apk-dan-membuat-halaman-rilis).
+
+### Pengguna melihat kotak abu-abu kosong di aplikasi rilis
+
+**Penyebab:** terjadi galat saat membangun widget. Di *build* rilis, layar merah berubah menjadi kotak abu-abu tanpa keterangan.
+**Solusi:** pasang `ErrorWidget.builder` dan jaring pengaman galat agar galatnya tercatat, lalu perbaiki bug-nya dari laporan itu. Lihat [Pertemuan 15, Bagian 7.5](../pertemuan_15_build_rilis_dan_finalisasi/README.md#75-pengganti-layar-merah-yang-ramah).
+
+### Galat asinkron di web tidak pernah tercatat
+
+**Penyebab:** di web, galat asinkron yang lolos tidak sampai ke `PlatformDispatcher.instance.onError`.
+**Solusi:** bungkus aplikasi dengan `runZonedGuarded`, dan panggil `WidgetsFlutterBinding.ensureInitialized()` serta `runApp()` di dalam zona yang sama. Lihat [Pertemuan 15, Bagian 7.4](../pertemuan_15_build_rilis_dan_finalisasi/README.md#74-di-web-tambahkan-runzonedguarded).
+
+---
+
 ## Masih Belum Terpecahkan?
 
 1. Jalankan `flutter doctor -v` dan simpan hasilnya.

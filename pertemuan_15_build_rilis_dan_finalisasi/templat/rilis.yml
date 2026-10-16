@@ -1,0 +1,73 @@
+# =====================================================================
+# TEMPLAT WORKFLOW: RILIS APK DI HALAMAN "RELEASES" GITHUB
+# Pertemuan 15 (Modul Bagian 12, Jobsheet Praktikum 5).
+# Salin berkas ini ke .github/workflows/rilis.yml di repositori proyek Anda.
+#
+# Berjalan setiap kali sebuah TAG versi di-push, misalnya:
+#   git tag -a v1.0.0 -m "Rilis 1.0.0"
+#   git push origin v1.0.0
+# Robot GitHub lalu menjalankan analisis dan tes, mem-build APK, dan
+# membuat halaman rilis v1.0.0 berisi APK tersebut.
+#
+# Tanpa langkah opsional di bawah, APK ditandatangani kunci DEBUG milik
+# robot. APK itu bisa dipasang untuk demo dan penilaian, tetapi tidak bisa
+# diunggah ke Google Play. Pastikan build.gradle.kts memakai pola "kunci
+# rilis jika ada, kunci debug jika tidak" (Modul Bagian 11.4).
+# =====================================================================
+name: Rilis Android
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write # dibutuhkan untuk membuat halaman rilis
+
+jobs:
+  rilis:
+    name: Build APK dan terbitkan rilis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil isi repositori
+        uses: actions/checkout@v5
+
+      - name: Pasang Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Unduh paket
+        run: flutter pub get
+
+      - name: Analisis dan tes
+        run: |
+          flutter analyze
+          flutter test
+
+      # OPSIONAL (lanjutan): agar APK ditandatangani KUNCI UNGGAH Anda,
+      # simpan dua Secret di Settings > Secrets and variables > Actions:
+      #   KUNCI_UNGGAH_BASE64 : isi berkas upload-keystore.jks dalam base64
+      #   KUNCI_PROPERTIES    : isi android/key.properties, dengan baris
+      #                         storeFile=upload-keystore.jks
+      # lalu hapus tanda # di depan tujuh baris langkah berikut.
+      # - name: Pasang kunci unggah
+      #   env:
+      #     KUNCI_UNGGAH_BASE64: ${{ secrets.KUNCI_UNGGAH_BASE64 }}
+      #     KUNCI_PROPERTIES: ${{ secrets.KUNCI_PROPERTIES }}
+      #   run: |
+      #     echo "$KUNCI_UNGGAH_BASE64" | base64 --decode > android/app/upload-keystore.jks
+      #     echo "$KUNCI_PROPERTIES" > android/key.properties
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Terbitkan rilis di GitHub
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+          NAMA_REPO: ${{ github.event.repository.name }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk "$NAMA_REPO-$TAG.apk"
+          gh release create "$TAG" "$NAMA_REPO-$TAG.apk" --title "$TAG" --generate-notes

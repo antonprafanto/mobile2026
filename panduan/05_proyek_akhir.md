@@ -59,7 +59,7 @@ Aplikasi Anda **wajib** memenuhi enam syarat berikut ([Silabus Bagian 5](../SILA
 | 2 | Tampilan mengikuti **Material Design 3** dan nyaman di **ukuran layar berbeda** | Pertemuan 7 | Tampilan di lebar 360 dan ≥ 840, dalam mode terang dan gelap |
 | 3 | Mengambil data dari **REST API** dan menyimpan sebagian data **di perangkat** | Pertemuan 10 dan 11 | Data dari internet tampil; data yang disimpan tetap ada setelah aplikasi ditutup lalu dibuka lagi |
 | 4 | Kode tertata dengan pola **MVVM** atau ***Clean Architecture*** | Pertemuan 9 dan 12 | Struktur folder; View, ViewModel, dan *repository* terpisah |
-| 5 | Minimal **tiga *unit test*** yang lulus | Pertemuan 9 (pola siapkan–lakukan–periksa) dan 14 (`flutter test`) | Menjalankan `flutter test` dan semua uji lulus |
+| 5 | Minimal **tiga *unit test*** yang lulus | Pertemuan 9 (pola siapkan–lakukan–periksa) dan 14 (`flutter test`; daftar periksanya di [Bagian 16](../pertemuan_14_pengujian_dan_debugging/README.md#16-pengujian-untuk-proyek-akhir)) | Menjalankan `flutter test` dan semua uji lulus |
 | 6 | Disimpan di **repositori Git** dengan riwayat *commit* yang rapi dan `README.md` yang menjelaskan cara menjalankannya | Panduan instalasi (Git) dan sepanjang semester | Riwayat *commit* bertahap dari setiap anggota; `README.md` bisa diikuti orang lain |
 
 > [!NOTE]
@@ -95,7 +95,7 @@ flowchart LR
 | 10–11 | Membangun | Lapisan data: mengambil data dari API, menyimpan data di perangkat | — (tetap *commit* rutin) |
 | **12** | **Laporan kemajuan** | Fitur utama sudah berjalan dari ujung ke ujung | Demo singkat di kelas + *commit* terbaru di repositori |
 | 13–14 | Melengkapi | Fitur tambahan, *unit test*, perbaikan *bug* | — (tetap *commit* rutin) |
-| **15** | **Finalisasi** | Aplikasi lengkap, *test* lulus, berkas rilis (APK atau *build* web) | Repositori final + berkas rilis |
+| **15** | **Finalisasi** | Aplikasi lengkap, *test* lulus, berkas rilis (versi web di GitHub Pages dan/atau APK di GitHub Releases), dokumen rilis ([Pertemuan 15, Bagian 17](../pertemuan_15_build_rilis_dan_finalisasi/README.md#17-finalisasi-proyek-akhir)) | Repositori final dengan *tag* `v1.0.0`, tautan versi web dan/atau halaman rilis APK, `README.md`, `CHANGELOG.md`, `KEBIJAKAN_PRIVASI.md` |
 | **16** | **Presentasi (UAS)** | Demo langsung dan tanya jawab | Slide singkat (jika diminta) + demo |
 
 > [!TIP]
@@ -425,7 +425,7 @@ Inilah gunanya *repository*. Buat implementasi baru (misalnya *repository* palsu
 <details>
 <summary><b>Apakah aplikasi harus bisa berjalan di iPhone?</b></summary>
 
-Tidak. Cukup berjalan di Chrome dan/atau HP Android. Pertemuan 15 membahas cara membuat berkas rilis.
+Tidak. Cukup berjalan di Chrome dan/atau HP Android. Pertemuan 15 membahas cara membuat berkas rilis web dan APK ([Bagian 1.3](../pertemuan_15_build_rilis_dan_finalisasi/README.md#13-ke-mana-aplikasi-dirilis)). Aplikasi iPhone hanya bisa di-*build* di Mac ([Bagian 15.2](../pertemuan_15_build_rilis_dan_finalisasi/README.md#152-app-store-iphone)).
 </details>
 
 <details>
@@ -460,16 +460,19 @@ Boleh untuk potongan kecil yang Anda pahami, dengan menyebutkan sumbernya. Menya
 - [ ] Setiap anggota sudah punya *commit* sendiri.
 - [ ] Demo 3–5 menit sudah dilatih: alur utama, struktur `lib/`, satu aturan bisnis beserta cara memeriksanya, dan rencana sampai Pertemuan 15 ([Pertemuan 12, Bagian 14](../pertemuan_12_clean_architecture/README.md#14-laporan-kemajuan-proyek-akhir)).
 
-**Finalisasi (Pertemuan 15)**
+**Finalisasi (Pertemuan 15)** — daftar lengkapnya di [Pertemuan 15, Bagian 17.1](../pertemuan_15_build_rilis_dan_finalisasi/README.md#171-daftar-periksa-rilis)
 
 - [ ] Semua fitur wajib berjalan; diuji di lebar 360 dan ≥ 840, mode terang dan gelap.
 - [ ] Minimal tiga *unit test* lulus dengan `flutter test`.
-- [ ] `README.md` lengkap, termasuk tangkapan layar dan atribusi sumber data.
-- [ ] Berkas rilis (APK atau *build* web) sudah dibuat dan diuji.
-- [ ] Tidak ada kunci API atau kata sandi di repositori.
+- [ ] Identitas aplikasi: nama tampilan rapi, `applicationId` bukan `com.example`, `version: 1.0.0+1`, ikon dan layar pembuka sendiri.
+- [ ] Halaman Tentang: versi, atribusi sumber data, kebijakan privasi, dan lisensi.
+- [ ] Berkas rilis sudah dibuat dan diuji: versi web di GitHub Pages dan/atau APK di GitHub Releases (*tag* `v1.0.0`).
+- [ ] `README.md` lengkap (tautan web dan unduhan APK, tangkapan layar, atribusi), `CHANGELOG.md`, dan `KEBIJAKAN_PRIVASI.md`.
+- [ ] Tidak ada kunci API, kata sandi, `key.properties`, atau berkas `.jks` di repositori.
 
-**Presentasi (Pertemuan 16)**
+**Presentasi (Pertemuan 16)** — persiapan lengkapnya di [Pertemuan 15, Bagian 17.6](../pertemuan_15_build_rilis_dan_finalisasi/README.md#176-persiapan-demo-uas-pertemuan-16)
 
+- [ ] APK sudah terpasang di HP demo, dan tautan versi web sudah dicoba dari HP lain.
 - [ ] Alur demo 5–7 menit sudah dilatih.
 - [ ] Video demo cadangan sudah disiapkan.
 - [ ] Setiap anggota siap menjelaskan bagian kodenya.

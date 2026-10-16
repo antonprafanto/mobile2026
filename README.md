@@ -45,8 +45,8 @@ Rencana lengkap satu semester ada di **[📋 Silabus](SILABUS.md)**.
 | **11** | Penyimpanan Lokal | [📖 Baca](pertemuan_11_penyimpanan_lokal/README.md) | [🧪 Buka](pertemuan_11_penyimpanan_lokal/JOBSHEET.md) | [✍️ Buka](pertemuan_11_penyimpanan_lokal/LATIHAN.md) | [💻 9 berkas](pertemuan_11_penyimpanan_lokal/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_11_penyimpanan_lokal/slide/PERTEMUAN_11_Penyimpanan_Lokal.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_11_penyimpanan_lokal%2Fslide%2FPERTEMUAN_11_Penyimpanan_Lokal.pptx) |
 | **12** | Arsitektur Aplikasi: *Clean Architecture* | [📖 Baca](pertemuan_12_clean_architecture/README.md) | [🧪 Buka](pertemuan_12_clean_architecture/JOBSHEET.md) | [✍️ Buka](pertemuan_12_clean_architecture/LATIHAN.md) | [💻 8 berkas](pertemuan_12_clean_architecture/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_12_clean_architecture/slide/PERTEMUAN_12_Clean_Architecture.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_12_clean_architecture%2Fslide%2FPERTEMUAN_12_Clean_Architecture.pptx) |
 | **13** | Fitur Perangkat & Izin Akses | [📖 Baca](pertemuan_13_fitur_perangkat_dan_izin/README.md) | [🧪 Buka](pertemuan_13_fitur_perangkat_dan_izin/JOBSHEET.md) | [✍️ Buka](pertemuan_13_fitur_perangkat_dan_izin/LATIHAN.md) | [💻 8 berkas](pertemuan_13_fitur_perangkat_dan_izin/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_13_fitur_perangkat_dan_izin/slide/PERTEMUAN_13_Fitur_Perangkat_dan_Izin.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_13_fitur_perangkat_dan_izin%2Fslide%2FPERTEMUAN_13_Fitur_Perangkat_dan_Izin.pptx) |
-| 14 | Pengujian & *Debugging* | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
-| 15 | *Build*, Rilis & Finalisasi Proyek | 🔜 | 🔜 | 🔜 | 🔜 | 🔜 |
+| **14** | Pengujian & *Debugging* | [📖 Baca](pertemuan_14_pengujian_dan_debugging/README.md) | [🧪 Buka](pertemuan_14_pengujian_dan_debugging/JOBSHEET.md) | [✍️ Buka](pertemuan_14_pengujian_dan_debugging/LATIHAN.md) | [💻 10 berkas](pertemuan_14_pengujian_dan_debugging/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_14_pengujian_dan_debugging/slide/PERTEMUAN_14_Pengujian_dan_Debugging.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_14_pengujian_dan_debugging%2Fslide%2FPERTEMUAN_14_Pengujian_dan_Debugging.pptx) |
+| **15** | *Build*, Rilis & Finalisasi Proyek | [📖 Baca](pertemuan_15_build_rilis_dan_finalisasi/README.md) | [🧪 Buka](pertemuan_15_build_rilis_dan_finalisasi/JOBSHEET.md) | [✍️ Buka](pertemuan_15_build_rilis_dan_finalisasi/LATIHAN.md) | [💻 7 berkas](pertemuan_15_build_rilis_dan_finalisasi/kode/) | [⚡ Unduh](https://raw.githubusercontent.com/antonprafanto/mobile2026/main/pertemuan_15_build_rilis_dan_finalisasi/slide/PERTEMUAN_15_Build_Rilis_dan_Finalisasi.pptx) · [👁️ Lihat](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fantonprafanto%2Fmobile2026%2Fmain%2Fpertemuan_15_build_rilis_dan_finalisasi%2Fslide%2FPERTEMUAN_15_Build_Rilis_dan_Finalisasi.pptx) |
 | 16 | **Ujian Akhir Semester (UAS)**: presentasi proyek | — | — | — | — | — |
 
 <sub>**⚡ Unduh** = berkas `.pptx` langsung terunduh. **👁️ Lihat** = dibuka di browser tanpa PowerPoint.</sub>
@@ -249,6 +249,33 @@ Setiap berkas adalah **program utuh** yang siap dijalankan. Cara menjalankannya 
 | 07 | Kontrak dan data palsu | Aplikasi "Catatan Lapangan": kontrak perangkat di *domain*, kegagalan baru, `tanggapanUntuk`, dan 15 pemeriksaan tanpa HP | [contoh_07_kontrak_perangkat_dan_data_palsu.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_07_kontrak_perangkat_dan_data_palsu.dart) |
 | 08 | Studi kasus | Aplikasi "Presensi Praktikum": foto selfie dan lokasi, aturan presensi, dua lingkungan dalam satu baris, jam palsu, dan 18 pemeriksaan sebelum `runApp` | [contoh_08_studi_kasus_presensi.dart](pertemuan_13_fitur_perangkat_dan_izin/kode/contoh_08_studi_kasus_presensi.dart) |
 
+### Pertemuan 14 — Pengujian & *Debugging* *(contoh 01–04 tes unit: DartPad atau `flutter test`; 05–08 tes widget dan tes kode berplugin: `flutter test` di laptop; 09 dan 10 aplikasi Flutter berbug untuk latihan *debugging*)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | Tes unit pertama | `test` dan `expect` untuk fungsi nilai akhir Pertemuan 2; tes di nilai batas menemukan bug `54.99999999999999` yang tersembunyi selama ini | [contoh_01_tes_unit_pertama_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_01_tes_unit_pertama_test.dart) |
+| 02 | *Matcher*, `setUp`, dan `group` | "Keranjang Kantin": *matcher*, *exception*, `setUp` untuk setiap tes, `group`, tabel kasus, dan batas diskon Rp50.000 | [contoh_02_matcher_setup_dan_group_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_02_matcher_setup_dan_group_test.dart) |
+| 03 | Kode asinkron | "Bus Kampus": tes `async`, server palsu `MockClient`, `Future` yang diharapkan gagal, dan `Stream` | [contoh_03_menguji_kode_asinkron_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_03_menguji_kode_asinkron_test.dart) |
+| 04 | ViewModel dengan data palsu | "Antrean Konsultasi Dosen": *repository* palsu yang bisa gagal, menghitung panggilan, dan ditahan; penjaga ketukan ganda dan `dispose` | [contoh_04_menguji_viewmodel_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_04_menguji_viewmodel_test.dart) |
+| 05 | Tes widget pertama | "Cek Nilai Akhir": `testWidgets`, `pumpWidget`, *finder*, `enterText`, `tap`, dan `pump` | [contoh_05_widget_test_pertama_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_05_widget_test_pertama_test.dart) |
+| 06 | Tes widget dengan ViewModel | Tampilan "Antrean Konsultasi" di semua keadaannya, tombol mati selama mengirim, layar 320 dengan huruf 200%, mode gelap, dan pedoman aksesibilitas | [contoh_06_widget_test_dengan_viewmodel_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_06_widget_test_dengan_viewmodel_test.dart) |
+| 07 | Kode yang memakai *plugin* | "Presensi Praktikum" (Pertemuan 13) diuji tanpa kamera dan GPS: `ImagePicker` palsu (`Fake`), aturan di nilai batas, dan jam tetap | [contoh_07_menguji_kode_plugin_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_07_menguji_kode_plugin_test.dart) |
+| 08 | Studi kasus | "Pinjam Ruang Kampus" (Pertemuan 12) diuji lapis demi lapis: *domain*, *use case*, data, ViewModel, dan tampilan, tanpa mengubah kode aplikasinya | [contoh_08_studi_kasus_menguji_pinjam_ruang_test.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_08_studi_kasus_menguji_pinjam_ruang_test.dart) |
+| 09 | Mencari bug dengan *debugger* | "Kasir Kantin" yang sengaja berisi tiga bug: layar merah, angka salah tanpa pesan galat, dan layar yang tidak berubah | [contoh_09_mencari_bug_dengan_debugger.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_09_mencari_bug_dengan_debugger.dart) |
+| 10 | Galat tata letak | "Info Kegiatan Kampus": teks panjang di `Row`, `ListView` di `Column`, dan `TextField` di `Row`, lengkap dengan sakelar "Perbaiki" | [contoh_10_memperbaiki_tata_letak.dart](pertemuan_14_pengujian_dan_debugging/kode/contoh_10_memperbaiki_tata_letak.dart) |
+
+### Pertemuan 15 — *Build*, Rilis & Finalisasi Proyek *(contoh 01 dan 06 program Dart murni: DartPad atau `dart run`; 02–05 dan 07 aplikasi Flutter: DartPad atau proyek latihan. Folder [`templat/`](pertemuan_15_build_rilis_dan_finalisasi/templat/) berisi `web.yml`, `rilis.yml`, dan kerangka dokumen rilis yang siap disalin)*
+
+| No | Konsep | Yang dipelajari | Berkas |
+| :---: | :--- | :--- | :--- |
+| 01 | Nomor versi dan nomor *build* | Mengurai baris `version:`, membandingkan versi sebagai **angka** (bukan teks), menaikkan versi menurut jenis perubahan, dan aturan nomor *build* di toko aplikasi | [contoh_01_versi_dan_nomor_build_dart_murni.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_01_versi_dan_nomor_build_dart_murni.dart) |
+| 02 | Mode *build* dan konfigurasi | Aplikasi "Info Build": `kDebugMode`, `assert`, log khusus *debug*, dan konfigurasi `--dart-define` dengan nilai bawaan yang aman serta penolakan salah ketik | [contoh_02_mode_build_dan_konfigurasi.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_02_mode_build_dan_konfigurasi.dart) |
+| 03 | Galat di aplikasi rilis | Aplikasi "Uji Galat": `FlutterError.onError`, `PlatformDispatcher.instance.onError`, `runZonedGuarded` di web, dan `ErrorWidget.builder` yang ramah | [contoh_03_menangani_galat_di_rilis.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_03_menangani_galat_di_rilis.dart) |
+| 04 | Halaman Tentang dan lisensi | Halaman Tentang "Cuaca Kampus": versi, atribusi Open-Meteo, kebijakan privasi di dalam aplikasi, surel pengembang, dan `showLicensePage` | [contoh_04_halaman_tentang_dan_lisensi.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_04_halaman_tentang_dan_lisensi.dart) |
+| 05 | Cek pembaruan | Aplikasi "Jadwal Kuliah": `info_rilis.json` dari *server* palsu dengan lima skenario; keputusan terbaru, disarankan, dan wajib; aplikasi tetap bisa dipakai saat *server* gagal | [contoh_05_cek_pembaruan.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_05_cek_pembaruan.dart) |
+| 06 | Pemeriksa kesiapan rilis | Daftar periksa rilis sebagai program: OK, SARAN, dan WAJIB untuk proyek "Tugas Kuliahku" sebelum dan sesudah dirapikan | [contoh_06_pemeriksa_kesiapan_rilis_dart_murni.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_06_pemeriksa_kesiapan_rilis_dart_murni.dart) |
+| 07 | Studi kasus | "Cuaca Kampus 1.0.0": aplikasi Pertemuan 10 disiapkan untuk rilis tanpa menambah fitur: `--dart-define`, jaring pengaman galat, halaman Tentang, dan cek pembaruan dari [`data/info_rilis_cuaca_kampus.json`](pertemuan_15_build_rilis_dan_finalisasi/data/info_rilis_cuaca_kampus.json) | [contoh_07_studi_kasus_cuaca_kampus_siap_rilis.dart](pertemuan_15_build_rilis_dan_finalisasi/kode/contoh_07_studi_kasus_cuaca_kampus_siap_rilis.dart) |
+
 ---
 
 ## 🧰 Panduan Pendukung
@@ -257,7 +284,7 @@ Setiap berkas adalah **program utuh** yang siap dijalankan. Cara menjalankannya 
 | :--- | :--- |
 | [🧭 Cara Belajar dengan Repositori Ini](panduan/01_cara_belajar.md) | Isi setiap folder, rutinitas belajar, cara menyalin kode, cara bertanya yang baik |
 | [🛠️ Instalasi Flutter di Windows](panduan/02_instalasi_flutter_windows.md) | Git, VS Code, Flutter SDK, `flutter doctor`, Android (opsional) |
-| [▶️ Menjalankan Kode Contoh](panduan/03_menjalankan_kode_contoh.md) | DartPad, proyek latihan di Chrome, HP Android, `dart run` |
+| [▶️ Menjalankan Kode Contoh](panduan/03_menjalankan_kode_contoh.md) | DartPad, proyek latihan di Chrome, HP Android, `dart run`, `flutter test` |
 | [🩺 Troubleshooting](panduan/04_troubleshooting.md) | Kumpulan error yang sering muncul beserta solusinya |
 | [🚀 Proyek Akhir](panduan/05_proyek_akhir.md) | Syarat aplikasi, jadwal, memilih tema dan API, templat proposal, penilaian |
 
@@ -288,6 +315,8 @@ mobile2026/
 ├── 📁 pertemuan_11_penyimpanan_lokal/  ← (struktur sama + 🖼️ gambar/)
 ├── 📁 pertemuan_12_clean_architecture/ ← (struktur sama + 🖼️ gambar/ + data/ruang_kampus.json)
 ├── 📁 pertemuan_13_fitur_perangkat_dan_izin/ ← (struktur sama + 🖼️ gambar/)
+├── 📁 pertemuan_14_pengujian_dan_debugging/ ← (struktur sama; kode/ berisi berkas tes *_test.dart)
+├── 📁 pertemuan_15_build_rilis_dan_finalisasi/ ← (struktur sama + 🖼️ gambar/ + templat/, aset/, data/)
 ├── 📁 tools/slide/                      ← skrip pembuat slide (untuk dosen)
 ├── 📄 tools/cek_output.py               ← pencocok output contoh kode (dipakai CI)
 ├── 📄 KERANGKA_KERJA_COURSEWARE_GITHUB.md

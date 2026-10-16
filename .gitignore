@@ -19,6 +19,7 @@ _internal_dosen/
 .pub/
 build/
 pubspec.lock
+coverage/
 
 # ---------------------------------------------------------------------
 # Node.js (generator slide di tools/slide)

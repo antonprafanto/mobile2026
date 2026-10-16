@@ -1,0 +1,78 @@
+# =====================================================================
+# TEMPLAT WORKFLOW: TERBITKAN VERSI WEB KE GITHUB PAGES
+# Pertemuan 15 (Modul Bagian 9.4, Jobsheet Praktikum 3).
+# Salin berkas ini ke .github/workflows/web.yml di repositori proyek Anda.
+#
+# Setiap kali ada push ke cabang main, robot GitHub:
+#   1. menjalankan flutter analyze dan flutter test;
+#   2. mem-build versi web;
+#   3. menerbitkannya di https://<nama-akun>.github.io/<nama-repositori>/
+#
+# Sekali saja sebelum push pertama: buka Settings > Pages, lalu pada
+# "Build and deployment" > "Source" pilih "GitHub Actions".
+# Catatan: GitHub Pages gratis untuk repositori PUBLIK. Repositori privat
+# membutuhkan GitHub Pro (gratis bagi mahasiswa lewat GitHub Student
+# Developer Pack).
+# =====================================================================
+name: Terbitkan Web
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # bisa juga dijalankan manual dari tab Actions
+
+# Hanya satu penerbitan dalam satu waktu.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Tes dan build web
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Ambil isi repositori
+        uses: actions/checkout@v5
+
+      - name: Pasang Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Unduh paket
+        run: flutter pub get
+
+      - name: Analisis dan tes
+        run: |
+          flutter analyze
+          flutter test
+
+      - name: Build web
+        # Situs berada di sub-folder /<nama-repositori>/, jadi alamat
+        # dasarnya (base href) harus sama dengan nama repositori.
+        env:
+          NAMA_REPO: ${{ github.event.repository.name }}
+        run: flutter build web --base-href "/$NAMA_REPO/"
+
+      - name: Kemas hasil build untuk GitHub Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/web
+
+  terbitkan:
+    name: Terbitkan ke GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.terbit.outputs.page_url }}
+    steps:
+      - name: Terbitkan
+        id: terbit
+        uses: actions/deploy-pages@v4

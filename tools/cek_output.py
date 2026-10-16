@@ -19,7 +19,9 @@ Aturan pencocokan:
   berjalan.
 - Baris berakhiran "(di terminal `dart run`: X)" berarti tampilan DartPad dan
   terminal berbeda; ekor baris boleh berupa X (misalnya 100 vs 100.0).
-- Contoh aplikasi Flutter (mengimpor package:flutter) dilewati.
+- Contoh aplikasi Flutter (mengimpor package:flutter) dan berkas tes
+  (mengimpor package:flutter_test, dijalankan dengan `flutter test`)
+  dilewati.
 - Contoh yang tidak mengimpor paket apa pun dijalankan dari salinannya di
   folder sementara (di luar repositori). Dengan begitu `dart` tidak ikut
   menyiapkan paket berkode native milik repositori (misalnya sqlite3 yang
@@ -91,7 +93,7 @@ def jalankan(berkas, teks):
 
 def periksa(berkas):
     teks = open(berkas, encoding='utf-8').read()
-    if 'package:flutter/' in teks:
+    if 'package:flutter/' in teks or 'package:flutter_test/' in teks:
         return None
     nomor_baris, harapan = blok_output(teks)
     if harapan is None:

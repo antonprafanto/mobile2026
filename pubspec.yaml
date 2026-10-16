@@ -39,5 +39,10 @@ dependencies:
   url_launcher: ^6.3.3
 
 dev_dependencies:
+  # Dipakai contoh pengujian mulai Pertemuan 14 (test, testWidgets,
+  # expect, finder, dan matcher). Sudah ada di setiap proyek baru buatan
+  # flutter create.
+  flutter_test:
+    sdk: flutter
   flutter_lints: ^6.0.0
   lints: ^6.1.0

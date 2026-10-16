@@ -6,3 +6,9 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
     - build/**
+    # Contoh jawaban dosen Pertemuan 14 dan 15 (lokal, tidak diunggah)
+    # berisi berkas tes yang mengimpor proyek lain (package:kas_kelas,
+    # package:tugas_kuliahku, package:latihan_p15, dst.), sehingga hanya
+    # bisa diperiksa di proyeknya masing-masing.
+    - _internal_dosen/pertemuan_14/solusi/**
+    - _internal_dosen/pertemuan_15/solusi/**
