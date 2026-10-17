@@ -918,15 +918,40 @@ module.exports = {
     });
 
     d.kode({
-      judul: 'Mode Gelap dan Pedoman Aksesibilitas',
+      judul: 'Mode Gelap',
       berkas: 'kode/contoh_06_widget_test_dengan_viewmodel_test.dart',
       kode: [
-        'tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;',
-        'addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);',
-        '// ...',
-        "final BuildContext konteks = tester.element(find.text('Rina'));",
-        'expect(Theme.of(konteks).brightness, Brightness.dark);',
+        '// Fungsi bantu TANPA async, ditulis di luar main()',
+        'Brightness kecerahanTema(WidgetTester tester, Finder sasaran) {',
+        '  final BuildContext konteks = tester.element(sasaran);',
+        '  return Theme.of(konteks).brightness;',
+        '}',
         '',
+        "testWidgets('mode gelap memakai tema gelap', (WidgetTester tester) async {",
+        '  tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;',
+        '  addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);',
+        '',
+        '  await pasangAplikasi(tester, repositori);',
+        '  await tester.pumpAndSettle();',
+        '',
+        "  expect(kecerahanTema(tester, find.text('Rina')), Brightness.dark);",
+        '});',
+      ].join('\n'),
+      ukuran: 11,
+      lebarKode: 8.1,
+      poin: [
+        'platformBrightnessTestValue: seolah HP disetel ke mode gelap.',
+        'tester.element(finder) → BuildContext; Theme.of → tema yang sedang dipakai.',
+        'BuildContext sesudah await? Linter memprotes, juga di tes, dan CI jadi merah.',
+        'Fungsi bantu tanpa async tidak punya await → aman.',
+      ],
+      catatan: 'Kecerahan platform diatur gelap, lalu aplikasi dipasang dan digambar dengan pasangAplikasi dan pumpAndSettle(). AplikasiAntrean punya theme dan darkTheme, jadi di titik teks Rina tema yang dipakai harus gelap. Mengapa ada fungsi bantu? Versi pertama contoh ini menulis final BuildContext konteks = tester.element(...) langsung di dalam tes, sesudah await. Tesnya hijau, tetapi CI repositori ini merah: aturan use_build_context_synchronously (Pertemuan 5 Bagian 10.2) tidak bisa membedakan tes dari halaman sungguhan. Temuannya berderajat info, tetapi flutter analyze menganggap info pun sebagai kegagalan. Fungsi tanpa async tidak punya await, jadi tidak ada yang diprotes. Di halaman sungguhan, tetap pakai if (!mounted) return; setelah await.',
+    });
+
+    d.kode({
+      judul: 'Pedoman Aksesibilitas',
+      berkas: 'kode/contoh_06_widget_test_dengan_viewmodel_test.dart',
+      kode: [
         "testWidgets('memenuhi pedoman aksesibilitas', (WidgetTester tester) async {",
         '  final SemanticsHandle pegangan = tester.ensureSemantics();',
         '',
@@ -939,16 +964,16 @@ module.exports = {
         '  pegangan.dispose();',
         '});',
       ].join('\n'),
-      ukuran: 11,
+      ukuran: 12,
       lebarKode: 8.1,
       poin: [
-        'tester.element(finder): BuildContext → tema yang sedang dipakai.',
         'androidTapTarget: target sentuh ≥ 48 × 48 (iOS: 44 × 44).',
         'labeledTapTarget: berlabel, misalnya tooltip pada IconButton.',
         'textContrast: kontras teks cukup.',
         'ensureSemantics(): pohon semantics untuk pembaca layar.',
+        'pegangan.dispose() di akhir tes.',
       ],
-      catatan: 'Mode gelap: kecerahan platform diatur gelap, lalu aplikasi dipasang dan digambar dengan pasangAplikasi dan pumpAndSettle() (baris yang dilewati // ...). AplikasiAntrean punya theme dan darkTheme, jadi di titik teks Rina tema yang dipakai harus gelap. Pemeriksaan aksesibilitas membutuhkan pohon semantics, yaitu informasi yang dibaca pembaca layar seperti TalkBack; untuk iOS ada iOSTapTargetGuideline (44 × 44). Contoh 06: 8 tes (00:04 +8: All tests passed!). Coba rusak tampilannya dengan sengaja: hapus tooltip: pada salah satu IconButton, atau buat sebuah Text panjang tanpa Expanded, lalu baca pesan gagalnya.',
+      catatan: 'Pemeriksaan aksesibilitas membutuhkan pohon semantics, yaitu informasi yang dibaca pembaca layar seperti TalkBack; untuk iOS ada iOSTapTargetGuideline (44 × 44). Contoh 06: 8 tes (00:04 +8: All tests passed!). Coba rusak tampilannya dengan sengaja: hapus tooltip: pada salah satu IconButton, atau buat sebuah Text panjang tanpa Expanded, lalu baca pesan gagalnya.',
     });
 
     // ------------------------------------------------------------------

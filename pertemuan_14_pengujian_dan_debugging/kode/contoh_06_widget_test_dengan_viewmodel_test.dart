@@ -557,6 +557,17 @@ Future<void> bukaFormulir(WidgetTester tester) async {
   await tester.pumpAndSettle(); // tunggu animasi lembar selesai
 }
 
+/// Kecerahan tema (terang atau gelap) yang dipakai widget [sasaran].
+///
+/// Sengaja dibuat TANPA async. Aturan use_build_context_synchronously
+/// memprotes BuildContext yang dipakai sesudah `await`, juga di dalam
+/// tes (walaupun di tes sebenarnya aman), dan CI menganggapnya gagal.
+/// Fungsi tanpa async tidak punya `await`, jadi tidak ada yang diprotes.
+Brightness kecerahanTema(WidgetTester tester, Finder sasaran) {
+  final BuildContext konteks = tester.element(sasaran);
+  return Theme.of(konteks).brightness;
+}
+
 void main() {
   late RepositoriAntreanPalsu repositori;
 
@@ -694,8 +705,8 @@ void main() {
     await pasangAplikasi(tester, repositori);
     await tester.pumpAndSettle();
 
-    final BuildContext konteks = tester.element(find.text('Rina'));
-    expect(Theme.of(konteks).brightness, Brightness.dark);
+    // Tema yang dipakai di titik teks 'Rina' harus tema gelap.
+    expect(kecerahanTema(tester, find.text('Rina')), Brightness.dark);
   });
 
   testWidgets('memenuhi pedoman aksesibilitas', (WidgetTester tester) async {

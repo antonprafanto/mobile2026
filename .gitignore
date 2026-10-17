@@ -48,3 +48,6 @@ __pycache__/
 *.pyc
 scratch/
 tools/slide/_pratinjau/
+
+# Salinan berkas yang disimpan aplikasi Claude ke folder ini
+Claude outputs/

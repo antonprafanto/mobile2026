@@ -1183,17 +1183,29 @@ Yang menarik: tes ini hampir tidak berisi `expect` khusus. Jika ada widget yang 
 ### 7.6 Mode gelap
 
 ```dart
+/// Kecerahan tema (terang atau gelap) yang dipakai widget [sasaran].
+Brightness kecerahanTema(WidgetTester tester, Finder sasaran) {
+  final BuildContext konteks = tester.element(sasaran);
+  return Theme.of(konteks).brightness;
+}
+
+// Di dalam testWidgets('mode gelap memakai tema gelap', ...):
 tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
 addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
 
 await pasangAplikasi(tester, repositori);
 await tester.pumpAndSettle();
 
-final BuildContext konteks = tester.element(find.text('Rina'));
-expect(Theme.of(konteks).brightness, Brightness.dark);
+expect(kecerahanTema(tester, find.text('Rina')), Brightness.dark);
 ```
 
-`tester.element(finder)` mengambil `BuildContext` widget yang ditemukan, sehingga tema yang sedang dipakai di titik itu bisa diperiksa.
+| Baris | Arti |
+| :--- | :--- |
+| `platformBrightnessTestValue = Brightness.dark` | Seolah-olah HP disetel ke mode gelap. `addTearDown(...)` mengembalikannya seusai tes |
+| `tester.element(sasaran)` | Mengambil `BuildContext` widget yang ditemukan *finder* |
+| `Theme.of(konteks).brightness` | Tema yang **sedang dipakai** di titik itu: `Brightness.light` (terang) atau `Brightness.dark` (gelap) |
+
+> **Jebakan yang kami temui saat menulis tes ini.** Versi pertama Contoh 06 menulis `final BuildContext konteks = tester.element(find.text('Rina'));` langsung di dalam tes, **sesudah** `await`. Tesnya hijau, tetapi robot CI repositori ini merah: `Don't use 'BuildContext's across async gaps.` Itulah aturan *linter* `use_build_context_synchronously` dari [Pertemuan 5, Bagian 10.2](../pertemuan_05_interaksi_dan_state/README.md#102-periksa-mounted-setelah-await): `context` yang dipakai sesudah `await` bisa milik halaman yang sudah ditutup. Aturan itu tidak bisa membedakan halaman sungguhan dari tes, jadi tetap memprotes, walaupun di tes ini aman karena `konteks` baru diambil setelah layar selesai digambar. Temuannya hanya berderajat *info* (garis biru di VS Code), tetapi `flutter analyze` di CI ([Bagian 14.2](#142-tes-otomatis-di-github-ci)) menganggap info pun sebagai kegagalan. Jalan keluarnya: pindahkan pemakaian `BuildContext` ke fungsi bantu **tanpa** `async`, seperti `kecerahanTema` di atas. Fungsi itu tidak punya `await`, jadi tidak ada yang diprotes. Di halaman sungguhan (bukan tes), tetap gunakan `if (!mounted) return;` setelah `await`.
 
 ### 7.7 Pedoman aksesibilitas
 

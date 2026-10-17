@@ -552,6 +552,11 @@ Lihat tabel lengkap di [Pertemuan 2, Bagian 15](../pertemuan_02_dasar_dart/READM
 **Penyebab:** aplikasi dijalankan tanpa *debugger*, misalnya dengan `flutter run` di terminal atau **Run Without Debugging** (`Ctrl` + `F5`).
 **Solusi:** jalankan dengan **Run → Start Debugging** (`F5`) di VS Code. Untuk tes, klik **Debug** (bukan **Run**) di atas `test(` atau `testWidgets(`. Lihat [Pertemuan 14, Bagian 11.2](../pertemuan_14_pengujian_dan_debugging/README.md#112-breakpoint-pertama) dan [Bagian 11.6](../pertemuan_14_pengujian_dan_debugging/README.md#116-debugger-untuk-tes).
 
+### `Don't use 'BuildContext's across async gaps.` di berkas tes
+
+**Penyebab:** di dalam `testWidgets(... async { ... })`, sebuah `BuildContext` (misalnya hasil `tester.element(...)`) dipakai **sesudah** `await`. Aturan `use_build_context_synchronously` tidak bisa membedakan tes dari halaman sungguhan, jadi tetap memprotes. Tesnya hijau, tetapi `flutter analyze` (dan langkah **Analisis kode** di GitHub Actions) gagal.
+**Solusi:** pindahkan pemakaian `BuildContext` ke fungsi bantu **tanpa** `async` di luar `main()`, misalnya `kecerahanTema(tester, find.text('Rina'))` yang berisi `Theme.of(tester.element(sasaran)).brightness`. Fungsi tanpa `async` tidak punya `await`, jadi tidak ada yang diprotes. Di halaman sungguhan (bukan tes), tetap gunakan `if (!mounted) return;` setelah `await`. Lihat [Pertemuan 14, Bagian 7.6](../pertemuan_14_pengujian_dan_debugging/README.md#76-mode-gelap).
+
 ### Tab **Actions** di GitHub bertanda ❌, padahal di laptop semua tes hijau
 
 **Penyebab:** langkah **Analisis kode** gagal karena masih ada temuan `flutter analyze` (bahkan sekadar *info*), atau tes bergantung pada sesuatu yang hanya ada di laptop Anda (berkas lokal, jam, atau internet).

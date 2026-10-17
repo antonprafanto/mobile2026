@@ -1662,7 +1662,7 @@ git commit -m "Kas Kelas: aplikasi dan 40 tes"
 1. **Eksperimen — `pumpAndSettle` yang tidak pernah selesai.** Di tes `'memuat, lalu menampilkan saldo dan transaksi'`, tambahkan sementara `await tester.pumpAndSettle();` tepat setelah `await pasangAplikasi(tester, repositori);`. Apa pesannya? Jawab sebagai komentar: mengapa? Kembalikan.
 2. **Eksperimen — satu bingkai yang hilang.** Di fungsi `isiDanSimpan`, hapus sementara baris `await tester.pump();`. Tes mana saja yang merah? Jawab sebagai komentar: mengapa tes-tes itu, dan bukan yang lain? Kembalikan.
 3. **Tes baru — urutan transaksi.** Tambahkan tes yang memastikan transaksi **terbaru** tampil paling atas: `'-Rp8.000'` (13 Oktober) harus berada **di atas** `'-Rp12.000'` (7 Oktober). Petunjuk: `tester.getTopLeft(find.text('-Rp8.000')).dy` adalah jarak teks itu dari tepi atas layar.
-4. **Tes baru — mode gelap.** Seperti [Modul Bagian 7.6](README.md#76-mode-gelap), tambahkan tes yang memastikan kartu saldo memakai tema **gelap** saat `platformBrightnessTestValue` bernilai `Brightness.dark`.
+4. **Tes baru — mode gelap.** Seperti [Modul Bagian 7.6](README.md#76-mode-gelap), tambahkan tes yang memastikan kartu saldo memakai tema **gelap** saat `platformBrightnessTestValue` bernilai `Brightness.dark`. Salin juga fungsi bantu `kecerahanTema` dari bagian itu (di luar `main()`), agar `flutter analyze` tidak memberi peringatan `use_build_context_synchronously`.
 5. **Eksperimen — label yang hilang.** Hapus sementara `tooltip: 'Catat pengeluaran'` dari `FloatingActionButton`, lalu jalankan semua tes widget. Berapa tes yang merah? Salin pesan dari tes aksesibilitas sebagai komentar, lalu kembalikan.
 
 ---
