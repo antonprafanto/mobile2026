@@ -2,6 +2,7 @@
 # 1. Seluruh contoh kode rapi (dart format).
 # 2. Bersih dari error, peringatan, maupun API usang (flutter analyze --fatal-infos).
 # 3. Output setiap contoh Dart murni sama dengan blok "// OUTPUT" di berkasnya.
+# 4. Semua tes contoh Pertemuan 14 lulus (flutter test).
 # Jika ada yang gagal, temuan ditampilkan sebagai anotasi pada halaman
 # hasil pemeriksaan (tab "Checks"), lengkap dengan nama berkas dan barisnya.
 # GitHub hanya menampilkan 10 anotasi per langkah, jadi daftar LENGKAP-nya
@@ -52,6 +53,10 @@ jobs:
         if: ${{ !cancelled() }}
         shell: bash
         run: python3 tools/cek_output.py | tee "$RUNNER_TEMP/cek_output.txt"
+
+      - name: Jalankan tes contoh Pertemuan 14 (flutter test)
+        if: ${{ !cancelled() }}
+        run: flutter test pertemuan_14_pengujian_dan_debugging/kode/
 
       - name: Tampilkan temuan format dan analisis sebagai anotasi
         if: ${{ failure() }}
